@@ -1,0 +1,3 @@
+(fp_lib_table
+  (lib (name "Micromod")(type "KiCad")(uri "${KIPRJMOD}/parts/microcontrollers/Micromod.pretty")(options "")(descr ""))
+)
