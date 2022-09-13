@@ -19,4 +19,7 @@
   (lib (name "ST1W008S4AR1500")(type "Legacy")(uri "${KIPRJMOD}/parts/sd-card-readers/ST1W008S4AR1500/ST1W008S4AR1500.lib")(options "")(descr ""))
   (lib (name "Micromod")(type "Legacy")(uri "${KIPRJMOD}/parts/microcontrollers/Micromod.lib")(options "")(descr ""))
   (lib (name "21992304")(type "Legacy")(uri "${KIPRJMOD}/parts/connectors/PCIe/21992304/21992304.lib")(options "")(descr ""))
+  (lib (name "DS04-254-2-02BK-SMT")(type "Legacy")(uri "${KIPRJMOD}/parts/switches/dip/DS04-254-2-02BK-SMT/DS04-254-2-02BK-SMT.lib")(options "")(descr ""))
+  (lib (name "USB4070-30-C")(type "Legacy")(uri "${KIPRJMOD}/parts/connectors/usb-c/USB4070-30-C/USB4070-30-C.lib")(options "")(descr ""))
+  (lib (name "SS34LW_RVG")(type "Legacy")(uri "${KIPRJMOD}/parts/diodes/SS34LW_RVG/SS34LW_RVG.lib")(options "")(descr ""))
 )
