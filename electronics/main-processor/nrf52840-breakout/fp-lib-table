@@ -23,4 +23,5 @@
   (lib (name "MIC2145BMM")(type "KiCad")(uri "${KIPRJMOD}/parts/voltage-regulators/MIC2145BMM")(options "")(descr ""))
   (lib (name "SM5817PL")(type "KiCad")(uri "${KIPRJMOD}/parts/diodes/SM5817PL")(options "")(descr ""))
   (lib (name "SS34LW_RVG")(type "KiCad")(uri "${KIPRJMOD}/parts/diodes/SS34LW_RVG")(options "")(descr ""))
+  (lib (name "9774025151R")(type "KiCad")(uri "${KIPRJMOD}/parts/standoffs/9774025151R")(options "")(descr ""))
 )
