@@ -2,6 +2,8 @@
 *.DS_Store
 *.swp
 *.*.swp
+/gerber
+*.zip
 
 # ---- KiCAD ----
 node-backups

@@ -4856,7 +4856,7 @@
     (property "Reference" "R34" (id 0) (at 355.092 79.9373 0)
       (effects (font (size 1.27 1.27)) (justify right))
     )
-    (property "Value" "5K" (id 1) (at 355.092 82.4742 0)
+    (property "Value" "1K" (id 1) (at 355.092 82.4742 0)
       (effects (font (size 1.27 1.27)) (justify right))
     )
     (property "Footprint" "Resistor_SMD:R_0805_2012Metric" (id 2) (at 355.092 80.772 90)
@@ -5622,7 +5622,7 @@
     (property "Reference" "R33" (id 0) (at 355.092 72.3173 0)
       (effects (font (size 1.27 1.27)) (justify right))
     )
-    (property "Value" "50K" (id 1) (at 355.092 74.8542 0)
+    (property "Value" "10K" (id 1) (at 355.092 74.8542 0)
       (effects (font (size 1.27 1.27)) (justify right))
     )
     (property "Footprint" "Resistor_SMD:R_0805_2012Metric" (id 2) (at 355.092 73.152 90)
@@ -8071,10 +8071,10 @@
       (reference "R31") (unit 1) (value "100K") (footprint "Resistor_SMD:R_0805_2012Metric")
     )
     (path "/4accf16d-a25f-493b-91ac-83bc1f3fee2e"
-      (reference "R33") (unit 1) (value "50K") (footprint "Resistor_SMD:R_0805_2012Metric")
+      (reference "R33") (unit 1) (value "10K") (footprint "Resistor_SMD:R_0805_2012Metric")
     )
     (path "/0cc9c345-cca3-4aa9-9cf9-f7a518168c7a"
-      (reference "R34") (unit 1) (value "5K") (footprint "Resistor_SMD:R_0805_2012Metric")
+      (reference "R34") (unit 1) (value "1K") (footprint "Resistor_SMD:R_0805_2012Metric")
     )
     (path "/0351f498-162f-4b0b-9bb8-4fe4dbccb3a1"
       (reference "S1") (unit 1) (value "DS04-254-2-02BK-SMT") (footprint "DS04-254-2-02BK-SMT:SW_DS04-254-2-02BK-SMT")
