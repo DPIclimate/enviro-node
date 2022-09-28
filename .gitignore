@@ -5,6 +5,13 @@
 /gerber
 *.zip
 
+# ---- CLION / PlatformIO ---- #
+.idea
+fimaware/node/.idea
+.pio
+pycache
+__pycache__
+
 # ---- KiCAD ----
 node-backups
 *.000
