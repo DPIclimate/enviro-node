@@ -18,6 +18,10 @@ public:
                  uint8_t payload_size,
                  uint8_t port);
 
+    static void do_send(const int8_t* payload,
+                        uint8_t payload_size,
+                        uint8_t port);
+
     static bool state();
 
 };

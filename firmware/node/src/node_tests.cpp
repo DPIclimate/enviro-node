@@ -98,17 +98,10 @@ __attribute__((unused)) void Node_UnitTests::test_lorawan() {
 
     log_msg("[TEST]: Testing LoRaWAN send.");
     int8_t payload[] = {1, 2, 3, 4};
-    osjob_t job;
-    Node_LoRaWAN::do_send(&job, payload, sizeof(payload), 0);
+    Node_LoRaWAN::do_send(payload, sizeof(payload), 0);
 
-    uint8_t timeout = 1;
-    while(!Node_LoRaWAN::state() && timeout < UINT8_MAX){
+    while(!Node_LoRaWAN::state()){
         os_runloop_once();
-        timeout++;
-    }
-
-    if(timeout == UINT8_MAX){
-        log_msg("[TEST]: Error, LMIC loop timed out.");
     }
 
     log_msg("[TEST]: Testing LoRaWAN send complete.");

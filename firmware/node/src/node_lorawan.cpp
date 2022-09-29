@@ -1,16 +1,15 @@
 #include "node_lorawan.h"
 
-u1_t PROGMEM APP_EUI[8] = { 0x01, 0x00, 0x00, 0x00, 0x00, 0x00,
+u1_t PROGMEM APPEUI[8] = { 0x01, 0x00, 0x00, 0x00, 0x00, 0x00,
                             0x00, 0x01 };
 
-u1_t PROGMEM DEV_EUI[8] = { 0x51, 0x58, 0x04, 0xD0, 0x7E, 0xD5,
+u1_t PROGMEM DEVEUI[8] = { 0x51, 0x58, 0x04, 0xD0, 0x7E, 0xD5,
                             0xB3, 0x70 };
 
-u1_t PROGMEM APP_KEY[16] = { 0xF5, 0x07, 0xB7, 0x41, 0xF1, 0x7D,
-                             0x47, 0x8C, 0x84, 0x93, 0x73, 0x8F,
-                             0x24, 0xB2, 0x54, 0xCB };
+u1_t PROGMEM APPKEY[16] = { 0xF5, 0x07, 0xB7, 0x41, 0xF1, 0x7D, 0x47, 0x8C, 0x84, 0x93, 0x73, 0x8F, 0x24, 0xB2, 0x54, 0xCB };
 
 static bool msg_state = false;
+static osjob_t lmic_job;
 
 Node_LoRaWAN::Node_LoRaWAN() {
     #ifdef DEBUG
@@ -56,6 +55,12 @@ void Node_LoRaWAN::do_send(osjob_t* tx_job,
             log_msg("[DEBUG]: LoRaWAN payload successfully queued.");
         #endif
     }
+}
+
+void Node_LoRaWAN::do_send(const int8_t* payload,
+                           const uint8_t payload_size,
+                           const uint8_t port) {
+    do_send(&lmic_job, payload, payload_size, port);
 }
 
 bool Node_LoRaWAN::state(){
@@ -129,15 +134,15 @@ void onEvent (ev_t ev) {
 
 // Generic functions required for LMIC to specify application and device config
 void os_getArtEui(u1_t* buf) {
-    memcpy_P(buf, APP_EUI, 8);
+    memcpy_P(buf, APPEUI, 8);
 }
 
 void os_getDevEui(u1_t* buf) {
-    memcpy_P(buf, DEV_EUI, 8);
+    memcpy_P(buf, DEVEUI, 8);
 }
 
 void os_getDevKey(u1_t* buf) {
-    memcpy_P(buf, APP_KEY, 16);
+    memcpy_P(buf, APPKEY, 16);
 }
 
 /*
