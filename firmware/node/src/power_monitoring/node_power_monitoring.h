@@ -1,7 +1,7 @@
 #ifndef NODE_POWER_MONITORING_H
 #define NODE_POWER_MONITORING_H
 
-#include <Adafruit_INA219.h>
+#include "Adafruit_INA219.h"
 #include "node_config.h"
 
 class Node_PowerMonitoring {

@@ -2,7 +2,7 @@
 #define NODE_SDCARD_H
 
 #include <Arduino.h>
-#include <SD.h>
+#include "SD.h"
 #include <SPI.h>
 
 #include "node_config.h"

@@ -4,6 +4,7 @@
 *.*.swp
 /gerber
 *.zip
+/lib
 
 # ---- CLION / PlatformIO ---- #
 .idea

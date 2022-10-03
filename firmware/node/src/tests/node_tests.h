@@ -1,10 +1,10 @@
 #ifndef NODE_TESTS_H
 #define NODE_TESTS_H
 
-#include "node_power_monitoring.h"
-#include "node_sdcard.h"
+#include "power_monitoring/node_power_monitoring.h"
+#include "sdcard/node_sdcard.h"
 #include "node_config.h"
-#include "node_lorawan.h"
+#include "lorawan/node_lorawan.h"
 
 class Node_UnitTests {
 private:

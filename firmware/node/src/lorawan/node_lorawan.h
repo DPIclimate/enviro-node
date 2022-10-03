@@ -1,8 +1,8 @@
 #ifndef NODE_LORAWAN_H
 #define NODE_LORAWAN_H
 
-#include <lmic.h>
-#include <hal/hal.h>
+#include "lmic.h"
+#include "hal/hal.h"
 #include <SPI.h>
 #include "node_config.h"
 
