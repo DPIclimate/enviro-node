@@ -7,11 +7,10 @@
 /lib
 
 # ---- CLION / PlatformIO ---- #
-.idea
-fimaware/node/.idea
-.pio
-pycache
-__pycache__
+.idea/
+.pio/
+pycache/
+__pycache__/
 
 # ---- KiCAD ----
 node-backups
