@@ -5,6 +5,7 @@
 /gerber
 *.zip
 /lib
+*.html
 
 # ---- CLION / PlatformIO ---- #
 .idea/
