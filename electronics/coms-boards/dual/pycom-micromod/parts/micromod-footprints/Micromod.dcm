@@ -1,0 +1,19 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP MICROMOD_-2222
+D <b>MicroMod Connector</b> <br><br> <b>Description:</b> A card edge connector and mating PCB connector to allow various MicroMod Processor Boards to be coupled with various carrier boards of different capabilities. Based on the M.2 standard.
+$ENDCMP
+#
+$CMP MICROMOD_-2222-C
+D <b>MicroMod Connector</b> <br><br> <b>Description:</b> A card edge connector and mating PCB connector to allow various MicroMod Processor Boards to be coupled with various carrier boards of different capabilities. Based on the M.2 standard.
+$ENDCMP
+#
+$CMP MICROMOD_FUNCTION__STANDARD
+D <b>MicroMod Connector</b> <br><br> <b>Description:</b> A card edge connector and mating PCB connector to allow various MicroMod Processor Boards to be coupled with various carrier boards of different capabilities. Based on the M.2 standard.
+$ENDCMP
+#
+$CMP MICROMOD_FUNCTION__MAIN
+D <b>MicroMod Connector</b> <br><br> <b>Description:</b> A card edge connector and mating PCB connector to allow various MicroMod Processor Boards to be coupled with various carrier boards of different capabilities. Based on the M.2 standard.
+$ENDCMP
+#
+#End Doc Library
