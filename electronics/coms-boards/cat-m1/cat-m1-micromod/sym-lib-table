@@ -10,4 +10,6 @@
   (lib (name "CONUFL001-SMD-T")(type "Legacy")(uri "${KIPRJMOD}/parts/antenna/CONUFL001-SMD-T/CONUFL001-SMD-T.lib")(options "")(descr ""))
   (lib (name "PESD0402-140")(type "Legacy")(uri "${KIPRJMOD}/parts/diodes/clamping/PESD0402-140/PESD0402-140.lib")(options "")(descr ""))
   (lib (name "USB4145-03-0230-C_REVA")(type "Legacy")(uri "${KIPRJMOD}/parts/connectors/usb-c/USB4145-03-0230-C_REVA/USB4145-03-0230-C_REVA.lib")(options "")(descr ""))
+  (lib (name "FBMH2012HM221-TV")(type "Legacy")(uri "${KIPRJMOD}/parts/ferrite-beads/FBMH2012HM221-TV/FBMH2012HM221-TV.lib")(options "")(descr ""))
+  (lib (name "AOZ8904CIL")(type "KiCad")(uri "${KIPRJMOD}/parts/diodes/clamping/AOZ8904CIL/AOZ8904CIL.kicad_sym")(options "")(descr ""))
 )
