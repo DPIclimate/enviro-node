@@ -669,8 +669,8 @@
   )
 
   (no_connect (at 73.66 66.04) (uuid a8335c37-504f-4200-8b3b-e12a24d7b0df))
-  (no_connect (at 73.66 71.12) (uuid a8335c37-504f-4200-8b3b-e12a24d7b0df))
-  (no_connect (at 73.66 68.58) (uuid a8335c37-504f-4200-8b3b-e12a24d7b0df))
+  (no_connect (at 73.66 71.12) (uuid a8335c37-504f-4200-8b3b-e12a24d7b0e0))
+  (no_connect (at 73.66 68.58) (uuid a8335c37-504f-4200-8b3b-e12a24d7b0e1))
 
   (wire (pts (xy 60.96 83.82) (xy 63.5 83.82))
     (stroke (width 0) (type default) (color 0 0 0 0))
