@@ -1,4 +1,5 @@
-#pragma once
+#ifndef DAVIS_ANEMOMETER_H
+#define DAVIS_ANEMOMETER_H
 
 #include <Arduino.h>
 
@@ -19,7 +20,7 @@ public:
         pinMode(_speedPin, INPUT);
     }
 
-    int getDirectionRaw() {
+    uint32_t getDirectionRaw() {
         return analogRead(_directionPin);
     }
 
@@ -30,7 +31,8 @@ public:
 
     void startSpeedMeasurement() {
         wind_count = 0;
-        attachInterrupt(_speedPin, davis_isr, FALLING);
+        // The Davis anemometer holds the speed line high, and pulses it low to show a revolution.
+        attachInterrupt(digitalPinToInterrupt(_speedPin), davis_isr, FALLING);
     }
 
     uint32_t stopSpeedMeasurement() {
@@ -47,3 +49,5 @@ public:
         return getSpeedMph(count, ms) * 1.60934;
     }
 };
+
+#endif // DAVIS_ANEMOMETER_H
