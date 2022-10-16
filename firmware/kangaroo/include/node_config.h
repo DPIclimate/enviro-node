@@ -23,9 +23,5 @@ SAM D21 Clock / TCC notes.
 GCLK(1) uses XOSC32K and drives the EIC & TCC 4/5. XOSC32K set to run in standby mode. The EIC is used for
 the LoRa Test button to wake from standby, and TCC 4/5 is used as the source of LMIC systicks.
 
-GCLK(4), TCC 3 used by SDI-12 library. GCLK(4) uses 48MHz PLL, with a /3 divisor to give a 16MHz clock.
-TCC 2 is free but is tied to the same clock as TCC3. These resources can probably be shared with other
-routines if sdi12.begin() is called every time it is used.
-
 */
 #endif // KANGAROO_NODE_CONFIG_H
