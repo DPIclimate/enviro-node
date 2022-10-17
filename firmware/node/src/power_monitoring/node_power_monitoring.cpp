@@ -1,4 +1,4 @@
-#include "node_power_monitoring.h"
+#include "power_monitoring/node_power_monitoring.h"
 
 Node_PowerMonitoring::Node_PowerMonitoring(){
     #ifdef DEBUG

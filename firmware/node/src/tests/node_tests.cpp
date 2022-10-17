@@ -1,4 +1,4 @@
-#include "node_tests.h"
+#include "tests/node_tests.h"
 
 
 Node_UnitTests::Node_UnitTests(){
@@ -14,7 +14,10 @@ Node_UnitTests::Node_UnitTests(){
     //test_sdcard();
 
     // Startup and send LoRaWAN
-    test_lorawan();
+    //test_lorawan();
+
+    // Test bluetooth
+    test_bluetooth();
 
 }
 
@@ -93,17 +96,18 @@ __attribute__((unused)) void Node_UnitTests::test_sdcard() {
 __attribute__((unused)) void Node_UnitTests::test_lorawan() {
 
     log_msg("[TEST]: Initialising LoRaWAN test.");
-    Node_LoRaWAN lora;
+    Node_LoRaWAN::begin();
     log_msg("[TEST]: Initialising LoRaWAN test complete.");
 
     log_msg("[TEST]: Testing LoRaWAN send.");
     int8_t payload[] = {1, 2, 3, 4};
-    Node_LoRaWAN::do_send(payload, sizeof(payload), 0);
-
-    while(!Node_LoRaWAN::state()){
-        os_runloop_once();
-    }
+    Node_LoRaWAN::do_send(payload, sizeof(payload));
 
     log_msg("[TEST]: Testing LoRaWAN send complete.");
+}
 
+__attribute__((unused)) void Node_UnitTests::test_bluetooth() {
+    Node_BluetoothLE bt;
+    bt.begin();
+    bt.read_write_blocking();
 }
