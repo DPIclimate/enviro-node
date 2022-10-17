@@ -24,9 +24,9 @@ public:
         return analogRead(_directionPin);
     }
 
-    float getDirectionDegrees() {
+    float getDirectionDegrees(uint32_t dir) {
         static const float a2dFactor = 360.0f / 1024.0f;
-        return getDirectionRaw() * a2dFactor;
+        return dir * a2dFactor;
     }
 
     void startSpeedMeasurement() {
