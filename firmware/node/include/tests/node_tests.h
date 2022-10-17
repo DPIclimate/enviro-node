@@ -5,6 +5,7 @@
 #include "sdcard/node_sdcard.h"
 #include "node_config.h"
 #include "lorawan/node_lorawan.h"
+#include "bluetooth/node_bluetooth.h"
 
 class Node_UnitTests {
 private:
@@ -21,8 +22,9 @@ private:
 
     __attribute__((unused)) static void test_lorawan();
 
+    __attribute__((unused)) static void test_bluetooth();
+
     //void test_onewire();
-    //void test_lora();
     //void test_sdcard();
 
 
