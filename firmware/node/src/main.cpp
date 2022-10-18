@@ -5,6 +5,8 @@
 #include "tests/node_tests.h"
 #endif
 
+#include "sdi12/node_sdi12.h"
+
 #ifndef DEBUG
 #include "node_power_monitoring.h"
 Node_PowerMonitoring pwr;
@@ -24,6 +26,7 @@ void setup() {
         while(!Serial) yield();
     #endif
 
+    Node_SDI12 sdi12;
     Node_UnitTests();
 }
 

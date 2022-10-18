@@ -5,7 +5,7 @@
 #include "sdcard/node_sdcard.h"
 #include "node_config.h"
 #include "lorawan/node_lorawan.h"
-#include "bluetooth/node_bluetooth.h"
+#include "bluetooth/node_ble.h"
 
 class Node_UnitTests {
 private:
