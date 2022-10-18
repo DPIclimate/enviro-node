@@ -68,7 +68,7 @@ static char msg[MAX_MSG];
 // LMIC tick value. Don't call it before os_init();
 void log_msg(const char *fmt, ...) {
 #ifdef USE_SERIAL
-    snprintf(msg, MAX_MSG, "%04d-%02d-%02d %02d:%02d:%02d: ", rtc.getYear()+2000, rtc.getMonth(), rtc.getDay(), rtc.getHours(), rtc.getMinutes(), rtc.getSeconds());
+    snprintf(msg, MAX_MSG, "%04d-%02d-%02d %02d:%02d:%02d ", rtc.getYear()+2000, rtc.getMonth(), rtc.getDay(), rtc.getHours(), rtc.getMinutes(), rtc.getSeconds());
     serial.write(msg, strlen(msg));
     va_list args;
     va_start(args, fmt);
@@ -77,6 +77,20 @@ void log_msg(const char *fmt, ...) {
     serial.write(msg, strlen(msg));
     serial.println();
 #endif
+}
+
+void blink(void) {
+    digitalWrite(LED_BUILTIN, HIGH);
+    delay(250);
+    digitalWrite(LED_BUILTIN, LOW);
+    delay(250);
+    digitalWrite(LED_BUILTIN, HIGH);
+    delay(250);
+    digitalWrite(LED_BUILTIN, LOW);
+    delay(250);
+    digitalWrite(LED_BUILTIN, HIGH);
+    delay(250);
+    digitalWrite(LED_BUILTIN, LOW);
 }
 
 volatile bool buttonWake = false;
@@ -98,9 +112,10 @@ void log_opmode(void) {
         if (lmicOpmode & OP_JOINING) strncat(sdCardMsg, "OP_JOINING ", MAX_MSG - strnlen(sdCardMsg, MAX_MSG));
         if (lmicOpmode & OP_TXDATA) strncat(sdCardMsg, "OP_TXDATA ", MAX_MSG - strnlen(sdCardMsg, MAX_MSG));
         if (lmicOpmode & OP_TXRXPEND) strncat(sdCardMsg, "OP_TXRXPEND ", MAX_MSG - strnlen(sdCardMsg, MAX_MSG));
+        if (lmicOpmode & OP_RNDTX) strncat(sdCardMsg, "OP_RNDTX ", MAX_MSG - strnlen(sdCardMsg, MAX_MSG));
         if (lmicOpmode & OP_POLL) strncat(sdCardMsg, "OP_POLL ", MAX_MSG - strnlen(sdCardMsg, MAX_MSG));
         if (lmicOpmode & OP_NEXTCHNL) strncat(sdCardMsg, "OP_NEXTCHNL ", MAX_MSG - strnlen(sdCardMsg, MAX_MSG));
-        log_msg("LMIC.opmode: %s", sdCardMsg);
+        log_msg("LMIC.opmode: %s (raw: %u)", sdCardMsg, lmicOpmode);
         memset(sdCardMsg, 0, MAX_MSG);
     }
 
@@ -189,7 +204,12 @@ void do_send(osjob_t* j) {
             LMIC_requestNetworkTime(lmic_request_network_time_cb, 0);
         }
 
-        LMIC_setTxData2(1, payloadBuffer, 11, 0);
+        // Add some jitter to the uplink time to avoid overloading the gateway. 0 - 5s in 500ms jumps.
+        uint32_t jitter = random(10) * 500;
+        log_msg("Uplink jitter is %lu ms", jitter);
+        delay(jitter);
+
+        LMIC_setTxData2(1, payloadBuffer, 13, 0);
     } else {
         log_msg("LMIC busy, not sending");
     }
@@ -220,17 +240,75 @@ void lmic_request_network_time_cb(void * pUserData, int flagSuccess) {
 
 void sensors(void) {
     static constexpr uint32_t speedDelayInMs = 15000;
+    static constexpr uint32_t dirReadDelayInMs = 500;
+    static constexpr size_t dirReadCount = speedDelayInMs / dirReadDelayInMs;
 
     uint32_t rawDir = davis.getDirectionRaw();
-    float windDir = davis.getDirectionDegrees();
+    float windDir = davis.getDirectionDegrees(rawDir);
     int16_t windDeg = (int16_t) windDir;
 
     log_msg("Wind direction: %lu / %f (%d)", rawDir, windDir, windDeg);
 
     log_msg("Measuring wind speed");
     davis.startSpeedMeasurement();
-    delay(speedDelayInMs);
+
+    /*
+     * https://math.stackexchange.com/questions/44621/calculate-average-wind-direction
+     *
+     * Unit vector calc - does not take wind speed into account:
+     *
+        u_east = mean(sin(WD * pi/180))
+        u_north = mean(cos(WD * pi/180))
+        unit_WD = arctan2(u_east, u_north) * 180/pi
+        unit_WD = (360 + unit_WD) % 360
+     */
+    float sumVx = 0.0f;
+    float sumVy = 0.0f;
+    float windRadians;
+
+    float values[dirReadCount];
+
+    for (size_t i = 0; i < dirReadCount; i++) {
+        rawDir = davis.getDirectionRaw();
+        windDir = davis.getDirectionDegrees(rawDir);
+        windRadians = (windDir * PI) / 180.0f;
+
+        float sx = sinf(windRadians);
+        sumVx = sumVx + sx;
+        float sy = cosf(windRadians);
+        sumVy = sumVy + sy;
+
+        values[i] = abs(atan2(sx, sy));
+
+        //log_msg("Direction: %.2f, sx = %.2f, sy = %.2f, values[%d] = %.2f", windDir, sx, sy, i, values[i]);
+
+        delay(dirReadDelayInMs);
+    }
+
     uint32_t windCount = davis.stopSpeedMeasurement();
+
+    //float meanVx = sumVx / dirReadCount;
+    //float meanVy = sumVy / dirReadCount;
+
+    float avgDirRadians = atan2f(sumVx, sumVy);
+    float avgDirDeg = (avgDirRadians * 180.0f) / PI;
+
+    //log_msg("avgDirDeg before fmodf: %.2f, avg dir radians: %.2f", avgDirDeg, avgDirRadians);
+
+    avgDirDeg = fmodf((360 + avgDirDeg), 360);
+    int16_t avgDeg = (int16_t)avgDirDeg;
+
+    float stdSum = 0.0f;
+    float absAvgDirRadians = abs(avgDirRadians);
+    for (size_t i = 0; i < dirReadCount; i++) {
+        stdSum += powf((values[i] - absAvgDirRadians), 2);
+    }
+
+    FLOAT stdDev;
+    stdDev.value = sqrtf(stdSum / (dirReadCount - 1));  // std dev in radians
+    stdDev.value = (stdDev.value * 180.0f) / PI;  // convert std dev to degrees
+
+    log_msg("Avg wind direction over %lu s = %f (%d), std dev: %.2f", speedDelayInMs/1000, avgDirDeg, avgDeg, stdDev.value);
 
     FLOAT windKph;
     windKph.value = davis.getSpeedKph(windCount, speedDelayInMs);
@@ -245,7 +323,7 @@ void sensors(void) {
     float measuredvbat = ((float)(batteryReading * 200)) * ad_step;
     log_msg("measuredvbat adjusted: %f", measuredvbat);
 
-    snprintf(sdCardMsg, MAX_MSG, "%04d-%02d-%02dT%02d:%02d:%02dZ,%lu,%d,%lu,%u,%lu,%.2f,%lu,%.2f", rtc.getYear()+2000, rtc.getMonth(), rtc.getDay(), rtc.getHours(), rtc.getMinutes(), rtc.getSeconds(), rtc.getEpoch(), timeOk, rawDir, windDeg, windCount, windKph.value, batteryReading, measuredvbat);
+    snprintf(sdCardMsg, MAX_MSG, "%04d-%02d-%02dT%02d:%02d:%02dZ,%lu,%d,%d,%.2f,%lu,%.2f,%lu,%.2f", rtc.getYear()+2000, rtc.getMonth(), rtc.getDay(), rtc.getHours(), rtc.getMinutes(), rtc.getSeconds(), rtc.getEpoch(), timeOk, avgDeg, stdDev.value, windCount, windKph.value, batteryReading, measuredvbat);
     log_msg("CSV entry: %s", sdCardMsg);
 
     if (useSdCard) {
@@ -268,11 +346,13 @@ void sensors(void) {
     memset(payloadBuffer, 0, sizeof(payloadBuffer));
     int i = 0;
 
-    payloadBuffer[i++] = (rawDir >>  8) & 0xff;
-    payloadBuffer[i++] =  rawDir        & 0xff;
+    payloadBuffer[i++] = (avgDeg >>  8) & 0xff;
+    payloadBuffer[i++] =  avgDeg        & 0xff;
 
-    payloadBuffer[i++] = (windDeg >>  8) & 0xff;
-    payloadBuffer[i++] =  windDeg        & 0xff;
+    payloadBuffer[i++] = stdDev.bytes[3];
+    payloadBuffer[i++] = stdDev.bytes[2];
+    payloadBuffer[i++] = stdDev.bytes[1];
+    payloadBuffer[i++] = stdDev.bytes[0];
 
     payloadBuffer[i++] = (windCount >>  8) & 0xff;
     payloadBuffer[i++] =  windCount        & 0xff;
@@ -292,6 +372,51 @@ void sensors(void) {
 //#define SLEEP_5_MINUTES
 #define SLEEP_15_MINUTES
 //#define SLEEP_1_HOUR
+
+static int32_t delta_osticks = -1;
+static int32_t delta_seconds = -1;
+
+/*
+ * This function is used to set the alarm to a relative time in the future, such as when
+ * sleeping between LMIC tasks. It is not used for scheduling the sensor readings, which
+ * are meant to happen at fixed times such as on the hour.
+ */
+void set_delta_alarm() {
+    int32_t ss = (int32_t)rtc.getSeconds();
+    int32_t mm = (int32_t)rtc.getMinutes();
+    int32_t hh = (int32_t)rtc.getHours();
+
+    // Sanity check.
+    if (delta_seconds < 1) {
+        delta_seconds = 1;
+    }
+
+    int32_t delta = delta_seconds;
+    int32_t hh_delta = delta / 3600; delta -= (hh_delta * 3600);
+    // Will always be less than 1 hour.
+    int32_t mm_delta = delta / 60; delta -= (mm_delta * 60);
+    // Will always be less than 1 minute.
+    int32_t ss_delta = delta;
+
+    ss += ss_delta;
+    if (ss > 59) {
+        ss = ss % 60;
+        mm_delta++;
+    }
+
+    mm += mm_delta;
+    if (mm > 59) {
+        mm = mm % 60;
+        hh_delta++;
+    }
+
+    hh = (hh + hh_delta) % 24;
+
+    log_msg("Delta(s) = %d, wake at %02d:%02d:%02d", delta_seconds, hh, mm, ss);
+
+    rtc.setAlarmTime((uint8_t)(hh & 0xff), (uint8_t)(mm & 0xff), (uint8_t)(ss & 0xff));
+    rtc.enableAlarm(RTCZero::MATCH_HHMMSS);
+}
 
 /*
  * This function is used to set the alarm to the absolute times used
@@ -363,17 +488,7 @@ void setup() {
     }
 #endif
 
-    digitalWrite(LED_BUILTIN, HIGH);
-    delay(250);
-    digitalWrite(LED_BUILTIN, LOW);
-    delay(250);
-    digitalWrite(LED_BUILTIN, HIGH);
-    delay(250);
-    digitalWrite(LED_BUILTIN, LOW);
-    delay(250);
-    digitalWrite(LED_BUILTIN, HIGH);
-    delay(250);
-    digitalWrite(LED_BUILTIN, LOW);
+    blink();
 
     // Get Arduino core interrupt code initialised. This sets clock gen 0 to feed the EIC. This clock gen is not fed from
     // an oscillator that runs during standby mode, so the interrupt won't be triggered in standby mode.
@@ -408,10 +523,16 @@ void setup() {
 
     ad_step = AD_VOLTS / pow(2.0f, AD_BIT_SIZE);
 
+    randomSeed(davis.getDirectionRaw());
+
     os_init();
     LMIC_reset();
 
-    os_setCallback(&sendjob, do_send);
+    //os_setCallback(&sendjob, do_send);
+    // LMIC has reverted to joining and then not sending the uplink when the
+    // automatic join is done, so may as well save the inital 15s sensor read
+    // and just join and sleep until we figure out why this is happening.
+    LMIC_startJoining();
 }
 
 static bool printLMICBusyMsg = true;
@@ -445,6 +566,38 @@ void loop() {
             digitalWrite(LED_BUILTIN, HIGH);
             printLMICBusyMsg = false;
             printLMICFreeMsg = true;
+        }
+
+        // LMIC_queryTxReady() will return true if the OP_POLL it is set. OP_POLL means
+        // LMIC is waiting to send another uplink, either with a response to a MAC config
+        // command or to receive another downlink the server has said to expect.
+        //
+        // LMIC schedules a job to run in the near future to do this uplink.
+        //
+        // So if OP_POLL is set and there is a near-future job scheduled the node can
+        // sleep until just before the job is due.
+        //
+        // Because the node code is single-threaded and would have been in a busy loop
+        // waiting for this future upload anyway, sleeping does not miss any sensor activity.
+        //
+        // This test checks OP_POLL | OP_RNDTX because LMIC sets the OP_RNDTX flag at this time,
+        // although it only seems to be associated with class B devices.
+        // As long as the joining and TX flags are clear, LMIC is basically in a waiting state.
+        if (lmicOpmode == (OP_POLL + OP_RNDTX)) {
+            bit_t valid = 0;
+            ostime_t now = os_getTime();
+            ostime_t deadline = os_getNextDeadline(&valid);
+            if (valid) {
+                delta_osticks = deadline - now;
+                delta_seconds = osticks2ms(delta_osticks)/1000;
+                if (delta_seconds > 3) {
+                    log_msg("OP_POLL delta from now: %ld, %ld s", delta_osticks, delta_seconds);
+                    delta_seconds = delta_seconds - 2;
+                    set_delta_alarm();
+                    __WFI();  // Go to sleep, wake on interrupt and resume from here.
+                    rtc.disableAlarm();
+                }
+            }
         }
 
         return;
@@ -507,6 +660,7 @@ void doButtonProcessing(void) {
         if (buttonWake) {
             log_msg("2nd button press, exiting button processing to measure, send, and sleep.");
             skipReadAndSend = false;
+            blink();
             break;
         }
 
