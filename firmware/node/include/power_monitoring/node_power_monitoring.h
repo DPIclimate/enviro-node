@@ -6,25 +6,22 @@
 
 class Node_PowerMonitoring {
 private:
-    Adafruit_INA219* battery = nullptr;
-    Adafruit_INA219* solar = nullptr;
-
     static const uint8_t batteryAddr = 0x45;
     static const uint8_t solarAddr = 0x40;
 
 public:
-    Node_PowerMonitoring();
+    Node_PowerMonitoring() = default;
     ~Node_PowerMonitoring();
+    static void begin();
 
-    float getSolarVoltage();
-    float getBatteryVoltage();
+    static float getSolarVoltage();
+    static float getBatteryVoltage();
 
-    float getSolarCurrent();
-    float getBatteryCurrent();
+    static float getSolarCurrent();
+    static float getBatteryCurrent();
 
-    void sleep();
-    void wakeup();
+    static void sleep();
+    static void wakeup();
 };
-
 
 #endif //NODE_POWER_MONITORING_H

@@ -17,6 +17,7 @@ void Node_BluetoothLE::begin(){
 
     // Services and characteristics (callbacks incorporated)
     (Node_BLE_UART_Service(server));
+    (Node_BLE_Power_Service(server));
 
     // Start server advertising
     server->getAdvertising()->start();
@@ -37,14 +38,15 @@ void Node_BluetoothLE::begin(){
 
     while(true){
         if(device_connected){
+
             server->getServiceByUUID(
-                    UART_SERVICE_UUID)->getCharacteristic(
-                            UART_CHAR_TX_UUID)->setValue(&txValue, 1);
+                    BATT_SERVICE_UUID)->getCharacteristic(
+                            BATT_CURRENT_UUID)->getValue();
+
             server->getServiceByUUID(
-                    UART_SERVICE_UUID)->getCharacteristic(
-                            UART_CHAR_TX_UUID)->notify();
-            txValue++;
-            delay(100);
+                    BATT_SERVICE_UUID)->getCharacteristic(
+                            BATT_CURRENT_UUID)->notify();
+            delay(10);
         }
 
         if(!device_connected && current_device){

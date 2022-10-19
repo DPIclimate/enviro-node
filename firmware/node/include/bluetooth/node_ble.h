@@ -9,6 +9,7 @@
 #include "node_config.h"
 #include "node_ble_config.h"
 #include "node_ble_uart.h"
+#include "power_monitoring/node_ble_power.h"
 
 class Node_BluetoothLE {
 

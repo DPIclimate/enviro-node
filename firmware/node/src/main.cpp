@@ -23,9 +23,10 @@ void setup() {
 
     // Wait until serial console is open before debugging
     #ifdef DEBUG
-        while(!Serial) yield();
+    while(!Serial) yield();
     #endif
 
+    Node_PowerMonitoring::begin();
     Node_SDI12 sdi12;
     Node_UnitTests();
 }
