@@ -8,7 +8,7 @@ void Node_BluetoothLE::begin(){
     #endif
 
     // Initialise device
-    BLEDevice::init("Enviro-Node");
+    BLEDevice::init(DEVICE_NAME);
 
     // Construct server on device
     server = BLEDevice::createServer();
@@ -18,6 +18,7 @@ void Node_BluetoothLE::begin(){
     // Services and characteristics (callbacks incorporated)
     (Node_BLE_UART_Service(server));
     (Node_BLE_Power_Service(server));
+    (Node_Config(server));
 
     // Start server advertising
     server->getAdvertising()->start();

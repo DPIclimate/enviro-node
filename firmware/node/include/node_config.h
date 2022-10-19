@@ -2,7 +2,16 @@
 #define NODE_CONFIG_H
 
 #include <Arduino.h>
+#include <BLEService.h>
 #include <cstdarg>
+
+#include "bluetooth/node_ble_config.h"
+
+#define DEVICE_NAME                     "Enviro-Node"
+#define DEVICE_SERIAL                   "1_2022"
+#define DEVICE_FIRMWARE_REV             "0.1"
+#define DEVICE_HARDWARE_REV             "0.1"
+#define DEVICE_MANUFACTURER             "DPI-Climate"
 
 #define DEBUG               // Startup in debug mode (includes logging output)
 #define NODE_LORAWAN        // Use LoRaWAN
@@ -34,5 +43,11 @@ static const uint8_t PROGMEM APPKEY[16] = { 0xC0, 0xC2, 0xF2, 0x87,
                                             0x21, 0x97, 0xD2, 0x5A,
                                             0x58, 0x5A, 0xC4, 0xFD,
                                             0xA6, 0x42, 0x10, 0xEA };
+
+class Node_Config{
+public:
+    explicit Node_Config(BLEServer* server);
+    ~Node_Config() = default;
+};
 
 #endif //NODE_CONFIG_H
