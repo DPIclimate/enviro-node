@@ -3,15 +3,20 @@
 #include <SD.h>
 #include <lmic.h>
 #include "node_config.h"
+#include "WDT.h"
 
 #include <RTCZero.h>
+
+#define MAJOR 1
+#define MINOR 0
+#define REV   0
 
 typedef union {
     float value;
     uint8_t bytes[4];
 } FLOAT;
 
-static constexpr int MAX_MSG = 256;
+static constexpr int MAX_MSG = 512;
 
 Davis davis(WIND_DIR_PIN, WIND_SPEED_PIN);
 RTCZero rtc;
@@ -46,7 +51,8 @@ static bool useSdCard = false;
 static const char *datalogFilename = "datalog.csv";
 
 // A buffer for SD card data messages.
-static char sdCardMsg[MAX_MSG];
+#define SD_CARD_MAX 384
+static char sdCardMsg[SD_CARD_MAX];
 
 uint8_t payloadBuffer[18];
 
@@ -107,18 +113,17 @@ void log_opmode(void) {
     if (lmicOpmode == 0) {
         log_msg("LMIC.opmode: OP_NONE");
     } else {
-        memset(sdCardMsg, 0, MAX_MSG);
-        if (lmicOpmode & OP_SHUTDOWN) strncat(sdCardMsg, "OP_SHUTDOWN ", MAX_MSG - strnlen(sdCardMsg, MAX_MSG));
-        if (lmicOpmode & OP_JOINING) strncat(sdCardMsg, "OP_JOINING ", MAX_MSG - strnlen(sdCardMsg, MAX_MSG));
-        if (lmicOpmode & OP_TXDATA) strncat(sdCardMsg, "OP_TXDATA ", MAX_MSG - strnlen(sdCardMsg, MAX_MSG));
-        if (lmicOpmode & OP_TXRXPEND) strncat(sdCardMsg, "OP_TXRXPEND ", MAX_MSG - strnlen(sdCardMsg, MAX_MSG));
-        if (lmicOpmode & OP_RNDTX) strncat(sdCardMsg, "OP_RNDTX ", MAX_MSG - strnlen(sdCardMsg, MAX_MSG));
-        if (lmicOpmode & OP_POLL) strncat(sdCardMsg, "OP_POLL ", MAX_MSG - strnlen(sdCardMsg, MAX_MSG));
-        if (lmicOpmode & OP_NEXTCHNL) strncat(sdCardMsg, "OP_NEXTCHNL ", MAX_MSG - strnlen(sdCardMsg, MAX_MSG));
+        memset(sdCardMsg, 0, SD_CARD_MAX);
+        if (lmicOpmode & OP_SHUTDOWN) strncat(sdCardMsg, "OP_SHUTDOWN ", SD_CARD_MAX - strnlen(sdCardMsg, SD_CARD_MAX));
+        if (lmicOpmode & OP_JOINING) strncat(sdCardMsg, "OP_JOINING ", SD_CARD_MAX - strnlen(sdCardMsg, SD_CARD_MAX));
+        if (lmicOpmode & OP_TXDATA) strncat(sdCardMsg, "OP_TXDATA ", SD_CARD_MAX - strnlen(sdCardMsg, SD_CARD_MAX));
+        if (lmicOpmode & OP_TXRXPEND) strncat(sdCardMsg, "OP_TXRXPEND ", SD_CARD_MAX - strnlen(sdCardMsg, SD_CARD_MAX));
+        if (lmicOpmode & OP_RNDTX) strncat(sdCardMsg, "OP_RNDTX ", SD_CARD_MAX - strnlen(sdCardMsg, SD_CARD_MAX));
+        if (lmicOpmode & OP_POLL) strncat(sdCardMsg, "OP_POLL ", SD_CARD_MAX - strnlen(sdCardMsg, SD_CARD_MAX));
+        if (lmicOpmode & OP_NEXTCHNL) strncat(sdCardMsg, "OP_NEXTCHNL ", SD_CARD_MAX - strnlen(sdCardMsg, SD_CARD_MAX));
         log_msg("LMIC.opmode: %s (raw: %u)", sdCardMsg, lmicOpmode);
-        memset(sdCardMsg, 0, MAX_MSG);
+        memset(sdCardMsg, 0, SD_CARD_MAX);
     }
-
 }
 
 // This variable allows the failed event to be seen in loop(), where the LMIC state will be reset to avoid
@@ -131,20 +136,26 @@ static bool joinFailed = false;
 // when a gateway is down would waste a lot of power.
 static uint8_t joinCooldown = 0;
 
+static bool doSendAndMeasure = false;
+
 void onEvent (ev_t ev) {
     switch(ev) {
         case EV_JOINING:
             digitalWrite(LED_BUILTIN, HIGH);
             log_msg("EV_JOINING");
+            wdt_enable();
             timeOk = false;
             joinFailed = false;
             break;
 
         case EV_JOINED:
+            wdt_disable();
+
             digitalWrite(LED_BUILTIN, LOW);
             log_msg("EV_JOINED");
             LMIC_setLinkCheckMode(0);
             joinCooldown = 0;
+            doSendAndMeasure = true;
             break;
 
         case EV_JOIN_FAILED:
@@ -155,6 +166,8 @@ void onEvent (ev_t ev) {
             break;
 
         case EV_TXCOMPLETE:
+            wdt_disable();
+
             digitalWrite(LED_BUILTIN, LOW);
             log_msg("EV_TXCOMPLETE (includes waiting for RX windows)");
             break;
@@ -162,6 +175,7 @@ void onEvent (ev_t ev) {
         case EV_TXSTART:
             digitalWrite(LED_BUILTIN, HIGH);
             log_msg("EV_TXSTART");
+            wdt_enable();
             break;
 
         case EV_JOIN_TXCOMPLETE:
@@ -170,7 +184,7 @@ void onEvent (ev_t ev) {
     }
 }
 
-void do_send(osjob_t* j) {
+void do_send(void) {
     log_msg("============================================================");
     // Always do the sensor read because the sensors function also writes to the SD card.
     sensors();
@@ -193,14 +207,14 @@ void do_send(osjob_t* j) {
         // was before the call to sensors().
         if (timeOk) {
             if (rtc.getDay() != timeReqDay) {
-                log_msg("Daily network time request scheduled.");
+                log_msg("Daily network time request scheduled");
                 timeOk = false;
             }
         }
 
         // Keep asking for the time until the server provides it.
         if ( ! timeOk) {
-            log_msg("Adding DeviceTimeReq MAC command to uplink.");
+            log_msg("Adding DeviceTimeReq MAC command to uplink");
             LMIC_requestNetworkTime(lmic_request_network_time_cb, 0);
         }
 
@@ -219,7 +233,7 @@ static lmic_time_reference_t lmicTimeRef;
 
 void lmic_request_network_time_cb(void * pUserData, int flagSuccess) {
     if (flagSuccess != 0 && LMIC_getNetworkTimeReference(&lmicTimeRef)) {
-        log_msg("Received network time response.");
+        log_msg("Received network time response");
         // GPS time is reported in seconds, and RTCZero also works with seconds in epoch values.
         // 315964800 is the number of seconds between the UTC epoch and the GPS epoch, when GPS started.
         // 18 is the GPS-UTC offset.
@@ -243,13 +257,7 @@ void sensors(void) {
     static constexpr uint32_t dirReadDelayInMs = 500;
     static constexpr size_t dirReadCount = speedDelayInMs / dirReadDelayInMs;
 
-    uint32_t rawDir = davis.getDirectionRaw();
-    float windDir = davis.getDirectionDegrees(rawDir);
-    int16_t windDeg = (int16_t) windDir;
-
-    log_msg("Wind direction: %lu / %f (%d)", rawDir, windDir, windDeg);
-
-    log_msg("Measuring wind speed");
+    log_msg("Measuring wind speed & direction");
     davis.startSpeedMeasurement();
 
     /*
@@ -266,11 +274,21 @@ void sensors(void) {
     float sumVy = 0.0f;
     float windRadians;
 
-    float values[dirReadCount];
+    // These are static to reduce the stack frame size.
+    static uint32_t rawDirArray[dirReadCount]; // Raw output from the ADC
+    static float degDirArray[dirReadCount];    // ADC output converted to 360 degrees
+    static float values[dirReadCount];
+
+    uint32_t rawDir;
+    float windDir;
 
     for (size_t i = 0; i < dirReadCount; i++) {
         rawDir = davis.getDirectionRaw();
         windDir = davis.getDirectionDegrees(rawDir);
+
+        rawDirArray[i] = rawDir;
+        degDirArray[i] = windDir;
+
         windRadians = (windDir * PI) / 180.0f;
 
         float sx = sinf(windRadians);
@@ -323,7 +341,17 @@ void sensors(void) {
     float measuredvbat = ((float)(batteryReading * 200)) * ad_step;
     log_msg("measuredvbat adjusted: %f", measuredvbat);
 
-    snprintf(sdCardMsg, MAX_MSG, "%04d-%02d-%02dT%02d:%02d:%02dZ,%lu,%d,%d,%.2f,%lu,%.2f,%lu,%.2f", rtc.getYear()+2000, rtc.getMonth(), rtc.getDay(), rtc.getHours(), rtc.getMinutes(), rtc.getSeconds(), rtc.getEpoch(), timeOk, avgDeg, stdDev.value, windCount, windKph.value, batteryReading, measuredvbat);
+    int yyyy = rtc.getYear() + 2000;
+    uint8_t month = rtc.getMonth();
+    uint8_t day = rtc.getDay();
+    uint8_t hours = rtc.getHours();
+    uint8_t minutes = rtc.getMinutes();
+    uint8_t seconds = rtc.getSeconds();
+    uint32_t epoch = rtc.getEpoch();
+
+    // CSV line type 0 is most sensor readings.
+    snprintf(sdCardMsg, SD_CARD_MAX, "%04d-%02d-%02dT%02d:%02d:%02dZ,%lu,%d,0,%d,%.2f,%lu,%.2f,%lu,%.2f", yyyy, month, day,
+             hours, minutes, seconds, epoch, timeOk, avgDeg, stdDev.value, windCount, windKph.value, batteryReading, measuredvbat);
     log_msg("CSV entry: %s", sdCardMsg);
 
     if (useSdCard) {
@@ -334,7 +362,44 @@ void sensors(void) {
         log_msg("Opening %s", datalogFilename);
         File dataFile = SD.open(datalogFilename, FILE_WRITE);
         if (dataFile) {
+            // The first line to be written to the SD card was generated above and logged for debugging purposes
+            // so it can be written immediately.
             dataFile.println(sdCardMsg);
+
+            // The next line types are generated inside the SD card guards to avoid having separate string buffers for them.
+
+            // CSV line type 1 is the raw wind direction values from the ADC. This is a separate line in case we decide to change the
+            // number of raw readings we take.
+            int lineLen = snprintf(sdCardMsg, SD_CARD_MAX, "%04d-%02d-%02dT%02d:%02d:%02dZ,%lu,%d,1,%u", yyyy, month, day,
+                                   hours, minutes, seconds, epoch, timeOk, dirReadCount);
+
+            int strLen = 0;
+            char windDirStr[16];
+            for (size_t i = 0; i < dirReadCount; i++) {
+                strLen = snprintf(windDirStr, sizeof(windDirStr), ",%u", rawDirArray[i]);
+                strncat(sdCardMsg, windDirStr, (SD_CARD_MAX - lineLen));
+                lineLen = lineLen + strLen;
+            }
+            log_msg("CSV entry: %s", sdCardMsg);
+
+            dataFile.println(sdCardMsg);
+
+            // CSV line type 2 is the raw wind direction values from the ADC converted to 360 degrees. This is a separate line in case we decide to change the
+            // number of raw readings we take.
+            lineLen = snprintf(sdCardMsg, SD_CARD_MAX, "%04d-%02d-%02dT%02d:%02d:%02dZ,%lu,%d,2,%u", yyyy, month, day,
+                               hours, minutes, seconds, epoch, timeOk, dirReadCount);
+
+            strLen = 0;
+            for (size_t i = 0; i < dirReadCount; i++) {
+                strLen = snprintf(windDirStr, sizeof(windDirStr), ",%.2f", degDirArray[i]);
+                size_t maxToCat = SD_CARD_MAX - lineLen;
+                strncat(sdCardMsg, windDirStr, maxToCat);
+                lineLen = lineLen + strLen;
+            }
+            log_msg("CSV entry: %s", sdCardMsg);
+
+            dataFile.println(sdCardMsg);
+
             dataFile.flush();
             dataFile.close();
         } else {
@@ -486,6 +551,16 @@ void setup() {
     } else {
         log_msg("reset_cause = %ud", reset_cause);
     }
+
+    log_msg("Kangaroo v%u.%u.%u", MAJOR, MINOR, REV);
+    log_msg("DEVEUI: %02X %02X %02X %02X %02X %02X %02X %02X", DEVEUI[7], DEVEUI[6], DEVEUI[5], DEVEUI[4], DEVEUI[3], DEVEUI[2], DEVEUI[1], DEVEUI[0]);
+
+#ifdef USE_CMDLINE
+    log_msg("Command line enabled");
+#else
+    log_msg("Command line disabled");
+#endif
+
 #endif
 
     blink();
@@ -525,13 +600,10 @@ void setup() {
 
     randomSeed(davis.getDirectionRaw());
 
+    wdt_init();
+
     os_init();
     LMIC_reset();
-
-    //os_setCallback(&sendjob, do_send);
-    // LMIC has reverted to joining and then not sending the uplink when the
-    // automatic join is done, so may as well save the inital 15s sensor read
-    // and just join and sleep until we figure out why this is happening.
     LMIC_startJoining();
 }
 
@@ -555,20 +627,22 @@ void loop() {
 
     os_runloop_once();
 
-    // Allow LMIC to run in a tight-loop if it is busy. A side-effect of
-    // using this function is that when responding to MAC commands, LMIC
-    // returns false for this function meaning the sketch does not go to
-    // standby mode for the ~19s between the downlink containing the
-    // MAC commands and the uplink responding to them.
+    if (doSendAndMeasure) {
+        doSendAndMeasure = false;
+        log_msg("Joined, calling do_send to send initial uplink.");
+        do_send();
+        return;
+    }
+
     if ( ! LMIC_queryTxReady()) {
         if (printLMICBusyMsg) {
-            log_msg("LMIC busy.");
+            log_msg("LMIC busy");
             digitalWrite(LED_BUILTIN, HIGH);
             printLMICBusyMsg = false;
             printLMICFreeMsg = true;
         }
 
-        // LMIC_queryTxReady() will return true if the OP_POLL it is set. OP_POLL means
+        // LMIC_queryTxReady() will return true if the OP_POLL bit is set. OP_POLL means
         // LMIC is waiting to send another uplink, either with a response to a MAC config
         // command or to receive another downlink the server has said to expect.
         //
@@ -584,6 +658,8 @@ void loop() {
         // although it only seems to be associated with class B devices.
         // As long as the joining and TX flags are clear, LMIC is basically in a waiting state.
         if (lmicOpmode == (OP_POLL + OP_RNDTX)) {
+            log_msg("Checking for near future internal LMIC operations");
+
             bit_t valid = 0;
             ostime_t now = os_getTime();
             ostime_t deadline = os_getNextDeadline(&valid);
@@ -594,7 +670,7 @@ void loop() {
                     log_msg("OP_POLL delta from now: %ld, %ld s", delta_osticks, delta_seconds);
                     delta_seconds = delta_seconds - 2;
                     set_delta_alarm();
-                    __WFI();  // Go to sleep, wake on interrupt and resume from here.
+                    rtc.standbyMode();
                     rtc.disableAlarm();
                 }
             }
@@ -604,7 +680,7 @@ void loop() {
     }
 
     if (printLMICFreeMsg) {
-        log_msg("LMIC free.");
+        log_msg("LMIC free");
 
         lmicOpmode = LMIC.opmode;
         log_opmode();
@@ -616,27 +692,39 @@ void loop() {
 
     set_next_absolute_alarm();
 
-    log_msg("Sleeping.");
+    log_msg("Sleeping");
+#ifdef USE_SERIAL
     serial.flush();
+#endif
 
     skipReadAndSend = false;
     buttonWake = false;
     attachInterrupt(digitalPinToInterrupt(PUSH_BUTTON), buttonISR, RISING);
 
-    __WFI();  // Go to sleep, wake on interrupt and resume from here.
+    rtc.standbyMode();
 
     rtc.disableAlarm();
 
-    log_msg("Awake.");
+    log_msg("Awake");
 
+    // Wrap the button processing with the WDT because I've seen it hang once.
+    // The button processing will disable the WDT when going into command line
+    // mode to handle long pauses there.
+    //
+    // blink() is called within the button processing if the button is pressed
+    // a 2nd time, but given the button processing timeout is 5s and blink takes
+    // 1.25s, the total max button processing time (excluding the command line) is
+    // 6.25s, so less than the WDT 16s timeout.
+    wdt_enable();
     if (buttonWake) {
         doButtonProcessing();
     }
+    wdt_disable();
 
     detachInterrupt(digitalPinToInterrupt(PUSH_BUTTON));
 
     if ( ! skipReadAndSend) {
-        os_setCallback(&sendjob, do_send);
+        do_send();
     }
 }
 
@@ -658,24 +746,29 @@ void doButtonProcessing(void) {
         }
 
         if (buttonWake) {
-            log_msg("2nd button press, exiting button processing to measure, send, and sleep.");
+            log_msg("2nd button press, exiting button processing to measure, send, and sleep");
             skipReadAndSend = false;
             blink();
             break;
         }
 
 #ifdef USE_SERIAL
+#ifdef USE_CMDLINE
         if (serial.available()) {
             digitalWrite(LED_BUILTIN, HIGH);
+            // Disable the WDT because the command line is reliant upon the user's timing and they
+            // may have long periods of idleness.
+            wdt_disable();
             commandLine();
             skipReadAndSend = true;
             break;
         }
 #endif
+#endif
     }
 
     if (ticks >= 5000) {
-        log_msg("Button processing reached 5s timeout, going back to sleep.");
+        log_msg("Button processing reached 5s timeout, going back to sleep");
         skipReadAndSend = true;
     }
 
@@ -683,6 +776,7 @@ void doButtonProcessing(void) {
 }
 
 #ifdef USE_SERIAL
+#ifdef USE_CMDLINE
 inline void drainSerial(void) {
     while (serial.available()) {
         serial.read();
@@ -803,8 +897,8 @@ void commandLine(void) {
                 File dataFile = SD.open(datalogFilename, FILE_READ);
                 if (dataFile) {
                     while (true) {
-                        memset(sdCardMsg, 0, MAX_MSG);
-                        int len = dataFile.read(sdCardMsg, MAX_MSG);
+                        memset(sdCardMsg, 0, SD_CARD_MAX);
+                        int len = dataFile.read(sdCardMsg, SD_CARD_MAX);
                         if (len < 1) {
                             break;
                         }
@@ -830,4 +924,5 @@ void commandLine(void) {
     }
     drainSerial();
 }
-#endif
+#endif // USE_CMDLINE
+#endif // USE_SERIAL
