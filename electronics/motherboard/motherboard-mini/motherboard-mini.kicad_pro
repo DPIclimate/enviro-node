@@ -45,7 +45,7 @@
         "silk_text_upright": false,
         "zones": {
           "45_degree_only": false,
-          "min_clearance": 0.508
+          "min_clearance": 0.19999999999999998
         }
       },
       "diff_pair_dimensions": [
@@ -122,7 +122,12 @@
         0.0,
         0.5,
         1.0,
-        2.0
+        1.5,
+        2.0,
+        2.5,
+        3.0,
+        4.0,
+        5.0
       ],
       "via_dimensions": [
         {
@@ -430,6 +435,18 @@
     [
       "fdc7cc76-e3a1-430e-8a78-97e4f60d6370",
       ""
+    ],
+    [
+      "c207e6ab-5b78-4492-87ca-75a44677c24e",
+      "peripherals"
+    ],
+    [
+      "81efa281-7ef6-4b2c-aac2-b705d10ab725",
+      "power_distribution"
+    ],
+    [
+      "b973fe11-f1e1-4488-b69d-471e9c144d9a",
+      "cat_m1"
     ]
   ],
   "text_variables": {}

@@ -5,11 +5,11 @@
 #include "tests/node_tests.h"
 #endif
 
-#include "sdi12/node_sdi12.h"
+//#include "sdi12/node_sdi12.h"
 
 #ifndef DEBUG
-#include "node_power_monitoring.h"
-Node_PowerMonitoring pwr;
+//#include "node_power_monitoring.h"
+//Node_PowerMonitoring pwr;
 #endif
 
 int8_t payload[] = {1, 2, 3, 4, 5};
@@ -19,15 +19,15 @@ void setup() {
 
     pinMode(LED_BUILTIN, OUTPUT);       // Onboard LED
     pinMode(POWER_12V_EN, OUTPUT);      // 12V and 5V power pin
-    digitalWrite(POWER_12V_EN, HIGH);   // Turn on SDI-12 devices
+    digitalWrite(POWER_12V_EN, LOW);   // Turn on/off SDI-12 devices
 
     // Wait until serial console is open before debugging
     #ifdef DEBUG
     while(!Serial) yield();
     #endif
 
-    Node_PowerMonitoring::begin();
-    Node_SDI12 sdi12;
+    //Node_PowerMonitoring::begin();
+    //Node_SDI12 sdi12;
     Node_UnitTests();
 }
 

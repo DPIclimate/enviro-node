@@ -25,7 +25,7 @@
   (lib (name "9774025151R")(type "Legacy")(uri "${KIPRJMOD}/parts/standoffs/9774025151R/9774025151R.lib")(options "")(descr ""))
   (lib (name "USB4145-03-0230-C_REVA")(type "Legacy")(uri "${KIPRJMOD}/parts/connectors/usb-c/USB4145-03-0230-C_REVA/USB4145-03-0230-C_REVA.lib")(options "")(descr ""))
   (lib (name "2022-10-04_00-56-22")(type "KiCad")(uri "${KIPRJMOD}/parts/buttons/small/1977223-6/2022-10-04_00-56-22.kicad_sym")(options "")(descr ""))
-  (lib (name "1048")(type "Legacy")(uri "${KIPRJMOD}/parts/battery/holders/18650/1048/1048.lib")(options "")(descr ""))
+  (lib (name "1048")(type "KiCad")(uri "${KIPRJMOD}/parts/battery/holders/18650/1048/1048.kicad_sym")(options "")(descr ""))
   (lib (name "MIC2288YD5-TR")(type "Legacy")(uri "${KIPRJMOD}/parts/voltage-regulators/MIC2288YD5-TR/MIC2288YD5-TR.lib")(options "")(descr ""))
   (lib (name "LQH43CN100K03L")(type "Legacy")(uri "${KIPRJMOD}/parts/inductors/LQH43CN100K03L/LQH43CN100K03L.lib")(options "")(descr ""))
 )
