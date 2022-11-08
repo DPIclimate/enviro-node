@@ -1,4 +1,0 @@
-(fp_lib_table
-  (lib (name "Pycom")(type "KiCad")(uri "${KIPRJMOD}/parts/pycom-footprints/Pycom.pretty")(options "")(descr ""))
-  (lib (name "Micromod")(type "KiCad")(uri "${KIPRJMOD}/parts/micromod-footprints/Micromod.pretty")(options "")(descr ""))
-)

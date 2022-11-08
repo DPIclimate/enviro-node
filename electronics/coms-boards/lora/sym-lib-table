@@ -1,6 +1,0 @@
-(sym_lib_table
-  (lib (name "CONUFL001-SMD-T")(type "Legacy")(uri "${KIPRJMOD}/parts/antenna/CONUFL001-SMD-T/CONUFL001-SMD-T.lib")(options "")(descr ""))
-  (lib (name "PTS636_SM43J_SMTR_LFS")(type "Legacy")(uri "${KIPRJMOD}/parts/buttons/small/PTS636_SM43J_SMTR_LFS/PTS636_SM43J_SMTR_LFS.lib")(options "")(descr ""))
-  (lib (name "RFM95W-915S2")(type "Legacy")(uri "${KIPRJMOD}/parts/comms/lora/RFM95W-915S2/RFM95W-915S2.lib")(options "")(descr ""))
-  (lib (name "Micromod")(type "Legacy")(uri "${KIPRJMOD}/parts/micromod-footprints/Micromod.lib")(options "")(descr ""))
-)

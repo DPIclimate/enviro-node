@@ -1,4 +1,0 @@
-(sym_lib_table
-  (lib (name "Micromod")(type "KiCad")(uri "${KIPRJMOD}/parts/micromod-footprints/Micromod.kicad_sym")(options "")(descr ""))
-  (lib (name "pycom")(type "Legacy")(uri "${KIPRJMOD}/parts/pycom-footprints/pycom.lib")(options "")(descr ""))
-)
