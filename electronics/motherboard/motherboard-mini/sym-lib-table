@@ -38,4 +38,6 @@
   (lib (name "SIM8060-6-0-14-00-A")(type "KiCad")(uri "${KIPRJMOD}/parts/connectors/nano-sim/SIM8060-6-0-14-00-A/SIM8060-6-0-14-00-A.kicad_sym")(options "")(descr ""))
   (lib (name "FBMH2012HM221-TV")(type "Legacy")(uri "${KIPRJMOD}/parts/ferrite-beads/FBMH2012HM221-TV/FBMH2012HM221-TV.lib")(options "")(descr ""))
   (lib (name "TPS22967DSGR")(type "KiCad")(uri "${KIPRJMOD}/parts/load-switches/TPS22967DSGR/TPS22967DSGR.kicad_sym")(options "")(descr ""))
+  (lib (name "MCP3221A0T-E_OT")(type "Legacy")(uri "${KIPRJMOD}/parts/adc/MCP3221A0T-E_OT/MCP3221A0T-E_OT.lib")(options "")(descr ""))
+  (lib (name "3020-14-0300-00")(type "Legacy")(uri "${KIPRJMOD}/parts/connectors/flex-to-board/3020-14-0300-00/3020-14-0300-00.lib")(options "")(descr ""))
 )

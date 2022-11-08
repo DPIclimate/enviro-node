@@ -1,0 +1,5 @@
+(sym_lib_table
+  (lib (name "3020-14-0300-00")(type "Legacy")(uri "${KIPRJMOD}/parts/connectors/flex-to-board/3020-14-0300-00/3020-14-0300-00.lib")(options "")(descr ""))
+  (lib (name "T4041037041-000")(type "Legacy")(uri "${KIPRJMOD}/parts/connectors/4-pole/T4041037041-000/T4041037041-000.lib")(options "")(descr ""))
+  (lib (name "T4041037031-000")(type "Legacy")(uri "${KIPRJMOD}/parts/connectors/3-pole/T4041037031-000/T4041037031-000.lib")(options "")(descr ""))
+)

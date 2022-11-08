@@ -42,4 +42,6 @@
   (lib (name "XC6215B332")(type "KiCad")(uri "${KIPRJMOD}/parts/voltage-regulators/XC6215B332MR-G/XC6215B332.pretty")(options "")(descr ""))
   (lib (name "USB4145-03-0230-C_REVA")(type "KiCad")(uri "${KIPRJMOD}/parts/connectors/usb-c/USB4145-03-0230-C_REVA")(options "")(descr ""))
   (lib (name "3221-10-0100-00")(type "KiCad")(uri "${KIPRJMOD}/parts/connectors/jtag/3221-10-0100-00")(options "")(descr ""))
+  (lib (name "MCP3221A0T-E_OT")(type "KiCad")(uri "${KIPRJMOD}/parts/adc/MCP3221A0T-E_OT")(options "")(descr ""))
+  (lib (name "3020-14-0300-00")(type "KiCad")(uri "${KIPRJMOD}/parts/connectors/flex-to-board/3020-14-0300-00")(options "")(descr ""))
 )
