@@ -2,10 +2,10 @@
 #include "audio_feedback.h"
 
 void setup() {
-    pinMode(GPIO_NUM_17, OUTPUT);
+    init_tones();
+    startup_tone();
 }
 
 void loop() {
-    startup_tone();
     delay(60000);
 }

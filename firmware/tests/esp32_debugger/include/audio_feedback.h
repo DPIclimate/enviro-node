@@ -5,6 +5,10 @@
 
 #define PIEZO_BUZZER_PIN GPIO_NUM_17
 
+void init_tones(){
+    pinMode(PIEZO_BUZZER_PIN, OUTPUT);
+}
+
 void startup_tone(){
     tone(PIEZO_BUZZER_PIN, 494); // B4
     delay(100);
