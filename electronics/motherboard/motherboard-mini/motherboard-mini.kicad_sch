@@ -4763,6 +4763,9 @@
     (path "/c207e6ab-5b78-4492-87ca-75a44677c24e/2b3eeb32-9ddd-4983-b814-2d239d68cc8e"
       (reference "U14") (unit 1) (value "TCA9534") (footprint "Package_SO:TSSOP-16_4.4x5mm_P0.65mm")
     )
+    (path "/81efa281-7ef6-4b2c-aac2-b705d10ab725/7557a9b5-40b2-4786-b989-d5b41b9fa866"
+      (reference "U?") (unit 1) (value "LD39015M33R") (footprint "Package_TO_SOT_SMD:SOT-23-5")
+    )
     (path "/f9a49c3b-f62a-4449-9772-73d173868323"
       (reference "Y1") (unit 1) (value "32.768KHz") (footprint "ABS07AIG-32:XTAL320X150X90")
     )
