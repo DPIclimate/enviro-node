@@ -13,13 +13,14 @@ class TCA9534 {
     uint8_t sts;
 
 public:
-
     enum class Reg { INPUT_PORT, OUTPUT_PORT, POLARITY, CONFIG };
     enum class Config { OUT, IN };
     enum class Polarity { ORIGINAL, INVERSE };
     enum Level { L = 0x00, H = 0xFF };
 
-    void attach(TwoWire& w) { wire = &w; }
+    void attach(TwoWire& w) {
+        wire = &w;
+    }
 
     void setDeviceAddress(const uint8_t addr) { I2C_ADDR = addr; }
 

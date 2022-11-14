@@ -4670,12 +4670,6 @@
     (path "/81efa281-7ef6-4b2c-aac2-b705d10ab725/73a2e47e-8302-4348-a53f-211e8d8afa02"
       (reference "R40") (unit 1) (value "4.7K") (footprint "Resistor_SMD:R_0805_2012Metric")
     )
-    (path "/b973fe11-f1e1-4488-b69d-471e9c144d9a/94242066-e4ef-43af-a7f0-882a1470b9d5"
-      (reference "R41") (unit 1) (value "0") (footprint "Resistor_SMD:R_0805_2012Metric")
-    )
-    (path "/b973fe11-f1e1-4488-b69d-471e9c144d9a/ee165f3e-2bff-4876-9864-dc430495b40c"
-      (reference "R42") (unit 1) (value "0") (footprint "Resistor_SMD:R_0805_2012Metric")
-    )
     (path "/b973fe11-f1e1-4488-b69d-471e9c144d9a/bffeb6bf-998e-40e5-acb9-f4c737affd86"
       (reference "R43") (unit 1) (value "100K") (footprint "Resistor_SMD:R_0805_2012Metric")
     )
@@ -4685,20 +4679,11 @@
     (path "/b973fe11-f1e1-4488-b69d-471e9c144d9a/ed54dce9-6107-4711-9bc4-9cfbcbf809ff"
       (reference "R45") (unit 1) (value "47K") (footprint "Resistor_SMD:R_0805_2012Metric")
     )
-    (path "/b973fe11-f1e1-4488-b69d-471e9c144d9a/45fad08e-6ddc-4b83-ab07-11efa3189200"
-      (reference "R46") (unit 1) (value "0") (footprint "Resistor_SMD:R_0805_2012Metric")
-    )
     (path "/b973fe11-f1e1-4488-b69d-471e9c144d9a/0be5b6a6-7eb1-43c7-b7b9-aa6c6885c53a"
       (reference "R47") (unit 1) (value "10K") (footprint "Resistor_SMD:R_0805_2012Metric")
     )
     (path "/b973fe11-f1e1-4488-b69d-471e9c144d9a/2e55e401-9e52-4466-8da7-0dcf351fd247"
       (reference "R48") (unit 1) (value "1.2K") (footprint "Resistor_SMD:R_0805_2012Metric")
-    )
-    (path "/81efa281-7ef6-4b2c-aac2-b705d10ab725/d5f70181-1a69-4b3d-9b58-5db927d03e58"
-      (reference "R?") (unit 1) (value "1K") (footprint "Resistor_SMD:R_0805_2012Metric")
-    )
-    (path "/81efa281-7ef6-4b2c-aac2-b705d10ab725/f756a3db-5872-495f-af38-c1dfbd8bd3a1"
-      (reference "R?") (unit 1) (value "1K") (footprint "Resistor_SMD:R_0805_2012Metric")
     )
     (path "/b973fe11-f1e1-4488-b69d-471e9c144d9a/d6280552-e135-4660-83ee-bcae53ec51de"
       (reference "RV1") (unit 1) (value "ESD_RST_IN") (footprint "Resistor_SMD:R_0805_2012Metric")
@@ -4762,9 +4747,6 @@
     )
     (path "/c207e6ab-5b78-4492-87ca-75a44677c24e/2b3eeb32-9ddd-4983-b814-2d239d68cc8e"
       (reference "U14") (unit 1) (value "TCA9534") (footprint "Package_SO:TSSOP-16_4.4x5mm_P0.65mm")
-    )
-    (path "/81efa281-7ef6-4b2c-aac2-b705d10ab725/7557a9b5-40b2-4786-b989-d5b41b9fa866"
-      (reference "U?") (unit 1) (value "LD39015M33R") (footprint "Package_TO_SOT_SMD:SOT-23-5")
     )
     (path "/f9a49c3b-f62a-4449-9772-73d173868323"
       (reference "Y1") (unit 1) (value "32.768KHz") (footprint "ABS07AIG-32:XTAL320X150X90")

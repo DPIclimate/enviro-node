@@ -3,8 +3,11 @@
 
 #include "audio_feedback.h"
 #include "TCA9534.h"
+#include "CAT_M1.h"
+
 
 TCA9534 io_expander;
+CAT_M1 cat_m1;
 
 void setup() {
     init_tones();
@@ -20,9 +23,16 @@ void setup() {
 
     io_expander.config(TCA9534::Config::OUT);
     io_expander.config(4, TCA9534::Config::IN);
-    io_expander.output(1, TCA9534::Level::H);
+
+    cat_m1.begin(io_expander);
+
+    LTE_Serial.begin(115200);
+    while(!LTE_Serial) delay(1);
+
+    Serial.println("Started CAT-M1");
 }
 
 void loop() {
-    delay(60000);
+    cat_m1.interface();
+    delay(1);
 }
