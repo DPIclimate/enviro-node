@@ -15,7 +15,7 @@ void setup() {
     Serial.begin(115200);
     while(!Serial) delay(1);
 
-    //startup_tone();
+    startup_tone();
 
     Wire.begin(GPIO_NUM_25, GPIO_NUM_23);
     io_expander.attach(Wire);

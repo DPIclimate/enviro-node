@@ -1,6 +1,6 @@
 #include "ble.h"
 
-uint8_t txValue = 0;
+static char message_buffer[UINT8_MAX];
 
 void Node_BluetoothLE::begin(){
     #if !defined(CONFIG_BT_ENABLED) || !defined(CONFIG_BLUEDROID_ENABLED)
@@ -21,21 +21,37 @@ void Node_BluetoothLE::begin(){
     // Start server advertising
     server->getAdvertising()->start();
 
-    #ifdef DEBUG
-        log_msg("[DEBUG]: Bluetooth started.");
-    #endif
-
     device_connected = false;
     current_device = false;
 }
 
 
 [[noreturn]] void Node_BluetoothLE::read_write_blocking() const{
-    #ifdef DEBUG
-        log_msg("[DEBUG]: Started read-write Bluetooth method (blocking).");
-    #endif
-
     while(true){
+
+        if(device_connected){
+            if(Serial.available()){
+
+                Serial.readBytes(message_buffer, sizeof(message_buffer));
+
+                size_t msg_len = strlen(message_buffer);
+                if(msg_len < UINT8_MAX){
+                    message_buffer[msg_len] = '\n';
+                    message_buffer[msg_len + 1] = '\0';
+                }
+
+                server->getServiceByUUID(UART_SERVICE_UUID)->getCharacteristic(
+                        UART_CHAR_TX_UUID)->setValue(message_buffer);
+                server->getServiceByUUID(UART_SERVICE_UUID)->getCharacteristic(
+                        UART_CHAR_TX_UUID)->notify();
+
+                message_tone();
+                Serial.print("[Host]: ");
+                Serial.print(message_buffer);
+                memset(message_buffer, 0, sizeof(message_buffer));
+            }
+        }
+
         if(!device_connected && current_device){
             server->startAdvertising();
             current_device = device_connected;
