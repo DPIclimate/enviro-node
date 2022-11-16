@@ -1,0 +1,14 @@
+; Test config file.
+# Another comment.
+interval measure 15
+   interval uplink 60
+
+mqtt topic wombat_`node_id`
+
+ 
+	
+sensor edge on
+
+  # more comments
+
+			; leading tab comment		
