@@ -7,11 +7,11 @@ Node_BluetoothLE bt;
 
 void setup() {
     init_tones();
-    //startup_tone();
 
     Serial.begin(115200);
     while(!Serial) delay(1);
 
+    //startup_tone();
     bt.begin();
     bt.read_write_blocking();
 }

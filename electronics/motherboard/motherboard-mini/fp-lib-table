@@ -44,4 +44,8 @@
   (lib (name "3221-10-0100-00")(type "KiCad")(uri "${KIPRJMOD}/parts/connectors/jtag/3221-10-0100-00")(options "")(descr ""))
   (lib (name "MCP3221A0T-E_OT")(type "KiCad")(uri "${KIPRJMOD}/parts/adc/MCP3221A0T-E_OT")(options "")(descr ""))
   (lib (name "3020-14-0300-00")(type "KiCad")(uri "${KIPRJMOD}/parts/connectors/flex-to-board/3020-14-0300-00")(options "")(descr ""))
+  (lib (name "1049P")(type "KiCad")(uri "${KIPRJMOD}/parts/battery/holders/18650/1049P")(options "")(descr ""))
+  (lib (name "2604-3102")(type "KiCad")(uri "${KIPRJMOD}/parts/connectors/2-pole/2604-3102")(options "")(descr ""))
+  (lib (name "2604-3105")(type "KiCad")(uri "${KIPRJMOD}/parts/connectors/5-pole/2604-3105")(options "")(descr ""))
+  (lib (name "0685P2000-01")(type "KiCad")(uri "${KIPRJMOD}/parts/fuses/0685P2000-01")(options "")(descr ""))
 )
