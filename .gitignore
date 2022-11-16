@@ -6,6 +6,9 @@
 *.zip
 /lib
 *.html
+*.log
+.vscode/
+build/
 
 # ---- CLION / PlatformIO ---- #
 .idea/
