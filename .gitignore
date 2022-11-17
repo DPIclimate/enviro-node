@@ -6,6 +6,11 @@
 *.zip
 /lib
 *.html
+*.log
+.vscode/
+build/
+CMakeListsPrivate.txt
+cmake-build-*/
 
 # ---- CLION / PlatformIO ---- #
 .idea/
