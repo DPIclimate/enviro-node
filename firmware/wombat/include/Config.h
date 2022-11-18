@@ -20,6 +20,8 @@ public:
     void load();
     void save();
 
+    uint32_t getBootCount(void);
+
     uint16_t getMeasureInterval() { return measure_interval; }
 
     void setMeasureInterval(const uint16_t minutes);

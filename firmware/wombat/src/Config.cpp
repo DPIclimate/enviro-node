@@ -12,8 +12,11 @@ constexpr const char* config_filename = "/config";
 #define BUF_SIZE 64
 static char buf[BUF_SIZE+1];
 
+static RTC_DATA_ATTR uint32_t bootCount = 0;
+
 Config::Config() : uplink_interval(60), measure_interval(15) {
     ESP_LOGI(TAG, "Constructing instance");
+    bootCount++;
 }
 
 void Config::reset() {
@@ -75,6 +78,13 @@ void Config::save() {
 void Config::dumpConfig(Stream& stream) {
     stream.print("interval measure "); stream.println(measure_interval);
     stream.print("interval uplink "); stream.println(uplink_interval);
+}
+
+uint32_t Config::getBootCount(void) {
+    // bootCount is incremented when the singleton is created, meaning at power-on it will
+    // be 1 by the time any code can ask for it. It is easier to do modulo arithmetic with
+    // a 0-based bootCount so adjust it before returning it.
+    return bootCount - 1;
 }
 
 void Config::setMeasureInterval(const uint16_t minutes) {

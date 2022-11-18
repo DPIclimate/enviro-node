@@ -6,5 +6,6 @@
 #define WOMBAT_CLI_H
 
 extern void cliInitialise(void);
+extern void repl(Stream& io);
 
 #endif //WOMBAT_CLI_H
