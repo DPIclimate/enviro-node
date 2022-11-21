@@ -21,11 +21,12 @@ static BaseType_t doBtUart(char* pcWriteBuffer, size_t xWriteBufferLen, const ch
 static const CLI_Command_Definition_t intervalCmd = { "interval", "interval:\r\n Configure interval settings\r\n", doInterval, -1 };
 static const CLI_Command_Definition_t sdi12Cmd = { "sdi12", "sdi12:\r\n Work with SDI-12 sensors\r\n", doSDI12, -1 };
 static const CLI_Command_Definition_t catM1Cmd = { "catm1", "catm1:\r\n Work with the Cat M1 modem\r\n", doCatM1, -1 };
-static const CLI_Command_Definition_t btCmd= { "bt", "Bluetooth:\r\n Communicate over bluetooth UART\r\n", doBtUart, -1 };
+static const CLI_Command_Definition_t btCmd= { "bt", "bt:\r\n Communicate over Bluetooth UART\r\n", doBtUart, -1 };
 
 static Config& config = Config::get();
 
 static Stream* stream = nullptr;
+
 
 void cliInitialise(void) {
     ESP_LOGI(TAG, "Registering CLI commands");
@@ -184,45 +185,49 @@ BaseType_t doSDI12(char *pcWriteBuffer, size_t xWriteBufferLen, const char *pcCo
         }
 
         if (!strncmp("pt", param, paramLen)) {
-            if (stream == nullptr) {
-                strncpy(pcWriteBuffer, "ERROR: input stream not set for SDI-12 passthrough mode\r\n", xWriteBufferLen - 1);
+            bool state = sdi12_pt(stream, pcWriteBuffer, xWriteBufferLen);
+            if(state){
+                return pdTRUE;
+            } else {
                 return pdFALSE;
             }
-
-            stream->println("Entering SDI-12 passthrough mode, press ctrl-D to exit");
-            sdi12.begin();
-
-            int ch;
-            while (true) {
-                if (stream->available()) {
-                    ch = stream->peek();
-                    if (ch == 0x04) {
-                        break;
-                    }
-                    memset(cmd, 0, sizeof(cmd));
-                    readFromStreamUntil(*stream, '\n', cmd, sizeof(cmd));
-                    stripWS(cmd);
-                    if (strlen(cmd) > 0) {
-                        sdi12.sendCommand(cmd);
-                    }
-                }
-
-                if (sdi12.available()) {
-                    ch = sdi12.read();
-                    stream->write(ch);
-                }
-
-                yield();
-            }
-
-            sdi12.end();
-            strncpy(pcWriteBuffer, "Exited SDI-12 passthrough mode\r\n", xWriteBufferLen - 1);
-            return pdFALSE;
         }
     }
 
     strncpy(pcWriteBuffer, "Syntax error\r\n", xWriteBufferLen - 1);
     return pdFALSE;
+}
+
+bool sdi12_pt(Stream* sdi12_stream){
+
+    sdi12_stream->println("Entering SDI-12 passthrough mode, press ctrl-D to exit");
+    sdi12.begin();
+
+    int ch;
+    while (true) {
+        if (sdi12_stream->available()) {
+            ch = sdi12_stream->peek();
+            if (ch == 0x04) {
+                break;
+            }
+            memset(cmd, 0, sizeof(cmd));
+            readFromStreamUntil(*sdi12_stream, '\n', cmd, sizeof(cmd));
+            stripWS(cmd);
+            if (strlen(cmd) > 0) {
+                sdi12.sendCommand(cmd);
+            }
+        }
+
+        if (sdi12.available()) {
+            ch = sdi12.read();
+            sdi12_stream->write(ch);
+        }
+
+        yield();
+    }
+
+    sdi12.end();
+    return true;
 }
 
 BaseType_t doCatM1(char *pcWriteBuffer, size_t xWriteBufferLen, const char *pcCommandString) {

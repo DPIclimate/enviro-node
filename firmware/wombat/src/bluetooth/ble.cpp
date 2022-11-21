@@ -39,6 +39,10 @@ void Wombat_BluetoothLE::read_write_blocking() const{
                     return;
                 }
 
+                if(strcmp(message_buffer, "sdi12 pt") == 0){
+                    sdi12_pt(&Serial);
+                }
+
                 size_t msg_len = strlen(message_buffer);
                 if(msg_len < UINT8_MAX){
                     message_buffer[msg_len] = '\n';

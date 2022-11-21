@@ -7,6 +7,7 @@
 #include <BLE2902.h>
 
 #include "bluetooth/ble_uart.h"
+#include "CLI.h"
 
 class Wombat_BluetoothLE {
 
