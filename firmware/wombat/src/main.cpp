@@ -10,15 +10,17 @@
 #include "Config.h"
 #include "CLI.h"
 
+#include "audio_feedback.h"
+
 #define TAG "wombat"
 
 TCA9534 io_expander;
 
 CAT_M1 cat_m1;
 
+
 // Used by OpenOCD.
 static volatile int uxTopUsedPriority;
-
 
 //==============================================
 // Programmable button ISR with debounce.
@@ -48,6 +50,8 @@ void setup() {
         delay(1);
     }
 
+    init_tones();
+
     if (digitalRead(PROG_BTN) == HIGH) {
         progBtnPressed = true;
     }
@@ -59,6 +63,7 @@ void setup() {
     // Try to avoid it getting optimized out.
     uxTopUsedPriority = configMAX_PRIORITIES - 1;
 
+    // ==== CAT-M1 Setup START ====
     Wire.begin(GPIO_NUM_25, GPIO_NUM_23);
     io_expander.attach(Wire);
     io_expander.setDeviceAddress(0x20);
@@ -71,6 +76,7 @@ void setup() {
     while(!LTE_Serial) {
         delay(1);
     }
+    // ==== CAT-M1 Setup END ====
 
     Config& config = Config::get();
     config.load();
@@ -118,10 +124,6 @@ void setup() {
     // Flush log messages before sleeping;
     Serial.flush();
 
-//    unsigned long setupEnd = millis();
-//    uint64_t sleepTime = (mi * 1000000) - (setupEnd * 1000);
-//    esp_sleep_enable_timer_wakeup(sleepTime);
-//    esp_deep_sleep_start();
 }
 
 

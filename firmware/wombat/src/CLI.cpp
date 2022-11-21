@@ -7,6 +7,7 @@
 #include "Utils.h"
 #include "dpiclimate-12.h"
 #include "CAT_M1.h"
+#include "bluetooth/ble.h"
 #include <esp_log.h>
 #include <StreamString.h>
 
@@ -15,10 +16,12 @@
 static BaseType_t doInterval(char *pcWriteBuffer, size_t xWriteBufferLen, const char *pcCommandString);
 static BaseType_t doSDI12(char *pcWriteBuffer, size_t xWriteBufferLen, const char *pcCommandString);
 static BaseType_t doCatM1(char *pcWriteBuffer, size_t xWriteBufferLen, const char *pcCommandString);
+static BaseType_t doBtUart(char* pcWriteBuffer, size_t xWriteBufferLen, const char* pcCommandString);
 
 static const CLI_Command_Definition_t intervalCmd = { "interval", "interval:\r\n Configure interval settings\r\n", doInterval, -1 };
 static const CLI_Command_Definition_t sdi12Cmd = { "sdi12", "sdi12:\r\n Work with SDI-12 sensors\r\n", doSDI12, -1 };
 static const CLI_Command_Definition_t catM1Cmd = { "catm1", "catm1:\r\n Work with the Cat M1 modem\r\n", doCatM1, -1 };
+static const CLI_Command_Definition_t btCmd= { "bt", "Bluetooth:\r\n Communicate over bluetooth UART\r\n", doBtUart, -1 };
 
 static Config& config = Config::get();
 
@@ -29,6 +32,7 @@ void cliInitialise(void) {
     FreeRTOS_CLIRegisterCommand(&intervalCmd);
     FreeRTOS_CLIRegisterCommand(&sdi12Cmd);
     FreeRTOS_CLIRegisterCommand(&catM1Cmd);
+    FreeRTOS_CLIRegisterCommand(&btCmd);
 }
 
 // Commands returning multiple lines should write their output to this, and then
@@ -271,6 +275,18 @@ BaseType_t doCatM1(char *pcWriteBuffer, size_t xWriteBufferLen, const char *pcCo
 
     return pdFALSE;
 }
+
+
+static Wombat_BluetoothLE bt;
+
+BaseType_t doBtUart(char *pcWriteBuffer, size_t xWriteBufferLen, const char *pcCommandString) {
+
+    bt.begin();
+    bt.read_write_blocking();
+
+    return pdFALSE;
+}
+
 
 void repl(Stream& io) {
     // stream is used by the SDI-12 & Cat M1 passthrough modes, so must be set from here before either
