@@ -1,9 +1,9 @@
-#ifndef WOMBAT_CONFIG_H
-#define WOMBAT_CONFIG_H
+#ifndef WOMBAT_DEVICECONFIG_H
+#define WOMBAT_DEVICECONFIG_H
 
 #include <Arduino.h>
 
-class Config {
+class DeviceConfig {
 public:
     static constexpr size_t MAX_CONFIG_STR = 32;
 
@@ -11,8 +11,8 @@ public:
     char node_id[13];
     char mqtt_topic_template[MAX_CONFIG_STR+1];
 
-    static Config& get() {
-        static Config instance;
+    static DeviceConfig& get() {
+        static DeviceConfig instance;
         return instance;
     }
 
@@ -35,11 +35,11 @@ public:
     void dumpConfig(Stream& stream);
 
 private:
-    Config();
+    DeviceConfig();
 
     // Avoid operations that would make copies of the singleton instance.
-    Config(const Config&) = delete;
-    Config& operator=(const Config&) = delete;
+    DeviceConfig(const DeviceConfig&) = delete;
+    DeviceConfig& operator=(const DeviceConfig&) = delete;
 
     // How often to read the sensors, in seconds.
     uint16_t measure_interval;
@@ -50,4 +50,4 @@ private:
 };
 
 
-#endif //WOMBAT_CONFIG_H
+#endif //WOMBAT_DEVICECONFIG_H

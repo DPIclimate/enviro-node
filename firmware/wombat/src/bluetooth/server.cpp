@@ -1,11 +1,12 @@
-#include "bluetooth/ble.h"
+#include "bluetooth/server.h"
 
+static BLEServer* server;
 static char message_buffer[UINT8_MAX];
 
-void Wombat_BluetoothLE::begin(){
-#if !defined(CONFIG_BT_ENABLED) || !defined(CONFIG_BLUEDROID_ENABLED)
-#error Bluetooth is not enabled.
-#endif
+void BluetoothServer::begin(){
+    #if !defined(CONFIG_BT_ENABLED) || !defined(CONFIG_BLUEDROID_ENABLED)
+        #error Bluetooth is not enabled.
+    #endif
 
     // Initialise device
     BLEDevice::init("ESP32 Wombat");
@@ -13,10 +14,10 @@ void Wombat_BluetoothLE::begin(){
     // Construct server on device
     server = BLEDevice::createServer();
     // Set callbacks for server
-    server->setCallbacks(new Wombat_BluetoothLE_Server_Callbacks);
+    server->setCallbacks(new BluetoothServerCallbacks);
 
     // Services and characteristics (callbacks incorporated)
-    (Wombat_BLE_UART_Service(server));
+    (BluetoothUartService(server));
 
     // Start server advertising
     server->getAdvertising()->start();
@@ -25,8 +26,7 @@ void Wombat_BluetoothLE::begin(){
     current_device = false;
 }
 
-
-void Wombat_BluetoothLE::read_write_blocking() const{
+void BluetoothServer::read_write_blocking(){
     while(true){
         if(device_connected){
             if(Serial.available()){

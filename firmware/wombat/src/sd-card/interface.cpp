@@ -1,9 +1,9 @@
-#include "sdcard/node_sdcard.h"
+#include "sd-card/interface.h"
 #include <esp_log.h>
 
 #define TAG "sd"
 
-Node_SDCard::Node_SDCard() {
+SDCardInterface::SDCardInterface() {
     ESP_LOGI(TAG, "%d is valid: %d", SD_CS, GPIO_IS_VALID_GPIO(SD_CS));
 
     if(!SD.begin(SD_CS)){
@@ -13,11 +13,11 @@ Node_SDCard::Node_SDCard() {
     }
 }
 
-Node_SDCard::~Node_SDCard() = default;
+SDCardInterface::~SDCardInterface() = default;
 
 #ifdef DEBUG
 // Recursive function to get SD-Cards directory structure
-void Node_SDCard::list_directory(File dir, uint8_t num_spaces) { /* NOLINT */
+void SDCardInterface::list_directory(File dir, uint8_t num_spaces) { /* NOLINT */
 
     // Prevent overflow (shouldn't normally occur but ok to check)
     if(num_spaces == 255){
@@ -40,7 +40,7 @@ void Node_SDCard::list_directory(File dir, uint8_t num_spaces) { /* NOLINT */
 
         if(item.isDirectory()){
             Serial.println("/");
-            Node_SDCard::list_directory(item, num_spaces++);
+            SDCardInterface::list_directory(item, num_spaces++);
         } else {
             // Files (with sizes)
             ESP_LOGD(TAG, " (%d bytes)", item.size());
@@ -51,7 +51,7 @@ void Node_SDCard::list_directory(File dir, uint8_t num_spaces) { /* NOLINT */
 }
 #endif
 
-void Node_SDCard::add_file(const char* filepath, const char* contents){
+void SDCardInterface::add_file(const char* filepath, const char* contents){
     ESP_LOGD(TAG, "Adding file '%s' to SD-Card.", filepath);
 
     // Open will add a new file if it doesn't exist
@@ -67,7 +67,7 @@ void Node_SDCard::add_file(const char* filepath, const char* contents){
     root.close();
 }
 
-void Node_SDCard::read_file(const char* filepath){
+void SDCardInterface::read_file(const char* filepath){
     ESP_LOGD(TAG, "Reading file '%s' on SD-Card.", filepath);
 
     File root = SD.open(filepath);

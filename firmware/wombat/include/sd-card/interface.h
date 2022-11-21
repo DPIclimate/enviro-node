@@ -7,7 +7,7 @@
 
 #define DEBUG
 
-class Node_SDCard {
+class SDCardInterface {
 private:
     // NOTE: This is a dummy. The SD card hardware is actually connected
     // to I/O 2 on the TCA9534 I/O expander. The SD library wants a pin
@@ -16,8 +16,8 @@ private:
     static const uint8_t SD_CS = 4;
 
 public:
-    Node_SDCard();
-    ~Node_SDCard();
+    SDCardInterface();
+    ~SDCardInterface();
 
     static void add_file(const char* filepath, const char* contents);
 

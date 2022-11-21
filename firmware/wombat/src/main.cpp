@@ -6,41 +6,19 @@
 #include <TCA9534.h>
 #include "SensorTask.h"
 #include <CAT_M1.h>
-#include <dpiclimate-12.h>
-#include "Config.h"
-#include "CLI.h"
+#include "DeviceConfig.h"
+#include "cli/CLI.h"
+#include "peripherals.h"
 
-#include "audio_feedback.h"
+#include "audio-feedback/tones.h"
 
 #define TAG "wombat"
 
 TCA9534 io_expander;
-
 CAT_M1 cat_m1;
-
 
 // Used by OpenOCD.
 static volatile int uxTopUsedPriority;
-
-//==============================================
-// Programmable button ISR with debounce.
-//==============================================
-#define PROG_BTN GPIO_NUM_34
-
-volatile bool progBtnPressed = false;
-
-static unsigned long lastTriggered = 0;
-void IRAM_ATTR progBtnISR(void) {
-    unsigned long now = millis();
-    if (lastTriggered != 0) {
-        if (now - lastTriggered < 250) {
-            return;
-        }
-    }
-
-    lastTriggered = now;
-    progBtnPressed = true;
-}
 
 void setup() {
     pinMode(PROG_BTN, INPUT);
@@ -50,6 +28,7 @@ void setup() {
         delay(1);
     }
 
+    // Initialise audio feedback
     init_tones();
 
     if (digitalRead(PROG_BTN) == HIGH) {
@@ -78,15 +57,16 @@ void setup() {
     }
     // ==== CAT-M1 Setup END ====
 
-    Config& config = Config::get();
+    DeviceConfig& config = DeviceConfig::get();
     config.load();
 
-    cliInitialise();
+    CLI::init();
 
     if (progBtnPressed) {
         progBtnPressed = false;
-        ESP_LOGI(TAG, "Programmable button pressed while booting, dropping into REPL");
-        repl(Serial);
+        ESP_LOGI(TAG, "Programmable button pressed while booting, dropping "
+                      "into REPL");
+        CLI::repl(Serial);
         ESP_LOGI(TAG, "Continuing");
     }
 
@@ -94,12 +74,15 @@ void setup() {
     uint16_t ui = config.getUplinkInterval();
 
     if (ui < mi) {
-        ESP_LOGE(TAG, "Measurement interval (%u) must be <= uplink interval (%u). Resetting config to default values.", mi, ui);
+        ESP_LOGE(TAG, "Measurement interval (%u) must be <= uplink interval "
+                      "(%u). Resetting config to default values.", mi, ui);
         config.reset();
     }
 
     if (ui % mi != 0) {
-        ESP_LOGE(TAG, "Measurement interval (%u) must be a factor of uplink interval (%u). Resetting config to default values.", mi, ui);
+        ESP_LOGE(TAG, "Measurement interval (%u) must be a factor of uplink "
+                      "interval (%u). Resetting config to default "
+                      "values.", mi, ui);
         config.reset();
     }
 
@@ -111,10 +94,13 @@ void setup() {
     // should do an uplink.
     bool uplinkCycle = config.getBootCount() % uimi == 0;
 
-    ESP_LOGI(TAG, "Boot count: %lu, measurement interval: %u, uplink interval: %u, ui/mi: %u, uplink this cycle: %d", config.getBootCount(), mi, ui, uimi, uplinkCycle);
+    ESP_LOGI(TAG, "Boot count: %lu, measurement interval: %u, "
+                  "uplink interval: %u, ui/mi: %u, uplink this cycle: %d",
+                  config.getBootCount(), mi, ui, uimi, uplinkCycle);
 
-    // Not sure how useful this is, or how it will work. We don't want to interrupt sensor reading or uplink
-    // processing and loop() will likely never run if we do the usual ESP32 setup going to deep sleep mode.
+    // Not sure how useful this is, or how it will work. We don't want to
+    // interrupt sensor reading or uplink processing and loop() will likely
+    // never run if we do the usual ESP32 setup going to deep sleep mode.
     attachInterrupt(PROG_BTN, progBtnISR, RISING);
 
 //    initSensors();
@@ -126,13 +112,8 @@ void setup() {
 
 }
 
-
 void loop() {
-    if (progBtnPressed) {
-        progBtnPressed = false;
-        ESP_LOGI(TAG, "Button");
-        repl(Serial);
-    }
+    delay(1);
 }
 
 #ifdef __cplusplus

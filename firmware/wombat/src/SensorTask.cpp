@@ -1,6 +1,6 @@
 #include <Arduino.h>
 #include "SensorTask.h"
-#include "Config.h"
+#include "DeviceConfig.h"
 #include "TCA9534.h"
 #include <esp_log.h>
 
@@ -40,7 +40,7 @@ void initSensors(void) {
     delay(500);
     sdi12.begin();
 
-    if (Config::get().getBootCount() == 0) {
+    if (DeviceConfig::get().getBootCount() == 0) {
         ESP_LOGI(TAG, "Scanning SDI-12 bus");
         dpi12.scan_bus(sensors);
         ESP_LOGI(TAG, "Found %u sensors", sensors.count);

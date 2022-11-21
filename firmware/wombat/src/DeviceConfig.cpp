@@ -1,4 +1,4 @@
-#include "Config.h"
+#include "DeviceConfig.h"
 #include <esp_log.h>
 
 #include <SPIFFS.h>
@@ -14,22 +14,22 @@ static char buf[BUF_SIZE+1];
 
 static RTC_DATA_ATTR uint32_t bootCount = 0;
 
-Config::Config() : uplink_interval(60), measure_interval(15) {
+DeviceConfig::DeviceConfig() : uplink_interval(60), measure_interval(15) {
     ESP_LOGI(TAG, "Constructing instance");
     bootCount++;
 }
 
-void Config::reset() {
+void DeviceConfig::reset() {
     ESP_LOGI(TAG, "Resetting values to defaults");
     measure_interval = 15;
     uplink_interval = 60;
 
     esp_efuse_mac_get_default(mac);
-    snprintf(Config::node_id, 13, "%02X%02X%02X%02X%02X%02X%02X%02X", Config::mac[0], Config::mac[1], Config::mac[2], Config::mac[3], Config::mac[4], Config::mac[5], Config::mac[6], Config::mac[7]);
+    snprintf(DeviceConfig::node_id, 13, "%02X%02X%02X%02X%02X%02X%02X%02X", DeviceConfig::mac[0], DeviceConfig::mac[1], DeviceConfig::mac[2], DeviceConfig::mac[3], DeviceConfig::mac[4], DeviceConfig::mac[5], DeviceConfig::mac[6], DeviceConfig::mac[7]);
     ESP_LOGI(TAG, "Node Id: %s", node_id);
 }
 
-void Config::load() {
+void DeviceConfig::load() {
     // Ensure any settings not present in the config file have the default value.
     reset();
 
@@ -54,7 +54,7 @@ void Config::load() {
 
             f.close();
         } else {
-            ESP_LOGE(TAG, "Config file not found");
+            ESP_LOGE(TAG, "DeviceConfig file not found");
         }
     } else {
         ESP_LOGE(TAG, "Failed to initialise SPIFFS");
@@ -63,7 +63,7 @@ void Config::load() {
     SPIFFS.end();
 }
 
-void Config::save() {
+void DeviceConfig::save() {
     if (SPIFFS.begin()) {
         File f = SPIFFS.open(config_filename, FILE_WRITE);
         dumpConfig(f);
@@ -75,23 +75,23 @@ void Config::save() {
     SPIFFS.end();
 }
 
-void Config::dumpConfig(Stream& stream) {
+void DeviceConfig::dumpConfig(Stream& stream) {
     stream.print("interval measure "); stream.println(measure_interval);
     stream.print("interval uplink "); stream.println(uplink_interval);
 }
 
-uint32_t Config::getBootCount(void) {
+uint32_t DeviceConfig::getBootCount(void) {
     // bootCount is incremented when the singleton is created, meaning at power-on it will
     // be 1 by the time any code can ask for it. It is easier to do modulo arithmetic with
     // a 0-based bootCount so adjust it before returning it.
     return bootCount - 1;
 }
 
-void Config::setMeasureInterval(const uint16_t minutes) {
+void DeviceConfig::setMeasureInterval(const uint16_t minutes) {
     measure_interval = minutes;
 }
 
-void Config::setUplinkInterval(const uint16_t minutes) {
+void DeviceConfig::setUplinkInterval(const uint16_t minutes) {
     if (minutes % measure_interval != 0) {
         ESP_LOGE(TAG, "uplink_interval must be a whole multiple of measurement_interval");
         return;
@@ -100,7 +100,7 @@ void Config::setUplinkInterval(const uint16_t minutes) {
     uplink_interval = minutes;
 }
 
-void Config::setMeasurementAndUplinkIntervals(const uint16_t measurement_seconds, const uint16_t uplink_seconds) {
+void DeviceConfig::setMeasurementAndUplinkIntervals(const uint16_t measurement_seconds, const uint16_t uplink_seconds) {
     if (uplink_seconds % measurement_seconds != 0) {
         ESP_LOGE(TAG, "uplink_interval must be a whole multiple of measurement_interval");
         return;

@@ -1,5 +1,5 @@
-#ifndef WOMBAT_AUDIO_FEEDBACK_H
-#define WOMBAT_AUDIO_FEEDBACK_H
+#ifndef WOMBAT_TONES_H
+#define WOMBAT_TONES_H
 
 #include <Arduino.h>
 
@@ -55,4 +55,4 @@ static void error_tone(){
     noTone(PIEZO_BUZZER_PIN);
 }
 
-#endif //WOMBAT_AUDIO_FEEDBACK_H
+#endif //WOMBAT_TONES_H
