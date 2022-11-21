@@ -117,7 +117,7 @@ void setup() {
     // processing and loop() will likely never run if we do the usual ESP32 setup going to deep sleep mode.
     attachInterrupt(PROG_BTN, progBtnISR, RISING);
 
-    initSensors();
+//    initSensors();
 
     sensorTask();
 

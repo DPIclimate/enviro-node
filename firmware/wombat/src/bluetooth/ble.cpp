@@ -33,14 +33,10 @@ void Wombat_BluetoothLE::read_write_blocking() const{
 
                 Serial.readBytes(message_buffer, sizeof(message_buffer));
 
-                if(strcmp(message_buffer, "exit") == 0){
+                if(strcmp(message_buffer, "exit") == 0) {
                     device_connected = false;
                     memset(message_buffer, 0, sizeof(message_buffer));
                     return;
-                }
-
-                if(strcmp(message_buffer, "sdi12 pt") == 0){
-                    sdi12_pt(&Serial);
                 }
 
                 size_t msg_len = strlen(message_buffer);

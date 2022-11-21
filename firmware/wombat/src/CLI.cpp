@@ -185,7 +185,7 @@ BaseType_t doSDI12(char *pcWriteBuffer, size_t xWriteBufferLen, const char *pcCo
         }
 
         if (!strncmp("pt", param, paramLen)) {
-            bool state = sdi12_pt(stream, pcWriteBuffer, xWriteBufferLen);
+            bool state = sdi12_pt(stream);
             if(state){
                 return pdTRUE;
             } else {
@@ -210,8 +210,10 @@ bool sdi12_pt(Stream* sdi12_stream){
             if (ch == 0x04) {
                 break;
             }
+
             memset(cmd, 0, sizeof(cmd));
             readFromStreamUntil(*sdi12_stream, '\n', cmd, sizeof(cmd));
+            Serial.println(cmd);
             stripWS(cmd);
             if (strlen(cmd) > 0) {
                 sdi12.sendCommand(cmd);

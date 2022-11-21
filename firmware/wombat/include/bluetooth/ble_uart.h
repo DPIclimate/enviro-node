@@ -6,7 +6,9 @@
 #include <BLEServer.h>
 #include <BLE2902.h>
 
+
 #include "audio_feedback.h"
+#include "bluetooth/ble.h"
 
 // UART UUID's
 #define UART_SERVICE_UUID               "6E400001-B5A3-F393-E0A9-E50E24DCCA9E"
@@ -22,18 +24,7 @@ public:
 class Node_BluetoothLE_UART_Callbacks:
         public BLECharacteristicCallbacks {
 
-    void onWrite(BLECharacteristic* pCharacteristic) override {
-        std::string rxValue = pCharacteristic->getValue();
-        if(rxValue.length() > 0){
-            Serial.print("[ESP32 Wombat]: ");
-            for(const auto &i: rxValue){
-                Serial.print(i);
-            }
-        } else {
-            error_tone();
-            Serial.println("Bluetooth RX error");
-        }
-    }
+    void onWrite(BLECharacteristic* pCharacteristic) override;
 };
 
 
