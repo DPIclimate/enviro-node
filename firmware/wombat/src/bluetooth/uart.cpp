@@ -1,5 +1,7 @@
 #include "bluetooth/uart.h"
 
+char bluetooth_write_buf[UINT8_MAX];
+
 BluetoothUartService::BluetoothUartService(BLEServer *server) {
     BLEService* uart_service = server->createService(UART_SERVICE_UUID);
 
@@ -23,13 +25,18 @@ BluetoothUartService::BluetoothUartService(BLEServer *server) {
 
 void BluetoothUartServiceCallbacks::onWrite(BLECharacteristic* pCharacteristic){
     std::string rxValue = pCharacteristic->getValue();
+
+    memset(bluetooth_write_buf, 0, sizeof(bluetooth_write_buf));
+
     if(rxValue.length() > 0){
-        for(const auto &i: rxValue){
-            Serial.write(i);
+        BaseType_t rc = pdTRUE;
+        while (rc != pdFALSE) {
+            rc = FreeRTOS_CLIProcessCommand(rxValue.c_str(), bluetooth_write_buf,
+                                            sizeof(bluetooth_write_buf));
+            Serial.print(bluetooth_write_buf);
         }
-        Serial.println();
-    }
-    else{
+        Serial.print("$");
+    } else{
         error_tone();
     }
 }

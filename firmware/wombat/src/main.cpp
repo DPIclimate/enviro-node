@@ -113,7 +113,11 @@ void setup() {
 }
 
 void loop() {
-    delay(1);
+    if (progBtnPressed) {
+        progBtnPressed = false;
+        ESP_LOGI(TAG, "Button");
+        CLI::repl(Serial);
+    }
 }
 
 #ifdef __cplusplus

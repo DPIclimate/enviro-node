@@ -41,7 +41,7 @@ void CLI::init() {
 }
 
 void CLI::repl(Stream& io) {
-    // stream_ is used by the SDI-12 & Cat M1 passthrough modes, so must be set from here before either
+    // stream is used by the SDI-12 & Cat M1 passthrough modes, so must be set from here before either
     // mode is used.
 
     stream = &io;
