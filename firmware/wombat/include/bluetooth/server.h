@@ -7,6 +7,8 @@
 #include <BLE2902.h>
 
 #include "bluetooth/uart.h"
+#include "bluetooth/device.h"
+#include "bluetooth/power_monitoring.h"
 #include "cli/CLI.h"
 
 class BluetoothServer {
@@ -17,9 +19,7 @@ public:
     static void begin();
 
     inline static bool device_connected = false;
-    inline static bool current_device = false;
 
-    static void read_write_blocking();
     static bool is_device_connected();
     static void notify_device(const char* message);
 

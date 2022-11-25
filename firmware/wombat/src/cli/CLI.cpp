@@ -25,19 +25,19 @@ static const CLI_Command_Definition_t catM1Cmd = {
         -1
 };
 
-static const CLI_Command_Definition_t btCmd = {
-        "bt",
-        "bt:\r\n Connect and communicate over Bluetooth UART\r\n",
-        CLIBluetooth::enter_cli,
-        -1
-};
+//static const CLI_Command_Definition_t btCmd = {
+//        "bt",
+//        "bt:\r\n Connect and communicate over Bluetooth UART\r\n",
+//        CLIBluetooth::enter_cli,
+//        -1
+//};
 
 void CLI::init() {
     ESP_LOGI(CLI_TAG, "Registering CLI commands");
     FreeRTOS_CLIRegisterCommand(&intervalCmd);
     FreeRTOS_CLIRegisterCommand(&sdi12Cmd);
     FreeRTOS_CLIRegisterCommand(&catM1Cmd);
-    FreeRTOS_CLIRegisterCommand(&btCmd);
+    //FreeRTOS_CLIRegisterCommand(&btCmd);
 }
 
 void CLI::repl(Stream& io) {

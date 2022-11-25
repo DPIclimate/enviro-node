@@ -60,6 +60,8 @@ void setup() {
     DeviceConfig& config = DeviceConfig::get();
     config.load();
 
+    BluetoothServer::begin();
+
     CLI::init();
 
     if (progBtnPressed) {
