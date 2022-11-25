@@ -20,6 +20,8 @@ public:
     inline static bool current_device = false;
 
     static void read_write_blocking();
+    static bool is_device_connected();
+    static void notify_device(const char* message);
 
 };
 

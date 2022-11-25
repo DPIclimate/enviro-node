@@ -26,6 +26,17 @@ void BluetoothServer::begin(){
     current_device = false;
 }
 
+bool BluetoothServer::is_device_connected(){
+    return device_connected;
+}
+
+void BluetoothServer::notify_device(const char* message){
+    server->getServiceByUUID(UART_SERVICE_UUID)->getCharacteristic(
+            UART_CHAR_TX_UUID)->setValue(message);
+    server->getServiceByUUID(UART_SERVICE_UUID)->getCharacteristic(
+            UART_CHAR_TX_UUID)->notify();
+}
+
 void BluetoothServer::read_write_blocking(){
     while(true){
         if(device_connected){

@@ -1,7 +1,8 @@
 #include "cli/peripherals/sdi12.h"
 
-static SDI12 sdi12;
+static SDI12 sdi12(4);
 static StreamString response_buffer_;
+static char response[CLISdi12::MAX_SDI12_RES_LEN];
 static Stream* stream_;
 
 BaseType_t CLISdi12::enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen,

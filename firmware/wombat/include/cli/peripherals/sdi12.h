@@ -12,11 +12,9 @@
 
 class CLISdi12 {
     static DPIClimate12 dpi12;
-
-    static const uint8_t MAX_SDI12_RES_LEN = 255;
-    static char response[MAX_SDI12_RES_LEN];
-
 public:
+    static const uint8_t MAX_SDI12_RES_LEN = 255;
+
     static BaseType_t enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen,
                                 const char *pcCommandString);
 };
