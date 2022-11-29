@@ -29,10 +29,8 @@ static void disable12V(void) {
 
 // While the SDI12 library uses uint8_t to express sensor addresses from 0-9, and we don't want
 // to use address 0 in normal use, we can have at most 9 sensors.
-constexpr size_t MAX_SENSORS = 10;
 uint8_t addresses[MAX_SENSORS];
 
-static constexpr uint8_t MAX_VALUES = 32;
 static float values[MAX_VALUES];
 
 void initSensors(void) {

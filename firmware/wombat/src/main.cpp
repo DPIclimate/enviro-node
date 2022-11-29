@@ -66,8 +66,7 @@ void setup() {
 
     if (progBtnPressed) {
         progBtnPressed = false;
-        ESP_LOGI(TAG, "Programmable button pressed while booting, dropping "
-                      "into REPL");
+        ESP_LOGI(TAG, "Programmable button pressed while booting, dropping into REPL");
         CLI::repl(Serial);
         ESP_LOGI(TAG, "Continuing");
     }

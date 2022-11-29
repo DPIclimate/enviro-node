@@ -66,7 +66,7 @@ void CLI::repl(Stream& io) {
             while (rc != pdFALSE) {
                 rc = FreeRTOS_CLIProcessCommand(cmd, msg, MAX_CLI_MSG_LEN);
                 Serial.print(msg);
-                if(BluetoothServer::is_device_connected()){
+                if (BluetoothServer::is_device_connected()){
                     BluetoothServer::notify_device(msg);
                 }
             }
