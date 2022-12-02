@@ -4,6 +4,9 @@
 #include <SPIFFS.h>
 
 #include "Utils.h"
+#include "cli/FreeRTOS_CLI.h"
+#include "cli/device_config/acquisition_intervals.h"
+#include "cli/device_config/mqtt_cli.h"
 
 #define TAG "config"
 
@@ -11,10 +14,11 @@ constexpr const char* config_filename = "/config";
 
 #define BUF_SIZE 64
 static char buf[BUF_SIZE+1];
+static char rsp[BUF_SIZE+1];
 
 static RTC_DATA_ATTR uint32_t bootCount = 0;
 
-DeviceConfig::DeviceConfig() : uplink_interval(60), measure_interval(15) {
+DeviceConfig::DeviceConfig() : uplink_interval(60), measure_interval(15), mqttHost(), mqttUser(), mqttPassword() {
     ESP_LOGI(TAG, "Constructing instance");
     bootCount++;
 }
@@ -27,6 +31,11 @@ void DeviceConfig::reset() {
     esp_efuse_mac_get_default(mac);
     snprintf(DeviceConfig::node_id, 13, "%02X%02X%02X%02X%02X%02X%02X%02X", DeviceConfig::mac[0], DeviceConfig::mac[1], DeviceConfig::mac[2], DeviceConfig::mac[3], DeviceConfig::mac[4], DeviceConfig::mac[5], DeviceConfig::mac[6], DeviceConfig::mac[7]);
     ESP_LOGI(TAG, "Node Id: %s", node_id);
+
+    mqttHost.clear();
+    mqttPort = 1833;
+    mqttUser.clear();
+    mqttPassword.clear();
 }
 
 void DeviceConfig::load() {
@@ -50,11 +59,16 @@ void DeviceConfig::load() {
                 }
 
                 ESP_LOGD(TAG, "config cmd: [%s] [%u]", buf, len);
+                BaseType_t rc = pdTRUE;
+                while (rc != pdFALSE) {
+                    rc = FreeRTOS_CLIProcessCommand(buf, rsp, BUF_SIZE);
+                    ESP_LOGD(TAG, "%s", rsp);
+                }
             }
 
             f.close();
         } else {
-            ESP_LOGE(TAG, "DeviceConfig file not found");
+            ESP_LOGE(TAG, "Config file not found");
         }
     } else {
         ESP_LOGE(TAG, "Failed to initialise SPIFFS");
@@ -76,8 +90,8 @@ void DeviceConfig::save() {
 }
 
 void DeviceConfig::dumpConfig(Stream& stream) {
-    stream.print("interval measure "); stream.println(measure_interval);
-    stream.print("interval uplink "); stream.println(uplink_interval);
+    CLIConfigIntervals::dump(stream);
+    CLIMQTT::dump(stream);
 }
 
 uint32_t DeviceConfig::getBootCount(void) {

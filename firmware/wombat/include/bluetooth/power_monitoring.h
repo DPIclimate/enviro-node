@@ -9,12 +9,12 @@
 #include "power_monitoring/solar.h"
 #include "power_monitoring/battery.h"
 
-#define BATT_SERVICE_UUID               "0000180F-0000-1000-8000-00805F9B34FB"
-#define BATT_CHAR_LEVEL_UUID            "00002A19-0000-1000-8000-00805F9B34FB"
-#define BATT_VOLTAGE_UUID               "00002B18-0000-1000-8000-00805F9B34FB"
-#define BATT_CURRENT_UUID               "00002AEE-0000-1000-8000-00805F9B34FB"
-#define SOLAR_VOLTAGE_UUID              "4af56a5f-5688-4ff6-9008-adcc6c1992e1"
-#define SOLAR_CURRENT_UUID              "a85332c1-5477-4e23-a782-c48443f0dda3"
+#define BATT_SERVICE_UUID               (BLEUUID(0x180Fu))
+#define BATT_CHAR_LEVEL_UUID            (BLEUUID(0x2A19u))
+#define BATT_VOLTAGE_UUID               (BLEUUID(0x2B18u))
+#define BATT_CURRENT_UUID               (BLEUUID(0x2AEEu))
+#define SOLAR_VOLTAGE_UUID              (BLEUUID("4af56a5f-5688-4ff6-9008-adcc6c1992e1"))
+#define SOLAR_CURRENT_UUID              (BLEUUID("a85332c1-5477-4e23-a782-c48443f0dda3"))
 
 class BluetoothPowerService{
 public:
@@ -54,11 +54,11 @@ class BluetoothSolarCurrentCallbacks: public BLECharacteristicCallbacks {
 
 // Battery percentage
 class BluetoothBatteryPercentCallbacks: public BLECharacteristicCallbacks {
-    void onRead(BLECharacteristic* pCharacteristic) override{
+    void onRead(BLECharacteristic* pCharacteristic) override {
         float max_voltage = 4.2;
         float voltage = BatteryPowerMonitoring::get_voltage();
         uint8_t batt_percent = 0;
-        if(voltage > 0){
+        if (voltage > 0) {
             batt_percent = (uint8_t)((voltage / max_voltage) * 100);
         }
 

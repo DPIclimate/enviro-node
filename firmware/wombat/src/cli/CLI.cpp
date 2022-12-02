@@ -1,27 +1,41 @@
 #include "cli/CLI.h"
 
-static Stream* stream = nullptr;
+Stream* cliStream = nullptr;
 static char cmd[CLI::MAX_CLI_CMD_LEN];
 static char msg[CLI::MAX_CLI_MSG_LEN];
 
+static const CLI_Command_Definition_t configCmd = {
+        CLIConfig::cmd.c_str(),
+        "config:\r\n Load, save, or list the node configuration\r\n",
+        CLIConfig::enter_cli,
+        -1
+};
+
 static const CLI_Command_Definition_t intervalCmd = {
-        "interval",
+        CLIConfigIntervals::cmd.c_str(),
         "interval:\r\n Configure acquisition interval settings\r\n",
         CLIConfigIntervals::enter_cli,
         -1
 };
 
 static const CLI_Command_Definition_t sdi12Cmd = {
-        "sdi12",
+        CLISdi12::cmd.c_str(),
         "sdi12:\r\n Configure and interface with SDI-12 sensors\r\n",
         CLISdi12::enter_cli,
         -1
 };
 
 static const CLI_Command_Definition_t catM1Cmd = {
-        "catm1",
+        CLICatM1::cmd.c_str(),
         "catm1:\r\n Configure and interface with Cat M1 modem\r\n",
         CLICatM1::enter_cli,
+        -1
+};
+
+static const CLI_Command_Definition_t mqttCmd = {
+        CLIMQTT::cmd.c_str(),
+        "mqtt:\r\n Configure MQTT connection parameters\r\n",
+        CLIMQTT::enter_cli,
         -1
 };
 
@@ -34,17 +48,19 @@ static const CLI_Command_Definition_t catM1Cmd = {
 
 void CLI::init() {
     ESP_LOGI(CLI_TAG, "Registering CLI commands");
+    FreeRTOS_CLIRegisterCommand(&configCmd);
     FreeRTOS_CLIRegisterCommand(&intervalCmd);
     FreeRTOS_CLIRegisterCommand(&sdi12Cmd);
     FreeRTOS_CLIRegisterCommand(&catM1Cmd);
+    FreeRTOS_CLIRegisterCommand(&mqttCmd);
     //FreeRTOS_CLIRegisterCommand(&btCmd);
 }
 
 void CLI::repl(Stream& io) {
-    // stream is used by the SDI-12 & Cat M1 passthrough modes, so must be set from here before either
+    // cliStream is used by the SDI-12 & Cat M1 passthrough modes, so must be set from here before either
     // mode is used.
 
-    stream = &io;
+    cliStream = &io;
     io.println("Entering repl");
 
     while (true) {

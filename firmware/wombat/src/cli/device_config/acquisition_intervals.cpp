@@ -2,6 +2,13 @@
 
 static StreamString response_buffer_;
 
+void CLIConfigIntervals::dump(Stream& stream) {
+    stream.print("interval measure ");
+    stream.println(config.getMeasureInterval());
+    stream.print("interval uplink ");
+    stream.println(config.getUplinkInterval());
+}
+
 // The interval command sets and gets the various interval values, such as the measurement interval and the
 // uplink interval. Intervals are specified in seconds.
 BaseType_t CLIConfigIntervals::enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen,
@@ -28,11 +35,7 @@ BaseType_t CLIConfigIntervals::enter_cli(char *pcWriteBuffer, size_t xWriteBuffe
     if (param != nullptr && paramLen > 0) {
         if (!strncmp("list", param, paramLen)) {
             response_buffer_.clear();
-            response_buffer_.print("interval measure ");
-            response_buffer_.println(config.getMeasureInterval());
-            response_buffer_.print("interval uplink ");
-            response_buffer_.println(config.getUplinkInterval());
-            memset(pcWriteBuffer, 0, xWriteBufferLen);
+            dump(response_buffer_);
             return pdTRUE;
         }
 

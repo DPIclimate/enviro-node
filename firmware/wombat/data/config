@@ -1,14 +1,17 @@
-; Test config file.
-# Another comment.
+; Comments are introduced by semi-colons
+# or hash symbols.
+
+# Leading and trailing white-space are stripped from lines,
+# blank lines are ignored.
+
 interval measure 15
-   interval uplink 60
+interval uplink 60
 
 mqtt topic wombat_`node_id`
 
- 
-	
 sensor edge on
 
-  # more comments
-
-			; leading tab comment		
+mqtt host xyz.com
+mqtt port 1833
+mqtt user uname
+mqtt password pwd

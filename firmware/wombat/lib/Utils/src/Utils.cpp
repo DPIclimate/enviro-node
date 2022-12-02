@@ -6,6 +6,8 @@
 #include "Utils.h"
 #include <string.h>
 
+#define TAG "utils"
+
 size_t stripLeadingWS(char *str) {
     if (str == nullptr || *str == 0) {
         return 0;
@@ -106,4 +108,18 @@ void streamPassthrough(Stream* s1, Stream* s2) {
 
         yield();
     }
+}
+
+int waitForChar(Stream& stream, uint32_t timeout) {
+    uint32_t start = millis();
+    int a = stream.available();
+    while ((millis() - start) < timeout && a < 1) {
+        delay(1); // Let the MCU do something else.
+        a = stream.available();
+    }
+
+    uint32_t end = millis();
+    ESP_LOGD(TAG, "Delta from start of read: %lu ms, UART available = %d", (end - start), a);
+
+    return a > 0 ? a : -1;
 }

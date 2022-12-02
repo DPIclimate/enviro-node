@@ -12,8 +12,12 @@ class CLIConfigIntervals {
     inline static DeviceConfig& config = DeviceConfig::get();
 
 public:
+    inline static const std::string cmd = "interval";
+
     static BaseType_t enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen,
                                 const char *pcCommandString);
+
+    static void dump(Stream& stream);
 };
 
 #endif //WOMBAT_CLI_INTERVALS_H

@@ -24,4 +24,6 @@ public:
 
 };
 
+extern CAT_M1 cat_m1;
+
 #endif //ESP32_DEBUGGER_CAT_M1_H

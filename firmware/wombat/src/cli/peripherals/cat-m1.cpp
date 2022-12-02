@@ -1,7 +1,7 @@
 #include "cli/peripherals/cat-m1.h"
 
-static Stream* stream_;
 static StreamString response_buffer_;
+extern Stream *cliStream;
 
 BaseType_t CLICatM1::enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen, const char *pcCommandString) {
     BaseType_t paramLen = 0;
@@ -25,19 +25,19 @@ BaseType_t CLICatM1::enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen, cons
     param = FreeRTOS_CLIGetParameter(pcCommandString, paramNum, &paramLen);
     if (param != nullptr && paramLen > 0) {
         if (!strncmp("pt", param, paramLen)) {
-            if (stream_ == nullptr) {
+            if (cliStream == nullptr) {
                 strncpy(pcWriteBuffer, "ERROR: input stream_ not set for Cat M1 passthrough\r\n", xWriteBufferLen - 1);
                 return pdFALSE;
             }
 
-            stream_->println("Entering Cat M1 passthrough mode, press ctrl-D to exit");
+            cliStream->println("Entering Cat M1 passthrough mode, press ctrl-D to exit");
 
             int ch;
             bool finish = false;
             while ( ! finish) {
-                if (stream_->available()) {
-                    while (stream_->available()) {
-                        ch = stream_->read();
+                if (cliStream->available()) {
+                    while (cliStream->available()) {
+                        ch = cliStream->read();
                         if (ch == 0x04) {
                             finish = true;
                             break;
@@ -48,7 +48,7 @@ BaseType_t CLICatM1::enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen, cons
 
                 if (LTE_Serial.available()) {
                     while (LTE_Serial.available()) {
-                        stream_->write(LTE_Serial.read());
+                        cliStream->write(LTE_Serial.read());
                     }
                 }
 

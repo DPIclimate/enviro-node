@@ -9,13 +9,13 @@
 #include "DeviceConfig.h"
 #include "cli/CLI.h"
 #include "peripherals.h"
+#include "mqtt_stack.h"
 
 #include "audio-feedback/tones.h"
 
 #define TAG "wombat"
 
 TCA9534 io_expander;
-CAT_M1 cat_m1;
 
 // Used by OpenOCD.
 static volatile int uxTopUsedPriority;
@@ -57,12 +57,15 @@ void setup() {
     }
     // ==== CAT-M1 Setup END ====
 
+    // This must be done before the config is loaded because the config file is
+    // a list of commands.
+    CLI::init();
+
     DeviceConfig& config = DeviceConfig::get();
     config.load();
+    config.dumpConfig(Serial);
 
     BluetoothServer::begin();
-
-    CLI::init();
 
     if (progBtnPressed) {
         progBtnPressed = false;
@@ -102,15 +105,34 @@ void setup() {
     // Not sure how useful this is, or how it will work. We don't want to
     // interrupt sensor reading or uplink processing and loop() will likely
     // never run if we do the usual ESP32 setup going to deep sleep mode.
+    // It is useful while developing because the node isn't going to sleep.
     attachInterrupt(PROG_BTN, progBtnISR, RISING);
 
     //initSensors();
 
-    sensorTask();
+    //sensorTask();
 
     // Flush log messages before sleeping;
     Serial.flush();
 
+//    ESP_LOGI(TAG, "Waiting for CatM1");
+//    while ( ! c1Ready());
+//    ESP_LOGI(TAG, "CatM1 responding");
+//
+//    if (mqInit()) {
+//        if (mqConnect()) {
+//            ESP_LOGI(TAG, "Connected");
+//            delay(2);
+//            std::string s("wombat/");
+//            s += config.node_id;
+//            mqPublish(s, "ABCDEF");
+//            mqDisconnect();
+//        }
+//    }
+//    unsigned long setupEnd = millis();
+//    uint64_t sleepTime = (mi * 1000000) - (setupEnd * 1000);
+//    esp_sleep_enable_timer_wakeup(sleepTime);
+//    esp_deep_sleep_start();
 }
 
 void loop() {

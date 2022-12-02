@@ -1,5 +1,7 @@
 #include "CAT_M1.h"
 
+CAT_M1 cat_m1;
+
 void CAT_M1::begin(TCA9534& io_ex){
 
     // Setup TCA9534
@@ -45,4 +47,3 @@ void CAT_M1::interface(){
         Serial.write(LTE_Serial.read());
     }
 }
-

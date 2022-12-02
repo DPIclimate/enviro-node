@@ -14,12 +14,15 @@ void BluetoothServer::begin(){
     // Construct server on device
     server = BLEDevice::createServer();
     // Set callbacks for server
-    server->setCallbacks(new BluetoothServerCallbacks);
+    server->setCallbacks(new BluetoothServerCallbacks());
 
     // Services and characteristics (callbacks incorporated)
-    (BluetoothUartService(server)); // UART communications
-    (BluetoothDeviceService(server)); // Device information
-    (BluetoothPowerService(server)); // Device power (battery & solar)
+    // It is ok these are created on the stack because
+    // the constructors do some heap allocations and pass those objects into the BLE
+    // stack. So the constructors are just side-effect generators and do not need to live on.
+    BluetoothUartService s1(server); // UART communications
+    BluetoothDeviceService s2(server); // Device information
+    BluetoothPowerService s3(server); // Device power (battery & solar)
 
     // Start server advertising
     server->getAdvertising()->start();

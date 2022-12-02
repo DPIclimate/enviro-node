@@ -13,6 +13,8 @@
 class CLISdi12 {
     static DPIClimate12 dpi12;
 public:
+    inline static const std::string cmd = "sdi12";
+
     static const uint8_t MAX_SDI12_RES_LEN = 255;
 
     static BaseType_t enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen,

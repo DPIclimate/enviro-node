@@ -32,6 +32,16 @@ public:
 
     void setMeasurementAndUplinkIntervals(const uint16_t measurement_seconds, const uint16_t uplink_seconds);
 
+    void setMqttHost(const std::string& host) { mqttHost = host; }
+    void setMqttPort(uint16_t port) { mqttPort = port; }
+    void setMqttUser(const std::string& user) { mqttUser = user; }
+    void setMqttPassword(const std::string& password) { mqttPassword = password; }
+
+    std::string& getMqttHost() { return mqttHost; }
+    uint16_t getMqttPort() { return mqttPort; }
+    std::string& getMqttUser() { return mqttUser; }
+    std::string& getMqttPassword() { return mqttPassword; }
+
     void dumpConfig(Stream& stream);
 
 private:
@@ -47,6 +57,11 @@ private:
     // How often to uplink the data, in seconds. This must be a multiple of
     // measure_interval.
     uint16_t uplink_interval;
+
+    std::string mqttHost;
+    uint16_t mqttPort;
+    std::string mqttUser;
+    std::string mqttPassword;
 };
 
 
