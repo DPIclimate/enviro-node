@@ -1,0 +1,16 @@
+{
+  "METER": {
+    "TER11": {
+      "read_cmds": [ "aC!" ],
+      "value_mask": "11",
+      "ignore_sr": false,
+      "labels": [ "VWC", "Temperature" ]
+    },
+    "TER12": {
+      "read_cmds": [ "aC!" ],
+      "value_mask": "110",
+      "ignore_sr": false,
+      "labels": [ "VWC", "Temperature" ]
+    }
+  }
+}

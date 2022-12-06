@@ -11,12 +11,15 @@
 #define TAG "config"
 
 constexpr const char* config_filename = "/config";
+constexpr const char* sdi12defn_filename = "/sdi12defn.json";
 
 #define BUF_SIZE 64
 static char buf[BUF_SIZE+1];
 static char rsp[BUF_SIZE+1];
 
 static RTC_DATA_ATTR uint32_t bootCount = 0;
+
+DynamicJsonDocument sdi12Defns(1024);
 
 DeviceConfig::DeviceConfig() : uplink_interval(60), measure_interval(15), mqttHost(), mqttUser(), mqttPassword() {
     ESP_LOGI(TAG, "Constructing instance");
@@ -68,7 +71,31 @@ void DeviceConfig::load() {
 
             f.close();
         } else {
-            ESP_LOGE(TAG, "Config file not found");
+            ESP_LOGE(TAG, "File not found: %s", config_filename);
+        }
+
+        if (SPIFFS.exists(sdi12defn_filename)) {
+            File f = SPIFFS.open(sdi12defn_filename, FILE_READ);
+            while (f.available() > 0) {
+                DeserializationError err = deserializeJson(sdi12Defns, f);
+                f.close();
+                if (err) {
+                    ESP_LOGE(TAG, "Failed to load SDI-12 sensor definitions: %s", err.f_str());
+                } else {
+                    std::string str;
+                    serializeJsonPretty(sdi12Defns, str);
+                    ESP_LOGI(TAG, "SDI-12 sensor definitions:\r\n%s\r\n", str.c_str());
+
+                    char *vendor = "METER";
+                    char *model = "TER12";
+                    const char *rc = sdi12Defns[vendor][model]["read_cmds"][0];
+                    const char *l = sdi12Defns[vendor][model]["labels"][0];
+
+                    ESP_LOGI(TAG, "%s, %s", rc, l);
+                }
+            }
+        } else {
+            ESP_LOGE(TAG, "File not found: %s", sdi12defn_filename);
         }
     } else {
         ESP_LOGE(TAG, "Failed to initialise SPIFFS");
@@ -123,3 +150,5 @@ void DeviceConfig::setMeasurementAndUplinkIntervals(const uint16_t measurement_s
     measure_interval = measurement_seconds;
     uplink_interval = uplink_seconds;
 }
+
+const JsonDocument& DeviceConfig::getSDI12Defns(void) { return sdi12Defns; }

@@ -47,7 +47,7 @@ BaseType_t CLISdi12::enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen,
                 if (len > 0) {
                     ESP_LOGD(TAG, "[%c] -> [%s]", addr, response);
                     if (! response_buffer_.isEmpty()) {
-                        response_buffer_.print(',');
+                        response_buffer_.print("\r\n");
                     }
 
                     response_buffer_.print(response);
@@ -56,10 +56,11 @@ BaseType_t CLISdi12::enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen,
                 }
             }
 
-            response_buffer_.write('\n');
+            response_buffer_.print("\r\nOK\r\n");
+
             // 113METER   TER12 201T12-00082937
             // 1+1807.82+21.0+1
-            // 213METER   TER12 301T11-00019674
+            // 213METER   TER11 301T11-00019674
             // 2+1820.29+20.9
 
             sdi12.end();
@@ -76,22 +77,31 @@ BaseType_t CLISdi12::enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen,
 
                 sdi12.sendCommand(sdi12_cmd);
 
-                delay(1000);
+                int ch = -1;
+                if (waitForChar(sdi12, 1500) != -1) {
+                    while (true) {
+                        while (sdi12.available()) {
+                            ch = sdi12.read();
+                            response_buffer_.write(ch);
+                        }
 
-                int ch;
-                while (sdi12.available()) {
-                    ch = sdi12.read();
-                    response_buffer_.write(ch);
+                        if (ch == '\n' || waitForChar(sdi12, 50) < 0) {
+                            break;
+                        }
+                    }
+
+                    sdi12.end();
                 }
 
-                sdi12.end();
-
-                response_buffer_.write('\n');
+                if (ch != '\n') {
+                    response_buffer_.print("\r\n");
+                }
+                response_buffer_.print("OK\r\n");
                 return pdTRUE;
             }
         }
     }
 
-    strncpy(pcWriteBuffer, "Syntax error\r\n", xWriteBufferLen - 1);
+    strncpy(pcWriteBuffer, "ERROR\r\n", xWriteBufferLen - 1);
     return pdFALSE;
 }

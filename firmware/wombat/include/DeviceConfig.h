@@ -2,6 +2,7 @@
 #define WOMBAT_DEVICECONFIG_H
 
 #include <Arduino.h>
+#include <ArduinoJSON.h>
 
 class DeviceConfig {
 public:
@@ -44,6 +45,8 @@ public:
 
     void dumpConfig(Stream& stream);
 
+    const JsonDocument& getSDI12Defns(void);
+
 private:
     DeviceConfig();
 
@@ -62,6 +65,8 @@ private:
     uint16_t mqttPort;
     std::string mqttUser;
     std::string mqttPassword;
+
+    //DynamicJsonDocument sdi12Defns;
 };
 
 

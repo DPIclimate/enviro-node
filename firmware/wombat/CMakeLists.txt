@@ -30,4 +30,4 @@ add_custom_target(
     WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
 )
 
-add_executable(Z_DUMMY_TARGET ${SRC_LIST} src/mqtt_stack.cpp include/mqtt_stack.h src/cli/device_config/config_cli.cpp include/cli/device_config/config_cli.h)
+add_executable(Z_DUMMY_TARGET ${SRC_LIST})
