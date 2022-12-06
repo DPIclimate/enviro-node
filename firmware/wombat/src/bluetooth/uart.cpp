@@ -3,7 +3,7 @@
 #define TAG "btuart"
 
 char rx_buf[256];
-constexpr size_t BT_WRITE_BUF_LEN = 1024;
+constexpr size_t BT_WRITE_BUF_LEN = 512;
 char bluetooth_write_buf[BT_WRITE_BUF_LEN+1];
 
 BluetoothUartService::BluetoothUartService(BLEServer *server) {
@@ -11,7 +11,7 @@ BluetoothUartService::BluetoothUartService(BLEServer *server) {
 
     // TX characteristic
     BLECharacteristic* uart_tx_char = uart_service->createCharacteristic(
-            UART_CHAR_TX_UUID, BLECharacteristic::PROPERTY_NOTIFY);
+            UART_CHAR_TX_UUID, BLECharacteristic::PROPERTY_READ || BLECharacteristic::PROPERTY_NOTIFY);
     uart_tx_char->addDescriptor(new BLE2902());
 
     // RX characteristic

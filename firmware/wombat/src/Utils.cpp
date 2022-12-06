@@ -1,10 +1,8 @@
-//
-// Created by David Taylor on 15/11/2022.
-//
-
 #include <Arduino.h>
 #include "Utils.h"
 #include <string.h>
+#include "DeviceConfig.h"
+#include "TCA9534.h"
 
 #define TAG "utils"
 
@@ -122,4 +120,37 @@ int waitForChar(Stream& stream, uint32_t timeout) {
     ESP_LOGD(TAG, "Delta from start of read: %lu ms, UART available = %d", (end - start), a);
 
     return a > 0 ? a : -1;
+}
+
+JsonObjectConst getSensorDefn(const char* vendor, const char* model) {
+    const JsonDocument& sdi12Defns = DeviceConfig::get().getSDI12Defns();
+    JsonObjectConst obj = sdi12Defns[vendor][model];
+    return obj;
+}
+
+JsonObjectConst getSensorDefn(const sensor_info& info) {
+    char vendor[LEN_VENDOR+1];
+    char model[LEN_MODEL+1];
+
+    memset(vendor, 0, sizeof(vendor));
+    const char *ivptr = reinterpret_cast<const char *>(info.vendor);
+    strncpy(vendor, ivptr, LEN_VENDOR);
+    stripTrailingWS(vendor);
+    memset(model, 0, sizeof(model));
+    const char *imptr = reinterpret_cast<const char *>(info.model);
+    strncpy(model, imptr, LEN_MODEL);
+    stripTrailingWS(model);
+
+    return getSensorDefn(vendor, model);
+}
+
+extern TCA9534 io_expander;
+
+void enable12V(void) {
+    io_expander.output(1, TCA9534::Level::H);
+    delay(500);
+}
+
+void disable12V(void) {
+    io_expander.output(1, TCA9534::Level::L);
 }

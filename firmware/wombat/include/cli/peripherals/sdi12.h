@@ -11,7 +11,6 @@
 #include "Utils.h"
 
 class CLISdi12 {
-    static DPIClimate12 dpi12;
 public:
     inline static const std::string cmd = "sdi12";
 

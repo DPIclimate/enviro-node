@@ -1,8 +1,8 @@
 #include "cli/CLI.h"
 
 Stream* cliStream = nullptr;
-static char cmd[CLI::MAX_CLI_CMD_LEN];
-static char msg[CLI::MAX_CLI_MSG_LEN];
+static char cmd[CLI::MAX_CLI_CMD_LEN+1];
+static char msg[CLI::MAX_CLI_MSG_LEN+1];
 
 static const CLI_Command_Definition_t configCmd = {
         CLIConfig::cmd.c_str(),
@@ -80,10 +80,13 @@ void CLI::repl(Stream& io) {
 
             BaseType_t rc = pdTRUE;
             while (rc != pdFALSE) {
+                memset(msg, 0, sizeof(msg));
                 rc = FreeRTOS_CLIProcessCommand(cmd, msg, MAX_CLI_MSG_LEN);
-                Serial.print(msg);
-                if (BluetoothServer::is_device_connected()){
-                    BluetoothServer::notify_device(msg);
+                if (msg[0] != 0) {
+                    io.print(msg);
+                    if (BluetoothServer::is_device_connected()) {
+                        BluetoothServer::notify_device(msg);
+                    }
                 }
             }
         }

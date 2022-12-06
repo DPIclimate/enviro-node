@@ -110,14 +110,10 @@ void setup() {
 
     //initSensors();
 
-    //sensorTask();
-
-    // Flush log messages before sleeping;
-    Serial.flush();
-
-//    ESP_LOGI(TAG, "Waiting for CatM1");
-//    while ( ! c1Ready());
-//    ESP_LOGI(TAG, "CatM1 responding");
+    ESP_LOGI(TAG, "Waiting for CatM1");
+    while ( ! c1Ready());
+    ESP_LOGI(TAG, "CatM1 responding");
+    c1SetSystemTimeFromModem();
 //
 //    if (mqInit()) {
 //        if (mqConnect()) {
@@ -129,6 +125,11 @@ void setup() {
 //            mqDisconnect();
 //        }
 //    }
+    //sensorTask();
+
+    // Flush log messages before sleeping;
+    Serial.flush();
+
 //    unsigned long setupEnd = millis();
 //    uint64_t sleepTime = (mi * 1000000) - (setupEnd * 1000);
 //    esp_sleep_enable_timer_wakeup(sleepTime);

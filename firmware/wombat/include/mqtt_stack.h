@@ -2,6 +2,7 @@
 #define WOMBAT_MQTT_STACK_H
 
 bool c1Ready(void);
+bool c1SetSystemTimeFromModem(void);
 
 bool mqInit(void);
 bool mqConnect(void);
