@@ -388,7 +388,7 @@
       "idf": "",
       "netlist": "",
       "specctra_dsn": "",
-      "step": "",
+      "step": "motherboard-mini.step",
       "vrml": ""
     },
     "page_layout_descr_file": ""
