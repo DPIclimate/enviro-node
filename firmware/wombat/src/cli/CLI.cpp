@@ -27,7 +27,7 @@ static const CLI_Command_Definition_t sdi12Cmd = {
 
 static const CLI_Command_Definition_t catM1Cmd = {
         CLICatM1::cmd.c_str(),
-        "catm1:\r\n Configure and interface with Cat M1 modem\r\n",
+        "c1:\r\n Configure and interface with Cat M1 modem\r\n",
         CLICatM1::enter_cli,
         -1
 };

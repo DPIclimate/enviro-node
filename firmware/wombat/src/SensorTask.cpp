@@ -1,7 +1,6 @@
 #include <Arduino.h>
 #include "SensorTask.h"
 #include "DeviceConfig.h"
-#include "TCA9534.h"
 #include "Utils.h"
 #include <esp_log.h>
 
@@ -9,10 +8,9 @@
 
 #include <dpiclimate-12.h>
 
-
 #define TAG "sensors"
 
-#define SDI12_DATA_PIN  GPIO_NUM_27
+#define SDI12_DATA_PIN  GPIO_NUM_21
 
 SDI12 sdi12(SDI12_DATA_PIN);
 DPIClimate12 dpi12(sdi12);
@@ -69,6 +67,7 @@ void sensorTask(void) {
             }
 
             JsonArrayConst labels = s["labels"];
+            char unknownLabel[] = { 'V', 0, 0};
 
             for (size_t a = 0; a < read_cmds.size(); a++) {
                 const char *crc = read_cmds[a];
@@ -112,14 +111,32 @@ void sensorTask(void) {
                 }
             }
 
+            DynamicJsonDocument msg(2048);
+
+            msg["timestamp"] = iso8601();
+            JsonArray timeseriesArray = msg.createNestedArray("timeseries");
+
             for (int v = 0; v < values.size(); v++) {
+                JsonObject tsEntry = timeseriesArray.createNestedObject();
+
                 JsonVariantConst label = labels[v];
                 if (label) {
-                    ESP_LOGI(TAG, "%d %s: %.02f", v, label.as<String>().c_str(), values.at(v));
+                    //ESP_LOGI(TAG, "%d %s: %.02f", v, label.as<String>().c_str(), values.at(v));
+                    tsEntry["name"] = label;
+
                 } else {
-                    ESP_LOGI(TAG, "%d: %.02f", v, values.at(v));
+                    //ESP_LOGI(TAG, "%d: %.02f", v, values.at(v));
+                    unknownLabel[1] = '0' + v;
+                    tsEntry["name"] = unknownLabel;
                 }
+
+                float value = values.at(v);
+                tsEntry["value"] = value;
             }
+
+            std::string str;
+            serializeJsonPretty(msg, str);
+            ESP_LOGI(TAG, "Msg:\r\n%s\r\n", str.c_str());
 
             haveReading = true;
         }
@@ -129,7 +146,9 @@ void sensorTask(void) {
             int res = dpi12.do_measure(sensors.sensors[i].address);
             if (res > 0) {
                 for (uint8_t v = 0; v < res; v++) {
-                    ESP_LOGI(TAG, "Value %u: %.2f", v, dpi12.get_value(v).value);
+                    float value = dpi12.get_value(v).value;
+                    values.push_back(value);
+                    ESP_LOGI(TAG, "Value %u: %.2f", v, value);
                 }
             } else {
                 ESP_LOGE(TAG, "Failed to read sensor");

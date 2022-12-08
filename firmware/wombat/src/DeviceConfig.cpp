@@ -19,7 +19,7 @@ static char rsp[BUF_SIZE+1];
 
 static RTC_DATA_ATTR uint32_t bootCount = 0;
 
-DynamicJsonDocument sdi12Defns(1024);
+DynamicJsonDocument sdi12Defns(2024);
 
 DeviceConfig::DeviceConfig() : uplink_interval(60), measure_interval(15), mqttHost(), mqttUser(), mqttPassword() {
     ESP_LOGI(TAG, "Constructing instance");

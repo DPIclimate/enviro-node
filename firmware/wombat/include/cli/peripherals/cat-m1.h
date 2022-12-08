@@ -10,7 +10,7 @@
 
 class CLICatM1 {
 public:
-    inline static const std::string cmd = "catm1";
+    inline static const std::string cmd = "c1";
 
     static BaseType_t enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen,
                          const char *pcCommandString);

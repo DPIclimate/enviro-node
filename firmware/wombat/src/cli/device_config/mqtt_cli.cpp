@@ -33,6 +33,12 @@ BaseType_t CLIMQTT::enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen,
     // More in the buffer?
     if (response_buffer_.available()) {
         memset(pcWriteBuffer, 0, xWriteBufferLen);
+        if (response_buffer_.length() < xWriteBufferLen) {
+            strncpy(pcWriteBuffer, response_buffer_.c_str(), response_buffer_.length());
+            response_buffer_.clear();
+            return pdFALSE;
+        }
+
         size_t len = response_buffer_.readBytesUntil('\n', pcWriteBuffer, xWriteBufferLen - 1);
 
         // readBytesUntil strips the delimiter, so put the '\n' back in.

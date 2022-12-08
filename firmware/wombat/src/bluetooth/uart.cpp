@@ -11,7 +11,7 @@ BluetoothUartService::BluetoothUartService(BLEServer *server) {
 
     // TX characteristic
     BLECharacteristic* uart_tx_char = uart_service->createCharacteristic(
-            UART_CHAR_TX_UUID, BLECharacteristic::PROPERTY_READ || BLECharacteristic::PROPERTY_NOTIFY);
+            UART_CHAR_TX_UUID, BLECharacteristic::PROPERTY_READ | BLECharacteristic::PROPERTY_NOTIFY);
     uart_tx_char->addDescriptor(new BLE2902());
 
     // RX characteristic

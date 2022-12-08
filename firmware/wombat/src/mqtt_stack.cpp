@@ -4,6 +4,12 @@
 
 #define TAG "mqtt_stack"
 
+/*
+Fix UART speed to 115200. Needs AT&W to save the settng.
+AT+IPR=115200
+
+
+ */
 #define MAX_RSP 64
 char rsp[MAX_RSP + 1];
 
@@ -40,7 +46,12 @@ bool c1Ready(void) {
     ESP_LOGI(TAG, "c1Ready");
 
     LTE_Serial.print("AT\r");
-    delay(10);
+    int ch = waitForChar(LTE_Serial, 250);
+    if (ch < 1) {
+        ESP_LOGI(TAG, "timeout");
+        return false;
+    }
+
     size_t len = getResponse();
     if (len > 0) {
         ESP_LOGI(TAG, "[%s]", rsp);
@@ -128,33 +139,54 @@ bool c1SetSystemTimeFromModem(void) {
         return false;
     }
 
-    // TODO: Very sketchy, add some sanity checks.
+    struct tm t;
+    memset(&t, 0, sizeof(t));
 
+    // TODO: Very sketchy, add some sanity checks.
     // +CCLK: "22/12/06,04:58:09"
     c++;
     *(c+2) = 0;
-    int yy = atoi(c) * 100;
+    // tm_year is years since 1900, and it is now 2022. So 22 should be 122 years. The modem
+    // defaults to year = 80 (presumably meaning 1980) but as that is in the past it may just
+    // as well be interpreted as 180 years past 1900, ie 2080.
+    t.tm_year = atoi(c);
+    t.tm_year += 100;
+
+    // tm_mon is 0 - 11.
+    c += 3;
+    *(c+2) = 0;
+    t.tm_mon = atoi(c) - 1;
 
     c += 3;
     *(c+2) = 0;
-    int mm = atoi(c);
+    t.tm_mday = atoi(c);
 
     c += 3;
     *(c+2) = 0;
-    int dd = atoi(c);
+    t.tm_hour = atoi(c);
 
     c += 3;
     *(c+2) = 0;
-    int hh = atoi(c);
+    t.tm_min = atoi(c);
 
     c += 3;
     *(c+2) = 0;
-    int mins = atoi(c);
+    t.tm_sec = atoi(c);
 
-    c += 3;
-    *(c+2) = 0;
-    int ss = atoi(c);
+    ESP_LOGI(TAG, "Time read from modem: %s", asctime(&t));
 
-    ESP_LOGI(TAG, "Time is %d/%02d/%02dT%02d:%02d:%02dZ", yy, mm, dd, hh, mins, ss);
+    time_t time = mktime(&t);
+    struct timeval tv;
+    struct timezone tz;
+
+    tv.tv_sec = time;
+    tv.tv_usec = 0;
+
+    // The modem reports, and the node runs on, UTC.
+    tz.tz_minuteswest = 0;
+    tz.tz_dsttime = 0;
+
+    settimeofday(&tv, &tz);
+
     return true;
 }

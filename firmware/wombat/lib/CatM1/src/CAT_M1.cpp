@@ -6,33 +6,30 @@ void CAT_M1::begin(TCA9534& io_ex){
 
     // Setup TCA9534
     io_expander = &io_ex;
-    io_expander->config(LTE_PWR_SUPPLY_PIN, TCA9534::Config::OUT);
-    io_expander->config(LTE_PWR_TOGGLE_PIN, TCA9534::Config::OUT);
+    // The & 0x7F is to mask out the MSB that tells our version of digitalWrite that the
+    // pin is on the IO expander.
+    io_expander->config(LTE_PWR_SUPPLY_PIN & 0x7F, TCA9534::Config::OUT);
+    io_expander->config(LTE_PWR_TOGGLE_PIN & 0x7F, TCA9534::Config::OUT);
 
     power_supply(true);
     device_on();
-
 }
 
-void CAT_M1::power_supply(bool state){
-    if(state){
-        io_expander->output(LTE_PWR_SUPPLY_PIN, TCA9534::Level::H);
-    } else {
-        io_expander->output(LTE_PWR_SUPPLY_PIN, TCA9534::Level::L);
-    }
+void CAT_M1::power_supply(bool state) {
+    digitalWrite(LTE_PWR_SUPPLY_PIN, state ? HIGH : LOW);
     delay(10); // May not be needed
 }
 
 void CAT_M1::device_on(){
-    io_expander->output(LTE_PWR_TOGGLE_PIN, TCA9534::Level::H);
+    digitalWrite(LTE_PWR_TOGGLE_PIN, HIGH);
     delay(200);
-    io_expander->output(LTE_PWR_TOGGLE_PIN, TCA9534::Level::L);
+    digitalWrite(LTE_PWR_TOGGLE_PIN, LOW);
 }
 
 void CAT_M1::device_restart(){
-    io_expander->output(LTE_PWR_TOGGLE_PIN, TCA9534::Level::H);
+    digitalWrite(LTE_PWR_TOGGLE_PIN, HIGH);
     delay(10000);
-    io_expander->output(LTE_PWR_TOGGLE_PIN, TCA9534::Level::L);
+    digitalWrite(LTE_PWR_TOGGLE_PIN, LOW);
 }
 
 void CAT_M1::interface(){

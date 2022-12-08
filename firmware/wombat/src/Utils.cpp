@@ -147,10 +147,27 @@ JsonObjectConst getSensorDefn(const sensor_info& info) {
 extern TCA9534 io_expander;
 
 void enable12V(void) {
-    io_expander.output(1, TCA9534::Level::H);
+    io_expander.output(6, TCA9534::Level::H);
     delay(500);
 }
 
 void disable12V(void) {
-    io_expander.output(1, TCA9534::Level::L);
+    io_expander.output(6, TCA9534::Level::L);
+}
+
+// yyyy-mm-ddThh:mm:ssZ
+static char iso8601_buf[24];
+
+const char* iso8601(void) {
+    memset(iso8601_buf, 0, sizeof(iso8601_buf));
+
+    struct tm t;
+    memset(&t, 0, sizeof(t));
+    time_t now;
+    time(&now);
+    gmtime_r(&now, &t);
+
+    snprintf(iso8601_buf, sizeof(iso8601_buf)-1, "%04d-%02d-%02dT%02d:%02d:%02dZ", t.tm_year+1900, t.tm_mon, t.tm_mday, t.tm_hour, t.tm_min, t.tm_sec);
+
+    return iso8601_buf;
 }

@@ -1,4 +1,6 @@
 #include "cli/peripherals/cat-m1.h"
+#include "CAT_M1.h"
+#include "Utils.h"
 
 static StreamString response_buffer_;
 extern Stream *cliStream;
@@ -11,6 +13,12 @@ BaseType_t CLICatM1::enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen, cons
     // More in the buffer?
     if (response_buffer_.available()) {
         memset(pcWriteBuffer, 0, xWriteBufferLen);
+        if (response_buffer_.length() < xWriteBufferLen) {
+            strncpy(pcWriteBuffer, response_buffer_.c_str(), response_buffer_.length());
+            response_buffer_.clear();
+            return pdFALSE;
+        }
+
         size_t len = response_buffer_.readBytesUntil('\n', pcWriteBuffer, xWriteBufferLen-1);
 
         // readBytesUntil strips the delimiter, so put the '\n' back in.
@@ -58,7 +66,44 @@ BaseType_t CLICatM1::enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen, cons
             strncpy(pcWriteBuffer, "Exited Cat M1 passthrough mode\r\n", xWriteBufferLen - 1);
             return pdFALSE;
         }
+
+        if (!strncmp("pwr", param, paramLen)) {
+            const char* pwrState = FreeRTOS_CLIGetParameter(pcCommandString, 2, &paramLen);
+            if(pwrState != nullptr && paramLen > 0) {
+                cat_m1.power_supply(*pwrState == '1');
+            }
+
+            snprintf(pcWriteBuffer, xWriteBufferLen-1, "\r\nOK\r\n");
+            return pdFALSE;
+        }
+
+        if (!strncmp("on", param, paramLen)) {
+            cat_m1.device_on();
+            snprintf(pcWriteBuffer, xWriteBufferLen-1, "\r\nOK\r\n");
+            return pdFALSE;
+        }
+
+        if (!strncmp("restart", param, paramLen)) {
+            cat_m1.device_restart();
+            snprintf(pcWriteBuffer, xWriteBufferLen-1, "\r\nOK\r\n");
+            return pdFALSE;
+        }
+
+        if (!strncmp("ok", param, paramLen)) {
+            LTE_Serial.print("AT\r");
+            int ch = waitForChar(LTE_Serial, 250);
+            if (ch < 1) {
+                response_buffer_.print("\r\nERROR: Timeout\r\n");
+            } else {
+                while (LTE_Serial.available()) {
+                    response_buffer_.write(LTE_Serial.read());
+                }
+                response_buffer_.print("\r\nOK\r\n");
+            }
+            return pdTRUE;
+        }
     }
 
+    snprintf(pcWriteBuffer, xWriteBufferLen-1, "\r\nERROR: Invalid command\r\n");
     return pdFALSE;
 }

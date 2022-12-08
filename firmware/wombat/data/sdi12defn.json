@@ -11,8 +11,8 @@
     },
     "ATM41": {
       "read_cmds": [ "aC!" ],
-      "value_mask": "111011110110000000",
-      "labels": [ "Solar", "Precipitation", "Strikes", "WindSpeed", "WindDirection", "WindGustSpeed", "AirTemperature", "AirPressure", "RH" ]
+      "value_mask": "111011111111000000",
+      "labels": [ "Solar", "Precipitation", "Strikes", "WindSpeed", "WindDirection", "WindGustSpeed", "AirTemperature", "VaporPressure","AirPressure", "RH", "HumiditySensorTemperature" ]
     }
   },
   "EP100GL-": {
