@@ -111,3 +111,50 @@ int mqPublish(const std::string topic, const std::string msg) {
 
     return 0;
 }
+
+bool c1SetSystemTimeFromModem(void) {
+    size_t len = snprintf(buf, MAX_BUF, "AT+CCLK?\r");
+    buf[len] = 0;
+    ESP_LOGI(TAG, "> [%s]", buf);
+    LTE_Serial.print(buf);
+    len = getResponse();
+    ESP_LOGI(TAG, "< [%s] [%u]", rsp, len);
+    char *c = rsp;
+    while (*c != '"' && c < rsp+len) {
+        c++;
+    }
+
+    if (*c != '"') {
+        return false;
+    }
+
+    // TODO: Very sketchy, add some sanity checks.
+
+    // +CCLK: "22/12/06,04:58:09"
+    c++;
+    *(c+2) = 0;
+    int yy = atoi(c) * 100;
+
+    c += 3;
+    *(c+2) = 0;
+    int mm = atoi(c);
+
+    c += 3;
+    *(c+2) = 0;
+    int dd = atoi(c);
+
+    c += 3;
+    *(c+2) = 0;
+    int hh = atoi(c);
+
+    c += 3;
+    *(c+2) = 0;
+    int mins = atoi(c);
+
+    c += 3;
+    *(c+2) = 0;
+    int ss = atoi(c);
+
+    ESP_LOGI(TAG, "Time is %d/%02d/%02dT%02d:%02d:%02dZ", yy, mm, dd, hh, mins, ss);
+    return true;
+}

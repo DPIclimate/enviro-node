@@ -85,13 +85,6 @@ void DeviceConfig::load() {
                     std::string str;
                     serializeJsonPretty(sdi12Defns, str);
                     ESP_LOGI(TAG, "SDI-12 sensor definitions:\r\n%s\r\n", str.c_str());
-
-                    char *vendor = "METER";
-                    char *model = "TER12";
-                    const char *rc = sdi12Defns[vendor][model]["read_cmds"][0];
-                    const char *l = sdi12Defns[vendor][model]["labels"][0];
-
-                    ESP_LOGI(TAG, "%s, %s", rc, l);
                 }
             }
         } else {

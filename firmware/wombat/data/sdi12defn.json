@@ -2,15 +2,24 @@
   "METER": {
     "TER11": {
       "read_cmds": [ "aC!" ],
-      "value_mask": "11",
-      "ignore_sr": false,
       "labels": [ "VWC", "Temperature" ]
     },
     "TER12": {
       "read_cmds": [ "aC!" ],
       "value_mask": "110",
-      "ignore_sr": false,
       "labels": [ "VWC", "Temperature" ]
+    },
+    "ATM41": {
+      "read_cmds": [ "aC!" ],
+      "value_mask": "111011110110000000",
+      "labels": [ "Solar", "Precipitation", "Strikes", "WindSpeed", "WindDirection", "WindGustSpeed", "AirTemperature", "AirPressure", "RH" ]
+    }
+  },
+  "EP100GL-": {
+    "04 012": {
+      "read_cmds": [ "aC3!", "aC2!" ],
+      "ignore_sr": true,
+      "labels": [ "VWC_1", "VWC_2", "VWC_3", "VWC_4", "Temperature_1", "Temperature_2", "Temperature_3", "Temperature_4" ]
     }
   }
 }
