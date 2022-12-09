@@ -1,12 +1,10 @@
 #ifndef WOMBAT_MQTT_STACK_H
 #define WOMBAT_MQTT_STACK_H
 
-bool c1Ready(void);
 bool c1SetSystemTimeFromModem(void);
 
-bool mqInit(void);
-bool mqConnect(void);
-void mqDisconnect(void);
-int mqPublish(const std::string topic, const std::string msg);
+bool mqtt_login(void);
+void mqtt_logout(void);
+void mqtt_publish(String& topic, String& msg);
 
 #endif //WOMBAT_MQTT_STACK_H

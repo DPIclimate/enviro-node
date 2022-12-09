@@ -2,6 +2,7 @@
 #include "SensorTask.h"
 #include "DeviceConfig.h"
 #include "Utils.h"
+#include "mqtt_stack.h"
 #include <esp_log.h>
 
 #include <freertos/FreeRTOS.h>
@@ -16,6 +17,10 @@ SDI12 sdi12(SDI12_DATA_PIN);
 DPIClimate12 dpi12(sdi12);
 
 sensor_list sensors;
+
+inline static double round2(double value) {
+    return (int)(value * 100 + 0.5) / 100.0;
+}
 
 void initSensors(void) {
     enable12V();
@@ -41,12 +46,19 @@ void sensorTask(void) {
 
     const JsonDocument& sdi12Defns = DeviceConfig::get().getSDI12Defns();
 
-    for (size_t i = 0; i < sensors.count; i++) {
-        // Continuous and custom commands are not supported yet. CRCs are not supported yet.
+    DynamicJsonDocument msg(2048);
 
+    msg["timestamp"] = iso8601();
+    JsonObject source_ids = msg.createNestedObject();
+    source_ids["serial_no"] = DeviceConfig::get().node_id;
+    JsonArray timeseries_array = msg.createNestedArray("timeseries");
+
+    char unknown_label[] = {'V', 0, 0};
+
+    for (size_t sensor_idx = 0; sensor_idx < sensors.count; sensor_idx++) {
         // Will be true if the sensor is read using information from the sensor definitions. If that fails
         // and this is false after the attempt, then a standard measure command will be issued as a fall-back.
-        bool haveReading = false;
+        bool have_reading = false;
 
         // If the sensor definition gives a C command this will be true.
         bool is_concurrent = false;
@@ -55,22 +67,17 @@ void sensorTask(void) {
         // will be set to true to indicate an 'additional' measure or concurrent command is used.
         bool is_additional = false;
 
-        std::vector<float> values;
-        JsonObjectConst s = getSensorDefn(sensors.sensors[i]);
+        std::vector<float> plain_values;
+
+        JsonObjectConst s = getSensorDefn(sensors.sensors[sensor_idx]);
         if (s) {
             JsonArrayConst read_cmds = s["read_cmds"];
             const char* value_mask = s["value_mask"];
-            if (value_mask != nullptr) {
-                ESP_LOGI(TAG, "value_mask: %s", value_mask);
-            } else {
-                ESP_LOGI(TAG, "No value mask");
-            }
 
-            JsonArrayConst labels = s["labels"];
-            char unknownLabel[] = { 'V', 0, 0};
-
-            for (size_t a = 0; a < read_cmds.size(); a++) {
-                const char *crc = read_cmds[a];
+            // This loop issues all the read and data commands for the sensor, and gathers the values
+            // that pass the value mask into the values vector.
+            for (size_t cmd_idx = 0; cmd_idx < read_cmds.size(); cmd_idx++) {
+                const char *crc = read_cmds[cmd_idx];
 
                 is_concurrent = crc[1] == 'C';
                 is_additional = crc[2] > '0' && crc[2] <= '9';
@@ -80,80 +87,92 @@ void sensorTask(void) {
                 if (is_concurrent) {
                     if (is_additional) {
                         ESP_LOGI(TAG, "Concurrent (additional)");
-                        num_values = dpi12.do_additional_concurrent(sensors.sensors[i].address, crc[2]);
+                        num_values = dpi12.do_additional_concurrent(sensors.sensors[sensor_idx].address, crc[2]);
                     } else {
                         ESP_LOGI(TAG, "Concurrent");
-                        num_values = dpi12.do_concurrent(sensors.sensors[i].address);
+                        num_values = dpi12.do_concurrent(sensors.sensors[sensor_idx].address);
                     }
                 } else {
                     bool wait_full_time = s["ignore_sr"];
                     if (is_additional) {
                         ESP_LOGI(TAG, "Measure (additional), wait_full_time: %d", wait_full_time);
-                        num_values = dpi12.do_additional_measure(sensors.sensors[i].address, crc[2]);
+                        num_values = dpi12.do_additional_measure(sensors.sensors[sensor_idx].address, crc[2]);
                     } else {
                         ESP_LOGI(TAG, "Measure, wait_full_time: %d", wait_full_time);
-                        num_values = dpi12.do_measure(sensors.sensors[i].address, wait_full_time);
+                        num_values = dpi12.do_measure(sensors.sensors[sensor_idx].address, wait_full_time);
                     }
                 }
 
-                for (int v = 0; v < num_values; v++) {
-                    float value = dpi12.get_value(v).value;
+                for (int value_idx = 0; value_idx < num_values; value_idx++) {
+                    float value = dpi12.get_value(value_idx).value;
                     char mask = '1'; // Default to including the value.
-                    if (value_mask != nullptr && strnlen(value_mask, num_values) >= v+1) {
-                        mask = value_mask[v];
+                    if (value_mask != nullptr && strnlen(value_mask, num_values) >= value_idx + 1) {
+                        mask = value_mask[value_idx];
                     }
 
                     if (mask == '1') {
-                        values.push_back(value);
+                        // FIXME: This is an attempt to stop the floats in the JSON having so many
+                        // FIXME: digits after the decimal point. It is not working yet.
+                        plain_values.push_back(round2(value));
                     } else {
-                        ESP_LOGI(TAG, "Skipping value %d due to value mask", v);
+                        ESP_LOGI(TAG, "Skipping value %d due to value mask", value_idx);
                     }
                 }
             }
 
-            DynamicJsonDocument msg(2048);
+            JsonArrayConst labels = s["labels"];
 
-            msg["timestamp"] = iso8601();
-            JsonArray timeseriesArray = msg.createNestedArray("timeseries");
-
-            for (int v = 0; v < values.size(); v++) {
-                JsonObject tsEntry = timeseriesArray.createNestedObject();
-
-                JsonVariantConst label = labels[v];
+            // This loop runs through the kept values, finds or generates a label for them, and
+            // appends them to the timeSeries array of the JSON document.
+            for (int value_idx = 0; value_idx < plain_values.size(); value_idx++) {
+                JsonObject ts_entry = timeseries_array.createNestedObject();
+                JsonVariantConst label = labels[value_idx];
                 if (label) {
-                    //ESP_LOGI(TAG, "%d %s: %.02f", v, label.as<String>().c_str(), values.at(v));
-                    tsEntry["name"] = label;
-
+                    String generated_label(sensors.sensors[sensor_idx].address - '0');
+                    generated_label += "_";
+                    generated_label += label.as<String>();
+                    ts_entry["name"] = generated_label;
                 } else {
-                    //ESP_LOGI(TAG, "%d: %.02f", v, values.at(v));
-                    unknownLabel[1] = '0' + v;
-                    tsEntry["name"] = unknownLabel;
+                    unknown_label[1] = '0' + value_idx;
+                    ts_entry["name"] = unknown_label;
                 }
 
-                float value = values.at(v);
-                tsEntry["value"] = value;
+                ts_entry["value"] = plain_values.at(value_idx);
             }
 
-            std::string str;
-            serializeJsonPretty(msg, str);
-            ESP_LOGI(TAG, "Msg:\r\n%s\r\n", str.c_str());
-
-            haveReading = true;
+            have_reading = true;
         }
 
-        if ( ! haveReading) {
+        if ( ! have_reading) {
             ESP_LOGI(TAG, "No sensor definition found, performing fallback plain measure command.");
-            int res = dpi12.do_measure(sensors.sensors[i].address);
+            int res = dpi12.do_measure(sensors.sensors[sensor_idx].address);
             if (res > 0) {
-                for (uint8_t v = 0; v < res; v++) {
-                    float value = dpi12.get_value(v).value;
-                    values.push_back(value);
-                    ESP_LOGI(TAG, "Value %u: %.2f", v, value);
+                for (uint8_t value_idx = 0; value_idx < res; value_idx++) {
+                    JsonObject ts_entry = timeseries_array.createNestedObject();
+                    unknown_label[1] = '0' + value_idx;
+                    ts_entry["name"] = unknown_label;
+                    ts_entry["value"] = dpi12.get_value(value_idx).value;
                 }
             } else {
                 ESP_LOGE(TAG, "Failed to read sensor");
             }
         }
+
+        // FIXME: This delay is here to try and avoid noise on the SDI-12 line of the current
+        // FIXME: revision of the board. It was not necessary for the previous revision.
+        delay(1000);
+    }
+
+    String str;
+    serializeJson(msg, str);
+    ESP_LOGI(TAG, "Msg:\r\n%s\r\n", str.c_str());
+
+    bool mqtt_ok = mqtt_login();
+    String mqtt_topic("wombat");
+
+    if (mqtt_ok) {
+        mqtt_publish(mqtt_topic, str);
+        mqtt_logout();
     }
 
     sdi12.end();

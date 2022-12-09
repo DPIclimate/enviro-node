@@ -148,7 +148,7 @@ extern TCA9534 io_expander;
 
 void enable12V(void) {
     io_expander.output(6, TCA9534::Level::H);
-    delay(500);
+    delay(1000);
 }
 
 void disable12V(void) {

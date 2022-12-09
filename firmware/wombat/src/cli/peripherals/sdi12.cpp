@@ -66,8 +66,10 @@ BaseType_t CLISdi12::enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen,
                 enable12V();
                 sdi12.begin();
 
-                ESP_LOGD(TAG, "SDI-12 CMD received: [%s]", sdi12_cmd);
+                ESP_LOGI(TAG, "SDI-12 CMD received: [%s]", sdi12_cmd);
 
+                sdi12.clearBuffer();
+                response_buffer_.clear();
                 sdi12.sendCommand(sdi12_cmd);
 
                 int ch = -1;
@@ -84,6 +86,7 @@ BaseType_t CLISdi12::enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen,
                     }
                 }
 
+                delay(10);
                 sdi12.end();
                 disable12V();
 
@@ -132,7 +135,12 @@ BaseType_t CLISdi12::enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen,
 
                 if (sdi12.available()) {
                     ch = sdi12.read();
-                    cliStream->write(ch);
+                    char cch = ch & 0xFF;
+                    if (cch >= ' ') {
+                        cliStream->write(ch);
+                    } else {
+                        cliStream->printf(" 0x%X ", cch);
+                    }
                 }
 
                 yield();
