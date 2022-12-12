@@ -18,8 +18,12 @@
   "EP100GL-": {
     "04 012": {
       "read_cmds": [ "aC3!", "aC2!" ],
-      "ignore_sr": true,
       "labels": [ "VWC_1", "VWC_2", "VWC_3", "VWC_4", "Temperature_1", "Temperature_2", "Temperature_3", "Temperature_4" ]
+    },
+    "12 012": {
+      "read_cmds": [ "aC3!", "aC2!" ],
+      "labels": [ "VWC_1", "VWC_2", "VWC_3", "VWC_4", "VWC_5", "VWC_6", "VWC_7", "VWC_8", "VWC_9", "VWC_10", "VWC_11", "VWC_12", "Temperature_1", "Temperature_2", "Temperature_3", "Temperature_4", "Temperature_5", "Temperature_6", "Temperature_7", "Temperature_8", "Temperature_9", "Temperature_10", "Temperature_11", "Temperature_12" ]
     }
+
   }
 }

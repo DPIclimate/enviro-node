@@ -53,7 +53,7 @@ void sensorTask(void) {
     source_ids["serial_no"] = DeviceConfig::get().node_id;
     JsonArray timeseries_array = msg.createNestedArray("timeseries");
 
-    char unknown_label[] = {'V', 0, 0};
+    char unknown_label[8];
 
     for (size_t sensor_idx = 0; sensor_idx < sensors.count; sensor_idx++) {
         // Will be true if the sensor is read using information from the sensor definitions. If that fails
@@ -145,11 +145,11 @@ void sensorTask(void) {
 
         if ( ! have_reading) {
             ESP_LOGI(TAG, "No sensor definition found, performing fallback plain measure command.");
-            int res = dpi12.do_measure(sensors.sensors[sensor_idx].address);
+            int res = dpi12.do_measure(sensors.sensors[sensor_idx].address, true);
             if (res > 0) {
                 for (uint8_t value_idx = 0; value_idx < res; value_idx++) {
                     JsonObject ts_entry = timeseries_array.createNestedObject();
-                    unknown_label[1] = '0' + value_idx;
+                    snprintf(unknown_label, sizeof(unknown_label)-1, "%c_V%d", sensors.sensors[sensor_idx].address, value_idx);
                     ts_entry["name"] = unknown_label;
                     ts_entry["value"] = dpi12.get_value(value_idx).value;
                 }
@@ -157,10 +157,6 @@ void sensorTask(void) {
                 ESP_LOGE(TAG, "Failed to read sensor");
             }
         }
-
-        // FIXME: This delay is here to try and avoid noise on the SDI-12 line of the current
-        // FIXME: revision of the board. It was not necessary for the previous revision.
-        delay(1000);
     }
 
     String str;
@@ -178,3 +174,21 @@ void sensorTask(void) {
     sdi12.end();
     disable12V();
 }
+
+/*
+{
+    "timestamp": iso-8601
+    "sdi12": {
+        "vendor": {
+            "model": {
+                "addr": "1",
+                "values": [ 0.1f, 0.2f, ... ]
+            }
+        }
+    }
+
+    "digital": {
+        ...?
+    }
+ }
+ */
