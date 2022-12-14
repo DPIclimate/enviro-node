@@ -4,13 +4,13 @@
 #include <Arduino.h>
 #include "Adafruit_INA219.h"
 
-class BatteryPowerMonitoring {
+class BatteryMonitor {
 private:
-    static const uint8_t batteryAddr = 0x40;
+    static const uint8_t batteryAddr = 0x45;
 
 public:
-    BatteryPowerMonitoring() = default;
-    ~BatteryPowerMonitoring() = default;
+    BatteryMonitor() = default;
+    ~BatteryMonitor() = default;
     static void begin();
 
     static float get_voltage();

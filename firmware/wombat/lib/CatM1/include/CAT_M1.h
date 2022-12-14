@@ -19,9 +19,9 @@ public:
     void begin(TCA9534& tca9534);
     void power_supply(bool state);
     void device_on();
-    void device_restart();
+    void device_off();
+    bool restart();
     void interface();
-
 };
 
 extern CAT_M1 cat_m1;

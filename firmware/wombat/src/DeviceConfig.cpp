@@ -82,9 +82,9 @@ void DeviceConfig::load() {
                 if (err) {
                     ESP_LOGE(TAG, "Failed to load SDI-12 sensor definitions: %s", err.f_str());
                 } else {
-                    std::string str;
-                    serializeJsonPretty(sdi12Defns, str);
-                    ESP_LOGI(TAG, "SDI-12 sensor definitions:\r\n%s\r\n", str.c_str());
+//                    std::string str;
+//                    serializeJsonPretty(sdi12Defns, str);
+//                    ESP_LOGI(TAG, "SDI-12 sensor definitions:\r\n%s\r\n", str.c_str());
                 }
             }
         } else {

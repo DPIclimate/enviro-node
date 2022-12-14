@@ -3,11 +3,13 @@
 #include "DeviceConfig.h"
 #include "Utils.h"
 #include "mqtt_stack.h"
+#include "globals.h"
 #include <esp_log.h>
 
 #include <freertos/FreeRTOS.h>
 
 #include <dpiclimate-12.h>
+#include <SPIFFS.h>
 
 #define TAG "sensors"
 
@@ -18,18 +20,16 @@ DPIClimate12 dpi12(sdi12);
 
 sensor_list sensors;
 
-inline static double round2(double value) {
-    return (int)(value * 100 + 0.5) / 100.0;
-}
-
 void initSensors(void) {
     enable12V();
     sdi12.begin();
 
-    if (DeviceConfig::get().getBootCount() == 0) {
-        ESP_LOGI(TAG, "Scanning SDI-12 bus");
-        dpi12.scan_bus(sensors);
-    }
+//    if (DeviceConfig::get().getBootCount() == 0) {
+//        ESP_LOGI(TAG, "Scanning SDI-12 bus");
+//        dpi12.scan_bus(sensors);
+//    }
+
+    dpi12.scan_bus(sensors);
 
     sdi12.end();
     disable12V();
@@ -48,13 +48,35 @@ void sensorTask(void) {
 
     DynamicJsonDocument msg(2048);
 
-    msg["timestamp"] = iso8601();
-    JsonObject source_ids = msg.createNestedObject();
+    const char *timestamp = iso8601();
+    msg["timestamp"] = timestamp;
+    JsonObject source_ids = msg.createNestedObject("source_ids");
     source_ids["serial_no"] = DeviceConfig::get().node_id;
     JsonArray timeseries_array = msg.createNestedArray("timeseries");
 
-    char unknown_label[8];
+    //
+    // Node sensors
+    //
+    JsonObject ts_entry = timeseries_array.createNestedObject();
+    ts_entry["name"] = "battery (v)";
+    ts_entry["value"] = battery_monitor.get_voltage();
 
+    ts_entry = timeseries_array.createNestedObject();
+    ts_entry["name"] = "battery (mA)";
+    ts_entry["value"] = battery_monitor.get_current();
+
+
+    ts_entry = timeseries_array.createNestedObject();
+    ts_entry["name"] = "solar (v)";
+    ts_entry["value"] = solar_monitor.get_voltage();
+
+    ts_entry = timeseries_array.createNestedObject();
+    ts_entry["name"] = "solar (mA)";
+    ts_entry["value"] = solar_monitor.get_current();
+
+    //
+    // SDI-12 sensors
+    //
     for (size_t sensor_idx = 0; sensor_idx < sensors.count; sensor_idx++) {
         // Will be true if the sensor is read using information from the sensor definitions. If that fails
         // and this is false after the attempt, then a standard measure command will be issued as a fall-back.
@@ -69,7 +91,7 @@ void sensorTask(void) {
 
         std::vector<float> plain_values;
 
-        JsonObjectConst s = getSensorDefn(sensors.sensors[sensor_idx]);
+        JsonObjectConst s = getSensorDefn(sensor_idx, sensors);
         if (s) {
             JsonArrayConst read_cmds = s["read_cmds"];
             const char* value_mask = s["value_mask"];
@@ -111,9 +133,7 @@ void sensorTask(void) {
                     }
 
                     if (mask == '1') {
-                        // FIXME: This is an attempt to stop the floats in the JSON having so many
-                        // FIXME: digits after the decimal point. It is not working yet.
-                        plain_values.push_back(round2(value));
+                        plain_values.push_back(value);
                     } else {
                         ESP_LOGI(TAG, "Skipping value %d due to value mask", value_idx);
                     }
@@ -125,7 +145,7 @@ void sensorTask(void) {
             // This loop runs through the kept values, finds or generates a label for them, and
             // appends them to the timeSeries array of the JSON document.
             for (int value_idx = 0; value_idx < plain_values.size(); value_idx++) {
-                JsonObject ts_entry = timeseries_array.createNestedObject();
+                ts_entry = timeseries_array.createNestedObject();
                 JsonVariantConst label = labels[value_idx];
                 if (label) {
                     String generated_label(sensors.sensors[sensor_idx].address - '0');
@@ -133,8 +153,8 @@ void sensorTask(void) {
                     generated_label += label.as<String>();
                     ts_entry["name"] = generated_label;
                 } else {
-                    unknown_label[1] = '0' + value_idx;
-                    ts_entry["name"] = unknown_label;
+                    snprintf(g_buffer, sizeof(MAX_G_BUFFER), "%c_V%d", sensors.sensors[sensor_idx].address, value_idx);
+                    ts_entry["name"] = g_buffer;
                 }
 
                 ts_entry["value"] = plain_values.at(value_idx);
@@ -145,12 +165,15 @@ void sensorTask(void) {
 
         if ( ! have_reading) {
             ESP_LOGI(TAG, "No sensor definition found, performing fallback plain measure command.");
+            // Setting wait_full_time to true because we don't know what type of sensor we're reading
+            // in this code so try to handle those sensors that send a service request but then don't
+            // send the data immediately afterwards.
             int res = dpi12.do_measure(sensors.sensors[sensor_idx].address, true);
             if (res > 0) {
                 for (uint8_t value_idx = 0; value_idx < res; value_idx++) {
                     JsonObject ts_entry = timeseries_array.createNestedObject();
-                    snprintf(unknown_label, sizeof(unknown_label)-1, "%c_V%d", sensors.sensors[sensor_idx].address, value_idx);
-                    ts_entry["name"] = unknown_label;
+                    snprintf(g_buffer, sizeof(MAX_G_BUFFER), "%c_V%d", sensors.sensors[sensor_idx].address, value_idx);
+                    ts_entry["name"] = g_buffer;
                     ts_entry["value"] = dpi12.get_value(value_idx).value;
                 }
             } else {
@@ -163,32 +186,18 @@ void sensorTask(void) {
     serializeJson(msg, str);
     ESP_LOGI(TAG, "Msg:\r\n%s\r\n", str.c_str());
 
-    bool mqtt_ok = mqtt_login();
-    String mqtt_topic("wombat");
-
-    if (mqtt_ok) {
-        mqtt_publish(mqtt_topic, str);
-        mqtt_logout();
+    // Write the message to a file so it can be sent on the next uplink cycle.
+    static const size_t MAX_FNAME = 32;
+    static char filename[MAX_FNAME + 1];
+    if (SPIFFS.begin()) {
+        snprintf(filename, MAX_FNAME, "/%s%s.json", DeviceConfig::getMsgFilePrefix(), timestamp);
+        ESP_LOGI(TAG, "Creating unsent msg file [%s]", filename);
+        File f = SPIFFS.open(filename, FILE_WRITE);
+        serializeJson(msg, f);
+        f.close();
+        SPIFFS.end();
     }
 
     sdi12.end();
     disable12V();
 }
-
-/*
-{
-    "timestamp": iso-8601
-    "sdi12": {
-        "vendor": {
-            "model": {
-                "addr": "1",
-                "values": [ 0.1f, 0.2f, ... ]
-            }
-        }
-    }
-
-    "digital": {
-        ...?
-    }
- }
- */
