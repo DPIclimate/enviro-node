@@ -145,7 +145,7 @@ void sensorTask(void) {
 
         if ( ! have_reading) {
             ESP_LOGI(TAG, "No sensor definition found, performing fallback plain measure command.");
-            int res = dpi12.do_measure(sensors.sensors[sensor_idx].address);
+            int res = dpi12.do_measure(sensors.sensors[sensor_idx].address, true);
             if (res > 0) {
                 for (uint8_t value_idx = 0; value_idx < res; value_idx++) {
                     JsonObject ts_entry = timeseries_array.createNestedObject();
