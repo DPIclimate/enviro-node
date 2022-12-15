@@ -109,37 +109,30 @@ void streamPassthrough(Stream* s1, Stream* s2) {
 }
 
 int waitForChar(Stream& stream, uint32_t timeout) {
-    uint32_t start = millis();
+    const uint32_t start = millis();
     int a = stream.available();
     while ((millis() - start) < timeout && a < 1) {
         delay(1); // Let the MCU do something else.
         a = stream.available();
     }
 
-    uint32_t end = millis();
+    const uint32_t end = millis();
     ESP_LOGD(TAG, "Delta from start of read: %lu ms, UART available = %d", (end - start), a);
 
     return a > 0 ? a : -1;
 }
 
-JsonObjectConst getSensorDefn(const char* vendor, const char* model) {
+JsonObjectConst getSensorDefn(const char* const vendor, const char* const model) {
     const JsonDocument& sdi12Defns = DeviceConfig::get().getSDI12Defns();
     JsonObjectConst obj = sdi12Defns[vendor][model];
     return obj;
 }
 
-JsonObjectConst getSensorDefn(const sensor_info& info) {
+JsonObjectConst getSensorDefn(const size_t sensor_idx, const sensor_list& sensors) {
     char vendor[LEN_VENDOR+1];
     char model[LEN_MODEL+1];
-
-    memset(vendor, 0, sizeof(vendor));
-    const char *ivptr = reinterpret_cast<const char *>(info.vendor);
-    strncpy(vendor, ivptr, LEN_VENDOR);
-    stripTrailingWS(vendor);
-    memset(model, 0, sizeof(model));
-    const char *imptr = reinterpret_cast<const char *>(info.model);
-    strncpy(model, imptr, LEN_MODEL);
-    stripTrailingWS(model);
+    DPIClimate12::get_vendor(vendor, sensor_idx, sensors);
+    DPIClimate12::get_model(model, sensor_idx, sensors);
 
     return getSensorDefn(vendor, model);
 }
@@ -167,7 +160,7 @@ const char* iso8601(void) {
     time(&now);
     gmtime_r(&now, &t);
 
-    snprintf(iso8601_buf, sizeof(iso8601_buf)-1, "%04d-%02d-%02dT%02d:%02d:%02dZ", t.tm_year+1900, t.tm_mon, t.tm_mday, t.tm_hour, t.tm_min, t.tm_sec);
+    snprintf(iso8601_buf, sizeof(iso8601_buf)-1, "%04d-%02d-%02dT%02d:%02d:%02dZ", t.tm_year+1900, t.tm_mon+1, t.tm_mday, t.tm_hour, t.tm_min, t.tm_sec);
 
     return iso8601_buf;
 }

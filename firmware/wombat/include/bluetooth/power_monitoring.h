@@ -25,7 +25,7 @@ public:
 // Solar voltage
 class BluetoothSolarVoltageCallbacks: public BLECharacteristicCallbacks {
     void onRead(BLECharacteristic* pCharacteristic) override{
-        float voltage = SolarPowerMonitoring::get_voltage();
+        float voltage = SolarMonitor::get_voltage();
 
         uint16_t voltage_value = (uint16_t)(voltage * 100.0f);
         uint8_t voltage_bytes[2];
@@ -40,7 +40,7 @@ class BluetoothSolarVoltageCallbacks: public BLECharacteristicCallbacks {
 // Solar current
 class BluetoothSolarCurrentCallbacks: public BLECharacteristicCallbacks {
     void onRead(BLECharacteristic* pCharacteristic) override{
-        float current = SolarPowerMonitoring::get_current();
+        float current = SolarMonitor::get_current();
 
         uint16_t current_value = (uint16_t)(current * 100.0f);
         uint8_t current_bytes[2];
@@ -56,7 +56,7 @@ class BluetoothSolarCurrentCallbacks: public BLECharacteristicCallbacks {
 class BluetoothBatteryPercentCallbacks: public BLECharacteristicCallbacks {
     void onRead(BLECharacteristic* pCharacteristic) override {
         float max_voltage = 4.2;
-        float voltage = BatteryPowerMonitoring::get_voltage();
+        float voltage = BatteryMonitor::get_voltage();
         uint8_t batt_percent = 0;
         if (voltage > 0) {
             batt_percent = (uint8_t)((voltage / max_voltage) * 100);
@@ -70,7 +70,7 @@ class BluetoothBatteryPercentCallbacks: public BLECharacteristicCallbacks {
 // Battery voltage
 class BluetoothBatteryVoltageCallbacks: public BLECharacteristicCallbacks {
     void onRead(BLECharacteristic* pCharacteristic) override{
-        float voltage = BatteryPowerMonitoring::get_voltage();
+        float voltage = BatteryMonitor::get_voltage();
 
         uint16_t voltage_value = (uint16_t)(voltage * 100.0f);
         uint8_t voltage_bytes[2];
@@ -85,7 +85,7 @@ class BluetoothBatteryVoltageCallbacks: public BLECharacteristicCallbacks {
 // Battery current
 class BluetoothBatteryCurrentCallbacks: public BLECharacteristicCallbacks {
     void onRead(BLECharacteristic* pCharacteristic) override{
-        float current = BatteryPowerMonitoring::get_current();
+        float current = BatteryMonitor::get_current();
 
         uint16_t current_value = (uint16_t)(current * 100.0f);
         uint8_t current_bytes[2];

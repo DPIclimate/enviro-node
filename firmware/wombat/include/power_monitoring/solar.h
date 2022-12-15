@@ -4,13 +4,13 @@
 #include <Arduino.h>
 #include "Adafruit_INA219.h"
 
-class SolarPowerMonitoring{
+class SolarMonitor {
 private:
     static const uint8_t solarAddr = 0x40;
 
 public:
-    SolarPowerMonitoring() = default;
-    ~SolarPowerMonitoring() = default;
+    SolarMonitor() = default;
+    ~SolarMonitor() = default;
     static void begin();
 
     static float get_voltage();

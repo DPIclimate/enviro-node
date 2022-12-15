@@ -47,6 +47,10 @@ public:
 
     const JsonDocument& getSDI12Defns(void);
 
+    static const char* getMsgFilePrefix(void) {
+        return "msg_";
+    }
+
 private:
     DeviceConfig();
 

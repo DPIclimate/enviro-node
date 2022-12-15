@@ -2,7 +2,7 @@
 
 static Adafruit_INA219* solar = nullptr;
 
-void SolarPowerMonitoring::begin() {
+void SolarMonitor::begin() {
     if(!solar){
         solar = new Adafruit_INA219(solarAddr);
         if(solar->begin()){
@@ -13,7 +13,7 @@ void SolarPowerMonitoring::begin() {
     }
 }
 
-float SolarPowerMonitoring::get_voltage(){
+float SolarMonitor::get_voltage(){
     float solar_voltage = 0.0f;
 
     if(solar){
@@ -24,7 +24,7 @@ float SolarPowerMonitoring::get_voltage(){
     return solar_voltage;
 }
 
-float SolarPowerMonitoring::get_current(){
+float SolarMonitor::get_current(){
     float solar_current = 0.0f;
 
     if(solar) {
@@ -35,18 +35,14 @@ float SolarPowerMonitoring::get_current(){
 }
 
 
-void SolarPowerMonitoring::sleep() {
+void SolarMonitor::sleep() {
     if(solar){
         solar->powerSave(true);
     }
 }
 
-void SolarPowerMonitoring::wakeup() {
+void SolarMonitor::wakeup() {
     if(solar){
         solar->powerSave(false);
     }
 }
-
-
-
-

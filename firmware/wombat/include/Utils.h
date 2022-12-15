@@ -14,8 +14,8 @@ void streamPassthrough(Stream* s1, Stream* s2);
 
 int waitForChar(Stream& stream, uint32_t timeout);
 
-JsonObjectConst getSensorDefn(const char* vendor, const char* model);
-JsonObjectConst getSensorDefn(const sensor_info& info);
+JsonObjectConst getSensorDefn(const char* const vendor, const char* const model);
+JsonObjectConst getSensorDefn(const size_t sensor_idx, const sensor_list& sensors);
 
 void enable12V(void);
 void disable12V(void);

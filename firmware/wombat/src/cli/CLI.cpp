@@ -66,7 +66,7 @@ void CLI::repl(Stream& io) {
     while (true) {
         io.print("$ ");
         while (!io.available()) {
-            yield();
+            taskYIELD();
         }
 
         size_t len = readFromStreamUntil(io, '\n', cmd, MAX_CLI_CMD_LEN);
