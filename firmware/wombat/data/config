@@ -3,6 +3,9 @@
 
 # Leading and trailing white-space are stripped from lines,
 # blank lines are ignored.
+#
+# To update run:
+# pio run -t uploadfs
 
 interval measure 15
 interval uplink 60
