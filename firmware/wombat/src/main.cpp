@@ -99,6 +99,10 @@ void setup() {
 //
 //    taskYIELD();
 
+    DeviceConfig& config = DeviceConfig::get();
+    config.load();
+    config.dumpConfig(Serial);
+
     if (progBtnPressed) {
         progBtnPressed = false;
         ESP_LOGI(TAG, "Programmable button pressed while booting, dropping into REPL");
@@ -161,10 +165,6 @@ void setup() {
     if (r5_ok && ! time_ok) {
         time_check();
     }
-
-    DeviceConfig& config = DeviceConfig::get();
-    config.load();
-    config.dumpConfig(Serial);
 
     uint16_t mi = config.getMeasureInterval();
     uint16_t ui = config.getUplinkInterval();
