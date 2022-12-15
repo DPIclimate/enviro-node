@@ -233,6 +233,7 @@ void setup() {
         uint64_t remainder = setup_in_secs - mi_in_secs;
         while (remainder > mi_in_secs) {
             remainder = setup_in_secs - mi_in_secs;
+            setup_in_secs = setup_in_secs - mi_in_secs;
         }
 
         ESP_LOGW(TAG, "mi_in_secs = %lu, setup_in_secs = %lu, remainder = %lu", mi_in_secs, setup_in_secs, remainder);
