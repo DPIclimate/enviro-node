@@ -144,22 +144,34 @@ BaseType_t xReturn = pdFAIL;
 }
 /*-----------------------------------------------------------*/
 
+#define MAX_RECURSION 5
 BaseType_t FreeRTOS_CLIProcessCommand( const char * const pcCommandInput, char * pcWriteBuffer, size_t xWriteBufferLen  )
 {
-static const CLI_Definition_List_Item_t *pxCommand = NULL;
+static const CLI_Definition_List_Item_t *pxCommand[MAX_RECURSION];
 BaseType_t xReturn = pdTRUE;
 const char *pcRegisteredCommandString;
 size_t xCommandStringLength;
+static bool initialise_pxCommand = true;
+static size_t recursion_count = 0;
 
-	/* Note:  This function is not re-entrant.  It must not be called from more
-	thank one task. */
+    if (initialise_pxCommand) {
+        initialise_pxCommand = false;
+        for (size_t i = 0; i < MAX_RECURSION; i++) {
+            pxCommand[i] = NULL;
+        }
+    }
 
-	if( pxCommand == NULL )
+    if (recursion_count >= MAX_RECURSION) {
+        snprintf(pcWriteBuffer, xWriteBufferLen-1, "ERROR: Too many recursive calls to FreeRTOS_CLIProcessCommand\r\n");
+        return pdFALSE;
+    }
+
+	if( pxCommand[recursion_count] == NULL )
 	{
 		/* Search for the command string in the list of registered commands. */
-		for( pxCommand = &xRegisteredCommands; pxCommand != NULL; pxCommand = pxCommand->pxNext )
+		for( pxCommand[recursion_count] = &xRegisteredCommands; pxCommand[recursion_count] != NULL; pxCommand[recursion_count] = pxCommand[recursion_count]->pxNext )
 		{
-			pcRegisteredCommandString = pxCommand->pxCommandLineDefinition->pcCommand;
+			pcRegisteredCommandString = pxCommand[recursion_count]->pxCommandLineDefinition->pcCommand;
 			xCommandStringLength = strlen( pcRegisteredCommandString );
 
 			/* To ensure the string lengths match exactly, so as not to pick up
@@ -174,9 +186,9 @@ size_t xCommandStringLength;
 					number of parameters.  If cExpectedNumberOfParameters is -1,
 					then there could be a variable number of parameters and no
 					check is made. */
-					if( pxCommand->pxCommandLineDefinition->cExpectedNumberOfParameters >= 0 )
+					if( pxCommand[recursion_count]->pxCommandLineDefinition->cExpectedNumberOfParameters >= 0 )
 					{
-						if( prvGetNumberOfParameters( pcCommandInput ) != pxCommand->pxCommandLineDefinition->cExpectedNumberOfParameters )
+						if( prvGetNumberOfParameters( pcCommandInput ) != pxCommand[recursion_count]->pxCommandLineDefinition->cExpectedNumberOfParameters )
 						{
 							xReturn = pdFALSE;
 						}
@@ -188,24 +200,26 @@ size_t xCommandStringLength;
 		}
 	}
 
-	if( ( pxCommand != NULL ) && ( xReturn == pdFALSE ) )
+	if( ( pxCommand[recursion_count] != NULL ) && ( xReturn == pdFALSE ) )
 	{
 		/* The command was found, but the number of parameters with the command
 		was incorrect. */
 		strncpy( pcWriteBuffer, "Incorrect command parameter(s).  Enter \"help\" to view a list of available commands.\r\n\r\n", xWriteBufferLen );
-		pxCommand = NULL;
+		pxCommand[recursion_count] = NULL;
 	}
-	else if( pxCommand != NULL )
+	else if( pxCommand[recursion_count] != NULL )
 	{
 		/* Call the callback function that is registered to this command. */
-		xReturn = pxCommand->pxCommandLineDefinition->pxCommandInterpreter( pcWriteBuffer, xWriteBufferLen, pcCommandInput );
+        recursion_count++;
+		xReturn = pxCommand[recursion_count-1]->pxCommandLineDefinition->pxCommandInterpreter( pcWriteBuffer, xWriteBufferLen, pcCommandInput );
+        recursion_count--;
 
 		/* If xReturn is pdFALSE, then no further strings will be returned
 		after this one, and	pxCommand can be reset to NULL ready to search
 		for the next entered command. */
 		if( xReturn == pdFALSE )
 		{
-			pxCommand = NULL;
+			pxCommand[recursion_count] = NULL;
 		}
 	}
 	else

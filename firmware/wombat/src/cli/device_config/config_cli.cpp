@@ -46,22 +46,22 @@ BaseType_t CLIConfig::enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen,
             config.dumpConfig(response_buffer_);
             return pdTRUE;
         }
-    }
 
-    if (param != nullptr && paramLen > 0) {
         if (!strncmp("load", param, paramLen)) {
             config.load();
             config.dumpConfig(response_buffer_);
             return pdTRUE;
         }
-    }
 
-    if (param != nullptr && paramLen > 0) {
         if (!strncmp("save", param, paramLen)) {
             config.save();
             strncpy(pcWriteBuffer, "Configuration saved\r\n", xWriteBufferLen - 1);
             return pdFALSE;
         }
+
+        response_buffer_.clear();
+        response_buffer_.printf("ERROR: Invalid argument: [%s]", param);
+        return pdTRUE;
     }
 
     strncpy(pcWriteBuffer, "ERROR: Invalid command\r\n", xWriteBufferLen - 1);
