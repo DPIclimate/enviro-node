@@ -172,7 +172,7 @@ void sensorTask(void) {
             if (res > 0) {
                 for (uint8_t value_idx = 0; value_idx < res; value_idx++) {
                     JsonObject ts_entry = timeseries_array.createNestedObject();
-                    snprintf(g_buffer, sizeof(MAX_G_BUFFER), "%c_V%d", sensors.sensors[sensor_idx].address, value_idx);
+                    snprintf(g_buffer, MAX_G_BUFFER, "%c_V%u", sensors.sensors[sensor_idx].address, value_idx+1);
                     ts_entry["name"] = g_buffer;
                     ts_entry["value"] = dpi12.get_value(value_idx).value;
                 }
