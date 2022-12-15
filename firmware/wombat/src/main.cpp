@@ -29,32 +29,7 @@ static bool RTC_DATA_ATTR time_ok = false;
 extern bool getNTPTime(SARA_R5 &r5, uint8_t *y, uint8_t *mo, uint8_t *d, uint8_t *h, uint8_t *min, uint8_t *s);
 
 void time_check(void);
-/*
-void vSARAURC( void * pvParameters )
-{
-    static constexpr size_t bs = 1024;
-    static char b[bs+1];
 
-    ESP_LOGI("SARA", "SARA URC task started");
-    for( ;; )
-    {
-        while ( ! LTE_Serial.available()) {
-            taskYIELD();
-        }
-
-        size_t i = 0;
-        b[0] = 0;
-        while (LTE_Serial.available() && i < bs) {
-            b[i++] = (char)(LTE_Serial.read() & 0xFF);
-            b[i] = 0;
-        }
-
-        if (i > 0) {
-            ESP_LOGI("SARA", "%s", b);
-        }
-    }
-}
-*/
 void setup() {
     pinMode(PROG_BTN, INPUT);
     progBtnPressed = digitalRead(PROG_BTN);
@@ -110,59 +85,8 @@ void setup() {
         ESP_LOGI(TAG, "Continuing");
     }
 
-    cat_m1.power_supply(true);
-    //cat_m1.device_on();
-
-    r5.enableDebugging();
-    r5.enableAtDebugging();
-
-    r5.invertPowerPin(true);
-    //r5.modulePowerOn();
-
-    r5.autoTimeZoneForBegin(false);
-
-    // Module doesn't respond to AT commands immediately.
-    delay(2000);
-
-    r5_ok = r5.begin(LTE_Serial, 115200);
-    if ( ! r5_ok) {
-        ESP_LOGE(TAG, "SARA-R5 begin failed");
-    }
-
-    // Only needs to be done one, but the Sparkfun library reads this value before setting so
-    // it is quick enough to call this every time.
-    if ( ! r5.setNetworkProfile(MNO_TELSTRA)) {
-        ESP_LOGE(TAG, "Error setting network operator profile");
-        r5_ok = false;
-        return;
-    }
-    delay(20);
-
-    int reg_status = 0;
-    while (reg_status != SARA_R5_REGISTRATION_HOME) {
-        reg_status = r5.registration();
-        if (reg_status == SARA_R5_REGISTRATION_INVALID) {
-            ESP_LOGI(TAG, "ESP registration query failed");
-            return;
-        }
-
-        ESP_LOGI(TAG, "ESP registration status = %d", reg_status);
-        delay(1000);
-    }
-
-    String clk = r5.clock();
-    ESP_LOGI(TAG, "clk = %s", clk.c_str());
-
-    // These commands come from the SARA R4/R5 Internet applications development guide
-    // ss 2.3, table Profile Activation: SARA R5.
-    r5.setPDPconfiguration(0, SARA_R5_PSD_CONFIG_PARAM_PROTOCOL, 0);
-    delay(20);
-    r5.setPDPconfiguration(0, SARA_R5_PSD_CONFIG_PARAM_MAP_TO_CID, 1);
-    delay(20);
-    r5.performPDPaction(0, SARA_R5_PSD_ACTION_ACTIVATE);
-    delay(20);
-
-    if (r5_ok && ! time_ok) {
+    if (! time_ok) {
+        connect_to_internet();
         time_check();
     }
 
@@ -206,7 +130,7 @@ void setup() {
     initSensors();
     sensorTask();
 
-    if (r5_ok && uplinkCycle) {
+    if (uplinkCycle) {
         send_messages();
     }
 

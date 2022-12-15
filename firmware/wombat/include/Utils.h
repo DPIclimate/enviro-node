@@ -22,4 +22,6 @@ void disable12V(void);
 
 const char* iso8601(void);
 
+bool connect_to_internet(void);
+
 #endif //WOMBAT_UTILS_H

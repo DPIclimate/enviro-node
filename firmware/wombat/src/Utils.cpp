@@ -3,6 +3,8 @@
 #include <string.h>
 #include "DeviceConfig.h"
 #include "TCA9534.h"
+#include "CAT_M1.h"
+#include "globals.h"
 
 #define TAG "utils"
 
@@ -163,4 +165,99 @@ const char* iso8601(void) {
     snprintf(iso8601_buf, sizeof(iso8601_buf)-1, "%04d-%02d-%02dT%02d:%02d:%02dZ", t.tm_year+1900, t.tm_mon+1, t.tm_mday, t.tm_hour, t.tm_min, t.tm_sec);
 
     return iso8601_buf;
+}
+
+static bool wait_for_at(void) {
+    int attempts = 5;
+
+    while (attempts > 0) {
+        LTE_Serial.write("AT\r");
+        delay(100);
+        g_buffer[0] = 0;
+        const char *rsp = g_buffer;
+        if (LTE_Serial.available()) {
+            int i = 0;
+            while (LTE_Serial.available() && i < (MAX_G_BUFFER-1)) {
+                int ch = (char)(LTE_Serial.read() & 0xFF);
+                if (ch > 0) {
+                    g_buffer[i++] = ch;
+                    g_buffer[i] = 0;
+                }
+            }
+
+            ESP_LOGI(TAG, "[%s]", rsp);
+            if (i > 3) {
+                if (g_buffer[i-1] == '\n' && g_buffer[i-2] == '\r' && g_buffer[i-3] == 'K') {
+                    return true;
+                }
+            }
+        }
+
+        delay(1000);
+        attempts--;
+    }
+
+    return false;
+}
+
+bool connect_to_internet(void) {
+    if (!cat_m1.is_powered()) {
+        ESP_LOGI(TAG, "Enabling R5 VCC");
+        cat_m1.power_supply(true);
+    }
+
+    ESP_LOGI(TAG, "Looking for response to AT command");
+    if ( ! wait_for_at()) {
+        cat_m1.restart();
+        if ( ! wait_for_at()) {
+            ESP_LOGE(TAG, "Cannot talk to SARA R5");
+            return false;
+        }
+    }
+
+    r5.enableDebugging();
+    r5.enableAtDebugging();
+
+    r5.invertPowerPin(true);
+    r5.autoTimeZoneForBegin(false);
+
+    // This is relatively benign - it enables the network indicator GPIO pin, set error message format, etc.
+    // It does close all open sockets, but there should not be any open sockets at this point so that is ok.
+    r5_ok = r5.begin(LTE_Serial, 115200);
+    if ( ! r5_ok) {
+        ESP_LOGE(TAG, "SARA-R5 begin failed");
+        return false;
+    }
+
+    // Only needs to be done one, but the Sparkfun library reads this value before setting so
+    // it is quick enough to call this every time.
+    if ( ! r5.setNetworkProfile(MNO_TELSTRA)) {
+        ESP_LOGE(TAG, "Error setting network operator profile");
+        r5_ok = false;
+        return false;
+    }
+    delay(20);
+
+    int reg_status = 0;
+    while (reg_status != SARA_R5_REGISTRATION_HOME) {
+        reg_status = r5.registration();
+        if (reg_status == SARA_R5_REGISTRATION_INVALID) {
+            ESP_LOGI(TAG, "ESP registration query failed");
+            return false;
+        }
+
+        ESP_LOGI(TAG, "ESP registration status = %d", reg_status);
+        delay(1000);
+    }
+
+    // These commands come from the SARA R4/R5 Internet applications development guide
+    // ss 2.3, table Profile Activation: SARA R5.
+    r5.setPDPconfiguration(0, SARA_R5_PSD_CONFIG_PARAM_PROTOCOL, 0);
+    delay(20);
+    r5.setPDPconfiguration(0, SARA_R5_PSD_CONFIG_PARAM_MAP_TO_CID, 1);
+    delay(20);
+    r5.performPDPaction(0, SARA_R5_PSD_ACTION_ACTIVATE);
+    delay(20);
+
+    return true;
 }

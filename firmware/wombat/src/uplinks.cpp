@@ -5,6 +5,7 @@
 #include "DeviceConfig.h"
 #include "uplinks.h"
 #include "mqtt_stack.h"
+#include "Utils.h"
 
 #define TAG "uplinks"
 
@@ -22,6 +23,7 @@ static bool process_file(File& file) {
     ESP_LOGI(TAG, "Processing message file [%s]", file.name());
 
     if (mqtt_status == MQTT_UNINITIALISED) {
+        connect_to_internet();
         mqtt_status = mqtt_login() ? MQTT_LOGIN_OK : MQTT_LOGIN_FAILED;
     }
 

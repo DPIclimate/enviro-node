@@ -62,17 +62,8 @@ void sensorTask(void) {
     ts_entry["value"] = battery_monitor.get_voltage();
 
     ts_entry = timeseries_array.createNestedObject();
-    ts_entry["name"] = "battery (mA)";
-    ts_entry["value"] = battery_monitor.get_current();
-
-
-    ts_entry = timeseries_array.createNestedObject();
     ts_entry["name"] = "solar (v)";
     ts_entry["value"] = solar_monitor.get_voltage();
-
-    ts_entry = timeseries_array.createNestedObject();
-    ts_entry["name"] = "solar (mA)";
-    ts_entry["value"] = solar_monitor.get_current();
 
     //
     // SDI-12 sensors

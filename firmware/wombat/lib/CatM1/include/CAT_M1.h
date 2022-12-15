@@ -22,6 +22,11 @@ public:
     void device_off();
     bool restart();
     void interface();
+
+    bool is_powered(void) { return power_on; }
+
+private:
+    bool power_on;
 };
 
 extern CAT_M1 cat_m1;

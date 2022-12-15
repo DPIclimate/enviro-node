@@ -21,17 +21,18 @@ void CAT_M1::begin(TCA9534& io_ex){
 void CAT_M1::power_supply(bool state) {
     ESP_LOGI(TAG, "state = %d", state);
     digitalWrite(LTE_PWR_SUPPLY_PIN, state ? HIGH : LOW);
+    power_on = state;
     delay(10); // May not be needed
 }
 
-void CAT_M1::device_on(){
+void CAT_M1::device_on() {
     ESP_LOGI(TAG, "Toggle pin %X for 200ms", LTE_PWR_TOGGLE_PIN);
     digitalWrite(LTE_PWR_TOGGLE_PIN, HIGH);
     delay(200);
     digitalWrite(LTE_PWR_TOGGLE_PIN, LOW);
 }
 
-void CAT_M1::device_off(){
+void CAT_M1::device_off() {
     ESP_LOGI(TAG, "Toggle pin %X for 10s", LTE_PWR_TOGGLE_PIN);
     digitalWrite(LTE_PWR_TOGGLE_PIN, HIGH);
     delay(10000);
