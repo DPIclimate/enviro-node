@@ -92,7 +92,7 @@ void setup() {
     // a list of commands.
     CLI::init();
 
-    //BluetoothServer::begin();
+    BluetoothServer::begin();
 //    TaskHandle_t xHandle = NULL;
 //    xTaskCreatePinnedToCore( vSARAURC, "SARA", 2048, nullptr, tskIDLE_PRIORITY, &xHandle, 1 );
 //    ESP_LOGI(TAG, "task handle = %p", xHandle);
