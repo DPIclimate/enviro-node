@@ -67,7 +67,6 @@ void setup() {
     // a list of commands.
     CLI::init();
 
-    BluetoothServer::begin();
 //    TaskHandle_t xHandle = NULL;
 //    xTaskCreatePinnedToCore( vSARAURC, "SARA", 2048, nullptr, tskIDLE_PRIORITY, &xHandle, 1 );
 //    ESP_LOGI(TAG, "task handle = %p", xHandle);
@@ -79,6 +78,8 @@ void setup() {
     config.dumpConfig(Serial);
 
     if (progBtnPressed) {
+        // Turn on bluetooth if entering CLI
+        BluetoothServer::begin();
         progBtnPressed = false;
         ESP_LOGI(TAG, "Programmable button pressed while booting, dropping into REPL");
         CLI::repl(Serial);
