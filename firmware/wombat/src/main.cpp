@@ -70,7 +70,8 @@ void setup() {
     // This must be done before the config is loaded because the config file is
     // a list of commands.
     CLI::init();
-//    BluetoothServer::begin();
+
+    // BluetoothServer::begin();
 
     DeviceConfig& config = DeviceConfig::get();
     config.load();
@@ -79,6 +80,8 @@ void setup() {
     config.dumpConfig(Serial);
 
     if (progBtnPressed) {
+        // Turn on bluetooth if entering CLI
+        BluetoothServer::begin();
         progBtnPressed = false;
         ESP_LOGI(TAG, "Programmable button pressed while booting, dropping into REPL");
         CLI::repl(Serial);
