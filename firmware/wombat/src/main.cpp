@@ -18,6 +18,9 @@
 #include "uplinks.h"
 #include "SparkFun_u-blox_SARA-R5_Arduino_Library.h"
 
+#include "soc/soc.h"
+#include "soc/rtc_cntl_reg.h"
+
 #define TAG "wombat"
 
 TCA9534 io_expander;
@@ -31,6 +34,9 @@ extern bool getNTPTime(SARA_R5 &r5, uint8_t *y, uint8_t *mo, uint8_t *d, uint8_t
 void time_check(void);
 
 void setup() {
+
+    WRITE_PERI_REG(RTC_CNTL_BROWN_OUT_REG, 0);
+
     pinMode(PROG_BTN, INPUT);
     progBtnPressed = digitalRead(PROG_BTN);
 
@@ -53,8 +59,11 @@ void setup() {
 
     // Set all pins to output mode (reg 3, value 0).
     io_expander.config(TCA9534::Config::OUT);
+    io_expander.output(4, TCA9534::Level::L); // Turn off LED
 
     cat_m1.begin(io_expander);
+
+    delay(1000);
 
     LTE_Serial.begin(115200);
     while(!LTE_Serial) {
@@ -76,6 +85,8 @@ void setup() {
     DeviceConfig& config = DeviceConfig::get();
     config.load();
     config.dumpConfig(Serial);
+
+    WRITE_PERI_REG(RTC_CNTL_BROWN_OUT_REG, 1);
 
     if (progBtnPressed) {
         // Turn on bluetooth if entering CLI
