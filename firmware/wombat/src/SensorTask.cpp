@@ -4,6 +4,7 @@
 #include "Utils.h"
 #include "mqtt_stack.h"
 #include "globals.h"
+#include "ulp.h"
 #include <esp_log.h>
 
 #include <freertos/FreeRTOS.h>
@@ -64,6 +65,20 @@ void sensorTask(void) {
     ts_entry = timeseries_array.createNestedObject();
     ts_entry["name"] = "solar (v)";
     ts_entry["value"] = solar_monitor.get_voltage();
+
+    //
+    // Pulse counter
+    //
+    uint32_t pc = get_pulse_count();
+    uint32_t sp = get_shortest_pulse();
+
+    ts_entry = timeseries_array.createNestedObject();
+    ts_entry["name"] = "pulse_count";
+    ts_entry["value"] = pc;
+
+    ts_entry = timeseries_array.createNestedObject();
+    ts_entry["name"] = "shortest_pulse";
+    ts_entry["value"] = sp;
 
     //
     // SDI-12 sensors

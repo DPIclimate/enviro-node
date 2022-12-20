@@ -20,7 +20,7 @@ const char* ntpServer = "au.pool.ntp.org";               // The Network Time Pro
 
 //=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
-bool getNTPTime(SARA_R5 &r5, uint8_t *y, uint8_t *mo, uint8_t *d, uint8_t *h, uint8_t *min, uint8_t *s) {
+bool getNTPTime(SARA_R5 &r5) {
     int serverPort = 123; //NTP requests are to port 123
 
     // Set up the packetBuffer for the NTP request
@@ -66,13 +66,12 @@ bool getNTPTime(SARA_R5 &r5, uint8_t *y, uint8_t *mo, uint8_t *d, uint8_t *h, ui
     // Wait up to 10 seconds for the response
     unsigned long requestTime = millis();
 
-    while (millis() < (requestTime + 10000)) {
-        // We could use the Socket Read Callback to get the data, but, just for giggles,
-        // and to prove it works, let's poll the arrival of the data manually...
+    // (millis() - start) < timeout
+    while ((millis() - requestTime) < 10000) {
         int avail = 0;
         if (r5.socketReadAvailableUDP(socketNum, &avail) != SARA_R5_SUCCESS) {
             ESP_LOGE(TAG, "socketReadAvailable failed");
-            r5.socketClose(socketNum); // Be nice. Close the socket
+            r5.socketClose(socketNum);
             return (false);
         }
 
@@ -89,8 +88,8 @@ bool getNTPTime(SARA_R5 &r5, uint8_t *y, uint8_t *mo, uint8_t *d, uint8_t *h, ui
 
             // Extract the time from the reply
 
-            //the timestamp starts at byte 40 of the received packet and is four bytes,
-            // or two words, long. First, esxtract the two words:
+            // The timestamp starts at byte 40 of the received packet and is a uint32_t value.
+
             unsigned long highWord = word(packetBuffer[40], packetBuffer[41]);
             unsigned long lowWord = word(packetBuffer[42], packetBuffer[43]);
 
@@ -124,20 +123,13 @@ bool getNTPTime(SARA_R5 &r5, uint8_t *y, uint8_t *mo, uint8_t *d, uint8_t *h, ui
             settimeofday(&tv, nullptr);
 
             // Load the time into y, mo, d, h, min, s
-            *y = theTime->tm_year - 100; // tm_year is years since 1900. Convert to years since 2000.
-            *mo = theTime->tm_mon + 1; //tm_mon starts at zero. Add 1 for January.
-            *d = theTime->tm_mday;
-            *h = theTime->tm_hour;
-            *min = theTime->tm_min;
-            *s = theTime->tm_sec;
+            int y = theTime->tm_year - 100; // tm_year is years since 1900. Convert to years since 2000.
+            int mo = theTime->tm_mon + 1; //tm_mon starts at zero. Add 1 for January.
 
             //Set the SARA's RTC. Set the time zone to zero so the clock uses UTC
-            if (r5.setClock(*y, *mo, *d, *h, *min, *s, 0) != SARA_R5_SUCCESS) {
+            if (r5.setClock(y, mo, theTime->tm_mday, theTime->tm_hour, theTime->tm_min, theTime->tm_sec, 0) != SARA_R5_SUCCESS) {
                 ESP_LOGE(TAG, "SARA R5 setClock failed");
             }
-
-            // Finish off by printing the time
-            ESP_LOGI(TAG, "YY/MM/DD HH:MM:SS : %02u/%02u/%02u %02u:%02u:%02u", *y, *mo, *d, *h, *min, *s);
 
             r5.socketClose(socketNum); // Be nice. Close the socket
             return (true); // We are done!

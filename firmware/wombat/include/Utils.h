@@ -20,6 +20,7 @@ JsonObjectConst getSensorDefn(const size_t sensor_idx, const sensor_list& sensor
 void enable12V(void);
 void disable12V(void);
 
+bool time_ok(void);
 const char* iso8601(void);
 
 bool connect_to_internet(void);

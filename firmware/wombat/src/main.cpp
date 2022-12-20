@@ -4,6 +4,7 @@
 #include <freertos/FreeRTOS.h>
 
 #include <TCA9534.h>
+#include <driver/rtc_io.h>
 
 #define ALLOCATE_GLOBALS
 #include "globals.h"
@@ -17,6 +18,7 @@
 #include "audio-feedback/tones.h"
 #include "uplinks.h"
 #include "SparkFun_u-blox_SARA-R5_Arduino_Library.h"
+#include "ulp.h"
 
 #define TAG "wombat"
 
@@ -25,8 +27,7 @@ TCA9534 io_expander;
 // Used by OpenOCD.
 static volatile int uxTopUsedPriority;
 
-static bool RTC_DATA_ATTR time_ok = false;
-extern bool getNTPTime(SARA_R5 &r5, uint8_t *y, uint8_t *mo, uint8_t *d, uint8_t *h, uint8_t *min, uint8_t *s);
+extern bool getNTPTime(SARA_R5 &r5);
 
 void time_check(void);
 
@@ -38,6 +39,9 @@ void setup() {
     while ( ! Serial) {
         delay(1);
     }
+
+    ESP_LOGI(TAG, "Wake up time: %s", iso8601());
+    ESP_LOGI(TAG, "CPU MHz: %lu", getCpuFrequencyMhz());
 
     // Not working.
     esp_log_level_set("sensors", ESP_LOG_WARN);
@@ -66,16 +70,12 @@ void setup() {
     // This must be done before the config is loaded because the config file is
     // a list of commands.
     CLI::init();
-
-    BluetoothServer::begin();
-//    TaskHandle_t xHandle = NULL;
-//    xTaskCreatePinnedToCore( vSARAURC, "SARA", 2048, nullptr, tskIDLE_PRIORITY, &xHandle, 1 );
-//    ESP_LOGI(TAG, "task handle = %p", xHandle);
-//
-//    taskYIELD();
+//    BluetoothServer::begin();
 
     DeviceConfig& config = DeviceConfig::get();
     config.load();
+
+    config.setMeasurementAndUplinkIntervals(60, 3600);
     config.dumpConfig(Serial);
 
     if (progBtnPressed) {
@@ -85,10 +85,11 @@ void setup() {
         ESP_LOGI(TAG, "Continuing");
     }
 
-    if (! time_ok) {
-        connect_to_internet();
-        time_check();
+    if (config.getBootCount() == 0) {
+        initULP();
     }
+
+    time_check();
 
     uint16_t mi = config.getMeasureInterval();
     uint16_t ui = config.getUplinkInterval();
@@ -123,7 +124,7 @@ void setup() {
     // never run if we do the usual ESP32 setup going to deep sleep mode.
     // It is useful while developing because the node isn't going to sleep.
 //    attachInterrupt(PROG_BTN, progBtnISR, RISING);
-//
+
     battery_monitor.begin();
     solar_monitor.begin();
 
@@ -134,10 +135,7 @@ void setup() {
         send_messages();
     }
 
-    ESP_LOGI(TAG, "Sleeping");
-
-    Serial.flush();
-    //CLI::repl(Serial);
+    ESP_LOGI(TAG, "Shutting down");
 
     if (r5_ok) {
         r5.modulePowerOff();
@@ -166,39 +164,46 @@ void setup() {
         sleep_time = (mi * 1000000) - (setupEnd * 1000);
     }
 
-    ESP_LOGI(TAG, "Sleeping for %lu s", sleep_time / 1000000);
+    float f_s_time = (float)sleep_time / 1000000.0f;
+    ESP_LOGI(TAG, "Going to sleep at: %s, for %.2f s", iso8601(), f_s_time);
+    Serial.flush();
 
     esp_sleep_enable_timer_wakeup(sleep_time);
     esp_deep_sleep_start();
 }
 
 void loop() {
-    if (progBtnPressed) {
-        progBtnPressed = false;
-        ESP_LOGI(TAG, "Button");
-        CLI::repl(Serial);
-    }
 }
 
 void time_check(void) {
-    if (time_ok) {
+    if (time_ok()) {
         return;
     }
 
-    // Get the time from an NTP server and use it to set the clock. See SARA-R5_NTP.ino
-    uint8_t y, mo, d, h, min, s;
-    bool success = getNTPTime(r5, &y, &mo, &d, &h, &min, &s);
+    connect_to_internet();
+
+    bool success = getNTPTime(r5);
     if (!success) {
         ESP_LOGE(TAG, "getNTPTime failed");
         return;
     }
-
-    time_ok = true;
 }
 
 #ifdef __cplusplus
 extern "C" {
 #endif
+/*
+ * This function overrides the default digitalWrite provided by the Arduino core so
+ * we can use it with pins on the IO expander IC. If the pin number > 0x80 then the
+ * bits > 0x80 are masked off and the request is sent to the IO expander library.
+ *
+ * For example, passing in pin 0x82 will ask the IO expander library to write to its
+ * pin 2.
+ *
+ * @param pin the GPIO to write to; values > 0x80 will be handled by the IO expander library
+ * after masking off the bits > 0x80.
+ * @val HIGH or LOW
+ */
 extern void digitalWrite(uint8_t pin, uint8_t val) {
     if (pin & 0x80) {
         uint8_t p = pin & 0x7F;

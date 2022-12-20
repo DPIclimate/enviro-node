@@ -153,6 +153,17 @@ void disable12V(void) {
 // yyyy-mm-ddThh:mm:ssZ
 static char iso8601_buf[24];
 
+// Check if the time has been set.
+bool time_ok(void) {
+    struct tm t;
+    memset(&t, 0, sizeof(t));
+    time_t now;
+    time(&now);
+    gmtime_r(&now, &t);
+
+    return (t.tm_year+1900) >= 2022 && (t.tm_mon+1) >= 12;
+}
+
 const char* iso8601(void) {
     memset(iso8601_buf, 0, sizeof(iso8601_buf));
 
@@ -214,9 +225,6 @@ bool connect_to_internet(void) {
             return false;
         }
     }
-
-    r5.enableDebugging();
-    r5.enableAtDebugging();
 
     r5.invertPowerPin(true);
     r5.autoTimeZoneForBegin(false);
