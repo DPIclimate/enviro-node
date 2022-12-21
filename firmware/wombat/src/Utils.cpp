@@ -229,6 +229,9 @@ bool connect_to_internet(void) {
     r5.invertPowerPin(true);
     r5.autoTimeZoneForBegin(false);
 
+    r5.enableAtDebugging();
+    r5.enableDebugging();
+
     // This is relatively benign - it enables the network indicator GPIO pin, set error message format, etc.
     // It does close all open sockets, but there should not be any open sockets at this point so that is ok.
     r5_ok = r5.begin(LTE_Serial, 115200);
@@ -255,7 +258,7 @@ bool connect_to_internet(void) {
         }
 
         ESP_LOGI(TAG, "ESP registration status = %d", reg_status);
-        delay(1000);
+        delay(2000);
     }
 
     // These commands come from the SARA R4/R5 Internet applications development guide

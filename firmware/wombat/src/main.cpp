@@ -85,7 +85,7 @@ void setup() {
     DeviceConfig& config = DeviceConfig::get();
     config.load();
 
-    config.setMeasurementAndUplinkIntervals(60, 3600);
+    //config.setMeasurementAndUplinkIntervals(60, 3600);
     config.dumpConfig(Serial);
 
     WRITE_PERI_REG(RTC_CNTL_BROWN_OUT_REG, 1);
@@ -194,7 +194,11 @@ void time_check(void) {
         return;
     }
 
-    connect_to_internet();
+    bool status = connect_to_internet();
+    if (!status) {
+        ESP_LOGE(TAG, "Connection to internet failed.");
+        return;
+    }
 
     bool success = getNTPTime(r5);
     if (!success) {

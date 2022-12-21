@@ -21,15 +21,15 @@ static RTC_DATA_ATTR uint32_t bootCount = 0;
 
 DynamicJsonDocument sdi12Defns(2024);
 
-DeviceConfig::DeviceConfig() : uplink_interval(60), measure_interval(15), mqttHost(), mqttUser(), mqttPassword() {
+DeviceConfig::DeviceConfig() : uplink_interval(3600), measure_interval(900), mqttHost(), mqttUser(), mqttPassword() {
     ESP_LOGI(TAG, "Constructing instance");
     bootCount++;
 }
 
 void DeviceConfig::reset() {
     ESP_LOGI(TAG, "Resetting values to defaults");
-    measure_interval = 15;
-    uplink_interval = 60;
+    measure_interval = 900;
+    uplink_interval = 3600;
 
     esp_efuse_mac_get_default(mac);
     snprintf(DeviceConfig::node_id, 13, "%02X%02X%02X%02X%02X%02X%02X%02X", DeviceConfig::mac[0], DeviceConfig::mac[1], DeviceConfig::mac[2], DeviceConfig::mac[3], DeviceConfig::mac[4], DeviceConfig::mac[5], DeviceConfig::mac[6], DeviceConfig::mac[7]);
