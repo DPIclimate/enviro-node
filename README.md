@@ -8,6 +8,9 @@
   <a href="#license">License</a>
 </p>
 
+<p align="center">
+    <img src="https://github.com/DPIclimate/enviro-node/actions/workflows/docs.yml/badge.svg"/>
+</p>
 
 ## About
 
