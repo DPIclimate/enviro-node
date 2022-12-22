@@ -12,15 +12,13 @@
 <g id="node1" class="node">
 <title>Node1</title>
 <g id="a_node1"><a xlink:title=" ">
-<polygon fill="#999999" stroke="#666666" points="143,-162 6,-162 6,-66 143,-66 143,-162"/>
+<polygon fill="#999999" stroke="#666666" points="143,-162 6,-162 6,-88 143,-88 143,-162"/>
 <text text-anchor="middle" x="74.5" y="-150" font-family="Helvetica,sans-Serif" font-size="10.00">{BluetoothServer</text>
 <text text-anchor="start" x="14" y="-139" font-family="Helvetica,sans-Serif" font-size="10.00">|+ device_connected</text>
-<text text-anchor="start" x="14" y="-128" font-family="Helvetica,sans-Serif" font-size="10.00">|+ BluetoothServer()</text>
-<text text-anchor="start" x="14" y="-117" font-family="Helvetica,sans-Serif" font-size="10.00">+ ~BluetoothServer()</text>
-<text text-anchor="start" x="14" y="-106" font-family="Helvetica,sans-Serif" font-size="10.00">+ begin()</text>
-<text text-anchor="start" x="14" y="-95" font-family="Helvetica,sans-Serif" font-size="10.00">+ is_device_connected()</text>
-<text text-anchor="start" x="14" y="-84" font-family="Helvetica,sans-Serif" font-size="10.00">+ notify_device()</text>
-<text text-anchor="middle" x="74.5" y="-73" font-family="Helvetica,sans-Serif" font-size="10.00">}</text>
+<text text-anchor="start" x="14" y="-128" font-family="Helvetica,sans-Serif" font-size="10.00">|+ begin()</text>
+<text text-anchor="start" x="14" y="-117" font-family="Helvetica,sans-Serif" font-size="10.00">+ is_device_connected()</text>
+<text text-anchor="start" x="14" y="-106" font-family="Helvetica,sans-Serif" font-size="10.00">+ notify_device()</text>
+<text text-anchor="middle" x="74.5" y="-95" font-family="Helvetica,sans-Serif" font-size="10.00">}</text>
 </a>
 </g>
 </g>
@@ -28,17 +26,19 @@
 <g id="node2" class="node">
 <title>Node2</title>
 <g id="a_node2"><a xlink:href="class_bluetooth_server_callbacks.html" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="149,-30 0,-30 0,0 149,0 149,-30"/>
-<text text-anchor="middle" x="74.5" y="-18" font-family="Helvetica,sans-Serif" font-size="10.00">{BluetoothServerCallbacks</text>
-<text text-anchor="middle" x="74.5" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00">||}</text>
+<polygon fill="white" stroke="#666666" points="149,-52 0,-52 0,0 149,0 149,-52"/>
+<text text-anchor="middle" x="74.5" y="-40" font-family="Helvetica,sans-Serif" font-size="10.00">{BluetoothServerCallbacks</text>
+<text text-anchor="start" x="8" y="-29" font-family="Helvetica,sans-Serif" font-size="10.00">||&#45; onConnect()</text>
+<text text-anchor="start" x="8" y="-18" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; onDisconnect()</text>
+<text text-anchor="middle" x="74.5" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00">}</text>
 </a>
 </g>
 </g>
 <!-- Node1&#45;&gt;Node2 -->
 <g id="edge1" class="edge">
 <title>Node1&#45;&gt;Node2</title>
-<path fill="none" stroke="#63b8ff" d="M74.5,-55.65C74.5,-46.29 74.5,-37.38 74.5,-30.39"/>
-<polygon fill="none" stroke="#63b8ff" points="71,-55.92 74.5,-65.92 78,-55.92 71,-55.92"/>
+<path fill="none" stroke="#63b8ff" d="M74.5,-77.7C74.5,-68.93 74.5,-60.07 74.5,-52.26"/>
+<polygon fill="none" stroke="#63b8ff" points="71,-77.88 74.5,-87.88 78,-77.88 71,-77.88"/>
 </g>
 </g>
 </svg>

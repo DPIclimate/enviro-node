@@ -96,6 +96,9 @@ $(document).ready(function(){initNavTree('power__monitoring_8h.html',''); initRe
   <div class="headertitle"><div class="title">power_monitoring.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Setup BluetoothLE power monitoring information.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;Arduino.h&gt;</code><br />
 <code>#include &lt;BLECharacteristic.h&gt;</code><br />
 <code>#include &lt;BLEServer.h&gt;</code><br />
@@ -120,34 +123,50 @@ This graph shows which files directly or indirectly include this file:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bluetooth_power_service.html">BluetoothPowerService</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">BluetoothLE power service.  <a href="class_bluetooth_power_service.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bluetooth_solar_voltage_callbacks.html">BluetoothSolarVoltageCallbacks</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Solar voltage BluetoothLE characteristic callback.  <a href="class_bluetooth_solar_voltage_callbacks.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bluetooth_solar_current_callbacks.html">BluetoothSolarCurrentCallbacks</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Solar current BluetoothLE characteristic callback.  <a href="class_bluetooth_solar_current_callbacks.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bluetooth_battery_percent_callbacks.html">BluetoothBatteryPercentCallbacks</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Battery percentage BluetoothLE characteristic callback.  <a href="class_bluetooth_battery_percent_callbacks.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bluetooth_battery_voltage_callbacks.html">BluetoothBatteryVoltageCallbacks</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Battery voltage BluetoothLE characteristic callback.  <a href="class_bluetooth_battery_voltage_callbacks.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bluetooth_battery_current_callbacks.html">BluetoothBatteryCurrentCallbacks</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Battery current BluetoothLE characteristic callback.  <a href="class_bluetooth_battery_current_callbacks.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
 <tr class="memitem:a76afd388972d2cbe96d8ced29f627c71"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="power__monitoring_8h.html#a76afd388972d2cbe96d8ced29f627c71">BATT_SERVICE_UUID</a>&#160;&#160;&#160;(BLEUUID(0x180Fu))</td></tr>
+<tr class="memdesc:a76afd388972d2cbe96d8ced29f627c71"><td class="mdescLeft">&#160;</td><td class="mdescRight">Battery service UUID.  <a href="power__monitoring_8h.html#a76afd388972d2cbe96d8ced29f627c71">More...</a><br /></td></tr>
 <tr class="separator:a76afd388972d2cbe96d8ced29f627c71"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afe35eafe372a4daf8479ac3b0fe1ad45"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="power__monitoring_8h.html#afe35eafe372a4daf8479ac3b0fe1ad45">BATT_CHAR_LEVEL_UUID</a>&#160;&#160;&#160;(BLEUUID(0x2A19u))</td></tr>
+<tr class="memdesc:afe35eafe372a4daf8479ac3b0fe1ad45"><td class="mdescLeft">&#160;</td><td class="mdescRight">Battery charge in percent characteristic UUID.  <a href="power__monitoring_8h.html#afe35eafe372a4daf8479ac3b0fe1ad45">More...</a><br /></td></tr>
 <tr class="separator:afe35eafe372a4daf8479ac3b0fe1ad45"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3937defb2f3259486491adbf6d69959e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="power__monitoring_8h.html#a3937defb2f3259486491adbf6d69959e">BATT_VOLTAGE_UUID</a>&#160;&#160;&#160;(BLEUUID(0x2B18u))</td></tr>
+<tr class="memdesc:a3937defb2f3259486491adbf6d69959e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Battery voltage characteristic UUID.  <a href="power__monitoring_8h.html#a3937defb2f3259486491adbf6d69959e">More...</a><br /></td></tr>
 <tr class="separator:a3937defb2f3259486491adbf6d69959e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abdaf82cd7e5360a25387efee0c067b07"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="power__monitoring_8h.html#abdaf82cd7e5360a25387efee0c067b07">BATT_CURRENT_UUID</a>&#160;&#160;&#160;(BLEUUID(0x2AEEu))</td></tr>
+<tr class="memdesc:abdaf82cd7e5360a25387efee0c067b07"><td class="mdescLeft">&#160;</td><td class="mdescRight">Battery current characteristic UUID.  <a href="power__monitoring_8h.html#abdaf82cd7e5360a25387efee0c067b07">More...</a><br /></td></tr>
 <tr class="separator:abdaf82cd7e5360a25387efee0c067b07"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af00f62afaab5f9283cc471a22183a8ed"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="power__monitoring_8h.html#af00f62afaab5f9283cc471a22183a8ed">SOLAR_VOLTAGE_UUID</a>&#160;&#160;&#160;(BLEUUID(&quot;4af56a5f-5688-4ff6-9008-adcc6c1992e1&quot;))</td></tr>
+<tr class="memdesc:af00f62afaab5f9283cc471a22183a8ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Solar voltage characteristic UUID.  <a href="power__monitoring_8h.html#af00f62afaab5f9283cc471a22183a8ed">More...</a><br /></td></tr>
 <tr class="separator:af00f62afaab5f9283cc471a22183a8ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af2f34c21965724bffeac0d43704973e9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="power__monitoring_8h.html#af2f34c21965724bffeac0d43704973e9">SOLAR_CURRENT_UUID</a>&#160;&#160;&#160;(BLEUUID(&quot;a85332c1-5477-4e23-a782-c48443f0dda3&quot;))</td></tr>
+<tr class="memdesc:af2f34c21965724bffeac0d43704973e9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Solar current characteristic UUID.  <a href="power__monitoring_8h.html#af2f34c21965724bffeac0d43704973e9">More...</a><br /></td></tr>
 <tr class="separator:af2f34c21965724bffeac0d43704973e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Macro Definition Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p >Setup BluetoothLE power monitoring information. </p>
+<p >Power monitoring includes battery status and solar status. Both are attached to a BluetoothLE power monitoring service and served by the BluetoothLE server.</p>
+<dl class="section date"><dt>Date</dt><dd>December 2022 </dd></dl>
+</div><h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="afe35eafe372a4daf8479ac3b0fe1ad45" name="afe35eafe372a4daf8479ac3b0fe1ad45"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#afe35eafe372a4daf8479ac3b0fe1ad45">&#9670;&#160;</a></span>BATT_CHAR_LEVEL_UUID</h2>
 
@@ -159,6 +178,8 @@ Macros</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Battery charge in percent characteristic UUID. </p>
 
 </div>
 </div>
@@ -174,6 +195,8 @@ Macros</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Battery current characteristic UUID. </p>
+
 </div>
 </div>
 <a id="a76afd388972d2cbe96d8ced29f627c71" name="a76afd388972d2cbe96d8ced29f627c71"></a>
@@ -187,6 +210,8 @@ Macros</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Battery service UUID. </p>
 
 </div>
 </div>
@@ -202,6 +227,8 @@ Macros</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Battery voltage characteristic UUID. </p>
+
 </div>
 </div>
 <a id="af2f34c21965724bffeac0d43704973e9" name="af2f34c21965724bffeac0d43704973e9"></a>
@@ -216,6 +243,8 @@ Macros</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Solar current characteristic UUID. </p>
+
 </div>
 </div>
 <a id="af00f62afaab5f9283cc471a22183a8ed" name="af00f62afaab5f9283cc471a22183a8ed"></a>
@@ -229,6 +258,8 @@ Macros</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Solar voltage characteristic UUID. </p>
 
 </div>
 </div>

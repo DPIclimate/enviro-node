@@ -97,6 +97,9 @@ $(document).ready(function(){initNavTree('class_bluetooth_device_service.html','
 </div><!--header-->
 <div class="contents">
 
+<p>Bluetooth device service. Enable device information to be shared over BluetoothLE.  
+ <a href="class_bluetooth_device_service.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="device_8h_source.html">device.h</a>&gt;</code></p>
 <div class="dynheader">
 Collaboration diagram for BluetoothDeviceService:</div>
@@ -107,12 +110,17 @@ Collaboration diagram for BluetoothDeviceService:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a27a22ef549a718d46ffbea4cddacf66f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bluetooth_device_service.html#a27a22ef549a718d46ffbea4cddacf66f">BluetoothDeviceService</a> (BLEServer *server)</td></tr>
+<tr class="memitem:a27a22ef549a718d46ffbea4cddacf66f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bluetooth_device_service.html#a27a22ef549a718d46ffbea4cddacf66f">BluetoothDeviceService</a> (BLEServer *<a class="el" href="server_8cpp.html#a4c702b816cf82ea6518921edab262bd9">server</a>)</td></tr>
+<tr class="memdesc:a27a22ef549a718d46ffbea4cddacf66f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create and start a device information service on the BluetoothLE server.  <a href="class_bluetooth_device_service.html#a27a22ef549a718d46ffbea4cddacf66f">More...</a><br /></td></tr>
 <tr class="separator:a27a22ef549a718d46ffbea4cddacf66f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a97a89170bff310b4cf6a3dd9b895e668"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bluetooth_device_service.html#a97a89170bff310b4cf6a3dd9b895e668">~BluetoothDeviceService</a> ()=default</td></tr>
 <tr class="separator:a97a89170bff310b4cf6a3dd9b895e668"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p >Bluetooth device service. Enable device information to be shared over BluetoothLE. </p>
+<p >Advertises device information over BluetoothLE when enabled. This includes things such as the device name, firmware and hardware revisions. These services are advertised using specific UUID's that correspond to client UUID's. This enables BluetoothLE clients to identify a device and its metadata via shared UUID's.</p>
+<dl class="section see"><dt>See also</dt><dd>For more information on UUID's and the preassigned UUID's for various services see <a href="https://www.bluetooth.com/wp-content/uploads/2022/12/Assigned_Numbers_Released-2022-12-20.pdf">https://www.bluetooth.com/wp-content/uploads/2022/12/Assigned_Numbers_Released-2022-12-20.pdf</a> </dd></dl>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a27a22ef549a718d46ffbea4cddacf66f" name="a27a22ef549a718d46ffbea4cddacf66f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a27a22ef549a718d46ffbea4cddacf66f">&#9670;&#160;</a></span>BluetoothDeviceService()</h2>
 
@@ -136,6 +144,15 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Create and start a device information service on the BluetoothLE server. </p>
+<p >Creates a bluetooth service for device information and attaches several characteristics to the service. The service is then started and attached to the BluetoothLE server.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">server</td><td>BluetoothLE server. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

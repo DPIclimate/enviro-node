@@ -93,6 +93,8 @@ $(document).ready(function(){initNavTree('class_t_c_a9534.html',''); initResizab
   <div class="summary">
 <a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_t_c_a9534-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">TCA9534 Class Reference</div></div>
 </div><!--header-->
@@ -102,7 +104,7 @@ $(document).ready(function(){initNavTree('class_t_c_a9534.html',''); initResizab
 <div class="dynheader">
 Collaboration diagram for TCA9534:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="class_t_c_a9534__coll__graph.svg" width="175" height="256"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="class_t_c_a9534__coll__graph.svg" width="175" height="388"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 <table class="memberdecls">
@@ -157,6 +159,30 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a074cad46feafe7579880cb0125d5a39b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5f2fbf452e8a81edfe612ed8f7108ffd"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_t_c_a9534.html#a5f2fbf452e8a81edfe612ed8f7108ffd">status</a> () const</td></tr>
 <tr class="separator:a5f2fbf452e8a81edfe612ed8f7108ffd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:aab8f8e05b530cabbce58602edb531f3a"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_t_c_a9534.html#aab8f8e05b530cabbce58602edb531f3a">readBit</a> (uint8_t dev, uint8_t reg, uint8_t bit)</td></tr>
+<tr class="separator:aab8f8e05b530cabbce58602edb531f3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ada79410395a15183b3d8133d3ab6666e"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_t_c_a9534.html#ada79410395a15183b3d8133d3ab6666e">readByte</a> (uint8_t dev, uint8_t reg)</td></tr>
+<tr class="separator:ada79410395a15183b3d8133d3ab6666e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a607b69a71ae9ec62e1175c634945aa54"><td class="memItemLeft" align="right" valign="top">int8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_t_c_a9534.html#a607b69a71ae9ec62e1175c634945aa54">readBytes</a> (uint8_t dev, uint8_t reg, uint8_t size, uint8_t *data)</td></tr>
+<tr class="separator:a607b69a71ae9ec62e1175c634945aa54"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aebce311d485bc3c9c949679b80099608"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_t_c_a9534.html#aebce311d485bc3c9c949679b80099608">writeBit</a> (uint8_t dev, uint8_t reg, uint8_t bit, uint8_t data)</td></tr>
+<tr class="separator:aebce311d485bc3c9c949679b80099608"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad837b4e355e71adef607803b39521dbc"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_t_c_a9534.html#ad837b4e355e71adef607803b39521dbc">writeByte</a> (uint8_t dev, uint8_t reg, uint8_t data)</td></tr>
+<tr class="separator:ad837b4e355e71adef607803b39521dbc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab0b7db9045c05fbdfdf4159d0ba79ff8"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_t_c_a9534.html#ab0b7db9045c05fbdfdf4159d0ba79ff8">writeBytes</a> (uint8_t dev, uint8_t reg, uint8_t size, uint8_t *data)</td></tr>
+<tr class="separator:ab0b7db9045c05fbdfdf4159d0ba79ff8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a090994f5dc606d3676d2004c0b8be270"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_t_c_a9534.html#a090994f5dc606d3676d2004c0b8be270">I2C_ADDR</a> = 0x20</td></tr>
+<tr class="separator:a090994f5dc606d3676d2004c0b8be270"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8794c8de1fa914050120f63dd7b90d41"><td class="memItemLeft" align="right" valign="top">TwoWire *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_t_c_a9534.html#a8794c8de1fa914050120f63dd7b90d41">wire</a></td></tr>
+<tr class="separator:a8794c8de1fa914050120f63dd7b90d41"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0a5075813b9328dc5275fbc393757151"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_t_c_a9534.html#a0a5075813b9328dc5275fbc393757151">sts</a></td></tr>
+<tr class="separator:a0a5075813b9328dc5275fbc393757151"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Enumeration Documentation</h2>
 <a id="a3200e83b186f1bee938fcfab0868c480" name="a3200e83b186f1bee938fcfab0868c480"></a>
@@ -596,6 +622,132 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="aab8f8e05b530cabbce58602edb531f3a" name="aab8f8e05b530cabbce58602edb531f3a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aab8f8e05b530cabbce58602edb531f3a">&#9670;&#160;</a></span>readBit()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t TCA9534::readBit </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>dev</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>reg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>bit</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ada79410395a15183b3d8133d3ab6666e" name="ada79410395a15183b3d8133d3ab6666e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ada79410395a15183b3d8133d3ab6666e">&#9670;&#160;</a></span>readByte()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t TCA9534::readByte </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>dev</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>reg</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a607b69a71ae9ec62e1175c634945aa54" name="a607b69a71ae9ec62e1175c634945aa54"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a607b69a71ae9ec62e1175c634945aa54">&#9670;&#160;</a></span>readBytes()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int8_t TCA9534::readBytes </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>dev</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>reg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>data</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a933d2ee25dc6c08ec2908dff66725315" name="a933d2ee25dc6c08ec2908dff66725315"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a933d2ee25dc6c08ec2908dff66725315">&#9670;&#160;</a></span>setDeviceAddress()</h2>
 
@@ -641,6 +793,211 @@ Public Member Functions</h2></td></tr>
   </td>
   <td class="mlabels-right">
 <span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aebce311d485bc3c9c949679b80099608" name="aebce311d485bc3c9c949679b80099608"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aebce311d485bc3c9c949679b80099608">&#9670;&#160;</a></span>writeBit()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool TCA9534::writeBit </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>dev</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>reg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>bit</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>data</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad837b4e355e71adef607803b39521dbc" name="ad837b4e355e71adef607803b39521dbc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad837b4e355e71adef607803b39521dbc">&#9670;&#160;</a></span>writeByte()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool TCA9534::writeByte </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>dev</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>reg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>data</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab0b7db9045c05fbdfdf4159d0ba79ff8" name="ab0b7db9045c05fbdfdf4159d0ba79ff8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab0b7db9045c05fbdfdf4159d0ba79ff8">&#9670;&#160;</a></span>writeBytes()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool TCA9534::writeBytes </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>dev</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>reg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>data</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a090994f5dc606d3676d2004c0b8be270" name="a090994f5dc606d3676d2004c0b8be270"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a090994f5dc606d3676d2004c0b8be270">&#9670;&#160;</a></span>I2C_ADDR</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t TCA9534::I2C_ADDR = 0x20</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0a5075813b9328dc5275fbc393757151" name="a0a5075813b9328dc5275fbc393757151"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0a5075813b9328dc5275fbc393757151">&#9670;&#160;</a></span>sts</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t TCA9534::sts</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8794c8de1fa914050120f63dd7b90d41" name="a8794c8de1fa914050120f63dd7b90d41"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8794c8de1fa914050120f63dd7b90d41">&#9670;&#160;</a></span>wire</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">TwoWire* TCA9534::wire</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">

@@ -11,7 +11,7 @@
 <!-- Node1 -->
 <g id="node1" class="node">
 <title>Node1</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Handles the time between measurements and uplinks by the device over LTE.">
 <polygon fill="#999999" stroke="#666666" points="333,-217 176,-217 176,-176 333,-176 333,-217"/>
 <text text-anchor="start" x="184" y="-205" font-family="Helvetica,sans-Serif" font-size="10.00">firmware/wombat/src</text>
 <text text-anchor="start" x="184" y="-194" font-family="Helvetica,sans-Serif" font-size="10.00">/cli/device_config/acquisition</text>
@@ -22,7 +22,7 @@
 <!-- Node2 -->
 <g id="node2" class="node">
 <title>Node2</title>
-<g id="a_node2"><a xlink:href="acquisition__intervals_8h.html" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="acquisition__intervals_8h.html" target="_top" xlink:title="Handles the time between measurements and uplinks by the device over LTE.">
 <polygon fill="white" stroke="#666666" points="331.5,-140 177.5,-140 177.5,-110 331.5,-110 331.5,-140"/>
 <text text-anchor="start" x="185.5" y="-128" font-family="Helvetica,sans-Serif" font-size="10.00">cli/device_config/acquisition</text>
 <text text-anchor="middle" x="254.5" y="-117" font-family="Helvetica,sans-Serif" font-size="10.00">_intervals.h</text>

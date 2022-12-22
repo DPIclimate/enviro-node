@@ -6,7 +6,7 @@
 <area shape="rect" id="node5" href="$cat-m1_8h.html" title=" " alt="" coords="329,101,505,126"/>
 <area shape="rect" id="node11" href="$sdi12_8h.html" title=" " alt="" coords="116,101,281,126"/>
 <area shape="rect" id="node16" href="$bluetooth_8h.html" title=" " alt="" coords="759,101,951,126"/>
-<area shape="rect" id="node30" href="$acquisition__intervals_8h.html" title=" " alt="" coords="529,93,735,133"/>
+<area shape="rect" id="node30" href="$acquisition__intervals_8h.html" title="Handles the time between measurements and uplinks by the device over LTE." alt="" coords="529,93,735,133"/>
 <area shape="rect" id="node33" href="$mqtt__cli_8h.html" title=" " alt="" coords="1223,93,1388,133"/>
 <area shape="rect" id="node34" href="$config__cli_8h.html" title=" " alt="" coords="1025,93,1199,133"/>
 <area shape="rect" id="node6" title=" " alt="" coords="507,181,589,207"/>
@@ -18,16 +18,16 @@
 <area shape="rect" id="node13" href="$_utils_8h.html" title=" " alt="" coords="141,181,205,207"/>
 <area shape="rect" id="node14" title=" " alt="" coords="192,255,267,280"/>
 <area shape="rect" id="node15" title=" " alt="" coords="291,255,402,280"/>
-<area shape="rect" id="node17" href="$server_8h.html" title=" " alt="" coords="1191,181,1331,207"/>
+<area shape="rect" id="node17" href="$server_8h.html" title="Handle the setup and maintenance of the BLE server and connected clients." alt="" coords="1191,181,1331,207"/>
 <area shape="rect" id="node18" title=" " alt="" coords="1411,255,1514,280"/>
 <area shape="rect" id="node19" title=" " alt="" coords="1107,328,1205,353"/>
 <area shape="rect" id="node20" title=" " alt="" coords="1781,255,1869,280"/>
 <area shape="rect" id="node21" title=" " alt="" coords="1229,328,1320,353"/>
-<area shape="rect" id="node22" href="$uart_8h.html" title=" " alt="" coords="991,255,1118,280"/>
-<area shape="rect" id="node25" href="$device_8h.html" title=" " alt="" coords="1245,255,1387,280"/>
-<area shape="rect" id="node26" href="$power__monitoring_8h.html" title=" " alt="" coords="1539,255,1757,280"/>
+<area shape="rect" id="node22" href="$uart_8h.html" title="BluetoothLE UART service setup and handling." alt="" coords="991,255,1118,280"/>
+<area shape="rect" id="node25" href="$device_8h.html" title="Bluetooth device services and device information." alt="" coords="1245,255,1387,280"/>
+<area shape="rect" id="node26" href="$power__monitoring_8h.html" title="Setup BluetoothLE power monitoring information." alt="" coords="1539,255,1757,280"/>
 <area shape="rect" id="node23" title=" " alt="" coords="1395,328,1543,353"/>
-<area shape="rect" id="node24" href="$tones_8h.html" title=" " alt="" coords="907,328,1082,353"/>
+<area shape="rect" id="node24" href="$tones_8h.html" title="Audio control for the onboard piezo buzzer." alt="" coords="907,328,1082,353"/>
 <area shape="rect" id="node27" href="$solar_8h.html" title=" " alt="" coords="1845,328,2032,353"/>
 <area shape="rect" id="node29" href="$battery_8h.html" title=" " alt="" coords="1619,328,1821,353"/>
 <area shape="rect" id="node28" title=" " alt="" coords="1759,401,1899,427"/>

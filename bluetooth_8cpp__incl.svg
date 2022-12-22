@@ -81,7 +81,7 @@
 <!-- Node6 -->
 <g id="node6" class="node">
 <title>Node6</title>
-<g id="a_node6"><a xlink:href="server_8h.html" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="server_8h.html" target="_top" xlink:title="Handle the setup and maintenance of the BLE server and connected clients.">
 <polygon fill="white" stroke="#666666" points="1236,-305 1131,-305 1131,-286 1236,-286 1236,-305"/>
 <text text-anchor="middle" x="1183.5" y="-293" font-family="Helvetica,sans-Serif" font-size="10.00">bluetooth/server.h</text>
 </a>
@@ -156,7 +156,7 @@
 <!-- Node11 -->
 <g id="node11" class="node">
 <title>Node11</title>
-<g id="a_node11"><a xlink:href="uart_8h.html" target="_top" xlink:title=" ">
+<g id="a_node11"><a xlink:href="uart_8h.html" target="_top" xlink:title="BluetoothLE UART service setup and handling.">
 <polygon fill="white" stroke="#666666" points="1391,-250 1296,-250 1296,-231 1391,-231 1391,-250"/>
 <text text-anchor="middle" x="1343.5" y="-238" font-family="Helvetica,sans-Serif" font-size="10.00">bluetooth/uart.h</text>
 </a>
@@ -171,7 +171,7 @@
 <!-- Node15 -->
 <g id="node15" class="node">
 <title>Node15</title>
-<g id="a_node15"><a xlink:href="device_8h.html" target="_top" xlink:title=" ">
+<g id="a_node15"><a xlink:href="device_8h.html" target="_top" xlink:title="Bluetooth device services and device information.">
 <polygon fill="white" stroke="#666666" points="1278,-250 1171,-250 1171,-231 1278,-231 1278,-250"/>
 <text text-anchor="middle" x="1224.5" y="-238" font-family="Helvetica,sans-Serif" font-size="10.00">bluetooth/device.h</text>
 </a>
@@ -186,7 +186,7 @@
 <!-- Node16 -->
 <g id="node16" class="node">
 <title>Node16</title>
-<g id="a_node16"><a xlink:href="power__monitoring_8h.html" target="_top" xlink:title=" ">
+<g id="a_node16"><a xlink:href="power__monitoring_8h.html" target="_top" xlink:title="Setup BluetoothLE power monitoring information.">
 <polygon fill="white" stroke="#666666" points="1611.5,-250 1447.5,-250 1447.5,-231 1611.5,-231 1611.5,-250"/>
 <text text-anchor="middle" x="1529.5" y="-238" font-family="Helvetica,sans-Serif" font-size="10.00">bluetooth/power_monitoring.h</text>
 </a>
@@ -264,7 +264,7 @@
 <!-- Node14 -->
 <g id="node14" class="node">
 <title>Node14</title>
-<g id="a_node14"><a xlink:href="tones_8h.html" target="_top" xlink:title=" ">
+<g id="a_node14"><a xlink:href="tones_8h.html" target="_top" xlink:title="Audio control for the onboard piezo buzzer.">
 <polygon fill="white" stroke="#666666" points="1485,-74 1354,-74 1354,-55 1485,-55 1485,-74"/>
 <text text-anchor="middle" x="1419.5" y="-62" font-family="Helvetica,sans-Serif" font-size="10.00">audio&#45;feedback/tones.h</text>
 </a>
@@ -459,7 +459,7 @@
 <!-- Node31 -->
 <g id="node31" class="node">
 <title>Node31</title>
-<g id="a_node31"><a xlink:href="acquisition__intervals_8h.html" target="_top" xlink:title=" ">
+<g id="a_node31"><a xlink:href="acquisition__intervals_8h.html" target="_top" xlink:title="Handles the time between measurements and uplinks by the device over LTE.">
 <polygon fill="white" stroke="#666666" points="639.5,-195 485.5,-195 485.5,-165 639.5,-165 639.5,-195"/>
 <text text-anchor="start" x="493.5" y="-183" font-family="Helvetica,sans-Serif" font-size="10.00">cli/device_config/acquisition</text>
 <text text-anchor="middle" x="562.5" y="-172" font-family="Helvetica,sans-Serif" font-size="10.00">_intervals.h</text>

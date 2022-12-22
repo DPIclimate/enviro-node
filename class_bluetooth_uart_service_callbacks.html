@@ -91,22 +91,72 @@ $(document).ready(function(){initNavTree('class_bluetooth_uart_service_callbacks
 
 <div class="header">
   <div class="summary">
+<a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="class_bluetooth_uart_service_callbacks-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BluetoothUartServiceCallbacks Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
 
+<p>Handles RX and TX of BLEUart messages.  
+ <a href="class_bluetooth_uart_service_callbacks.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="uart_8h_source.html">uart.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for BluetoothUartServiceCallbacks:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="class_bluetooth_uart_service_callbacks__inherit__graph.svg" width="243" height="139"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="class_bluetooth_uart_service_callbacks__inherit__graph.svg" width="243" height="154"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 <div class="dynheader">
 Collaboration diagram for BluetoothUartServiceCallbacks:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="class_bluetooth_uart_service_callbacks__coll__graph.svg" width="243" height="139"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="class_bluetooth_uart_service_callbacks__coll__graph.svg" width="243" height="154"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:ab73163e54cd7377e5fc83af2c3747b75"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bluetooth_uart_service_callbacks.html#ab73163e54cd7377e5fc83af2c3747b75">onWrite</a> (BLECharacteristic *pCharacteristic) override</td></tr>
+<tr class="memdesc:ab73163e54cd7377e5fc83af2c3747b75"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback function for messages received from a BLE client.  <a href="class_bluetooth_uart_service_callbacks.html#ab73163e54cd7377e5fc83af2c3747b75">More...</a><br /></td></tr>
+<tr class="separator:ab73163e54cd7377e5fc83af2c3747b75"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p >Handles RX and TX of BLEUart messages. </p>
+<p >BLEUart client messages are sanitised and passed through to the <a class="el" href="class_c_l_i.html">CLI</a>. The response from the <a class="el" href="class_c_l_i.html">CLI</a> is then passed back to the BLE client. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="ab73163e54cd7377e5fc83af2c3747b75" name="ab73163e54cd7377e5fc83af2c3747b75"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab73163e54cd7377e5fc83af2c3747b75">&#9670;&#160;</a></span>onWrite()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void BluetoothUartServiceCallbacks::onWrite </td>
+          <td>(</td>
+          <td class="paramtype">BLECharacteristic *&#160;</td>
+          <td class="paramname"><em>pCharacteristic</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Callback function for messages received from a BLE client. </p>
+<p >When a BLE client sends a message to the BLE server running on this device this method will be called. The message is extracted and check to ensure data is available (if not the function returns with an error tone). The message is then allocated to a buffer (rx_buf) which has its white space removed. This buffer is then passed through to the <a class="el" href="class_c_l_i.html">CLI</a> which responds accordingly. The response from the <a class="el" href="class_c_l_i.html">CLI</a> is held in another buffer which is then passed back to the BLE client through a notify method.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pCharacteristic</td><td>Pointer to the UART characteristic. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>

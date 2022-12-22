@@ -11,7 +11,7 @@
 <!-- Node0 -->
 <g id="node1" class="node">
 <title>Node0</title>
-<g id="a_node1"><a xlink:href="class_c_l_i_config_intervals.html" target="_top" xlink:title=" ">
+<g id="a_node1"><a xlink:href="class_c_l_i_config_intervals.html" target="_top" xlink:title="Setup acquisition intervals based on device configuration stored in SPIFFS memory or via the CLI.">
 <polygon fill="white" stroke="#666666" points="105,-19 0,-19 0,0 105,0 105,-19"/>
 <text text-anchor="middle" x="52.5" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00">CLIConfigIntervals</text>
 </a>

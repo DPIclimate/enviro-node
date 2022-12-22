@@ -1,4 +1,4 @@
 <map id="firmware/wombat/include/audio&#45;feedback/tones.h" name="firmware/wombat/include/audio&#45;feedback/tones.h">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,193,45"/>
+<area shape="rect" id="node1" title="Audio control for the onboard piezo buzzer." alt="" coords="5,5,193,45"/>
 <area shape="rect" id="node2" title=" " alt="" coords="57,93,141,119"/>
 </map>

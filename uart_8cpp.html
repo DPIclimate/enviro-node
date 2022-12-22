@@ -96,6 +96,9 @@ $(document).ready(function(){initNavTree('uart_8cpp.html',''); initResizable(); 
   <div class="headertitle"><div class="title">uart.cpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>BluetoothLE UART service setup and handling.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="uart_8h_source.html">bluetooth/uart.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for uart.cpp:</div>
@@ -107,18 +110,25 @@ Include dependency graph for uart.cpp:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
 <tr class="memitem:afc3d101f633a076cc1ca84b85b6224b2"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="uart_8cpp.html#afc3d101f633a076cc1ca84b85b6224b2">TAG</a>&#160;&#160;&#160;&quot;btuart&quot;</td></tr>
+<tr class="memdesc:afc3d101f633a076cc1ca84b85b6224b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">ESP32 log tag for BLEUart debug output.  <a href="uart_8cpp.html#afc3d101f633a076cc1ca84b85b6224b2">More...</a><br /></td></tr>
 <tr class="separator:afc3d101f633a076cc1ca84b85b6224b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
 <tr class="memitem:a5ba853f5d3103ebee6cd61695deb82ce"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="uart_8cpp.html#a5ba853f5d3103ebee6cd61695deb82ce">rx_buf</a> [256]</td></tr>
+<tr class="memdesc:a5ba853f5d3103ebee6cd61695deb82ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Receive buffer for message from a BLE client.  <a href="uart_8cpp.html#a5ba853f5d3103ebee6cd61695deb82ce">More...</a><br /></td></tr>
 <tr class="separator:a5ba853f5d3103ebee6cd61695deb82ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afc2ca422cfbd6a0011cc4f60c1220fbf"><td class="memItemLeft" align="right" valign="top">constexpr size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="uart_8cpp.html#afc2ca422cfbd6a0011cc4f60c1220fbf">BT_WRITE_BUF_LEN</a> = 512</td></tr>
+<tr class="memdesc:afc2ca422cfbd6a0011cc4f60c1220fbf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write buffer size for message to a BLE client.  <a href="uart_8cpp.html#afc2ca422cfbd6a0011cc4f60c1220fbf">More...</a><br /></td></tr>
 <tr class="separator:afc2ca422cfbd6a0011cc4f60c1220fbf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a435d9ff12393ab0def3bc7d5e199dd6b"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="uart_8cpp.html#a435d9ff12393ab0def3bc7d5e199dd6b">bluetooth_write_buf</a> [<a class="el" href="uart_8cpp.html#afc2ca422cfbd6a0011cc4f60c1220fbf">BT_WRITE_BUF_LEN</a>+1]</td></tr>
+<tr class="memdesc:a435d9ff12393ab0def3bc7d5e199dd6b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write buffer for messages being sent to a BLE client.  <a href="uart_8cpp.html#a435d9ff12393ab0def3bc7d5e199dd6b">More...</a><br /></td></tr>
 <tr class="separator:a435d9ff12393ab0def3bc7d5e199dd6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Macro Definition Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p >BluetoothLE UART service setup and handling. </p>
+<dl class="section date"><dt>Date</dt><dd>December 2022 </dd></dl>
+</div><h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="afc3d101f633a076cc1ca84b85b6224b2" name="afc3d101f633a076cc1ca84b85b6224b2"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#afc3d101f633a076cc1ca84b85b6224b2">&#9670;&#160;</a></span>TAG</h2>
 
@@ -130,6 +140,8 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>ESP32 log tag for BLEUart debug output. </p>
 
 </div>
 </div>
@@ -145,6 +157,8 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Write buffer for messages being sent to a BLE client. </p>
 
 </div>
 </div>
@@ -168,6 +182,8 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Write buffer size for message to a BLE client. </p>
+
 </div>
 </div>
 <a id="a5ba853f5d3103ebee6cd61695deb82ce" name="a5ba853f5d3103ebee6cd61695deb82ce"></a>
@@ -181,6 +197,8 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Receive buffer for message from a BLE client. </p>
 
 </div>
 </div>

@@ -95,6 +95,8 @@ $(document).ready(function(){initNavTree('class_device_config.html',''); initRes
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="#pub-static-attribs">Static Public Attributes</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_device_config-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">DeviceConfig Class Reference</div></div>
 </div><!--header-->
@@ -104,7 +106,7 @@ $(document).ready(function(){initNavTree('class_device_config.html',''); initRes
 <div class="dynheader">
 Collaboration diagram for DeviceConfig:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="class_device_config__coll__graph.svg" width="292" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="class_device_config__coll__graph.svg" width="292" height="432"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 <table class="memberdecls">
@@ -169,7 +171,83 @@ Public Attributes</h2></td></tr>
 Static Public Attributes</h2></td></tr>
 <tr class="memitem:a1f531e3530859e465075d67be8016e48"><td class="memItemLeft" align="right" valign="top">static constexpr size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device_config.html#a1f531e3530859e465075d67be8016e48">MAX_CONFIG_STR</a> = 32</td></tr>
 <tr class="separator:a1f531e3530859e465075d67be8016e48"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:a2c8019ff2aa1fc96b89859244fd3ba48"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device_config.html#a2c8019ff2aa1fc96b89859244fd3ba48">DeviceConfig</a> ()</td></tr>
+<tr class="separator:a2c8019ff2aa1fc96b89859244fd3ba48"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4c08f6cc51a8a4130c1d25b8c59e6188"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device_config.html#a4c08f6cc51a8a4130c1d25b8c59e6188">DeviceConfig</a> (const <a class="el" href="class_device_config.html">DeviceConfig</a> &amp;)=delete</td></tr>
+<tr class="separator:a4c08f6cc51a8a4130c1d25b8c59e6188"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a438c4a3d753923f0a42bf271c72b65b9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_device_config.html">DeviceConfig</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device_config.html#a438c4a3d753923f0a42bf271c72b65b9">operator=</a> (const <a class="el" href="class_device_config.html">DeviceConfig</a> &amp;)=delete</td></tr>
+<tr class="separator:a438c4a3d753923f0a42bf271c72b65b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a652a7d87b6d29c00e68e572803ed7c86"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device_config.html#a652a7d87b6d29c00e68e572803ed7c86">measure_interval</a></td></tr>
+<tr class="separator:a652a7d87b6d29c00e68e572803ed7c86"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa5385d0eb9832fc114ef0d4d9757038f"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device_config.html#aa5385d0eb9832fc114ef0d4d9757038f">uplink_interval</a></td></tr>
+<tr class="separator:aa5385d0eb9832fc114ef0d4d9757038f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac34cbf8e44e6906e6fe4182d56c56458"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device_config.html#ac34cbf8e44e6906e6fe4182d56c56458">mqttHost</a></td></tr>
+<tr class="separator:ac34cbf8e44e6906e6fe4182d56c56458"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aef0d5422c0fa4fe4edb641198d7628b2"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device_config.html#aef0d5422c0fa4fe4edb641198d7628b2">mqttPort</a></td></tr>
+<tr class="separator:aef0d5422c0fa4fe4edb641198d7628b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abde83ddacb708bb474c8fce35efbf653"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device_config.html#abde83ddacb708bb474c8fce35efbf653">mqttUser</a></td></tr>
+<tr class="separator:abde83ddacb708bb474c8fce35efbf653"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a50329fa30a5338e89575dc4441dcc637"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device_config.html#a50329fa30a5338e89575dc4441dcc637">mqttPassword</a></td></tr>
+<tr class="separator:a50329fa30a5338e89575dc4441dcc637"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a2c8019ff2aa1fc96b89859244fd3ba48" name="a2c8019ff2aa1fc96b89859244fd3ba48"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2c8019ff2aa1fc96b89859244fd3ba48">&#9670;&#160;</a></span>DeviceConfig() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">DeviceConfig::DeviceConfig </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4c08f6cc51a8a4130c1d25b8c59e6188" name="a4c08f6cc51a8a4130c1d25b8c59e6188"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4c08f6cc51a8a4130c1d25b8c59e6188">&#9670;&#160;</a></span>DeviceConfig() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">DeviceConfig::DeviceConfig </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_device_config.html">DeviceConfig</a> &amp;&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span><span class="mlabel">delete</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a id="a2d52987984233de19b4a6ec55022a3c3" name="a2d52987984233de19b4a6ec55022a3c3"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2d52987984233de19b4a6ec55022a3c3">&#9670;&#160;</a></span>dumpConfig()</h2>
@@ -443,6 +521,32 @@ Static Public Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a438c4a3d753923f0a42bf271c72b65b9" name="a438c4a3d753923f0a42bf271c72b65b9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a438c4a3d753923f0a42bf271c72b65b9">&#9670;&#160;</a></span>operator=()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_device_config.html">DeviceConfig</a> &amp; DeviceConfig::operator= </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_device_config.html">DeviceConfig</a> &amp;&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span><span class="mlabel">delete</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="af40beaf1b7a0d8a6f26cb032492909e5" name="af40beaf1b7a0d8a6f26cb032492909e5"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af40beaf1b7a0d8a6f26cb032492909e5">&#9670;&#160;</a></span>reset()</h2>
 
@@ -682,6 +786,28 @@ Static Public Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a652a7d87b6d29c00e68e572803ed7c86" name="a652a7d87b6d29c00e68e572803ed7c86"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a652a7d87b6d29c00e68e572803ed7c86">&#9670;&#160;</a></span>measure_interval</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t DeviceConfig::measure_interval</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="af19ee6dc852af2785d400b531de539d0" name="af19ee6dc852af2785d400b531de539d0"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af19ee6dc852af2785d400b531de539d0">&#9670;&#160;</a></span>mqtt_topic_template</h2>
 
@@ -696,6 +822,94 @@ Static Public Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="ac34cbf8e44e6906e6fe4182d56c56458" name="ac34cbf8e44e6906e6fe4182d56c56458"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac34cbf8e44e6906e6fe4182d56c56458">&#9670;&#160;</a></span>mqttHost</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string DeviceConfig::mqttHost</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a50329fa30a5338e89575dc4441dcc637" name="a50329fa30a5338e89575dc4441dcc637"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a50329fa30a5338e89575dc4441dcc637">&#9670;&#160;</a></span>mqttPassword</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string DeviceConfig::mqttPassword</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aef0d5422c0fa4fe4edb641198d7628b2" name="aef0d5422c0fa4fe4edb641198d7628b2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aef0d5422c0fa4fe4edb641198d7628b2">&#9670;&#160;</a></span>mqttPort</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t DeviceConfig::mqttPort</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="abde83ddacb708bb474c8fce35efbf653" name="abde83ddacb708bb474c8fce35efbf653"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abde83ddacb708bb474c8fce35efbf653">&#9670;&#160;</a></span>mqttUser</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string DeviceConfig::mqttUser</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a575ea0dd0e500ebc854aeb0267023ace" name="a575ea0dd0e500ebc854aeb0267023ace"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a575ea0dd0e500ebc854aeb0267023ace">&#9670;&#160;</a></span>node_id</h2>
 
@@ -706,6 +920,28 @@ Static Public Attributes</h2></td></tr>
           <td class="memname">char DeviceConfig::node_id[13]</td>
         </tr>
       </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa5385d0eb9832fc114ef0d4d9757038f" name="aa5385d0eb9832fc114ef0d4d9757038f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa5385d0eb9832fc114ef0d4d9757038f">&#9670;&#160;</a></span>uplink_interval</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t DeviceConfig::uplink_interval</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 </div>

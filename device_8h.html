@@ -96,6 +96,9 @@ $(document).ready(function(){initNavTree('device_8h.html',''); initResizable(); 
   <div class="headertitle"><div class="title">device.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Bluetooth device services and device information.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;Arduino.h&gt;</code><br />
 <code>#include &lt;BLECharacteristic.h&gt;</code><br />
 <code>#include &lt;BLEServer.h&gt;</code><br />
@@ -118,6 +121,7 @@ This graph shows which files directly or indirectly include this file:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bluetooth_device_service.html">BluetoothDeviceService</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bluetooth device service. Enable device information to be shared over BluetoothLE.  <a href="class_bluetooth_device_service.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
@@ -126,7 +130,7 @@ Macros</h2></td></tr>
 <tr class="separator:a5f5a2c9450ebc584b4fe743c6b1a280b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae762a6bd68d51c5f1ae281f1490caa62"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="device_8h.html#ae762a6bd68d51c5f1ae281f1490caa62">DEVICE_FIRMWARE_REV</a>&#160;&#160;&#160;&quot;0.1&quot;</td></tr>
 <tr class="separator:ae762a6bd68d51c5f1ae281f1490caa62"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1444760c4e779bc4ea0320a8733fe4c4"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="device_8h.html#a1444760c4e779bc4ea0320a8733fe4c4">DEVICE_HARDWARE_REV</a>&#160;&#160;&#160;&quot;0.1&quot;</td></tr>
+<tr class="memitem:a1444760c4e779bc4ea0320a8733fe4c4"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="device_8h.html#a1444760c4e779bc4ea0320a8733fe4c4">DEVICE_HARDWARE_REV</a>&#160;&#160;&#160;&quot;1.0&quot;</td></tr>
 <tr class="separator:a1444760c4e779bc4ea0320a8733fe4c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ababadb14a18d9adc209aac64ae6a47a2"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="device_8h.html#ababadb14a18d9adc209aac64ae6a47a2">DEVICE_MANUFACTURER</a>&#160;&#160;&#160;&quot;DPI-Climate&quot;</td></tr>
 <tr class="separator:ababadb14a18d9adc209aac64ae6a47a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -143,7 +147,10 @@ Macros</h2></td></tr>
 <tr class="memitem:a2b9b68fea4efb3fb36d2820d635cd962"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="device_8h.html#a2b9b68fea4efb3fb36d2820d635cd962">DEVICE_CHAR_MANUFACTURER_UUID</a>&#160;&#160;&#160;(BLEUUID(0x2A29u))</td></tr>
 <tr class="separator:a2b9b68fea4efb3fb36d2820d635cd962"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Macro Definition Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p >Bluetooth device services and device information. </p>
+<dl class="section date"><dt>Date</dt><dd>December 2022 </dd></dl>
+</div><h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="ac320abe881ee5cd1d1a1fa48014f2966" name="ac320abe881ee5cd1d1a1fa48014f2966"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac320abe881ee5cd1d1a1fa48014f2966">&#9670;&#160;</a></span>DEVICE_CHAR_FIRMWARE_REV_UUID</h2>
 
@@ -235,7 +242,7 @@ Macros</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define DEVICE_HARDWARE_REV&#160;&#160;&#160;&quot;0.1&quot;</td>
+          <td class="memname">#define DEVICE_HARDWARE_REV&#160;&#160;&#160;&quot;1.0&quot;</td>
         </tr>
       </table>
 </div><div class="memdoc">

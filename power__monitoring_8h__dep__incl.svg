@@ -11,7 +11,7 @@
 <!-- Node1 -->
 <g id="node1" class="node">
 <title>Node1</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Setup BluetoothLE power monitoring information.">
 <polygon fill="#999999" stroke="#666666" points="405,-294 238,-294 238,-264 405,-264 405,-294"/>
 <text text-anchor="start" x="246" y="-282" font-family="Helvetica,sans-Serif" font-size="10.00">firmware/wombat/include</text>
 <text text-anchor="middle" x="321.5" y="-271" font-family="Helvetica,sans-Serif" font-size="10.00">/bluetooth/power_monitoring.h</text>
@@ -21,7 +21,7 @@
 <!-- Node2 -->
 <g id="node2" class="node">
 <title>Node2</title>
-<g id="a_node2"><a xlink:href="server_8h.html" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="server_8h.html" target="_top" xlink:title="Handle the setup and maintenance of the BLE server and connected clients.">
 <polygon fill="white" stroke="#666666" points="303,-228 162,-228 162,-198 303,-198 303,-228"/>
 <text text-anchor="start" x="170" y="-216" font-family="Helvetica,sans-Serif" font-size="10.00">firmware/wombat/include</text>
 <text text-anchor="middle" x="232.5" y="-205" font-family="Helvetica,sans-Serif" font-size="10.00">/bluetooth/server.h</text>
@@ -37,7 +37,7 @@
 <!-- Node11 -->
 <g id="node11" class="node">
 <title>Node11</title>
-<g id="a_node11"><a xlink:href="power__monitoring_8cpp.html" target="_top" xlink:title=" ">
+<g id="a_node11"><a xlink:href="power__monitoring_8cpp.html" target="_top" xlink:title="BluetoothLE power monitoring service setup and attached to BLE server.">
 <polygon fill="white" stroke="#666666" points="499.5,-228 321.5,-228 321.5,-198 499.5,-198 499.5,-228"/>
 <text text-anchor="start" x="329.5" y="-216" font-family="Helvetica,sans-Serif" font-size="10.00">firmware/wombat/src</text>
 <text text-anchor="middle" x="410.5" y="-205" font-family="Helvetica,sans-Serif" font-size="10.00">/bluetooth/power_monitoring.cpp</text>
@@ -53,7 +53,7 @@
 <!-- Node3 -->
 <g id="node3" class="node">
 <title>Node3</title>
-<g id="a_node3"><a xlink:href="uart_8h.html" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="uart_8h.html" target="_top" xlink:title="BluetoothLE UART service setup and handling.">
 <polygon fill="white" stroke="#666666" points="141,-162 0,-162 0,-132 141,-132 141,-162"/>
 <text text-anchor="start" x="8" y="-150" font-family="Helvetica,sans-Serif" font-size="10.00">firmware/wombat/include</text>
 <text text-anchor="middle" x="70.5" y="-139" font-family="Helvetica,sans-Serif" font-size="10.00">/bluetooth/uart.h</text>
@@ -85,7 +85,7 @@
 <!-- Node10 -->
 <g id="node10" class="node">
 <title>Node10</title>
-<g id="a_node10"><a xlink:href="server_8cpp.html" target="_top" xlink:title=" ">
+<g id="a_node10"><a xlink:href="server_8cpp.html" target="_top" xlink:title="Setup and start BluetoothLE server.">
 <polygon fill="white" stroke="#666666" points="444.5,-162 324.5,-162 324.5,-132 444.5,-132 444.5,-162"/>
 <text text-anchor="start" x="332.5" y="-150" font-family="Helvetica,sans-Serif" font-size="10.00">firmware/wombat/src</text>
 <text text-anchor="middle" x="384.5" y="-139" font-family="Helvetica,sans-Serif" font-size="10.00">/bluetooth/server.cpp</text>
@@ -107,7 +107,7 @@
 <!-- Node4 -->
 <g id="node4" class="node">
 <title>Node4</title>
-<g id="a_node4"><a xlink:href="uart_8cpp.html" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="uart_8cpp.html" target="_top" xlink:title="BluetoothLE UART service setup and handling.">
 <polygon fill="white" stroke="#666666" points="130.5,-96 10.5,-96 10.5,-66 130.5,-66 130.5,-96"/>
 <text text-anchor="start" x="18.5" y="-84" font-family="Helvetica,sans-Serif" font-size="10.00">firmware/wombat/src</text>
 <text text-anchor="middle" x="70.5" y="-73" font-family="Helvetica,sans-Serif" font-size="10.00">/bluetooth/uart.cpp</text>

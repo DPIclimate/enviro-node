@@ -30,6 +30,15 @@ var class_t_c_a9534 =
     [ "polarity", "class_t_c_a9534.html#a1f151ad574d32d27b7362373b03d1f46", null ],
     [ "polarity", "class_t_c_a9534.html#ad3cfc894ef84a54f28022b72c2b6181d", null ],
     [ "polarity", "class_t_c_a9534.html#ae769761af75189f024049c196751af80", null ],
+    [ "readBit", "class_t_c_a9534.html#aab8f8e05b530cabbce58602edb531f3a", null ],
+    [ "readByte", "class_t_c_a9534.html#ada79410395a15183b3d8133d3ab6666e", null ],
+    [ "readBytes", "class_t_c_a9534.html#a607b69a71ae9ec62e1175c634945aa54", null ],
     [ "setDeviceAddress", "class_t_c_a9534.html#a933d2ee25dc6c08ec2908dff66725315", null ],
-    [ "status", "class_t_c_a9534.html#a5f2fbf452e8a81edfe612ed8f7108ffd", null ]
+    [ "status", "class_t_c_a9534.html#a5f2fbf452e8a81edfe612ed8f7108ffd", null ],
+    [ "writeBit", "class_t_c_a9534.html#aebce311d485bc3c9c949679b80099608", null ],
+    [ "writeByte", "class_t_c_a9534.html#ad837b4e355e71adef607803b39521dbc", null ],
+    [ "writeBytes", "class_t_c_a9534.html#ab0b7db9045c05fbdfdf4159d0ba79ff8", null ],
+    [ "I2C_ADDR", "class_t_c_a9534.html#a090994f5dc606d3676d2004c0b8be270", null ],
+    [ "sts", "class_t_c_a9534.html#a0a5075813b9328dc5275fbc393757151", null ],
+    [ "wire", "class_t_c_a9534.html#a8794c8de1fa914050120f63dd7b90d41", null ]
 ];

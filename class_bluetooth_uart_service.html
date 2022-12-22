@@ -97,6 +97,9 @@ $(document).ready(function(){initNavTree('class_bluetooth_uart_service.html','')
 </div><!--header-->
 <div class="contents">
 
+<p>BluetoothLE UART service.  
+ <a href="class_bluetooth_uart_service.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="uart_8h_source.html">uart.h</a>&gt;</code></p>
 <div class="dynheader">
 Collaboration diagram for BluetoothUartService:</div>
@@ -107,12 +110,16 @@ Collaboration diagram for BluetoothUartService:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a45e9f0746cae36f2ded064e50c8e21ff"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bluetooth_uart_service.html#a45e9f0746cae36f2ded064e50c8e21ff">BluetoothUartService</a> (BLEServer *server)</td></tr>
+<tr class="memitem:a45e9f0746cae36f2ded064e50c8e21ff"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bluetooth_uart_service.html#a45e9f0746cae36f2ded064e50c8e21ff">BluetoothUartService</a> (BLEServer *<a class="el" href="server_8cpp.html#a4c702b816cf82ea6518921edab262bd9">server</a>)</td></tr>
+<tr class="memdesc:a45e9f0746cae36f2ded064e50c8e21ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Setup BLEUart service.  <a href="class_bluetooth_uart_service.html#a45e9f0746cae36f2ded064e50c8e21ff">More...</a><br /></td></tr>
 <tr class="separator:a45e9f0746cae36f2ded064e50c8e21ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a51dc755731994350ae4226f4e9e027c4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bluetooth_uart_service.html#a51dc755731994350ae4226f4e9e027c4">~BluetoothUartService</a> ()=default</td></tr>
 <tr class="separator:a51dc755731994350ae4226f4e9e027c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p >BluetoothLE UART service. </p>
+<p >Setup BLE UART service to allow for the transfer of plain text message between a BLE client and the BLE server running on this device. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a45e9f0746cae36f2ded064e50c8e21ff" name="a45e9f0746cae36f2ded064e50c8e21ff"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a45e9f0746cae36f2ded064e50c8e21ff">&#9670;&#160;</a></span>BluetoothUartService()</h2>
 
@@ -136,6 +143,15 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Setup BLEUart service. </p>
+<p >A BLEUart service is created and attached to the BLE server. Two characteristics (RX and TX) are contained within this service. Callbacks are used to notify the server when a message is received from a BLE client and to notify the client when a message is available.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">server</td><td>Pointer to the BLE server. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

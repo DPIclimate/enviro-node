@@ -178,7 +178,7 @@
 <!-- Node5 -->
 <g id="node5" class="node">
 <title>Node5</title>
-<g id="a_node5"><a xlink:href="server_8h.html" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="server_8h.html" target="_top" xlink:title="Handle the setup and maintenance of the BLE server and connected clients.">
 <polygon fill="white" stroke="#666666" points="386.5,-162 245.5,-162 245.5,-132 386.5,-132 386.5,-162"/>
 <text text-anchor="start" x="253.5" y="-150" font-family="Helvetica,sans-Serif" font-size="10.00">firmware/wombat/include</text>
 <text text-anchor="middle" x="316" y="-139" font-family="Helvetica,sans-Serif" font-size="10.00">/bluetooth/server.h</text>
@@ -216,7 +216,7 @@
 <!-- Node6 -->
 <g id="node6" class="node">
 <title>Node6</title>
-<g id="a_node6"><a xlink:href="uart_8h.html" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="uart_8h.html" target="_top" xlink:title="BluetoothLE UART service setup and handling.">
 <polygon fill="white" stroke="#666666" points="450.5,-96 309.5,-96 309.5,-66 450.5,-66 450.5,-96"/>
 <text text-anchor="start" x="317.5" y="-84" font-family="Helvetica,sans-Serif" font-size="10.00">firmware/wombat/include</text>
 <text text-anchor="middle" x="380" y="-73" font-family="Helvetica,sans-Serif" font-size="10.00">/bluetooth/uart.h</text>
@@ -248,7 +248,7 @@
 <!-- Node10 -->
 <g id="node10" class="node">
 <title>Node10</title>
-<g id="a_node10"><a xlink:href="server_8cpp.html" target="_top" xlink:title=" ">
+<g id="a_node10"><a xlink:href="server_8cpp.html" target="_top" xlink:title="Setup and start BluetoothLE server.">
 <polygon fill="white" stroke="#666666" points="291,-96 171,-96 171,-66 291,-66 291,-96"/>
 <text text-anchor="start" x="179" y="-84" font-family="Helvetica,sans-Serif" font-size="10.00">firmware/wombat/src</text>
 <text text-anchor="middle" x="231" y="-73" font-family="Helvetica,sans-Serif" font-size="10.00">/bluetooth/server.cpp</text>
@@ -270,7 +270,7 @@
 <!-- Node7 -->
 <g id="node7" class="node">
 <title>Node7</title>
-<g id="a_node7"><a xlink:href="uart_8cpp.html" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="uart_8cpp.html" target="_top" xlink:title="BluetoothLE UART service setup and handling.">
 <polygon fill="white" stroke="#666666" points="440,-30 320,-30 320,0 440,0 440,-30"/>
 <text text-anchor="start" x="328" y="-18" font-family="Helvetica,sans-Serif" font-size="10.00">firmware/wombat/src</text>
 <text text-anchor="middle" x="380" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00">/bluetooth/uart.cpp</text>

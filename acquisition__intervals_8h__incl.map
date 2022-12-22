@@ -1,5 +1,5 @@
 <map id="firmware/wombat/include/cli/device_config/acquisition_intervals.h" name="firmware/wombat/include/cli/device_config/acquisition_intervals.h">
-<area shape="rect" id="node1" title=" " alt="" coords="240,5,449,60"/>
+<area shape="rect" id="node1" title="Handles the time between measurements and uplinks by the device over LTE." alt="" coords="240,5,449,60"/>
 <area shape="rect" id="node2" title=" " alt="" coords="5,108,156,133"/>
 <area shape="rect" id="node3" title=" " alt="" coords="180,108,261,133"/>
 <area shape="rect" id="node4" title=" " alt="" coords="285,108,404,133"/>

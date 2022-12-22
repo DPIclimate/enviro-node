@@ -11,7 +11,7 @@
 <!-- Node1 -->
 <g id="node1" class="node">
 <title>Node1</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Audio control for the onboard piezo buzzer.">
 <polygon fill="#999999" stroke="#666666" points="141,-85 0,-85 0,-55 141,-55 141,-85"/>
 <text text-anchor="start" x="8" y="-73" font-family="Helvetica,sans-Serif" font-size="10.00">firmware/wombat/include</text>
 <text text-anchor="middle" x="70.5" y="-62" font-family="Helvetica,sans-Serif" font-size="10.00">/audio&#45;feedback/tones.h</text>

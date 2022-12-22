@@ -1,9 +1,9 @@
 <map id="firmware/wombat/include/bluetooth/server.h" name="firmware/wombat/include/bluetooth/server.h">
-<area shape="rect" id="node1" title=" " alt="" coords="221,5,409,45"/>
-<area shape="rect" id="node2" href="$uart_8h.html" title=" " alt="" coords="5,93,193,133"/>
+<area shape="rect" id="node1" title="Handle the setup and maintenance of the BLE server and connected clients." alt="" coords="221,5,409,45"/>
+<area shape="rect" id="node2" href="$uart_8h.html" title="BluetoothLE UART service setup and handling." alt="" coords="5,93,193,133"/>
 <area shape="rect" id="node4" href="$bluetooth_8h.html" title=" " alt="" coords="217,93,413,133"/>
-<area shape="rect" id="node9" href="$server_8cpp.html" title=" " alt="" coords="438,93,598,133"/>
-<area shape="rect" id="node3" href="$uart_8cpp.html" title=" " alt="" coords="19,181,179,221"/>
+<area shape="rect" id="node9" href="$server_8cpp.html" title="Setup and start BluetoothLE server." alt="" coords="438,93,598,133"/>
+<area shape="rect" id="node3" href="$uart_8cpp.html" title="BluetoothLE UART service setup and handling." alt="" coords="19,181,179,221"/>
 <area shape="rect" id="node5" href="$_c_l_i_8h.html" title=" " alt="" coords="493,181,681,221"/>
 <area shape="rect" id="node8" href="$bluetooth_8cpp.html" title=" " alt="" coords="210,181,421,221"/>
 <area shape="rect" id="node6" href="$_c_l_i_8cpp.html" title=" " alt="" coords="415,269,575,309"/>

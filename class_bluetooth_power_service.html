@@ -97,6 +97,9 @@ $(document).ready(function(){initNavTree('class_bluetooth_power_service.html',''
 </div><!--header-->
 <div class="contents">
 
+<p>BluetoothLE power service.  
+ <a href="class_bluetooth_power_service.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="power__monitoring_8h_source.html">power_monitoring.h</a>&gt;</code></p>
 <div class="dynheader">
 Collaboration diagram for BluetoothPowerService:</div>
@@ -107,12 +110,18 @@ Collaboration diagram for BluetoothPowerService:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a8207df1eecffd2efdd9c756fd87f0d9f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bluetooth_power_service.html#a8207df1eecffd2efdd9c756fd87f0d9f">BluetoothPowerService</a> (BLEServer *server)</td></tr>
+<tr class="memitem:a8207df1eecffd2efdd9c756fd87f0d9f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bluetooth_power_service.html#a8207df1eecffd2efdd9c756fd87f0d9f">BluetoothPowerService</a> (BLEServer *<a class="el" href="server_8cpp.html#a4c702b816cf82ea6518921edab262bd9">server</a>)</td></tr>
+<tr class="memdesc:a8207df1eecffd2efdd9c756fd87f0d9f"><td class="mdescLeft">&#160;</td><td class="mdescRight">BluetoothLE service for power information.  <a href="class_bluetooth_power_service.html#a8207df1eecffd2efdd9c756fd87f0d9f">More...</a><br /></td></tr>
 <tr class="separator:a8207df1eecffd2efdd9c756fd87f0d9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a229ae9db396af3c94262629de43b1f46"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bluetooth_power_service.html#a229ae9db396af3c94262629de43b1f46">~BluetoothPowerService</a> ()=default</td></tr>
 <tr class="separator:a229ae9db396af3c94262629de43b1f46"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p >BluetoothLE power service. </p>
+<p >Sets up a BluetoothLE power information service to serve on a BluetoothLE server.</p>
+<dl class="section note"><dt>Note</dt><dd>Not all UUID's of characteristics within this service are shared by other BLE clients. The only UUID that is uniform with BLE clients is the battery charge level. Other UUID's are specific to themselves. For more information see below.</dd></dl>
+<dl class="section see"><dt>See also</dt><dd>For more information on UUID's and the preassigned UUID's for various services see <a href="https://www.bluetooth.com/wp-content/uploads/2022/12/Assigned_Numbers_Released-2022-12-20.pdf">https://www.bluetooth.com/wp-content/uploads/2022/12/Assigned_Numbers_Released-2022-12-20.pdf</a> </dd></dl>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a8207df1eecffd2efdd9c756fd87f0d9f" name="a8207df1eecffd2efdd9c756fd87f0d9f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8207df1eecffd2efdd9c756fd87f0d9f">&#9670;&#160;</a></span>BluetoothPowerService()</h2>
 
@@ -136,6 +145,18 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>BluetoothLE service for power information. </p>
+<p >Sets up and attaches the BLE power information service to the BLE server. Several characteristics are attached see <a class="el" href="power__monitoring_8h.html" title="Setup BluetoothLE power monitoring information.">power_monitoring.h</a> for a list of these characteristics.</p>
+<dl class="section note"><dt>Note</dt><dd>When adding descriptors, the descriptor must be be allocated on the heap because addDescriptor() copies the pointer, not the object, so the object must not disappear as it will if allocated on the stack.</dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a href="https://www.bluetooth.com/specifications/specs/core-specification-5-3/">https://www.bluetooth.com/specifications/specs/core-specification-5-3/</a></dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000001">Todo:</a></b></dt><dd>Ensure this method is working and add descriptors for voltage according to the bluetooth specification.</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">server</td><td>Pointer to the BluetoothLE server. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

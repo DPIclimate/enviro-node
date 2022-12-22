@@ -12,9 +12,11 @@
 <g id="node1" class="node">
 <title>Node1</title>
 <g id="a_node1"><a xlink:title=" ">
-<polygon fill="#999999" stroke="#666666" points="207,-30 58,-30 58,0 207,0 207,-30"/>
-<text text-anchor="middle" x="132.5" y="-18" font-family="Helvetica,sans-Serif" font-size="10.00">{BluetoothServerCallbacks</text>
-<text text-anchor="middle" x="132.5" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00">||}</text>
+<polygon fill="#999999" stroke="#666666" points="207,-52 58,-52 58,0 207,0 207,-52"/>
+<text text-anchor="middle" x="132.5" y="-40" font-family="Helvetica,sans-Serif" font-size="10.00">{BluetoothServerCallbacks</text>
+<text text-anchor="start" x="66" y="-29" font-family="Helvetica,sans-Serif" font-size="10.00">||&#45; onConnect()</text>
+<text text-anchor="start" x="66" y="-18" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; onDisconnect()</text>
+<text text-anchor="middle" x="132.5" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00">}</text>
 </a>
 </g>
 </g>
@@ -22,39 +24,37 @@
 <g id="node2" class="node">
 <title>Node2</title>
 <g id="a_node2"><a xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="119,-129 0,-129 0,-99 119,-99 119,-129"/>
-<text text-anchor="middle" x="59.5" y="-117" font-family="Helvetica,sans-Serif" font-size="10.00">{BLEServerCallbacks</text>
-<text text-anchor="middle" x="59.5" y="-106" font-family="Helvetica,sans-Serif" font-size="10.00">||}</text>
+<polygon fill="white" stroke="#666666" points="119,-140 0,-140 0,-110 119,-110 119,-140"/>
+<text text-anchor="middle" x="59.5" y="-128" font-family="Helvetica,sans-Serif" font-size="10.00">{BLEServerCallbacks</text>
+<text text-anchor="middle" x="59.5" y="-117" font-family="Helvetica,sans-Serif" font-size="10.00">||}</text>
 </a>
 </g>
 </g>
 <!-- Node2&#45;&gt;Node1 -->
 <g id="edge1" class="edge">
 <title>Node2&#45;&gt;Node1</title>
-<path fill="none" stroke="#63b8ff" d="M76.29,-90.69C90.34,-72.02 109.97,-45.94 121.92,-30.06"/>
-<polygon fill="none" stroke="#63b8ff" points="73.49,-88.59 70.27,-98.69 79.08,-92.8 73.49,-88.59"/>
+<path fill="none" stroke="#63b8ff" d="M76.35,-101.61C87.43,-86.88 101.96,-67.58 113.46,-52.3"/>
+<polygon fill="none" stroke="#63b8ff" points="73.49,-99.59 70.27,-109.69 79.08,-103.8 73.49,-99.59"/>
 </g>
 <!-- Node3 -->
 <g id="node3" class="node">
 <title>Node3</title>
 <g id="a_node3"><a xlink:href="class_bluetooth_server.html" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="274,-162 137,-162 137,-66 274,-66 274,-162"/>
+<polygon fill="white" stroke="#666666" points="274,-162 137,-162 137,-88 274,-88 274,-162"/>
 <text text-anchor="middle" x="205.5" y="-150" font-family="Helvetica,sans-Serif" font-size="10.00">{BluetoothServer</text>
 <text text-anchor="start" x="145" y="-139" font-family="Helvetica,sans-Serif" font-size="10.00">|+ device_connected</text>
-<text text-anchor="start" x="145" y="-128" font-family="Helvetica,sans-Serif" font-size="10.00">|+ BluetoothServer()</text>
-<text text-anchor="start" x="145" y="-117" font-family="Helvetica,sans-Serif" font-size="10.00">+ ~BluetoothServer()</text>
-<text text-anchor="start" x="145" y="-106" font-family="Helvetica,sans-Serif" font-size="10.00">+ begin()</text>
-<text text-anchor="start" x="145" y="-95" font-family="Helvetica,sans-Serif" font-size="10.00">+ is_device_connected()</text>
-<text text-anchor="start" x="145" y="-84" font-family="Helvetica,sans-Serif" font-size="10.00">+ notify_device()</text>
-<text text-anchor="middle" x="205.5" y="-73" font-family="Helvetica,sans-Serif" font-size="10.00">}</text>
+<text text-anchor="start" x="145" y="-128" font-family="Helvetica,sans-Serif" font-size="10.00">|+ begin()</text>
+<text text-anchor="start" x="145" y="-117" font-family="Helvetica,sans-Serif" font-size="10.00">+ is_device_connected()</text>
+<text text-anchor="start" x="145" y="-106" font-family="Helvetica,sans-Serif" font-size="10.00">+ notify_device()</text>
+<text text-anchor="middle" x="205.5" y="-95" font-family="Helvetica,sans-Serif" font-size="10.00">}</text>
 </a>
 </g>
 </g>
 <!-- Node3&#45;&gt;Node1 -->
 <g id="edge2" class="edge">
 <title>Node3&#45;&gt;Node1</title>
-<path fill="none" stroke="#63b8ff" d="M163.92,-57.75C156.3,-47.63 148.99,-37.9 143.33,-30.39"/>
-<polygon fill="none" stroke="#63b8ff" points="161.26,-60.04 170.07,-65.92 166.85,-55.83 161.26,-60.04"/>
+<path fill="none" stroke="#63b8ff" d="M172.16,-79.7C165.08,-70.29 157.83,-60.66 151.51,-52.26"/>
+<polygon fill="none" stroke="#63b8ff" points="169.51,-82 178.32,-87.88 175.1,-77.79 169.51,-82"/>
 </g>
 </g>
 </svg>

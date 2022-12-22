@@ -91,22 +91,73 @@ $(document).ready(function(){initNavTree('class_bluetooth_battery_percent_callba
 
 <div class="header">
   <div class="summary">
+<a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="class_bluetooth_battery_percent_callbacks-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BluetoothBatteryPercentCallbacks Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
 
+<p>Battery percentage BluetoothLE characteristic callback.  
+ <a href="class_bluetooth_battery_percent_callbacks.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="power__monitoring_8h_source.html">power_monitoring.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for BluetoothBatteryPercentCallbacks:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="class_bluetooth_battery_percent_callbacks__inherit__graph.svg" width="264" height="139"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="class_bluetooth_battery_percent_callbacks__inherit__graph.svg" width="264" height="154"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 <div class="dynheader">
 Collaboration diagram for BluetoothBatteryPercentCallbacks:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="class_bluetooth_battery_percent_callbacks__coll__graph.svg" width="264" height="139"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="class_bluetooth_battery_percent_callbacks__coll__graph.svg" width="264" height="154"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:aa1f4b34e2c0f1f612c610a3aa8c761b2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bluetooth_battery_percent_callbacks.html#aa1f4b34e2c0f1f612c610a3aa8c761b2">onRead</a> (BLECharacteristic *pCharacteristic) override</td></tr>
+<tr class="memdesc:aa1f4b34e2c0f1f612c610a3aa8c761b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write battery percentage value over BLE when requested.  <a href="class_bluetooth_battery_percent_callbacks.html#aa1f4b34e2c0f1f612c610a3aa8c761b2">More...</a><br /></td></tr>
+<tr class="separator:aa1f4b34e2c0f1f612c610a3aa8c761b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p >Battery percentage BluetoothLE characteristic callback. </p>
+<p >This callback is used to overwrite BluetoothLE characteristic callback functions in order to service unique information for each characteristic. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="aa1f4b34e2c0f1f612c610a3aa8c761b2" name="aa1f4b34e2c0f1f612c610a3aa8c761b2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa1f4b34e2c0f1f612c610a3aa8c761b2">&#9670;&#160;</a></span>onRead()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void BluetoothBatteryPercentCallbacks::onRead </td>
+          <td>(</td>
+          <td class="paramtype">BLECharacteristic *&#160;</td>
+          <td class="paramname"><em>pCharacteristic</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">override</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Write battery percentage value over BLE when requested. </p>
+<p >This function is called when a client requests its information over BLE. The battery voltage is read. This is then converted to a percentage of max (4.2 V (hardcoded)). If the battery voltage exceeds 4.2 volts for some reason, the battery voltage will be represented as 100 %. Finally, the battery percentage is set and the client is notified that the characteristic has updated.</p>
+<dl class="section note"><dt>Note</dt><dd>It is up to the client to transform the array back to a float.</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pCharacteristic</td><td>Pointer to a BLE characteristic. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>

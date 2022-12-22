@@ -20,7 +20,7 @@
 <!-- Node1 -->
 <g id="node2" class="node">
 <title>Node1</title>
-<g id="a_node2"><a xlink:href="class_bluetooth_battery_current_callbacks.html" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="class_bluetooth_battery_current_callbacks.html" target="_top" xlink:title="Battery current BluetoothLE characteristic callback.">
 <polygon fill="white" stroke="#666666" points="368.5,-204 185.5,-204 185.5,-185 368.5,-185 368.5,-204"/>
 <text text-anchor="middle" x="277" y="-192" font-family="Helvetica,sans-Serif" font-size="10.00">BluetoothBatteryCurrentCallbacks</text>
 </a>
@@ -35,7 +35,7 @@
 <!-- Node2 -->
 <g id="node3" class="node">
 <title>Node2</title>
-<g id="a_node3"><a xlink:href="class_bluetooth_battery_percent_callbacks.html" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="class_bluetooth_battery_percent_callbacks.html" target="_top" xlink:title="Battery percentage BluetoothLE characteristic callback.">
 <polygon fill="white" stroke="#666666" points="369,-167 185,-167 185,-148 369,-148 369,-167"/>
 <text text-anchor="middle" x="277" y="-155" font-family="Helvetica,sans-Serif" font-size="10.00">BluetoothBatteryPercentCallbacks</text>
 </a>
@@ -50,7 +50,7 @@
 <!-- Node3 -->
 <g id="node4" class="node">
 <title>Node3</title>
-<g id="a_node4"><a xlink:href="class_bluetooth_battery_voltage_callbacks.html" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="class_bluetooth_battery_voltage_callbacks.html" target="_top" xlink:title="Battery voltage BluetoothLE characteristic callback.">
 <polygon fill="white" stroke="#666666" points="369,-130 185,-130 185,-111 369,-111 369,-130"/>
 <text text-anchor="middle" x="277" y="-118" font-family="Helvetica,sans-Serif" font-size="10.00">BluetoothBatteryVoltageCallbacks</text>
 </a>
@@ -65,7 +65,7 @@
 <!-- Node4 -->
 <g id="node5" class="node">
 <title>Node4</title>
-<g id="a_node5"><a xlink:href="class_bluetooth_solar_current_callbacks.html" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="class_bluetooth_solar_current_callbacks.html" target="_top" xlink:title="Solar current BluetoothLE characteristic callback.">
 <polygon fill="white" stroke="#666666" points="363,-93 191,-93 191,-74 363,-74 363,-93"/>
 <text text-anchor="middle" x="277" y="-81" font-family="Helvetica,sans-Serif" font-size="10.00">BluetoothSolarCurrentCallbacks</text>
 </a>
@@ -80,7 +80,7 @@
 <!-- Node5 -->
 <g id="node6" class="node">
 <title>Node5</title>
-<g id="a_node6"><a xlink:href="class_bluetooth_solar_voltage_callbacks.html" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="class_bluetooth_solar_voltage_callbacks.html" target="_top" xlink:title="Solar voltage BluetoothLE characteristic callback.">
 <polygon fill="white" stroke="#666666" points="363.5,-56 190.5,-56 190.5,-37 363.5,-37 363.5,-56"/>
 <text text-anchor="middle" x="277" y="-44" font-family="Helvetica,sans-Serif" font-size="10.00">BluetoothSolarVoltageCallbacks</text>
 </a>
@@ -95,7 +95,7 @@
 <!-- Node6 -->
 <g id="node7" class="node">
 <title>Node6</title>
-<g id="a_node7"><a xlink:href="class_bluetooth_uart_service_callbacks.html" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="class_bluetooth_uart_service_callbacks.html" target="_top" xlink:title="Handles RX and TX of BLEUart messages.">
 <polygon fill="white" stroke="#666666" points="361,-19 193,-19 193,0 361,0 361,-19"/>
 <text text-anchor="middle" x="277" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00">BluetoothUartServiceCallbacks</text>
 </a>

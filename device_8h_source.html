@@ -93,35 +93,37 @@ $(document).ready(function(){initNavTree('device_8h_source.html',''); initResiza
   <div class="headertitle"><div class="title">device.h</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="device_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef WOMBAT_BLUETOOTH_DEVICE_H</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define WOMBAT_BLUETOOTH_DEVICE_H</span></div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;Arduino.h&gt;</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;BLECharacteristic.h&gt;</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &lt;BLEServer.h&gt;</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &lt;BLE2902.h&gt;</span></div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno"><a class="line" href="device_8h.html#a5f5a2c9450ebc584b4fe743c6b1a280b">    9</a></span><span class="preprocessor">#define DEVICE_NAME                     &quot;Wombat-ESP32&quot;</span></div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno"><a class="line" href="device_8h.html#ae762a6bd68d51c5f1ae281f1490caa62">   10</a></span><span class="preprocessor">#define DEVICE_FIRMWARE_REV             &quot;0.1&quot;</span></div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="device_8h.html#a1444760c4e779bc4ea0320a8733fe4c4">   11</a></span><span class="preprocessor">#define DEVICE_HARDWARE_REV             &quot;0.1&quot;</span></div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="device_8h.html#ababadb14a18d9adc209aac64ae6a47a2">   12</a></span><span class="preprocessor">#define DEVICE_MANUFACTURER             &quot;DPI-Climate&quot;</span></div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="device_8h.html#a63f48f3b006237ce335dc3c98780bd96">   14</a></span><span class="preprocessor">#define DEVICE_SERVICE_UUID             (BLEUUID(0x180Au))</span></div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="device_8h.html#a8c8445be8691040d3e5e8844cb6fd904">   15</a></span><span class="preprocessor">#define DEVICE_CHAR_NAME_UUID           (BLEUUID(0x2A00u))</span></div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="device_8h.html#a7547b8c729201fcb3aba46c146e781a5">   16</a></span><span class="preprocessor">#define DEVICE_CHAR_SERIAL_NUM_UUID     (BLEUUID(0x2A25u))</span></div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="device_8h.html#ac320abe881ee5cd1d1a1fa48014f2966">   17</a></span><span class="preprocessor">#define DEVICE_CHAR_FIRMWARE_REV_UUID   (BLEUUID(0x2A26u))</span></div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="device_8h.html#a77bb0f7884ffa397e4e5ae7e04ea4313">   18</a></span><span class="preprocessor">#define DEVICE_CHAR_HARDWARE_REV_UUID   (BLEUUID(0x2A27u))</span></div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="device_8h.html#a2b9b68fea4efb3fb36d2820d635cd962">   19</a></span><span class="preprocessor">#define DEVICE_CHAR_MANUFACTURER_UUID   (BLEUUID(0x2A29u))</span></div>
+<a href="device_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#ifndef WOMBAT_BLUETOOTH_DEVICE_H</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#define WOMBAT_BLUETOOTH_DEVICE_H</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &lt;Arduino.h&gt;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &lt;BLECharacteristic.h&gt;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &lt;BLEServer.h&gt;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &lt;BLE2902.h&gt;</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="device_8h.html#a5f5a2c9450ebc584b4fe743c6b1a280b">   16</a></span><span class="preprocessor">#define DEVICE_NAME                     &quot;Wombat-ESP32&quot;</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="device_8h.html#ae762a6bd68d51c5f1ae281f1490caa62">   17</a></span><span class="preprocessor">#define DEVICE_FIRMWARE_REV             &quot;0.1&quot;</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="device_8h.html#a1444760c4e779bc4ea0320a8733fe4c4">   18</a></span><span class="preprocessor">#define DEVICE_HARDWARE_REV             &quot;1.0&quot;</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="device_8h.html#ababadb14a18d9adc209aac64ae6a47a2">   19</a></span><span class="preprocessor">#define DEVICE_MANUFACTURER             &quot;DPI-Climate&quot;</span></div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="class_bluetooth_device_service.html">   21</a></span><span class="keyword">class </span><a class="code hl_class" href="class_bluetooth_device_service.html">BluetoothDeviceService</a> {</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <span class="keyword">explicit</span> <a class="code hl_class" href="class_bluetooth_device_service.html">BluetoothDeviceService</a>(BLEServer* server);</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="class_bluetooth_device_service.html#a97a89170bff310b4cf6a3dd9b895e668">   24</a></span>    <a class="code hl_function" href="class_bluetooth_device_service.html#a97a89170bff310b4cf6a3dd9b895e668">~BluetoothDeviceService</a>() = <span class="keywordflow">default</span>;</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>};</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="preprocessor">#endif </span><span class="comment">//WOMBAT_BLUETOOTH_DEVICE_H</span></div>
-<div class="ttc" id="aclass_bluetooth_device_service_html"><div class="ttname"><a href="class_bluetooth_device_service.html">BluetoothDeviceService</a></div><div class="ttdef"><b>Definition:</b> device.h:21</div></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="device_8h.html#a63f48f3b006237ce335dc3c98780bd96">   21</a></span><span class="preprocessor">#define DEVICE_SERVICE_UUID             (BLEUUID(0x180Au))</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="device_8h.html#a8c8445be8691040d3e5e8844cb6fd904">   22</a></span><span class="preprocessor">#define DEVICE_CHAR_NAME_UUID           (BLEUUID(0x2A00u))</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="device_8h.html#a7547b8c729201fcb3aba46c146e781a5">   23</a></span><span class="preprocessor">#define DEVICE_CHAR_SERIAL_NUM_UUID     (BLEUUID(0x2A25u))</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="device_8h.html#ac320abe881ee5cd1d1a1fa48014f2966">   24</a></span><span class="preprocessor">#define DEVICE_CHAR_FIRMWARE_REV_UUID   (BLEUUID(0x2A26u))</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="device_8h.html#a77bb0f7884ffa397e4e5ae7e04ea4313">   25</a></span><span class="preprocessor">#define DEVICE_CHAR_HARDWARE_REV_UUID   (BLEUUID(0x2A27u))</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="device_8h.html#a2b9b68fea4efb3fb36d2820d635cd962">   26</a></span><span class="preprocessor">#define DEVICE_CHAR_MANUFACTURER_UUID   (BLEUUID(0x2A29u))</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="class_bluetooth_device_service.html">   41</a></span><span class="keyword">class </span><a class="code hl_class" href="class_bluetooth_device_service.html">BluetoothDeviceService</a> {</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <span class="keyword">explicit</span> <a class="code hl_class" href="class_bluetooth_device_service.html">BluetoothDeviceService</a>(BLEServer* <a class="code hl_variable" href="server_8cpp.html#a4c702b816cf82ea6518921edab262bd9">server</a>);</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="class_bluetooth_device_service.html#a97a89170bff310b4cf6a3dd9b895e668">   44</a></span>    <a class="code hl_function" href="class_bluetooth_device_service.html#a97a89170bff310b4cf6a3dd9b895e668">~BluetoothDeviceService</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>};</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="preprocessor">#endif </span><span class="comment">//WOMBAT_BLUETOOTH_DEVICE_H</span></div>
+<div class="ttc" id="aclass_bluetooth_device_service_html"><div class="ttname"><a href="class_bluetooth_device_service.html">BluetoothDeviceService</a></div><div class="ttdoc">Bluetooth device service. Enable device information to be shared over BluetoothLE.</div><div class="ttdef"><b>Definition:</b> device.h:41</div></div>
 <div class="ttc" id="aclass_bluetooth_device_service_html_a97a89170bff310b4cf6a3dd9b895e668"><div class="ttname"><a href="class_bluetooth_device_service.html#a97a89170bff310b4cf6a3dd9b895e668">BluetoothDeviceService::~BluetoothDeviceService</a></div><div class="ttdeci">~BluetoothDeviceService()=default</div></div>
+<div class="ttc" id="aserver_8cpp_html_a4c702b816cf82ea6518921edab262bd9"><div class="ttname"><a href="server_8cpp.html#a4c702b816cf82ea6518921edab262bd9">server</a></div><div class="ttdeci">static BLEServer * server</div><div class="ttdoc">BluetoothLE service object.</div><div class="ttdef"><b>Definition:</b> server.cpp:11</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

@@ -96,6 +96,9 @@ $(document).ready(function(){initNavTree('uart_8h.html',''); initResizable(); })
   <div class="headertitle"><div class="title">uart.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>BluetoothLE UART service setup and handling.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;Arduino.h&gt;</code><br />
 <code>#include &lt;BLECharacteristic.h&gt;</code><br />
 <code>#include &lt;BLEServer.h&gt;</code><br />
@@ -120,20 +123,28 @@ This graph shows which files directly or indirectly include this file:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bluetooth_uart_service.html">BluetoothUartService</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">BluetoothLE UART service.  <a href="class_bluetooth_uart_service.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bluetooth_uart_service_callbacks.html">BluetoothUartServiceCallbacks</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handles RX and TX of BLEUart messages.  <a href="class_bluetooth_uart_service_callbacks.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
 <tr class="memitem:afe98a00525a992bb695a6646d4935f62"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="uart_8h.html#afe98a00525a992bb695a6646d4935f62">UART_SERVICE_UUID</a>&#160;&#160;&#160;&quot;6E400001-B5A3-F393-E0A9-E50E24DCCA9E&quot;</td></tr>
+<tr class="memdesc:afe98a00525a992bb695a6646d4935f62"><td class="mdescLeft">&#160;</td><td class="mdescRight">BLE UART service UUID.  <a href="uart_8h.html#afe98a00525a992bb695a6646d4935f62">More...</a><br /></td></tr>
 <tr class="separator:afe98a00525a992bb695a6646d4935f62"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1917549c6260db87ca081f6ef85142ff"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="uart_8h.html#a1917549c6260db87ca081f6ef85142ff">UART_CHAR_RX_UUID</a>&#160;&#160;&#160;&quot;6E400002-B5A3-F393-E0A9-E50E24DCCA9E&quot;</td></tr>
+<tr class="memdesc:a1917549c6260db87ca081f6ef85142ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">BLE UART RX (receive) UUID.  <a href="uart_8h.html#a1917549c6260db87ca081f6ef85142ff">More...</a><br /></td></tr>
 <tr class="separator:a1917549c6260db87ca081f6ef85142ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa5ba88238d24fc1aa8ffa56476ea2da1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="uart_8h.html#aa5ba88238d24fc1aa8ffa56476ea2da1">UART_CHAR_TX_UUID</a>&#160;&#160;&#160;&quot;6E400003-B5A3-F393-E0A9-E50E24DCCA9E&quot;</td></tr>
+<tr class="memdesc:aa5ba88238d24fc1aa8ffa56476ea2da1"><td class="mdescLeft">&#160;</td><td class="mdescRight">BLE UART TX (transmit) UUID.  <a href="uart_8h.html#aa5ba88238d24fc1aa8ffa56476ea2da1">More...</a><br /></td></tr>
 <tr class="separator:aa5ba88238d24fc1aa8ffa56476ea2da1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Macro Definition Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p >BluetoothLE UART service setup and handling. </p>
+<dl class="section date"><dt>Date</dt><dd>December 2022 </dd></dl>
+</div><h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="a1917549c6260db87ca081f6ef85142ff" name="a1917549c6260db87ca081f6ef85142ff"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1917549c6260db87ca081f6ef85142ff">&#9670;&#160;</a></span>UART_CHAR_RX_UUID</h2>
 
@@ -145,6 +156,8 @@ Macros</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>BLE UART RX (receive) UUID. </p>
 
 </div>
 </div>
@@ -160,6 +173,8 @@ Macros</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>BLE UART TX (transmit) UUID. </p>
+
 </div>
 </div>
 <a id="afe98a00525a992bb695a6646d4935f62" name="afe98a00525a992bb695a6646d4935f62"></a>
@@ -173,6 +188,8 @@ Macros</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>BLE UART service UUID. </p>
 
 </div>
 </div>

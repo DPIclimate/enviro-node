@@ -93,32 +93,47 @@ $(document).ready(function(){initNavTree('class_c_l_i_config_intervals.html','')
   <div class="summary">
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#pub-static-attribs">Static Public Attributes</a> &#124;
+<a href="#pri-static-attribs">Static Private Attributes</a> &#124;
 <a href="class_c_l_i_config_intervals-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">CLIConfigIntervals Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
 
+<p>Setup acquisition intervals based on device configuration stored in SPIFFS memory or via the <a class="el" href="class_c_l_i.html">CLI</a>.  
+ <a href="class_c_l_i_config_intervals.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="acquisition__intervals_8h_source.html">acquisition_intervals.h</a>&gt;</code></p>
 <div class="dynheader">
 Collaboration diagram for CLIConfigIntervals:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="class_c_l_i_config_intervals__coll__graph.svg" width="159" height="95"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="class_c_l_i_config_intervals__coll__graph.svg" width="292" height="579"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:abfdce68457f41e1c4704c6312128f350"><td class="memItemLeft" align="right" valign="top">static BaseType_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_l_i_config_intervals.html#abfdce68457f41e1c4704c6312128f350">enter_cli</a> (char *pcWriteBuffer, size_t xWriteBufferLen, const char *pcCommandString)</td></tr>
+<tr class="memdesc:abfdce68457f41e1c4704c6312128f350"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_c_l_i.html">CLI</a> entrypoint for measurement and uplink interval setup.  <a href="class_c_l_i_config_intervals.html#abfdce68457f41e1c4704c6312128f350">More...</a><br /></td></tr>
 <tr class="separator:abfdce68457f41e1c4704c6312128f350"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4cffc10d8456aa6da204ecba72e74047"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_l_i_config_intervals.html#a4cffc10d8456aa6da204ecba72e74047">dump</a> (Stream &amp;stream)</td></tr>
+<tr class="memdesc:a4cffc10d8456aa6da204ecba72e74047"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print out interval information into a provided Stream.  <a href="class_c_l_i_config_intervals.html#a4cffc10d8456aa6da204ecba72e74047">More...</a><br /></td></tr>
 <tr class="separator:a4cffc10d8456aa6da204ecba72e74047"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
 <tr class="memitem:ac26bdeed6e4e42a203b31d19288eabd3"><td class="memItemLeft" align="right" valign="top">static const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_l_i_config_intervals.html#ac26bdeed6e4e42a203b31d19288eabd3">cmd</a> = &quot;interval&quot;</td></tr>
+<tr class="memdesc:ac26bdeed6e4e42a203b31d19288eabd3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Command to change measurement and/or uplink interval.  <a href="class_c_l_i_config_intervals.html#ac26bdeed6e4e42a203b31d19288eabd3">More...</a><br /></td></tr>
 <tr class="separator:ac26bdeed6e4e42a203b31d19288eabd3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-attribs" name="pri-static-attribs"></a>
+Static Private Attributes</h2></td></tr>
+<tr class="memitem:ab7ca85d38c6a84bf0c0e50e3951ef224"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_device_config.html">DeviceConfig</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_l_i_config_intervals.html#ab7ca85d38c6a84bf0c0e50e3951ef224">config</a> = <a class="el" href="class_device_config.html#a5413d27101c0af2f958cec5cbea36a31">DeviceConfig::get</a>()</td></tr>
+<tr class="memdesc:ab7ca85d38c6a84bf0c0e50e3951ef224"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the device configuration from SPIFFS memory on initialisation.  <a href="class_c_l_i_config_intervals.html#ab7ca85d38c6a84bf0c0e50e3951ef224">More...</a><br /></td></tr>
+<tr class="separator:ab7ca85d38c6a84bf0c0e50e3951ef224"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p >Setup acquisition intervals based on device configuration stored in SPIFFS memory or via the <a class="el" href="class_c_l_i.html">CLI</a>. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a4cffc10d8456aa6da204ecba72e74047" name="a4cffc10d8456aa6da204ecba72e74047"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4cffc10d8456aa6da204ecba72e74047">&#9670;&#160;</a></span>dump()</h2>
 
@@ -142,6 +157,15 @@ Static Public Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Print out interval information into a provided Stream. </p>
+<p >A debug method to print out the available information about current acquisition intervals which have either been setup through device memory or through the <a class="el" href="class_c_l_i.html">CLI</a>.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">stream</td><td>Output stream to write to. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -185,6 +209,20 @@ Static Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p><a class="el" href="class_c_l_i.html">CLI</a> entrypoint for measurement and uplink interval setup. </p>
+<p >This command sets and get various interval values such as the measurement interval and the uplink interval. When a user enters a command beginning with "interval" this method will be run.</p>
+<dl class="section note"><dt>Note</dt><dd>Intervals are specified in seconds.</dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000002">Todo:</a></b></dt><dd>Continue documentation here.</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pcWriteBuffer</td><td></td></tr>
+    <tr><td class="paramname">xWriteBufferLen</td><td></td></tr>
+    <tr><td class="paramname">pcCommandString</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
@@ -207,6 +245,32 @@ Static Public Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Command to change measurement and/or uplink interval. </p>
+
+</div>
+</div>
+<a id="ab7ca85d38c6a84bf0c0e50e3951ef224" name="ab7ca85d38c6a84bf0c0e50e3951ef224"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab7ca85d38c6a84bf0c0e50e3951ef224">&#9670;&#160;</a></span>config</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_device_config.html">DeviceConfig</a>&amp; CLIConfigIntervals::config = <a class="el" href="class_device_config.html#a5413d27101c0af2f958cec5cbea36a31">DeviceConfig::get</a>()</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get the device configuration from SPIFFS memory on initialisation. </p>
 
 </div>
 </div>

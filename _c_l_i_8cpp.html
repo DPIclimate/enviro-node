@@ -107,8 +107,52 @@ Include dependency graph for CLI.cpp:</div>
 Variables</h2></td></tr>
 <tr class="memitem:aff64f2691f2a522d74ea33188e8aad14"><td class="memItemLeft" align="right" valign="top">Stream *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_c_l_i_8cpp.html#aff64f2691f2a522d74ea33188e8aad14">cliStream</a> = nullptr</td></tr>
 <tr class="separator:aff64f2691f2a522d74ea33188e8aad14"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2229bd6337a76b1788849d5541f9f07a"><td class="memItemLeft" align="right" valign="top">static char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_c_l_i_8cpp.html#a2229bd6337a76b1788849d5541f9f07a">cmd</a> [<a class="el" href="class_c_l_i.html#a08716882278135d4aa8e795e12b3a03c">CLI::MAX_CLI_CMD_LEN</a>+1]</td></tr>
+<tr class="separator:a2229bd6337a76b1788849d5541f9f07a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adb7754cd934d9e1011c9c08e079782ba"><td class="memItemLeft" align="right" valign="top">static char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_c_l_i_8cpp.html#adb7754cd934d9e1011c9c08e079782ba">msg</a> [<a class="el" href="class_c_l_i.html#a08f1a712847c224164c889b713a4b598">CLI::MAX_CLI_MSG_LEN</a>+1]</td></tr>
+<tr class="separator:adb7754cd934d9e1011c9c08e079782ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a74ebeb6d5c8b0d404537a38d262f184b"><td class="memItemLeft" align="right" valign="top">static const CLI_Command_Definition_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_c_l_i_8cpp.html#a74ebeb6d5c8b0d404537a38d262f184b">configCmd</a></td></tr>
+<tr class="separator:a74ebeb6d5c8b0d404537a38d262f184b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4ad89cc4dc576d92d207a6d2c33bd65b"><td class="memItemLeft" align="right" valign="top">static const CLI_Command_Definition_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_c_l_i_8cpp.html#a4ad89cc4dc576d92d207a6d2c33bd65b">intervalCmd</a></td></tr>
+<tr class="separator:a4ad89cc4dc576d92d207a6d2c33bd65b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0dad8acff206f684bb3c91ba95c1fecd"><td class="memItemLeft" align="right" valign="top">static const CLI_Command_Definition_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_c_l_i_8cpp.html#a0dad8acff206f684bb3c91ba95c1fecd">sdi12Cmd</a></td></tr>
+<tr class="separator:a0dad8acff206f684bb3c91ba95c1fecd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8b34527447ddcde630c505ebc69b857a"><td class="memItemLeft" align="right" valign="top">static const CLI_Command_Definition_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_c_l_i_8cpp.html#a8b34527447ddcde630c505ebc69b857a">catM1Cmd</a></td></tr>
+<tr class="separator:a8b34527447ddcde630c505ebc69b857a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1ca2650024c4a322af068be6178fe01a"><td class="memItemLeft" align="right" valign="top">static const CLI_Command_Definition_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_c_l_i_8cpp.html#a1ca2650024c4a322af068be6178fe01a">mqttCmd</a></td></tr>
+<tr class="separator:a1ca2650024c4a322af068be6178fe01a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Variable Documentation</h2>
+<a id="a8b34527447ddcde630c505ebc69b857a" name="a8b34527447ddcde630c505ebc69b857a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8b34527447ddcde630c505ebc69b857a">&#9670;&#160;</a></span>catM1Cmd</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const CLI_Command_Definition_t catM1Cmd</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
+<div class="line">        <a class="code hl_variable" href="class_c_l_i_cat_m1.html#a3e01bf188705834a7af433850861a79a">CLICatM1::cmd</a>.c_str(),</div>
+<div class="line">        <span class="stringliteral">&quot;c1:\r\n Configure and interface with Cat M1 modem\r\n&quot;</span>,</div>
+<div class="line">        <a class="code hl_function" href="class_c_l_i_cat_m1.html#a537816d95caa4ccc1c7bf781e148add8">CLICatM1::enter_cli</a>,</div>
+<div class="line">        -1</div>
+<div class="line">}</div>
+<div class="ttc" id="aclass_c_l_i_cat_m1_html_a3e01bf188705834a7af433850861a79a"><div class="ttname"><a href="class_c_l_i_cat_m1.html#a3e01bf188705834a7af433850861a79a">CLICatM1::cmd</a></div><div class="ttdeci">static const std::string cmd</div><div class="ttdef"><b>Definition:</b> cat-m1.h:13</div></div>
+<div class="ttc" id="aclass_c_l_i_cat_m1_html_a537816d95caa4ccc1c7bf781e148add8"><div class="ttname"><a href="class_c_l_i_cat_m1.html#a537816d95caa4ccc1c7bf781e148add8">CLICatM1::enter_cli</a></div><div class="ttdeci">static BaseType_t enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen, const char *pcCommandString)</div><div class="ttdef"><b>Definition:</b> cat-m1.cpp:28</div></div>
+</div><!-- fragment -->
+</div>
+</div>
 <a id="aff64f2691f2a522d74ea33188e8aad14" name="aff64f2691f2a522d74ea33188e8aad14"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aff64f2691f2a522d74ea33188e8aad14">&#9670;&#160;</a></span>cliStream</h2>
 
@@ -121,6 +165,170 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+</div>
+</div>
+<a id="a2229bd6337a76b1788849d5541f9f07a" name="a2229bd6337a76b1788849d5541f9f07a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2229bd6337a76b1788849d5541f9f07a">&#9670;&#160;</a></span>cmd</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">char cmd[<a class="el" href="class_c_l_i.html#a08716882278135d4aa8e795e12b3a03c">CLI::MAX_CLI_CMD_LEN</a>+1]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a74ebeb6d5c8b0d404537a38d262f184b" name="a74ebeb6d5c8b0d404537a38d262f184b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a74ebeb6d5c8b0d404537a38d262f184b">&#9670;&#160;</a></span>configCmd</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const CLI_Command_Definition_t configCmd</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
+<div class="line">        <a class="code hl_variable" href="class_c_l_i_config.html#afeb56da313dcae6f782248b2b0ca2523">CLIConfig::cmd</a>.c_str(),</div>
+<div class="line">        <span class="stringliteral">&quot;config:\r\n Load, save, or list the node configuration\r\n&quot;</span>,</div>
+<div class="line">        <a class="code hl_function" href="class_c_l_i_config.html#a009f5fb24607afaeffa38b6f2d94f61c">CLIConfig::enter_cli</a>,</div>
+<div class="line">        -1</div>
+<div class="line">}</div>
+<div class="ttc" id="aclass_c_l_i_config_html_a009f5fb24607afaeffa38b6f2d94f61c"><div class="ttname"><a href="class_c_l_i_config.html#a009f5fb24607afaeffa38b6f2d94f61c">CLIConfig::enter_cli</a></div><div class="ttdeci">static BaseType_t enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen, const char *pcCommandString)</div><div class="ttdef"><b>Definition:</b> config_cli.cpp:14</div></div>
+<div class="ttc" id="aclass_c_l_i_config_html_afeb56da313dcae6f782248b2b0ca2523"><div class="ttname"><a href="class_c_l_i_config.html#afeb56da313dcae6f782248b2b0ca2523">CLIConfig::cmd</a></div><div class="ttdeci">static const std::string cmd</div><div class="ttdef"><b>Definition:</b> config_cli.h:10</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a4ad89cc4dc576d92d207a6d2c33bd65b" name="a4ad89cc4dc576d92d207a6d2c33bd65b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4ad89cc4dc576d92d207a6d2c33bd65b">&#9670;&#160;</a></span>intervalCmd</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const CLI_Command_Definition_t intervalCmd</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
+<div class="line">        <a class="code hl_variable" href="class_c_l_i_config_intervals.html#ac26bdeed6e4e42a203b31d19288eabd3">CLIConfigIntervals::cmd</a>.c_str(),</div>
+<div class="line">        <span class="stringliteral">&quot;interval:\r\n Configure acquisition interval settings\r\n&quot;</span>,</div>
+<div class="line">        <a class="code hl_function" href="class_c_l_i_config_intervals.html#abfdce68457f41e1c4704c6312128f350">CLIConfigIntervals::enter_cli</a>,</div>
+<div class="line">        -1</div>
+<div class="line">}</div>
+<div class="ttc" id="aclass_c_l_i_config_intervals_html_abfdce68457f41e1c4704c6312128f350"><div class="ttname"><a href="class_c_l_i_config_intervals.html#abfdce68457f41e1c4704c6312128f350">CLIConfigIntervals::enter_cli</a></div><div class="ttdeci">static BaseType_t enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen, const char *pcCommandString)</div><div class="ttdoc">CLI entrypoint for measurement and uplink interval setup.</div><div class="ttdef"><b>Definition:</b> acquisition_intervals.cpp:45</div></div>
+<div class="ttc" id="aclass_c_l_i_config_intervals_html_ac26bdeed6e4e42a203b31d19288eabd3"><div class="ttname"><a href="class_c_l_i_config_intervals.html#ac26bdeed6e4e42a203b31d19288eabd3">CLIConfigIntervals::cmd</a></div><div class="ttdeci">static const std::string cmd</div><div class="ttdoc">Command to change measurement and/or uplink interval.</div><div class="ttdef"><b>Definition:</b> acquisition_intervals.h:29</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a1ca2650024c4a322af068be6178fe01a" name="a1ca2650024c4a322af068be6178fe01a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1ca2650024c4a322af068be6178fe01a">&#9670;&#160;</a></span>mqttCmd</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const CLI_Command_Definition_t mqttCmd</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
+<div class="line">        <a class="code hl_variable" href="class_c_l_i_m_q_t_t.html#a83896a35be70795033b060b16ff0a4f8">CLIMQTT::cmd</a>.c_str(),</div>
+<div class="line">        <span class="stringliteral">&quot;mqtt:\r\n Configure MQTT connection parameters\r\n&quot;</span>,</div>
+<div class="line">        <a class="code hl_function" href="class_c_l_i_m_q_t_t.html#aeea24c8f4d5634447a460a5562f8c9d1">CLIMQTT::enter_cli</a>,</div>
+<div class="line">        -1</div>
+<div class="line">}</div>
+<div class="ttc" id="aclass_c_l_i_m_q_t_t_html_a83896a35be70795033b060b16ff0a4f8"><div class="ttname"><a href="class_c_l_i_m_q_t_t.html#a83896a35be70795033b060b16ff0a4f8">CLIMQTT::cmd</a></div><div class="ttdeci">static const std::string cmd</div><div class="ttdef"><b>Definition:</b> mqtt_cli.h:10</div></div>
+<div class="ttc" id="aclass_c_l_i_m_q_t_t_html_aeea24c8f4d5634447a460a5562f8c9d1"><div class="ttname"><a href="class_c_l_i_m_q_t_t.html#aeea24c8f4d5634447a460a5562f8c9d1">CLIMQTT::enter_cli</a></div><div class="ttdeci">static BaseType_t enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen, const char *pcCommandString)</div><div class="ttdef"><b>Definition:</b> mqtt_cli.cpp:27</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="adb7754cd934d9e1011c9c08e079782ba" name="adb7754cd934d9e1011c9c08e079782ba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adb7754cd934d9e1011c9c08e079782ba">&#9670;&#160;</a></span>msg</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">char msg[<a class="el" href="class_c_l_i.html#a08f1a712847c224164c889b713a4b598">CLI::MAX_CLI_MSG_LEN</a>+1]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0dad8acff206f684bb3c91ba95c1fecd" name="a0dad8acff206f684bb3c91ba95c1fecd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0dad8acff206f684bb3c91ba95c1fecd">&#9670;&#160;</a></span>sdi12Cmd</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const CLI_Command_Definition_t sdi12Cmd</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
+<div class="line">        <a class="code hl_variable" href="class_c_l_i_sdi12.html#aa114d6852c2131888d46174814ed0405">CLISdi12::cmd</a>.c_str(),</div>
+<div class="line">        <span class="stringliteral">&quot;sdi12:\r\n Configure and interface with SDI-12 sensors\r\n&quot;</span>,</div>
+<div class="line">        <a class="code hl_function" href="class_c_l_i_sdi12.html#a539a3c3a85eaf8db91045b42f3b2a520">CLISdi12::enter_cli</a>,</div>
+<div class="line">        -1</div>
+<div class="line">}</div>
+<div class="ttc" id="aclass_c_l_i_sdi12_html_a539a3c3a85eaf8db91045b42f3b2a520"><div class="ttname"><a href="class_c_l_i_sdi12.html#a539a3c3a85eaf8db91045b42f3b2a520">CLISdi12::enter_cli</a></div><div class="ttdeci">static BaseType_t enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen, const char *pcCommandString)</div><div class="ttdef"><b>Definition:</b> sdi12.cpp:13</div></div>
+<div class="ttc" id="aclass_c_l_i_sdi12_html_aa114d6852c2131888d46174814ed0405"><div class="ttname"><a href="class_c_l_i_sdi12.html#aa114d6852c2131888d46174814ed0405">CLISdi12::cmd</a></div><div class="ttdeci">static const std::string cmd</div><div class="ttdef"><b>Definition:</b> sdi12.h:15</div></div>
+</div><!-- fragment -->
 </div>
 </div>
 </div><!-- contents -->

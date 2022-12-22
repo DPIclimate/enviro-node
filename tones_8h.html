@@ -91,10 +91,14 @@ $(document).ready(function(){initNavTree('tones_8h.html',''); initResizable(); }
 
 <div class="header">
   <div class="summary">
-<a href="#define-members">Macros</a>  </div>
+<a href="#define-members">Macros</a> &#124;
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle"><div class="title">tones.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Audio control for the onboard piezo buzzer.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;Arduino.h&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for tones.h:</div>
@@ -114,9 +118,35 @@ This graph shows which files directly or indirectly include this file:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
 <tr class="memitem:a399e51d6b82b2110f782455882c42e62"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tones_8h.html#a399e51d6b82b2110f782455882c42e62">PIEZO_BUZZER_PIN</a>&#160;&#160;&#160;GPIO_NUM_17</td></tr>
+<tr class="memdesc:a399e51d6b82b2110f782455882c42e62"><td class="mdescLeft">&#160;</td><td class="mdescRight">GPIO pin to control the piezo buzzer.  <a href="tones_8h.html#a399e51d6b82b2110f782455882c42e62">More...</a><br /></td></tr>
 <tr class="separator:a399e51d6b82b2110f782455882c42e62"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:a889bad88ed769ddb932e87cdc91c9051"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tones_8h.html#a889bad88ed769ddb932e87cdc91c9051">init_tones</a> ()</td></tr>
+<tr class="memdesc:a889bad88ed769ddb932e87cdc91c9051"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start tones by setting GPIO pin as an OUTPUT to control the onboard piezo buzzer.  <a href="tones_8h.html#a889bad88ed769ddb932e87cdc91c9051">More...</a><br /></td></tr>
+<tr class="separator:a889bad88ed769ddb932e87cdc91c9051"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a888894f0b823a499189a5872f516df63"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tones_8h.html#a888894f0b823a499189a5872f516df63">startup_tone</a> ()</td></tr>
+<tr class="memdesc:a888894f0b823a499189a5872f516df63"><td class="mdescLeft">&#160;</td><td class="mdescRight">Used on device startup.  <a href="tones_8h.html#a888894f0b823a499189a5872f516df63">More...</a><br /></td></tr>
+<tr class="separator:a888894f0b823a499189a5872f516df63"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a23ffc5eef7b83daf086a0293509af147"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tones_8h.html#a23ffc5eef7b83daf086a0293509af147">shutdown_tone</a> ()</td></tr>
+<tr class="memdesc:a23ffc5eef7b83daf086a0293509af147"><td class="mdescLeft">&#160;</td><td class="mdescRight">Used on device shutdown.  <a href="tones_8h.html#a23ffc5eef7b83daf086a0293509af147">More...</a><br /></td></tr>
+<tr class="separator:a23ffc5eef7b83daf086a0293509af147"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab209b4ea4dd3f6379350c21009ed2589"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tones_8h.html#ab209b4ea4dd3f6379350c21009ed2589">completed_tone</a> ()</td></tr>
+<tr class="memdesc:ab209b4ea4dd3f6379350c21009ed2589"><td class="mdescLeft">&#160;</td><td class="mdescRight">Command completed tone.  <a href="tones_8h.html#ab209b4ea4dd3f6379350c21009ed2589">More...</a><br /></td></tr>
+<tr class="separator:ab209b4ea4dd3f6379350c21009ed2589"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4c3cfa3eb8660db6be7733ab6f8570e7"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tones_8h.html#a4c3cfa3eb8660db6be7733ab6f8570e7">message_tone</a> ()</td></tr>
+<tr class="memdesc:a4c3cfa3eb8660db6be7733ab6f8570e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">BluetoothLE message received tone.  <a href="tones_8h.html#a4c3cfa3eb8660db6be7733ab6f8570e7">More...</a><br /></td></tr>
+<tr class="separator:a4c3cfa3eb8660db6be7733ab6f8570e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac436bef0dfb5d4b6b0ea3a7e6db47f4a"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tones_8h.html#ac436bef0dfb5d4b6b0ea3a7e6db47f4a">error_tone</a> ()</td></tr>
+<tr class="memdesc:ac436bef0dfb5d4b6b0ea3a7e6db47f4a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generic error tone.  <a href="tones_8h.html#ac436bef0dfb5d4b6b0ea3a7e6db47f4a">More...</a><br /></td></tr>
+<tr class="separator:ac436bef0dfb5d4b6b0ea3a7e6db47f4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Macro Definition Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p >Audio control for the onboard piezo buzzer. </p>
+<p >A GPIO pin is used to drive the gate of a transistor connected to an onboard piezo buzzer. Several tones are provided to enable audio feedback when the device is running.</p>
+<dl class="section date"><dt>Date</dt><dd>December 2022 </dd></dl>
+</div><h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="a399e51d6b82b2110f782455882c42e62" name="a399e51d6b82b2110f782455882c42e62"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a399e51d6b82b2110f782455882c42e62">&#9670;&#160;</a></span>PIEZO_BUZZER_PIN</h2>
 
@@ -128,6 +158,171 @@ Macros</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>GPIO pin to control the piezo buzzer. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Function Documentation</h2>
+<a id="ab209b4ea4dd3f6379350c21009ed2589" name="ab209b4ea4dd3f6379350c21009ed2589"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab209b4ea4dd3f6379350c21009ed2589">&#9670;&#160;</a></span>completed_tone()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void completed_tone </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Command completed tone. </p>
+
+</div>
+</div>
+<a id="ac436bef0dfb5d4b6b0ea3a7e6db47f4a" name="ac436bef0dfb5d4b6b0ea3a7e6db47f4a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac436bef0dfb5d4b6b0ea3a7e6db47f4a">&#9670;&#160;</a></span>error_tone()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void error_tone </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Generic error tone. </p>
+
+</div>
+</div>
+<a id="a889bad88ed769ddb932e87cdc91c9051" name="a889bad88ed769ddb932e87cdc91c9051"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a889bad88ed769ddb932e87cdc91c9051">&#9670;&#160;</a></span>init_tones()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void init_tones </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Start tones by setting GPIO pin as an OUTPUT to control the onboard piezo buzzer. </p>
+
+</div>
+</div>
+<a id="a4c3cfa3eb8660db6be7733ab6f8570e7" name="a4c3cfa3eb8660db6be7733ab6f8570e7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4c3cfa3eb8660db6be7733ab6f8570e7">&#9670;&#160;</a></span>message_tone()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void message_tone </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>BluetoothLE message received tone. </p>
+
+</div>
+</div>
+<a id="a23ffc5eef7b83daf086a0293509af147" name="a23ffc5eef7b83daf086a0293509af147"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a23ffc5eef7b83daf086a0293509af147">&#9670;&#160;</a></span>shutdown_tone()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void shutdown_tone </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Used on device shutdown. </p>
+
+</div>
+</div>
+<a id="a888894f0b823a499189a5872f516df63" name="a888894f0b823a499189a5872f516df63"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a888894f0b823a499189a5872f516df63">&#9670;&#160;</a></span>startup_tone()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void startup_tone </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Used on device startup. </p>
 
 </div>
 </div>

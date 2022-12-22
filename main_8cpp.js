@@ -7,5 +7,6 @@ var main_8cpp =
     [ "loop", "main_8cpp.html#afe461d27b9c48d5921c00d521181f12f", null ],
     [ "setup", "main_8cpp.html#a4fc01d736fe50cf5b977f755b675f11d", null ],
     [ "time_check", "main_8cpp.html#a223a2f4d81477163d771407a99e2c73b", null ],
-    [ "io_expander", "main_8cpp.html#a8cf2293df92df8bc87efa85b5c7af4ce", null ]
+    [ "io_expander", "main_8cpp.html#a8cf2293df92df8bc87efa85b5c7af4ce", null ],
+    [ "uxTopUsedPriority", "main_8cpp.html#a5f4927c8ddf017550d72987d1be19591", null ]
 ];
