@@ -1,3 +1,11 @@
+/**
+ * @file server.h
+ *
+ * @brief Handle the setup and maintenance of the BLE server and connected
+ * clients.
+ *
+ * @date December 2022
+ */
 #ifndef WOMBAT_BLUETOOTH_SERVER_H
 #define WOMBAT_BLUETOOTH_SERVER_H
 
@@ -12,10 +20,7 @@
 #include "cli/CLI.h"
 
 class BluetoothServer {
-
 public:
-    BluetoothServer() = default;
-    ~BluetoothServer() = default;
     static void begin();
 
     inline static bool device_connected = false;
@@ -27,11 +32,27 @@ public:
 
 class BluetoothServerCallbacks: public BLEServerCallbacks,
                                 public BluetoothServer {
+    /**
+     * @brief Occurs client connects to BLE server.
+     *
+     * Plays the connected tone for audible output. Sets the device_connected
+     * variable to true.
+     *
+     * @param pServer Pointer to the BLE server.
+     */
     void onConnect(BLEServer* pServer) override {
         completed_tone();
         device_connected = true;
     }
 
+    /**
+     * @brief Occurs client disconnects from BLE server.
+     *
+     * Plays the disconnected tone for audible output. Sets the device_connected
+     * variable to false.
+     *
+     * @param pServer Pointer to the BLE server.
+     */
     void onDisconnect(BLEServer* pServer) override {
         error_tone();
         device_connected = false;
