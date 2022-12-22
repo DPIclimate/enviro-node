@@ -44,18 +44,20 @@ BaseType_t CLIConfig::enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen,
         if (!strncmp("list", param, paramLen)) {
             response_buffer_.clear();
             config.dumpConfig(response_buffer_);
+            response_buffer_.println("\r\nOK");
             return pdTRUE;
         }
 
         if (!strncmp("load", param, paramLen)) {
             config.load();
             config.dumpConfig(response_buffer_);
+            response_buffer_.println("\r\nOK");
             return pdTRUE;
         }
 
         if (!strncmp("save", param, paramLen)) {
             config.save();
-            strncpy(pcWriteBuffer, "Configuration saved\r\n", xWriteBufferLen - 1);
+            strncpy(pcWriteBuffer, "Configuration saved\r\nOK\r\n", xWriteBufferLen - 1);
             return pdFALSE;
         }
 

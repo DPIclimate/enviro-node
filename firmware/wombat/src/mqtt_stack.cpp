@@ -42,6 +42,7 @@ void mqttCmdCallback(int cmd, int result) {
             mqttLoginOk = (result == 1);
             break;
         case SARA_R5_MQTT_COMMAND_PUBLISH:
+        case SARA_R5_MQTT_COMMAND_PUBLISHBINARY:
             mqttPublishOk = (result == 1);
             break;
     }
@@ -101,7 +102,12 @@ bool mqtt_logout(void) {
 
 bool mqtt_publish(String& topic, const char * const msg) {
     ESP_LOGI(TAG, "Publish message: %s/%s", topic.c_str(), msg);
-    r5.publishMQTT(topic, msg);
+    SARA_R5_error_t err = r5.publishMQTT(topic, msg);
+    if (err != SARA_R5_error_t::SARA_R5_ERROR_SUCCESS) {
+        ESP_LOGE(TAG, "Publish failed");
+        return false;
+    }
+
     delay(20);
     while (!mqttGotURC) {
         r5.poll();
