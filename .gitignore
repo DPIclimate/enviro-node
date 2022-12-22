@@ -11,6 +11,8 @@
 build/
 CMakeListsPrivate.txt
 cmake-build-*/
+doxygen-awesome-css/
+docs/
 
 # ---- CLION / PlatformIO ---- #
 .idea/
