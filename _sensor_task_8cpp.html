@@ -101,7 +101,6 @@ $(document).ready(function(){initNavTree('_sensor_task_8cpp.html',''); initResiz
 <code>#include &quot;<a class="el" href="_sensor_task_8h_source.html">SensorTask.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_device_config_8h_source.html">DeviceConfig.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_utils_8h_source.html">Utils.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="mqtt__stack_8h_source.html">mqtt_stack.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="globals_8h_source.html">globals.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="ulp_8h_source.html">ulp.h</a>&quot;</code><br />
 <code>#include &lt;esp_log.h&gt;</code><br />
@@ -111,7 +110,7 @@ $(document).ready(function(){initNavTree('_sensor_task_8cpp.html',''); initResiz
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for SensorTask.cpp:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="_sensor_task_8cpp__incl.svg" width="1299" height="359"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="_sensor_task_8cpp__incl.svg" width="1340" height="359"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 </div><table class="memberdecls">
@@ -128,14 +127,20 @@ Functions</h2></td></tr>
 <tr class="separator:adf61271e82fc2e9e672de0f876554e62"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac169bcac0fcfa9ffc858cc6faf9e796f"><td class="memItemLeft" align="right" valign="top">DPIClimate12&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_sensor_task_8cpp.html#ac169bcac0fcfa9ffc858cc6faf9e796f">dpi12</a> (<a class="el" href="sdi12_8cpp.html#aaa356c858fec3352d1064a864cbb05f6">sdi12</a>)</td></tr>
 <tr class="separator:ac169bcac0fcfa9ffc858cc6faf9e796f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9b426da0a86637be470878f7419d1ce8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_sensor_task_8cpp.html#a9b426da0a86637be470878f7419d1ce8">initSensors</a> (void)</td></tr>
-<tr class="separator:a9b426da0a86637be470878f7419d1ce8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aadd2e2f6e66676b15a309ee0e90a8e9b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_sensor_task_8cpp.html#aadd2e2f6e66676b15a309ee0e90a8e9b">sensorTask</a> (void)</td></tr>
-<tr class="separator:aadd2e2f6e66676b15a309ee0e90a8e9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad7577ba7f06f417a019b69da8682ede5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_sensor_task_8cpp.html#ad7577ba7f06f417a019b69da8682ede5">init_sensors</a> (void)</td></tr>
+<tr class="memdesc:ad7577ba7f06f417a019b69da8682ede5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Scans the SDI-12 bus and fills in the sensors object.  <a href="_sensor_task_8cpp.html#ad7577ba7f06f417a019b69da8682ede5">More...</a><br /></td></tr>
+<tr class="separator:ad7577ba7f06f417a019b69da8682ede5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1473b62411faa497a9b2de3663a2f154"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_sensor_task_8cpp.html#a1473b62411faa497a9b2de3663a2f154">read_sensor</a> (const char addr, JsonArray &amp;timeseries_array)</td></tr>
+<tr class="memdesc:a1473b62411faa497a9b2de3663a2f154"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read a single SDI-12 sensor and add its values to timeseries_array.  <a href="_sensor_task_8cpp.html#a1473b62411faa497a9b2de3663a2f154">More...</a><br /></td></tr>
+<tr class="separator:a1473b62411faa497a9b2de3663a2f154"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5324de4b826c23c5099095286d45228f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_sensor_task_8cpp.html#a5324de4b826c23c5099095286d45228f">sensor_task</a> (void)</td></tr>
+<tr class="memdesc:a5324de4b826c23c5099095286d45228f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read all sensors, put the readings in a JSON message and save the JSON to a file on SPIFFS to be uplinked later.  <a href="_sensor_task_8cpp.html#a5324de4b826c23c5099095286d45228f">More...</a><br /></td></tr>
+<tr class="separator:a5324de4b826c23c5099095286d45228f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
 <tr class="memitem:abfdc03a08a9960c1fb81cec3813f1082"><td class="memItemLeft" align="right" valign="top">sensor_list&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_sensor_task_8cpp.html#abfdc03a08a9960c1fb81cec3813f1082">sensors</a></td></tr>
+<tr class="memdesc:abfdc03a08a9960c1fb81cec3813f1082"><td class="mdescLeft">&#160;</td><td class="mdescRight">The ID information of each sensor found on the SDI-12 bus.  <a href="_sensor_task_8cpp.html#abfdc03a08a9960c1fb81cec3813f1082">More...</a><br /></td></tr>
 <tr class="separator:abfdc03a08a9960c1fb81cec3813f1082"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
@@ -186,14 +191,14 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a9b426da0a86637be470878f7419d1ce8" name="a9b426da0a86637be470878f7419d1ce8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9b426da0a86637be470878f7419d1ce8">&#9670;&#160;</a></span>initSensors()</h2>
+<a id="ad7577ba7f06f417a019b69da8682ede5" name="ad7577ba7f06f417a019b69da8682ede5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad7577ba7f06f417a019b69da8682ede5">&#9670;&#160;</a></span>init_sensors()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void initSensors </td>
+          <td class="memname">void init_sensors </td>
           <td>(</td>
           <td class="paramtype">void&#160;</td>
           <td class="paramname"></td><td>)</td>
@@ -201,6 +206,38 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Scans the SDI-12 bus and fills in the sensors object. </p>
+
+</div>
+</div>
+<a id="a1473b62411faa497a9b2de3663a2f154" name="a1473b62411faa497a9b2de3663a2f154"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1473b62411faa497a9b2de3663a2f154">&#9670;&#160;</a></span>read_sensor()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool read_sensor </td>
+          <td>(</td>
+          <td class="paramtype">const char&#160;</td>
+          <td class="paramname"><em>addr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">JsonArray &amp;&#160;</td>
+          <td class="paramname"><em>timeseries_array</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Read a single SDI-12 sensor and add its values to timeseries_array. </p>
 
 </div>
 </div>
@@ -222,14 +259,14 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="aadd2e2f6e66676b15a309ee0e90a8e9b" name="aadd2e2f6e66676b15a309ee0e90a8e9b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aadd2e2f6e66676b15a309ee0e90a8e9b">&#9670;&#160;</a></span>sensorTask()</h2>
+<a id="a5324de4b826c23c5099095286d45228f" name="a5324de4b826c23c5099095286d45228f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5324de4b826c23c5099095286d45228f">&#9670;&#160;</a></span>sensor_task()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void sensorTask </td>
+          <td class="memname">void sensor_task </td>
           <td>(</td>
           <td class="paramtype">void&#160;</td>
           <td class="paramname"></td><td>)</td>
@@ -237,6 +274,8 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Read all sensors, put the readings in a JSON message and save the JSON to a file on SPIFFS to be uplinked later. </p>
 
 </div>
 </div>
@@ -252,6 +291,8 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>The ID information of each sensor found on the SDI-12 bus. </p>
 
 </div>
 </div>

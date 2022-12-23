@@ -5,7 +5,7 @@ var searchData=
   ['sdi12_2',['sdi12',['../_sensor_task_8cpp.html#adf61271e82fc2e9e672de0f876554e62',1,'SensorTask.cpp']]],
   ['sdi12defns_3',['sdi12Defns',['../_device_config_8cpp.html#a0b140ee2afa69c1f8c6e2a44bd144ced',1,'DeviceConfig.cpp']]],
   ['send_5fmessages_4',['send_messages',['../uplinks_8cpp.html#a01b65f1187ce57683008ea937c9ad1c5',1,'send_messages(void):&#160;uplinks.cpp'],['../uplinks_8h.html#a01b65f1187ce57683008ea937c9ad1c5',1,'send_messages(void):&#160;uplinks.cpp']]],
-  ['sensortask_5',['sensorTask',['../_sensor_task_8cpp.html#aadd2e2f6e66676b15a309ee0e90a8e9b',1,'sensorTask(void):&#160;SensorTask.cpp'],['../_sensor_task_8h.html#aadd2e2f6e66676b15a309ee0e90a8e9b',1,'sensorTask(void):&#160;SensorTask.cpp']]],
+  ['sensor_5ftask_5',['sensor_task',['../_sensor_task_8cpp.html#a5324de4b826c23c5099095286d45228f',1,'sensor_task(void):&#160;SensorTask.cpp'],['../_sensor_task_8h.html#a5324de4b826c23c5099095286d45228f',1,'sensor_task(void):&#160;SensorTask.cpp']]],
   ['setdeviceaddress_6',['setDeviceAddress',['../class_t_c_a9534.html#a933d2ee25dc6c08ec2908dff66725315',1,'TCA9534']]],
   ['setmeasureinterval_7',['setMeasureInterval',['../class_device_config.html#ade9fcd75f44092b3d6c85411431f8524',1,'DeviceConfig']]],
   ['setmeasurementanduplinkintervals_8',['setMeasurementAndUplinkIntervals',['../class_device_config.html#a2307dbd87827665d98f49993c190a79c',1,'DeviceConfig']]],

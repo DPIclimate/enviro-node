@@ -16,5 +16,6 @@ var _utils_8cpp =
     [ "wait_for_at", "_utils_8cpp.html#a33a6438d35b78180866c05d88dac6d6f", null ],
     [ "waitForChar", "_utils_8cpp.html#a93cbffdc5f34bee7067c3ef65e2ab949", null ],
     [ "io_expander", "_utils_8cpp.html#a8cf2293df92df8bc87efa85b5c7af4ce", null ],
-    [ "iso8601_buf", "_utils_8cpp.html#ae0a3086449feced3dc7625ee05285441", null ]
+    [ "iso8601_buf", "_utils_8cpp.html#ae0a3086449feced3dc7625ee05285441", null ],
+    [ "v12_enabled", "_utils_8cpp.html#ae302ff688aa004a9ffd486824cd51734", null ]
 ];
