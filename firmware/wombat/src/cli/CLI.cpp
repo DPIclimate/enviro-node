@@ -63,6 +63,8 @@ void CLI::repl(Stream& io) {
     cliStream = &io;
     io.println("Entering repl");
 
+    enable12V();
+
     while (true) {
         io.print("$ ");
         while (!io.available()) {
@@ -74,8 +76,7 @@ void CLI::repl(Stream& io) {
             cmd[len] = 0;
             stripWS(cmd);
             if (!strcmp("exit", cmd)) {
-                io.println("Exiting repl");
-                return;
+                break;
             }
 
             BaseType_t rc = pdTRUE;
@@ -91,4 +92,8 @@ void CLI::repl(Stream& io) {
             }
         }
     }
+
+    io.println("Exiting repl");
+    disable12V();
+    return;
 }

@@ -35,7 +35,9 @@ extern bool getNTPTime(SARA_R5 &r5);
 void time_check(void);
 
 void setup() {
-
+    // Disable brown-out detection until the BT LE radio is running.
+    // The radio startup triggers a brown out detection, but the
+    // voltage seems ok and the node keeps running.
     WRITE_PERI_REG(RTC_CNTL_BROWN_OUT_REG, 0);
 
     pinMode(PROG_BTN, INPUT);
@@ -65,6 +67,8 @@ void setup() {
     io_expander.config(TCA9534::Config::OUT);
     io_expander.output(4, TCA9534::Level::L); // Turn off LED
 
+    disable12V();
+
     cat_m1.begin(io_expander);
 
     delay(1000);
@@ -80,14 +84,14 @@ void setup() {
     // a list of commands.
     CLI::init();
 
-    // BluetoothServer::begin();
+    BluetoothServer::begin();
 
     DeviceConfig& config = DeviceConfig::get();
     config.load();
-
-    //config.setMeasurementAndUplinkIntervals(60, 3600);
     config.dumpConfig(Serial);
 
+    // Enable the brown out detection now the node has stabilised its
+    // current requirements.
     WRITE_PERI_REG(RTC_CNTL_BROWN_OUT_REG, 1);
 
     if (progBtnPressed) {
@@ -142,8 +146,8 @@ void setup() {
     battery_monitor.begin();
     solar_monitor.begin();
 
-    initSensors();
-    sensorTask();
+    init_sensors();
+    sensor_task();
 
     if (uplinkCycle) {
         send_messages();

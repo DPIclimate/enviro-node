@@ -1,4 +1,5 @@
 #include "cli/peripherals/sdi12.h"
+#include "SensorTask.h"
 
 static StreamString response_buffer_;
 static char response[CLISdi12::MAX_SDI12_RES_LEN];
@@ -39,7 +40,6 @@ BaseType_t CLISdi12::enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen,
     param = FreeRTOS_CLIGetParameter(pcCommandString, paramNum, &paramLen);
     if (param != nullptr && paramLen > 0) {
         if (!strncmp("scan", param, paramLen)) {
-            enable12V();
             sdi12.begin();
 
             dpi12.scan_bus(sensors);
@@ -50,20 +50,45 @@ BaseType_t CLISdi12::enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen,
 
             response_buffer_.print("OK\r\n");
 
-            // 113METER   TER12 201T12-00082937
-            // 1+1807.82+21.0+1
-            // 213METER   TER11 301T11-00019674
-            // 2+1820.29+20.9
+            sdi12.end();
+            return pdTRUE;
+        }
+
+        if (!strncmp("m", param, paramLen)) {
+            enable12V();
+            sdi12.begin();
+
+            char addr = 0;
+            paramNum++;
+            param = FreeRTOS_CLIGetParameter(pcCommandString, paramNum, &paramLen);
+            if (param == nullptr || *param == 0) {
+                strncpy(pcWriteBuffer, "ERROR: missing SDI-12 address\r\n", xWriteBufferLen - 1);
+                return pdFALSE;
+            }
+
+            addr = *param;
+
+            DynamicJsonDocument msg(2048);
+            JsonArray timeseries_array = msg.createNestedArray("timeseries");
+            if ( ! read_sensor(addr, timeseries_array)) {
+                strncpy(pcWriteBuffer, "ERROR: failed to read SDI-12 sensor\r\n", xWriteBufferLen - 1);
+                return pdFALSE;
+            }
+
+            String str;
+            serializeJson(msg, response_buffer_);
+            response_buffer_.print("\r\nOK\r\n");
 
             sdi12.end();
-            disable12V();
+
+            // SDI-12 power not disabled here. It is disabled when the CLI is exited.
+
             return pdTRUE;
         }
 
         if (!strncmp(">>", param, paramLen)) {
             const char* sdi12_cmd = FreeRTOS_CLIGetParameter(pcCommandString, 2, &paramLen);
             if(sdi12_cmd != nullptr && paramLen > 0) {
-                enable12V();
                 sdi12.begin();
 
                 ESP_LOGI(TAG, "SDI-12 CMD received: [%s]", sdi12_cmd);
@@ -88,7 +113,6 @@ BaseType_t CLISdi12::enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen,
 
                 delay(10);
                 sdi12.end();
-                disable12V();
 
                 bool ok = ! response_buffer_.isEmpty();
                 if (ch != '\n') {
@@ -112,7 +136,6 @@ BaseType_t CLISdi12::enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen,
             }
 
             cliStream->println("Entering SDI-12 passthrough mode, press ctrl-D to exit");
-            enable12V();
             sdi12.begin();
 
             char cmd[8];
@@ -147,7 +170,6 @@ BaseType_t CLISdi12::enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen,
             }
 
             sdi12.end();
-            disable12V();
 
             strncpy(pcWriteBuffer, "Exited SDI-12 passthrough mode\r\nOK\r\n", xWriteBufferLen - 1);
             return pdFALSE;

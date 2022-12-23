@@ -141,13 +141,23 @@ JsonObjectConst getSensorDefn(const size_t sensor_idx, const sensor_list& sensor
 
 extern TCA9534 io_expander;
 
+static bool v12_enabled = false;
+
+/// \brief Enable the SDI-12 power line if it is not already enabled.
 void enable12V(void) {
-    io_expander.output(6, TCA9534::Level::H);
-    delay(1000);
+    if ( ! v12_enabled) {
+        ESP_LOGI(TAG, "Enabling SDI-12 power line");
+        io_expander.output(6, TCA9534::Level::H);
+        delay(1000);
+        v12_enabled = true;
+    }
 }
 
+/// \brief Disable the SDI-12 power line.
 void disable12V(void) {
+    ESP_LOGI(TAG, "Disabling SDI-12 power line");
     io_expander.output(6, TCA9534::Level::L);
+    v12_enabled = false;
 }
 
 // yyyy-mm-ddThh:mm:ssZ
