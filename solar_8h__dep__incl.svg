@@ -11,7 +11,7 @@
 <!-- Node1 -->
 <g id="node1" class="node">
 <title>Node1</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Solar voltage and current monitoring using INA219 IC.">
 <polygon fill="#999999" stroke="#666666" points="825,-371 682,-371 682,-341 825,-341 825,-371"/>
 <text text-anchor="start" x="690" y="-359" font-family="Helvetica,sans-Serif" font-size="10.00">firmware/wombat/include</text>
 <text text-anchor="middle" x="753.5" y="-348" font-family="Helvetica,sans-Serif" font-size="10.00">/power_monitoring/solar.h</text>
@@ -53,7 +53,7 @@
 <!-- Node19 -->
 <g id="node19" class="node">
 <title>Node19</title>
-<g id="a_node19"><a xlink:href="solar_8cpp.html" target="_top" xlink:title=" ">
+<g id="a_node19"><a xlink:href="solar_8cpp.html" target="_top" xlink:title="Solar voltage and current monitoring using INA219 IC.">
 <polygon fill="white" stroke="#666666" points="997,-305 842,-305 842,-275 997,-275 997,-305"/>
 <text text-anchor="start" x="850" y="-293" font-family="Helvetica,sans-Serif" font-size="10.00">firmware/wombat/src</text>
 <text text-anchor="middle" x="919.5" y="-282" font-family="Helvetica,sans-Serif" font-size="10.00">/power_monitoring/solar.cpp</text>

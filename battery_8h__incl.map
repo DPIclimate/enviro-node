@@ -1,5 +1,5 @@
 <map id="firmware/wombat/include/power_monitoring/battery.h" name="firmware/wombat/include/power_monitoring/battery.h">
-<area shape="rect" id="node1" title=" " alt="" coords="13,5,218,45"/>
+<area shape="rect" id="node1" title="Battery voltage and current monitoring using INA219 IC." alt="" coords="13,5,218,45"/>
 <area shape="rect" id="node2" title=" " alt="" coords="5,93,89,119"/>
 <area shape="rect" id="node3" title=" " alt="" coords="113,93,253,119"/>
 </map>

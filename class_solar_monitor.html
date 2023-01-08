@@ -91,7 +91,6 @@ $(document).ready(function(){initNavTree('class_solar_monitor.html',''); initRes
 
 <div class="header">
   <div class="summary">
-<a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#pri-static-attribs">Static Private Attributes</a> &#124;
 <a href="class_solar_monitor-members.html">List of all members</a>  </div>
@@ -99,91 +98,48 @@ $(document).ready(function(){initNavTree('class_solar_monitor.html',''); initRes
 </div><!--header-->
 <div class="contents">
 
+<p>Solar power monitoring handler.  
+ <a href="class_solar_monitor.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="solar_8h_source.html">solar.h</a>&gt;</code></p>
 <div class="dynheader">
 Collaboration diagram for SolarMonitor:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="class_solar_monitor__coll__graph.svg" width="152" height="168"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="class_solar_monitor__coll__graph.svg" width="135" height="139"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
-Public Member Functions</h2></td></tr>
-<tr class="memitem:afade9d53165f107bcd01281097b1e319"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_solar_monitor.html#afade9d53165f107bcd01281097b1e319">SolarMonitor</a> ()=default</td></tr>
-<tr class="separator:afade9d53165f107bcd01281097b1e319"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acdb9b059a4cf2a889abe26c608f45893"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_solar_monitor.html#acdb9b059a4cf2a889abe26c608f45893">~SolarMonitor</a> ()=default</td></tr>
-<tr class="separator:acdb9b059a4cf2a889abe26c608f45893"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a69efd193035d93aa09a0689740969adf"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_solar_monitor.html#a69efd193035d93aa09a0689740969adf">begin</a> ()</td></tr>
+<tr class="memdesc:a69efd193035d93aa09a0689740969adf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Setup INA219 IC to monitoring battery voltage and current.  <a href="class_solar_monitor.html#a69efd193035d93aa09a0689740969adf">More...</a><br /></td></tr>
 <tr class="separator:a69efd193035d93aa09a0689740969adf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5e654a8e7d47855f2ca49243b31fc02a"><td class="memItemLeft" align="right" valign="top">static float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_solar_monitor.html#a5e654a8e7d47855f2ca49243b31fc02a">get_voltage</a> ()</td></tr>
+<tr class="memdesc:a5e654a8e7d47855f2ca49243b31fc02a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the voltage of the solar.  <a href="class_solar_monitor.html#a5e654a8e7d47855f2ca49243b31fc02a">More...</a><br /></td></tr>
 <tr class="separator:a5e654a8e7d47855f2ca49243b31fc02a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6f6c5ba982ee5181ffbab35d3b178eea"><td class="memItemLeft" align="right" valign="top">static float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_solar_monitor.html#a6f6c5ba982ee5181ffbab35d3b178eea">get_current</a> ()</td></tr>
+<tr class="memdesc:a6f6c5ba982ee5181ffbab35d3b178eea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the current flowing from the solar panel.  <a href="class_solar_monitor.html#a6f6c5ba982ee5181ffbab35d3b178eea">More...</a><br /></td></tr>
 <tr class="separator:a6f6c5ba982ee5181ffbab35d3b178eea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a882b2801fe49e803490f7d6d72438e21"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_solar_monitor.html#a882b2801fe49e803490f7d6d72438e21">sleep</a> ()</td></tr>
+<tr class="memdesc:a882b2801fe49e803490f7d6d72438e21"><td class="mdescLeft">&#160;</td><td class="mdescRight">Puts the INA219 IC in a sleep mode.  <a href="class_solar_monitor.html#a882b2801fe49e803490f7d6d72438e21">More...</a><br /></td></tr>
 <tr class="separator:a882b2801fe49e803490f7d6d72438e21"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af6a191879ff84ffb5d4912ed0487e041"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_solar_monitor.html#af6a191879ff84ffb5d4912ed0487e041">wakeup</a> ()</td></tr>
+<tr class="memdesc:af6a191879ff84ffb5d4912ed0487e041"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wakes up the INA219 IC.  <a href="class_solar_monitor.html#af6a191879ff84ffb5d4912ed0487e041">More...</a><br /></td></tr>
 <tr class="separator:af6a191879ff84ffb5d4912ed0487e041"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-attribs" name="pri-static-attribs"></a>
 Static Private Attributes</h2></td></tr>
 <tr class="memitem:acc1b72b216eb69d45fe4b5edcdd866f6"><td class="memItemLeft" align="right" valign="top">static const uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_solar_monitor.html#acc1b72b216eb69d45fe4b5edcdd866f6">solarAddr</a> = 0x40</td></tr>
+<tr class="memdesc:acc1b72b216eb69d45fe4b5edcdd866f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default I2C solar address (cannot be changed without modifying PCB)  <a href="class_solar_monitor.html#acc1b72b216eb69d45fe4b5edcdd866f6">More...</a><br /></td></tr>
 <tr class="separator:acc1b72b216eb69d45fe4b5edcdd866f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="afade9d53165f107bcd01281097b1e319" name="afade9d53165f107bcd01281097b1e319"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afade9d53165f107bcd01281097b1e319">&#9670;&#160;</a></span>SolarMonitor()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">SolarMonitor::SolarMonitor </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">default</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="acdb9b059a4cf2a889abe26c608f45893" name="acdb9b059a4cf2a889abe26c608f45893"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acdb9b059a4cf2a889abe26c608f45893">&#9670;&#160;</a></span>~SolarMonitor()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">SolarMonitor::~SolarMonitor </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">default</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<h2 class="groupheader">Member Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p >Solar power monitoring handler. </p>
+<p >A INA219 IC is used to monitor solar voltage and current. When using the Adafruit_INA219 library this IC requires a 1 ohm resistor across its positive and negative inputs.</p>
+<dl class="section see"><dt>See also</dt><dd>Library: <a href="https://github.com/adafruit/Adafruit_INA219">https://github.com/adafruit/Adafruit_INA219</a> </dd>
+<dd>
+Datasheet: <a href="https://www.ti.com/lit/ds/symlink/ina219.pdf?ts=1673141206831">https://www.ti.com/lit/ds/symlink/ina219.pdf?ts=1673141206831</a> </dd></dl>
+</div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a69efd193035d93aa09a0689740969adf" name="a69efd193035d93aa09a0689740969adf"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a69efd193035d93aa09a0689740969adf">&#9670;&#160;</a></span>begin()</h2>
 
@@ -206,6 +162,9 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Setup INA219 IC to monitoring battery voltage and current. </p>
+<p >As the solar panel has a maximum voltage of 21V a calibration factor is set to a lower resolution. </p>
 
 </div>
 </div>
@@ -232,6 +191,10 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Get the current flowing from the solar panel. </p>
+<p >If the IC is not initialed this function will return -1.0.</p>
+<dl class="section return"><dt>Returns</dt><dd>Solar current. </dd></dl>
+
 </div>
 </div>
 <a id="a5e654a8e7d47855f2ca49243b31fc02a" name="a5e654a8e7d47855f2ca49243b31fc02a"></a>
@@ -256,6 +219,10 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Get the voltage of the solar. </p>
+<p >If the IC is not initialed this function will return -1.0.</p>
+<dl class="section return"><dt>Returns</dt><dd>Solar voltage. </dd></dl>
 
 </div>
 </div>
@@ -282,6 +249,9 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Puts the INA219 IC in a sleep mode. </p>
+<p >The IC will consume around 6 uA when in sleep mode. </p>
+
 </div>
 </div>
 <a id="af6a191879ff84ffb5d4912ed0487e041" name="af6a191879ff84ffb5d4912ed0487e041"></a>
@@ -307,6 +277,8 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Wakes up the INA219 IC. </p>
+
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
@@ -329,6 +301,8 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Default I2C solar address (cannot be changed without modifying PCB) </p>
 
 </div>
 </div>

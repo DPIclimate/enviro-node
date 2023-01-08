@@ -91,7 +91,6 @@ $(document).ready(function(){initNavTree('class_battery_monitor.html',''); initR
 
 <div class="header">
   <div class="summary">
-<a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#pri-static-attribs">Static Private Attributes</a> &#124;
 <a href="class_battery_monitor-members.html">List of all members</a>  </div>
@@ -99,91 +98,48 @@ $(document).ready(function(){initNavTree('class_battery_monitor.html',''); initR
 </div><!--header-->
 <div class="contents">
 
+<p>Battery power monitoring handler.  
+ <a href="class_battery_monitor.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="battery_8h_source.html">battery.h</a>&gt;</code></p>
 <div class="dynheader">
 Collaboration diagram for BatteryMonitor:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="class_battery_monitor__coll__graph.svg" width="167" height="168"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="class_battery_monitor__coll__graph.svg" width="139" height="139"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
-Public Member Functions</h2></td></tr>
-<tr class="memitem:a4fba9d882384129d368cf0084ae59831"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_battery_monitor.html#a4fba9d882384129d368cf0084ae59831">BatteryMonitor</a> ()=default</td></tr>
-<tr class="separator:a4fba9d882384129d368cf0084ae59831"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac0e2fa75825087bce42d5b55d59277d8"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_battery_monitor.html#ac0e2fa75825087bce42d5b55d59277d8">~BatteryMonitor</a> ()=default</td></tr>
-<tr class="separator:ac0e2fa75825087bce42d5b55d59277d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:ae271f65e139460c64ee6d52964d02e68"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_battery_monitor.html#ae271f65e139460c64ee6d52964d02e68">begin</a> ()</td></tr>
+<tr class="memdesc:ae271f65e139460c64ee6d52964d02e68"><td class="mdescLeft">&#160;</td><td class="mdescRight">Setup INA219 IC to monitoring battery voltage and current.  <a href="class_battery_monitor.html#ae271f65e139460c64ee6d52964d02e68">More...</a><br /></td></tr>
 <tr class="separator:ae271f65e139460c64ee6d52964d02e68"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa677f18a69aca39be8a42b37435e5c1c"><td class="memItemLeft" align="right" valign="top">static float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_battery_monitor.html#aa677f18a69aca39be8a42b37435e5c1c">get_voltage</a> ()</td></tr>
+<tr class="memdesc:aa677f18a69aca39be8a42b37435e5c1c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the voltage of the battery.  <a href="class_battery_monitor.html#aa677f18a69aca39be8a42b37435e5c1c">More...</a><br /></td></tr>
 <tr class="separator:aa677f18a69aca39be8a42b37435e5c1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac4624527f68a25bb80294fcd6e9117c4"><td class="memItemLeft" align="right" valign="top">static float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_battery_monitor.html#ac4624527f68a25bb80294fcd6e9117c4">get_current</a> ()</td></tr>
+<tr class="memdesc:ac4624527f68a25bb80294fcd6e9117c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the current flowing from/to the battery.  <a href="class_battery_monitor.html#ac4624527f68a25bb80294fcd6e9117c4">More...</a><br /></td></tr>
 <tr class="separator:ac4624527f68a25bb80294fcd6e9117c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acc5ab7153210d1619d9faae60989737c"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_battery_monitor.html#acc5ab7153210d1619d9faae60989737c">sleep</a> ()</td></tr>
+<tr class="memdesc:acc5ab7153210d1619d9faae60989737c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Puts the INA219 IC in a sleep mode.  <a href="class_battery_monitor.html#acc5ab7153210d1619d9faae60989737c">More...</a><br /></td></tr>
 <tr class="separator:acc5ab7153210d1619d9faae60989737c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6195323bb77cff29be46a3f931f33f50"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_battery_monitor.html#a6195323bb77cff29be46a3f931f33f50">wakeup</a> ()</td></tr>
+<tr class="memdesc:a6195323bb77cff29be46a3f931f33f50"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wakes up the INA219 IC.  <a href="class_battery_monitor.html#a6195323bb77cff29be46a3f931f33f50">More...</a><br /></td></tr>
 <tr class="separator:a6195323bb77cff29be46a3f931f33f50"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-attribs" name="pri-static-attribs"></a>
 Static Private Attributes</h2></td></tr>
 <tr class="memitem:a2922ea083a583a302b39718c38da4792"><td class="memItemLeft" align="right" valign="top">static const uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_battery_monitor.html#a2922ea083a583a302b39718c38da4792">batteryAddr</a> = 0x45</td></tr>
+<tr class="memdesc:a2922ea083a583a302b39718c38da4792"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default I2C battery address (cannot be changed without modifying PCB)  <a href="class_battery_monitor.html#a2922ea083a583a302b39718c38da4792">More...</a><br /></td></tr>
 <tr class="separator:a2922ea083a583a302b39718c38da4792"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a4fba9d882384129d368cf0084ae59831" name="a4fba9d882384129d368cf0084ae59831"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4fba9d882384129d368cf0084ae59831">&#9670;&#160;</a></span>BatteryMonitor()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">BatteryMonitor::BatteryMonitor </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">default</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="ac0e2fa75825087bce42d5b55d59277d8" name="ac0e2fa75825087bce42d5b55d59277d8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac0e2fa75825087bce42d5b55d59277d8">&#9670;&#160;</a></span>~BatteryMonitor()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">BatteryMonitor::~BatteryMonitor </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">default</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<h2 class="groupheader">Member Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p >Battery power monitoring handler. </p>
+<p >A INA219 IC is used to monitor battery voltage and current. When using the Adafruit_INA219 library this IC requires a 1 ohm resistor across its positive and negative inputs.</p>
+<dl class="section see"><dt>See also</dt><dd>Library: <a href="https://github.com/adafruit/Adafruit_INA219">https://github.com/adafruit/Adafruit_INA219</a> </dd>
+<dd>
+Datasheet: <a href="https://www.ti.com/lit/ds/symlink/ina219.pdf?ts=1673141206831">https://www.ti.com/lit/ds/symlink/ina219.pdf?ts=1673141206831</a> </dd></dl>
+</div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="ae271f65e139460c64ee6d52964d02e68" name="ae271f65e139460c64ee6d52964d02e68"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae271f65e139460c64ee6d52964d02e68">&#9670;&#160;</a></span>begin()</h2>
 
@@ -206,6 +162,9 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Setup INA219 IC to monitoring battery voltage and current. </p>
+<p >As the battery has a maximum voltage of 4.2V a calibration factor can be used to improve accuracy. </p>
 
 </div>
 </div>
@@ -232,6 +191,11 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Get the current flowing from/to the battery. </p>
+<p >Note that this may not be super accurate as the current consumption will change when different components become active and inactive. Using external power such as that through the debugger will also result inaccurate readings.</p>
+<p >If the IC is not initialed this function will return -1.0.</p>
+<dl class="section return"><dt>Returns</dt><dd>Battery current. </dd></dl>
+
 </div>
 </div>
 <a id="aa677f18a69aca39be8a42b37435e5c1c" name="aa677f18a69aca39be8a42b37435e5c1c"></a>
@@ -256,6 +220,10 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Get the voltage of the battery. </p>
+<p >If the IC is not initialed this function will return -1.0.</p>
+<dl class="section return"><dt>Returns</dt><dd>Battery voltage. </dd></dl>
 
 </div>
 </div>
@@ -282,6 +250,9 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Puts the INA219 IC in a sleep mode. </p>
+<p >The IC will consume around 6 uA when in sleep mode. </p>
+
 </div>
 </div>
 <a id="a6195323bb77cff29be46a3f931f33f50" name="a6195323bb77cff29be46a3f931f33f50"></a>
@@ -307,6 +278,8 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Wakes up the INA219 IC. </p>
+
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
@@ -329,6 +302,8 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Default I2C battery address (cannot be changed without modifying PCB) </p>
 
 </div>
 </div>

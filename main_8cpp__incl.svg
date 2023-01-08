@@ -283,7 +283,7 @@
 <!-- Node9 -->
 <g id="node9" class="node">
 <title>Node9</title>
-<g id="a_node9"><a xlink:href="battery_8h.html" target="_top" xlink:title=" ">
+<g id="a_node9"><a xlink:href="battery_8h.html" target="_top" xlink:title="Battery voltage and current monitoring using INA219 IC.">
 <polygon fill="white" stroke="#666666" points="309.5,-74 158.5,-74 158.5,-55 309.5,-55 309.5,-74"/>
 <text text-anchor="middle" x="234" y="-62" font-family="Helvetica,sans-Serif" font-size="10.00">power_monitoring/battery.h</text>
 </a>
@@ -298,7 +298,7 @@
 <!-- Node11 -->
 <g id="node11" class="node">
 <title>Node11</title>
-<g id="a_node11"><a xlink:href="solar_8h.html" target="_top" xlink:title=" ">
+<g id="a_node11"><a xlink:href="solar_8h.html" target="_top" xlink:title="Solar voltage and current monitoring using INA219 IC.">
 <polygon fill="white" stroke="#666666" points="140,-74 0,-74 0,-55 140,-55 140,-74"/>
 <text text-anchor="middle" x="70" y="-62" font-family="Helvetica,sans-Serif" font-size="10.00">power_monitoring/solar.h</text>
 </a>

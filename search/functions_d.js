@@ -4,7 +4,7 @@ var searchData=
   ['sdcardinterface_1',['SDCardInterface',['../class_s_d_card_interface.html#a284eebdc720df8e5d68fce3cb6e0ccbc',1,'SDCardInterface']]],
   ['sdi12_2',['sdi12',['../_sensor_task_8cpp.html#adf61271e82fc2e9e672de0f876554e62',1,'SensorTask.cpp']]],
   ['sdi12defns_3',['sdi12Defns',['../_device_config_8cpp.html#a0b140ee2afa69c1f8c6e2a44bd144ced',1,'DeviceConfig.cpp']]],
-  ['send_5fmessages_4',['send_messages',['../uplinks_8cpp.html#a01b65f1187ce57683008ea937c9ad1c5',1,'send_messages(void):&#160;uplinks.cpp'],['../uplinks_8h.html#a01b65f1187ce57683008ea937c9ad1c5',1,'send_messages(void):&#160;uplinks.cpp']]],
+  ['send_5fmessages_4',['send_messages',['../uplinks_8h.html#a01b65f1187ce57683008ea937c9ad1c5',1,'send_messages(void):&#160;uplinks.cpp'],['../uplinks_8cpp.html#a01b65f1187ce57683008ea937c9ad1c5',1,'send_messages(void):&#160;uplinks.cpp']]],
   ['sensor_5ftask_5',['sensor_task',['../_sensor_task_8cpp.html#a5324de4b826c23c5099095286d45228f',1,'sensor_task(void):&#160;SensorTask.cpp'],['../_sensor_task_8h.html#a5324de4b826c23c5099095286d45228f',1,'sensor_task(void):&#160;SensorTask.cpp']]],
   ['setdeviceaddress_6',['setDeviceAddress',['../class_t_c_a9534.html#a933d2ee25dc6c08ec2908dff66725315',1,'TCA9534']]],
   ['setmeasureinterval_7',['setMeasureInterval',['../class_device_config.html#ade9fcd75f44092b3d6c85411431f8524',1,'DeviceConfig']]],
@@ -17,11 +17,10 @@ var searchData=
   ['setuplinkinterval_14',['setUplinkInterval',['../class_device_config.html#a5ff50ce4e9cfe687d86614b3e602e2de',1,'DeviceConfig']]],
   ['shutdown_5ftone_15',['shutdown_tone',['../tones_8h.html#a23ffc5eef7b83daf086a0293509af147',1,'tones.h']]],
   ['sleep_16',['sleep',['../class_solar_monitor.html#a882b2801fe49e803490f7d6d72438e21',1,'SolarMonitor::sleep()'],['../class_battery_monitor.html#acc5ab7153210d1619d9faae60989737c',1,'BatteryMonitor::sleep()']]],
-  ['solarmonitor_17',['SolarMonitor',['../class_solar_monitor.html#afade9d53165f107bcd01281097b1e319',1,'SolarMonitor']]],
-  ['startup_5ftone_18',['startup_tone',['../tones_8h.html#a888894f0b823a499189a5872f516df63',1,'tones.h']]],
-  ['status_19',['status',['../class_t_c_a9534.html#a5f2fbf452e8a81edfe612ed8f7108ffd',1,'TCA9534']]],
-  ['streampassthrough_20',['streamPassthrough',['../_utils_8h.html#a35fe3ccc021c2e3b283252bfc0fba084',1,'streamPassthrough(Stream *s1, Stream *s2):&#160;Utils.cpp'],['../_utils_8cpp.html#a35fe3ccc021c2e3b283252bfc0fba084',1,'streamPassthrough(Stream *s1, Stream *s2):&#160;Utils.cpp']]],
-  ['stripleadingws_21',['stripLeadingWS',['../_utils_8h.html#a173cf61226cecb55df19c256683a031c',1,'stripLeadingWS(char *str):&#160;Utils.cpp'],['../_utils_8cpp.html#a173cf61226cecb55df19c256683a031c',1,'stripLeadingWS(char *str):&#160;Utils.cpp']]],
-  ['striptrailingws_22',['stripTrailingWS',['../_utils_8h.html#ad497551072a8204298c78a01e796d2f9',1,'stripTrailingWS(char *str):&#160;Utils.cpp'],['../_utils_8cpp.html#ad497551072a8204298c78a01e796d2f9',1,'stripTrailingWS(char *str):&#160;Utils.cpp']]],
-  ['stripws_23',['stripWS',['../_utils_8h.html#a08f272b0a5bcdcd3dc4f539f2c66c9f5',1,'stripWS(char *str):&#160;Utils.cpp'],['../_utils_8cpp.html#a08f272b0a5bcdcd3dc4f539f2c66c9f5',1,'stripWS(char *str):&#160;Utils.cpp']]]
+  ['startup_5ftone_17',['startup_tone',['../tones_8h.html#a888894f0b823a499189a5872f516df63',1,'tones.h']]],
+  ['status_18',['status',['../class_t_c_a9534.html#a5f2fbf452e8a81edfe612ed8f7108ffd',1,'TCA9534']]],
+  ['streampassthrough_19',['streamPassthrough',['../_utils_8h.html#a35fe3ccc021c2e3b283252bfc0fba084',1,'streamPassthrough(Stream *s1, Stream *s2):&#160;Utils.cpp'],['../_utils_8cpp.html#a35fe3ccc021c2e3b283252bfc0fba084',1,'streamPassthrough(Stream *s1, Stream *s2):&#160;Utils.cpp']]],
+  ['stripleadingws_20',['stripLeadingWS',['../_utils_8h.html#a173cf61226cecb55df19c256683a031c',1,'stripLeadingWS(char *str):&#160;Utils.cpp'],['../_utils_8cpp.html#a173cf61226cecb55df19c256683a031c',1,'stripLeadingWS(char *str):&#160;Utils.cpp']]],
+  ['striptrailingws_21',['stripTrailingWS',['../_utils_8h.html#ad497551072a8204298c78a01e796d2f9',1,'stripTrailingWS(char *str):&#160;Utils.cpp'],['../_utils_8cpp.html#ad497551072a8204298c78a01e796d2f9',1,'stripTrailingWS(char *str):&#160;Utils.cpp']]],
+  ['stripws_22',['stripWS',['../_utils_8h.html#a08f272b0a5bcdcd3dc4f539f2c66c9f5',1,'stripWS(char *str):&#160;Utils.cpp'],['../_utils_8cpp.html#a08f272b0a5bcdcd3dc4f539f2c66c9f5',1,'stripWS(char *str):&#160;Utils.cpp']]]
 ];

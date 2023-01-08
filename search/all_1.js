@@ -9,7 +9,7 @@ var searchData=
   ['battery_2eh_6',['battery.h',['../battery_8h.html',1,'']]],
   ['battery_5fmonitor_7',['battery_monitor',['../globals_8h.html#a010d27b6e65fd18d80a1bc91798c1df4',1,'globals.h']]],
   ['batteryaddr_8',['batteryAddr',['../class_battery_monitor.html#a2922ea083a583a302b39718c38da4792',1,'BatteryMonitor']]],
-  ['batterymonitor_9',['BatteryMonitor',['../class_battery_monitor.html',1,'BatteryMonitor'],['../class_battery_monitor.html#a4fba9d882384129d368cf0084ae59831',1,'BatteryMonitor::BatteryMonitor()']]],
+  ['batterymonitor_9',['BatteryMonitor',['../class_battery_monitor.html',1,'']]],
   ['begin_10',['begin',['../class_bluetooth_server.html#af532b4f63ed70184c6271055dd1286d0',1,'BluetoothServer::begin()'],['../class_battery_monitor.html#ae271f65e139460c64ee6d52964d02e68',1,'BatteryMonitor::begin()'],['../class_solar_monitor.html#a69efd193035d93aa09a0689740969adf',1,'SolarMonitor::begin()'],['../class_c_a_t___m1.html#afca7349bea077fb178bbb8e2ed521ccb',1,'CAT_M1::begin()']]],
   ['bluetooth_2ecpp_11',['bluetooth.cpp',['../bluetooth_8cpp.html',1,'']]],
   ['bluetooth_2eh_12',['bluetooth.h',['../bluetooth_8h.html',1,'']]],

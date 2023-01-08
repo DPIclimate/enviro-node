@@ -96,6 +96,9 @@ $(document).ready(function(){initNavTree('battery_8cpp.html',''); initResizable(
   <div class="headertitle"><div class="title">battery.cpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Battery voltage and current monitoring using INA219 IC.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="battery_8h_source.html">power_monitoring/battery.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for battery.cpp:</div>
@@ -112,11 +115,16 @@ Macros</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
 <tr class="memitem:ae7c29a67322a9467e24e95b12aa77f05"><td class="memItemLeft" align="right" valign="top">static Adafruit_INA219 *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="battery_8cpp.html#ae7c29a67322a9467e24e95b12aa77f05">battery</a> = nullptr</td></tr>
+<tr class="memdesc:ae7c29a67322a9467e24e95b12aa77f05"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adafruit_INA219 battery monitoring instance.  <a href="battery_8cpp.html#ae7c29a67322a9467e24e95b12aa77f05">More...</a><br /></td></tr>
 <tr class="separator:ae7c29a67322a9467e24e95b12aa77f05"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8893291fa88906272dc46db46fbbd377"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="battery_8cpp.html#a8893291fa88906272dc46db46fbbd377">ina219_ok</a> = false</td></tr>
+<tr class="memdesc:a8893291fa88906272dc46db46fbbd377"><td class="mdescLeft">&#160;</td><td class="mdescRight">Track if the INA219 is setup and available.  <a href="battery_8cpp.html#a8893291fa88906272dc46db46fbbd377">More...</a><br /></td></tr>
 <tr class="separator:a8893291fa88906272dc46db46fbbd377"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Macro Definition Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p >Battery voltage and current monitoring using INA219 IC. </p>
+<dl class="section date"><dt>Date</dt><dd>January 2023 </dd></dl>
+</div><h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="afc3d101f633a076cc1ca84b85b6224b2" name="afc3d101f633a076cc1ca84b85b6224b2"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#afc3d101f633a076cc1ca84b85b6224b2">&#9670;&#160;</a></span>TAG</h2>
 
@@ -152,6 +160,8 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Adafruit_INA219 battery monitoring instance. </p>
+
 </div>
 </div>
 <a id="a8893291fa88906272dc46db46fbbd377" name="a8893291fa88906272dc46db46fbbd377"></a>
@@ -173,6 +183,8 @@ Variables</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Track if the INA219 is setup and available. </p>
 
 </div>
 </div>

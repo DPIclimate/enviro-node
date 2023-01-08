@@ -1,9 +1,5 @@
 var NAVTREEINDEX1 =
 {
-"class_t_c_a9534.html#a8321e69546ca45f3b9cd45f5ed7e2111":[1,0,23,11],
-"class_t_c_a9534.html#a8794c8de1fa914050120f63dd7b90d41":[1,0,23,26],
-"class_t_c_a9534.html#a8c6c065f1f5d94e1030f9e96ba02c907":[1,0,23,9],
-"class_t_c_a9534.html#a933d2ee25dc6c08ec2908dff66725315":[1,0,23,19],
 "class_t_c_a9534.html#a9b7611b429745138a2892a57acfacc7e":[1,0,23,12],
 "class_t_c_a9534.html#a9c648884816563b5d5ef68d61a37a586":[1,0,23,3],
 "class_t_c_a9534.html#a9c648884816563b5d5ef68d61a37a586a73e99d350a4aa6f1a5af04ec29173f73":[1,0,23,3,3],
@@ -165,7 +161,9 @@ var NAVTREEINDEX1 =
 "server_8h.html":[2,0,0,0,0,1,2],
 "server_8h_source.html":[2,0,0,0,0,1,2],
 "solar_8cpp.html":[2,0,0,0,2,2,1],
-"solar_8cpp.html#a6ae1f2d0fe5f9f35e3eec3616641c476":[2,0,0,0,2,2,1,0],
+"solar_8cpp.html#a6ae1f2d0fe5f9f35e3eec3616641c476":[2,0,0,0,2,2,1,2],
+"solar_8cpp.html#a8893291fa88906272dc46db46fbbd377":[2,0,0,0,2,2,1,1],
+"solar_8cpp.html#afc3d101f633a076cc1ca84b85b6224b2":[2,0,0,0,2,2,1,0],
 "solar_8h.html":[2,0,0,0,0,3,1],
 "solar_8h_source.html":[2,0,0,0,0,3,1],
 "test___utils_8cpp.html":[2,0,0,0,3,0,0],

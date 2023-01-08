@@ -29,8 +29,8 @@
 <area shape="rect" id="node27" href="$power__monitoring_8h.html" title="Setup BluetoothLE power monitoring information." alt="" coords="1539,328,1757,353"/>
 <area shape="rect" id="node24" title=" " alt="" coords="1395,401,1543,427"/>
 <area shape="rect" id="node25" href="$tones_8h.html" title="Audio control for the onboard piezo buzzer." alt="" coords="907,401,1082,427"/>
-<area shape="rect" id="node28" href="$solar_8h.html" title=" " alt="" coords="1845,401,2032,427"/>
-<area shape="rect" id="node30" href="$battery_8h.html" title=" " alt="" coords="1619,401,1821,427"/>
+<area shape="rect" id="node28" href="$solar_8h.html" title="Solar voltage and current monitoring using INA219 IC." alt="" coords="1845,401,2032,427"/>
+<area shape="rect" id="node30" href="$battery_8h.html" title="Battery voltage and current monitoring using INA219 IC." alt="" coords="1619,401,1821,427"/>
 <area shape="rect" id="node29" title=" " alt="" coords="1759,475,1899,500"/>
 <area shape="rect" id="node32" href="$_device_config_8h.html" title=" " alt="" coords="931,255,1051,280"/>
 <area shape="rect" id="node33" title=" " alt="" coords="665,328,781,353"/>

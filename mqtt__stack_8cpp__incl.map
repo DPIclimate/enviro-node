@@ -12,7 +12,7 @@
 <area shape="rect" id="node8" title=" " alt="" coords="1041,174,1152,199"/>
 <area shape="rect" id="node9" title=" " alt="" coords="1176,174,1300,199"/>
 <area shape="rect" id="node11" title=" " alt="" coords="801,174,917,199"/>
-<area shape="rect" id="node14" href="$battery_8h.html" title=" " alt="" coords="116,174,317,199"/>
-<area shape="rect" id="node16" href="$solar_8h.html" title=" " alt="" coords="342,174,529,199"/>
+<area shape="rect" id="node14" href="$battery_8h.html" title="Battery voltage and current monitoring using INA219 IC." alt="" coords="116,174,317,199"/>
+<area shape="rect" id="node16" href="$solar_8h.html" title="Solar voltage and current monitoring using INA219 IC." alt="" coords="342,174,529,199"/>
 <area shape="rect" id="node15" title=" " alt="" coords="256,255,396,280"/>
 </map>

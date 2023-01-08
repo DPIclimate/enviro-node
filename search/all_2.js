@@ -20,13 +20,14 @@ var searchData=
   ['clistream_17',['cliStream',['../sdi12_8cpp.html#aff64f2691f2a522d74ea33188e8aad14',1,'cliStream():&#160;CLI.cpp'],['../cat-m1_8cpp.html#aff64f2691f2a522d74ea33188e8aad14',1,'cliStream():&#160;CLI.cpp'],['../_c_l_i_8cpp.html#aff64f2691f2a522d74ea33188e8aad14',1,'cliStream():&#160;CLI.cpp']]],
   ['cmd_18',['cmd',['../class_c_l_i_sdi12.html#aa114d6852c2131888d46174814ed0405',1,'CLISdi12::cmd()'],['../_c_l_i_8cpp.html#a2229bd6337a76b1788849d5541f9f07a',1,'cmd():&#160;CLI.cpp'],['../class_c_l_i_config_intervals.html#ac26bdeed6e4e42a203b31d19288eabd3',1,'CLIConfigIntervals::cmd()'],['../class_c_l_i_config.html#afeb56da313dcae6f782248b2b0ca2523',1,'CLIConfig::cmd()'],['../class_c_l_i_m_q_t_t.html#a83896a35be70795033b060b16ff0a4f8',1,'CLIMQTT::cmd()'],['../class_c_l_i_cat_m1.html#a3e01bf188705834a7af433850861a79a',1,'CLICatM1::cmd()']]],
   ['completed_5ftone_19',['completed_tone',['../tones_8h.html#ab209b4ea4dd3f6379350c21009ed2589',1,'tones.h']]],
-  ['config_20',['config',['../class_t_c_a9534.html#a6eb9cd7dfd216ca8c9ec0e07451bca8c',1,'TCA9534::config()'],['../class_c_l_i_config_intervals.html#ab7ca85d38c6a84bf0c0e50e3951ef224',1,'CLIConfigIntervals::config()'],['../class_c_l_i_config.html#a2dff947de40991e9733c0a1f3a29c991',1,'CLIConfig::config()']]],
+  ['config_20',['config',['../class_c_l_i_m_q_t_t.html#a2cb2e95ca5c3168216c19b9688df7aa4',1,'CLIMQTT']]],
   ['config_21',['Config',['../class_t_c_a9534.html#a3200e83b186f1bee938fcfab0868c480',1,'TCA9534']]],
-  ['config_22',['CONFIG',['../class_t_c_a9534.html#a9c648884816563b5d5ef68d61a37a586a73e99d350a4aa6f1a5af04ec29173f73',1,'TCA9534']]],
-  ['config_23',['config',['../class_t_c_a9534.html#a074cad46feafe7579880cb0125d5a39b',1,'TCA9534::config()'],['../class_t_c_a9534.html#a0d5511538f7188225c1652ef89258a5a',1,'TCA9534::config(const Config cfg)'],['../class_c_l_i_m_q_t_t.html#a2cb2e95ca5c3168216c19b9688df7aa4',1,'CLIMQTT::config()']]],
-  ['config_5fcli_2ecpp_24',['config_cli.cpp',['../config__cli_8cpp.html',1,'']]],
-  ['config_5fcli_2eh_25',['config_cli.h',['../config__cli_8h.html',1,'']]],
-  ['config_5ffilename_26',['config_filename',['../_device_config_8cpp.html#a3c72ad05995eb227f4508620f6467565',1,'DeviceConfig.cpp']]],
-  ['configcmd_27',['configCmd',['../_c_l_i_8cpp.html#a74ebeb6d5c8b0d404537a38d262f184b',1,'CLI.cpp']]],
-  ['connect_5fto_5finternet_28',['connect_to_internet',['../_utils_8h.html#ad39f7d3de7097e88e02a04f89182249c',1,'connect_to_internet(void):&#160;Utils.cpp'],['../_utils_8cpp.html#ad39f7d3de7097e88e02a04f89182249c',1,'connect_to_internet(void):&#160;Utils.cpp']]]
+  ['config_22',['config',['../class_c_l_i_config_intervals.html#ab7ca85d38c6a84bf0c0e50e3951ef224',1,'CLIConfigIntervals']]],
+  ['config_23',['CONFIG',['../class_t_c_a9534.html#a9c648884816563b5d5ef68d61a37a586a73e99d350a4aa6f1a5af04ec29173f73',1,'TCA9534']]],
+  ['config_24',['config',['../class_t_c_a9534.html#a074cad46feafe7579880cb0125d5a39b',1,'TCA9534::config()'],['../class_t_c_a9534.html#a0d5511538f7188225c1652ef89258a5a',1,'TCA9534::config(const Config cfg)'],['../class_t_c_a9534.html#a6eb9cd7dfd216ca8c9ec0e07451bca8c',1,'TCA9534::config(const uint8_t port, const Config cfg)'],['../class_c_l_i_config.html#a2dff947de40991e9733c0a1f3a29c991',1,'CLIConfig::config()']]],
+  ['config_5fcli_2ecpp_25',['config_cli.cpp',['../config__cli_8cpp.html',1,'']]],
+  ['config_5fcli_2eh_26',['config_cli.h',['../config__cli_8h.html',1,'']]],
+  ['config_5ffilename_27',['config_filename',['../_device_config_8cpp.html#a3c72ad05995eb227f4508620f6467565',1,'DeviceConfig.cpp']]],
+  ['configcmd_28',['configCmd',['../_c_l_i_8cpp.html#a74ebeb6d5c8b0d404537a38d262f184b',1,'CLI.cpp']]],
+  ['connect_5fto_5finternet_29',['connect_to_internet',['../_utils_8h.html#ad39f7d3de7097e88e02a04f89182249c',1,'connect_to_internet(void):&#160;Utils.cpp'],['../_utils_8cpp.html#ad39f7d3de7097e88e02a04f89182249c',1,'connect_to_internet(void):&#160;Utils.cpp']]]
 ];
