@@ -27,6 +27,27 @@ var NAVTREE =
   [ "Wombat Environmental Node", "index.html", [
     [ "Todo List", "todo.html", null ],
     [ "Classes", "annotated.html", [
+      [ "About", "index.html#autotoc_md0", null ],
+      [ "Hardware", "index.html#autotoc_md1", [
+        [ "Microcontroller", "index.html#autotoc_md2", null ],
+        [ "Debug and USB Interfaces", "index.html#autotoc_md3", null ],
+        [ "Power Distribution", "index.html#autotoc_md4", [
+          [ "Battery", "index.html#autotoc_md5", null ],
+          [ "Solar", "index.html#autotoc_md6", null ],
+          [ "3V3 Interface", "index.html#autotoc_md7", null ],
+          [ "12V Interface for SDI-12 Devices", "index.html#autotoc_md8", null ]
+        ] ],
+        [ "Peripherals", "index.html#autotoc_md9", [
+          [ "IO Expander", "index.html#autotoc_md10", null ],
+          [ "Piezo Buzzer", "index.html#autotoc_md11", null ],
+          [ "Programmable Button", "index.html#autotoc_md12", null ],
+          [ "SD-Card", "index.html#autotoc_md13", null ],
+          [ "SDI-12", "index.html#autotoc_md14", null ],
+          [ "Digital", "index.html#autotoc_md15", null ]
+        ] ],
+        [ "CAT-M1", "index.html#autotoc_md16", null ]
+      ] ],
+      [ "License", "index.html#autotoc_md17", null ],
       [ "Class List", "annotated.html", "annotated_dup" ],
       [ "Class Index", "classes.html", null ],
       [ "Class Hierarchy", "hierarchy.html", "hierarchy" ],

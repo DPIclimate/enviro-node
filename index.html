@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.5"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Wombat Environmental Node: Main Page</title>
+<title>Wombat Environmental Node: Wombat Environmental Node</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -89,10 +89,137 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 </div>
 </div>
 
-<div class="header">
-  <div class="headertitle"><div class="title">Wombat Environmental Node Documentation</div></div>
+<div><div class="header">
+  <div class="headertitle"><div class="title">Wombat Environmental Node </div></div>
 </div><!--header-->
 <div class="contents">
+<div class="textblock"><p ><a class="anchor" id="md_README"></a> </p><h2 align="center">Enviro-Node </h2>
+<p  align="center"></p>
+<p ><a href="#about">About</a> • <a href="https://dpiclimate.github.io/enviro-node" style="target-new: tab;">Documentation</a> • <a href="#hardware">Hardware</a> • <a href="#license">License</a> </p>
+<p  align="center"></p>
+<p ><img src="https://github.com/DPIclimate/enviro-node/actions/workflows/docs.yml/badge.svg" alt="" style="pointer-events: none;" href="https://github.com/DPIclimate/enviro-node/actions" class="inline"/> </p>
+<details >
+<p ><summary>Table of Contents</summary> </p><ol>
+<li>
+<a href="#about">About</a>  </li>
+<li>
+<a href="#hardware">Hardware</a> <ul>
+<li>
+<a href="#microcontroller">Microcontroller</a> </li>
+<li>
+<a href="#debug-and-usb-interfaces">Debug and USB Interfaces</a> </li>
+<li>
+<a href="#power-distribution">Power Distribution</a> <ul>
+<li>
+<a href="#battery">Battery</a> </li>
+<li>
+<a href="#solar">Solar</a> </li>
+<li>
+<a href="#3v3-interface">3V3 Interface</a> </li>
+<li>
+<a href="#12v-interface-for-sdi-12-devices">12 V Interface</a> </li>
+</ul>
+</li>
+<li>
+<a href="#peripherals">Peripherals</a> <ul>
+<li>
+<a href="#io-expander">IO Expander</a> </li>
+<li>
+<a href="#piezo-buzzer">Piezo Buzzer</a> </li>
+<li>
+<a href="#programmable-button">Programmable Button</a> </li>
+<li>
+<a href="#sd-card">SD-Card</a> </li>
+<li>
+<a href="#sdi-12">SDI-12</a> </li>
+<li>
+<a href="#digital">Digtial (Pulse Counter)</a> </li>
+</ul>
+</li>
+<li>
+<a href="#cat-m1">CAT-M1</a> </li>
+</ul>
+</li>
+<li>
+<a href="#license">License</a> </li>
+</ol>
+</details>
+<h2><a class="anchor" id="autotoc_md0"></a>
+About</h2>
+<p ><img src="imgs/enviro-node.png" alt="" align="right" style="width: 400px;" class="inline"/></p>
+<p >Enviro-node is a environmental monitoring node. Users can connect a number of sensors to a node. Data captured from these sensors is then sent to a database over <a href="https://mqtt.org/">MQTT</a>.</p>
+<p >There are three parts to the enviro-node:</p>
+<ol type="1">
+<li>The physical hardware (electronics).</li>
+<li>The firmware operating on the device.</li>
+<li>A <a href="https://github.com/DPIclimate/blue-tongue">mobile application</a> (known as blue-tongue) for setting up the device in the field.</li>
+</ol>
+<p >The first two parts are housed in this repository. The <a href="https://github.com/DPIclimate/blue-tongue">blue-tongue</a> mobile application is housed in its own repository.</p>
+<h2><a class="anchor" id="autotoc_md1"></a>
+Hardware</h2>
+<p >The hardware was developed using <a href="https://www.kicad.org/">KiCad</a>. Source files can be found <a href="https://github.com/DPIclimate/enviro-node/tree/master/electronics/motherboard/motherboard-mini">here</a>. While sleeping the Enviro-node will consume ~70 µA.</p>
+<h3><a class="anchor" id="autotoc_md2"></a>
+Microcontroller</h3>
+<p >=&gt; <a href="https://github.com/DPIclimate/enviro-node/blob/master/imgs/schematics/microcontroller.pdf">Schematic</a></p>
+<p >The device incorporates a ESP32 microcontroller to handle bluetooth functions and peripherals. The ESP32 has a very low sleep current of ~16 µA making it perfect for low-powered applications.</p>
+<h3><a class="anchor" id="autotoc_md3"></a>
+Debug and USB Interfaces</h3>
+<p >=&gt; <a href="https://github.com/DPIclimate/enviro-node/blob/master/imgs/schematics/microcontroller.pdf">Schematic</a></p>
+<p >Enviro-node features full debug capability when connected to an <a href="https://espressif-docs.readthedocs-hosted.com/projects/espressif-esp-iot-solution/en/latest/hw-reference/ESP-Prog_guide.html">ESP-Prog</a> (ESP32 debugger/programmer). It is recommended that you use a USB-to-TTL cable during development. This allows you to have the ESP-Prog connected to the Enviro-node while monitoring the ESP32's serial output via the USB-to-TTL connector.</p>
+<p >A USB-C interface is also incorporated to allow new firmware to be flashed to the microcontroller.</p>
+<h3><a class="anchor" id="autotoc_md4"></a>
+Power Distribution</h3>
+<p >=&gt; <a href="https://github.com/DPIclimate/enviro-node/blob/master/imgs/schematics/power_distribution.pdf">Schematic</a></p>
+<h4><a class="anchor" id="autotoc_md5"></a>
+Battery</h4>
+<p >The Enviro-node is powered by two 18650 LiPo cells connected in parallel (4.2 V). A current jumper is available to monitor current and voltage on an external device such as a multi-meter. The batteries feature reverse polarity detection and protection and an inline fuse.</p>
+<p >An INA219 IC is connected to the battery to allow for real-time monitoring of battery current and voltage.</p>
+<h4><a class="anchor" id="autotoc_md6"></a>
+Solar</h4>
+<p >The batteries are recharged through a LT3652IMSE solar charging IC or via a USB-C battery charging IC (MCP73832). The default configuration allows for 12 V solar panels to be connected to the device; however, this can be set via a resistor divider.</p>
+<p >The solar input features reverse polarity detection and protection as well as an inline fuse and charging/error indicators.</p>
+<p >The charging current of the solar panel is limited to a maximum of 1 A and is monitored through another INA219 IC.</p>
+<h4><a class="anchor" id="autotoc_md7"></a>
+3V3 Interface</h4>
+<p >Most components on Enviro-node operate using 3.3 V for this a linear regulator is incorporated (XC6215B332MR-G). A power supply switch is connected to the output of this regulator to allow the ESP32 (and peripherals) to be manually turned off or restarted.</p>
+<h4><a class="anchor" id="autotoc_md8"></a>
+12V Interface for SDI-12 Devices</h4>
+<p >Although many SDI-12 devices will work with 3.3 V, the Enviro-node incorporates a 12 V step-up regulator (MIC2288YD5) to provide a stable 12 V (100 mA) supply. This IC's can be toggled in the firmware via a GPIO pin and will be completely shutoff when not in use.</p>
+<p >If a SDI-12 sensor requires a constant 12 V supply the current consumption of this step-up regulator is ~2 mA with no load.</p>
+<h3><a class="anchor" id="autotoc_md9"></a>
+Peripherals</h3>
+<p >=&gt; <a href="https://github.com/DPIclimate/enviro-node/blob/master/imgs/schematics/peripherals.pdf">Schematic</a></p>
+<h4><a class="anchor" id="autotoc_md10"></a>
+IO Expander</h4>
+<p >As a full debug interface is supplied and there are several operating interfaces (I<sub>2</sub>C, SPI, UART) the number of available GPIO pins on the ESP32 is limited. Therefore, an IO-expanded is provided (<a class="el" href="class_t_c_a9534.html">TCA9534</a>) to control many IC's power consumption including CAT-M1, the SD-Card and 12 V power.</p>
+<p >A LED is also connected the IO-expander that the user can configure.</p>
+<h4><a class="anchor" id="autotoc_md11"></a>
+Piezo Buzzer</h4>
+<p >For audible feedback a piezo buzzer is included and will play <em>success</em> and <em>error</em> tones while the device is being configured and on startup. Under normal conditions the piezo buzzer will be quiet.</p>
+<h4><a class="anchor" id="autotoc_md12"></a>
+Programmable Button</h4>
+<p >An external programmable button is connected to a GPIO input pin on the ESP32. On startup if this button is held down the device will enter a programmable state whereby BluetoothLE will be enabled and a UART <a class="el" href="class_c_l_i.html">CLI</a> interface will become available. Once the user types "exit\r" the <a class="el" href="class_c_l_i.html">CLI</a> will be exited and normal operations will continue.</p>
+<h4><a class="anchor" id="autotoc_md13"></a>
+SD-Card</h4>
+<p >Environmental monitoring requires a SD-Card to ensure data is captured even when communications are down. The Enviro-node provides a top entry, Micro-SD card slot that can be disconnected from its power supply via a GPIO pin (see IO-Expander above).</p>
+<h4><a class="anchor" id="autotoc_md14"></a>
+SDI-12</h4>
+<p >A full SDI-12 interface is provided. No level-shifting is incorporated as the ESP32 can handle 5 V. Users can either use the 12 V output and toggle the output on-and-off or use the 3.3 V output for always on devices.</p>
+<h4><a class="anchor" id="autotoc_md15"></a>
+Digital</h4>
+<p >A digital pin is provided to the user to count pulses originating from a Tipping Bucket or wind-speed sensor.</p>
+<h3><a class="anchor" id="autotoc_md16"></a>
+CAT-M1</h3>
+<p >=&gt; <a href="https://github.com/DPIclimate/enviro-node/blob/master/imgs/schematics/cat_m1.pdf">Schematic</a></p>
+<p >The Enviro-node uses CAT-M1 to send messages (containing JSON encoded data) over MQTT. For this a SARA-R5 modem is incorporated into the design. This modem communicates with the ESP32 microcontroller over AT-commands via a Serial (UART) interface.</p>
+<blockquote class="doxtable">
+<p >&zwj;<b>Note</b> A compatible nano-sim card is required for this functionality of the device. For Australian users <a href="https://telstra.m2m.com/">Telstra</a> has a M2M service or there are other global services such as <a href="https://www.hologram.io/products/global-iot-sim-card/">Hologram</a>. </p>
+</blockquote>
+<p>The modem is directly powered by the 18650 batteries (as the modem can draw ~500 mA) and can be turned off and on via a GPIO pin (see IO-Expander above). A network indicator LED will indicate network connection status.</p>
+<h2><a class="anchor" id="autotoc_md17"></a>
+License</h2>
+<p >This project is MIT licensed, as found in the LICENCE file. </p>
+</div></div><!-- PageDoc -->
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
