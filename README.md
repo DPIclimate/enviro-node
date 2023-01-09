@@ -14,20 +14,18 @@
 
 ## About
 
-TODO
+Enviro-node is a environmental monitoring node. Users can connect a number of sensors to a node. Data captured from these sensors is then sent to a database over [MQTT](https://mqtt.org/).
 
-## Firmware
+There are three parts to the enviro-node.
 
-This project uses PlatformIO as a build system. Instructions for building the project are below.
+1. The physical hardware (electronics).
 
-### Installation
+2. The firmware operating on the device.
 
-Clone this project in your desired directory.
+3. A [mobile application](https://github.com/DPIclimate/blue-tongue) (known as blue-tongue) for setting up the device in the field.
 
-```bash
-git clone https://github.com/DPIclimate/enviro-node
-```
+The first two parts are housed in this repository. The [blue-tongue](https://github.com/DPIclimate/blue-tongue) mobile application is housed in its own repository.
 
 ## License
-This project is MIT licensed, as found in the LICENCE file.
 
+This project is MIT licensed, as found in the LICENCE file.

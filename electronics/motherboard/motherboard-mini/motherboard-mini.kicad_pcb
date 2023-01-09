@@ -912,6 +912,11 @@
       (net 11 "Net-(C27-Pad1)") (pinfunction "1") (pintype "unspecified") (tstamp 319b5387-e33f-4ef4-a9ee-47dc89b39dbc))
     (pad "2" smd rect (at 0.62865 0) (size 0.9017 0.7112) (layers "F.Cu" "F.Paste" "F.Mask")
       (net 1 "GND") (pinfunction "2") (pintype "unspecified") (tstamp 6dc8c1d5-2da6-4a13-a9fc-c13e2546d341))
+    (model "${KICAD6_3DMODEL_DIR}/Capacitor_SMD.3dshapes/C_0603_1608Metric.step"
+      (offset (xyz 0 0 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
   )
 
   (footprint "Resistor_SMD:R_0805_2012Metric" (layer "F.Cu")
@@ -5028,6 +5033,11 @@
       (net 1 "GND") (pintype "passive") (tstamp 022d1df5-3c5e-4197-8b66-0ba13925ed46))
     (pad "C" smd rect locked (at -1.575 0 90) (size 1.08 1.09) (layers "F.Cu" "F.Paste" "F.Mask")
       (net 107 "Net-(C13-Pad2)") (pintype "passive") (tstamp ced95b51-912e-4656-b48e-0b7f939f4909))
+    (model "${KIPRJMOD}/parts/diodes/SS34LW_RVG/SS34LW_RVG.step"
+      (offset (xyz 0 0 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz -90 0 0))
+    )
   )
 
   (footprint "Capacitor_SMD:C_0805_2012Metric" (layer "F.Cu")
@@ -7062,6 +7072,11 @@
         )
       )
     )
+    (model "${KIPRJMOD}/parts/microcontrollers/ESP32-WROOM-32E__16MB_/ESP32-WROOM-32E__16MB_.step"
+      (offset (xyz 0 0 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz -90 0 0))
+    )
   )
 
   (footprint "kibuzzard-63932369" (layer "F.Cu")
@@ -7795,6 +7810,11 @@
       (net 5 "VBAT") (pintype "unspecified") (tstamp e4d68f30-3b3f-4d60-978e-2d722e36dc4c))
     (pad "3" smd rect (at 0 -1.1938 180) (size 0.8 0.8) (layers "F.Cu" "F.Paste" "F.Mask")
       (net 116 "Net-(D10-Pad1)") (pintype "unspecified") (tstamp daec6cd2-085b-4e06-b571-653f18cdba97))
+    (model "${KIPRJMOD}/parts/mosfets/p-channel/SSM3J340R-LF/SOT-23F.step"
+      (offset (xyz 0 0 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
   )
 
   (footprint "Resistor_SMD:R_0805_2012Metric" (layer "F.Cu")
@@ -7874,6 +7894,11 @@
       (net 116 "Net-(D10-Pad1)") (pintype "passive") (tstamp a630a0b5-5d97-4453-8d1d-7ccd4b5e4b45))
     (pad "2" smd rect locked (at 1.47 0) (size 1.17 1.8) (layers "F.Cu" "F.Paste" "F.Mask")
       (net 103 "Net-(F2-Pad2)") (pintype "passive") (tstamp dd6b7269-3bbe-4a3c-941c-4fe4a3db9706))
+    (model "${KIPRJMOD}/parts/fuses/0685P2000-01/0685P2000-01.step"
+      (offset (xyz 0 0 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz -90 0 0))
+    )
   )
 
   (footprint "SARA-R410M-02B:XCVR_SARA-R410M-02B" (layer "F.Cu")
@@ -9360,6 +9385,11 @@
       (net 110 "Net-(C17-Pad1)") (pintype "passive") (tstamp fc8ecba3-249e-4682-880e-d44acf640d6c))
     (pad "2" smd rect locked (at 1.46 0) (size 1.8 2.23) (layers "F.Cu" "F.Paste" "F.Mask")
       (net 1 "GND") (pintype "passive") (tstamp 073c8a51-8d9c-49c8-ad29-d0de5e7412b3))
+    (model "${KIPRJMOD}/parts/capacitors/T520B107M006ATE015/T520B107M006ATE015.step"
+      (offset (xyz 0 0 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz -90 0 0))
+    )
   )
 
   (footprint "SIM8060-6-0-14-00-A:GCT_SIM8060-6-0-14-00-A" (layer "F.Cu")
@@ -10405,6 +10435,11 @@
       (net 86 "Net-(F1-Pad1)") (pintype "passive") (tstamp b68c8587-c600-4264-a59a-ec6ed4278999))
     (pad "2" smd rect locked (at 1.47 0) (size 1.17 1.8) (layers "F.Cu" "F.Paste" "F.Mask")
       (net 87 "Net-(F1-Pad2)") (pintype "passive") (tstamp 642fd4d2-1f10-45e2-b3c5-9df29ceae1a2))
+    (model "${KIPRJMOD}/parts/fuses/0685P2000-01/0685P2000-01.step"
+      (offset (xyz 0 0 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz -90 0 0))
+    )
   )
 
   (footprint "LED_SMD:LED_0805_2012Metric" (layer "F.Cu")
@@ -11907,6 +11942,11 @@
       (net 31 "Net-(MOSFET1-Pad2)") (pintype "unspecified") (tstamp 9d7b109c-e655-45d3-b57f-e5a2e1c91532))
     (pad "3" smd rect (at 0 -1.1938 90) (size 0.8 0.8) (layers "F.Cu" "F.Paste" "F.Mask")
       (net 87 "Net-(F1-Pad2)") (pintype "unspecified") (tstamp ed32c824-8862-4b3d-95da-85f3c1bd5333))
+    (model "${KIPRJMOD}/parts/mosfets/p-channel/SSM3J340R-LF/SOT-23F.step"
+      (offset (xyz 0 0 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
   )
 
   (footprint "Capacitor_SMD:C_0805_2012Metric" (layer "F.Cu")
@@ -13148,6 +13188,11 @@
       (net 10 "Net-(C23-Pad1)") (pintype "passive") (tstamp c6efd884-8515-4664-83e2-c4fc32e45674))
     (pad "2" smd rect locked (at 1.46 0 180) (size 1.8 2.23) (layers "F.Cu" "F.Paste" "F.Mask")
       (net 1 "GND") (pintype "passive") (tstamp 4d63e5e0-900d-4597-bb36-021008fdaed5))
+    (model "${KIPRJMOD}/parts/capacitors/T520B107M006ATE015/T520B107M006ATE015.step"
+      (offset (xyz 0 0 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz -90 0 0))
+    )
   )
 
   (footprint "kibuzzard-6396A059" (layer "F.Cu")
@@ -14027,6 +14072,11 @@
       (net 1 "GND") (pinfunction "SHIELD") (pintype "passive") (tstamp f546053f-f9f4-4494-87c0-f813782baa97))
     (pad "S4" thru_hole oval (at 4 1.43 270) (size 1.6 1.15) (drill oval 1.1 0.6) (layers *.Cu *.Mask)
       (net 1 "GND") (pinfunction "SHIELD") (pintype "passive") (tstamp fac026f5-72c0-459d-a9ab-e8e81b2f257d))
+    (model "${KIPRJMOD}/parts/connectors/usb-c/USB4145-03-0230-C_REVA/USB4145-03-0070-C.stp"
+      (offset (xyz 0 -1.5 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz -90 0 0))
+    )
   )
 
   (footprint "PESD0402-140:PESD0402-140" (layer "F.Cu")
@@ -14101,6 +14151,11 @@
       (net 15 "Net-(C32-Pad1)") (pinfunction "1") (pintype "unspecified") (tstamp 561ddab5-8cd0-4c60-af10-aa07a374bbdb))
     (pad "2" smd rect (at 0.62865 0) (size 0.9017 0.7112) (layers "F.Cu" "F.Paste" "F.Mask")
       (net 1 "GND") (pinfunction "2") (pintype "unspecified") (tstamp 52c8a911-8b03-42d0-a026-d75bf4615419))
+    (model "${KICAD6_3DMODEL_DIR}/Capacitor_SMD.3dshapes/C_0603_1608Metric.step"
+      (offset (xyz 0 0 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
   )
 
   (footprint "Resistor_SMD:R_0805_2012Metric" (layer "F.Cu")
@@ -14481,6 +14536,11 @@
       (net 1 "GND") (pinfunction "3") (pintype "unspecified") (tstamp 8c1f6a74-541d-428c-9128-b9431576132d))
     (pad "4" smd rect locked (at 4.5847 -2.250001 270) (size 1.538199 0.7712) (layers "F.Cu" "F.Paste" "F.Mask")
       (net 52 "unconnected-(SW1-Pad4)") (pinfunction "4") (pintype "unspecified+no_connect") (tstamp 02d800de-f595-4df8-9fe6-074edeeb9528))
+    (model "${KIPRJMOD}/parts/buttons/small/1977223-6/c-1977223-6-b-3d.step"
+      (offset (xyz 0 0 3.5))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 90))
+    )
   )
 
   (footprint "Resistor_SMD:R_0805_2012Metric" (layer "F.Cu")
@@ -14564,6 +14624,11 @@
       (net 105 "IO_P6") (pinfunction "EN") (pintype "input") (tstamp 3d668e88-2305-4a11-8553-2cf03b14b21c))
     (pad "5" smd roundrect locked (at 1.185 -0.95 90) (size 1.24 0.59) (layers "F.Cu" "F.Paste" "F.Mask") (roundrect_rratio 0.07)
       (net 110 "Net-(C17-Pad1)") (pinfunction "VIN") (pintype "input") (tstamp 36bffbac-4985-4354-8f60-f3936ae04ab7))
+    (model "${KIPRJMOD}/parts/voltage-regulators/MIC2288YD5-TR/MIC2288YD5-TR.step"
+      (offset (xyz 0 0 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz -90 0 0))
+    )
   )
 
   (footprint "kibuzzard-639322B3" (layer "F.Cu")
@@ -16349,6 +16414,11 @@
       (net 6 "Net-(C8-Pad1)") (pinfunction "1") (pintype "passive") (tstamp 02e49ca5-374e-46a3-982b-0344ad928667))
     (pad "2" smd rect (at 1.2192 0) (size 1.0922 1.905) (layers "F.Cu" "F.Paste" "F.Mask")
       (net 7 "Net-(C9-Pad1)") (pinfunction "2") (pintype "passive") (tstamp f2bb1c60-c75a-4146-b8e4-885d30695f7a))
+    (model "${KIPRJMOD}/parts/ocillators/ABS07AIG-32.768KHZ-T/ABS07AIG-32.768KHZ-T.step"
+      (offset (xyz 0 0 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz -90 0 0))
+    )
   )
 
   (footprint "Resistor_SMD:R_0805_2012Metric" (layer "F.Cu")
@@ -17880,6 +17950,11 @@
     (pad "8" smd roundrect (at 0.985 -0.75 270) (size 0.74 0.28) (layers "F.Cu" "F.Paste" "F.Mask") (roundrect_rratio 0.04)
       (net 110 "Net-(C17-Pad1)") (pinfunction "VOUT-1") (pintype "output") (tstamp c2e6c275-c612-489e-af5c-c395e96d92de))
     (pad "9" smd rect (at 0 0 270) (size 0.9 1.6) (layers "F.Cu" "F.Mask") (tstamp ac27f707-1249-45f9-967e-5a4d6f045f39))
+    (model "${KIPRJMOD}/parts/load-switches/TPS22967DSGR/TPS22967DSGR.step"
+      (offset (xyz 0 0 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz -90 0 0))
+    )
   )
 
   (footprint "LED_SMD:LED_0805_2012Metric" (layer "F.Cu")
@@ -18050,6 +18125,11 @@
       (net 14 "Net-(C31-Pad1)") (pinfunction "1") (pintype "unspecified") (tstamp 0d9feed4-e725-4dbc-95cf-0929af22a505))
     (pad "2" smd rect (at 0.62865 0 180) (size 0.9017 0.7112) (layers "F.Cu" "F.Paste" "F.Mask")
       (net 1 "GND") (pinfunction "2") (pintype "unspecified") (tstamp da2e37f6-e0d2-4f77-b90c-2e484a2656c5))
+    (model "${KICAD6_3DMODEL_DIR}/Capacitor_SMD.3dshapes/C_0603_1608Metric.step"
+      (offset (xyz 0 0 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
   )
 
   (footprint "2604-3102:2604-3102" (layer "F.Cu")
@@ -18281,6 +18361,11 @@
       (net 5 "VBAT") (pintype "passive") (tstamp a327f4b3-6505-4c37-8518-3eb21790e6a0))
     (pad "C" smd rect locked (at -1.575 0 180) (size 1.08 1.09) (layers "F.Cu" "F.Paste" "F.Mask")
       (net 104 "Net-(C13-Pad1)") (pintype "passive") (tstamp 7d19a889-a82a-4323-87e5-62768a8c0f1a))
+    (model "${KIPRJMOD}/parts/diodes/SS34LW_RVG/SS34LW_RVG.step"
+      (offset (xyz 0 0 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz -90 0 0))
+    )
   )
 
   (footprint "MountingHole:MountingHole_4.3x6.2mm_M4_Pad_Via" (layer "F.Cu")
@@ -18503,6 +18588,11 @@
       (net 156 "unconnected-(U10-Pad4)") (pinfunction "NC") (pintype "no_connect") (tstamp 04bb5e23-de00-4689-8850-d5310a5b3097))
     (pad "5" smd rect locked (at 1.28905 -0.950001 270) (size 0.9271 0.4318) (layers "F.Cu" "F.Paste" "F.Mask")
       (net 111 "Net-(C21-Pad1)") (pinfunction "VOUT") (pintype "output") (tstamp ba8b9116-296c-4bee-9ec8-7bfa8a39abd7))
+    (model "${KIPRJMOD}/parts/voltage-regulators/XC6215B332MR-G/SOT-25_TOR.step"
+      (offset (xyz 0 0 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
   )
 
   (footprint "Resistor_SMD:R_0805_2012Metric" (layer "F.Cu")
@@ -19250,6 +19340,11 @@
       (net 93 "unconnected-(SW2-Pad3)") (pinfunction "3") (pintype "unspecified+no_connect") (tstamp 39c27d15-168e-46de-beff-3a4d76926949))
     (pad "4" smd rect locked (at 4.5847 -2.250001 180) (size 1.538199 0.7712) (layers "F.Cu" "F.Paste" "F.Mask")
       (net 1 "GND") (pinfunction "4") (pintype "unspecified") (tstamp 84deaa09-d4b6-4e92-b77f-ebcceae68263))
+    (model "${KIPRJMOD}/parts/buttons/small/1977223-6/c-1977223-6-b-3d.step"
+      (offset (xyz 0 0 3.5))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 90))
+    )
   )
 
   (footprint "SRP4020TA-5R6M:IND_SRP4020TA-5R6M" (layer "F.Cu")
@@ -21136,6 +21231,11 @@
       (net 115 "Net-(D9-PadA)") (pintype "passive") (tstamp 3b891715-8ee1-43ae-b149-34d2f287242a))
     (pad "C" smd rect locked (at -1.575 0 180) (size 1.08 1.09) (layers "F.Cu" "F.Paste" "F.Mask")
       (net 2 "+12V") (pintype "passive") (tstamp 790cde57-76c4-455b-b421-ab6e9f569268))
+    (model "${KIPRJMOD}/parts/diodes/SS34LW_RVG/SS34LW_RVG.step"
+      (offset (xyz 0 0 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz -90 0 0))
+    )
   )
 
   (footprint "Capacitor_SMD:C_0805_2012Metric" (layer "F.Cu")
@@ -22235,6 +22335,11 @@
       (net 149 "unconnected-(SW3-Pad3)") (pinfunction "3") (pintype "unspecified+no_connect") (tstamp b89e0614-7ad2-4538-8297-aa3ea2e05992))
     (pad "4" smd rect locked (at 4.5847 -2.250001 270) (size 1.538199 0.7712) (layers "F.Cu" "F.Paste" "F.Mask")
       (net 50 "Net-(RV1-Pad1)") (pinfunction "4") (pintype "unspecified") (tstamp 79bbc884-a77d-400f-bf47-255cefcda79b))
+    (model "${KIPRJMOD}/parts/buttons/small/1977223-6/c-1977223-6-b-3d.step"
+      (offset (xyz 0 0 3.5))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 90))
+    )
   )
 
   (footprint "kibuzzard-635FB066" (layer "F.Cu")
@@ -22940,6 +23045,11 @@
       (net 110 "Net-(C17-Pad1)") (pintype "passive") (zone_connect 0) (tstamp dfa529a7-3365-476e-8bcd-9502e9ba1478))
     (pad "2" smd rect (at 1.5 0 270) (size 1.5 3) (layers "F.Cu")
       (net 115 "Net-(D9-PadA)") (pintype "passive") (zone_connect 0) (tstamp 1333d6f3-8063-42e5-8836-aff207e01d46))
+    (model "${KIPRJMOD}/parts/inductors/LQH43CN100K03L/LQH43CN100K03L.step"
+      (offset (xyz 0 0 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz -90 0 0))
+    )
   )
 
   (footprint "kibuzzard-63747585" (layer "F.Cu")
@@ -24336,6 +24446,11 @@
       (net 13 "Net-(C30-Pad1)") (pinfunction "1") (pintype "unspecified") (tstamp 41c97479-6740-453a-a6f7-d438165f0400))
     (pad "2" smd rect (at 0.62865 0 180) (size 0.9017 0.7112) (layers "F.Cu" "F.Paste" "F.Mask")
       (net 1 "GND") (pinfunction "2") (pintype "unspecified") (tstamp 807c8f1e-a19f-48f2-a375-ee71eccda118))
+    (model "${KICAD6_3DMODEL_DIR}/Capacitor_SMD.3dshapes/C_0603_1608Metric.step"
+      (offset (xyz 0 0 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
   )
 
   (footprint "kibuzzard-6396A3EF" (layer "F.Cu")
@@ -30940,10 +31055,10 @@
       (net 1 "GND") (pinfunction "GNDDetect") (pintype "passive") (tstamp e4893053-93fd-40ac-8d69-57cc1285fe9b))
     (pad "10" thru_hole circle locked (at 2.54 -0.635 270) (size 1.1 1.1) (drill 0.7) (layers *.Cu *.Mask)
       (net 130 "unconnected-(J3-Pad10)") (pinfunction "~{RESET}") (pintype "open_collector+no_connect") (tstamp 932344c7-5958-425c-94fe-bd48d8a68321))
-    (model "${KIPRJMOD}/parts/connectors/jtag/3221-10-0100-00/20021221-00010.step"
-      (offset (xyz -2.25 -3.5 -1.9))
+    (model "${KIPRJMOD}/parts/connectors/jtag/3221-10-0100-00/3221-10-0100-00.STEP"
+      (offset (xyz 0 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz -90 0 0))
+      (rotate (xyz 0 0 0))
     )
   )
 
