@@ -32,17 +32,17 @@ The first two parts are housed in this repository. The [blue-tongue](https://git
 
 The hardware was developed using [KiCad](https://www.kicad.org/). Source files can be found [here](https://github.com/DPIclimate/enviro-node/tree/master/electronics/motherboard/motherboard-mini). While sleeping the Enviro-node will consume ~70 µA.
 
-### Microcontroller ([schematic](todo))
+### Microcontroller ([schematic](https://github.com/DPIclimate/enviro-node/blob/master/imgs/schematics/microcontroller.pdf))
 
 The device incorporates a ESP32 microcontroller to handle bluetooth functions and peripherals. The ESP32 has a very low sleep current of ~16 µA making it perfect for low-powered applications.
 
-### Debug and USB Interfaces ([schematic](todo))
+### Debug and USB Interfaces ([schematic](https://github.com/DPIclimate/enviro-node/blob/master/imgs/schematics/microcontroller.pdf))
 
 Enviro-node features full debug capability when connected to an [ESP-Prog](https://espressif-docs.readthedocs-hosted.com/projects/espressif-esp-iot-solution/en/latest/hw-reference/ESP-Prog_guide.html) (ESP32 debugger/programmer). It is recommended that you use a USB-to-TTL cable during development. This allows you to have the ESP-Prog connected to the Enviro-node while monitoring the ESP32's serial output via the USB-to-TTL connector. 
 
 A USB-C interface is also incorporated to allow new firmware to be flashed to the microcontroller.
 
-### Power Distribution ([schematic](todo))
+### Power Distribution ([schematic](https://github.com/DPIclimate/enviro-node/blob/master/imgs/schematics/power_distribution.pdf))
 
 #### Battery
 
@@ -68,7 +68,7 @@ Although many SDI-12 devices will work with 3.3 V, the Enviro-node incorporates 
 
 If a SDI-12 sensor requires a constant 12 V supply the current consumption of this step-up regulator is ~2 mA with no load.
 
-### Peripherals ([schematic](todo))
+### Peripherals ([schematic](https://github.com/DPIclimate/enviro-node/blob/master/imgs/schematics/peripherals.pdf))
 
 #### IO Expander
 
@@ -97,7 +97,7 @@ A full SDI-12 interface is provided. No level-shifting is incorporated as the ES
 
 A digital pin is provided to the user to count pulses originating from a Tipping Bucket or wind-speed sensor.
 
-### CAT-M1 ([schematic](todo))
+### CAT-M1 ([schematic](https://github.com/DPIclimate/enviro-node/blob/master/imgs/schematics/cat_m1.pdf))
 
 The Enviro-node uses CAT-M1 to send messages (containing JSON encoded data) over MQTT. For this a SARA-R5 modem is incorporated into the design. This modem communicates with the ESP32 microcontroller over AT-commands via a Serial (UART) interface. 
 
