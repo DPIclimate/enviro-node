@@ -3,14 +3,48 @@
 </h2>
 <p align="center">
   <a href="#about">About</a> •
-  <a href="#Installation">Install</a> •
-  <a href="#Firmware">Firmware</a> •
+  <a href="#hardware">Hardware</a> •
   <a href="#license">License</a>
 </p>
 
 <p align="center">
     <img src="https://github.com/DPIclimate/enviro-node/actions/workflows/docs.yml/badge.svg" href="https://github.com/DPIclimate/enviro-node/actions"/>
 </p>
+
+<!-- TABLE OF CONTENTS -->
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about">About</a>
+    </li>
+    <li>
+      <a href="#hardware">Hardware</a>
+      <ul>
+        <li><a href="#microcontroller">Microcontroller</a></li>
+        <li><a href="#debug-and-usb-interfaces">Debug and USB Interfaces</a></li>
+        <li><a href="#power-distribution">Power Distribution</a></li>
+        <ul>
+            <li><a href="#battery">Battery</a></li>
+            <li><a href="#solar">Solar</a></li>
+            <li><a href="#3v3-interface">3V3 Interface</a></li>
+            <li><a href="#12v-interface-for-sdi-12-devices">12 V Interface</a></li>
+          </ul>
+        <li><a href="#peripherals">Peripherals</a></li>
+        <ul>
+            <li><a href="#io-expander">IO Expander</a></li>
+            <li><a href="#piezo-buzzer">Piezo Buzzer</a></li>
+            <li><a href="#programmable-button">Programmable Button</a></li>
+            <li><a href="#sd-card">SD-Card</a></li>
+            <li><a href="#sdi-12">SDI-12</a></li>
+            <li><a href="#digital">Digtial (Pulse Counter)</a></li>
+        </ul>
+        <li><a href="#cat-m1">CAT-M1</a></li>
+      </ul>
+    </li>
+    <li><a href="#license">License</a></li>
+  </ol>
+</details>
 
 ## About
 
@@ -32,17 +66,20 @@ The first two parts are housed in this repository. The [blue-tongue](https://git
 
 The hardware was developed using [KiCad](https://www.kicad.org/). Source files can be found [here](https://github.com/DPIclimate/enviro-node/tree/master/electronics/motherboard/motherboard-mini). While sleeping the Enviro-node will consume ~70 µA.
 
-### Microcontroller ([schematic](https://github.com/DPIclimate/enviro-node/blob/master/imgs/schematics/microcontroller.pdf))
+### Microcontroller
+=> [Schematic](https://github.com/DPIclimate/enviro-node/blob/master/imgs/schematics/microcontroller.pdf)
 
 The device incorporates a ESP32 microcontroller to handle bluetooth functions and peripherals. The ESP32 has a very low sleep current of ~16 µA making it perfect for low-powered applications.
 
-### Debug and USB Interfaces ([schematic](https://github.com/DPIclimate/enviro-node/blob/master/imgs/schematics/microcontroller.pdf))
+### Debug and USB Interfaces
+=> [Schematic](https://github.com/DPIclimate/enviro-node/blob/master/imgs/schematics/microcontroller.pdf)
 
 Enviro-node features full debug capability when connected to an [ESP-Prog](https://espressif-docs.readthedocs-hosted.com/projects/espressif-esp-iot-solution/en/latest/hw-reference/ESP-Prog_guide.html) (ESP32 debugger/programmer). It is recommended that you use a USB-to-TTL cable during development. This allows you to have the ESP-Prog connected to the Enviro-node while monitoring the ESP32's serial output via the USB-to-TTL connector. 
 
 A USB-C interface is also incorporated to allow new firmware to be flashed to the microcontroller.
 
-### Power Distribution ([schematic](https://github.com/DPIclimate/enviro-node/blob/master/imgs/schematics/power_distribution.pdf))
+### Power Distribution 
+=> [Schematic](https://github.com/DPIclimate/enviro-node/blob/master/imgs/schematics/power_distribution.pdf)
 
 #### Battery
 
@@ -58,17 +95,18 @@ The solar input features reverse polarity detection and protection as well as an
 
 The charging current of the solar panel is limited to a maximum of 1 A and is monitored through another INA219 IC.
 
-#### 3.3 V Interface
+#### 3V3 Interface
 
 Most components on Enviro-node operate using 3.3 V for this a linear regulator is incorporated (XC6215B332MR-G). A power supply switch is connected to the output of this regulator to allow the ESP32 (and peripherals) to be manually turned off or restarted.
 
-#### 12 V Interface for SDI-12 Devices
+#### 12V Interface for SDI-12 Devices
 
 Although many SDI-12 devices will work with 3.3 V, the Enviro-node incorporates a 12 V step-up regulator (MIC2288YD5) to provide a stable 12 V (100 mA) supply. This IC's can be toggled in the firmware via a GPIO pin and will be completely shutoff when not in use.
 
 If a SDI-12 sensor requires a constant 12 V supply the current consumption of this step-up regulator is ~2 mA with no load.
 
-### Peripherals ([schematic](https://github.com/DPIclimate/enviro-node/blob/master/imgs/schematics/peripherals.pdf))
+### Peripherals
+=> [Schematic](https://github.com/DPIclimate/enviro-node/blob/master/imgs/schematics/peripherals.pdf)
 
 #### IO Expander
 
@@ -93,11 +131,12 @@ Environmental monitoring requires a SD-Card to ensure data is captured even when
 
 A full SDI-12 interface is provided. No level-shifting is incorporated as the ESP32 can handle 5 V. Users can either use the 12 V output and toggle the output on-and-off or use the 3.3 V output for always on devices.
 
-#### Digital (pulse counter)
+#### Digital
 
 A digital pin is provided to the user to count pulses originating from a Tipping Bucket or wind-speed sensor.
 
-### CAT-M1 ([schematic](https://github.com/DPIclimate/enviro-node/blob/master/imgs/schematics/cat_m1.pdf))
+### CAT-M1
+=> [Schematic](https://github.com/DPIclimate/enviro-node/blob/master/imgs/schematics/cat_m1.pdf)
 
 The Enviro-node uses CAT-M1 to send messages (containing JSON encoded data) over MQTT. For this a SARA-R5 modem is incorporated into the design. This modem communicates with the ESP32 microcontroller over AT-commands via a Serial (UART) interface. 
 
