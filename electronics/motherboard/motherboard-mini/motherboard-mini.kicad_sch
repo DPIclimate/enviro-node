@@ -4,6 +4,15 @@
 
   (paper "A3")
 
+  (title_block
+    (title "Enviro-node")
+    (date "2023-01-09")
+    (rev "1.0")
+    (company "NSW Department of Primary Industries")
+    (comment 1 "GitHub: https://github.com/DPIclimate/enviro-node")
+    (comment 2 "Designed by: Harvey Bates")
+  )
+
   (lib_symbols
     (symbol "2022-10-04_00-56-22:1977223-6" (pin_names (offset 0.254) hide) (in_bom yes) (on_board yes)
       (property "Reference" "SW" (id 0) (at 20.32 10.16 0)
