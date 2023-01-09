@@ -355,7 +355,7 @@
     "pinned_symbol_libs": []
   },
   "meta": {
-    "filename": "motherboard-mini.kicad_pro",
+    "filename": "enviro-node.kicad_pro",
     "version": 1
   },
   "net_settings": {
@@ -389,7 +389,7 @@
       "idf": "",
       "netlist": "",
       "specctra_dsn": "",
-      "step": "motherboard-mini.step",
+      "step": "enviro-node.step",
       "vrml": ""
     },
     "page_layout_descr_file": ""
