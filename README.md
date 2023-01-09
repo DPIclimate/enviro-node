@@ -3,6 +3,7 @@
 </h2>
 <p align="center">
   <a href="#about">About</a> •
+  <a href="https://dpiclimate.github.io/enviro-node" style="target-new: tab;">Documentation</a> •
   <a href="#hardware">Hardware</a> •
   <a href="#license">License</a>
 </p>
