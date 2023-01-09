@@ -18,21 +18,19 @@
 static const uint8_t LED_BUILTIN = 13;
 #define BUILTIN_LED  LED_BUILTIN // backward compatibility
 
-// static const uint8_t TX = 43;
-// static const uint8_t RX = 44;
+static const uint8_t TX = 34;
+static const uint8_t RX = 33;
 
-#define TX0 34
-#define RX0 33
-
-#define TX1 36
-#define RX1 11
+#define TX1 GPIO_NUM_26
+#define RX1 GPIO_NUM_22
 
 static const uint8_t SDA = 37;
 static const uint8_t SCL = 10;
 
-static const uint8_t MOSI  = 30;
-static const uint8_t MISO  = 31;
-static const uint8_t SCK   = 29;
+static const uint8_t MOSI  = 18;
+static const uint8_t MISO  = 19;
+static const uint8_t SCK   = 5;
+static const uint8_t SS    = 4;
 
 static const uint8_t SDI_12 = 4;
 static const uint8_t PIEZO = 28;
