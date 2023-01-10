@@ -98,6 +98,9 @@ $(document).ready(function(){initNavTree('class_c_l_i_sdi12.html',''); initResiz
 </div><!--header-->
 <div class="contents">
 
+<p>SDI-12 sensor <a class="el" href="class_c_l_i.html" title="FreeRTOS command line interface.">CLI</a>.  
+ <a href="class_c_l_i_sdi12.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="sdi12_8h_source.html">sdi12.h</a>&gt;</code></p>
 <div class="dynheader">
 Collaboration diagram for CLISdi12:</div>
@@ -109,16 +112,22 @@ Collaboration diagram for CLISdi12:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a539a3c3a85eaf8db91045b42f3b2a520"><td class="memItemLeft" align="right" valign="top">static BaseType_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_l_i_sdi12.html#a539a3c3a85eaf8db91045b42f3b2a520">enter_cli</a> (char *pcWriteBuffer, size_t xWriteBufferLen, const char *pcCommandString)</td></tr>
+<tr class="memdesc:a539a3c3a85eaf8db91045b42f3b2a520"><td class="mdescLeft">&#160;</td><td class="mdescRight">Command line interface handler for an SDI-12 sensor.  <a href="class_c_l_i_sdi12.html#a539a3c3a85eaf8db91045b42f3b2a520">More...</a><br /></td></tr>
 <tr class="separator:a539a3c3a85eaf8db91045b42f3b2a520"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
 <tr class="memitem:aa114d6852c2131888d46174814ed0405"><td class="memItemLeft" align="right" valign="top">static const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_l_i_sdi12.html#aa114d6852c2131888d46174814ed0405">cmd</a> = &quot;sdi12&quot;</td></tr>
+<tr class="memdesc:aa114d6852c2131888d46174814ed0405"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_c_l_i.html" title="FreeRTOS command line interface.">CLI</a> SDI-12 reference, to send commands use "sdi12" followed by the cmd.  <a href="class_c_l_i_sdi12.html#aa114d6852c2131888d46174814ed0405">More...</a><br /></td></tr>
 <tr class="separator:aa114d6852c2131888d46174814ed0405"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa3df494a0e9dee5b4c079048f4a0c52e"><td class="memItemLeft" align="right" valign="top">static const uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_l_i_sdi12.html#aa3df494a0e9dee5b4c079048f4a0c52e">MAX_SDI12_RES_LEN</a> = 255</td></tr>
+<tr class="memdesc:aa3df494a0e9dee5b4c079048f4a0c52e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Maximum SDI-12 response length.  <a href="class_c_l_i_sdi12.html#aa3df494a0e9dee5b4c079048f4a0c52e">More...</a><br /></td></tr>
 <tr class="separator:aa3df494a0e9dee5b4c079048f4a0c52e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p >SDI-12 sensor <a class="el" href="class_c_l_i.html" title="FreeRTOS command line interface.">CLI</a>. </p>
+<p >Commands can be used to control SDI-12 sensors on the bus. The user must provide the prefix <code>sdi12</code> before sending a command which will be handled in enter_cli(...). </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a539a3c3a85eaf8db91045b42f3b2a520" name="a539a3c3a85eaf8db91045b42f3b2a520"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a539a3c3a85eaf8db91045b42f3b2a520">&#9670;&#160;</a></span>enter_cli()</h2>
 
@@ -159,6 +168,22 @@ Static Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Command line interface handler for an SDI-12 sensor. </p>
+<p >This function is a command line interface (<a class="el" href="class_c_l_i.html" title="FreeRTOS command line interface.">CLI</a>) handler for an SDI-12 sensor. It processes commands entered by the user and takes the appropriate action.</p>
+<p >The function first checks if there is a response stored in the <code>response_buffer_</code> object. If so, it copies the response to the <code>pcWriteBuffer</code> buffer and returns <code>pdFALSE</code> if there are no more responses to be displayed or <code>pdTRUE</code> if there are more responses to be displayed in subsequent calls to this function.</p>
+<p >If there are no responses stored in the <code>response_buffer_</code>, the function checks the command entered by the user and preforms the following commands:</p>
+<p >scan: Scans the SDI-12 bus for sensors and stores the list of sensors in the <code>response_buffer_</code> object. m: reads the value of a sensor at a specified address and stores the result in the <code>response_buffer_</code>. "&gt;&gt;": It sends a command to the SDI-12 sensor and stores the response in the <code>response_buffer_</code>.</p>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000002">Todo:</a></b></dt><dd><code>cmd</code> in this function shadows the declaration in the header file</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pcWriteBuffer</td><td>A buffer where the function can write a response string to display to the user. </td></tr>
+    <tr><td class="paramname">xWriteBufferLen</td><td>The length of the pcWriteBuffer buffer. </td></tr>
+    <tr><td class="paramname">pcCommandString</td><td>A string containing the command entered by the user. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Returns pdFALSE if there are no more responses to be displayed, pdTRUE if there are more responses to be displayed in subsequent calls to this function. </dd></dl>
+
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
@@ -182,6 +207,8 @@ Static Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p><a class="el" href="class_c_l_i.html" title="FreeRTOS command line interface.">CLI</a> SDI-12 reference, to send commands use "sdi12" followed by the cmd. </p>
+
 </div>
 </div>
 <a id="aa3df494a0e9dee5b4c079048f4a0c52e" name="aa3df494a0e9dee5b4c079048f4a0c52e"></a>
@@ -203,6 +230,8 @@ Static Public Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Maximum SDI-12 response length. </p>
 
 </div>
 </div>

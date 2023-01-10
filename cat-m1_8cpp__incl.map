@@ -1,6 +1,6 @@
 <map id="firmware/wombat/src/cli/peripherals/cat&#45;m1.cpp" name="firmware/wombat/src/cli/peripherals/cat&#45;m1.cpp">
-<area shape="rect" id="node1" title=" " alt="" coords="811,5,971,60"/>
-<area shape="rect" id="node2" href="$cat-m1_8h.html" title=" " alt="" coords="334,108,510,133"/>
+<area shape="rect" id="node1" title="CAT&#45;M1 CLI command request and response handler." alt="" coords="811,5,971,60"/>
+<area shape="rect" id="node2" href="$cat-m1_8h.html" title="CAT&#45;M1 CLI command request and response handler." alt="" coords="334,108,510,133"/>
 <area shape="rect" id="node7" href="$_c_a_t___m1_8h.html" title=" " alt="" coords="595,189,681,214"/>
 <area shape="rect" id="node11" href="$_utils_8h.html" title=" " alt="" coords="1403,108,1467,133"/>
 <area shape="rect" id="node15" title=" " alt="" coords="1142,181,1315,221"/>

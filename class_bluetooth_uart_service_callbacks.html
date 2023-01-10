@@ -122,7 +122,7 @@ Private Member Functions</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >Handles RX and TX of BLEUart messages. </p>
-<p >BLEUart client messages are sanitised and passed through to the <a class="el" href="class_c_l_i.html">CLI</a>. The response from the <a class="el" href="class_c_l_i.html">CLI</a> is then passed back to the BLE client. </p>
+<p >BLEUart client messages are sanitised and passed through to the <a class="el" href="class_c_l_i.html" title="FreeRTOS command line interface.">CLI</a>. The response from the <a class="el" href="class_c_l_i.html" title="FreeRTOS command line interface.">CLI</a> is then passed back to the BLE client. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="ab73163e54cd7377e5fc83af2c3747b75" name="ab73163e54cd7377e5fc83af2c3747b75"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab73163e54cd7377e5fc83af2c3747b75">&#9670;&#160;</a></span>onWrite()</h2>
@@ -149,7 +149,7 @@ Private Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Callback function for messages received from a BLE client. </p>
-<p >When a BLE client sends a message to the BLE server running on this device this method will be called. The message is extracted and check to ensure data is available (if not the function returns with an error tone). The message is then allocated to a buffer (rx_buf) which has its white space removed. This buffer is then passed through to the <a class="el" href="class_c_l_i.html">CLI</a> which responds accordingly. The response from the <a class="el" href="class_c_l_i.html">CLI</a> is held in another buffer which is then passed back to the BLE client through a notify method.</p>
+<p >When a BLE client sends a message to the BLE server running on this device this method will be called. The message is extracted and check to ensure data is available (if not the function returns with an error tone). The message is then allocated to a buffer (rx_buf) which has its white space removed. This buffer is then passed through to the <a class="el" href="class_c_l_i.html" title="FreeRTOS command line interface.">CLI</a> which responds accordingly. The response from the <a class="el" href="class_c_l_i.html" title="FreeRTOS command line interface.">CLI</a> is held in another buffer which is then passed back to the BLE client through a notify method.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">pCharacteristic</td><td>Pointer to the UART characteristic. </td></tr>

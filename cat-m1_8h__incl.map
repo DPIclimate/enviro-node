@@ -1,5 +1,5 @@
 <map id="firmware/wombat/include/cli/peripherals/cat&#45;m1.h" name="firmware/wombat/include/cli/peripherals/cat&#45;m1.h">
-<area shape="rect" id="node1" title=" " alt="" coords="251,5,439,45"/>
+<area shape="rect" id="node1" title="CAT&#45;M1 CLI command request and response handler." alt="" coords="251,5,439,45"/>
 <area shape="rect" id="node2" title=" " alt="" coords="5,93,156,119"/>
 <area shape="rect" id="node3" title=" " alt="" coords="180,93,261,119"/>
 <area shape="rect" id="node4" title=" " alt="" coords="285,93,404,119"/>

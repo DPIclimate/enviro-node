@@ -1,4 +1,4 @@
 <map id="CLIConfig" name="CLIConfig">
-<area shape="rect" id="node1" title=" " alt="" coords="93,489,199,559"/>
-<area shape="rect" id="node2" href="$class_device_config.html" title=" " alt="" coords="5,5,287,427"/>
+<area shape="rect" id="node1" title="CLI interface to get and set device configuration options." alt="" coords="93,489,199,559"/>
+<area shape="rect" id="node2" href="$class_device_config.html" title="Node configuration options for both getting and setting values." alt="" coords="5,5,287,427"/>
 </map>

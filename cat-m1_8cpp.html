@@ -96,6 +96,9 @@ $(document).ready(function(){initNavTree('cat-m1_8cpp.html',''); initResizable()
   <div class="headertitle"><div class="title">cat-m1.cpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>CAT-M1 <a class="el" href="class_c_l_i.html" title="FreeRTOS command line interface.">CLI</a> command request and response handler.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="cat-m1_8h_source.html">cli/peripherals/cat-m1.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_c_a_t___m1_8h_source.html">CAT_M1.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_utils_8h_source.html">Utils.h</a>&quot;</code><br />
@@ -110,21 +113,28 @@ Include dependency graph for cat-m1.cpp:</div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:acdc8ec42d38fe7dedaf4e33b04ef5cac"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cat-m1_8cpp.html#acdc8ec42d38fe7dedaf4e33b04ef5cac">get_response</a> (uint32_t timout=500)</td></tr>
-<tr class="separator:acdc8ec42d38fe7dedaf4e33b04ef5cac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa19c2621e480abc2cda9cb0d4a23817d"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cat-m1_8cpp.html#aa19c2621e480abc2cda9cb0d4a23817d">get_response</a> (uint32_t timeout=500)</td></tr>
+<tr class="memdesc:aa19c2621e480abc2cda9cb0d4a23817d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get response from modem with a timeout.  <a href="cat-m1_8cpp.html#aa19c2621e480abc2cda9cb0d4a23817d">More...</a><br /></td></tr>
+<tr class="separator:aa19c2621e480abc2cda9cb0d4a23817d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
 <tr class="memitem:a7f9b6ad99b4ad4d8ca1d579575944f2b"><td class="memItemLeft" align="right" valign="top">SARA_R5&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cat-m1_8cpp.html#a7f9b6ad99b4ad4d8ca1d579575944f2b">r5</a></td></tr>
+<tr class="memdesc:a7f9b6ad99b4ad4d8ca1d579575944f2b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sparkfun SARA-R5 library instance.  <a href="cat-m1_8cpp.html#a7f9b6ad99b4ad4d8ca1d579575944f2b">More...</a><br /></td></tr>
 <tr class="separator:a7f9b6ad99b4ad4d8ca1d579575944f2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a70111ee2fd620a603fc5873254338493"><td class="memItemLeft" align="right" valign="top">static StreamString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cat-m1_8cpp.html#a70111ee2fd620a603fc5873254338493">response_buffer_</a></td></tr>
+<tr class="memdesc:a70111ee2fd620a603fc5873254338493"><td class="mdescLeft">&#160;</td><td class="mdescRight">Holds responses from the modem.  <a href="cat-m1_8cpp.html#a70111ee2fd620a603fc5873254338493">More...</a><br /></td></tr>
 <tr class="separator:a70111ee2fd620a603fc5873254338493"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aff64f2691f2a522d74ea33188e8aad14"><td class="memItemLeft" align="right" valign="top">Stream *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cat-m1_8cpp.html#aff64f2691f2a522d74ea33188e8aad14">cliStream</a></td></tr>
+<tr class="memdesc:aff64f2691f2a522d74ea33188e8aad14"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stream originating from the <a class="el" href="class_c_l_i.html" title="FreeRTOS command line interface.">CLI</a>.  <a href="cat-m1_8cpp.html#aff64f2691f2a522d74ea33188e8aad14">More...</a><br /></td></tr>
 <tr class="separator:aff64f2691f2a522d74ea33188e8aad14"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Function Documentation</h2>
-<a id="acdc8ec42d38fe7dedaf4e33b04ef5cac" name="acdc8ec42d38fe7dedaf4e33b04ef5cac"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acdc8ec42d38fe7dedaf4e33b04ef5cac">&#9670;&#160;</a></span>get_response()</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p >CAT-M1 <a class="el" href="class_c_l_i.html" title="FreeRTOS command line interface.">CLI</a> command request and response handler. </p>
+<dl class="section date"><dt>Date</dt><dd>January 2023 </dd></dl>
+</div><h2 class="groupheader">Function Documentation</h2>
+<a id="aa19c2621e480abc2cda9cb0d4a23817d" name="aa19c2621e480abc2cda9cb0d4a23817d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa19c2621e480abc2cda9cb0d4a23817d">&#9670;&#160;</a></span>get_response()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -136,7 +146,7 @@ Variables</h2></td></tr>
           <td class="memname">static int get_response </td>
           <td>(</td>
           <td class="paramtype">uint32_t&#160;</td>
-          <td class="paramname"><em>timout</em> = <code>500</code></td><td>)</td>
+          <td class="paramname"><em>timeout</em> = <code>500</code></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -146,6 +156,16 @@ Variables</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Get response from modem with a timeout. </p>
+<p >After a command has been sent to the modem this function handles the response. -1 will be returned if the command times out, else the number of characters in the 'g_buffer' will be returned.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">timeout</td><td>Wait for response timeout. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Number of characters in response. </dd></dl>
 
 </div>
 </div>
@@ -170,6 +190,9 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Stream originating from the <a class="el" href="class_c_l_i.html" title="FreeRTOS command line interface.">CLI</a>. </p>
+<p >Stream originating from the <a class="el" href="class_c_l_i.html" title="FreeRTOS command line interface.">CLI</a>. </p>
+
 </div>
 </div>
 <a id="a7f9b6ad99b4ad4d8ca1d579575944f2b" name="a7f9b6ad99b4ad4d8ca1d579575944f2b"></a>
@@ -192,6 +215,8 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Sparkfun SARA-R5 library instance. </p>
+
 </div>
 </div>
 <a id="a70111ee2fd620a603fc5873254338493" name="a70111ee2fd620a603fc5873254338493"></a>
@@ -213,6 +238,8 @@ Variables</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Holds responses from the modem. </p>
 
 </div>
 </div>

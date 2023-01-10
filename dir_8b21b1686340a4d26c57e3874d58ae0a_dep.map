@@ -1,10 +1,10 @@
 <map id="firmware/wombat/src/cli" name="firmware/wombat/src/cli">
 <area shape="rect" id="node4" href="dir_d0384342543f67451a573d7221124c26.html" title="include" alt="" coords="157,136,227,161"/>
-<area shape="rect" id="edge1-headlabel" href="dir_000005_000009.html" title="10" alt="" coords="192,110,209,125"/>
+<area shape="rect" id="edge1-headlabel" href="dir_000005_000009.html" title="9" alt="" coords="196,110,205,125"/>
 <area shape="rect" id="node2" href="dir_be0e4ab4242ac495ab89be60026c5c79.html" title="device_config" alt="" coords="38,63,149,88"/>
 <area shape="rect" id="edge2-headlabel" href="dir_000007_000009.html" title="3" alt="" coords="161,111,171,126"/>
 <area shape="rect" id="node3" href="dir_18c4a8bcbab17c297273b4d35b91be79.html" title="peripherals" alt="" coords="235,63,330,88"/>
-<area shape="rect" id="edge3-headlabel" href="dir_000014_000009.html" title="6" alt="" coords="222,124,231,139"/>
+<area shape="rect" id="edge3-headlabel" href="dir_000014_000009.html" title="5" alt="" coords="222,124,231,139"/>
 <area shape="rect" id="node5" href="dir_ff0fc4bcb23bb8e139bf6a61d2efec67.html" title="lib" alt="" coords="263,136,302,161"/>
 <area shape="rect" id="edge4-headlabel" href="dir_000014_000012.html" title="1" alt="" coords="286,110,296,125"/>
 <area shape="rect" id="clust2" href="dir_8b21b1686340a4d26c57e3874d58ae0a.html" alt="" coords="27,52,341,99"/>

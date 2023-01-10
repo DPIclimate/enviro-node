@@ -20,7 +20,6 @@ var hierarchy =
     [ "BluetoothUartService", "class_bluetooth_uart_service.html", null ],
     [ "CAT_M1", "class_c_a_t___m1.html", null ],
     [ "CLI", "class_c_l_i.html", null ],
-    [ "CLIBluetooth", "class_c_l_i_bluetooth.html", null ],
     [ "CLICatM1", "class_c_l_i_cat_m1.html", null ],
     [ "CLIConfig", "class_c_l_i_config.html", null ],
     [ "CLIConfigIntervals", "class_c_l_i_config_intervals.html", null ],

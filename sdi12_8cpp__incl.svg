@@ -11,7 +11,7 @@
 <!-- Node1 -->
 <g id="node1" class="node">
 <title>Node1</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="SDI&#45;12 command line interface handler.">
 <polygon fill="#999999" stroke="#666666" points="465.5,-195 327.5,-195 327.5,-165 465.5,-165 465.5,-195"/>
 <text text-anchor="start" x="335.5" y="-183" font-family="Helvetica,sans-Serif" font-size="10.00">firmware/wombat/src</text>
 <text text-anchor="middle" x="396.5" y="-172" font-family="Helvetica,sans-Serif" font-size="10.00">/cli/peripherals/sdi12.cpp</text>
@@ -21,7 +21,7 @@
 <!-- Node2 -->
 <g id="node2" class="node">
 <title>Node2</title>
-<g id="a_node2"><a xlink:href="sdi12_8h.html" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="sdi12_8h.html" target="_top" xlink:title="SDI&#45;12 command line interface handler.">
 <polygon fill="white" stroke="#666666" points="389.5,-129 265.5,-129 265.5,-110 389.5,-110 389.5,-129"/>
 <text text-anchor="middle" x="327.5" y="-117" font-family="Helvetica,sans-Serif" font-size="10.00">cli/peripherals/sdi12.h</text>
 </a>

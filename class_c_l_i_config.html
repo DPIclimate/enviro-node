@@ -99,6 +99,9 @@ $(document).ready(function(){initNavTree('class_c_l_i_config.html',''); initResi
 </div><!--header-->
 <div class="contents">
 
+<p><a class="el" href="class_c_l_i.html" title="FreeRTOS command line interface.">CLI</a> interface to get and set device configuration options.  
+ <a href="class_c_l_i_config.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="config__cli_8h_source.html">config_cli.h</a>&gt;</code></p>
 <div class="dynheader">
 Collaboration diagram for CLIConfig:</div>
@@ -110,19 +113,24 @@ Collaboration diagram for CLIConfig:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a009f5fb24607afaeffa38b6f2d94f61c"><td class="memItemLeft" align="right" valign="top">static BaseType_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_l_i_config.html#a009f5fb24607afaeffa38b6f2d94f61c">enter_cli</a> (char *pcWriteBuffer, size_t xWriteBufferLen, const char *pcCommandString)</td></tr>
+<tr class="memdesc:a009f5fb24607afaeffa38b6f2d94f61c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enter command line interface (<a class="el" href="class_c_l_i.html" title="FreeRTOS command line interface.">CLI</a>) mode for the given command string.  <a href="class_c_l_i_config.html#a009f5fb24607afaeffa38b6f2d94f61c">More...</a><br /></td></tr>
 <tr class="separator:a009f5fb24607afaeffa38b6f2d94f61c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
 <tr class="memitem:afeb56da313dcae6f782248b2b0ca2523"><td class="memItemLeft" align="right" valign="top">static const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_l_i_config.html#afeb56da313dcae6f782248b2b0ca2523">cmd</a> = &quot;config&quot;</td></tr>
+<tr class="memdesc:afeb56da313dcae6f782248b2b0ca2523"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_c_l_i.html" title="FreeRTOS command line interface.">CLI</a> prefix for configuration commands.  <a href="class_c_l_i_config.html#afeb56da313dcae6f782248b2b0ca2523">More...</a><br /></td></tr>
 <tr class="separator:afeb56da313dcae6f782248b2b0ca2523"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-attribs" name="pri-static-attribs"></a>
 Static Private Attributes</h2></td></tr>
 <tr class="memitem:a2dff947de40991e9733c0a1f3a29c991"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_device_config.html">DeviceConfig</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_l_i_config.html#a2dff947de40991e9733c0a1f3a29c991">config</a> = <a class="el" href="class_device_config.html#a5413d27101c0af2f958cec5cbea36a31">DeviceConfig::get</a>()</td></tr>
+<tr class="memdesc:a2dff947de40991e9733c0a1f3a29c991"><td class="mdescLeft">&#160;</td><td class="mdescRight">Current device configuration (called upon initialisation)  <a href="class_c_l_i_config.html#a2dff947de40991e9733c0a1f3a29c991">More...</a><br /></td></tr>
 <tr class="separator:a2dff947de40991e9733c0a1f3a29c991"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p ><a class="el" href="class_c_l_i.html" title="FreeRTOS command line interface.">CLI</a> interface to get and set device configuration options. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a009f5fb24607afaeffa38b6f2d94f61c" name="a009f5fb24607afaeffa38b6f2d94f61c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a009f5fb24607afaeffa38b6f2d94f61c">&#9670;&#160;</a></span>enter_cli()</h2>
 
@@ -163,6 +171,23 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Enter command line interface (<a class="el" href="class_c_l_i.html" title="FreeRTOS command line interface.">CLI</a>) mode for the given command string. </p>
+<p >This function handles the following commands:</p><ul>
+<li><code>list</code>: Lists the current configuration settings to the response buffer.</li>
+<li><code>load</code>: Loads the configuration from SPIFFS storage and outputs it to the response buffer.</li>
+<li><code>save</code>: Saves the current configuration to persistent storage (SPIFFS).</li>
+</ul>
+<p >If an invalid command or argument is given, an error message is added to the response buffer.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pcWriteBuffer</td><td>Pointer to the buffer where the output string is to be written. </td></tr>
+    <tr><td class="paramname">xWriteBufferLen</td><td>Maximum length of the output string, including the null terminator. </td></tr>
+    <tr><td class="paramname">pcCommandString</td><td>Pointer to the command string input by the user. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>pdTRUE if there is more data to be returned, pdFALSE otherwise. </dd></dl>
+
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
@@ -186,6 +211,8 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p><a class="el" href="class_c_l_i.html" title="FreeRTOS command line interface.">CLI</a> prefix for configuration commands. </p>
+
 </div>
 </div>
 <a id="a2dff947de40991e9733c0a1f3a29c991" name="a2dff947de40991e9733c0a1f3a29c991"></a>
@@ -207,6 +234,8 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Current device configuration (called upon initialisation) </p>
 
 </div>
 </div>

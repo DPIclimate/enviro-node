@@ -99,7 +99,7 @@ $(document).ready(function(){initNavTree('class_c_l_i_config_intervals.html','')
 </div><!--header-->
 <div class="contents">
 
-<p>Setup acquisition intervals based on device configuration stored in SPIFFS memory or via the <a class="el" href="class_c_l_i.html">CLI</a>.  
+<p>Setup acquisition intervals based on device configuration stored in SPIFFS memory or via the <a class="el" href="class_c_l_i.html" title="FreeRTOS command line interface.">CLI</a>.  
  <a href="class_c_l_i_config_intervals.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="acquisition__intervals_8h_source.html">acquisition_intervals.h</a>&gt;</code></p>
@@ -113,7 +113,7 @@ Collaboration diagram for CLIConfigIntervals:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:abfdce68457f41e1c4704c6312128f350"><td class="memItemLeft" align="right" valign="top">static BaseType_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_l_i_config_intervals.html#abfdce68457f41e1c4704c6312128f350">enter_cli</a> (char *pcWriteBuffer, size_t xWriteBufferLen, const char *pcCommandString)</td></tr>
-<tr class="memdesc:abfdce68457f41e1c4704c6312128f350"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_c_l_i.html">CLI</a> entrypoint for measurement and uplink interval setup.  <a href="class_c_l_i_config_intervals.html#abfdce68457f41e1c4704c6312128f350">More...</a><br /></td></tr>
+<tr class="memdesc:abfdce68457f41e1c4704c6312128f350"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_c_l_i.html" title="FreeRTOS command line interface.">CLI</a> entrypoint for measurement and uplink interval setup.  <a href="class_c_l_i_config_intervals.html#abfdce68457f41e1c4704c6312128f350">More...</a><br /></td></tr>
 <tr class="separator:abfdce68457f41e1c4704c6312128f350"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4cffc10d8456aa6da204ecba72e74047"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_l_i_config_intervals.html#a4cffc10d8456aa6da204ecba72e74047">dump</a> (Stream &amp;stream)</td></tr>
 <tr class="memdesc:a4cffc10d8456aa6da204ecba72e74047"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print out interval information into a provided Stream.  <a href="class_c_l_i_config_intervals.html#a4cffc10d8456aa6da204ecba72e74047">More...</a><br /></td></tr>
@@ -132,7 +132,7 @@ Static Private Attributes</h2></td></tr>
 <tr class="separator:ab7ca85d38c6a84bf0c0e50e3951ef224"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p >Setup acquisition intervals based on device configuration stored in SPIFFS memory or via the <a class="el" href="class_c_l_i.html">CLI</a>. </p>
+<div class="textblock"><p >Setup acquisition intervals based on device configuration stored in SPIFFS memory or via the <a class="el" href="class_c_l_i.html" title="FreeRTOS command line interface.">CLI</a>. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a4cffc10d8456aa6da204ecba72e74047" name="a4cffc10d8456aa6da204ecba72e74047"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4cffc10d8456aa6da204ecba72e74047">&#9670;&#160;</a></span>dump()</h2>
@@ -159,7 +159,7 @@ Static Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Print out interval information into a provided Stream. </p>
-<p >A debug method to print out the available information about current acquisition intervals which have either been setup through device memory or through the <a class="el" href="class_c_l_i.html">CLI</a>.</p>
+<p >A debug method to print out the available information about current acquisition intervals which have either been setup through device memory or through the <a class="el" href="class_c_l_i.html" title="FreeRTOS command line interface.">CLI</a>.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">stream</td><td>Output stream to write to. </td></tr>
@@ -209,19 +209,22 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p><a class="el" href="class_c_l_i.html">CLI</a> entrypoint for measurement and uplink interval setup. </p>
-<p >This command sets and get various interval values such as the measurement interval and the uplink interval. When a user enters a command beginning with "interval" this method will be run.</p>
+<p><a class="el" href="class_c_l_i.html" title="FreeRTOS command line interface.">CLI</a> entrypoint for measurement and uplink interval setup. </p>
+<p >The function first checks if there is any data left in the response_buffer and, if so, copies it to the write buffer and returns. If no data is left in the response_buffer, the function retrieves the first parameter from the command and checks if it is a "list", "measure", or "uplink" command.</p>
+<p >If the list command is entered, the function clears the response_buffer and calls the <a class="el" href="class_c_l_i_config_intervals.html#a4cffc10d8456aa6da204ecba72e74047" title="Print out interval information into a provided Stream.">dump()</a> function to print a list of the current measurement and uplink intervals to the buffer.</p>
+<p >If the measure command is entered, the function retrieves the next parameter from the command string and converts it to an integer. If the parameter is valid, the function sets the measurement interval to the specified value and writes an "OK" message to the write buffer, or an "ERROR" message if the interval was not set.</p>
+<p >If the uplink command is entered, the function retrieves the next parameter from the command string and converts it to an integer. If the parameter is valid, the function sets the uplink interval to the specified value and writes an "OK" message to the write buffer, or an "ERROR" message if the interval was not set.</p>
+<p >If none of the above conditions are met, the function writes a "Syntax error" message to the write buffer and returns.</p>
 <dl class="section note"><dt>Note</dt><dd>Intervals are specified in seconds.</dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000002">Todo:</a></b></dt><dd>Continue documentation here.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">pcWriteBuffer</td><td></td></tr>
-    <tr><td class="paramname">xWriteBufferLen</td><td></td></tr>
-    <tr><td class="paramname">pcCommandString</td><td></td></tr>
+    <tr><td class="paramname">pcWriteBuffer</td><td>A buffer for storing the response to the command. The response will be displayed to the user. </td></tr>
+    <tr><td class="paramname">xWriteBufferLen</td><td>The length of the write buffer, in bytes. </td></tr>
+    <tr><td class="paramname">pcCommandString</td><td>The command entered by the user. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>pdFALSE if the buffer is full and there is more output to be written, otherwise pdTRUE. </dd></dl>
 
 </div>
 </div>

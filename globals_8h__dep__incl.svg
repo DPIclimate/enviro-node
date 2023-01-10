@@ -53,7 +53,7 @@
 <!-- Node4 -->
 <g id="node4" class="node">
 <title>Node4</title>
-<g id="a_node4"><a xlink:href="cat-m1_8cpp.html" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="cat-m1_8cpp.html" target="_top" xlink:title="CAT&#45;M1 CLI command request and response handler.">
 <polygon fill="white" stroke="#666666" points="396,-41 276,-41 276,0 396,0 396,-41"/>
 <text text-anchor="start" x="284" y="-29" font-family="Helvetica,sans-Serif" font-size="10.00">firmware/wombat/src</text>
 <text text-anchor="start" x="284" y="-18" font-family="Helvetica,sans-Serif" font-size="10.00">/cli/peripherals/cat</text>

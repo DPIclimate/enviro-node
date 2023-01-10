@@ -51,7 +51,7 @@
 <!-- Node5 -->
 <g id="node5" class="node">
 <title>Node5</title>
-<g id="a_node5"><a xlink:href="_device_config_8h.html" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="_device_config_8h.html" target="_top" xlink:title="Node configuration options.">
 <polygon fill="white" stroke="#666666" points="217.66,-195 127.66,-195 127.66,-176 217.66,-176 217.66,-195"/>
 <text text-anchor="middle" x="172.66" y="-183" font-family="Helvetica,sans-Serif" font-size="10.00">DeviceConfig.h</text>
 </a>

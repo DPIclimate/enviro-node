@@ -102,6 +102,9 @@ $(document).ready(function(){initNavTree('class_device_config.html',''); initRes
 </div><!--header-->
 <div class="contents">
 
+<p>Node configuration options for both getting and setting values.  
+ <a href="class_device_config.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="_device_config_8h_source.html">DeviceConfig.h</a>&gt;</code></p>
 <div class="dynheader">
 Collaboration diagram for DeviceConfig:</div>
@@ -113,47 +116,65 @@ Collaboration diagram for DeviceConfig:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:af40beaf1b7a0d8a6f26cb032492909e5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device_config.html#af40beaf1b7a0d8a6f26cb032492909e5">reset</a> ()</td></tr>
+<tr class="memdesc:af40beaf1b7a0d8a6f26cb032492909e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reset device configuration values back to their default.  <a href="class_device_config.html#af40beaf1b7a0d8a6f26cb032492909e5">More...</a><br /></td></tr>
 <tr class="separator:af40beaf1b7a0d8a6f26cb032492909e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a06ceffa8178fd30cab28be623f818459"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device_config.html#a06ceffa8178fd30cab28be623f818459">load</a> ()</td></tr>
+<tr class="memdesc:a06ceffa8178fd30cab28be623f818459"><td class="mdescLeft">&#160;</td><td class="mdescRight">Load device configuration values from SPIFFS storage.  <a href="class_device_config.html#a06ceffa8178fd30cab28be623f818459">More...</a><br /></td></tr>
 <tr class="separator:a06ceffa8178fd30cab28be623f818459"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0aea741372337aab11ef3fde6e12a30b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device_config.html#a0aea741372337aab11ef3fde6e12a30b">save</a> ()</td></tr>
+<tr class="memdesc:a0aea741372337aab11ef3fde6e12a30b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Save device configuration values to SPIFFS storage.  <a href="class_device_config.html#a0aea741372337aab11ef3fde6e12a30b">More...</a><br /></td></tr>
 <tr class="separator:a0aea741372337aab11ef3fde6e12a30b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4c4e59ae0de91ed44a09dee6ed2261ad"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device_config.html#a4c4e59ae0de91ed44a09dee6ed2261ad">getBootCount</a> (void)</td></tr>
+<tr class="memdesc:a4c4e59ae0de91ed44a09dee6ed2261ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Method to get the number of times the ESP32 has rebooted. bootCount is incremented when the singleton is created, meaning at power-on it will be 1 by the time any code can ask for it. It is easier to do modulo arithmetic with a 0-based bootCount so adjust it before returning it.  <a href="class_device_config.html#a4c4e59ae0de91ed44a09dee6ed2261ad">More...</a><br /></td></tr>
 <tr class="separator:a4c4e59ae0de91ed44a09dee6ed2261ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3c64968c678dedecae1eadd06c634fc5"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device_config.html#a3c64968c678dedecae1eadd06c634fc5">getMeasureInterval</a> ()</td></tr>
 <tr class="separator:a3c64968c678dedecae1eadd06c634fc5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ade9fcd75f44092b3d6c85411431f8524"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device_config.html#ade9fcd75f44092b3d6c85411431f8524">setMeasureInterval</a> (const uint16_t minutes)</td></tr>
+<tr class="memdesc:ade9fcd75f44092b3d6c85411431f8524"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the measurement interval.  <a href="class_device_config.html#ade9fcd75f44092b3d6c85411431f8524">More...</a><br /></td></tr>
 <tr class="separator:ade9fcd75f44092b3d6c85411431f8524"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0c3357ca19cdc7469bbf5fd0164d3e53"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device_config.html#a0c3357ca19cdc7469bbf5fd0164d3e53">getUplinkInterval</a> ()</td></tr>
 <tr class="separator:a0c3357ca19cdc7469bbf5fd0164d3e53"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5ff50ce4e9cfe687d86614b3e602e2de"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device_config.html#a5ff50ce4e9cfe687d86614b3e602e2de">setUplinkInterval</a> (const uint16_t minutes)</td></tr>
+<tr class="memdesc:a5ff50ce4e9cfe687d86614b3e602e2de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the uplink interval.  <a href="class_device_config.html#a5ff50ce4e9cfe687d86614b3e602e2de">More...</a><br /></td></tr>
 <tr class="separator:a5ff50ce4e9cfe687d86614b3e602e2de"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2307dbd87827665d98f49993c190a79c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device_config.html#a2307dbd87827665d98f49993c190a79c">setMeasurementAndUplinkIntervals</a> (const uint16_t measurement_seconds, const uint16_t uplink_seconds)</td></tr>
+<tr class="memdesc:a2307dbd87827665d98f49993c190a79c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set both the measurement and uplink intervals.  <a href="class_device_config.html#a2307dbd87827665d98f49993c190a79c">More...</a><br /></td></tr>
 <tr class="separator:a2307dbd87827665d98f49993c190a79c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad01fcfafb4c4316d014df51c6a2c3e49"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device_config.html#ad01fcfafb4c4316d014df51c6a2c3e49">setMqttHost</a> (const std::string &amp;host)</td></tr>
+<tr class="memdesc:ad01fcfafb4c4316d014df51c6a2c3e49"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the MQTT hostname.  <a href="class_device_config.html#ad01fcfafb4c4316d014df51c6a2c3e49">More...</a><br /></td></tr>
 <tr class="separator:ad01fcfafb4c4316d014df51c6a2c3e49"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afbf08f41d58f05f664d175c676155d98"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device_config.html#afbf08f41d58f05f664d175c676155d98">setMqttPort</a> (uint16_t port)</td></tr>
+<tr class="memdesc:afbf08f41d58f05f664d175c676155d98"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the MQTT port.  <a href="class_device_config.html#afbf08f41d58f05f664d175c676155d98">More...</a><br /></td></tr>
 <tr class="separator:afbf08f41d58f05f664d175c676155d98"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a50601b3676b4af272f24808a93ce71b0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device_config.html#a50601b3676b4af272f24808a93ce71b0">setMqttUser</a> (const std::string &amp;user)</td></tr>
+<tr class="memdesc:a50601b3676b4af272f24808a93ce71b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the MQTT broker username.  <a href="class_device_config.html#a50601b3676b4af272f24808a93ce71b0">More...</a><br /></td></tr>
 <tr class="separator:a50601b3676b4af272f24808a93ce71b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afc3346169bf4ee1eed5414ce786cc3ce"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device_config.html#afc3346169bf4ee1eed5414ce786cc3ce">setMqttPassword</a> (const std::string &amp;password)</td></tr>
+<tr class="memdesc:afc3346169bf4ee1eed5414ce786cc3ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the MQTT broker password.  <a href="class_device_config.html#afc3346169bf4ee1eed5414ce786cc3ce">More...</a><br /></td></tr>
 <tr class="separator:afc3346169bf4ee1eed5414ce786cc3ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a09acba272f94c30fe630e3c96ad6cce3"><td class="memItemLeft" align="right" valign="top">std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device_config.html#a09acba272f94c30fe630e3c96ad6cce3">getMqttHost</a> ()</td></tr>
+<tr class="memdesc:a09acba272f94c30fe630e3c96ad6cce3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the MQTT hostname.  <a href="class_device_config.html#a09acba272f94c30fe630e3c96ad6cce3">More...</a><br /></td></tr>
 <tr class="separator:a09acba272f94c30fe630e3c96ad6cce3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4cc0b1305db2f9e740a520728728f6ef"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device_config.html#a4cc0b1305db2f9e740a520728728f6ef">getMqttPort</a> ()</td></tr>
+<tr class="memdesc:a4cc0b1305db2f9e740a520728728f6ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the MQTT port.  <a href="class_device_config.html#a4cc0b1305db2f9e740a520728728f6ef">More...</a><br /></td></tr>
 <tr class="separator:a4cc0b1305db2f9e740a520728728f6ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3c251d12cce7278cbb66a0616bde09f1"><td class="memItemLeft" align="right" valign="top">std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device_config.html#a3c251d12cce7278cbb66a0616bde09f1">getMqttUser</a> ()</td></tr>
+<tr class="memdesc:a3c251d12cce7278cbb66a0616bde09f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the MQTT broker username.  <a href="class_device_config.html#a3c251d12cce7278cbb66a0616bde09f1">More...</a><br /></td></tr>
 <tr class="separator:a3c251d12cce7278cbb66a0616bde09f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0a051c43a3ecc63755ebf894d83907f5"><td class="memItemLeft" align="right" valign="top">std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device_config.html#a0a051c43a3ecc63755ebf894d83907f5">getMqttPassword</a> ()</td></tr>
+<tr class="memdesc:a0a051c43a3ecc63755ebf894d83907f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the MQTT broker password.  <a href="class_device_config.html#a0a051c43a3ecc63755ebf894d83907f5">More...</a><br /></td></tr>
 <tr class="separator:a0a051c43a3ecc63755ebf894d83907f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2d52987984233de19b4a6ec55022a3c3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device_config.html#a2d52987984233de19b4a6ec55022a3c3">dumpConfig</a> (Stream &amp;stream)</td></tr>
+<tr class="memdesc:a2d52987984233de19b4a6ec55022a3c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print out device configuration to a stream.  <a href="class_device_config.html#a2d52987984233de19b4a6ec55022a3c3">More...</a><br /></td></tr>
 <tr class="separator:a2d52987984233de19b4a6ec55022a3c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa79eefa8c5263cc087b8b4100881a24c"><td class="memItemLeft" align="right" valign="top">const JsonDocument &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device_config.html#aa79eefa8c5263cc087b8b4100881a24c">getSDI12Defns</a> (void)</td></tr>
+<tr class="memdesc:aa79eefa8c5263cc087b8b4100881a24c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the SDI-12 device definitions from SPIFFS storage.  <a href="class_device_config.html#aa79eefa8c5263cc087b8b4100881a24c">More...</a><br /></td></tr>
 <tr class="separator:aa79eefa8c5263cc087b8b4100881a24c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a5413d27101c0af2f958cec5cbea36a31"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_device_config.html">DeviceConfig</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device_config.html#a5413d27101c0af2f958cec5cbea36a31">get</a> ()</td></tr>
+<tr class="memdesc:a5413d27101c0af2f958cec5cbea36a31"><td class="mdescLeft">&#160;</td><td class="mdescRight">Provides an instance to other functions (MQTT and uplink intervals) to access (set, get) device configuration.  <a href="class_device_config.html#a5413d27101c0af2f958cec5cbea36a31">More...</a><br /></td></tr>
 <tr class="separator:a5413d27101c0af2f958cec5cbea36a31"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ace79df09780b9cfa89995dbde55a9c4d"><td class="memItemLeft" align="right" valign="top">static const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device_config.html#ace79df09780b9cfa89995dbde55a9c4d">getMsgFilePrefix</a> (void)</td></tr>
 <tr class="separator:ace79df09780b9cfa89995dbde55a9c4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -170,13 +191,16 @@ Public Attributes</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
 <tr class="memitem:a1f531e3530859e465075d67be8016e48"><td class="memItemLeft" align="right" valign="top">static constexpr size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device_config.html#a1f531e3530859e465075d67be8016e48">MAX_CONFIG_STR</a> = 32</td></tr>
+<tr class="memdesc:a1f531e3530859e465075d67be8016e48"><td class="mdescLeft">&#160;</td><td class="mdescRight">Maximum length of a configuration string.  <a href="class_device_config.html#a1f531e3530859e465075d67be8016e48">More...</a><br /></td></tr>
 <tr class="separator:a1f531e3530859e465075d67be8016e48"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
 <tr class="memitem:a2c8019ff2aa1fc96b89859244fd3ba48"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device_config.html#a2c8019ff2aa1fc96b89859244fd3ba48">DeviceConfig</a> ()</td></tr>
+<tr class="memdesc:a2c8019ff2aa1fc96b89859244fd3ba48"><td class="mdescLeft">&#160;</td><td class="mdescRight">Device configuration constructor with default values.  <a href="class_device_config.html#a2c8019ff2aa1fc96b89859244fd3ba48">More...</a><br /></td></tr>
 <tr class="separator:a2c8019ff2aa1fc96b89859244fd3ba48"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4c08f6cc51a8a4130c1d25b8c59e6188"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device_config.html#a4c08f6cc51a8a4130c1d25b8c59e6188">DeviceConfig</a> (const <a class="el" href="class_device_config.html">DeviceConfig</a> &amp;)=delete</td></tr>
+<tr class="memdesc:a4c08f6cc51a8a4130c1d25b8c59e6188"><td class="mdescLeft">&#160;</td><td class="mdescRight">Avoid operations that would make copies of the singleton instance.  <a href="class_device_config.html#a4c08f6cc51a8a4130c1d25b8c59e6188">More...</a><br /></td></tr>
 <tr class="separator:a4c08f6cc51a8a4130c1d25b8c59e6188"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a438c4a3d753923f0a42bf271c72b65b9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_device_config.html">DeviceConfig</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device_config.html#a438c4a3d753923f0a42bf271c72b65b9">operator=</a> (const <a class="el" href="class_device_config.html">DeviceConfig</a> &amp;)=delete</td></tr>
 <tr class="separator:a438c4a3d753923f0a42bf271c72b65b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -184,19 +208,28 @@ Private Member Functions</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr class="memitem:a652a7d87b6d29c00e68e572803ed7c86"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device_config.html#a652a7d87b6d29c00e68e572803ed7c86">measure_interval</a></td></tr>
+<tr class="memdesc:a652a7d87b6d29c00e68e572803ed7c86"><td class="mdescLeft">&#160;</td><td class="mdescRight">How often to read the sensors, in seconds.  <a href="class_device_config.html#a652a7d87b6d29c00e68e572803ed7c86">More...</a><br /></td></tr>
 <tr class="separator:a652a7d87b6d29c00e68e572803ed7c86"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa5385d0eb9832fc114ef0d4d9757038f"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device_config.html#aa5385d0eb9832fc114ef0d4d9757038f">uplink_interval</a></td></tr>
+<tr class="memdesc:aa5385d0eb9832fc114ef0d4d9757038f"><td class="mdescLeft">&#160;</td><td class="mdescRight">How often to uplink the data, in seconds.  <a href="class_device_config.html#aa5385d0eb9832fc114ef0d4d9757038f">More...</a><br /></td></tr>
 <tr class="separator:aa5385d0eb9832fc114ef0d4d9757038f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac34cbf8e44e6906e6fe4182d56c56458"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device_config.html#ac34cbf8e44e6906e6fe4182d56c56458">mqttHost</a></td></tr>
+<tr class="memdesc:ac34cbf8e44e6906e6fe4182d56c56458"><td class="mdescLeft">&#160;</td><td class="mdescRight">MQTT hostname.  <a href="class_device_config.html#ac34cbf8e44e6906e6fe4182d56c56458">More...</a><br /></td></tr>
 <tr class="separator:ac34cbf8e44e6906e6fe4182d56c56458"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aef0d5422c0fa4fe4edb641198d7628b2"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device_config.html#aef0d5422c0fa4fe4edb641198d7628b2">mqttPort</a></td></tr>
+<tr class="memdesc:aef0d5422c0fa4fe4edb641198d7628b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">MQTT port.  <a href="class_device_config.html#aef0d5422c0fa4fe4edb641198d7628b2">More...</a><br /></td></tr>
 <tr class="separator:aef0d5422c0fa4fe4edb641198d7628b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abde83ddacb708bb474c8fce35efbf653"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device_config.html#abde83ddacb708bb474c8fce35efbf653">mqttUser</a></td></tr>
+<tr class="memdesc:abde83ddacb708bb474c8fce35efbf653"><td class="mdescLeft">&#160;</td><td class="mdescRight">MQTT broker username.  <a href="class_device_config.html#abde83ddacb708bb474c8fce35efbf653">More...</a><br /></td></tr>
 <tr class="separator:abde83ddacb708bb474c8fce35efbf653"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a50329fa30a5338e89575dc4441dcc637"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device_config.html#a50329fa30a5338e89575dc4441dcc637">mqttPassword</a></td></tr>
+<tr class="memdesc:a50329fa30a5338e89575dc4441dcc637"><td class="mdescLeft">&#160;</td><td class="mdescRight">MQTT broker password.  <a href="class_device_config.html#a50329fa30a5338e89575dc4441dcc637">More...</a><br /></td></tr>
 <tr class="separator:a50329fa30a5338e89575dc4441dcc637"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p >Node configuration options for both getting and setting values. </p>
+<p >Handles all device configuration commands. This includes measurement and uplink intervals, MQTT configuration and SDI-12 configuration. Values are stored in SPIFFS storage. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a2c8019ff2aa1fc96b89859244fd3ba48" name="a2c8019ff2aa1fc96b89859244fd3ba48"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2c8019ff2aa1fc96b89859244fd3ba48">&#9670;&#160;</a></span>DeviceConfig() <span class="overload">[1/2]</span></h2>
 
@@ -219,6 +252,9 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Device configuration constructor with default values. </p>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000003">Todo:</a></b></dt><dd>Several values here are not initialised </dd></dl>
 
 </div>
 </div>
@@ -246,6 +282,8 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Avoid operations that would make copies of the singleton instance. </p>
+
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -264,6 +302,14 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Print out device configuration to a stream. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">stream</td><td>Output stream. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -290,6 +336,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Provides an instance to other functions (MQTT and uplink intervals) to access (set, get) device configuration. </p>
+<dl class="section return"><dt>Returns</dt><dd>A static instance of the current device configuration. </dd></dl>
+
 </div>
 </div>
 <a id="a4c4e59ae0de91ed44a09dee6ed2261ad" name="a4c4e59ae0de91ed44a09dee6ed2261ad"></a>
@@ -307,6 +356,9 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Method to get the number of times the ESP32 has rebooted. bootCount is incremented when the singleton is created, meaning at power-on it will be 1 by the time any code can ask for it. It is easier to do modulo arithmetic with a 0-based bootCount so adjust it before returning it. </p>
+<dl class="section return"><dt>Returns</dt><dd>Boot counter. </dd></dl>
 
 </div>
 </div>
@@ -358,6 +410,8 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Get the MQTT hostname. </p>
+
 </div>
 </div>
 <a id="a0a051c43a3ecc63755ebf894d83907f5" name="a0a051c43a3ecc63755ebf894d83907f5"></a>
@@ -382,6 +436,8 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Get the MQTT broker password. </p>
 
 </div>
 </div>
@@ -408,6 +464,8 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Get the MQTT port. </p>
+
 </div>
 </div>
 <a id="a3c251d12cce7278cbb66a0616bde09f1" name="a3c251d12cce7278cbb66a0616bde09f1"></a>
@@ -432,6 +490,8 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Get the MQTT broker username. </p>
 
 </div>
 </div>
@@ -477,6 +537,9 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Get the SDI-12 device definitions from SPIFFS storage. </p>
+<dl class="section return"><dt>Returns</dt><dd>SDI-12 device definitions as a JSONDocument. </dd></dl>
+
 </div>
 </div>
 <a id="a0c3357ca19cdc7469bbf5fd0164d3e53" name="a0c3357ca19cdc7469bbf5fd0164d3e53"></a>
@@ -518,6 +581,20 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Load device configuration values from SPIFFS storage. </p>
+<p >Load the <a class="el" href="class_device_config.html" title="Node configuration options for both getting and setting values.">DeviceConfig</a> values from a file on the file system.</p>
+<p >This function loads the <a class="el" href="class_device_config.html" title="Node configuration options for both getting and setting values.">DeviceConfig</a> values from a file on the file system and sets any missing values to their default states. It also loads the SDI-12 sensor definitions from a file on the file system.</p>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000004">Todo:</a></b></dt><dd><p class="startdd">An error may occur if the SPIFFS filesystem does not get initialized </p>
+<p class="enddd">(<code>SPIFFS.begin()</code>) resulting in an uncaught result.</p>
+</dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="class_device_config.html#af40beaf1b7a0d8a6f26cb032492909e5" title="Reset device configuration values back to their default.">reset</a> </dd>
+<dd>
+<a class="el" href="_device_config_8cpp.html#a3c72ad05995eb227f4508620f6467565" title="Default configuration path.">config_filename</a> </dd>
+<dd>
+<a class="el" href="_device_config_8cpp.html#a2fd91fc2d6c3082f5ff868123f5cb515" title="Default configuration filename (stored as JSON)">sdi12defn_filename</a> </dd>
+<dd>
+<a class="el" href="_device_config_8cpp.html#a0b140ee2afa69c1f8c6e2a44bd144ced" title="JSON document instance to handle SDI-12 device definitions.">sdi12Defns</a> </dd></dl>
 
 </div>
 </div>
@@ -562,6 +639,25 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Reset device configuration values back to their default. </p>
+<p >Reset the <a class="el" href="class_device_config.html" title="Node configuration options for both getting and setting values.">DeviceConfig</a> values to their default states.</p>
+<p >This function resets the measure interval, uplink interval, MAC address, and MQTT connection parameters (host, port, user, and password) to their default values.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="class_device_config.html#a652a7d87b6d29c00e68e572803ed7c86" title="How often to read the sensors, in seconds.">measure_interval</a> </dd>
+<dd>
+<a class="el" href="class_device_config.html#aa5385d0eb9832fc114ef0d4d9757038f" title="How often to uplink the data, in seconds.">uplink_interval</a> </dd>
+<dd>
+<a class="el" href="class_device_config.html#a622c973a01a84dc1fb413f73ab28ab6b">mac</a> </dd>
+<dd>
+<a class="el" href="class_device_config.html#a575ea0dd0e500ebc854aeb0267023ace">node_id</a> </dd>
+<dd>
+<a class="el" href="class_device_config.html#ac34cbf8e44e6906e6fe4182d56c56458" title="MQTT hostname.">mqttHost</a> </dd>
+<dd>
+<a class="el" href="class_device_config.html#aef0d5422c0fa4fe4edb641198d7628b2" title="MQTT port.">mqttPort</a> </dd>
+<dd>
+<a class="el" href="class_device_config.html#abde83ddacb708bb474c8fce35efbf653" title="MQTT broker username.">mqttUser</a> </dd>
+<dd>
+<a class="el" href="class_device_config.html#a50329fa30a5338e89575dc4441dcc637" title="MQTT broker password.">mqttPassword</a> </dd></dl>
+
 </div>
 </div>
 <a id="a0aea741372337aab11ef3fde6e12a30b" name="a0aea741372337aab11ef3fde6e12a30b"></a>
@@ -578,6 +674,9 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Save device configuration values to SPIFFS storage. </p>
+<p >Save device configuration to SPIFFS storage. </p>
 
 </div>
 </div>
@@ -596,6 +695,15 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Set the measurement interval. </p>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000005">Todo:</a></b></dt><dd>Should this be in seconds?</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">minutes</td><td>Time in minutes. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -625,6 +733,16 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Set both the measurement and uplink intervals. </p>
+<dl class="section warning"><dt>Warning</dt><dd>The measurement interval should be divisible by the uplink interval with no remainder.</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">measurement_seconds</td><td>Measurement interval in seconds. </td></tr>
+    <tr><td class="paramname">uplink_seconds</td><td>Uplink interval in seconds. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="ad01fcfafb4c4316d014df51c6a2c3e49" name="ad01fcfafb4c4316d014df51c6a2c3e49"></a>
@@ -650,6 +768,8 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Set the MQTT hostname. </p>
 
 </div>
 </div>
@@ -677,6 +797,8 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Set the MQTT broker password. </p>
+
 </div>
 </div>
 <a id="afbf08f41d58f05f664d175c676155d98" name="afbf08f41d58f05f664d175c676155d98"></a>
@@ -702,6 +824,8 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Set the MQTT port. </p>
 
 </div>
 </div>
@@ -729,6 +853,8 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Set the MQTT broker username. </p>
+
 </div>
 </div>
 <a id="a5ff50ce4e9cfe687d86614b3e602e2de" name="a5ff50ce4e9cfe687d86614b3e602e2de"></a>
@@ -746,6 +872,15 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Set the uplink interval. </p>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000006">Todo:</a></b></dt><dd>Should this be in seconds?</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">minutes</td><td>Time in minutes. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -784,6 +919,8 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Maximum length of a configuration string. </p>
+
 </div>
 </div>
 <a id="a652a7d87b6d29c00e68e572803ed7c86" name="a652a7d87b6d29c00e68e572803ed7c86"></a>
@@ -805,6 +942,8 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>How often to read the sensors, in seconds. </p>
 
 </div>
 </div>
@@ -842,6 +981,8 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>MQTT hostname. </p>
+
 </div>
 </div>
 <a id="a50329fa30a5338e89575dc4441dcc637" name="a50329fa30a5338e89575dc4441dcc637"></a>
@@ -863,6 +1004,8 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>MQTT broker password. </p>
 
 </div>
 </div>
@@ -886,6 +1029,8 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>MQTT port. </p>
+
 </div>
 </div>
 <a id="abde83ddacb708bb474c8fce35efbf653" name="abde83ddacb708bb474c8fce35efbf653"></a>
@@ -907,6 +1052,8 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>MQTT broker username. </p>
 
 </div>
 </div>
@@ -943,6 +1090,8 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>How often to uplink the data, in seconds. </p>
 
 </div>
 </div>

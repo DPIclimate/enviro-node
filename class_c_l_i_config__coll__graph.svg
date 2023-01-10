@@ -11,7 +11,7 @@
 <!-- Node1 -->
 <g id="node1" class="node">
 <title>Node1</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="CLI interface to get and set device configuration options.">
 <polygon fill="#999999" stroke="#666666" points="145.5,-52 65.5,-52 65.5,0 145.5,0 145.5,-52"/>
 <text text-anchor="middle" x="105.5" y="-40" font-family="Helvetica,sans-Serif" font-size="10.00">{CLIConfig</text>
 <text text-anchor="start" x="73.5" y="-29" font-family="Helvetica,sans-Serif" font-size="10.00">|+ cmd</text>
@@ -23,7 +23,7 @@
 <!-- Node2 -->
 <g id="node2" class="node">
 <title>Node2</title>
-<g id="a_node2"><a xlink:href="class_device_config.html" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="class_device_config.html" target="_top" xlink:title="Node configuration options for both getting and setting values.">
 <polygon fill="white" stroke="#666666" points="211,-415 0,-415 0,-99 211,-99 211,-415"/>
 <text text-anchor="middle" x="105.5" y="-403" font-family="Helvetica,sans-Serif" font-size="10.00">{DeviceConfig</text>
 <text text-anchor="start" x="8" y="-392" font-family="Helvetica,sans-Serif" font-size="10.00">|+ mac</text>

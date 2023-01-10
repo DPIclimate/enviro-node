@@ -20,7 +20,7 @@
 <!-- Node1 -->
 <g id="node2" class="node">
 <title>Node1</title>
-<g id="a_node2"><a xlink:href="class_bluetooth_server_callbacks.html" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="class_bluetooth_server_callbacks.html" target="_top" xlink:title="BluetoothLE server callbacks when devices connect and disconnect.">
 <polygon fill="white" stroke="#666666" points="292,-37 149,-37 149,-18 292,-18 292,-37"/>
 <text text-anchor="middle" x="220.5" y="-25" font-family="Helvetica,sans-Serif" font-size="10.00">BluetoothServerCallbacks</text>
 </a>
@@ -35,7 +35,7 @@
 <!-- Node2 -->
 <g id="node3" class="node">
 <title>Node2</title>
-<g id="a_node3"><a xlink:href="class_bluetooth_server.html" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="class_bluetooth_server.html" target="_top" xlink:title="BluetoothLE server instance.">
 <polygon fill="white" stroke="#666666" points="104,-19 9,-19 9,0 104,0 104,-19"/>
 <text text-anchor="middle" x="56.5" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00">BluetoothServer</text>
 </a>

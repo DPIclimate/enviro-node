@@ -98,6 +98,9 @@ $(document).ready(function(){initNavTree('class_c_l_i.html',''); initResizable()
 </div><!--header-->
 <div class="contents">
 
+<p>FreeRTOS command line interface.  
+ <a href="class_c_l_i.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="_c_l_i_8h_source.html">CLI.h</a>&gt;</code></p>
 <div class="dynheader">
 Collaboration diagram for CLI:</div>
@@ -109,18 +112,25 @@ Collaboration diagram for CLI:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:acc5c9b0608f31a32fdfda0327283f357"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_l_i.html#acc5c9b0608f31a32fdfda0327283f357">init</a> ()</td></tr>
+<tr class="memdesc:acc5c9b0608f31a32fdfda0327283f357"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise the FreeRTOS command line interface.  <a href="class_c_l_i.html#acc5c9b0608f31a32fdfda0327283f357">More...</a><br /></td></tr>
 <tr class="separator:acc5c9b0608f31a32fdfda0327283f357"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad97dfdd8399f8673fbc64e5975f82543"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_l_i.html#ad97dfdd8399f8673fbc64e5975f82543">repl</a> (Stream &amp;io)</td></tr>
+<tr class="memdesc:ad97dfdd8399f8673fbc64e5975f82543"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read-eval-print loop (REPL) for the command line interface (<a class="el" href="class_c_l_i.html" title="FreeRTOS command line interface.">CLI</a>).  <a href="class_c_l_i.html#ad97dfdd8399f8673fbc64e5975f82543">More...</a><br /></td></tr>
 <tr class="separator:ad97dfdd8399f8673fbc64e5975f82543"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
 <tr class="memitem:a08716882278135d4aa8e795e12b3a03c"><td class="memItemLeft" align="right" valign="top">static const uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_l_i.html#a08716882278135d4aa8e795e12b3a03c">MAX_CLI_CMD_LEN</a> = 48</td></tr>
+<tr class="memdesc:a08716882278135d4aa8e795e12b3a03c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Maximum command (input) length.  <a href="class_c_l_i.html#a08716882278135d4aa8e795e12b3a03c">More...</a><br /></td></tr>
 <tr class="separator:a08716882278135d4aa8e795e12b3a03c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a08f1a712847c224164c889b713a4b598"><td class="memItemLeft" align="right" valign="top">static const uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_l_i.html#a08f1a712847c224164c889b713a4b598">MAX_CLI_MSG_LEN</a> = 255</td></tr>
+<tr class="memdesc:a08f1a712847c224164c889b713a4b598"><td class="mdescLeft">&#160;</td><td class="mdescRight">Maximum command (output) length.  <a href="class_c_l_i.html#a08f1a712847c224164c889b713a4b598">More...</a><br /></td></tr>
 <tr class="separator:a08f1a712847c224164c889b713a4b598"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p >FreeRTOS command line interface. </p>
+<p >Provides callbacks to various <a class="el" href="class_c_l_i.html" title="FreeRTOS command line interface.">CLI</a> components such as CAT-M1, configuration, bluetooth and sdi-12 sensor configuration. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="acc5c9b0608f31a32fdfda0327283f357" name="acc5c9b0608f31a32fdfda0327283f357"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#acc5c9b0608f31a32fdfda0327283f357">&#9670;&#160;</a></span>init()</h2>
 
@@ -143,6 +153,8 @@ Static Public Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Initialise the FreeRTOS command line interface. </p>
 
 </div>
 </div>
@@ -170,6 +182,15 @@ Static Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Read-eval-print loop (REPL) for the command line interface (<a class="el" href="class_c_l_i.html" title="FreeRTOS command line interface.">CLI</a>). </p>
+<p >This function implements a REPL for the <a class="el" href="class_c_l_i.html" title="FreeRTOS command line interface.">CLI</a>. It reads a command from the user, processes the command, and prints the result of the command. The REPL loop is exited by typing the "exit" command.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">io</td><td>A stream object used for reading input from the user and writing output to the user. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
@@ -193,6 +214,8 @@ Static Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Maximum command (input) length. </p>
+
 </div>
 </div>
 <a id="a08f1a712847c224164c889b713a4b598" name="a08f1a712847c224164c889b713a4b598"></a>
@@ -214,6 +237,8 @@ Static Public Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Maximum command (output) length. </p>
 
 </div>
 </div>

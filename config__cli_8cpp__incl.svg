@@ -11,7 +11,7 @@
 <!-- Node1 -->
 <g id="node1" class="node">
 <title>Node1</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Command line interface node configuration commands.">
 <polygon fill="#999999" stroke="#666666" points="321,-217 188,-217 188,-176 321,-176 321,-217"/>
 <text text-anchor="start" x="196" y="-205" font-family="Helvetica,sans-Serif" font-size="10.00">firmware/wombat/src</text>
 <text text-anchor="start" x="196" y="-194" font-family="Helvetica,sans-Serif" font-size="10.00">/cli/device_config/config</text>
@@ -98,7 +98,7 @@
 <!-- Node7 -->
 <g id="node7" class="node">
 <title>Node7</title>
-<g id="a_node7"><a xlink:href="_device_config_8h.html" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="_device_config_8h.html" target="_top" xlink:title="Node configuration options.">
 <polygon fill="white" stroke="#666666" points="552.5,-74 462.5,-74 462.5,-55 552.5,-55 552.5,-74"/>
 <text text-anchor="middle" x="507.5" y="-62" font-family="Helvetica,sans-Serif" font-size="10.00">DeviceConfig.h</text>
 </a>

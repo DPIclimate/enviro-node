@@ -11,7 +11,7 @@
 <!-- Node1 -->
 <g id="node1" class="node">
 <title>Node1</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="MQTT setup and configuration through the CLI.">
 <polygon fill="#999999" stroke="#666666" points="318,-217 191,-217 191,-176 318,-176 318,-217"/>
 <text text-anchor="start" x="199" y="-205" font-family="Helvetica,sans-Serif" font-size="10.00">firmware/wombat/src</text>
 <text text-anchor="start" x="199" y="-194" font-family="Helvetica,sans-Serif" font-size="10.00">/cli/device_config/mqtt</text>
@@ -82,7 +82,7 @@
 <!-- Node6 -->
 <g id="node6" class="node">
 <title>Node6</title>
-<g id="a_node6"><a xlink:href="mqtt__cli_8h.html" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="mqtt__cli_8h.html" target="_top" xlink:title="MQTT setup and configuration through the CLI.">
 <polygon fill="white" stroke="#666666" points="566.5,-140 442.5,-140 442.5,-110 566.5,-110 566.5,-140"/>
 <text text-anchor="start" x="450.5" y="-128" font-family="Helvetica,sans-Serif" font-size="10.00">cli/device_config/mqtt</text>
 <text text-anchor="middle" x="504.5" y="-117" font-family="Helvetica,sans-Serif" font-size="10.00">_cli.h</text>
@@ -98,7 +98,7 @@
 <!-- Node7 -->
 <g id="node7" class="node">
 <title>Node7</title>
-<g id="a_node7"><a xlink:href="_device_config_8h.html" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="_device_config_8h.html" target="_top" xlink:title="Node configuration options.">
 <polygon fill="white" stroke="#666666" points="549.5,-74 459.5,-74 459.5,-55 549.5,-55 549.5,-74"/>
 <text text-anchor="middle" x="504.5" y="-62" font-family="Helvetica,sans-Serif" font-size="10.00">DeviceConfig.h</text>
 </a>

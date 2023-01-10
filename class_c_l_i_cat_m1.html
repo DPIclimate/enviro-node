@@ -98,6 +98,9 @@ $(document).ready(function(){initNavTree('class_c_l_i_cat_m1.html',''); initResi
 </div><!--header-->
 <div class="contents">
 
+<p><a class="el" href="class_c_l_i.html" title="FreeRTOS command line interface.">CLI</a> for CAT-M1 commands.  
+ <a href="class_c_l_i_cat_m1.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="cat-m1_8h_source.html">cat-m1.h</a>&gt;</code></p>
 <div class="dynheader">
 Collaboration diagram for CLICatM1:</div>
@@ -109,14 +112,19 @@ Collaboration diagram for CLICatM1:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a537816d95caa4ccc1c7bf781e148add8"><td class="memItemLeft" align="right" valign="top">static BaseType_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_l_i_cat_m1.html#a537816d95caa4ccc1c7bf781e148add8">enter_cli</a> (char *pcWriteBuffer, size_t xWriteBufferLen, const char *pcCommandString)</td></tr>
+<tr class="memdesc:a537816d95caa4ccc1c7bf781e148add8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Command line interface handler for a Cat M1 device.  <a href="class_c_l_i_cat_m1.html#a537816d95caa4ccc1c7bf781e148add8">More...</a><br /></td></tr>
 <tr class="separator:a537816d95caa4ccc1c7bf781e148add8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
 <tr class="memitem:a3e01bf188705834a7af433850861a79a"><td class="memItemLeft" align="right" valign="top">static const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_l_i_cat_m1.html#a3e01bf188705834a7af433850861a79a">cmd</a> = &quot;c1&quot;</td></tr>
+<tr class="memdesc:a3e01bf188705834a7af433850861a79a"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_c_l_i.html" title="FreeRTOS command line interface.">CLI</a> CAT-M1 reference, to send commands use "c1" followed by the command.  <a href="class_c_l_i_cat_m1.html#a3e01bf188705834a7af433850861a79a">More...</a><br /></td></tr>
 <tr class="separator:a3e01bf188705834a7af433850861a79a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p ><a class="el" href="class_c_l_i.html" title="FreeRTOS command line interface.">CLI</a> for CAT-M1 commands. </p>
+<p >Features a pass through mode where commands are sent directly to the modem. Several other commands are inbuilt to allow for communications to and from the modem without typing several AT-commands. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a537816d95caa4ccc1c7bf781e148add8" name="a537816d95caa4ccc1c7bf781e148add8"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a537816d95caa4ccc1c7bf781e148add8">&#9670;&#160;</a></span>enter_cli()</h2>
 
@@ -157,6 +165,28 @@ Static Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Command line interface handler for a Cat M1 device. </p>
+<p >This function is a command line interface (<a class="el" href="class_c_l_i.html" title="FreeRTOS command line interface.">CLI</a>) handler for a Cat M1 device. It processes commands entered by the user and takes the following actions:</p>
+<ul>
+<li><code>pt</code>: Enter Cat M1 passthrough mode. In this mode, all input from the user is forwarded to the Cat M1 device and all output from the Cat M1 device is displayed to the user. The mode is exited by pressing ctrl-D.</li>
+<li><code>pwr</code>: Set the power state of the Cat M1 device, 1 on, 0 off.</li>
+<li><code>on</code>: Turn the Cat M1 device on.</li>
+<li><code>off</code>: Turn the Cat M1 device off.</li>
+<li><code>restart</code>: Restart the Cat M1 device.</li>
+<li><code>factory</code>: Reset the Cat M1 device to factory settings.</li>
+<li><code>echo</code>: Enable or disable command echo.</li>
+<li><code>cme</code>: Enable or disable the +CME error code feature.</li>
+</ul>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pcWriteBuffer</td><td>A buffer where the function can write a response string to be displayed to the user. </td></tr>
+    <tr><td class="paramname">xWriteBufferLen</td><td>The length of the pcWriteBuffer buffer. </td></tr>
+    <tr><td class="paramname">pcCommandString</td><td>A string containing the command entered by the user. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>pdFALSE if there are no more responses to be displayed, or pdTRUE if there are more responses to be displayed in subsequent calls to this function. </dd></dl>
+
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
@@ -179,6 +209,8 @@ Static Public Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p><a class="el" href="class_c_l_i.html" title="FreeRTOS command line interface.">CLI</a> CAT-M1 reference, to send commands use "c1" followed by the command. </p>
 
 </div>
 </div>

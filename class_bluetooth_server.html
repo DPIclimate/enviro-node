@@ -98,6 +98,9 @@ $(document).ready(function(){initNavTree('class_bluetooth_server.html',''); init
 </div><!--header-->
 <div class="contents">
 
+<p>BluetoothLE server instance.  
+ <a href="class_bluetooth_server.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="server_8h_source.html">server.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for BluetoothServer:</div>
@@ -129,7 +132,10 @@ Static Public Attributes</h2></td></tr>
 <tr class="memitem:a665784c2cad42ef39441b9e237392390"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bluetooth_server.html#a665784c2cad42ef39441b9e237392390">device_connected</a> = false</td></tr>
 <tr class="separator:a665784c2cad42ef39441b9e237392390"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p >BluetoothLE server instance. </p>
+<p >Handles BluetoothLE connections and notifications when variables are updated. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="af532b4f63ed70184c6271055dd1286d0" name="af532b4f63ed70184c6271055dd1286d0"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af532b4f63ed70184c6271055dd1286d0">&#9670;&#160;</a></span>begin()</h2>
 
@@ -211,7 +217,7 @@ Static Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Notify device over BLE that a UART message is available. </p>
-<p >This method allows for <a class="el" href="class_c_l_i.html">CLI</a> messages and other log output to be transmitted over BLEUart rather than just to hardware UART.</p>
+<p >This method allows for <a class="el" href="class_c_l_i.html" title="FreeRTOS command line interface.">CLI</a> messages and other log output to be transmitted over BLEUart rather than just to hardware UART.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">message</td><td>Message to send to BLE client. </td></tr>

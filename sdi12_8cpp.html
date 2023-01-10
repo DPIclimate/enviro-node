@@ -96,6 +96,9 @@ $(document).ready(function(){initNavTree('sdi12_8cpp.html',''); initResizable();
   <div class="headertitle"><div class="title">sdi12.cpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>SDI-12 command line interface handler.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="sdi12_8h_source.html">cli/peripherals/sdi12.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_sensor_task_8h_source.html">SensorTask.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
@@ -113,20 +116,27 @@ Macros</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
 <tr class="memitem:a70111ee2fd620a603fc5873254338493"><td class="memItemLeft" align="right" valign="top">static StreamString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sdi12_8cpp.html#a70111ee2fd620a603fc5873254338493">response_buffer_</a></td></tr>
+<tr class="memdesc:a70111ee2fd620a603fc5873254338493"><td class="mdescLeft">&#160;</td><td class="mdescRight">Holds responses from a SDI-12 device.  <a href="sdi12_8cpp.html#a70111ee2fd620a603fc5873254338493">More...</a><br /></td></tr>
 <tr class="separator:a70111ee2fd620a603fc5873254338493"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9feff4e42e3e246310687f5462ee3bd2"><td class="memItemLeft" align="right" valign="top">static char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sdi12_8cpp.html#a9feff4e42e3e246310687f5462ee3bd2">response</a> [<a class="el" href="class_c_l_i_sdi12.html#aa3df494a0e9dee5b4c079048f4a0c52e">CLISdi12::MAX_SDI12_RES_LEN</a>]</td></tr>
 <tr class="separator:a9feff4e42e3e246310687f5462ee3bd2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aff64f2691f2a522d74ea33188e8aad14"><td class="memItemLeft" align="right" valign="top">Stream *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sdi12_8cpp.html#aff64f2691f2a522d74ea33188e8aad14">cliStream</a></td></tr>
+<tr class="memdesc:aff64f2691f2a522d74ea33188e8aad14"><td class="mdescLeft">&#160;</td><td class="mdescRight">Command line interface stream initialised in the <code>repl()</code> function.  <a href="sdi12_8cpp.html#aff64f2691f2a522d74ea33188e8aad14">More...</a><br /></td></tr>
 <tr class="separator:aff64f2691f2a522d74ea33188e8aad14"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaa356c858fec3352d1064a864cbb05f6"><td class="memItemLeft" align="right" valign="top">SDI12&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sdi12_8cpp.html#aaa356c858fec3352d1064a864cbb05f6">sdi12</a></td></tr>
+<tr class="memdesc:aaa356c858fec3352d1064a864cbb05f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enviro-DIY SDI-12 instance.  <a href="sdi12_8cpp.html#aaa356c858fec3352d1064a864cbb05f6">More...</a><br /></td></tr>
 <tr class="separator:aaa356c858fec3352d1064a864cbb05f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac1a13aafa736d052c029149af527bb9b"><td class="memItemLeft" align="right" valign="top">DPIClimate12&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sdi12_8cpp.html#ac1a13aafa736d052c029149af527bb9b">dpi12</a></td></tr>
+<tr class="memdesc:ac1a13aafa736d052c029149af527bb9b"><td class="mdescLeft">&#160;</td><td class="mdescRight">DPI12 instance.  <a href="sdi12_8cpp.html#ac1a13aafa736d052c029149af527bb9b">More...</a><br /></td></tr>
 <tr class="separator:ac1a13aafa736d052c029149af527bb9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abfdc03a08a9960c1fb81cec3813f1082"><td class="memItemLeft" align="right" valign="top">sensor_list&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sdi12_8cpp.html#abfdc03a08a9960c1fb81cec3813f1082">sensors</a></td></tr>
 <tr class="memdesc:abfdc03a08a9960c1fb81cec3813f1082"><td class="mdescLeft">&#160;</td><td class="mdescRight">The ID information of each sensor found on the SDI-12 bus.  <a href="sdi12_8cpp.html#abfdc03a08a9960c1fb81cec3813f1082">More...</a><br /></td></tr>
 <tr class="separator:abfdc03a08a9960c1fb81cec3813f1082"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Macro Definition Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p >SDI-12 command line interface handler. </p>
+<dl class="section date"><dt>Date</dt><dd>January 2023 </dd></dl>
+</div><h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="afc3d101f633a076cc1ca84b85b6224b2" name="afc3d101f633a076cc1ca84b85b6224b2"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#afc3d101f633a076cc1ca84b85b6224b2">&#9670;&#160;</a></span>TAG</h2>
 
@@ -162,6 +172,10 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Command line interface stream initialised in the <code>repl()</code> function. </p>
+<p >Command line interface stream initialised in the <code>repl()</code> function.</p>
+<p >Stream originating from the <a class="el" href="class_c_l_i.html" title="FreeRTOS command line interface.">CLI</a>. </p>
+
 </div>
 </div>
 <a id="ac1a13aafa736d052c029149af527bb9b" name="ac1a13aafa736d052c029149af527bb9b"></a>
@@ -183,6 +197,8 @@ Variables</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>DPI12 instance. </p>
 
 </div>
 </div>
@@ -228,6 +244,8 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Holds responses from a SDI-12 device. </p>
+
 </div>
 </div>
 <a id="aaa356c858fec3352d1064a864cbb05f6" name="aaa356c858fec3352d1064a864cbb05f6"></a>
@@ -249,6 +267,8 @@ Variables</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Enviro-DIY SDI-12 instance. </p>
 
 </div>
 </div>

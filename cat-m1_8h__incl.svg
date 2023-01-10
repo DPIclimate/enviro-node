@@ -11,7 +11,7 @@
 <!-- Node1 -->
 <g id="node1" class="node">
 <title>Node1</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="CAT&#45;M1 CLI command request and response handler.">
 <polygon fill="#999999" stroke="#666666" points="325,-195 184,-195 184,-165 325,-165 325,-195"/>
 <text text-anchor="start" x="192" y="-183" font-family="Helvetica,sans-Serif" font-size="10.00">firmware/wombat/include</text>
 <text text-anchor="middle" x="254.5" y="-172" font-family="Helvetica,sans-Serif" font-size="10.00">/cli/peripherals/cat&#45;m1.h</text>

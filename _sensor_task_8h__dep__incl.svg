@@ -37,7 +37,7 @@
 <!-- Node3 -->
 <g id="node3" class="node">
 <title>Node3</title>
-<g id="a_node3"><a xlink:href="sdi12_8cpp.html" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="sdi12_8cpp.html" target="_top" xlink:title="SDI&#45;12 command line interface handler.">
 <polygon fill="white" stroke="#666666" points="276,-30 138,-30 138,0 276,0 276,-30"/>
 <text text-anchor="start" x="146" y="-18" font-family="Helvetica,sans-Serif" font-size="10.00">firmware/wombat/src</text>
 <text text-anchor="middle" x="207" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00">/cli/peripherals/sdi12.cpp</text>

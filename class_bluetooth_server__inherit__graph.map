@@ -1,4 +1,4 @@
 <map id="BluetoothServer" name="BluetoothServer">
-<area shape="rect" id="node1" title=" " alt="" coords="13,5,196,104"/>
-<area shape="rect" id="node2" href="$class_bluetooth_server_callbacks.html" title=" " alt="" coords="5,152,204,221"/>
+<area shape="rect" id="node1" title="BluetoothLE server instance." alt="" coords="13,5,196,104"/>
+<area shape="rect" id="node2" href="$class_bluetooth_server_callbacks.html" title="BluetoothLE server callbacks when devices connect and disconnect." alt="" coords="5,152,204,221"/>
 </map>

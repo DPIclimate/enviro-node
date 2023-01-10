@@ -95,34 +95,48 @@ $(document).ready(function(){initNavTree('_c_l_i_8cpp.html',''); initResizable()
   <div class="headertitle"><div class="title">CLI.cpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>FreeRTOS <a class="el" href="class_c_l_i.html" title="FreeRTOS command line interface.">CLI</a> handler.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="_c_l_i_8h_source.html">cli/CLI.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for CLI.cpp:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="_c_l_i_8cpp__incl.svg" width="2038" height="506"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="_c_l_i_8cpp__incl.svg" width="2183" height="432"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
 <tr class="memitem:aff64f2691f2a522d74ea33188e8aad14"><td class="memItemLeft" align="right" valign="top">Stream *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_c_l_i_8cpp.html#aff64f2691f2a522d74ea33188e8aad14">cliStream</a> = nullptr</td></tr>
+<tr class="memdesc:aff64f2691f2a522d74ea33188e8aad14"><td class="mdescLeft">&#160;</td><td class="mdescRight">Command line stream.  <a href="_c_l_i_8cpp.html#aff64f2691f2a522d74ea33188e8aad14">More...</a><br /></td></tr>
 <tr class="separator:aff64f2691f2a522d74ea33188e8aad14"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2229bd6337a76b1788849d5541f9f07a"><td class="memItemLeft" align="right" valign="top">static char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_c_l_i_8cpp.html#a2229bd6337a76b1788849d5541f9f07a">cmd</a> [<a class="el" href="class_c_l_i.html#a08716882278135d4aa8e795e12b3a03c">CLI::MAX_CLI_CMD_LEN</a>+1]</td></tr>
+<tr class="memdesc:a2229bd6337a76b1788849d5541f9f07a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Command buffer.  <a href="_c_l_i_8cpp.html#a2229bd6337a76b1788849d5541f9f07a">More...</a><br /></td></tr>
 <tr class="separator:a2229bd6337a76b1788849d5541f9f07a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adb7754cd934d9e1011c9c08e079782ba"><td class="memItemLeft" align="right" valign="top">static char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_c_l_i_8cpp.html#adb7754cd934d9e1011c9c08e079782ba">msg</a> [<a class="el" href="class_c_l_i.html#a08f1a712847c224164c889b713a4b598">CLI::MAX_CLI_MSG_LEN</a>+1]</td></tr>
+<tr class="memdesc:adb7754cd934d9e1011c9c08e079782ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Message buffer.  <a href="_c_l_i_8cpp.html#adb7754cd934d9e1011c9c08e079782ba">More...</a><br /></td></tr>
 <tr class="separator:adb7754cd934d9e1011c9c08e079782ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a74ebeb6d5c8b0d404537a38d262f184b"><td class="memItemLeft" align="right" valign="top">static const CLI_Command_Definition_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_c_l_i_8cpp.html#a74ebeb6d5c8b0d404537a38d262f184b">configCmd</a></td></tr>
+<tr class="memdesc:a74ebeb6d5c8b0d404537a38d262f184b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Node configuration commands.  <a href="_c_l_i_8cpp.html#a74ebeb6d5c8b0d404537a38d262f184b">More...</a><br /></td></tr>
 <tr class="separator:a74ebeb6d5c8b0d404537a38d262f184b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4ad89cc4dc576d92d207a6d2c33bd65b"><td class="memItemLeft" align="right" valign="top">static const CLI_Command_Definition_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_c_l_i_8cpp.html#a4ad89cc4dc576d92d207a6d2c33bd65b">intervalCmd</a></td></tr>
+<tr class="memdesc:a4ad89cc4dc576d92d207a6d2c33bd65b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Node measurement interval commands.  <a href="_c_l_i_8cpp.html#a4ad89cc4dc576d92d207a6d2c33bd65b">More...</a><br /></td></tr>
 <tr class="separator:a4ad89cc4dc576d92d207a6d2c33bd65b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0dad8acff206f684bb3c91ba95c1fecd"><td class="memItemLeft" align="right" valign="top">static const CLI_Command_Definition_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_c_l_i_8cpp.html#a0dad8acff206f684bb3c91ba95c1fecd">sdi12Cmd</a></td></tr>
+<tr class="memdesc:a0dad8acff206f684bb3c91ba95c1fecd"><td class="mdescLeft">&#160;</td><td class="mdescRight">SDI-12 commands.  <a href="_c_l_i_8cpp.html#a0dad8acff206f684bb3c91ba95c1fecd">More...</a><br /></td></tr>
 <tr class="separator:a0dad8acff206f684bb3c91ba95c1fecd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8b34527447ddcde630c505ebc69b857a"><td class="memItemLeft" align="right" valign="top">static const CLI_Command_Definition_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_c_l_i_8cpp.html#a8b34527447ddcde630c505ebc69b857a">catM1Cmd</a></td></tr>
+<tr class="memdesc:a8b34527447ddcde630c505ebc69b857a"><td class="mdescLeft">&#160;</td><td class="mdescRight">CAT-M1 modem commands.  <a href="_c_l_i_8cpp.html#a8b34527447ddcde630c505ebc69b857a">More...</a><br /></td></tr>
 <tr class="separator:a8b34527447ddcde630c505ebc69b857a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1ca2650024c4a322af068be6178fe01a"><td class="memItemLeft" align="right" valign="top">static const CLI_Command_Definition_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_c_l_i_8cpp.html#a1ca2650024c4a322af068be6178fe01a">mqttCmd</a></td></tr>
+<tr class="memdesc:a1ca2650024c4a322af068be6178fe01a"><td class="mdescLeft">&#160;</td><td class="mdescRight">MQTT setup and connection commands.  <a href="_c_l_i_8cpp.html#a1ca2650024c4a322af068be6178fe01a">More...</a><br /></td></tr>
 <tr class="separator:a1ca2650024c4a322af068be6178fe01a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Variable Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p >FreeRTOS <a class="el" href="class_c_l_i.html" title="FreeRTOS command line interface.">CLI</a> handler. </p>
+<dl class="section date"><dt>Date</dt><dd>January 2023 </dd></dl>
+</div><h2 class="groupheader">Variable Documentation</h2>
 <a id="a8b34527447ddcde630c505ebc69b857a" name="a8b34527447ddcde630c505ebc69b857a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8b34527447ddcde630c505ebc69b857a">&#9670;&#160;</a></span>catM1Cmd</h2>
 
@@ -148,9 +162,11 @@ Variables</h2></td></tr>
 <div class="line">        <a class="code hl_function" href="class_c_l_i_cat_m1.html#a537816d95caa4ccc1c7bf781e148add8">CLICatM1::enter_cli</a>,</div>
 <div class="line">        -1</div>
 <div class="line">}</div>
-<div class="ttc" id="aclass_c_l_i_cat_m1_html_a3e01bf188705834a7af433850861a79a"><div class="ttname"><a href="class_c_l_i_cat_m1.html#a3e01bf188705834a7af433850861a79a">CLICatM1::cmd</a></div><div class="ttdeci">static const std::string cmd</div><div class="ttdef"><b>Definition:</b> cat-m1.h:13</div></div>
-<div class="ttc" id="aclass_c_l_i_cat_m1_html_a537816d95caa4ccc1c7bf781e148add8"><div class="ttname"><a href="class_c_l_i_cat_m1.html#a537816d95caa4ccc1c7bf781e148add8">CLICatM1::enter_cli</a></div><div class="ttdeci">static BaseType_t enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen, const char *pcCommandString)</div><div class="ttdef"><b>Definition:</b> cat-m1.cpp:28</div></div>
+<div class="ttc" id="aclass_c_l_i_cat_m1_html_a3e01bf188705834a7af433850861a79a"><div class="ttname"><a href="class_c_l_i_cat_m1.html#a3e01bf188705834a7af433850861a79a">CLICatM1::cmd</a></div><div class="ttdeci">static const std::string cmd</div><div class="ttdoc">CLI CAT-M1 reference, to send commands use &quot;c1&quot; followed by the command.</div><div class="ttdef"><b>Definition:</b> cat-m1.h:28</div></div>
+<div class="ttc" id="aclass_c_l_i_cat_m1_html_a537816d95caa4ccc1c7bf781e148add8"><div class="ttname"><a href="class_c_l_i_cat_m1.html#a537816d95caa4ccc1c7bf781e148add8">CLICatM1::enter_cli</a></div><div class="ttdeci">static BaseType_t enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen, const char *pcCommandString)</div><div class="ttdoc">Command line interface handler for a Cat M1 device.</div><div class="ttdef"><b>Definition:</b> cat-m1.cpp:71</div></div>
 </div><!-- fragment -->
+<p>CAT-M1 modem commands. </p>
+
 </div>
 </div>
 <a id="aff64f2691f2a522d74ea33188e8aad14" name="aff64f2691f2a522d74ea33188e8aad14"></a>
@@ -164,6 +180,10 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Command line stream. </p>
+<p >Command line interface stream initialised in the <code>repl()</code> function.</p>
+<p >Stream originating from the <a class="el" href="class_c_l_i.html" title="FreeRTOS command line interface.">CLI</a>. </p>
 
 </div>
 </div>
@@ -186,6 +206,8 @@ Variables</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Command buffer. </p>
 
 </div>
 </div>
@@ -214,9 +236,11 @@ Variables</h2></td></tr>
 <div class="line">        <a class="code hl_function" href="class_c_l_i_config.html#a009f5fb24607afaeffa38b6f2d94f61c">CLIConfig::enter_cli</a>,</div>
 <div class="line">        -1</div>
 <div class="line">}</div>
-<div class="ttc" id="aclass_c_l_i_config_html_a009f5fb24607afaeffa38b6f2d94f61c"><div class="ttname"><a href="class_c_l_i_config.html#a009f5fb24607afaeffa38b6f2d94f61c">CLIConfig::enter_cli</a></div><div class="ttdeci">static BaseType_t enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen, const char *pcCommandString)</div><div class="ttdef"><b>Definition:</b> config_cli.cpp:14</div></div>
-<div class="ttc" id="aclass_c_l_i_config_html_afeb56da313dcae6f782248b2b0ca2523"><div class="ttname"><a href="class_c_l_i_config.html#afeb56da313dcae6f782248b2b0ca2523">CLIConfig::cmd</a></div><div class="ttdeci">static const std::string cmd</div><div class="ttdef"><b>Definition:</b> config_cli.h:10</div></div>
+<div class="ttc" id="aclass_c_l_i_config_html_a009f5fb24607afaeffa38b6f2d94f61c"><div class="ttname"><a href="class_c_l_i_config.html#a009f5fb24607afaeffa38b6f2d94f61c">CLIConfig::enter_cli</a></div><div class="ttdeci">static BaseType_t enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen, const char *pcCommandString)</div><div class="ttdoc">Enter command line interface (CLI) mode for the given command string.</div><div class="ttdef"><b>Definition:</b> config_cli.cpp:41</div></div>
+<div class="ttc" id="aclass_c_l_i_config_html_afeb56da313dcae6f782248b2b0ca2523"><div class="ttname"><a href="class_c_l_i_config.html#afeb56da313dcae6f782248b2b0ca2523">CLIConfig::cmd</a></div><div class="ttdeci">static const std::string cmd</div><div class="ttdoc">CLI prefix for configuration commands.</div><div class="ttdef"><b>Definition:</b> config_cli.h:22</div></div>
 </div><!-- fragment -->
+<p>Node configuration commands. </p>
+
 </div>
 </div>
 <a id="a4ad89cc4dc576d92d207a6d2c33bd65b" name="a4ad89cc4dc576d92d207a6d2c33bd65b"></a>
@@ -244,9 +268,11 @@ Variables</h2></td></tr>
 <div class="line">        <a class="code hl_function" href="class_c_l_i_config_intervals.html#abfdce68457f41e1c4704c6312128f350">CLIConfigIntervals::enter_cli</a>,</div>
 <div class="line">        -1</div>
 <div class="line">}</div>
-<div class="ttc" id="aclass_c_l_i_config_intervals_html_abfdce68457f41e1c4704c6312128f350"><div class="ttname"><a href="class_c_l_i_config_intervals.html#abfdce68457f41e1c4704c6312128f350">CLIConfigIntervals::enter_cli</a></div><div class="ttdeci">static BaseType_t enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen, const char *pcCommandString)</div><div class="ttdoc">CLI entrypoint for measurement and uplink interval setup.</div><div class="ttdef"><b>Definition:</b> acquisition_intervals.cpp:45</div></div>
+<div class="ttc" id="aclass_c_l_i_config_intervals_html_abfdce68457f41e1c4704c6312128f350"><div class="ttname"><a href="class_c_l_i_config_intervals.html#abfdce68457f41e1c4704c6312128f350">CLIConfigIntervals::enter_cli</a></div><div class="ttdeci">static BaseType_t enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen, const char *pcCommandString)</div><div class="ttdoc">CLI entrypoint for measurement and uplink interval setup.</div><div class="ttdef"><b>Definition:</b> acquisition_intervals.cpp:65</div></div>
 <div class="ttc" id="aclass_c_l_i_config_intervals_html_ac26bdeed6e4e42a203b31d19288eabd3"><div class="ttname"><a href="class_c_l_i_config_intervals.html#ac26bdeed6e4e42a203b31d19288eabd3">CLIConfigIntervals::cmd</a></div><div class="ttdeci">static const std::string cmd</div><div class="ttdoc">Command to change measurement and/or uplink interval.</div><div class="ttdef"><b>Definition:</b> acquisition_intervals.h:29</div></div>
 </div><!-- fragment -->
+<p>Node measurement interval commands. </p>
+
 </div>
 </div>
 <a id="a1ca2650024c4a322af068be6178fe01a" name="a1ca2650024c4a322af068be6178fe01a"></a>
@@ -274,9 +300,11 @@ Variables</h2></td></tr>
 <div class="line">        <a class="code hl_function" href="class_c_l_i_m_q_t_t.html#aeea24c8f4d5634447a460a5562f8c9d1">CLIMQTT::enter_cli</a>,</div>
 <div class="line">        -1</div>
 <div class="line">}</div>
-<div class="ttc" id="aclass_c_l_i_m_q_t_t_html_a83896a35be70795033b060b16ff0a4f8"><div class="ttname"><a href="class_c_l_i_m_q_t_t.html#a83896a35be70795033b060b16ff0a4f8">CLIMQTT::cmd</a></div><div class="ttdeci">static const std::string cmd</div><div class="ttdef"><b>Definition:</b> mqtt_cli.h:10</div></div>
-<div class="ttc" id="aclass_c_l_i_m_q_t_t_html_aeea24c8f4d5634447a460a5562f8c9d1"><div class="ttname"><a href="class_c_l_i_m_q_t_t.html#aeea24c8f4d5634447a460a5562f8c9d1">CLIMQTT::enter_cli</a></div><div class="ttdeci">static BaseType_t enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen, const char *pcCommandString)</div><div class="ttdef"><b>Definition:</b> mqtt_cli.cpp:27</div></div>
+<div class="ttc" id="aclass_c_l_i_m_q_t_t_html_a83896a35be70795033b060b16ff0a4f8"><div class="ttname"><a href="class_c_l_i_m_q_t_t.html#a83896a35be70795033b060b16ff0a4f8">CLIMQTT::cmd</a></div><div class="ttdeci">static const std::string cmd</div><div class="ttdoc">Prefix for all MQTT related configuration commands.</div><div class="ttdef"><b>Definition:</b> mqtt_cli.h:25</div></div>
+<div class="ttc" id="aclass_c_l_i_m_q_t_t_html_aeea24c8f4d5634447a460a5562f8c9d1"><div class="ttname"><a href="class_c_l_i_m_q_t_t.html#aeea24c8f4d5634447a460a5562f8c9d1">CLIMQTT::enter_cli</a></div><div class="ttdeci">static BaseType_t enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen, const char *pcCommandString)</div><div class="ttdoc">Command-line interface command for setting MQTT parameters.</div><div class="ttdef"><b>Definition:</b> mqtt_cli.cpp:57</div></div>
 </div><!-- fragment -->
+<p>MQTT setup and connection commands. </p>
+
 </div>
 </div>
 <a id="adb7754cd934d9e1011c9c08e079782ba" name="adb7754cd934d9e1011c9c08e079782ba"></a>
@@ -298,6 +326,8 @@ Variables</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Message buffer. </p>
 
 </div>
 </div>
@@ -326,9 +356,11 @@ Variables</h2></td></tr>
 <div class="line">        <a class="code hl_function" href="class_c_l_i_sdi12.html#a539a3c3a85eaf8db91045b42f3b2a520">CLISdi12::enter_cli</a>,</div>
 <div class="line">        -1</div>
 <div class="line">}</div>
-<div class="ttc" id="aclass_c_l_i_sdi12_html_a539a3c3a85eaf8db91045b42f3b2a520"><div class="ttname"><a href="class_c_l_i_sdi12.html#a539a3c3a85eaf8db91045b42f3b2a520">CLISdi12::enter_cli</a></div><div class="ttdeci">static BaseType_t enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen, const char *pcCommandString)</div><div class="ttdef"><b>Definition:</b> sdi12.cpp:14</div></div>
-<div class="ttc" id="aclass_c_l_i_sdi12_html_aa114d6852c2131888d46174814ed0405"><div class="ttname"><a href="class_c_l_i_sdi12.html#aa114d6852c2131888d46174814ed0405">CLISdi12::cmd</a></div><div class="ttdeci">static const std::string cmd</div><div class="ttdef"><b>Definition:</b> sdi12.h:15</div></div>
+<div class="ttc" id="aclass_c_l_i_sdi12_html_a539a3c3a85eaf8db91045b42f3b2a520"><div class="ttname"><a href="class_c_l_i_sdi12.html#a539a3c3a85eaf8db91045b42f3b2a520">CLISdi12::enter_cli</a></div><div class="ttdeci">static BaseType_t enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen, const char *pcCommandString)</div><div class="ttdoc">Command line interface handler for an SDI-12 sensor.</div><div class="ttdef"><b>Definition:</b> sdi12.cpp:58</div></div>
+<div class="ttc" id="aclass_c_l_i_sdi12_html_aa114d6852c2131888d46174814ed0405"><div class="ttname"><a href="class_c_l_i_sdi12.html#aa114d6852c2131888d46174814ed0405">CLISdi12::cmd</a></div><div class="ttdeci">static const std::string cmd</div><div class="ttdoc">CLI SDI-12 reference, to send commands use &quot;sdi12&quot; followed by the cmd.</div><div class="ttdef"><b>Definition:</b> sdi12.h:30</div></div>
 </div><!-- fragment -->
+<p>SDI-12 commands. </p>
+
 </div>
 </div>
 </div><!-- contents -->

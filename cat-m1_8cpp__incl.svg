@@ -11,7 +11,7 @@
 <!-- Node1 -->
 <g id="node1" class="node">
 <title>Node1</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="CAT&#45;M1 CLI command request and response handler.">
 <polygon fill="#999999" stroke="#666666" points="724.5,-272 604.5,-272 604.5,-231 724.5,-231 724.5,-272"/>
 <text text-anchor="start" x="612.5" y="-260" font-family="Helvetica,sans-Serif" font-size="10.00">firmware/wombat/src</text>
 <text text-anchor="start" x="612.5" y="-249" font-family="Helvetica,sans-Serif" font-size="10.00">/cli/peripherals/cat</text>
@@ -22,7 +22,7 @@
 <!-- Node2 -->
 <g id="node2" class="node">
 <title>Node2</title>
-<g id="a_node2"><a xlink:href="cat-m1_8h.html" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="cat-m1_8h.html" target="_top" xlink:title="CAT&#45;M1 CLI command request and response handler.">
 <polygon fill="white" stroke="#666666" points="378.5,-195 246.5,-195 246.5,-176 378.5,-176 378.5,-195"/>
 <text text-anchor="middle" x="312.5" y="-183" font-family="Helvetica,sans-Serif" font-size="10.00">cli/peripherals/cat&#45;m1.h</text>
 </a>

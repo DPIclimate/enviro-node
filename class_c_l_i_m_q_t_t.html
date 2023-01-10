@@ -99,6 +99,9 @@ $(document).ready(function(){initNavTree('class_c_l_i_m_q_t_t.html',''); initRes
 </div><!--header-->
 <div class="contents">
 
+<p><a class="el" href="class_c_l_i.html" title="FreeRTOS command line interface.">CLI</a> MQTT configuration.  
+ <a href="class_c_l_i_m_q_t_t.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="mqtt__cli_8h_source.html">mqtt_cli.h</a>&gt;</code></p>
 <div class="dynheader">
 Collaboration diagram for CLIMQTT:</div>
@@ -109,22 +112,29 @@ Collaboration diagram for CLIMQTT:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:aeea24c8f4d5634447a460a5562f8c9d1"><td class="memItemLeft" align="right" valign="top">static BaseType_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_l_i_m_q_t_t.html#aeea24c8f4d5634447a460a5562f8c9d1">enter_cli</a> (char *pcWriteBuffer, size_t xWriteBufferLen, const char *pcCommandString)</td></tr>
-<tr class="separator:aeea24c8f4d5634447a460a5562f8c9d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1081f0c4e2cb53e77d11b2ce3be27deb"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_l_i_m_q_t_t.html#a1081f0c4e2cb53e77d11b2ce3be27deb">dump</a> (Stream &amp;stream)</td></tr>
+<tr class="memdesc:a1081f0c4e2cb53e77d11b2ce3be27deb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Display current MQTT configuration.  <a href="class_c_l_i_m_q_t_t.html#a1081f0c4e2cb53e77d11b2ce3be27deb">More...</a><br /></td></tr>
 <tr class="separator:a1081f0c4e2cb53e77d11b2ce3be27deb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeea24c8f4d5634447a460a5562f8c9d1"><td class="memItemLeft" align="right" valign="top">static BaseType_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_l_i_m_q_t_t.html#aeea24c8f4d5634447a460a5562f8c9d1">enter_cli</a> (char *pcWriteBuffer, size_t xWriteBufferLen, const char *pcCommandString)</td></tr>
+<tr class="memdesc:aeea24c8f4d5634447a460a5562f8c9d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Command-line interface command for setting MQTT parameters.  <a href="class_c_l_i_m_q_t_t.html#aeea24c8f4d5634447a460a5562f8c9d1">More...</a><br /></td></tr>
+<tr class="separator:aeea24c8f4d5634447a460a5562f8c9d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
 <tr class="memitem:a83896a35be70795033b060b16ff0a4f8"><td class="memItemLeft" align="right" valign="top">static const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_l_i_m_q_t_t.html#a83896a35be70795033b060b16ff0a4f8">cmd</a> = &quot;mqtt&quot;</td></tr>
+<tr class="memdesc:a83896a35be70795033b060b16ff0a4f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prefix for all MQTT related configuration commands.  <a href="class_c_l_i_m_q_t_t.html#a83896a35be70795033b060b16ff0a4f8">More...</a><br /></td></tr>
 <tr class="separator:a83896a35be70795033b060b16ff0a4f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-attribs" name="pri-static-attribs"></a>
 Static Private Attributes</h2></td></tr>
 <tr class="memitem:a2cb2e95ca5c3168216c19b9688df7aa4"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_device_config.html">DeviceConfig</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_l_i_m_q_t_t.html#a2cb2e95ca5c3168216c19b9688df7aa4">config</a> = <a class="el" href="class_device_config.html#a5413d27101c0af2f958cec5cbea36a31">DeviceConfig::get</a>()</td></tr>
+<tr class="memdesc:a2cb2e95ca5c3168216c19b9688df7aa4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the current device configuration upon initialisation.  <a href="class_c_l_i_m_q_t_t.html#a2cb2e95ca5c3168216c19b9688df7aa4">More...</a><br /></td></tr>
 <tr class="separator:a2cb2e95ca5c3168216c19b9688df7aa4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p ><a class="el" href="class_c_l_i.html" title="FreeRTOS command line interface.">CLI</a> MQTT configuration. </p>
+<p >Provides an interface between the user and the MQTT settings stored on the ESP32 in SPIFFS. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a1081f0c4e2cb53e77d11b2ce3be27deb" name="a1081f0c4e2cb53e77d11b2ce3be27deb"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1081f0c4e2cb53e77d11b2ce3be27deb">&#9670;&#160;</a></span>dump()</h2>
 
@@ -148,6 +158,14 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Display current MQTT configuration. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">stream</td><td>Output stream. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -191,6 +209,25 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Command-line interface command for setting MQTT parameters. </p>
+<p >This function provides a command-line interface for setting MQTT connection parameters such as the host, port, user, and password. Commands include:</p>
+<ul>
+<li><code>list</code>: List MQTT configuration.</li>
+<li><code>port</code>: MQTT broker port.</li>
+<li><code>user</code>: MQTT broker username.</li>
+<li><code>password</code>: MQTT broker password.</li>
+</ul>
+<dl class="section note"><dt>Note</dt><dd>Intervals are specified in seconds.</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pcWriteBuffer</td><td>The buffer to write the command's output to. </td></tr>
+    <tr><td class="paramname">xWriteBufferLen</td><td>The length of the write buffer. </td></tr>
+    <tr><td class="paramname">pcCommandString</td><td>The command string to be parsed. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>pdTRUE if there are more responses to come, pdFALSE if this is the final response. </dd></dl>
+
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
@@ -214,6 +251,8 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Prefix for all MQTT related configuration commands. </p>
+
 </div>
 </div>
 <a id="a2cb2e95ca5c3168216c19b9688df7aa4" name="a2cb2e95ca5c3168216c19b9688df7aa4"></a>
@@ -235,6 +274,8 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Get the current device configuration upon initialisation. </p>
 
 </div>
 </div>
