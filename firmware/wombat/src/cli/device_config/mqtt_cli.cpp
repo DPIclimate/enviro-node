@@ -1,3 +1,10 @@
+/**
+ * @file mqtt_cli.cpp
+ *
+ * @brief MQTT setup and configuration through the CLI.
+ *
+ * @date January 2023
+ */
 #include <freertos/FreeRTOS.h>
 #include <Stream.h>
 #include <StreamString.h>
@@ -5,10 +12,17 @@
 #include "cli/FreeRTOS_CLI.h"
 #include "cli/device_config/mqtt_cli.h"
 
+//! ESP32 debug output tag
 #define TAG "mqtt_cli"
 
+//! MQTT CLI response buffer for output to the user
 static StreamString response_buffer_;
 
+/**
+ * @brief Display current MQTT configuration.
+ *
+ * @param stream Output stream.
+ */
 void CLIMQTT::dump(Stream& stream) {
     stream.print("mqtt host ");
     stream.println(config.getMqttHost().c_str());
@@ -22,8 +36,24 @@ void CLIMQTT::dump(Stream& stream) {
     stream.println(config.mqtt_topic_template);
 }
 
-// The interval command sets and gets the various interval values, such as the measurement interval and the
-// uplink interval. Intervals are specified in seconds.
+/**
+ * @brief Command-line interface command for setting MQTT parameters.
+ *
+ * This function provides a command-line interface for setting MQTT connection
+ * parameters such as the host, port, user, and password. Commands include:
+ *
+ * - `list`: List MQTT configuration.
+ * - `port`: MQTT broker port.
+ * - `user`: MQTT broker username.
+ * - `password`: MQTT broker password.
+ *
+ * @note Intervals are specified in seconds.
+ *
+ * @param pcWriteBuffer The buffer to write the command's output to.
+ * @param xWriteBufferLen The length of the write buffer.
+ * @param pcCommandString The command string to be parsed.
+ * @return pdTRUE if there are more responses to come, pdFALSE if this is the final response.
+ */
 BaseType_t CLIMQTT::enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen,
                                          const char *pcCommandString) {
     BaseType_t paramLen = 0;

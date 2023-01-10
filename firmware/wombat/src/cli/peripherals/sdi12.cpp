@@ -1,16 +1,60 @@
+/**
+ * @file sdi12.cpp
+ *
+ * @brief SDI-12 command line interface handler.
+ *
+ * @date January 2023
+ */
 #include "cli/peripherals/sdi12.h"
 #include "SensorTask.h"
 
+//! Holds responses from a SDI-12 device
 static StreamString response_buffer_;
 static char response[CLISdi12::MAX_SDI12_RES_LEN];
+//! Command line interface stream initialised in the `repl()` function
 extern Stream *cliStream;
 
+//! Enviro-DIY SDI-12 instance.
 extern SDI12 sdi12;
+//! DPI12 instance
 extern DPIClimate12 dpi12;
+//!
 extern sensor_list sensors;
 
 #define TAG "cli_sdi12"
 
+/**
+ * @brief Command line interface handler for an SDI-12 sensor.
+ *
+ * This function is a command line interface (CLI) handler for an SDI-12 sensor.
+ * It processes commands entered by the user and takes the appropriate action.
+ *
+ * The function first checks if there is a response stored in the
+ * `response_buffer_` object. If so, it copies the response to the
+ * `pcWriteBuffer` buffer and returns `pdFALSE` if there are no more responses
+ * to be displayed or `pdTRUE` if there are more responses to be displayed in
+ * subsequent calls to this function.
+ *
+ * If there are no responses stored in the `response_buffer_`, the function
+ * checks the command entered by the user and preforms the following commands:
+ *
+ * scan: Scans the SDI-12 bus for sensors and stores the list of sensors in the
+ * `response_buffer_` object.
+ * m: reads the value of a sensor at a specified address and stores the result in
+ * the `response_buffer_`.
+ * ">>": It sends a command to the SDI-12 sensor and stores the response in
+ * the `response_buffer_`.
+ *
+ * @todo `cmd` in this function shadows the declaration in the header file
+ *
+ * @param pcWriteBuffer A buffer where the function can write a response string
+ * to display to the user.
+ * @param xWriteBufferLen The length of the pcWriteBuffer buffer.
+ * @param pcCommandString A string containing the command entered by the user.
+ * @return Returns pdFALSE if there are no more responses to be displayed,
+ * pdTRUE if there are more responses to be displayed in subsequent calls to
+ * this function.
+ */
 BaseType_t CLISdi12::enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen,
                                const char *pcCommandString) {
     BaseType_t paramLen = 0;

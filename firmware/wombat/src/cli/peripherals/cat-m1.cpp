@@ -1,16 +1,35 @@
+/**
+ * @file cat-m1.cpp
+ *
+ * @brief CAT-M1 CLI command request and response handler.
+ *
+ * @date January 2023
+ */
 #include "cli/peripherals/cat-m1.h"
 #include "CAT_M1.h"
 #include "Utils.h"
 #include "SparkFun_u-blox_SARA-R5_Arduino_Library.h"
 #include "globals.h"
 
+//! Sparkfun SARA-R5 library instance
 extern SARA_R5 r5;
-
+//! Holds responses from the modem
 static StreamString response_buffer_;
+//! Stream originating from the CLI
 extern Stream *cliStream;
 
-static int get_response(uint32_t timout = 500) {
-    int ch = waitForChar(LTE_Serial, timout);
+/**
+ * @brief Get response from modem with a timeout.
+ *
+ * After a command has been sent to the modem this function handles the
+ * response. -1 will be returned if the command times out, else the number of
+ * characters in the 'g_buffer' will be returned.
+ *
+ * @param timeout Wait for response timeout.
+ * @return Number of characters in response.
+ */
+static int get_response(uint32_t timeout = 500) {
+    int ch = waitForChar(LTE_Serial, timeout);
     if (ch < 1) {
         return -1;
     }
@@ -25,7 +44,32 @@ static int get_response(uint32_t timout = 500) {
     return i;
 }
 
-BaseType_t CLICatM1::enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen, const char *pcCommandString) {
+/**
+ * @brief Command line interface handler for a Cat M1 device.
+ *
+ * This function is a command line interface (CLI) handler for a Cat M1 device.
+ * It processes commands entered by the user and takes the following actions:
+ *
+ * - `pt`: Enter Cat M1 passthrough mode. In this mode, all input from the user is
+ *     forwarded to the Cat M1 device and all output from the Cat M1 device is
+ *     displayed to the user. The mode is exited by pressing ctrl-D.
+ * - `pwr`: Set the power state of the Cat M1 device, 1 on, 0 off.
+ * - `on`: Turn the Cat M1 device on.
+ * - `off`: Turn the Cat M1 device off.
+ * - `restart`: Restart the Cat M1 device.
+ * - `factory`: Reset the Cat M1 device to factory settings.
+ * - `echo`: Enable or disable command echo.
+ * - `cme`: Enable or disable the +CME error code feature.
+ *
+ * @param pcWriteBuffer A buffer where the function can write a response string
+ *                      to be displayed to the user.
+ * @param xWriteBufferLen The length of the pcWriteBuffer buffer.
+ * @param pcCommandString A string containing the command entered by the user.
+ * @return pdFALSE if there are no more responses to be displayed, or pdTRUE if
+ *         there are more responses to be displayed in subsequent calls to this
+ *         function.
+ */BaseType_t CLICatM1::enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen,
+                                  const char *pcCommandString) {
     BaseType_t paramLen = 0;
     UBaseType_t paramNum = 1;
     const char *param;

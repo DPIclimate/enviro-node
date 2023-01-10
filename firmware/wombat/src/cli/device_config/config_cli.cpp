@@ -1,3 +1,10 @@
+/**
+ * @file config_cli.cpp
+ *
+ * @brief Command line interface node configuration commands.
+ *
+ * @date January 2023
+ */
 #include <freertos/FreeRTOS.h>
 #include <Stream.h>
 #include <StreamString.h>
@@ -5,12 +12,32 @@
 #include "cli/FreeRTOS_CLI.h"
 #include "cli/device_config/config_cli.h"
 
+//! ESP32 debugging output tag
 #define TAG "config_cli"
 
+//! Response buffer for configuration commands
 static StreamString response_buffer_;
 
-// The interval command sets and gets the various interval values, such as the measurement interval and the
-// uplink interval. Intervals are specified in seconds.
+
+/**
+ * @brief Enter command line interface (CLI) mode for the given command string.
+ *
+ * This function handles the following commands:
+ * - `list`: Lists the current configuration settings to the response buffer.
+ * - `load`: Loads the configuration from SPIFFS storage and outputs it to
+ * the response buffer.
+ * - `save`: Saves the current configuration to persistent storage (SPIFFS).
+ *
+ * If an invalid command or argument is given, an error message is added to the
+ * response buffer.
+ *
+ * @param pcWriteBuffer Pointer to the buffer where the output string is to be
+ * written.
+ * @param xWriteBufferLen Maximum length of the output string, including the
+ * null terminator.
+ * @param pcCommandString Pointer to the command string input by the user.
+ * @return pdTRUE if there is more data to be returned, pdFALSE otherwise.
+ */
 BaseType_t CLIConfig::enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen,
                               const char *pcCommandString) {
     BaseType_t paramLen = 0;

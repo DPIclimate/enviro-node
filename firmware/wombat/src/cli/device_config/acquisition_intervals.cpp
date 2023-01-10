@@ -29,18 +29,38 @@ void CLIConfigIntervals::dump(Stream& stream) {
 /**
  * @brief CLI entrypoint for measurement and uplink interval setup.
  *
- * This command sets and get various interval values such as the measurement
- * interval and the uplink interval. When a user enters a command beginning with
- * "interval" this method will be run.
+ * The function first checks if there is any data left in the response_buffer
+ * and, if so, copies it to the write buffer and returns. If no data is left in
+ * the response_buffer, the function retrieves the first parameter from the
+ * command and checks if it is a "list", "measure", or "uplink" command.
+ *
+ * If the list command is entered, the function clears the response_buffer and
+ * calls the dump() function to print a list of the current measurement and
+ * uplink intervals to the buffer.
+ *
+ * If the measure command is entered, the function retrieves the next parameter
+ * from the command string and converts it to an integer. If the parameter is
+ * valid, the function sets the measurement interval to the specified value and
+ * writes an "OK" message to the write buffer, or an "ERROR" message if the
+ * interval was not set.
+ *
+ * If the uplink command is entered, the function retrieves the next parameter
+ * from the command string and converts it to an integer. If the parameter is
+ * valid, the function sets the uplink interval to the specified value and
+ * writes an "OK" message to the write buffer, or an "ERROR" message if the
+ * interval was not set.
+ *
+ * If none of the above conditions are met, the function writes a "Syntax error"
+ * message to the write buffer and returns.
  *
  * @note Intervals are specified in seconds.
  *
- * @todo Continue documentation here.
- *
- * @param pcWriteBuffer
- * @param xWriteBufferLen
- * @param pcCommandString
- * @return
+ * @param pcWriteBuffer A buffer for storing the response to the command. The
+ * response will be displayed to the user.
+ * @param xWriteBufferLen The length of the write buffer, in bytes.
+ * @param pcCommandString The command entered by the user.
+ * @return pdFALSE if the buffer is full and there is more output to be written,
+ * otherwise pdTRUE.
  */
 BaseType_t CLIConfigIntervals::enter_cli(char *pcWriteBuffer,
                                          size_t xWriteBufferLen,

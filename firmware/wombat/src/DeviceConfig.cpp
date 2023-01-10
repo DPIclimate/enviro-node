@@ -1,3 +1,10 @@
+/**
+ * @file DeviceConfig.h
+ *
+ * @brief Get and set device configuration values.
+ *
+ * @date December 2022
+ */
 #include "DeviceConfig.h"
 #include <esp_log.h>
 
@@ -8,24 +15,54 @@
 #include "cli/device_config/acquisition_intervals.h"
 #include "cli/device_config/mqtt_cli.h"
 
+//! ESP32 debug output tag
 #define TAG "config"
 
+//! Default configuration path
 constexpr const char* config_filename = "/config";
+//! Default configuration filename (stored as JSON)
 constexpr const char* sdi12defn_filename = "/sdi12defn.json";
 
+//! Size of buffer for reading and writing
 #define BUF_SIZE 64
+//! Buffer for sending commands
 static char buf[BUF_SIZE+1];
+//! Buffer for reading responses
 static char rsp[BUF_SIZE+1];
 
+//! Counter on the number of times the ESP32 has been re-booted
 static RTC_DATA_ATTR uint32_t bootCount = 0;
 
+//! JSON document instance to handle SDI-12 device definitions
 DynamicJsonDocument sdi12Defns(2024);
 
-DeviceConfig::DeviceConfig() : uplink_interval(3600), measure_interval(900), mqttHost(), mqttUser(), mqttPassword() {
+/**
+ * @brief Device configuration constructor with default values.
+ *
+ * @todo Several values here are not initialised
+ */
+DeviceConfig::DeviceConfig() : uplink_interval(3600), measure_interval(900),
+mqttHost(), mqttUser(), mqttPassword() {
     ESP_LOGI(TAG, "Constructing instance");
     bootCount++;
 }
 
+/**
+ * @brief Reset the DeviceConfig values to their default states.
+ *
+ * This function resets the measure interval, uplink interval, MAC address,
+ * and MQTT connection parameters (host, port, user, and password) to their
+ * default values.
+ *
+ * @see measure_interval
+ * @see uplink_interval
+ * @see mac
+ * @see node_id
+ * @see mqttHost
+ * @see mqttPort
+ * @see mqttUser
+ * @see mqttPassword
+ */
 void DeviceConfig::reset() {
     ESP_LOGI(TAG, "Resetting values to defaults");
     measure_interval = 900;
@@ -41,6 +78,21 @@ void DeviceConfig::reset() {
     mqttPassword.clear();
 }
 
+/**
+ * @brief Load the DeviceConfig values from a file on the file system.
+ *
+ * This function loads the DeviceConfig values from a file on the file system
+ * and sets any missing values to their default states. It also loads the SDI-12
+ * sensor definitions from a file on the file system.
+ *
+ * @todo An error may occur if the SPIFFS filesystem does not get initialized
+ * @todo (`SPIFFS.begin()`) resulting in an uncaught result.
+ *
+ * @see reset
+ * @see config_filename
+ * @see sdi12defn_filename
+ * @see sdi12Defns
+ */
 void DeviceConfig::load() {
     // Ensure any settings not present in the config file have the default value.
     reset();
@@ -97,6 +149,9 @@ void DeviceConfig::load() {
     SPIFFS.end();
 }
 
+/**
+ * @brief Save device configuration to SPIFFS storage.
+ */
 void DeviceConfig::save() {
     if (SPIFFS.begin()) {
         File f = SPIFFS.open(config_filename, FILE_WRITE);
@@ -109,22 +164,46 @@ void DeviceConfig::save() {
     SPIFFS.end();
 }
 
+/**
+ * @brief Print out device configuration to a stream.
+ *
+ * @param stream Output stream.
+ */
 void DeviceConfig::dumpConfig(Stream& stream) {
     CLIConfigIntervals::dump(stream);
     CLIMQTT::dump(stream);
 }
 
+/**
+ * @brief Method to get the number of times the ESP32 has rebooted.
+ * bootCount is incremented when the singleton is created, meaning at power-on
+ * it will be 1 by the time any code can ask for it. It is easier to do modulo
+ * arithmetic with a 0-based bootCount so adjust it before returning it.
+ *
+ * @return Boot counter.
+ */
 uint32_t DeviceConfig::getBootCount(void) {
-    // bootCount is incremented when the singleton is created, meaning at power-on it will
-    // be 1 by the time any code can ask for it. It is easier to do modulo arithmetic with
-    // a 0-based bootCount so adjust it before returning it.
     return bootCount - 1;
 }
 
+/**
+ * @brief Set the measurement interval.
+ *
+ * @todo Should this be in seconds?
+ *
+ * @param minutes Time in minutes.
+ */
 void DeviceConfig::setMeasureInterval(const uint16_t minutes) {
     measure_interval = minutes;
 }
 
+/**
+ * @brief Set the uplink interval.
+ *
+ * @todo Should this be in seconds?
+ *
+ * @param minutes Time in minutes.
+ */
 void DeviceConfig::setUplinkInterval(const uint16_t minutes) {
     if (minutes % measure_interval != 0) {
         ESP_LOGE(TAG, "uplink_interval must be a whole multiple of measurement_interval");
@@ -134,6 +213,15 @@ void DeviceConfig::setUplinkInterval(const uint16_t minutes) {
     uplink_interval = minutes;
 }
 
+/**
+ * @brief Set both the measurement and uplink intervals.
+ *
+ * @warning The measurement interval should be divisible by the uplink interval
+ * with no remainder.
+ *
+ * @param measurement_seconds Measurement interval in seconds.
+ * @param uplink_seconds Uplink interval in seconds.
+ */
 void DeviceConfig::setMeasurementAndUplinkIntervals(const uint16_t measurement_seconds, const uint16_t uplink_seconds) {
     if (uplink_seconds % measurement_seconds != 0) {
         ESP_LOGE(TAG, "uplink_interval must be a whole multiple of measurement_interval");
@@ -144,4 +232,9 @@ void DeviceConfig::setMeasurementAndUplinkIntervals(const uint16_t measurement_s
     uplink_interval = uplink_seconds;
 }
 
+/**
+ * @brief Get the SDI-12 device definitions from SPIFFS storage.
+ *
+ * @return SDI-12 device definitions as a JSONDocument.
+ */
 const JsonDocument& DeviceConfig::getSDI12Defns(void) { return sdi12Defns; }

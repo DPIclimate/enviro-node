@@ -19,6 +19,12 @@
 #include "bluetooth/power_monitoring.h"
 #include "cli/CLI.h"
 
+/**
+ * @brief BluetoothLE server instance.
+ *
+ * Handles BluetoothLE connections and notifications when variables are
+ * updated.
+ */
 class BluetoothServer {
 public:
     static void begin();
@@ -30,6 +36,9 @@ public:
 
 };
 
+/**
+ * @brief BluetoothLE server callbacks when devices connect and disconnect.
+ */
 class BluetoothServerCallbacks: public BLEServerCallbacks,
                                 public BluetoothServer {
     /**
