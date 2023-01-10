@@ -49,7 +49,7 @@
 
 ## About
 
-<img src="imgs/enviro-node.png" align="right" style="width: 400px;">
+<img src="imgs/enviro-node_0_5x.png" align="right" style="width: 400px;">
 
 Enviro-node is a environmental monitoring node. Users can connect a number of sensors to a node. Data captured from these sensors is then sent to a database over [MQTT](https://mqtt.org/).
 
