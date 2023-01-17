@@ -389,7 +389,7 @@
       "idf": "",
       "netlist": "",
       "specctra_dsn": "",
-      "step": "enviro-node.step",
+      "step": "model/enviro-node.step",
       "vrml": ""
     },
     "page_layout_descr_file": ""
