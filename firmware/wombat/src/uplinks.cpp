@@ -41,7 +41,10 @@ static bool process_file(File& file) {
         return true;
     }
 
-    file.readBytes(g_buffer, MAX_G_BUFFER);
+    // g_buffer is longer than len, so it is safe to read all of len bytes and then zero-terminate.
+    file.readBytes(g_buffer, len);
+    g_buffer[len] = 0;
+
     return mqtt_publish(topic, g_buffer);
 }
 

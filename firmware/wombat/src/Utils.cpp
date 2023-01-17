@@ -171,7 +171,9 @@ bool time_ok(void) {
     time(&now);
     gmtime_r(&now, &t);
 
-    return (t.tm_year+1900) >= 2022 && (t.tm_mon+1) >= 12;
+    int yyyy = t.tm_year+1900;
+    int month = t.tm_mon + 1;
+    return (yyyy) >= 2022 && month > 0 && month < 13;
 }
 
 const char* iso8601(void) {
