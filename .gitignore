@@ -40,11 +40,10 @@ fp-info-cache
 *.ses
 *.xml
 *.csv
-*.gbr
-*.drl
 *.gbrjob
 electronics/motherboard/enviro-node/model/*.step
 !electronics/motherboard/enviro-node/model/*.zip
+!gerber.zip
 
 # ---- STM32 development ----
 # Object files
