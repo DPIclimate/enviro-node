@@ -4770,6 +4770,12 @@
     (path "/b973fe11-f1e1-4488-b69d-471e9c144d9a/13cb2e0a-4125-48eb-8b9f-e2300534f2a4"
       (reference "#PWR0115") (unit 1) (value "GND") (footprint "")
     )
+    (path "/c207e6ab-5b78-4492-87ca-75a44677c24e/ab6e4142-40cc-4ca3-9ea1-ff800ce0edb8"
+      (reference "#PWR0116") (unit 1) (value "GND") (footprint "")
+    )
+    (path "/c207e6ab-5b78-4492-87ca-75a44677c24e/9d894dfa-3363-4689-85d5-b4ec12f9e699"
+      (reference "#PWR0117") (unit 1) (value "+3.3V") (footprint "")
+    )
     (path "/81efa281-7ef6-4b2c-aac2-b705d10ab725/ee40bcbc-b5d4-4749-a7d9-9049cc7109db"
       (reference "B1") (unit 1) (value "1049P") (footprint "1049P:1049P")
     )
@@ -5062,7 +5068,7 @@
       (reference "R19") (unit 1) (value "1K") (footprint "Resistor_SMD:R_0805_2012Metric")
     )
     (path "/81efa281-7ef6-4b2c-aac2-b705d10ab725/1cea37bd-f5b2-42e2-8837-9f0fa7e465c3"
-      (reference "R20") (unit 1) (value "4.7K") (footprint "Resistor_SMD:R_0805_2012Metric")
+      (reference "R20") (unit 1) (value "2K") (footprint "Resistor_SMD:R_0805_2012Metric")
     )
     (path "/81efa281-7ef6-4b2c-aac2-b705d10ab725/4d864441-ba4f-4faa-8a11-5331ea22c6e2"
       (reference "R21") (unit 1) (value "0.1") (footprint "Resistor_SMD:R_2512_6332Metric")
@@ -5074,10 +5080,10 @@
       (reference "R23") (unit 1) (value "10K") (footprint "Resistor_SMD:R_0805_2012Metric")
     )
     (path "/81efa281-7ef6-4b2c-aac2-b705d10ab725/81c8851f-155e-467b-b735-d84a1c1bb8c5"
-      (reference "R24") (unit 1) (value "4.7K") (footprint "Resistor_SMD:R_0805_2012Metric")
+      (reference "R24") (unit 1) (value "2K") (footprint "Resistor_SMD:R_0805_2012Metric")
     )
     (path "/81efa281-7ef6-4b2c-aac2-b705d10ab725/cb14a00f-5716-4383-b81a-15fff9887f46"
-      (reference "R25") (unit 1) (value "4.7K") (footprint "Resistor_SMD:R_0805_2012Metric")
+      (reference "R25") (unit 1) (value "2K") (footprint "Resistor_SMD:R_0805_2012Metric")
     )
     (path "/81efa281-7ef6-4b2c-aac2-b705d10ab725/89167665-08ba-45e6-8e54-a063b37ff78a"
       (reference "R26") (unit 1) (value "180K") (footprint "Resistor_SMD:R_0805_2012Metric")
@@ -5126,6 +5132,12 @@
     )
     (path "/817932f0-d463-47b3-8850-d10cf800ba4c"
       (reference "R41") (unit 1) (value "0") (footprint "Resistor_SMD:R_0805_2012Metric")
+    )
+    (path "/c207e6ab-5b78-4492-87ca-75a44677c24e/642d9ba9-7aff-4559-9879-df8fdef6d19c"
+      (reference "R42") (unit 1) (value "0") (footprint "Resistor_SMD:R_0805_2012Metric")
+    )
+    (path "/c207e6ab-5b78-4492-87ca-75a44677c24e/d3bfe6d9-487a-4555-a5f2-c9315d2a9532"
+      (reference "R43") (unit 1) (value "10K") (footprint "Resistor_SMD:R_0805_2012Metric")
     )
     (path "/b973fe11-f1e1-4488-b69d-471e9c144d9a/d6280552-e135-4660-83ee-bcae53ec51de"
       (reference "RV1") (unit 1) (value "ESD_RST_IN") (footprint "Resistor_SMD:R_0805_2012Metric")
@@ -5191,7 +5203,7 @@
       (reference "U11") (unit 1) (value "TPS22967DSGR") (footprint "TPS22967DSGR:SON50P200X200X80-9N")
     )
     (path "/b973fe11-f1e1-4488-b69d-471e9c144d9a/b0cde14b-8f60-4efe-8db5-f55ded0ed3a3"
-      (reference "U12") (unit 1) (value "SARA-R410M-02B") (footprint "SARA-R410M-02B:XCVR_SARA-R410M-02B")
+      (reference "U12") (unit 1) (value "SARA-R500S-01B") (footprint "SARA-R410M-02B:XCVR_SARA-R410M-02B")
     )
     (path "/b973fe11-f1e1-4488-b69d-471e9c144d9a/51adc328-a3c7-49c2-aecb-0a7f82e0175e"
       (reference "U13") (unit 1) (value "TXB0104PW") (footprint "Package_SO:TSSOP-14_4.4x5mm_P0.65mm")

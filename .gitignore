@@ -39,7 +39,6 @@ fp-info-cache
 *.dsn
 *.ses
 *.xml
-*.csv
 *.gbrjob
 electronics/motherboard/enviro-node/model/*.step
 !electronics/motherboard/enviro-node/model/*.zip
