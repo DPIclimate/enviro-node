@@ -1,4 +1,5 @@
 <map id="firmware/wombat/include/mqtt_stack.h" name="firmware/wombat/include/mqtt_stack.h">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,193,45"/>
-<area shape="rect" id="node2" href="$uplinks_8cpp.html" title=" " alt="" coords="19,93,179,133"/>
+<area shape="rect" id="node1" title=" " alt="" coords="91,5,279,45"/>
+<area shape="rect" id="node2" href="$mqtt__cli_8cpp.html" title="MQTT setup and configuration through the CLI." alt="" coords="5,93,175,148"/>
+<area shape="rect" id="node3" href="$uplinks_8cpp.html" title=" " alt="" coords="199,101,359,141"/>
 </map>
