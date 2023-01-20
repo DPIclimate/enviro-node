@@ -7,14 +7,14 @@
 # To update run:
 # pio run -t uploadfs
 
-interval measure 15
-interval uplink 60
+interval measure 900
+interval uplink 3600
 
 mqtt topic wombat_`node_id`
 
 sensor edge on
 
-mqtt host xyz.com
+mqtt host sherman-pablo.bnr.la
 mqtt port 1833
-mqtt user uname
-mqtt password pwd
+mqtt user broker
+mqtt password Laurel_stonefish_mica3!
