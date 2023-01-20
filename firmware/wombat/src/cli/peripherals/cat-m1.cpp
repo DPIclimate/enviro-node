@@ -202,6 +202,12 @@ static int get_response(uint32_t timeout = 500) {
             }
             return pdTRUE;
         }
+
+        if (!strncmp("cti", param, paramLen)) {
+            bool rc = connect_to_internet();
+            snprintf(pcWriteBuffer, xWriteBufferLen-1, "\r\n%s\r\n", rc ? "OK" : "ERROR");
+            return pdFALSE;
+        }
     }
 
     snprintf(pcWriteBuffer, xWriteBufferLen-1, "\r\nERROR: Invalid command\r\n");

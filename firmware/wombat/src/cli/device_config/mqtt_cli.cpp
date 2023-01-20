@@ -11,6 +11,7 @@
 
 #include "cli/FreeRTOS_CLI.h"
 #include "cli/device_config/mqtt_cli.h"
+#include "mqtt_stack.h"
 
 //! ESP32 debug output tag
 #define TAG "mqtt_cli"
@@ -166,13 +167,38 @@ BaseType_t CLIMQTT::enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen,
         paramNum++;
         param = FreeRTOS_CLIGetParameter(pcCommandString, paramNum, &paramLen);
         if (param != nullptr && paramLen > 0) {
+            if (paramLen > DeviceConfig::MAX_CONFIG_STR) {
+                strncpy(pcWriteBuffer, "ERROR: Topic name too long\r\n", xWriteBufferLen - 1);
+                return pdFALSE;
+            }
+
             strncpy(config.mqtt_topic_template, param, paramLen);
+            config.mqtt_topic_template[paramLen] = 0;
             strncpy(pcWriteBuffer, "OK\r\n", xWriteBufferLen - 1);
             return pdFALSE;
         }
 
         memset(pcWriteBuffer, 0, xWriteBufferLen);
         strncpy(pcWriteBuffer, "ERROR: Missing MQTT user name\r\n", xWriteBufferLen - 1);
+        return pdFALSE;
+    }
+
+    if (!strncmp("login", param, paramLen)) {
+        bool rc = mqtt_login();
+        snprintf(pcWriteBuffer, xWriteBufferLen-1, "\r\n%s\r\n", rc ? "OK" : "ERROR");
+        return pdFALSE;
+    }
+
+    if (!strncmp("logout", param, paramLen)) {
+        bool rc = mqtt_logout();
+        snprintf(pcWriteBuffer, xWriteBufferLen-1, "\r\n%s\r\n", rc ? "OK" : "ERROR");
+        return pdFALSE;
+    }
+
+    if (!strncmp("publish", param, paramLen)) {
+        String topic(config.mqtt_topic_template);
+        bool rc = mqtt_publish(topic, "ABCDEF");
+        snprintf(pcWriteBuffer, xWriteBufferLen-1, "\r\n%s\r\n", rc ? "OK" : "ERROR");
         return pdFALSE;
     }
 

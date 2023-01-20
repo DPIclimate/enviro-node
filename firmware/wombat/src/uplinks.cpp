@@ -59,6 +59,8 @@ void send_messages(void) {
         const char *msg_file_prefix = DeviceConfig::getMsgFilePrefix();
         const size_t msg_file_prefix_len = strlen(msg_file_prefix);
 
+        uint16_t file_count = 0;
+        uint16_t upload_errors = 0;
         File file = root.openNextFile();
         while (file) {
             bool remove_file = false;
@@ -66,7 +68,14 @@ void send_messages(void) {
 
             if ( ! file.isDirectory()) {
                 if ( ! strncmp(filename, msg_file_prefix, msg_file_prefix_len)) {
+                    if (file_count > 0) {
+                        delay(250);
+                    }
                     remove_file = process_file(file);
+                    file_count++;
+                    if ( ! remove_file) {
+                        upload_errors++;
+                    }
                 }
             }
 
@@ -82,6 +91,8 @@ void send_messages(void) {
 
         root.close();
         SPIFFS.end();
+
+        ESP_LOGI(TAG, "Processed %u files with %u upload errors", file_count, upload_errors);
     }
 
     if (mqtt_status == MQTT_LOGIN_OK) {
