@@ -84,8 +84,6 @@ void setup() {
     // a list of commands.
     CLI::init();
 
-    BluetoothServer::begin();
-
     DeviceConfig& config = DeviceConfig::get();
     config.load();
     config.dumpConfig(Serial);
@@ -93,6 +91,9 @@ void setup() {
     // Enable the brown out detection now the node has stabilised its
     // current requirements.
     WRITE_PERI_REG(RTC_CNTL_BROWN_OUT_REG, 1);
+
+    battery_monitor.begin();
+    solar_monitor.begin();
 
     if (progBtnPressed) {
         // Turn on bluetooth if entering CLI
@@ -142,9 +143,6 @@ void setup() {
     // never run if we do the usual ESP32 setup going to deep sleep mode.
     // It is useful while developing because the node isn't going to sleep.
 //    attachInterrupt(PROG_BTN, progBtnISR, RISING);
-
-    battery_monitor.begin();
-    solar_monitor.begin();
 
     init_sensors();
     sensor_task();

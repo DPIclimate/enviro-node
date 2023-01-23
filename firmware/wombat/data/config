@@ -1,20 +1,19 @@
 ; Comments are introduced by semi-colons
 # or hash symbols.
-
 # Leading and trailing white-space are stripped from lines,
 # blank lines are ignored.
 #
 # To update run:
 # pio run -t uploadfs
 
-interval measure 900
-interval uplink 3600
+interval measure 15
+interval uplink 60
 
 mqtt topic wombat_`node_id`
 
 sensor edge on
 
-mqtt host sherman-pablo.bnr.la
+mqtt host xyz.com
 mqtt port 1833
-mqtt user broker
-mqtt password Laurel_stonefish_mica3!
+mqtt user uname
+mqtt password pwd

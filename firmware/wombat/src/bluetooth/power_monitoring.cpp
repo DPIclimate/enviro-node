@@ -19,10 +19,6 @@
  *
  * @see https://www.bluetooth.com/specifications/specs/core-specification-5-3/
  *
- * @todo
- * Ensure this method is working and add descriptors for voltage according
- * to the bluetooth specification.
- *
  * @param server Pointer to the BluetoothLE server.
  */
 BluetoothPowerService::BluetoothPowerService(BLEServer *server) {
@@ -31,8 +27,7 @@ BluetoothPowerService::BluetoothPowerService(BLEServer *server) {
 
     // Battery percentage
     BLECharacteristic* batt_level = service->createCharacteristic(
-            BATT_CHAR_LEVEL_UUID, BLECharacteristic::PROPERTY_READ |
-                                  BLECharacteristic::PROPERTY_NOTIFY);
+            BATT_CHAR_LEVEL_UUID, BLECharacteristic::PROPERTY_READ);
     BLEDescriptor batt_level_desc(BLEUUID((uint16_t)0x2902));
     batt_level_desc.setValue("Battery Percentage");
     batt_level->addDescriptor(&batt_level_desc);
@@ -40,8 +35,7 @@ BluetoothPowerService::BluetoothPowerService(BLEServer *server) {
 
     // Battery voltage
     BLECharacteristic* batt_voltage = service->createCharacteristic(
-            BATT_VOLTAGE_UUID, BLECharacteristic::PROPERTY_READ |
-                               BLECharacteristic::PROPERTY_NOTIFY);
+            BATT_VOLTAGE_UUID, BLECharacteristic::PROPERTY_READ);
     BLEDescriptor batt_voltage_desc(BLEUUID((uint16_t)0x2902));
     batt_voltage_desc.setValue("Battery Voltage");
     batt_voltage->addDescriptor(&batt_voltage_desc);
@@ -49,8 +43,7 @@ BluetoothPowerService::BluetoothPowerService(BLEServer *server) {
 
     // Battery current
     BLECharacteristic* batt_current = service->createCharacteristic(
-            BATT_CURRENT_UUID, BLECharacteristic::PROPERTY_READ |
-                               BLECharacteristic::PROPERTY_NOTIFY);
+            BATT_CURRENT_UUID, BLECharacteristic::PROPERTY_READ);
     BLEDescriptor batt_current_desc(BLEUUID((uint16_t)0x2902));
     batt_current_desc.setValue("Battery Current");
     batt_current->addDescriptor(&batt_current_desc);
@@ -58,8 +51,7 @@ BluetoothPowerService::BluetoothPowerService(BLEServer *server) {
 
     // Solar voltage
     BLECharacteristic* solar_voltage = service->createCharacteristic(
-            SOLAR_VOLTAGE_UUID, BLECharacteristic::PROPERTY_READ |
-                                BLECharacteristic::PROPERTY_NOTIFY);
+            SOLAR_VOLTAGE_UUID, BLECharacteristic::PROPERTY_READ);
     BLEDescriptor solar_voltage_desc(BLEUUID((uint16_t)0x2902));
     solar_voltage_desc.setValue("Solar Voltage");
     solar_voltage->addDescriptor(&solar_voltage_desc);
@@ -67,8 +59,7 @@ BluetoothPowerService::BluetoothPowerService(BLEServer *server) {
 
     // Solar current
     BLECharacteristic* solar_current = service->createCharacteristic(
-            SOLAR_CURRENT_UUID, BLECharacteristic::PROPERTY_READ |
-                                BLECharacteristic::PROPERTY_NOTIFY);
+            SOLAR_CURRENT_UUID, BLECharacteristic::PROPERTY_READ);
     BLEDescriptor solar_current_desc(BLEUUID((uint16_t)0x2902));
     solar_current_desc.setValue("Solar Current");
     solar_current->addDescriptor(&solar_current_desc);

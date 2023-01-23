@@ -80,12 +80,10 @@ class BluetoothSolarVoltageCallbacks: public BLECharacteristicCallbacks {
     void onRead(BLECharacteristic* pCharacteristic) override{
         float voltage = SolarMonitor::get_voltage();
 
-        uint16_t voltage_value = (uint16_t)(voltage * 100.0f);
-        uint8_t voltage_bytes[2];
-        voltage_bytes[0] = voltage_value;
-        voltage_bytes[1] = voltage_value >> 8;
+        char sVolts[10];
+        snprintf(sVolts, sizeof(sVolts), "%.2f", voltage);
 
-        pCharacteristic->setValue(voltage_bytes, 2);
+        pCharacteristic->setValue(sVolts);
         pCharacteristic->notify();
     }
 };
@@ -111,12 +109,11 @@ class BluetoothSolarCurrentCallbacks: public BLECharacteristicCallbacks {
     void onRead(BLECharacteristic* pCharacteristic) override{
         float current = SolarMonitor::get_current();
 
-        uint16_t current_value = (uint16_t)(current * 100.0f);
-        uint8_t current_bytes[2];
-        current_bytes[0] = current_value;
-        current_bytes[1] = current_value >> 8;
+        char sCurrent[10]{};
+        snprintf(sCurrent, sizeof(sCurrent), "%.2f", current);
 
-        pCharacteristic->setValue(current_bytes, 2);
+
+        pCharacteristic->setValue(sCurrent);
         pCharacteristic->notify();
     }
 };
@@ -155,7 +152,10 @@ class BluetoothBatteryPercentCallbacks: public BLECharacteristicCallbacks {
             batt_percent = 100;
         }
 
-        pCharacteristic->setValue(&batt_percent, 1);
+        char cBatt[10]{};
+        snprintf(cBatt, sizeof(cBatt), "%d", batt_percent);
+
+        pCharacteristic->setValue(cBatt);
         pCharacteristic->notify();
     }
 };
@@ -181,12 +181,10 @@ class BluetoothBatteryVoltageCallbacks: public BLECharacteristicCallbacks {
     void onRead(BLECharacteristic* pCharacteristic) override{
         float voltage = BatteryMonitor::get_voltage();
 
-        uint16_t voltage_value = (uint16_t)(voltage * 100.0f);
-        uint8_t voltage_bytes[2];
-        voltage_bytes[0] = voltage_value;
-        voltage_bytes[1] = voltage_value >> 8;
+        char bVolts[10]{};
+        snprintf(bVolts, sizeof(bVolts), "%.2f", voltage);
 
-        pCharacteristic->setValue(voltage_bytes, 2);
+        pCharacteristic->setValue(bVolts);
         pCharacteristic->notify();
     }
 };
@@ -213,12 +211,10 @@ class BluetoothBatteryCurrentCallbacks: public BLECharacteristicCallbacks {
     void onRead(BLECharacteristic* pCharacteristic) override{
         float current = BatteryMonitor::get_current();
 
-        uint16_t current_value = (uint16_t)(current * 100.0f);
-        uint8_t current_bytes[2];
-        current_bytes[0] = current_value;
-        current_bytes[1] = current_value >> 8;
+        char bCurrent[10];
+        snprintf(bCurrent, sizeof(bCurrent), "%.2f", current);
 
-        pCharacteristic->setValue(current_bytes, 2);
+        pCharacteristic->setValue(current);
         pCharacteristic->notify();
     }
 };
