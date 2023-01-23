@@ -150,7 +150,6 @@ Public Member Functions</h2></td></tr>
 <p >Sets up and attaches the BLE power information service to the BLE server. Several characteristics are attached see <a class="el" href="power__monitoring_8h.html" title="Setup BluetoothLE power monitoring information.">power_monitoring.h</a> for a list of these characteristics.</p>
 <dl class="section note"><dt>Note</dt><dd>When adding descriptors, the descriptor must be be allocated on the heap because addDescriptor() copies the pointer, not the object, so the object must not disappear as it will if allocated on the stack.</dd></dl>
 <dl class="section see"><dt>See also</dt><dd><a href="https://www.bluetooth.com/specifications/specs/core-specification-5-3/">https://www.bluetooth.com/specifications/specs/core-specification-5-3/</a></dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000001">Todo:</a></b></dt><dd>Ensure this method is working and add descriptors for voltage according to the bluetooth specification.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">server</td><td>Pointer to the BluetoothLE server. </td></tr>

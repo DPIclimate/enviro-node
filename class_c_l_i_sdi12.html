@@ -173,7 +173,7 @@ Static Public Attributes</h2></td></tr>
 <p >The function first checks if there is a response stored in the <code>response_buffer_</code> object. If so, it copies the response to the <code>pcWriteBuffer</code> buffer and returns <code>pdFALSE</code> if there are no more responses to be displayed or <code>pdTRUE</code> if there are more responses to be displayed in subsequent calls to this function.</p>
 <p >If there are no responses stored in the <code>response_buffer_</code>, the function checks the command entered by the user and preforms the following commands:</p>
 <p >scan: Scans the SDI-12 bus for sensors and stores the list of sensors in the <code>response_buffer_</code> object. m: reads the value of a sensor at a specified address and stores the result in the <code>response_buffer_</code>. "&gt;&gt;": It sends a command to the SDI-12 sensor and stores the response in the <code>response_buffer_</code>.</p>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000002">Todo:</a></b></dt><dd><code>cmd</code> in this function shadows the declaration in the header file</dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000001">Todo:</a></b></dt><dd><code>cmd</code> in this function shadows the declaration in the header file</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">pcWriteBuffer</td><td>A buffer where the function can write a response string to display to the user. </td></tr>
