@@ -97,6 +97,7 @@ void setup() {
 
     if (progBtnPressed) {
         // Turn on bluetooth if entering CLI
+        init_sensors();
         BluetoothServer::begin();
         progBtnPressed = false;
         ESP_LOGI(TAG, "Programmable button pressed while booting, dropping into REPL");
