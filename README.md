@@ -136,8 +136,6 @@ A full SDI-12 interface is provided. No level-shifting is incorporated as the ES
 
 A digital pin is provided to the user to count pulses originating from a Tipping Bucket or wind-speed sensor.
 
-<img src="imgs/field-install.jpg" align="left" style="width: 400px;">
-
 ### CAT-M1
 => [Schematic](https://github.com/DPIclimate/enviro-node/blob/master/imgs/schematics/cat_m1.pdf)
 
@@ -147,8 +145,8 @@ The Enviro-node uses CAT-M1 to send messages (containing JSON encoded data) over
 
 The modem is directly powered by the 18650 batteries (as the modem can draw ~500 mA) and can be turned off and on via a GPIO pin (see IO-Expander above). A network indicator LED will indicate network connection status.
 
-
-
 ## License
 
 This project is MIT licensed, as found in the LICENCE file.
+
+<img src="imgs/field-install.jpg" style="width: 400px;">
