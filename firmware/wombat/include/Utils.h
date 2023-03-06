@@ -5,11 +5,12 @@
 #include <ArduinoJson.h>
 #include <dpiclimate-12.h>
 
+const char *stripTrailingZeros(const float value);
 size_t stripLeadingWS(char *str);
 size_t stripTrailingWS(char *str);
 size_t stripWS(char *str);
 
-size_t readFromStreamUntil(Stream& stream, char delim, char* buffer, size_t max);
+size_t readFromStreamUntil(Stream& stream, const char delim, char * const buffer, const size_t max);
 void streamPassthrough(Stream* s1, Stream* s2);
 
 int waitForChar(Stream& stream, uint32_t timeout);
@@ -20,7 +21,6 @@ JsonObjectConst getSensorDefn(const size_t sensor_idx, const sensor_list& sensor
 void enable12V(void);
 void disable12V(void);
 
-bool time_ok(void);
 const char* iso8601(void);
 
 bool connect_to_internet(void);

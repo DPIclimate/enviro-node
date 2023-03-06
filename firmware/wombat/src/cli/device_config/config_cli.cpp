@@ -88,6 +88,11 @@ BaseType_t CLIConfig::enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen,
             return pdFALSE;
         }
 
+        if (!strncmp("reboot", param, paramLen)) {
+            strncpy(pcWriteBuffer, "Rebooting\r\nOK\r\n", xWriteBufferLen - 1);
+            esp_restart();
+        }
+
         response_buffer_.clear();
         response_buffer_.printf("ERROR: Invalid argument: [%s]", param);
         return pdTRUE;

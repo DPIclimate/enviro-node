@@ -12,6 +12,9 @@
 #define EXTERN extern
 #endif
 
+/// The size for a buffer to hold the string representation of an integer or float.
+#define MAX_NUMERIC_STR_SZ 32
+
 /// The maximum safe size for g_buffer.
 #define MAX_G_BUFFER 4096
 

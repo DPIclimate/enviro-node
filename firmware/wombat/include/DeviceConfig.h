@@ -23,6 +23,7 @@ public:
     //! Maximum length of a configuration string
     static constexpr size_t MAX_CONFIG_STR = 32;
 
+    // mac and node_id are populated in the constructor.
     uint8_t mac[6];
     char node_id[13];
     char mqtt_topic_template[MAX_CONFIG_STR+1];
@@ -78,6 +79,11 @@ public:
     //! Get the MQTT broker password
     std::string& getMqttPassword() { return mqttPassword; }
 
+    float getSleepAdjustment() { return sleep_adjustment; }
+    void setSleepAdjustment(float _sleep_adjustment) {
+        sleep_adjustment = _sleep_adjustment;
+    }
+
     void dumpConfig(Stream& stream);
 
     const JsonDocument& getSDI12Defns(void);
@@ -93,6 +99,8 @@ private:
     DeviceConfig(const DeviceConfig&) = delete;
     DeviceConfig& operator=(const DeviceConfig&) = delete;
 
+    //! Multiplier for the sleep time to account for clock speed variations.
+    float sleep_adjustment = 1.005;
     //! How often to read the sensors, in seconds.
     uint16_t measure_interval;
     //! How often to uplink the data, in seconds.

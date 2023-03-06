@@ -86,6 +86,26 @@ bool getNTPTime(SARA_R5 &r5) {
                 return (false);
             }
 
+            int x = 0;
+            char hexbuf[4];
+            while (x < NTP_PACKET_SIZE) {
+                snprintf(hexbuf, sizeof(hexbuf), "%02X ", packetBuffer[x++]);
+                Serial.print(hexbuf);
+                if (x % 16 == 0) {
+                    Serial.println();
+                }
+            }
+/*
+ 0: 24 02 06 E7
+ 4: 00 00 00 3C
+ 8: 00 00 00 28
+12: 5C 15 35 D9
+16: E7 8B F7 38 2B DC 93 DD
+24: 00 00 00 00 00 00 00 00
+32: E7 8B F8 61 6B 17 77 A0
+40: E7 8B F8 61 6B 17 F3 80
+
+ */
             // Extract the time from the reply
 
             // The timestamp starts at byte 40 of the received packet and is a uint32_t value.
@@ -108,23 +128,25 @@ bool getNTPTime(SARA_R5 &r5) {
 
             ESP_LOGI(TAG, "Unix epoch = %lu", epoch);
 
-            // Instead of calculating the year, month, day, etc. manually, let's use time_t and tm to do it for us!
-            time_t dateTime = epoch;
-            tm *theTime = gmtime(&dateTime);
-
             setenv("TZ", "UTC", 1);
             tzset();
 
             struct timeval tv;
 
-            tv.tv_sec = dateTime;
+            tv.tv_sec = epoch; //dateTime;
             tv.tv_usec = 0;
 
             settimeofday(&tv, nullptr);
 
+            // Instead of calculating the year, month, day, etc. manually, let's use time_t and tm to do it for us!
+            time_t dateTime = epoch;
+            tm *theTime = gmtime(&dateTime);
+
             // Load the time into y, mo, d, h, min, s
             int y = theTime->tm_year - 100; // tm_year is years since 1900. Convert to years since 2000.
             int mo = theTime->tm_mon + 1; //tm_mon starts at zero. Add 1 for January.
+
+            ESP_LOGI(TAG, "Now = %4d/%02d/%02d %02d:%02d:%02d", y, mo, theTime->tm_mday, theTime->tm_hour, theTime->tm_min, theTime->tm_sec);
 
             //Set the SARA's RTC. Set the time zone to zero so the clock uses UTC
             if (r5.setClock(y, mo, theTime->tm_mday, theTime->tm_hour, theTime->tm_min, theTime->tm_sec, 0) != SARA_R5_SUCCESS) {

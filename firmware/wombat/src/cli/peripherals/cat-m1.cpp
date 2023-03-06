@@ -138,6 +138,12 @@ static int get_response(uint32_t timeout = 500) {
                 cat_m1.power_supply(*pwrState == '1');
             }
 
+            if (*pwrState == '0') {
+                if (r5_ok) {
+                    r5.modulePowerOff();
+                }
+            }
+
             snprintf(pcWriteBuffer, xWriteBufferLen-1, "\r\nOK\r\n");
             return pdFALSE;
         }

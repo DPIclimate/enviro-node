@@ -17,7 +17,7 @@ static char msg[CLI::MAX_CLI_MSG_LEN+1];
 //! Node configuration commands
 static const CLI_Command_Definition_t configCmd = {
         CLIConfig::cmd.c_str(),
-        "config:\r\n Load, save, or list the node configuration\r\n",
+        "config:\r\n Load, save, or list the node configuration or reboot\r\n",
         CLIConfig::enter_cli,
         -1
 };

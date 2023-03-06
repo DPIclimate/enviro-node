@@ -6,7 +6,12 @@
  *
  * @date December 2022
  */
+#include <stdlib.h>
 #include "cli/device_config/acquisition_intervals.h"
+#include "globals.h"
+#include "Utils.h"
+
+#define TAG "acquisition_intervals"
 
 static StreamString response_buffer;
 
@@ -24,6 +29,10 @@ void CLIConfigIntervals::dump(Stream& stream) {
     stream.println(config.getMeasureInterval());
     stream.print("interval uplink ");
     stream.println(config.getUplinkInterval());
+
+    const char *float_str = stripTrailingZeros(config.getSleepAdjustment());
+    stream.print("interval clockmult ");
+    stream.println(float_str);
 }
 
 /**
@@ -148,6 +157,33 @@ BaseType_t CLIConfigIntervals::enter_cli(char *pcWriteBuffer,
                 strncpy(pcWriteBuffer, "ERROR: set uplink interval "
                                        "failed\r\n", xWriteBufferLen - 1);
             }
+            return pdFALSE;
+        }
+
+        if (!strncmp("clockmult", param, paramLen)) {
+            memset(pcWriteBuffer, 0, xWriteBufferLen);
+
+            float sleepMultiplier = 0.0f;
+            char buf[MAX_NUMERIC_STR_SZ+1];
+
+            paramNum++;
+            param = FreeRTOS_CLIGetParameter(pcCommandString, paramNum, &paramLen);
+            if (param != nullptr && paramLen > 0 && paramLen < MAX_NUMERIC_STR_SZ) {
+                strncpy(buf, param, paramLen);
+                buf[paramLen] = 0;
+                sleepMultiplier = atof(buf);
+
+                config.setSleepAdjustment(sleepMultiplier);
+                if (sleepMultiplier == config.getSleepAdjustment()) {
+                    strncpy(pcWriteBuffer, "OK\r\n", xWriteBufferLen - 1);
+                } else {
+                    ESP_LOGE(TAG, "%f != %f", sleepMultiplier, config.getSleepAdjustment());
+                    strncpy(pcWriteBuffer, "ERROR: set clock multiplier failed\r\n", xWriteBufferLen - 1);
+                }
+            } else {
+                strncpy(pcWriteBuffer, "ERROR: set clock multiplier failed\r\n", xWriteBufferLen - 1);
+            }
+
             return pdFALSE;
         }
     }
