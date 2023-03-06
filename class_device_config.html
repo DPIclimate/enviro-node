@@ -109,7 +109,7 @@ $(document).ready(function(){initNavTree('class_device_config.html',''); initRes
 <div class="dynheader">
 Collaboration diagram for DeviceConfig:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="class_device_config__coll__graph.svg" width="292" height="432"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="class_device_config__coll__graph.svg" width="292" height="447"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 <table class="memberdecls">
@@ -164,6 +164,10 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a0a051c43a3ecc63755ebf894d83907f5"><td class="memItemLeft" align="right" valign="top">std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device_config.html#a0a051c43a3ecc63755ebf894d83907f5">getMqttPassword</a> ()</td></tr>
 <tr class="memdesc:a0a051c43a3ecc63755ebf894d83907f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the MQTT broker password.  <a href="class_device_config.html#a0a051c43a3ecc63755ebf894d83907f5">More...</a><br /></td></tr>
 <tr class="separator:a0a051c43a3ecc63755ebf894d83907f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaaf532cb768f3a804a570ff22d339673"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device_config.html#aaaf532cb768f3a804a570ff22d339673">getSleepAdjustment</a> ()</td></tr>
+<tr class="separator:aaaf532cb768f3a804a570ff22d339673"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a821833a93d6c43dba7c1d23a89b33d28"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device_config.html#a821833a93d6c43dba7c1d23a89b33d28">setSleepAdjustment</a> (float _sleep_adjustment)</td></tr>
+<tr class="separator:a821833a93d6c43dba7c1d23a89b33d28"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2d52987984233de19b4a6ec55022a3c3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device_config.html#a2d52987984233de19b4a6ec55022a3c3">dumpConfig</a> (Stream &amp;stream)</td></tr>
 <tr class="memdesc:a2d52987984233de19b4a6ec55022a3c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print out device configuration to a stream.  <a href="class_device_config.html#a2d52987984233de19b4a6ec55022a3c3">More...</a><br /></td></tr>
 <tr class="separator:a2d52987984233de19b4a6ec55022a3c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -207,6 +211,9 @@ Private Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
+<tr class="memitem:ab30b4b1f1affcfcaf78bc5369146f87c"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device_config.html#ab30b4b1f1affcfcaf78bc5369146f87c">sleep_adjustment</a> = 1.005</td></tr>
+<tr class="memdesc:ab30b4b1f1affcfcaf78bc5369146f87c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Multiplier for the sleep time to account for clock speed variations.  <a href="class_device_config.html#ab30b4b1f1affcfcaf78bc5369146f87c">More...</a><br /></td></tr>
+<tr class="separator:ab30b4b1f1affcfcaf78bc5369146f87c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a652a7d87b6d29c00e68e572803ed7c86"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_device_config.html#a652a7d87b6d29c00e68e572803ed7c86">measure_interval</a></td></tr>
 <tr class="memdesc:a652a7d87b6d29c00e68e572803ed7c86"><td class="mdescLeft">&#160;</td><td class="mdescRight">How often to read the sensors, in seconds.  <a href="class_device_config.html#a652a7d87b6d29c00e68e572803ed7c86">More...</a><br /></td></tr>
 <tr class="separator:a652a7d87b6d29c00e68e572803ed7c86"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -542,6 +549,31 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="aaaf532cb768f3a804a570ff22d339673" name="aaaf532cb768f3a804a570ff22d339673"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaaf532cb768f3a804a570ff22d339673">&#9670;&#160;</a></span>getSleepAdjustment()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float DeviceConfig::getSleepAdjustment </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a0c3357ca19cdc7469bbf5fd0164d3e53" name="a0c3357ca19cdc7469bbf5fd0164d3e53"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0c3357ca19cdc7469bbf5fd0164d3e53">&#9670;&#160;</a></span>getUplinkInterval()</h2>
 
@@ -857,6 +889,32 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a821833a93d6c43dba7c1d23a89b33d28" name="a821833a93d6c43dba7c1d23a89b33d28"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a821833a93d6c43dba7c1d23a89b33d28">&#9670;&#160;</a></span>setSleepAdjustment()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void DeviceConfig::setSleepAdjustment </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>_sleep_adjustment</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a5ff50ce4e9cfe687d86614b3e602e2de" name="a5ff50ce4e9cfe687d86614b3e602e2de"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5ff50ce4e9cfe687d86614b3e602e2de">&#9670;&#160;</a></span>setUplinkInterval()</h2>
 
@@ -1068,6 +1126,30 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab30b4b1f1affcfcaf78bc5369146f87c" name="ab30b4b1f1affcfcaf78bc5369146f87c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab30b4b1f1affcfcaf78bc5369146f87c">&#9670;&#160;</a></span>sleep_adjustment</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float DeviceConfig::sleep_adjustment = 1.005</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Multiplier for the sleep time to account for clock speed variations. </p>
 
 </div>
 </div>

@@ -12,6 +12,7 @@ var class_device_config =
     [ "getMqttUser", "class_device_config.html#a3c251d12cce7278cbb66a0616bde09f1", null ],
     [ "getMsgFilePrefix", "class_device_config.html#ace79df09780b9cfa89995dbde55a9c4d", null ],
     [ "getSDI12Defns", "class_device_config.html#aa79eefa8c5263cc087b8b4100881a24c", null ],
+    [ "getSleepAdjustment", "class_device_config.html#aaaf532cb768f3a804a570ff22d339673", null ],
     [ "getUplinkInterval", "class_device_config.html#a0c3357ca19cdc7469bbf5fd0164d3e53", null ],
     [ "load", "class_device_config.html#a06ceffa8178fd30cab28be623f818459", null ],
     [ "operator=", "class_device_config.html#a438c4a3d753923f0a42bf271c72b65b9", null ],
@@ -23,6 +24,7 @@ var class_device_config =
     [ "setMqttPassword", "class_device_config.html#afc3346169bf4ee1eed5414ce786cc3ce", null ],
     [ "setMqttPort", "class_device_config.html#afbf08f41d58f05f664d175c676155d98", null ],
     [ "setMqttUser", "class_device_config.html#a50601b3676b4af272f24808a93ce71b0", null ],
+    [ "setSleepAdjustment", "class_device_config.html#a821833a93d6c43dba7c1d23a89b33d28", null ],
     [ "setUplinkInterval", "class_device_config.html#a5ff50ce4e9cfe687d86614b3e602e2de", null ],
     [ "mac", "class_device_config.html#a622c973a01a84dc1fb413f73ab28ab6b", null ],
     [ "MAX_CONFIG_STR", "class_device_config.html#a1f531e3530859e465075d67be8016e48", null ],
@@ -33,5 +35,6 @@ var class_device_config =
     [ "mqttPort", "class_device_config.html#aef0d5422c0fa4fe4edb641198d7628b2", null ],
     [ "mqttUser", "class_device_config.html#abde83ddacb708bb474c8fce35efbf653", null ],
     [ "node_id", "class_device_config.html#a575ea0dd0e500ebc854aeb0267023ace", null ],
+    [ "sleep_adjustment", "class_device_config.html#ab30b4b1f1affcfcaf78bc5369146f87c", null ],
     [ "uplink_interval", "class_device_config.html#aa5385d0eb9832fc114ef0d4d9757038f", null ]
 ];

@@ -1,9 +1,10 @@
 <map id="firmware/wombat/include/bluetooth/server.h" name="firmware/wombat/include/bluetooth/server.h">
-<area shape="rect" id="node1" title="Handle the setup and maintenance of the BLE server and connected clients." alt="" coords="217,5,405,45"/>
-<area shape="rect" id="node2" href="$uart_8h.html" title="BluetoothLE UART service setup and handling." alt="" coords="5,93,193,133"/>
-<area shape="rect" id="node4" href="$_c_l_i_8h.html" title="FreeRTOS CLI handler." alt="" coords="217,93,405,133"/>
-<area shape="rect" id="node7" href="$server_8cpp.html" title="Setup and start BluetoothLE server." alt="" coords="430,93,590,133"/>
-<area shape="rect" id="node3" href="$uart_8cpp.html" title="BluetoothLE UART service setup and handling." alt="" coords="19,181,179,221"/>
-<area shape="rect" id="node5" href="$_c_l_i_8cpp.html" title="FreeRTOS CLI handler." alt="" coords="217,181,377,221"/>
-<area shape="rect" id="node6" href="$main_8cpp.html" title=" " alt="" coords="401,181,561,221"/>
+<area shape="rect" id="node1" title="Handle the setup and maintenance of the BLE server and connected clients." alt="" coords="281,5,469,45"/>
+<area shape="rect" id="node2" href="$uart_8h.html" title="BluetoothLE UART service setup and handling." alt="" coords="69,93,257,133"/>
+<area shape="rect" id="node4" href="$_c_l_i_8h.html" title="FreeRTOS CLI handler." alt="" coords="281,93,469,133"/>
+<area shape="rect" id="node8" href="$server_8cpp.html" title="Setup and start BluetoothLE server." alt="" coords="493,93,653,133"/>
+<area shape="rect" id="node3" href="$uart_8cpp.html" title="BluetoothLE UART service setup and handling." alt="" coords="5,181,165,221"/>
+<area shape="rect" id="node5" href="$_c_l_i_8cpp.html" title="FreeRTOS CLI handler." alt="" coords="189,181,349,221"/>
+<area shape="rect" id="node6" href="$main_8cpp.html" title=" " alt="" coords="373,181,533,221"/>
+<area shape="rect" id="node7" href="$mqtt__stack_8cpp.html" title=" " alt="" coords="557,181,717,221"/>
 </map>

@@ -1,4 +1,4 @@
 <map id="CLIMQTT" name="CLIMQTT">
-<area shape="rect" id="node1" title="CLI MQTT configuration." alt="" coords="95,489,197,573"/>
-<area shape="rect" id="node2" href="$class_device_config.html" title="Node configuration options for both getting and setting values." alt="" coords="5,5,287,427"/>
+<area shape="rect" id="node1" title="CLI MQTT configuration." alt="" coords="95,504,197,588"/>
+<area shape="rect" id="node2" href="$class_device_config.html" title="Node configuration options for both getting and setting values." alt="" coords="5,5,287,441"/>
 </map>

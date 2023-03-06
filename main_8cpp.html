@@ -109,14 +109,13 @@ $(document).ready(function(){initNavTree('main_8cpp.html',''); initResizable(); 
 <code>#include &quot;<a class="el" href="peripherals_8h_source.html">peripherals.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="tones_8h_source.html">audio-feedback/tones.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="uplinks_8h_source.html">uplinks.h</a>&quot;</code><br />
-<code>#include &quot;SparkFun_u-blox_SARA-R5_Arduino_Library.h&quot;</code><br />
 <code>#include &quot;<a class="el" href="ulp_8h_source.html">ulp.h</a>&quot;</code><br />
 <code>#include &quot;soc/soc.h&quot;</code><br />
 <code>#include &quot;soc/rtc_cntl_reg.h&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for main.cpp:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="main_8cpp__incl.svg" width="3091" height="447"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="main_8cpp__incl.svg" width="3310" height="447"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 </div><table class="memberdecls">
@@ -129,15 +128,12 @@ Macros</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:aca46732143b5c7af5f57aa0e43ce6694"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#aca46732143b5c7af5f57aa0e43ce6694">getNTPTime</a> (SARA_R5 &amp;<a class="el" href="globals_8h.html#a7f9b6ad99b4ad4d8ca1d579575944f2b">r5</a>)</td></tr>
-<tr class="separator:aca46732143b5c7af5f57aa0e43ce6694"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a223a2f4d81477163d771407a99e2c73b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a223a2f4d81477163d771407a99e2c73b">time_check</a> (void)</td></tr>
-<tr class="separator:a223a2f4d81477163d771407a99e2c73b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4fc01d736fe50cf5b977f755b675f11d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a4fc01d736fe50cf5b977f755b675f11d">setup</a> ()</td></tr>
 <tr class="separator:a4fc01d736fe50cf5b977f755b675f11d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afe461d27b9c48d5921c00d521181f12f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#afe461d27b9c48d5921c00d521181f12f">loop</a> ()</td></tr>
 <tr class="separator:afe461d27b9c48d5921c00d521181f12f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a73b9b61feeaf7d790d107f2954a7fd93"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a73b9b61feeaf7d790d107f2954a7fd93">digitalWrite</a> (uint8_t pin, uint8_t val)</td></tr>
+<tr class="memdesc:a73b9b61feeaf7d790d107f2954a7fd93"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allow digitalWrite to be used for pins on the IO expander.  <a href="main_8cpp.html#a73b9b61feeaf7d790d107f2954a7fd93">More...</a><br /></td></tr>
 <tr class="separator:a73b9b61feeaf7d790d107f2954a7fd93"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
@@ -203,23 +199,15 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-</div>
-</div>
-<a id="aca46732143b5c7af5f57aa0e43ce6694" name="aca46732143b5c7af5f57aa0e43ce6694"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aca46732143b5c7af5f57aa0e43ce6694">&#9670;&#160;</a></span>getNTPTime()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool getNTPTime </td>
-          <td>(</td>
-          <td class="paramtype">SARA_R5 &amp;&#160;</td>
-          <td class="paramname"><em>r5</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
+<p>Allow digitalWrite to be used for pins on the IO expander. </p>
+<p >This function overrides the default digitalWrite provided by the Arduino core so we can use it with pins on the IO expander IC. If the pin number &gt; 0x80 then the bits &gt; 0x80 are masked off and the request is sent to the IO expander library.</p>
+<p >For example, passing in pin 0x82 will ask the IO expander library to write to its pin 2.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pin</td><td>the GPIO to write to; values &gt; 0x80 will be handled by the IO expander library after masking off the bits &gt; 0x80. @val HIGH or LOW </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -249,24 +237,6 @@ Variables</h2></td></tr>
         <tr>
           <td class="memname">void setup </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a223a2f4d81477163d771407a99e2c73b" name="a223a2f4d81477163d771407a99e2c73b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a223a2f4d81477163d771407a99e2c73b">&#9670;&#160;</a></span>time_check()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void time_check </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
