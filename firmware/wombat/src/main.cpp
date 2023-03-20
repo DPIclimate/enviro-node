@@ -53,6 +53,12 @@ void setup() {
     setenv("TZ", "UTC", 1);
     tzset();
 
+    // The device configuration singleton is created on entry to setup() due to C++ object creation rules.
+    // The node id is available without loading the configuration because it is retrieved from the ESP32
+    // modem during the config.reset() call, not the saved configuration.
+    DeviceConfig& config = DeviceConfig::get();
+    config.reset();
+
     ESP_LOGI(TAG, "Wombat firmware: %s", commit_id);
     ESP_LOGI(TAG, "Wake up time: %s", iso8601());
     ESP_LOGI(TAG, "CPU MHz: %lu", getCpuFrequencyMhz());
@@ -92,7 +98,6 @@ void setup() {
     // a list of commands.
     CLI::init();
 
-    DeviceConfig& config = DeviceConfig::get();
     config.load();
     config.dumpConfig(Serial);
 

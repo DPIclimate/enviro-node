@@ -4,5 +4,7 @@ CMakeListsPrivate.txt
 cmake-build-*/ 
 ulp/*
 
+include/version.h
+
 # Allow these files
 !ulp/pulse_count.s
