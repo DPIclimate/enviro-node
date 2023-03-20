@@ -30,9 +30,20 @@ EXTERN SolarMonitor solar_monitor;
 EXTERN bool r5_ok;
 
 #ifdef ALLOCATE_GLOBALS
+/// A global SARA R5 modem object.
 SARA_R5 r5(LTE_PWR_TOGGLE_PIN, -1);
+
+/// The seconds value from the RTC before it is set to the value from the modem.
+int previous_rtc_seconds = 0;
+
+/// How much the RTC seconds value has drifted away from the time reported by the
+/// R5 modem. This is used to adjust the sleep period to try and stay on the same
+/// second.
+int sleep_drift_adjustment = 0;
 #else
 extern SARA_R5 r5;
+extern int previous_rtc_seconds;
+extern int sleep_drift_adjustment;
 #endif
 
 

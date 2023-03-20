@@ -189,28 +189,24 @@ uint32_t DeviceConfig::getBootCount(void) {
 /**
  * @brief Set the measurement interval.
  *
- * @todo Should this be in seconds?
- *
- * @param minutes Time in minutes.
+ * @param seconds Time in seconds.
  */
-void DeviceConfig::setMeasureInterval(const uint16_t minutes) {
-    measure_interval = minutes;
+void DeviceConfig::setMeasureInterval(const uint16_t seconds) {
+    measure_interval = seconds;
 }
 
 /**
  * @brief Set the uplink interval.
  *
- * @todo Should this be in seconds?
- *
- * @param minutes Time in minutes.
+ * @param seconds Time in seconds.
  */
-void DeviceConfig::setUplinkInterval(const uint16_t minutes) {
-    if (minutes % measure_interval != 0) {
+void DeviceConfig::setUplinkInterval(const uint16_t seconds) {
+    if (seconds % measure_interval != 0) {
         ESP_LOGE(TAG, "uplink_interval must be a whole multiple of measurement_interval");
         return;
     }
 
-    uplink_interval = minutes;
+    uplink_interval = seconds;
 }
 
 /**

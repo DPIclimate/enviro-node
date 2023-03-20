@@ -52,11 +52,11 @@ public:
 
     uint16_t getMeasureInterval() { return measure_interval; }
 
-    void setMeasureInterval(const uint16_t minutes);
+    void setMeasureInterval(const uint16_t seconds);
 
     uint16_t getUplinkInterval() { return uplink_interval; }
 
-    void setUplinkInterval(const uint16_t minutes);
+    void setUplinkInterval(const uint16_t seconds);
 
     void setMeasurementAndUplinkIntervals(const uint16_t measurement_seconds,
                                           const uint16_t uplink_seconds);
@@ -100,7 +100,7 @@ private:
     DeviceConfig& operator=(const DeviceConfig&) = delete;
 
     //! Multiplier for the sleep time to account for clock speed variations.
-    float sleep_adjustment = 1.005;
+    float sleep_adjustment = 1.0f;
     //! How often to read the sensors, in seconds.
     uint16_t measure_interval;
     //! How often to uplink the data, in seconds.

@@ -36,6 +36,12 @@ const char *stripTrailingZeros(const float value) {
             break;
         }
 
+        // Don't strip zeros immediately after the decimal point, ie don't
+        // convert '1.0' to '1.'
+        if (len > 1 && float_buf[len - 1] == '.') {
+            break;
+        }
+
         float_buf[len] = 0;
         len--;
     }
@@ -415,22 +421,33 @@ bool connect_to_internet(void) {
     time_buffer[time_buffer_sz] = 0;
     ESP_LOGI(TAG, "Modem response: %s", time_buffer);
 
+    struct tm tm;
+    memset(&tm, 0, sizeof(tm));
+    time_t now;
+    time(&now);
+    gmtime_r(&now, &tm);
+
+    snprintf(iso8601_buf, sizeof(iso8601_buf)-1, "%04d-%02d-%02dT%02d:%02d:%02dZ", tm.tm_year+1900, tm.tm_mon+1, tm.tm_mday, tm.tm_hour, tm.tm_min, tm.tm_sec);
+    ESP_LOGI(TAG, "RTC time now: %s", iso8601_buf);
+
+    previous_rtc_seconds = tm.tm_sec;
+
     // Parse the response into a tm structure which will be used to convert to an epoch value.
     // Do not take account of the timezone or daylight savings. This means we'll be creating an
     // epoch time using the local time, but pretending it is UTC.
-    tm _tm;
     int tz;
+    memset(&tm, 0, sizeof(tm));
 
-    sscanf(time_buffer, "%2d/%2d/%2d,%d:%d:%d%d", &_tm.tm_year, &_tm.tm_mon, &_tm.tm_mday, &_tm.tm_hour, &_tm.tm_min, &_tm.tm_sec, &tz);
-    _tm.tm_year += 100; // tm.tm_year is years since 1900.
-    _tm.tm_isdst = 0;   // No daylight savings.
+    sscanf(time_buffer, "%2d/%2d/%2d,%d:%d:%d%d", &tm.tm_year, &tm.tm_mon, &tm.tm_mday, &tm.tm_hour, &tm.tm_min, &tm.tm_sec, &tz);
+    tm.tm_year += 100; // tm.tm_year is years since 1900.
+    tm.tm_isdst = 0;   // No daylight savings.
 
     // Calculate an adjustment for the epoch value based upon the timezone information supplied
     // by the modem. For example, in summer in NSW the modem will say the time it has provided is
     // +44 from UTC. This means it is 44 15-minute intervals ahead.
     int dst_offset_secs = tz * 15 * -1 * 60;
-    ESP_LOGI(TAG, "Network time: %02d/%02d/%04d %02d:%02d:%02d %02d", _tm.tm_mday, _tm.tm_mon, _tm.tm_year, _tm.tm_hour, _tm.tm_min, _tm.tm_sec, tz);
-    _tm.tm_mon -= 1;    // tm.tm_month is months since January, so from 0 - 11.
+    ESP_LOGI(TAG, "Network time: %02d/%02d/%04d %02d:%02d:%02d %02d", tm.tm_mday, tm.tm_mon, tm.tm_year, tm.tm_hour, tm.tm_min, tm.tm_sec, tz);
+    tm.tm_mon -= 1;    // tm.tm_month is months since January, so from 0 - 11.
 
     struct timeval tv;
     tv.tv_usec = 0;
@@ -438,7 +455,7 @@ bool connect_to_internet(void) {
     // Get the epoch value by converting the values in the tm structure. This will make tv.tv_sec equal to
     // the current local time, but assume it is UTC. So giving it the tm generated from the response 23/02/13,08:07:57+44
     // means tv.tv_sec epoch will represent 23/02/13,08:07:57 UTC.
-    tv.tv_sec = mktime(&_tm);
+    tv.tv_sec = mktime(&tm);
 
     // To fix that, apply the timezone offset calculated above. After this is applied tv_tv.sec will represent
     // 23/02/12,21:07:57 UTC.
@@ -447,6 +464,19 @@ bool connect_to_internet(void) {
 
     // Now set the system clock.
     settimeofday(&tv, nullptr);
+
+    // With all that done, try to account for drift in the ESP32 RTC. Compare the seconds value
+    // saved from the RTC before setting the time from the R5 with the current seconds value from
+    // the R5. If there is a difference then set a value that can be used to adjust the sleep time
+    // to try and get back to the second we've drifted off from. Do not do this on the initial boot
+    // because the RTC will not have a valid value in it to compare against.
+    uint32_t  boot_count = DeviceConfig::get().getBootCount();
+    if (boot_count != 0) {
+        sleep_drift_adjustment = previous_rtc_seconds - tm.tm_sec;
+        if (sleep_drift_adjustment != 0) {
+            ESP_LOGI(TAG, "Previous seconds value: %d, sleep adjustment: %d", previous_rtc_seconds, sleep_drift_adjustment);
+        }
+    }
 
     // Enable the packet switching layer.
     // These commands come from the SARA R4/R5 Internet applications development guide
