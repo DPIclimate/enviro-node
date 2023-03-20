@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['g_5fbuffer_0',['g_buffer',['../globals_8h.html#a4aee86204bb44807e602917ca7af1b91',1,'globals.h']]]
+  ['device_5fconnected_0',['device_connected',['../class_bluetooth_server.html#a665784c2cad42ef39441b9e237392390',1,'BluetoothServer']]],
+  ['dpi12_1',['dpi12',['../sdi12_8cpp.html#ac1a13aafa736d052c029149af527bb9b',1,'sdi12.cpp']]]
 ];

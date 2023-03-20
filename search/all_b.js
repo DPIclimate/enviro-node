@@ -1,12 +1,7 @@
 var searchData=
 [
-  ['onconnect_0',['onConnect',['../class_bluetooth_server_callbacks.html#a94ac855b1006f3887f93ac8e22c22ff3',1,'BluetoothServerCallbacks']]],
-  ['ondisconnect_1',['onDisconnect',['../class_bluetooth_server_callbacks.html#a1be1293f3f11a5eb7da08239279f3c63',1,'BluetoothServerCallbacks']]],
-  ['onread_2',['onRead',['../class_bluetooth_solar_voltage_callbacks.html#a4cdbfa712d4ab4f6cded6171f31125dd',1,'BluetoothSolarVoltageCallbacks::onRead()'],['../class_bluetooth_solar_current_callbacks.html#a5e1b82dbf4e1063acd6ad6ec51ad10fd',1,'BluetoothSolarCurrentCallbacks::onRead()'],['../class_bluetooth_battery_percent_callbacks.html#aa1f4b34e2c0f1f612c610a3aa8c761b2',1,'BluetoothBatteryPercentCallbacks::onRead()'],['../class_bluetooth_battery_voltage_callbacks.html#a243f31933e3c951346665a0ea15214e3',1,'BluetoothBatteryVoltageCallbacks::onRead()'],['../class_bluetooth_battery_current_callbacks.html#a25b330bdd2366e8a0fc10911a6a1646a',1,'BluetoothBatteryCurrentCallbacks::onRead()']]],
-  ['onwrite_3',['onWrite',['../class_bluetooth_uart_service_callbacks.html#ab73163e54cd7377e5fc83af2c3747b75',1,'BluetoothUartServiceCallbacks']]],
-  ['operator_3d_4',['operator=',['../class_device_config.html#a438c4a3d753923f0a42bf271c72b65b9',1,'DeviceConfig']]],
-  ['original_5',['ORIGINAL',['../class_t_c_a9534.html#adf1c2b9cfef68f8181a8b588757ae10aaa87d5006e1de1bfc07d5c56086ad20f1',1,'TCA9534']]],
-  ['out_6',['OUT',['../class_t_c_a9534.html#a3200e83b186f1bee938fcfab0868c480aef373774188a51f80463f37b6bd9e83a',1,'TCA9534']]],
-  ['output_7',['output',['../class_t_c_a9534.html#a8321e69546ca45f3b9cd45f5ed7e2111',1,'TCA9534::output(const uint8_t port, const uint8_t v)'],['../class_t_c_a9534.html#a9b7611b429745138a2892a57acfacc7e',1,'TCA9534::output(const uint8_t v)'],['../class_t_c_a9534.html#af37223195b500d7d05e2f36cede0b034',1,'TCA9534::output()']]],
-  ['output_5fport_8',['OUTPUT_PORT',['../class_t_c_a9534.html#a9c648884816563b5d5ef68d61a37a586ae75ed3ffb3cff3a4dc540512efc74e81',1,'TCA9534']]]
+  ['node_5fid_0',['node_id',['../class_device_config.html#a575ea0dd0e500ebc854aeb0267023ace',1,'DeviceConfig']]],
+  ['notify_5fdevice_1',['notify_device',['../class_bluetooth_server.html#a41402fe3187b76043a73e4fffbb4158f',1,'BluetoothServer']]],
+  ['ntp_2ecpp_2',['ntp.cpp',['../ntp_8cpp.html',1,'']]],
+  ['ntpserver_3',['ntpServer',['../ntp_8cpp.html#a6bd950625db0f240acc63a9cb41873f6',1,'ntp.cpp']]]
 ];
