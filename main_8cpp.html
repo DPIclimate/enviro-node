@@ -98,10 +98,13 @@ $(document).ready(function(){initNavTree('main_8cpp.html',''); initResizable(); 
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &lt;Arduino.h&gt;</code><br />
+<code>#include &quot;version.h&quot;</code><br />
 <code>#include &lt;esp_log.h&gt;</code><br />
 <code>#include &lt;freertos/FreeRTOS.h&gt;</code><br />
 <code>#include &lt;<a class="el" href="_t_c_a9534_8h_source.html">TCA9534.h</a>&gt;</code><br />
 <code>#include &lt;driver/rtc_io.h&gt;</code><br />
+<code>#include &lt;soc/rtc.h&gt;</code><br />
+<code>#include &lt;esp_private/esp_clk.h&gt;</code><br />
 <code>#include &quot;<a class="el" href="globals_8h_source.html">globals.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_sensor_task_8h_source.html">SensorTask.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_device_config_8h_source.html">DeviceConfig.h</a>&quot;</code><br />
@@ -115,7 +118,7 @@ $(document).ready(function(){initNavTree('main_8cpp.html',''); initResizable(); 
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for main.cpp:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="main_8cpp__incl.svg" width="3310" height="447"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="main_8cpp__incl.svg" width="3646" height="447"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 </div><table class="memberdecls">
@@ -125,9 +128,14 @@ Macros</h2></td></tr>
 <tr class="separator:a50622d2058413be33afcc9e4bfceb68b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afc3d101f633a076cc1ca84b85b6224b2"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#afc3d101f633a076cc1ca84b85b6224b2">TAG</a>&#160;&#160;&#160;&quot;wombat&quot;</td></tr>
 <tr class="separator:afc3d101f633a076cc1ca84b85b6224b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:add43cc202e45b41af4b90ab4ff17c9ac"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#add43cc202e45b41af4b90ab4ff17c9ac">SLOW_CLK_CAL_CYCLES</a>&#160;&#160;&#160;2048</td></tr>
+<tr class="separator:add43cc202e45b41af4b90ab4ff17c9ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:a43937a1f3e090a4ef926cbe30a3fce6b"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a43937a1f3e090a4ef926cbe30a3fce6b">select_rtc_slow_clk</a> (void)</td></tr>
+<tr class="memdesc:a43937a1f3e090a4ef926cbe30a3fce6b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Switch the RTC clock source to the external crystal.  <a href="main_8cpp.html#a43937a1f3e090a4ef926cbe30a3fce6b">More...</a><br /></td></tr>
+<tr class="separator:a43937a1f3e090a4ef926cbe30a3fce6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4fc01d736fe50cf5b977f755b675f11d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a4fc01d736fe50cf5b977f755b675f11d">setup</a> ()</td></tr>
 <tr class="separator:a4fc01d736fe50cf5b977f755b675f11d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afe461d27b9c48d5921c00d521181f12f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#afe461d27b9c48d5921c00d521181f12f">loop</a> ()</td></tr>
@@ -152,6 +160,20 @@ Variables</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">#define ALLOCATE_GLOBALS</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="add43cc202e45b41af4b90ab4ff17c9ac" name="add43cc202e45b41af4b90ab4ff17c9ac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#add43cc202e45b41af4b90ab4ff17c9ac">&#9670;&#160;</a></span>SLOW_CLK_CAL_CYCLES</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SLOW_CLK_CAL_CYCLES&#160;&#160;&#160;2048</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -225,6 +247,35 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+</div>
+</div>
+<a id="a43937a1f3e090a4ef926cbe30a3fce6b" name="a43937a1f3e090a4ef926cbe30a3fce6b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a43937a1f3e090a4ef926cbe30a3fce6b">&#9670;&#160;</a></span>select_rtc_slow_clk()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void select_rtc_slow_clk </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Switch the RTC clock source to the external crystal. </p>
+<p >This code is copied from the ESP32 Ardiuno core, and slightly modified so it only tries to use the external crystal before falling back to the 150 kHz internal oscillator. </p>
 
 </div>
 </div>

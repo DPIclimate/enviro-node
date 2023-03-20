@@ -7,9 +7,10 @@ var searchData=
   ['sensors_4',['sensors',['../sdi12_8cpp.html#abfdc03a08a9960c1fb81cec3813f1082',1,'sensors():&#160;SensorTask.cpp'],['../_sensor_task_8cpp.html#abfdc03a08a9960c1fb81cec3813f1082',1,'sensors():&#160;SensorTask.cpp']]],
   ['server_5',['server',['../server_8cpp.html#a4c702b816cf82ea6518921edab262bd9',1,'server.cpp']]],
   ['sleep_5fadjustment_6',['sleep_adjustment',['../class_device_config.html#ab30b4b1f1affcfcaf78bc5369146f87c',1,'DeviceConfig']]],
-  ['solar_7',['solar',['../solar_8cpp.html#a6ae1f2d0fe5f9f35e3eec3616641c476',1,'solar.cpp']]],
-  ['solar_5fmonitor_8',['solar_monitor',['../globals_8h.html#ac568439cec3bbbba4b7787ea1ae04b9c',1,'globals.h']]],
-  ['solaraddr_9',['solarAddr',['../class_solar_monitor.html#acc1b72b216eb69d45fe4b5edcdd866f6',1,'SolarMonitor']]],
-  ['str_10',['str',['../test___utils_8cpp.html#af0335cdc7b359992294bb8b8a0d276b7',1,'test_Utils.cpp']]],
-  ['sts_11',['sts',['../class_t_c_a9534.html#a0a5075813b9328dc5275fbc393757151',1,'TCA9534']]]
+  ['sleep_5fdrift_5fadjustment_7',['sleep_drift_adjustment',['../globals_8h.html#a7ab6e6eedf09bb55c027608f5966f359',1,'globals.h']]],
+  ['solar_8',['solar',['../solar_8cpp.html#a6ae1f2d0fe5f9f35e3eec3616641c476',1,'solar.cpp']]],
+  ['solar_5fmonitor_9',['solar_monitor',['../globals_8h.html#ac568439cec3bbbba4b7787ea1ae04b9c',1,'globals.h']]],
+  ['solaraddr_10',['solarAddr',['../class_solar_monitor.html#acc1b72b216eb69d45fe4b5edcdd866f6',1,'SolarMonitor']]],
+  ['str_11',['str',['../test___utils_8cpp.html#af0335cdc7b359992294bb8b8a0d276b7',1,'test_Utils.cpp']]],
+  ['sts_12',['sts',['../class_t_c_a9534.html#a0a5075813b9328dc5275fbc393757151',1,'TCA9534']]]
 ];

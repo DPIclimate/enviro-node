@@ -26,7 +26,7 @@ var NAVTREE =
 [
   [ "Wombat Environmental Node", "index.html", [
     [ "Todo List", "todo.html", null ],
-    [ "Classes", "annotated.html", [
+    [ "Namespaces", "namespaces.html", [
       [ "About", "index.html#autotoc_md0", null ],
       [ "Hardware", "index.html#autotoc_md1", [
         [ "Microcontroller", "index.html#autotoc_md2", null ],
@@ -48,6 +48,13 @@ var NAVTREE =
         [ "CAT-M1", "index.html#autotoc_md16", null ]
       ] ],
       [ "License", "index.html#autotoc_md17", null ],
+      [ "Namespace List", "namespaces.html", "namespaces_dup" ],
+      [ "Namespace Members", "namespacemembers.html", [
+        [ "All", "namespacemembers.html", null ],
+        [ "Variables", "namespacemembers_vars.html", null ]
+      ] ]
+    ] ],
+    [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
       [ "Class Index", "classes.html", null ],
       [ "Class Hierarchy", "hierarchy.html", "hierarchy" ],
@@ -76,7 +83,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "_c_a_t___m1_8cpp.html",
-"class_t_c_a9534.html#a9c648884816563b5d5ef68d61a37a586"
+"class_t_c_a9534.html#a9c648884816563b5d5ef68d61a37a586",
+"uplinks_8cpp.html#a78f66b6151151d06e9ccc204b4b672a5"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
