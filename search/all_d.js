@@ -1,17 +1,12 @@
 var searchData=
 [
-  ['peripherals_2eh_0',['peripherals.h',['../peripherals_8h.html',1,'']]],
-  ['piezo_5fbuzzer_5fpin_1',['PIEZO_BUZZER_PIN',['../tones_8h.html#a399e51d6b82b2110f782455882c42e62',1,'tones.h']]],
-  ['polarity_2',['polarity',['../class_t_c_a9534.html#ae769761af75189f024049c196751af80',1,'TCA9534::polarity(const uint8_t port, const Polarity pol)'],['../class_t_c_a9534.html#ad3cfc894ef84a54f28022b72c2b6181d',1,'TCA9534::polarity(const Polarity pol)'],['../class_t_c_a9534.html#a1f151ad574d32d27b7362373b03d1f46',1,'TCA9534::polarity()']]],
-  ['polarity_3',['Polarity',['../class_t_c_a9534.html#adf1c2b9cfef68f8181a8b588757ae10a',1,'TCA9534']]],
-  ['polarity_4',['POLARITY',['../class_t_c_a9534.html#a9c648884816563b5d5ef68d61a37a586a756ba1b9f3ee81450614b234b6fbbbfb',1,'TCA9534']]],
-  ['power_5fmonitoring_2ecpp_5',['power_monitoring.cpp',['../power__monitoring_8cpp.html',1,'']]],
-  ['power_5fmonitoring_2eh_6',['power_monitoring.h',['../power__monitoring_8h.html',1,'']]],
-  ['power_5fon_7',['power_on',['../class_c_a_t___m1.html#a6a77f778f2ec4eea70a202a5e24dcec9',1,'CAT_M1']]],
-  ['power_5fsupply_8',['power_supply',['../class_c_a_t___m1.html#a7003b03e6081e685aa719c977f90f9d7',1,'CAT_M1']]],
-  ['previous_5frtc_5fseconds_9',['previous_rtc_seconds',['../globals_8h.html#a4e9c5eb188f1ee917ed61422ab536e6e',1,'globals.h']]],
-  ['process_5ffile_10',['process_file',['../uplinks_8cpp.html#afefd79d8017c716399e160b77da5e86b',1,'uplinks.cpp']]],
-  ['prog_5fbtn_11',['PROG_BTN',['../peripherals_8h.html#a699ee81d6d32a3223c605cfa889b1819',1,'peripherals.h']]],
-  ['progbtnisr_12',['progBtnISR',['../peripherals_8h.html#ac13889440b8cda4790841a83ca461f0d',1,'peripherals.h']]],
-  ['progbtnpressed_13',['progBtnPressed',['../peripherals_8h.html#a03be9ef4953686eb4c64ea3b139c0150',1,'peripherals.h']]]
+  ['onconnect_0',['onConnect',['../class_bluetooth_server_callbacks.html#a94ac855b1006f3887f93ac8e22c22ff3',1,'BluetoothServerCallbacks']]],
+  ['ondisconnect_1',['onDisconnect',['../class_bluetooth_server_callbacks.html#a1be1293f3f11a5eb7da08239279f3c63',1,'BluetoothServerCallbacks']]],
+  ['onread_2',['onRead',['../class_bluetooth_solar_voltage_callbacks.html#a4cdbfa712d4ab4f6cded6171f31125dd',1,'BluetoothSolarVoltageCallbacks::onRead()'],['../class_bluetooth_solar_current_callbacks.html#a5e1b82dbf4e1063acd6ad6ec51ad10fd',1,'BluetoothSolarCurrentCallbacks::onRead()'],['../class_bluetooth_battery_percent_callbacks.html#aa1f4b34e2c0f1f612c610a3aa8c761b2',1,'BluetoothBatteryPercentCallbacks::onRead()'],['../class_bluetooth_battery_voltage_callbacks.html#a243f31933e3c951346665a0ea15214e3',1,'BluetoothBatteryVoltageCallbacks::onRead()'],['../class_bluetooth_battery_current_callbacks.html#a25b330bdd2366e8a0fc10911a6a1646a',1,'BluetoothBatteryCurrentCallbacks::onRead()']]],
+  ['onwrite_3',['onWrite',['../class_bluetooth_uart_service_callbacks.html#ab73163e54cd7377e5fc83af2c3747b75',1,'BluetoothUartServiceCallbacks']]],
+  ['operator_3d_4',['operator=',['../class_device_config.html#a438c4a3d753923f0a42bf271c72b65b9',1,'DeviceConfig']]],
+  ['original_5',['ORIGINAL',['../class_t_c_a9534.html#adf1c2b9cfef68f8181a8b588757ae10aaa87d5006e1de1bfc07d5c56086ad20f1',1,'TCA9534']]],
+  ['out_6',['OUT',['../class_t_c_a9534.html#a3200e83b186f1bee938fcfab0868c480aef373774188a51f80463f37b6bd9e83a',1,'TCA9534']]],
+  ['output_7',['output',['../class_t_c_a9534.html#a8321e69546ca45f3b9cd45f5ed7e2111',1,'TCA9534::output(const uint8_t port, const uint8_t v)'],['../class_t_c_a9534.html#a9b7611b429745138a2892a57acfacc7e',1,'TCA9534::output(const uint8_t v)'],['../class_t_c_a9534.html#af37223195b500d7d05e2f36cede0b034',1,'TCA9534::output()']]],
+  ['output_5fport_8',['OUTPUT_PORT',['../class_t_c_a9534.html#a9c648884816563b5d5ef68d61a37a586ae75ed3ffb3cff3a4dc540512efc74e81',1,'TCA9534']]]
 ];
