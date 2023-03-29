@@ -184,6 +184,7 @@ bool mqtt_publish(String& topic, const char * const msg) {
     }
 
     delay(20);
+    mqttGotURC = false;
     while (!mqttGotURC) {
         r5.bufferedPoll();
     }
