@@ -12,6 +12,15 @@
 #define EXTERN extern
 #endif
 
+
+/// Convert an IO expander pin number (1, 2, ...) to an pin number usable with digitalWrite (0x81, 0x82, ...)
+/// Note that digitalWrite has been redefined to understand that pin numbers >= 0x80 should be toggled on the IO
+/// expander IC, not the ESP32.
+#define IO_TO_ARDUINO(p) (0x80 + p)
+
+/// Convert an Arduino pin number usable with digitalWrite (0x81, 0x82, ...) to an IO expander pin number (1, 2, ...)
+#define ARDUINO_TO_IO(p) (p & 0x7F)
+
 /// The size for a buffer to hold the string representation of an integer or float.
 #define MAX_NUMERIC_STR_SZ 32
 
@@ -31,7 +40,7 @@ EXTERN bool r5_ok;
 
 #ifdef ALLOCATE_GLOBALS
 /// A global SARA R5 modem object.
-SARA_R5 r5(LTE_PWR_TOGGLE_PIN, -1);
+SARA_R5 r5(LTE_PWR_ON, -1);
 
 /// The seconds value from the RTC before it is set to the value from the modem.
 int previous_rtc_seconds = 0;

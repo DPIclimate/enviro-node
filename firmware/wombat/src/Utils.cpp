@@ -155,6 +155,8 @@ size_t readFromStreamUntil(Stream& stream, const char delim, char * const buffer
 
         while (stream.available()) {
             ch = stream.read();
+
+            stream.write(ch);
             if (ch == delim) {
                 return len;
             }
@@ -340,6 +342,7 @@ bool connect_to_internet(void) {
 
     ESP_LOGI(TAG, "Looking for response to AT command");
     if ( ! wait_for_at()) {
+        already_called = false;
         cat_m1.restart();
         if ( ! wait_for_at()) {
             ESP_LOGE(TAG, "Cannot talk to SARA R5");

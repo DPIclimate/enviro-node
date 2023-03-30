@@ -15,7 +15,8 @@
 #define digitalPinToInterrupt(p)    (((p)<48)?(p):-1)
 #define digitalPinHasPWM(p)         (p < 46)
 
-static const uint8_t LED_BUILTIN = 13;
+// 0x81 means P1 on the IO expander IC. 0x81 for newer boards, 0x84 for the original test boards.
+static const uint8_t LED_BUILTIN = 0x81;
 #define BUILTIN_LED  LED_BUILTIN // backward compatibility
 
 static const uint8_t TX = 34;

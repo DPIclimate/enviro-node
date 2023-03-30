@@ -79,9 +79,10 @@ void setup() {
 
     // Set all pins to output mode (reg 3, value 0).
     io_expander.config(TCA9534::Config::OUT);
-    io_expander.output(4, TCA9534::Level::L); // Turn off LED
+    digitalWrite(LED_BUILTIN, LOW); // Turn off LED
 
-    disable12V();
+    enable12V();
+    delay(1000);
 
     cat_m1.begin(io_expander);
 
@@ -99,6 +100,7 @@ void setup() {
     CLI::init();
 
     config.load();
+
     config.dumpConfig(Serial);
 
     // Enable the brown out detection now the node has stabilised its
@@ -183,6 +185,8 @@ void setup() {
     battery_monitor.sleep();
     solar_monitor.sleep();
 
+    disable12V();
+
     unsigned long setup_end_ms = millis();
     unsigned long setup_in_secs = setup_end_ms / 1000;
     uint64_t mi_in_secs = (uint64_t)measurement_interval_secs;
@@ -236,8 +240,7 @@ extern "C" {
  */
 extern void digitalWrite(uint8_t pin, uint8_t val) {
     if (pin & 0x80) {
-        uint8_t p = pin & 0x7F;
-        io_expander.output(p, val == HIGH ? TCA9534::H : TCA9534::L);
+        io_expander.output(ARDUINO_TO_IO(pin), val == HIGH ? TCA9534::H : TCA9534::L);
     } else {
         gpio_set_level((gpio_num_t) pin, val);
     }

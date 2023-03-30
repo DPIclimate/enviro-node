@@ -25,19 +25,16 @@ sensor_list sensors;
 /// \brief Scans the SDI-12 bus and fills in the sensors object.
 ///
 void init_sensors(void) {
-    enable12V();
     sdi12.begin();
-
     dpi12.scan_bus(sensors);
-
     sdi12.end();
-    disable12V();
 
     ESP_LOGI(TAG, "Found %u sensors", sensors.count);
     for (uint8_t i = 0; i < sensors.count; i++) {
         ESP_LOGI(TAG, "%s", &sensors.sensors[i]);
     }
 }
+
 
 /// \brief Read a single SDI-12 sensor and add its values to timeseries_array.
 bool read_sensor(const char addr, JsonArray& timeseries_array) {
@@ -159,9 +156,9 @@ bool read_sensor(const char addr, JsonArray& timeseries_array) {
     return true;
 }
 
+
 /// \brief Read all sensors, put the readings in a JSON message and save the JSON to a file on SPIFFS to be uplinked later.
 void sensor_task(void) {
-    enable12V();
     sdi12.begin();
 
     DynamicJsonDocument msg(2048);
@@ -221,5 +218,4 @@ void sensor_task(void) {
     }
 
     sdi12.end();
-    disable12V();
 }

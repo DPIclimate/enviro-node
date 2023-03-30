@@ -54,6 +54,14 @@ static const CLI_Command_Definition_t mqttCmd = {
         -1
 };
 
+//! Power commands
+static const CLI_Command_Definition_t powerCmd = {
+        CLIPower::cmd.c_str(),
+        "mqtt:\r\n Show battery and solar information\r\n",
+        CLIPower::enter_cli,
+        -1
+};
+
 /**
  * @brief Initialise the FreeRTOS command line interface.
  */
@@ -64,6 +72,7 @@ void CLI::init() {
     FreeRTOS_CLIRegisterCommand(&sdi12Cmd);
     FreeRTOS_CLIRegisterCommand(&catM1Cmd);
     FreeRTOS_CLIRegisterCommand(&mqttCmd);
+    FreeRTOS_CLIRegisterCommand(&powerCmd);
 }
 
 /**
@@ -81,8 +90,6 @@ void CLI::repl(Stream& io) {
     // set from here before either mode is used.
     cliStream = &io;
     io.println("Entering repl");
-
-    enable12V();
 
     while (true) {
         io.print("$ ");
@@ -113,5 +120,4 @@ void CLI::repl(Stream& io) {
     }
 
     io.println("Exiting repl");
-    disable12V();
 }

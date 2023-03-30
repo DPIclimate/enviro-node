@@ -4,8 +4,8 @@
 #include <Wire.h>
 #include <TCA9534.h>
 
-#define LTE_PWR_SUPPLY_PIN 0x83
-#define LTE_PWR_TOGGLE_PIN 0x80
+#define LTE_VCC 0x83
+#define LTE_PWR_ON 0x80
 
 #define LTE_Serial Serial1
 

@@ -1,5 +1,6 @@
 #include "CAT_M1.h"
 #include "SparkFun_u-blox_SARA-R5_Arduino_Library.h"
+#include "globals.h"
 
 #define TAG "CAT_M1"
 
@@ -11,32 +12,35 @@ void CAT_M1::begin(TCA9534& io_ex){
     io_expander = &io_ex;
     // The & 0x7F is to mask out the MSB that tells our version of digitalWrite that the
     // pin is on the IO expander.
-    io_expander->config(LTE_PWR_SUPPLY_PIN & 0x7F, TCA9534::Config::OUT);
-    io_expander->config(LTE_PWR_TOGGLE_PIN & 0x7F, TCA9534::Config::OUT);
+    io_expander->config(ARDUINO_TO_IO(LTE_VCC), TCA9534::Config::OUT);
+    io_expander->config(ARDUINO_TO_IO(LTE_PWR_ON), TCA9534::Config::OUT);
 
+    // Switches off VCC
     power_supply(false);
-    digitalWrite(LTE_PWR_TOGGLE_PIN, LOW);
+
+    // Turns Q4 off, allowing PWR_ON to be controlled by the R5 internal pull-up.
+    digitalWrite(LTE_PWR_ON, LOW);
 }
 
 void CAT_M1::power_supply(bool state) {
     ESP_LOGI(TAG, "state = %d", state);
-    digitalWrite(LTE_PWR_SUPPLY_PIN, state ? HIGH : LOW);
+    digitalWrite(LTE_VCC, state ? HIGH : LOW);
     power_on = state;
     delay(10); // May not be needed
 }
 
 void CAT_M1::device_on() {
-    ESP_LOGI(TAG, "Toggle pin %X for 200ms", LTE_PWR_TOGGLE_PIN);
-    digitalWrite(LTE_PWR_TOGGLE_PIN, HIGH);
+    ESP_LOGI(TAG, "Toggle PWR_ON (pin %X) for 200ms", LTE_PWR_ON);
+    digitalWrite(LTE_PWR_ON, HIGH);
     delay(200);
-    digitalWrite(LTE_PWR_TOGGLE_PIN, LOW);
+    digitalWrite(LTE_PWR_ON, LOW);
 }
 
 void CAT_M1::device_off() {
-    ESP_LOGI(TAG, "Toggle pin %X for 10s", LTE_PWR_TOGGLE_PIN);
-    digitalWrite(LTE_PWR_TOGGLE_PIN, HIGH);
+    ESP_LOGI(TAG, "Toggle PWR_ON (pin %X) for 10s", LTE_PWR_ON);
+    digitalWrite(LTE_PWR_ON, HIGH);
     delay(10000);
-    digitalWrite(LTE_PWR_TOGGLE_PIN, LOW);
+    digitalWrite(LTE_PWR_ON, LOW);
 }
 
 bool CAT_M1::restart() {

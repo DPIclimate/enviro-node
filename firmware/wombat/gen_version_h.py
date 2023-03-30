@@ -53,8 +53,6 @@ else:
 
 commit_const = f'#pragma once\nconst char* commit_id = "{commit_id} {repo_status}";'
 
-print(commit_const)
-
 with open(_VERSION_H, 'w') as version_h:
     version_h.write(commit_const)
 

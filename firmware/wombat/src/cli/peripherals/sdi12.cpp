@@ -99,7 +99,6 @@ BaseType_t CLISdi12::enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen,
         }
 
         if (!strncmp("m", param, paramLen)) {
-            enable12V();
             sdi12.begin();
 
             char addr = 0;
@@ -124,8 +123,6 @@ BaseType_t CLISdi12::enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen,
             response_buffer_.print("\r\nOK\r\n");
 
             sdi12.end();
-
-            // SDI-12 power not disabled here. It is disabled when the CLI is exited.
 
             return pdTRUE;
         }

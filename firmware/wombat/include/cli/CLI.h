@@ -14,6 +14,7 @@
 #include "cli/FreeRTOS_CLI.h"
 #include "cli/peripherals/cat-m1.h"
 #include "cli/peripherals/sdi12.h"
+#include "cli/peripherals/cli_power.h"
 #include "bluetooth/server.h"
 #include "cli/device_config/acquisition_intervals.h"
 #include "cli/device_config/mqtt_cli.h"
