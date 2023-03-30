@@ -102,7 +102,7 @@ $(document).ready(function(){initNavTree('_c_l_i_8cpp.html',''); initResizable()
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for CLI.cpp:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="_c_l_i_8cpp__incl.svg" width="2183" height="432"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="_c_l_i_8cpp__incl.svg" width="2286" height="432"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 </div><table class="memberdecls">
@@ -132,6 +132,9 @@ Variables</h2></td></tr>
 <tr class="memitem:a1ca2650024c4a322af068be6178fe01a"><td class="memItemLeft" align="right" valign="top">static const CLI_Command_Definition_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_c_l_i_8cpp.html#a1ca2650024c4a322af068be6178fe01a">mqttCmd</a></td></tr>
 <tr class="memdesc:a1ca2650024c4a322af068be6178fe01a"><td class="mdescLeft">&#160;</td><td class="mdescRight">MQTT setup and connection commands.  <a href="_c_l_i_8cpp.html#a1ca2650024c4a322af068be6178fe01a">More...</a><br /></td></tr>
 <tr class="separator:a1ca2650024c4a322af068be6178fe01a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a44f22557b40c51afd30cdb330930bb8d"><td class="memItemLeft" align="right" valign="top">static const CLI_Command_Definition_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_c_l_i_8cpp.html#a44f22557b40c51afd30cdb330930bb8d">powerCmd</a></td></tr>
+<tr class="memdesc:a44f22557b40c51afd30cdb330930bb8d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Power commands.  <a href="_c_l_i_8cpp.html#a44f22557b40c51afd30cdb330930bb8d">More...</a><br /></td></tr>
+<tr class="separator:a44f22557b40c51afd30cdb330930bb8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >FreeRTOS <a class="el" href="class_c_l_i.html" title="FreeRTOS command line interface.">CLI</a> handler. </p>
@@ -328,6 +331,38 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Message buffer. </p>
+
+</div>
+</div>
+<a id="a44f22557b40c51afd30cdb330930bb8d" name="a44f22557b40c51afd30cdb330930bb8d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a44f22557b40c51afd30cdb330930bb8d">&#9670;&#160;</a></span>powerCmd</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const CLI_Command_Definition_t powerCmd</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
+<div class="line">        <a class="code hl_variable" href="class_c_l_i_power.html#a92cde563a20b1fe32ec114250141fa04">CLIPower::cmd</a>.c_str(),</div>
+<div class="line">        <span class="stringliteral">&quot;mqtt:\r\n Show battery and solar information\r\n&quot;</span>,</div>
+<div class="line">        <a class="code hl_function" href="class_c_l_i_power.html#ad357ab42c672f160162907f0e7d7cddc">CLIPower::enter_cli</a>,</div>
+<div class="line">        -1</div>
+<div class="line">}</div>
+<div class="ttc" id="aclass_c_l_i_power_html_a92cde563a20b1fe32ec114250141fa04"><div class="ttname"><a href="class_c_l_i_power.html#a92cde563a20b1fe32ec114250141fa04">CLIPower::cmd</a></div><div class="ttdeci">static const std::string cmd</div><div class="ttdoc">Power related commands in the CLI begin with &quot;pwr&quot;.</div><div class="ttdef"><b>Definition:</b> cli_power.h:17</div></div>
+<div class="ttc" id="aclass_c_l_i_power_html_ad357ab42c672f160162907f0e7d7cddc"><div class="ttname"><a href="class_c_l_i_power.html#ad357ab42c672f160162907f0e7d7cddc">CLIPower::enter_cli</a></div><div class="ttdeci">static BaseType_t enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen, const char *pcCommandString)</div><div class="ttdoc">Command-line interface command for setting MQTT parameters.</div><div class="ttdef"><b>Definition:</b> cli_power.cpp:40</div></div>
+</div><!-- fragment -->
+<p>Power commands. </p>
 
 </div>
 </div>

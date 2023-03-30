@@ -6,5 +6,6 @@ var searchData=
   ['cliconfig_3',['CLIConfig',['../class_c_l_i_config.html',1,'']]],
   ['cliconfigintervals_4',['CLIConfigIntervals',['../class_c_l_i_config_intervals.html',1,'']]],
   ['climqtt_5',['CLIMQTT',['../class_c_l_i_m_q_t_t.html',1,'']]],
-  ['clisdi12_6',['CLISdi12',['../class_c_l_i_sdi12.html',1,'']]]
+  ['clipower_6',['CLIPower',['../class_c_l_i_power.html',1,'']]],
+  ['clisdi12_7',['CLISdi12',['../class_c_l_i_sdi12.html',1,'']]]
 ];

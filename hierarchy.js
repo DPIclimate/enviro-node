@@ -24,6 +24,7 @@ var hierarchy =
     [ "CLIConfig", "class_c_l_i_config.html", null ],
     [ "CLIConfigIntervals", "class_c_l_i_config_intervals.html", null ],
     [ "CLIMQTT", "class_c_l_i_m_q_t_t.html", null ],
+    [ "CLIPower", "class_c_l_i_power.html", null ],
     [ "CLISdi12", "class_c_l_i_sdi12.html", null ],
     [ "DeviceConfig", "class_device_config.html", null ],
     [ "SDCardInterface", "class_s_d_card_interface.html", null ],

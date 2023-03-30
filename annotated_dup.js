@@ -18,6 +18,7 @@ var annotated_dup =
     [ "CLIConfig", "class_c_l_i_config.html", "class_c_l_i_config" ],
     [ "CLIConfigIntervals", "class_c_l_i_config_intervals.html", "class_c_l_i_config_intervals" ],
     [ "CLIMQTT", "class_c_l_i_m_q_t_t.html", "class_c_l_i_m_q_t_t" ],
+    [ "CLIPower", "class_c_l_i_power.html", "class_c_l_i_power" ],
     [ "CLISdi12", "class_c_l_i_sdi12.html", "class_c_l_i_sdi12" ],
     [ "DeviceConfig", "class_device_config.html", "class_device_config" ],
     [ "SDCardInterface", "class_s_d_card_interface.html", "class_s_d_card_interface" ],

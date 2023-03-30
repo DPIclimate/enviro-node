@@ -1,36 +1,37 @@
 <map id="firmware/wombat/src/cli/CLI.cpp" name="firmware/wombat/src/cli/CLI.cpp">
-<area shape="rect" id="node1" title="FreeRTOS CLI handler." alt="" coords="855,5,1015,45"/>
-<area shape="rect" id="node2" href="$_c_l_i_8h.html" title="FreeRTOS CLI handler." alt="" coords="899,93,972,119"/>
-<area shape="rect" id="node3" title=" " alt="" coords="724,401,808,427"/>
-<area shape="rect" id="node4" title=" " alt="" coords="1185,255,1336,280"/>
-<area shape="rect" id="node5" title=" " alt="" coords="1719,255,1861,280"/>
-<area shape="rect" id="node6" href="$cat-m1_8h.html" title="CAT&#45;M1 CLI command request and response handler." alt="" coords="1363,174,1539,199"/>
-<area shape="rect" id="node12" href="$sdi12_8h.html" title="SDI&#45;12 command line interface handler." alt="" coords="1563,174,1729,199"/>
-<area shape="rect" id="node17" href="$server_8h.html" title="Handle the setup and maintenance of the BLE server and connected clients." alt="" coords="652,174,792,199"/>
-<area shape="rect" id="node30" href="$acquisition__intervals_8h.html" title="Handles the time between measurements and uplinks by the device over LTE." alt="" coords="1134,167,1339,207"/>
-<area shape="rect" id="node33" href="$mqtt__cli_8h.html" title="MQTT setup and configuration through the CLI." alt="" coords="139,167,305,207"/>
-<area shape="rect" id="node34" href="$config__cli_8h.html" title=" " alt="" coords="406,167,579,207"/>
-<area shape="rect" id="node7" title=" " alt="" coords="1471,255,1552,280"/>
-<area shape="rect" id="node8" title=" " alt="" coords="1576,255,1695,280"/>
-<area shape="rect" id="node9" href="$_c_a_t___m1_8h.html" title=" " alt="" coords="1360,255,1447,280"/>
-<area shape="rect" id="node10" title=" " alt="" coords="1469,401,1533,427"/>
-<area shape="rect" id="node11" href="$_t_c_a9534_8h.html" title=" " alt="" coords="1414,328,1505,353"/>
-<area shape="rect" id="node13" title=" " alt="" coords="1819,328,1943,353"/>
-<area shape="rect" id="node14" href="$_utils_8h.html" title=" " alt="" coords="1973,255,2037,280"/>
-<area shape="rect" id="node15" title=" " alt="" coords="2102,328,2177,353"/>
-<area shape="rect" id="node16" title=" " alt="" coords="1967,328,2077,353"/>
-<area shape="rect" id="node18" title=" " alt="" coords="1059,255,1161,280"/>
-<area shape="rect" id="node19" title=" " alt="" coords="803,328,902,353"/>
-<area shape="rect" id="node20" title=" " alt="" coords="282,255,370,280"/>
-<area shape="rect" id="node21" title=" " alt="" coords="465,328,555,353"/>
-<area shape="rect" id="node22" href="$uart_8h.html" title="BluetoothLE UART service setup and handling." alt="" coords="395,255,521,280"/>
-<area shape="rect" id="node25" href="$device_8h.html" title="Bluetooth device services and device information." alt="" coords="597,255,740,280"/>
-<area shape="rect" id="node26" href="$power__monitoring_8h.html" title="Setup BluetoothLE power monitoring information." alt="" coords="815,255,1034,280"/>
-<area shape="rect" id="node23" title=" " alt="" coords="580,328,728,353"/>
-<area shape="rect" id="node24" href="$tones_8h.html" title="Audio control for the onboard piezo buzzer." alt="" coords="215,328,389,353"/>
-<area shape="rect" id="node27" href="$solar_8h.html" title="Solar voltage and current monitoring using INA219 IC." alt="" coords="977,328,1163,353"/>
-<area shape="rect" id="node29" href="$battery_8h.html" title="Battery voltage and current monitoring using INA219 IC." alt="" coords="1188,328,1389,353"/>
-<area shape="rect" id="node28" title=" " alt="" coords="1109,401,1249,427"/>
-<area shape="rect" id="node31" href="$_device_config_8h.html" title="Node configuration options." alt="" coords="138,255,258,280"/>
-<area shape="rect" id="node32" title=" " alt="" coords="23,328,139,353"/>
+<area shape="rect" id="node1" title="FreeRTOS CLI handler." alt="" coords="783,5,943,45"/>
+<area shape="rect" id="node2" href="$_c_l_i_8h.html" title="FreeRTOS CLI handler." alt="" coords="827,93,900,119"/>
+<area shape="rect" id="node3" title=" " alt="" coords="1431,401,1515,427"/>
+<area shape="rect" id="node4" title=" " alt="" coords="116,255,267,280"/>
+<area shape="rect" id="node5" title=" " alt="" coords="539,255,681,280"/>
+<area shape="rect" id="node6" href="$cat-m1_8h.html" title="CAT&#45;M1 CLI command request and response handler." alt="" coords="207,174,383,199"/>
+<area shape="rect" id="node12" href="$sdi12_8h.html" title="SDI&#45;12 command line interface handler." alt="" coords="637,174,802,199"/>
+<area shape="rect" id="node17" href="$cli__power_8h.html" title=" " alt="" coords="50,167,183,207"/>
+<area shape="rect" id="node18" href="$server_8h.html" title="Handle the setup and maintenance of the BLE server and connected clients." alt="" coords="1144,174,1284,199"/>
+<area shape="rect" id="node31" href="$acquisition__intervals_8h.html" title="Handles the time between measurements and uplinks by the device over LTE." alt="" coords="407,167,613,207"/>
+<area shape="rect" id="node34" href="$mqtt__cli_8h.html" title="MQTT setup and configuration through the CLI." alt="" coords="1494,167,1659,207"/>
+<area shape="rect" id="node35" href="$config__cli_8h.html" title=" " alt="" coords="1777,167,1950,207"/>
+<area shape="rect" id="node7" title=" " alt="" coords="433,255,515,280"/>
+<area shape="rect" id="node8" title=" " alt="" coords="291,255,409,280"/>
+<area shape="rect" id="node9" href="$_c_a_t___m1_8h.html" title=" " alt="" coords="5,255,92,280"/>
+<area shape="rect" id="node10" title=" " alt="" coords="58,401,122,427"/>
+<area shape="rect" id="node11" href="$_t_c_a9534_8h.html" title=" " alt="" coords="86,328,177,353"/>
+<area shape="rect" id="node13" title=" " alt="" coords="480,328,604,353"/>
+<area shape="rect" id="node14" href="$_utils_8h.html" title=" " alt="" coords="757,255,821,280"/>
+<area shape="rect" id="node15" title=" " alt="" coords="763,328,838,353"/>
+<area shape="rect" id="node16" title=" " alt="" coords="628,328,739,353"/>
+<area shape="rect" id="node19" title=" " alt="" coords="1364,255,1467,280"/>
+<area shape="rect" id="node20" title=" " alt="" coords="1163,328,1262,353"/>
+<area shape="rect" id="node21" title=" " alt="" coords="1542,255,1630,280"/>
+<area shape="rect" id="node22" title=" " alt="" coords="1510,328,1601,353"/>
+<area shape="rect" id="node23" href="$uart_8h.html" title="BluetoothLE UART service setup and handling." alt="" coords="995,255,1121,280"/>
+<area shape="rect" id="node26" href="$device_8h.html" title="Bluetooth device services and device information." alt="" coords="1197,255,1340,280"/>
+<area shape="rect" id="node27" href="$power__monitoring_8h.html" title="Setup BluetoothLE power monitoring information." alt="" coords="1654,255,1873,280"/>
+<area shape="rect" id="node24" title=" " alt="" coords="1287,328,1435,353"/>
+<area shape="rect" id="node25" href="$tones_8h.html" title="Audio control for the onboard piezo buzzer." alt="" coords="964,328,1139,353"/>
+<area shape="rect" id="node28" href="$solar_8h.html" title="Solar voltage and current monitoring using INA219 IC." alt="" coords="1675,328,1862,353"/>
+<area shape="rect" id="node30" href="$battery_8h.html" title="Battery voltage and current monitoring using INA219 IC." alt="" coords="1887,328,2088,353"/>
+<area shape="rect" id="node29" title=" " alt="" coords="1808,401,1948,427"/>
+<area shape="rect" id="node32" href="$_device_config_8h.html" title="Node configuration options." alt="" coords="1897,255,2017,280"/>
+<area shape="rect" id="node33" title=" " alt="" coords="2164,328,2280,353"/>
 </map>

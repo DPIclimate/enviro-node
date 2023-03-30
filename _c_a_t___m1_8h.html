@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.5"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Wombat Environmental Node: firmware/wombat/lib/CatM1/include/CAT_M1.h File Reference</title>
+<title>Wombat Environmental Node: firmware/wombat/include/CAT_M1.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -108,7 +108,7 @@ Include dependency graph for CAT_M1.h:</div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="_c_a_t___m1_8h__dep__incl.svg" width="1522" height="506"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="_c_a_t___m1_8h__dep__incl.svg" width="1664" height="506"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 </div>
@@ -121,10 +121,10 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:a825e40855ea5740936cf861550f0688c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_c_a_t___m1_8h.html#a825e40855ea5740936cf861550f0688c">LTE_PWR_SUPPLY_PIN</a>&#160;&#160;&#160;0x83</td></tr>
-<tr class="separator:a825e40855ea5740936cf861550f0688c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a02208691ead373d0758bed50b89dbd7b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_c_a_t___m1_8h.html#a02208691ead373d0758bed50b89dbd7b">LTE_PWR_TOGGLE_PIN</a>&#160;&#160;&#160;0x80</td></tr>
-<tr class="separator:a02208691ead373d0758bed50b89dbd7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3aee791e886438567d573a83d38ae4cb"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_c_a_t___m1_8h.html#a3aee791e886438567d573a83d38ae4cb">LTE_VCC</a>&#160;&#160;&#160;0x83</td></tr>
+<tr class="separator:a3aee791e886438567d573a83d38ae4cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a76766a7aa5cc6c618ee00225a6384854"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_c_a_t___m1_8h.html#a76766a7aa5cc6c618ee00225a6384854">LTE_PWR_ON</a>&#160;&#160;&#160;0x80</td></tr>
+<tr class="separator:a76766a7aa5cc6c618ee00225a6384854"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5584a1dad491ecc448ddcda093adcdf6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_c_a_t___m1_8h.html#a5584a1dad491ecc448ddcda093adcdf6">LTE_Serial</a>&#160;&#160;&#160;Serial1</td></tr>
 <tr class="separator:a5584a1dad491ecc448ddcda093adcdf6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -134,28 +134,14 @@ Variables</h2></td></tr>
 <tr class="separator:a62cd22fa30e98bbdb892f8da0e08695d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
-<a id="a825e40855ea5740936cf861550f0688c" name="a825e40855ea5740936cf861550f0688c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a825e40855ea5740936cf861550f0688c">&#9670;&#160;</a></span>LTE_PWR_SUPPLY_PIN</h2>
+<a id="a76766a7aa5cc6c618ee00225a6384854" name="a76766a7aa5cc6c618ee00225a6384854"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a76766a7aa5cc6c618ee00225a6384854">&#9670;&#160;</a></span>LTE_PWR_ON</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define LTE_PWR_SUPPLY_PIN&#160;&#160;&#160;0x83</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a02208691ead373d0758bed50b89dbd7b" name="a02208691ead373d0758bed50b89dbd7b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a02208691ead373d0758bed50b89dbd7b">&#9670;&#160;</a></span>LTE_PWR_TOGGLE_PIN</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define LTE_PWR_TOGGLE_PIN&#160;&#160;&#160;0x80</td>
+          <td class="memname">#define LTE_PWR_ON&#160;&#160;&#160;0x80</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -170,6 +156,20 @@ Variables</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">#define LTE_Serial&#160;&#160;&#160;Serial1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3aee791e886438567d573a83d38ae4cb" name="a3aee791e886438567d573a83d38ae4cb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3aee791e886438567d573a83d38ae4cb">&#9670;&#160;</a></span>LTE_VCC</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define LTE_VCC&#160;&#160;&#160;0x83</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -204,7 +204,7 @@ Variables</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_d9edf6c004b4a7ff14fe9ae7a92214ee.html">firmware</a></li><li class="navelem"><a class="el" href="dir_a2666ece60dde946aac962d01f4de38f.html">wombat</a></li><li class="navelem"><a class="el" href="dir_ff0fc4bcb23bb8e139bf6a61d2efec67.html">lib</a></li><li class="navelem"><a class="el" href="dir_4c42b0e5f8a637481b76e2a21b344959.html">CatM1</a></li><li class="navelem"><a class="el" href="dir_d082089f3576caeb01332ede4ce03b9f.html">include</a></li><li class="navelem"><a class="el" href="_c_a_t___m1_8h.html">CAT_M1.h</a></li>
+    <li class="navelem"><a class="el" href="dir_d9edf6c004b4a7ff14fe9ae7a92214ee.html">firmware</a></li><li class="navelem"><a class="el" href="dir_a2666ece60dde946aac962d01f4de38f.html">wombat</a></li><li class="navelem"><a class="el" href="dir_d0384342543f67451a573d7221124c26.html">include</a></li><li class="navelem"><a class="el" href="_c_a_t___m1_8h.html">CAT_M1.h</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
   </ul>
 </div>
