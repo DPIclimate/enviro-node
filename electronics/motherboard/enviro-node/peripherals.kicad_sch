@@ -6,8 +6,8 @@
 
   (title_block
     (title "Enviro-node")
-    (date "2023-01-09")
-    (rev "1.0")
+    (date "2023-04-13")
+    (rev "1.0.2")
     (company "NSW Department of Primary Industries")
     (comment 1 "GitHub: https://github.com/DPIclimate/enviro-node")
     (comment 2 "Designed by: Harvey Bates")
@@ -1090,7 +1090,6 @@
       )
     )
   )
-
 
   (junction (at 124.46 125.857) (diameter 0) (color 0 0 0 0)
     (uuid 01036804-be9c-462e-9360-e4f15c1330b8)
