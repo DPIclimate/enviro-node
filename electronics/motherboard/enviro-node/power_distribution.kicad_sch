@@ -6,11 +6,10 @@
 
   (title_block
     (title "Enviro-node")
-    (date "2023-01-09")
-    (rev "1.0")
+    (date "2023-04-13")
+    (rev "1.0.2")
     (company "NSW Department of Primary Industries")
     (comment 1 "GitHub: https://github.com/DPIclimate/enviro-node")
-    (comment 2 "Designed by: Harvey Bates")
   )
 
   (lib_symbols
@@ -2064,7 +2063,6 @@
     )
   )
 
-
   (junction (at 358.013 120.777) (diameter 0) (color 0 0 0 0)
     (uuid 00a571ba-dbef-4ae5-9bd4-a89e18e59df1)
   )
@@ -3048,6 +3046,11 @@
   (text "Battery V & I\nMonitoring\nI2C = 0x45" (at 214.376 125.603 0)
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid 390286dd-b5fa-4370-b52b-45697c95e932)
+  )
+  (text "U6 new since 1.0.1, and might be causing the modem\ndrop out when the SDI-12 bus is powered up.\n\nRevision 1.0 only had U9."
+    (at 237.49 43.815 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid 3dc9c8a0-3ff9-45f4-8f4b-d7011beded95)
   )
   (text "Solar Input\n(12V Panels)" (at 31.369 186.436 0)
     (effects (font (size 1.27 1.27)) (justify left bottom))

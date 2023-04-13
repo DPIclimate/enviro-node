@@ -6,11 +6,10 @@
 
   (title_block
     (title "Enviro-node")
-    (date "2023-01-09")
-    (rev "1.0")
+    (date "2023-04-13")
+    (rev "1.0.2")
     (company "NSW Department of Primary Industries")
     (comment 1 "GitHub: https://github.com/DPIclimate/enviro-node")
-    (comment 2 "Designed by: Harvey Bates")
   )
 
   (lib_symbols
@@ -662,10 +661,10 @@
       (property "Datasheet" "https://www.digikey.com.au/en/products/detail/espressif-systems/ESP32-WROOM-32E-N16/11613144" (id 3) (at 0 0 0)
         (effects (font (size 1.27 1.27)) (justify left bottom) hide)
       )
-      (property "Part" "ESP32-WROOM-32E-N16" (id 8) (at 0 0 0)
+      (property "Part" "ESP32-WROOM-32E-N16" (id 4) (at 0 0 0)
         (effects (font (size 1.27 1.27)) hide)
       )
-      (property "ki_locked" "" (id 4) (at 0 0 0)
+      (property "ki_locked" "" (id 5) (at 0 0 0)
         (effects (font (size 1.27 1.27)))
       )
       (symbol "ESP32-WROOM-32E_(16MB)_0_0"
@@ -1912,7 +1911,6 @@
       )
     )
   )
-
 
   (junction (at 254.381 194.945) (diameter 0) (color 0 0 0 0)
     (uuid 07634116-0601-4a33-ac7e-6f0b0a7a04b3)
@@ -3207,7 +3205,7 @@
     (uuid 53bac5b3-f069-4d39-8a7b-b6172ba4abcc)
     (property "Reference" "JP1" (id 0) (at 109.4699 132.08 0))
     (property "Value" "UART TX" (id 1) (at 109.4699 134.62 0))
-    (property "Footprint" "" (id 2) (at 109.4699 138.1615 0)
+    (property "Footprint" "Jumper:SolderJumper-2_P1.3mm_Bridged_RoundedPad1.0x1.5mm" (id 2) (at 109.4699 138.1615 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (id 3) (at 109.4699 138.1615 0)

@@ -6,11 +6,10 @@
 
   (title_block
     (title "Enviro-node")
-    (date "2023-01-09")
-    (rev "1.0")
+    (date "2023-04-13")
+    (rev "1.0.2")
     (company "NSW Department of Primary Industries")
     (comment 1 "GitHub: https://github.com/DPIclimate/enviro-node")
-    (comment 2 "Designed by: Harvey Bates")
   )
 
   (lib_symbols
@@ -2013,7 +2012,6 @@
     )
   )
 
-
   (junction (at 181.991 115.189) (diameter 0) (color 0 0 0 0)
     (uuid 024c6c5a-be7b-40c1-bb27-2ae709354271)
   )
@@ -2128,8 +2126,8 @@
   (no_connect (at 123.952 165.989) (uuid 849aa2c4-13f4-462f-915c-46cdd274c783))
   (no_connect (at 220.345 56.769) (uuid 8a5292d6-c80e-4092-b868-209407aee64b))
   (no_connect (at 73.152 132.969) (uuid 92a64722-f0cf-4997-a2ad-90f577a083db))
-  (no_connect (at 73.152 127.889) (uuid 92a64722-f0cf-4997-a2ad-90f577a083db))
-  (no_connect (at 73.152 130.429) (uuid 92a64722-f0cf-4997-a2ad-90f577a083db))
+  (no_connect (at 73.152 127.889) (uuid 92a64722-f0cf-4997-a2ad-90f577a083dc))
+  (no_connect (at 73.152 130.429) (uuid 92a64722-f0cf-4997-a2ad-90f577a083dd))
   (no_connect (at 73.152 173.609) (uuid 96f85dc2-553d-4e26-89d2-a800403d6262))
   (no_connect (at 216.027 122.809) (uuid 9adca510-a9d4-432c-89f8-f519c4c29fd0))
   (no_connect (at 73.152 165.989) (uuid 9c8d3668-cfc0-4985-8c50-95f8c499dffd))
