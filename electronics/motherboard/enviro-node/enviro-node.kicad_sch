@@ -7,7 +7,7 @@
   (title_block
     (title "Enviro-node")
     (date "2023-04-13")
-    (rev "1.0.2")
+    (rev "${HARDWARE_REVISION}")
     (company "NSW Department of Primary Industries")
     (comment 1 "GitHub: https://github.com/DPIclimate/enviro-node")
   )
@@ -1911,6 +1911,7 @@
       )
     )
   )
+
 
   (junction (at 254.381 194.945) (diameter 0) (color 0 0 0 0)
     (uuid 07634116-0601-4a33-ac7e-6f0b0a7a04b3)
