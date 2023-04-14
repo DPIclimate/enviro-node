@@ -55,7 +55,11 @@
           "width": 0.0
         }
       ],
-      "drc_exclusions": [],
+      "drc_exclusions": [
+        "silk_over_copper|130678000|47564610|2ef75bfd-7d8b-40f3-9655-2795ea74c352|aac8a0e8-d755-4ff8-b185-855b9f380ad0",
+        "silk_over_copper|130678000|65564610|2ef75bfd-7d8b-40f3-9655-2795ea74c352|a85f662a-f129-4c94-ac4a-0706fb534f5b",
+        "silk_overlap|48598402|153105288|36042f66-d623-4577-884d-a85ef50a9b4c|46654431-2d3e-4d39-8a99-281f90675e1d"
+      ],
       "meta": {
         "version": 2
       },
@@ -341,7 +345,7 @@
       "no_connect_dangling": "warning",
       "pin_not_connected": "error",
       "pin_not_driven": "error",
-      "pin_to_pin": "warning",
+      "pin_to_pin": "error",
       "power_pin_not_driven": "error",
       "similar_labels": "warning",
       "unannotated": "error",
@@ -450,5 +454,7 @@
       "cat_m1"
     ]
   ],
-  "text_variables": {}
+  "text_variables": {
+    "HARDWARE_REVISION": "1.0.2"
+  }
 }
