@@ -1090,7 +1090,6 @@
     )
   )
 
-
   (junction (at 124.46 125.857) (diameter 0) (color 0 0 0 0)
     (uuid 01036804-be9c-462e-9360-e4f15c1330b8)
   )
@@ -1501,7 +1500,7 @@
     (property "Value" "0" (id 1) (at 220.091 113.9702 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "Resistor_SMD:R_0805_2012Metric" (id 2) (at 216.535 112.268 90)
+    (property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" (id 2) (at 216.535 112.268 90)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (id 3) (at 218.313 112.268 0)
@@ -1776,7 +1775,7 @@
     (property "Value" "10K" (id 1) (at 232.41 121.5902 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "Resistor_SMD:R_0805_2012Metric" (id 2) (at 228.854 119.888 90)
+    (property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" (id 2) (at 228.854 119.888 90)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (id 3) (at 230.632 119.888 0)

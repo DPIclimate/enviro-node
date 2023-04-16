@@ -1912,7 +1912,6 @@
     )
   )
 
-
   (junction (at 254.381 194.945) (diameter 0) (color 0 0 0 0)
     (uuid 07634116-0601-4a33-ac7e-6f0b0a7a04b3)
   )
@@ -4898,7 +4897,7 @@
       (reference "C16") (unit 1) (value "4.7uF") (footprint "Capacitor_SMD:C_0805_2012Metric")
     )
     (path "/81efa281-7ef6-4b2c-aac2-b705d10ab725/18a16854-0806-4bf9-838f-1f7e4f4422a7"
-      (reference "C17") (unit 1) (value "100uF") (footprint "T520B107M006ATE015:CAPPM3528X210N")
+      (reference "C17") (unit 1) (value "0.1uF") (footprint "Capacitor_Tantalum_SMD:CP_EIA-2012-12_Kemet-R")
     )
     (path "/81efa281-7ef6-4b2c-aac2-b705d10ab725/654ba146-2288-4b5d-9012-95a2e129a99a"
       (reference "C18") (unit 1) (value "2.2uF") (footprint "Capacitor_SMD:C_0805_2012Metric")
@@ -4916,7 +4915,7 @@
       (reference "C22") (unit 1) (value "1uF") (footprint "Capacitor_SMD:C_0805_2012Metric")
     )
     (path "/b973fe11-f1e1-4488-b69d-471e9c144d9a/1847593c-7992-4cf8-98e0-3b4b880a2880"
-      (reference "C23") (unit 1) (value "100uF") (footprint "T520B107M006ATE015:CAPPM3528X210N")
+      (reference "C23") (unit 1) (value "0.1uF") (footprint "Capacitor_Tantalum_SMD:CP_EIA-2012-12_Kemet-R")
     )
     (path "/b973fe11-f1e1-4488-b69d-471e9c144d9a/a7af35b0-3408-4910-8c53-444f20567d27"
       (reference "C24") (unit 1) (value "0.1uF") (footprint "Capacitor_SMD:C_0805_2012Metric")
@@ -5207,10 +5206,10 @@
       (reference "R41") (unit 1) (value "0") (footprint "Resistor_SMD:R_0805_2012Metric")
     )
     (path "/c207e6ab-5b78-4492-87ca-75a44677c24e/642d9ba9-7aff-4559-9879-df8fdef6d19c"
-      (reference "R42") (unit 1) (value "0") (footprint "Resistor_SMD:R_0805_2012Metric")
+      (reference "R42") (unit 1) (value "0") (footprint "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal")
     )
     (path "/c207e6ab-5b78-4492-87ca-75a44677c24e/d3bfe6d9-487a-4555-a5f2-c9315d2a9532"
-      (reference "R43") (unit 1) (value "10K") (footprint "Resistor_SMD:R_0805_2012Metric")
+      (reference "R43") (unit 1) (value "10K") (footprint "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal")
     )
     (path "/b973fe11-f1e1-4488-b69d-471e9c144d9a/d6280552-e135-4660-83ee-bcae53ec51de"
       (reference "RV1") (unit 1) (value "ESD_RST_IN") (footprint "Resistor_SMD:R_0805_2012Metric")
