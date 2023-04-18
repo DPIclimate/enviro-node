@@ -8,3 +8,4 @@ include/version.h
 
 # Allow these files
 !ulp/pulse_count.s
+!ulp/ulp_main.h
