@@ -9,6 +9,7 @@
 #include <driver/rtc_io.h>
 #include <soc/rtc.h>
 #include <esp_private/esp_clk.h>
+#include <SD.h>
 
 #define ALLOCATE_GLOBALS
 #include "globals.h"
@@ -26,6 +27,8 @@
 #include "soc/rtc.h"
 #include "soc/soc.h"
 #include "soc/rtc_cntl_reg.h"
+#include "sd-card/interface.h"
+#include "freertos/semphr.h"
 
 #define TAG "wombat"
 
@@ -35,6 +38,77 @@ TCA9534 io_expander;
 static volatile int uxTopUsedPriority;
 
 static void select_rtc_slow_clk(void);
+
+static File *log_file = nullptr;
+
+/*
+static vprintf_like_t old_log_fn;
+static File *log_file;
+constexpr size_t max_log_len = 4096;
+static char log_msg[max_log_len+1];
+
+// Maximum time to wait for the mutex in a logging statement.
+//
+// We don't expect this to happen in most cases, as contention is low. The most likely case is if a
+// log function is called from an ISR (technically caller should use the ISR-friendly logging macros but
+// possible they use the normal one instead and disable the log type by tag).
+#define MAX_MUTEX_WAIT_MS 10
+#define MAX_MUTEX_WAIT_TICKS ((MAX_MUTEX_WAIT_MS + portTICK_PERIOD_MS - 1) / portTICK_PERIOD_MS)
+
+static SemaphoreHandle_t s_log_mutex = NULL;
+
+static void esp_log_impl_lock(void)
+{
+    if (unlikely(!s_log_mutex)) {
+        s_log_mutex = xSemaphoreCreateMutex();
+    }
+    if (unlikely(xTaskGetSchedulerState() == taskSCHEDULER_NOT_STARTED)) {
+        return;
+    }
+    xSemaphoreTake(s_log_mutex, portMAX_DELAY);
+}
+
+static void esp_log_impl_unlock(void)
+{
+    if (unlikely(xTaskGetSchedulerState() == taskSCHEDULER_NOT_STARTED)) {
+        return;
+    }
+    xSemaphoreGive(s_log_mutex);
+}
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+int my_log_vprintf(const char *fmt, va_list args) {
+    esp_log_impl_lock();
+
+    log_msg[0] = '@';
+    log_msg[1] = '|';
+    int iresult = vsnprintf(&log_msg[2], max_log_len, fmt, args);
+    if (iresult > 0) {
+        printf(log_msg);
+    }
+
+    esp_log_impl_unlock();
+
+    return iresult;
+}
+
+int my_log_printf(const char *fmt, ...) {
+    va_list args;
+    va_start(args, fmt);
+    int rc = my_log_vprintf(fmt, args);
+    va_end(args);
+    printf("\n");
+    Serial.flush();
+    return rc;
+}
+
+#ifdef __cplusplus
+}
+#endif
+*/
 
 void setup() {
     // Disable brown-out detection until the BT LE radio is running.
@@ -50,6 +124,9 @@ void setup() {
         delay(1);
     }
 
+    //ESP_LOGI(TAG, "Changing log function");
+    //old_log_fn = esp_log_set_vprintf(&my_log_vprintf);
+
     setenv("TZ", "UTC", 1);
     tzset();
 
@@ -58,6 +135,8 @@ void setup() {
     // modem during the config.reset() call, not the saved configuration.
     DeviceConfig& config = DeviceConfig::get();
     config.reset();
+
+    //ESP_LOGI(TAG, "Old func: %p", old_log_fn);
 
     ESP_LOGI(TAG, "Wombat firmware: %s", commit_id);
     ESP_LOGI(TAG, "Wake up time: %s", iso8601());
@@ -81,12 +160,21 @@ void setup() {
     io_expander.config(TCA9534::Config::OUT);
     digitalWrite(LED_BUILTIN, LOW); // Turn off LED
 
+    // WARNING: The IO expander must be initialised before the SD card is enabled, because the SD card
+    // enable line is one of the IO expander pins.
+    if (SDCardInterface::begin()) {
+        ESP_LOGI(TAG, "SD card initialised");
+        //if (SDCardInterface::is_ready()) {
+        //    *log_file = SD.open(sd_card_logfile_name, FILE_APPEND, true);
+        //}
+    } else {
+        ESP_LOGW(TAG, "SD card initialisation failed");
+    }
+
     enable12V();
-    delay(1000);
+    delay(250);
 
     cat_m1.begin(io_expander);
-
-    delay(1000);
 
     LTE_Serial.begin(115200);
     while(!LTE_Serial) {
@@ -94,6 +182,14 @@ void setup() {
     }
 
     // ==== CAT-M1 Setup END ====
+
+    digitalWrite(SD_CARD_ENABLE, HIGH);
+    if ( ! SD.begin()) {
+        ESP_LOGI(TAG, "Failed to initialise SD card");
+        digitalWrite(SD_CARD_ENABLE, HIGH);
+    } else {
+        ESP_LOGI(TAG, "SD card initialised");
+    }
 
     // This must be done before the config is loaded because the config file is
     // a list of commands.
@@ -106,6 +202,8 @@ void setup() {
     // Enable the brown out detection now the node has stabilised its
     // current requirements.
     WRITE_PERI_REG(RTC_CNTL_BROWN_OUT_REG, 1);
+
+    delay(100);
 
     battery_monitor.begin();
     solar_monitor.begin();
@@ -186,6 +284,15 @@ void setup() {
     solar_monitor.sleep();
 
     disable12V();
+    delay(20);
+
+    // Disable the SD card.
+    if (log_file) {
+        log_file->flush();
+        log_file->close();
+    }
+    SD.end();
+    digitalWrite(SD_CARD_ENABLE, LOW);
 
     unsigned long setup_end_ms = millis();
     unsigned long setup_in_secs = setup_end_ms / 1000;

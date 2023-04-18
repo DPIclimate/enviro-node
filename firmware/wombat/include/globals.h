@@ -21,6 +21,10 @@
 /// Convert an Arduino pin number usable with digitalWrite (0x81, 0x82, ...) to an IO expander pin number (1, 2, ...)
 #define ARDUINO_TO_IO(p) (p & 0x7F)
 
+/// Set HIGH to enable the SD card, LOW to disable the card. This pin drives a transistor that connects or disconnects
+/// the SD card GND pin.
+#define SD_CARD_ENABLE 0x85
+
 /// The size for a buffer to hold the string representation of an integer or float.
 #define MAX_NUMERIC_STR_SZ 32
 
@@ -37,6 +41,9 @@ EXTERN char g_buffer[MAX_G_BUFFER + 1];
 EXTERN BatteryMonitor battery_monitor;
 EXTERN SolarMonitor solar_monitor;
 EXTERN bool r5_ok;
+
+constexpr char sd_card_datafile_name[] = "/data.json";
+constexpr char sd_card_logfile_name[] = "/log.txt";
 
 #ifdef ALLOCATE_GLOBALS
 /// A global SARA R5 modem object.

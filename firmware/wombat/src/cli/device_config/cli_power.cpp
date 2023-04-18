@@ -20,15 +20,8 @@
 static StreamString response_buffer_;
 
 /**
- * @brief Command-line interface command for setting MQTT parameters.
+ * @brief Command-line interface command for working with the power buses.
  *
- * This function provides a command-line interface for setting MQTT connection
- * parameters such as the host, port, user, and password. Commands include:
- *
- * - `list`: List MQTT configuration.
- * - `port`: MQTT broker port.
- * - `user`: MQTT broker username.
- * - `password`: MQTT broker password.
  *
  * @note Intervals are specified in seconds.
  *

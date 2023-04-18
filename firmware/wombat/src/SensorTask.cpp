@@ -4,6 +4,7 @@
 #include "Utils.h"
 #include "globals.h"
 #include "ulp.h"
+#include "sd-card/interface.h"
 #include <esp_log.h>
 
 #include <freertos/FreeRTOS.h>
@@ -201,6 +202,8 @@ void sensor_task(void) {
         read_sensor(sensors.sensors[sensor_idx].address, timeseries_array);
     }
 
+    sdi12.end();
+
     String str;
     serializeJson(msg, str);
     ESP_LOGI(TAG, "Msg:\r\n%s\r\n", str.c_str());
@@ -217,5 +220,9 @@ void sensor_task(void) {
         SPIFFS.end();
     }
 
-    sdi12.end();
+    // Append the message to a file on the SD card.
+    if (SDCardInterface::is_ready()) {
+        snprintf(g_buffer, MAX_G_BUFFER, "%s,\n", str.c_str());
+        SDCardInterface::append_to_file(sd_card_datafile_name, g_buffer);
+    }
 }
