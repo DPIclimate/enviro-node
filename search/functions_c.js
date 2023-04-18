@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['read_5ffile_0',['read_file',['../class_s_d_card_interface.html#ad369e8a03cd106cddfd35f2e40656e91',1,'SDCardInterface']]],
+  ['read_5ffile_0',['read_file',['../class_s_d_card_interface.html#a41fa15ea8eac22dd04c7e4b33a6a8194',1,'SDCardInterface']]],
   ['read_5fsensor_1',['read_sensor',['../_sensor_task_8h.html#a1473b62411faa497a9b2de3663a2f154',1,'read_sensor(const char addr, JsonArray &amp;timeseries_array):&#160;SensorTask.cpp'],['../_sensor_task_8cpp.html#a1473b62411faa497a9b2de3663a2f154',1,'read_sensor(const char addr, JsonArray &amp;timeseries_array):&#160;SensorTask.cpp']]],
   ['readbit_2',['readBit',['../class_t_c_a9534.html#aab8f8e05b530cabbce58602edb531f3a',1,'TCA9534']]],
   ['readbyte_3',['readByte',['../class_t_c_a9534.html#ada79410395a15183b3d8133d3ab6666e',1,'TCA9534']]],

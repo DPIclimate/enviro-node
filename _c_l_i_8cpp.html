@@ -102,15 +102,12 @@ $(document).ready(function(){initNavTree('_c_l_i_8cpp.html',''); initResizable()
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for CLI.cpp:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="_c_l_i_8cpp__incl.svg" width="2286" height="432"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="_c_l_i_8cpp__incl.svg" width="2188" height="432"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:aff64f2691f2a522d74ea33188e8aad14"><td class="memItemLeft" align="right" valign="top">Stream *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_c_l_i_8cpp.html#aff64f2691f2a522d74ea33188e8aad14">cliStream</a> = nullptr</td></tr>
-<tr class="memdesc:aff64f2691f2a522d74ea33188e8aad14"><td class="mdescLeft">&#160;</td><td class="mdescRight">Command line stream.  <a href="_c_l_i_8cpp.html#aff64f2691f2a522d74ea33188e8aad14">More...</a><br /></td></tr>
-<tr class="separator:aff64f2691f2a522d74ea33188e8aad14"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2229bd6337a76b1788849d5541f9f07a"><td class="memItemLeft" align="right" valign="top">static char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_c_l_i_8cpp.html#a2229bd6337a76b1788849d5541f9f07a">cmd</a> [<a class="el" href="class_c_l_i.html#a08716882278135d4aa8e795e12b3a03c">CLI::MAX_CLI_CMD_LEN</a>+1]</td></tr>
 <tr class="memdesc:a2229bd6337a76b1788849d5541f9f07a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Command buffer.  <a href="_c_l_i_8cpp.html#a2229bd6337a76b1788849d5541f9f07a">More...</a><br /></td></tr>
 <tr class="separator:a2229bd6337a76b1788849d5541f9f07a"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -135,6 +132,9 @@ Variables</h2></td></tr>
 <tr class="memitem:a44f22557b40c51afd30cdb330930bb8d"><td class="memItemLeft" align="right" valign="top">static const CLI_Command_Definition_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_c_l_i_8cpp.html#a44f22557b40c51afd30cdb330930bb8d">powerCmd</a></td></tr>
 <tr class="memdesc:a44f22557b40c51afd30cdb330930bb8d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Power commands.  <a href="_c_l_i_8cpp.html#a44f22557b40c51afd30cdb330930bb8d">More...</a><br /></td></tr>
 <tr class="separator:a44f22557b40c51afd30cdb330930bb8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af8e3058682d1a26dd803606d67790bc9"><td class="memItemLeft" align="right" valign="top">static const CLI_Command_Definition_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_c_l_i_8cpp.html#af8e3058682d1a26dd803606d67790bc9">sdCmd</a></td></tr>
+<tr class="memdesc:af8e3058682d1a26dd803606d67790bc9"><td class="mdescLeft">&#160;</td><td class="mdescRight">SD card commands.  <a href="_c_l_i_8cpp.html#af8e3058682d1a26dd803606d67790bc9">More...</a><br /></td></tr>
+<tr class="separator:af8e3058682d1a26dd803606d67790bc9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >FreeRTOS <a class="el" href="class_c_l_i.html" title="FreeRTOS command line interface.">CLI</a> handler. </p>
@@ -166,27 +166,9 @@ Variables</h2></td></tr>
 <div class="line">        -1</div>
 <div class="line">}</div>
 <div class="ttc" id="aclass_c_l_i_cat_m1_html_a3e01bf188705834a7af433850861a79a"><div class="ttname"><a href="class_c_l_i_cat_m1.html#a3e01bf188705834a7af433850861a79a">CLICatM1::cmd</a></div><div class="ttdeci">static const std::string cmd</div><div class="ttdoc">CLI CAT-M1 reference, to send commands use &quot;c1&quot; followed by the command.</div><div class="ttdef"><b>Definition:</b> cat-m1.h:28</div></div>
-<div class="ttc" id="aclass_c_l_i_cat_m1_html_a537816d95caa4ccc1c7bf781e148add8"><div class="ttname"><a href="class_c_l_i_cat_m1.html#a537816d95caa4ccc1c7bf781e148add8">CLICatM1::enter_cli</a></div><div class="ttdeci">static BaseType_t enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen, const char *pcCommandString)</div><div class="ttdoc">Command line interface handler for a Cat M1 device.</div><div class="ttdef"><b>Definition:</b> cat-m1.cpp:71</div></div>
+<div class="ttc" id="aclass_c_l_i_cat_m1_html_a537816d95caa4ccc1c7bf781e148add8"><div class="ttname"><a href="class_c_l_i_cat_m1.html#a537816d95caa4ccc1c7bf781e148add8">CLICatM1::enter_cli</a></div><div class="ttdeci">static BaseType_t enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen, const char *pcCommandString)</div><div class="ttdoc">Command line interface handler for a Cat M1 device.</div><div class="ttdef"><b>Definition:</b> cat-m1.cpp:70</div></div>
 </div><!-- fragment -->
 <p>CAT-M1 modem commands. </p>
-
-</div>
-</div>
-<a id="aff64f2691f2a522d74ea33188e8aad14" name="aff64f2691f2a522d74ea33188e8aad14"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aff64f2691f2a522d74ea33188e8aad14">&#9670;&#160;</a></span>cliStream</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">Stream* cliStream = nullptr</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Command line stream. </p>
-<p >Command line interface stream initialised in the <code>repl()</code> function.</p>
-<p >Stream originating from the <a class="el" href="class_c_l_i.html" title="FreeRTOS command line interface.">CLI</a>. </p>
 
 </div>
 </div>
@@ -355,14 +337,46 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
 <div class="line">        <a class="code hl_variable" href="class_c_l_i_power.html#a92cde563a20b1fe32ec114250141fa04">CLIPower::cmd</a>.c_str(),</div>
-<div class="line">        <span class="stringliteral">&quot;mqtt:\r\n Show battery and solar information\r\n&quot;</span>,</div>
+<div class="line">        <span class="stringliteral">&quot;pwr:\r\n Show battery and solar information\r\n&quot;</span>,</div>
 <div class="line">        <a class="code hl_function" href="class_c_l_i_power.html#ad357ab42c672f160162907f0e7d7cddc">CLIPower::enter_cli</a>,</div>
 <div class="line">        -1</div>
 <div class="line">}</div>
 <div class="ttc" id="aclass_c_l_i_power_html_a92cde563a20b1fe32ec114250141fa04"><div class="ttname"><a href="class_c_l_i_power.html#a92cde563a20b1fe32ec114250141fa04">CLIPower::cmd</a></div><div class="ttdeci">static const std::string cmd</div><div class="ttdoc">Power related commands in the CLI begin with &quot;pwr&quot;.</div><div class="ttdef"><b>Definition:</b> cli_power.h:17</div></div>
-<div class="ttc" id="aclass_c_l_i_power_html_ad357ab42c672f160162907f0e7d7cddc"><div class="ttname"><a href="class_c_l_i_power.html#ad357ab42c672f160162907f0e7d7cddc">CLIPower::enter_cli</a></div><div class="ttdeci">static BaseType_t enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen, const char *pcCommandString)</div><div class="ttdoc">Command-line interface command for setting MQTT parameters.</div><div class="ttdef"><b>Definition:</b> cli_power.cpp:40</div></div>
+<div class="ttc" id="aclass_c_l_i_power_html_ad357ab42c672f160162907f0e7d7cddc"><div class="ttname"><a href="class_c_l_i_power.html#ad357ab42c672f160162907f0e7d7cddc">CLIPower::enter_cli</a></div><div class="ttdeci">static BaseType_t enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen, const char *pcCommandString)</div><div class="ttdoc">Command-line interface command for working with the power buses.</div><div class="ttdef"><b>Definition:</b> cli_power.cpp:33</div></div>
 </div><!-- fragment -->
 <p>Power commands. </p>
+
+</div>
+</div>
+<a id="af8e3058682d1a26dd803606d67790bc9" name="af8e3058682d1a26dd803606d67790bc9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af8e3058682d1a26dd803606d67790bc9">&#9670;&#160;</a></span>sdCmd</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const CLI_Command_Definition_t sdCmd</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
+<div class="line">        <a class="code hl_variable" href="class_c_l_i_s_d_card.html#a4eb733fec806fb6519517edaded3298b">CLISDCard::cmd</a>.c_str(),</div>
+<div class="line">        <span class="stringliteral">&quot;sd:\r\n Access the SD card\r\n&quot;</span>,</div>
+<div class="line">        <a class="code hl_function" href="class_c_l_i_s_d_card.html#a456f3c85d0b8b0d96a3ec6fab1e5135d">CLISDCard::enter_cli</a>,</div>
+<div class="line">        -1</div>
+<div class="line">}</div>
+<div class="ttc" id="aclass_c_l_i_s_d_card_html_a456f3c85d0b8b0d96a3ec6fab1e5135d"><div class="ttname"><a href="class_c_l_i_s_d_card.html#a456f3c85d0b8b0d96a3ec6fab1e5135d">CLISDCard::enter_cli</a></div><div class="ttdeci">static BaseType_t enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen, const char *pcCommandString)</div><div class="ttdoc">Command-line interface command for working with the power buses.</div><div class="ttdef"><b>Definition:</b> sd_card.cpp:31</div></div>
+<div class="ttc" id="aclass_c_l_i_s_d_card_html_a4eb733fec806fb6519517edaded3298b"><div class="ttname"><a href="class_c_l_i_s_d_card.html#a4eb733fec806fb6519517edaded3298b">CLISDCard::cmd</a></div><div class="ttdeci">static const std::string cmd</div><div class="ttdoc">SD card related commands in the CLI begin with &quot;sd&quot;.</div><div class="ttdef"><b>Definition:</b> sd_card.h:13</div></div>
+</div><!-- fragment -->
+<p>SD card commands. </p>
 
 </div>
 </div>
@@ -391,7 +405,7 @@ Variables</h2></td></tr>
 <div class="line">        <a class="code hl_function" href="class_c_l_i_sdi12.html#a539a3c3a85eaf8db91045b42f3b2a520">CLISdi12::enter_cli</a>,</div>
 <div class="line">        -1</div>
 <div class="line">}</div>
-<div class="ttc" id="aclass_c_l_i_sdi12_html_a539a3c3a85eaf8db91045b42f3b2a520"><div class="ttname"><a href="class_c_l_i_sdi12.html#a539a3c3a85eaf8db91045b42f3b2a520">CLISdi12::enter_cli</a></div><div class="ttdeci">static BaseType_t enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen, const char *pcCommandString)</div><div class="ttdoc">Command line interface handler for an SDI-12 sensor.</div><div class="ttdef"><b>Definition:</b> sdi12.cpp:58</div></div>
+<div class="ttc" id="aclass_c_l_i_sdi12_html_a539a3c3a85eaf8db91045b42f3b2a520"><div class="ttname"><a href="class_c_l_i_sdi12.html#a539a3c3a85eaf8db91045b42f3b2a520">CLISdi12::enter_cli</a></div><div class="ttdeci">static BaseType_t enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen, const char *pcCommandString)</div><div class="ttdoc">Command line interface handler for an SDI-12 sensor.</div><div class="ttdef"><b>Definition:</b> sdi12.cpp:57</div></div>
 <div class="ttc" id="aclass_c_l_i_sdi12_html_aa114d6852c2131888d46174814ed0405"><div class="ttname"><a href="class_c_l_i_sdi12.html#aa114d6852c2131888d46174814ed0405">CLISdi12::cmd</a></div><div class="ttdeci">static const std::string cmd</div><div class="ttdoc">CLI SDI-12 reference, to send commands use &quot;sdi12&quot; followed by the cmd.</div><div class="ttdef"><b>Definition:</b> sdi12.h:30</div></div>
 </div><!-- fragment -->
 <p>SDI-12 commands. </p>

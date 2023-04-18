@@ -105,6 +105,7 @@ $(document).ready(function(){initNavTree('main_8cpp.html',''); initResizable(); 
 <code>#include &lt;driver/rtc_io.h&gt;</code><br />
 <code>#include &lt;soc/rtc.h&gt;</code><br />
 <code>#include &lt;esp_private/esp_clk.h&gt;</code><br />
+<code>#include &lt;SD.h&gt;</code><br />
 <code>#include &quot;<a class="el" href="globals_8h_source.html">globals.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_sensor_task_8h_source.html">SensorTask.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_device_config_8h_source.html">DeviceConfig.h</a>&quot;</code><br />
@@ -115,10 +116,12 @@ $(document).ready(function(){initNavTree('main_8cpp.html',''); initResizable(); 
 <code>#include &quot;<a class="el" href="ulp_8h_source.html">ulp.h</a>&quot;</code><br />
 <code>#include &quot;soc/soc.h&quot;</code><br />
 <code>#include &quot;soc/rtc_cntl_reg.h&quot;</code><br />
+<code>#include &quot;<a class="el" href="interface_8h_source.html">sd-card/interface.h</a>&quot;</code><br />
+<code>#include &quot;freertos/semphr.h&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for main.cpp:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="main_8cpp__incl.svg" width="3672" height="447"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="main_8cpp__incl.svg" width="4351" height="447"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 </div><table class="memberdecls">
@@ -150,6 +153,8 @@ Variables</h2></td></tr>
 <tr class="separator:a8cf2293df92df8bc87efa85b5c7af4ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5f4927c8ddf017550d72987d1be19591"><td class="memItemLeft" align="right" valign="top">static volatile int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a5f4927c8ddf017550d72987d1be19591">uxTopUsedPriority</a></td></tr>
 <tr class="separator:a5f4927c8ddf017550d72987d1be19591"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a108f21ae763ab22ae2ed2f0135e1c18d"><td class="memItemLeft" align="right" valign="top">static File *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a108f21ae763ab22ae2ed2f0135e1c18d">log_file</a> = nullptr</td></tr>
+<tr class="separator:a108f21ae763ab22ae2ed2f0135e1c18d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="a50622d2058413be33afcc9e4bfceb68b" name="a50622d2058413be33afcc9e4bfceb68b"></a>
@@ -307,6 +312,28 @@ Variables</h2></td></tr>
           <td class="memname"><a class="el" href="class_t_c_a9534.html">TCA9534</a> io_expander</td>
         </tr>
       </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a108f21ae763ab22ae2ed2f0135e1c18d" name="a108f21ae763ab22ae2ed2f0135e1c18d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a108f21ae763ab22ae2ed2f0135e1c18d">&#9670;&#160;</a></span>log_file</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">File* log_file = nullptr</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 </div>

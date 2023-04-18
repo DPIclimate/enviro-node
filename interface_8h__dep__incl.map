@@ -1,4 +1,7 @@
 <map id="firmware/wombat/include/sd&#45;card/interface.h" name="firmware/wombat/include/sd&#45;card/interface.h">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,193,45"/>
-<area shape="rect" id="node2" href="$interface_8cpp.html" title=" " alt="" coords="18,93,181,133"/>
+<area shape="rect" id="node1" title=" " alt="" coords="267,5,455,45"/>
+<area shape="rect" id="node2" href="$_sensor_task_8cpp.html" title=" " alt="" coords="5,101,165,141"/>
+<area shape="rect" id="node3" href="$sd__card_8cpp.html" title=" " alt="" coords="189,93,349,148"/>
+<area shape="rect" id="node4" href="$main_8cpp.html" title=" " alt="" coords="373,101,533,141"/>
+<area shape="rect" id="node5" href="$interface_8cpp.html" title=" " alt="" coords="557,101,720,141"/>
 </map>

@@ -8,5 +8,6 @@ var main_8cpp =
     [ "select_rtc_slow_clk", "main_8cpp.html#a43937a1f3e090a4ef926cbe30a3fce6b", null ],
     [ "setup", "main_8cpp.html#a4fc01d736fe50cf5b977f755b675f11d", null ],
     [ "io_expander", "main_8cpp.html#a8cf2293df92df8bc87efa85b5c7af4ce", null ],
+    [ "log_file", "main_8cpp.html#a108f21ae763ab22ae2ed2f0135e1c18d", null ],
     [ "uxTopUsedPriority", "main_8cpp.html#a5f4927c8ddf017550d72987d1be19591", null ]
 ];

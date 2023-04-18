@@ -1,11 +1,14 @@
 <map id="firmware/wombat/include/audio&#45;feedback/tones.h" name="firmware/wombat/include/audio&#45;feedback/tones.h">
-<area shape="rect" id="node1" title="Audio control for the onboard piezo buzzer." alt="" coords="299,5,487,45"/>
-<area shape="rect" id="node2" href="$uart_8h.html" title="BluetoothLE UART service setup and handling." alt="" coords="234,93,422,133"/>
-<area shape="rect" id="node6" href="$main_8cpp.html" title=" " alt="" coords="439,357,599,397"/>
-<area shape="rect" id="node3" href="$server_8h.html" title="Handle the setup and maintenance of the BLE server and connected clients." alt="" coords="142,181,330,221"/>
-<area shape="rect" id="node9" href="$uart_8cpp.html" title="BluetoothLE UART service setup and handling." alt="" coords="355,181,515,221"/>
-<area shape="rect" id="node4" href="$_c_l_i_8h.html" title="FreeRTOS CLI handler." alt="" coords="142,269,330,309"/>
-<area shape="rect" id="node8" href="$server_8cpp.html" title="Setup and start BluetoothLE server." alt="" coords="355,269,515,309"/>
-<area shape="rect" id="node5" href="$_c_l_i_8cpp.html" title="FreeRTOS CLI handler." alt="" coords="5,357,165,397"/>
-<area shape="rect" id="node7" href="$mqtt__stack_8cpp.html" title=" " alt="" coords="189,357,349,397"/>
+<area shape="rect" id="node1" title="Audio control for the onboard piezo buzzer." alt="" coords="745,5,933,45"/>
+<area shape="rect" id="node2" href="$uart_8h.html" title="BluetoothLE UART service setup and handling." alt="" coords="679,93,867,133"/>
+<area shape="rect" id="node9" href="$main_8cpp.html" title=" " alt="" coords="949,365,1109,405"/>
+<area shape="rect" id="node3" href="$server_8h.html" title="Handle the setup and maintenance of the BLE server and connected clients." alt="" coords="587,181,775,221"/>
+<area shape="rect" id="node12" href="$uart_8cpp.html" title="BluetoothLE UART service setup and handling." alt="" coords="800,181,960,221"/>
+<area shape="rect" id="node4" href="$_c_l_i_8h.html" title="FreeRTOS CLI handler." alt="" coords="555,269,743,309"/>
+<area shape="rect" id="node11" href="$server_8cpp.html" title="Setup and start BluetoothLE server." alt="" coords="768,269,928,309"/>
+<area shape="rect" id="node5" href="$_c_l_i_8cpp.html" title="FreeRTOS CLI handler." alt="" coords="5,365,165,405"/>
+<area shape="rect" id="node6" href="$cat-m1_8cpp.html" title="CAT&#45;M1 CLI command request and response handler." alt="" coords="189,357,349,412"/>
+<area shape="rect" id="node7" href="$sd__card_8cpp.html" title=" " alt="" coords="373,357,533,412"/>
+<area shape="rect" id="node8" href="$sdi12_8cpp.html" title="SDI&#45;12 command line interface handler." alt="" coords="557,365,741,405"/>
+<area shape="rect" id="node10" href="$mqtt__stack_8cpp.html" title=" " alt="" coords="765,365,925,405"/>
 </map>
