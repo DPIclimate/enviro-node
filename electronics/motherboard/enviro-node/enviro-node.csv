@@ -1,79 +1,235 @@
-Reference, Quantity, Value, Footprint, Datasheet, Part, MANUFACTURER, MAXIMUM_PACKAGE_HEIGHT, PARTREV, STANDARD, AVAILABILITY, DESCRIPTION, MF, MP, PACKAGE, PRICE, Populate
-B1 ,1,1049P,1049P:1049P,,,,,,,,,,,,,
-C1 C4 C14 C16 ,4,4.7uF,Capacitor_SMD:C_0805_2012Metric,https://www.digikey.com.au/en/products/detail/samsung-electro-mechanics/CL21B475KOFNFNE/3888628,CL21B475KOFNFNE,,,,,,,,,,,
-C10 ,1,22uF,Capacitor_SMD:C_0805_2012Metric,https://www.digikey.com.au/en/products/detail/kemet/C0805C226M8PAC7800/5327667,C0805C226M8PAC7800,,,,,,,,,,,
-C11 C15 C20 ,3,10uF,Capacitor_SMD:C_0805_2012Metric,https://www.digikey.com.au/en/products/detail/tdk-corporation/C2012X5R1V106K125AC/3951654,C2012X5R1V106K125AC,,,,,,,,,,,
-C17 C23 ,2,100uF,T520B107M006ATE015:CAPPM3528X210N,https://www.digikey.com.au/en/products/detail/kemet/T520B107M006ATE015/1842096?s=N4IgTCBcDaICoFYwAYBCBGZB2Ass5AbAIJwCiy6CIAugL5A,T520B107M006ATE015,KEMET,,,IPC-7351B,,,,,,,
-C18 ,1,2.2uF,Capacitor_SMD:C_0805_2012Metric,https://www.digikey.com.au/en/products/detail/kemet/C0805C225M3RAC7800/5267532,C0805C225M3RAC7800,,,,,,,,,,,
-C2 C3 C6 C7 C21 C24 C28 C33 C34 ,9,0.1uF,Capacitor_SMD:C_0805_2012Metric,https://www.digikey.com.au/en/products/detail/yageo/AC0805KRX7R7BB104/6643148,AC0805KRX7R7BB104,,,,,,,,,,,
-C25 ,1,10nF,Capacitor_SMD:C_0805_2012Metric,https://www.digikey.com.au/en/products/detail/kemet/C0805C103J5GEC7210/8645966,C0805C103J5GEC7210,,,,,,,,,,,
-C26 ,1,68pF,Capacitor_SMD:C_0805_2012Metric,https://www.digikey.com.au/en/products/detail/kemet/C0805C680K5RACAUTO/11677006,C0805C680K5RACAUTO,,,,,,,,,,,
-C27 C30 C31 C32 ,4,47pF,Capacitor_SMD:C_0805_2012Metric,https://www.digikey.com.au/en/products/detail/kemet/C0805C470K5RAC7800/12701183,C0805C470K5RAC7800,,,,,,,,,,,
-C29 ,1,15pF,Capacitor_SMD:C_0805_2012Metric,https://www.digikey.com.au/en/products/detail/kemet/C0805C150J3GAC7800/2211923,C0805C150J3GAC7800,,,,,,,,,,,
-C5 C12 C13 C19 C22 ,5,1uF,Capacitor_SMD:C_0805_2012Metric,https://www.digikey.com.au/en/products/detail/kemet/C0805C105K3RAC7800/2211765,C0805C105K3RAC7800,,,,,,,,,,,
-C8 C9 ,2,12pF,Capacitor_SMD:C_0805_2012Metric,https://www.digikey.com.au/en/products/detail/vishay-vitramon/VJ0805A120FXJCW1BC/8307136?s=N4IgjCBcpgLFoDGUBmBDANgZwKYBoQB7KAbXAAYAOAdlgCYQBdAgBwBcoQBlNgJwEsAdgHMQAXwIBaAJwIQySHwCu%2BIqXBMJISQ2jyoy1cUhkArJq26yYOiwBiAAirlTDrgFkAIpqA,VJ0805A120FXJCW1BC,,,,,,,,,,,
-CR1 CR2 CR3 CR4 ,4,PESD0402-140,PESD0402-140:PESD0402-140,https://www.digikey.com.au/en/products/detail/littelfuse-inc/PESD0402-140/1968525?s=N4IgTCBcDaIAoFEDKARADAFjWAtARixAF0BfIA,PESD0402-140,,,,,,,,,,,
-D1 ,1,SP0503BAHT,Package_TO_SOT_SMD:SOT-143,http://www.littelfuse.com/~/media/files/littelfuse/technical%20resources/documents/data%20sheets/sp05xxba.pdf,,,,,,,,,,,,
-D2 D11 ,2,LED(Orange),LED_SMD:LED_0805_2012Metric,https://www.digikey.com.au/en/products/detail/osram-opto-ams-osram/LO-R976-PS-1/1227955,LO R976-PS-1,,,,,,,,,,,
-D3 D5 D10 ,3,LED(Red),LED_SMD:LED_0805_2012Metric,https://www.digikey.com.au/en/products/detail/osram-opto-ams-osram/LS-R976-NR-1/1227987,LS R976-NR-1,,,,,,,,,,,
-D4 D8 ,2,LED(Green),LED_SMD:LED_0805_2012Metric,https://www.digikey.com.au/en/products/detail/osram-opto-ams-osram/LG-R971-KN-1/1227925,LG R971-KN-1,,,,,,,,,,,
-D6 D7 D9 ,3,SS34LW_RVG,SS34LW_RVG:SODFL3718X102N,https://www.digikey.com.au/en/products/detail/taiwan-semiconductor-corporation/SS34LW/7359612,SS34LW_RVG,Taiwan Semiconductor,1.02 mm,C2103,IPC-7351B,,,,,,,
-F1 F2 ,2,0685P2000-01,0685P2000-01:0685P2000-01,https://www.digikey.com.au/en/products/detail/bel-fuse-inc/0685P2000-01/12140901?s=N4IgTCBcDaIAwDYAcBWACmOWC0cCMIAugL5A,0685P2000-01,BELFUSE,0.83mm,Jan-19,IPC-7351B,,,,,,,
-FB1 ,1,FBMH2012HM221-TV,FBMH2012HM221-TV:BEADC2012X105N,https://www.digikey.com.au/en/products/detail/taiyo-yuden/FBMH2012HM221-TV/4875427?s=N4IgTCBcDaIGICECyAJMAGAjGFSxkwFoAVANRAF0BfIA,FBMH2012HM221-TV,,,,,,,,,,,
-H1 H2 ,2,MountingHole,MountingHole:MountingHole_4.3x6.2mm_M4_Pad_Via,,,,,,,,,,,,,
-J1 ,1,USB4145-03-0230-C,USB4145-03-0230-C_REVA:GCT_USB4145-03-0230-C_REVA,https://gct.co/files/drawings/usb4145.pdf,,GCT,10.8mm,C5,Manufacturer Recommendations,,,,,,,
-J11 ,1,CONUFL001-SMD-T,CONUFL001-SMD-T:LINX_CONUFL001-SMD-T,https://www.digikey.com.au/en/products/detail/linx-technologies-inc/CONUFL001-SMD-T/7427732?s=N4IgTCBcDaIMIHkByBVAYgGQAxYIwFoBlAWQBF8AVEAXQF8g,CONUFL001-SMD-T,Linx Technologies,,B,Manufacturer Recommendations,,,,,,,
-J12 ,1,SIM8060-6-0-14-00-A,SIM8060-6-0-14-00-A:GCT_SIM8060-6-0-14-00-A,SIM8060-6-0-14-00-A,SIM8060-6-0-14-00-A,,,,,,"SIM8060 is a hinged Sim Card Connector. With 6 contacts, with switch for card detection. Profile above PCB is 1.43mm.",Global Connector Technology,SIM8060-6-0-14-00-A,Package Analog Devices,,
-J2 ,1,JTAG,Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical,,,,,,,,,,,,,
-J3 ,1,JTAG,3221-10-0100-00:CNC_3221-10-0100-00,http://infocenter.arm.com/help/topic/com.arm.doc.ddi0314h/DDI0314H_coresight_components_trm.pdf,3221-10-0100-00,,,,,,,,,,,
-J4 J7 J10 ,3,2604-3102,2604-3102:2604-3102,https://www.digikey.com.au/en/products/detail/wago-corporation/2604-3102/15528152?s=N4IgTCBcDa4GwAYAsBaAzARgRAugXyA,2604-3102,,,,,,,,,,,
-J5 ,1,ST1W008S4AR1500,ST1W008S4AR1500:JAE_ST1W008S4AR1500,https://www.digikey.com.au/en/products/detail/jae-electronics/ST1W008S4AR1500/3720055?s=N4IgTCBcDaIMoBUCMB1ADGgHHALAQQCUkBWDEAXQF8g,ST1W008S4AR1500,JAE Electronics,2.0 mm,2,Manufacturer Recommendations,,,,,,,
-J6 ,1,2604-3105,2604-3105:2604-3105,https://www.digikey.com.au/en/products/detail/wago-corporation/2604-3105/15551087?s=N4IgTCBcDa4GwAYAsBaAzARgQVhAXQF8g,2604-3105,,,,,,,,,,,
-J8 ,1,SOLAR_CRNT_JMPR,Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical,,,,,,,,,,,,,
-J9 ,1,BAT_CRNT_JMPR,Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical,,,,,,,,,,,,,
-L1 ,1,SRP4020T-5R6M,SRP4020TA-5R6M:IND_SRP4020TA-5R6M,https://www.bourns.com/docs/Product-Datasheets/SRP4020TA.pdf,SRP4020TA-5R6M,,,,,,,,,,,
-L2 ,1,LQH43CN100K03L,LQH43CN100K03L:IND_LQH43CN100K03L,https://www.digikey.com.au/en/products/detail/murata-electronics/LQH43CN100K03L/599911?s=N4IgTCBcDaIDIEUASAWAzAYQHIEYAMeA0nmnCALoC%2BQA,LQH43CN100K03L,Murata,2.8mm,N/A,Manufacturer Recommendations,,,,,,,
-LS1 ,1,PS1240P02BT,PS1240P02BT:XDCR_PS1240P02BT,https://www.digikey.com.au/en/products/detail/tdk-corporation/PS1240P02BT/935924?s=N4IgTCBcDaIAoGUCMYAsAGO6wCEAqIAugL5A,PS1240P02BT,,7.0mm,,,Unavailable,"Buzzers Transducer, Externally Driven Piezo 3V 4kHz 60dB @ 3V, 10cm Through Hole PC Pins",TDK,PS1240P02CT3,SIP-5 TDK,None,
-MOSFET1 MOSFET2 ,2,SSM3J340R_LF,SSM3J340R_LF:SSM3J340R_LF,https://www.digikey.com.au/en/products/detail/toshiba-semiconductor-and-storage/SSM3J340R-LF/10259884?s=N4IgTCBcDaIMpwLIGYBSyAsAGASgfQBkAxEAXQF8g,"SSM3J340R,LF",,,,,,,,,,,
-Q1 ,1,MMDT3904,Package_TO_SOT_SMD:SOT-363_SC-70-6,http://www.diodes.com/_files/datasheets/ds30088.pdf,,,,,,,,,,,,
-Q2 Q4 Q5 ,3,BC847,Package_TO_SOT_SMD:SOT-23,http://www.infineon.com/dgdl/Infineon-BC847SERIES_BC848SERIES_BC849SERIES_BC850SERIES-DS-v01_01-en.pdf?fileId=db3a304314dca389011541d4630a1657,,,,,,,,,,,,
-Q3 ,1,BSS214NW,Package_TO_SOT_SMD:SOT-323_SC-70,https://www.infineon.com/dgdl/Infineon-BSS214NW-DS-v02_02-en.pdf?fileId=db3a30431b3e89eb011b695aebc01bde,,,,,,,,,,,,
-R1 ,1,22.1K,Resistor_SMD:R_0805_2012Metric,https://www.digikey.com.au/en/products/detail/bourns-inc/CR0805-FX-1001ELF/3593162,CR0805-FX-1001ELF,,,,,,,,,,,
-R12 ,1,10M,Resistor_SMD:R_0805_2012Metric,https://www.digikey.com.au/en/products/detail/bourns-inc/CR0805-FW-1005ELF/6153044,CR0805-FW-1005ELF,,,,,,,,,,,
-R16 R17 R34 ,3,4.7K,Resistor_SMD:R_0805_2012Metric,https://www.digikey.com.au/en/products/detail/te-connectivity-passive-product/CRG0805F4K7/2135488,CRG0805F4K7,,,,,,,,,,,
-R2 ,1,47.5K,Resistor_SMD:R_0805_2012Metric,https://www.digikey.com.au/en/products/detail/bourns-inc/CR0805-FX-1001ELF/3593162,CR0805-FX-1001ELF,,,,,,,,,,,
-R20 R24 R25 ,3,2K,Resistor_SMD:R_0805_2012Metric,https://www.digikey.com.au/en/products/detail/te-connectivity-passive-product/CRG0805F4K7/2135488,CRG0805F4K7,,,,,,,,,,,
-R21 R30 ,2,0.1,Resistor_SMD:R_2512_6332Metric,https://www.digikey.com.au/en/products/detail/bourns-inc/CRL2512-FW-R100ELF/3786041,CRL2512-FW-R100ELF,,,,,,,,,,,
-R22 ,1,21K,Resistor_SMD:R_0805_2012Metric,https://www.digikey.com.au/en/products/detail/vishay-dale/CRCW080521K0FKEA/1175785,CRCW080521K0FKEA,,,,,,,,,,,
-R26 ,1,180K,Resistor_SMD:R_0805_2012Metric,https://www.digikey.com.au/en/products/detail/yageo/RT0805FRE07180KL/1035150,RT0805FRE07180KL,,,,,,,,,,,
-R27 ,1,91K,Resistor_SMD:R_0805_2012Metric,https://www.digikey.com.au/en/products/detail/vishay-dale/CRCW080591K0FKEA/1175861,CRCW080591K0FKEA,,,,,,,,,,,
-R28 ,1,330K,Resistor_SMD:R_0805_2012Metric,https://www.digikey.com.au/en/products/detail/panasonic-electronic-components/ERJ-6ENF3303V/1746491,ERJ-6ENF3303V,,,,,,,,,,,
-R29 ,1,3.2K,Resistor_SMD:R_0805_2012Metric,https://www.digikey.com.au/en/products/detail/vishay-dale/TNPW08053K20BEEA/4972596,TNPW08053K20BEEA,,,,,,,,,,,
-R3 R7 ,2,5.1K,Resistor_SMD:R_0805_2012Metric,https://www.vishay.com/docs/20035/dcrcwe3.pdf,CRCW08055K10FKEA,,,,,,,,,,,
-R32 R37 ,2,100K,Resistor_SMD:R_0805_2012Metric,https://www.digikey.com.au/en/products/detail/vishay-dale/CRCW0805100KJNTA/1226893,CRCW0805100KJNTA,,,,,,,,,,,
-R33 R38 ,2,47K,Resistor_SMD:R_0805_2012Metric,https://www.digikey.com.au/en/products/detail/vishay-dale/CRCW080547K0FKTA/1223026,CRCW080547K0FKTA,,,,,,,,,,,
-R4 R14 R19 R31 R35 R40 ,6,1K,Resistor_SMD:R_0805_2012Metric,https://www.digikey.com.au/en/products/detail/bourns-inc/CR0805-FX-1001ELF/3593162,CR0805-FX-1001ELF,,,,,,,,,,,
-R5 R6 R8 R11 R13 R15 R18 R23 R36 R39 R43 ,11,10K,Resistor_SMD:R_0805_2012Metric,https://www.digikey.com.au/en/products/detail/yageo/RC0805FR-0710KP/4935334,RC0805FR-0710KP,,,,,,,,,,,
-R9 R10 R41 R42 ,4,0,Resistor_SMD:R_0805_2012Metric,https://www.digikey.com.au/en/products/detail/bourns-inc/CR0805-J-000ELF/3593157,CR0805-J/-000ELF,,,,,,,,,,,
-RV1 ,1,ESD_RST_IN,Resistor_SMD:R_0805_2012Metric,https://www.digikey.com.au/en/products/detail/kyocera-avx/VC080518A400DP/684857?s=N4IgTCBcDaIGoGEAMAOJBWAjCgggFiSQBEAFEAXQF8g,VC080518A400DP,,,,,,,,,,,
-SW1 ,1,BOOT,1977223-6:1977223-6,https://www.digikey.com.au/en/products/detail/te-connectivity-alcoswitch-switches/1977223-6/2400488,1977223-6,,,,,,,,,,,
-SW2 ,1,RESET,1977223-6:1977223-6,https://www.digikey.com.au/en/products/detail/te-connectivity-alcoswitch-switches/1977223-6/2400488,1977223-6,,,,,,,,,,,
-SW3 ,1,CAT_M1_RST,1977223-6:1977223-6,https://www.digikey.com.au/en/products/detail/te-connectivity-alcoswitch-switches/1977223-6/2400488,1977223-6,,,,,,,,,,,
-TP1 ,1,12V_EN,TestPoint:TestPoint_Pad_D1.0mm,,,,,,,,,,,,,
-TP2 ,1,RX_1V8,TestPoint:TestPoint_Pad_D1.0mm,,,,,,,,,,,,,
-TP3 ,1,TX_1V8,TestPoint:TestPoint_Pad_D1.0mm,,,,,,,,,,,,,
-TP4 ,1,PWR_ON,TestPoint:TestPoint_Pad_D1.0mm,,,,,,,,,,,,,
-TP5 ,1,VOUT,TestPoint:TestPoint_Pad_D1.0mm,,,,,,,,,,,,,
-TP6 ,1,1V8,TestPoint:TestPoint_Pad_D1.0mm,,,,,,,,,,,,,
-U1 ,1,CP2102N-Axx-xQFN28,Package_DFN_QFN:QFN-28-1EP_5x5mm_P0.5mm_EP3.35x3.35mm,https://www.silabs.com/documents/public/data-sheets/cp2102n-datasheet.pdf,CP2102N-A02-GQFN28,,,,,,,,,,,
-U10 ,1,XC6215B332MR-G,XC6215B332:XC6215B332MR-G,https://www.digikey.com.au/en/products/detail/torex-semiconductor-ltd/XC6215B332MR-G/2138122,XC6215B332MR-G,,,,,,,,,,,
-U12 ,1,SARA-R500S-01B,SARA-R500S-01B:XCVR_SARA-R500S-01B,https://www.digikey.com.au/en/products/detail/u-blox/SARA-R500S-01B/14557688,SARA-R500S-01B,,,,,,,,,,,
-U13 ,1,TXB0104PW,Package_SO:TSSOP-14_4.4x5mm_P0.65mm,https://www.digikey.com.au/en/products/detail/texas-instruments/TXB0104PWR/1629102,TXB0104PW,,,,,,,,,,,
-U2 ,1,ESP32-WROOM-32E_(16MB),ESP32-WROOM-32E__16MB_:XCVR_ESP32-WROOM-32E_(16MB),https://www.digikey.com.au/en/products/detail/espressif-systems/ESP32-WROOM-32E-N16/11613144,ESP32-WROOM-32E-N16,,,,,,,,,,,
-U3 ,1,TCA9534,Package_SO:TSSOP-16_4.4x5mm_P0.65mm,https://www.digikey.com.au/en/products/detail/texas-instruments/TCA9534PWR/5004966,TCA9534PWR,,,,,,,,,,,
-U4 U8 ,2,INA219BxD,Package_SO:SOIC-8_3.9x4.9mm_P1.27mm,http://www.ti.com/lit/ds/symlink/ina219.pdf,INA219BIDR,,,,,,,,,,,
-U5 ,1,LT3652IMSE,Package_SO:MSOP-12-1EP_3x4mm_P0.65mm_EP1.65x2.85mm,https://www.analog.com/media/en/technical-documentation/data-sheets/3652fe.pdf,LT3652IMSE,,,,,,,,,,,
-U6 U11 ,2,TPS22967DSGR,TPS22967DSGR:SON50P200X200X80-9N,https://www.digikey.com.au/en/products/detail/texas-instruments/TPS22967DSGR/4331550?s=N4IgTCBcDaICoAUDKYwE4BsB2AIkg4gEogC6AvkA,TPS22967DSGR,,,,,,,,,,,
-U7 ,1,MCP73832-2-OT,Package_TO_SOT_SMD:SOT-23-5,http://ww1.microchip.com/downloads/en/DeviceDoc/20001984g.pdf,MCP73832-2ATI/MC,,,,,,,,,,,
-U9 ,1,MIC2288YD5-TR,MIC2288YD5-TR:SOT95P280X100-5N,https://www.digikey.com.au/en/products/detail/microchip-technology/MIC2288YD5-TR/1028498?s=N4IgTCBcDaILIEkDCYwA40E0AiBWAtACoBKIAugL5A,MIC2288YD5-TR,,,,,,,,,,,
-Y1 ,1,32.768KHz,ABS07AIG-32:XTAL320X150X90,https://www.digikey.com.au/en/products/detail/abracon-llc/ABS07AIG-32-768KHZ-T/5817548?s=N4IgTCBcDaIIICEDKAGA7HAkgcQLQGYwA6NANgA4BpACQC1cAVEAXQF8g,ABS07AIG-32.768KHZ-T,,,,,,,,,,,
+"Source:","/Users/dtaylor/tmp/enviro-node/electronics/motherboard/enviro-node/enviro-node.kicad_sch"
+"Date:","Wednesday, 19 April 2023 at 02:27:09 pm"
+"Tool:","Eeschema (6.0.11-0)"
+"Generator:","/Applications/KiCad/KiCad.app/Contents/SharedSupport/plugins/bom_csv_grouped_by_value.py"
+"Component Count:","141"
+
+"Individual Components:"
+
+"Item","Qty","Reference(s)","Value","LibPart","Footprint","Datasheet","AVAILABILITY","DESCRIPTION","MANUFACTURER","MAXIMUM_PACKAGE_HEIGHT","MF","MP","PACKAGE","PARTREV","PRICE","Part","SNAPEDA_PACKAGE_ID","STANDARD"
+"","","B1","1049P","1049P:1049P","1049P:1049P","","","","","","","","","","","","",""
+"","","C3","0.1uF","Device:C","Capacitor_SMD:C_0805_2012Metric","https://www.digikey.com.au/en/products/detail/yageo/AC0805KRX7R7BB104/6643148","","","","","","","","","","AC0805KRX7R7BB104","",""
+"","","C4","4.7uF","Device:C","Capacitor_SMD:C_0805_2012Metric","https://www.digikey.com.au/en/products/detail/samsung-electro-mechanics/CL21B475KOFNFNE/3888628","","","","","","","","","","CL21B475KOFNFNE","",""
+"","","C5","1uF","Device:C","Capacitor_SMD:C_0805_2012Metric","https://www.digikey.com.au/en/products/detail/kemet/C0805C105K3RAC7800/2211765","","","","","","","","","","C0805C105K3RAC7800","",""
+"","","C6","0.1uF","Device:C","Capacitor_SMD:C_0805_2012Metric","https://www.digikey.com.au/en/products/detail/yageo/AC0805KRX7R7BB104/6643148","","","","","","","","","","AC0805KRX7R7BB104","",""
+"","","C7","0.1uF","Device:C","Capacitor_SMD:C_0805_2012Metric","https://www.digikey.com.au/en/products/detail/yageo/AC0805KRX7R7BB104/6643148","","","","","","","","","","AC0805KRX7R7BB104","",""
+"","","C8","12pF","Device:C","Capacitor_SMD:C_0805_2012Metric","https://www.digikey.com.au/en/products/detail/vishay-vitramon/VJ0805A120FXJCW1BC/8307136?s=N4IgjCBcpgLFoDGUBmBDANgZwKYBoQB7KAbXAAYAOAdlgCYQBdAgBwBcoQBlNgJwEsAdgHMQAXwIBaAJwIQySHwCu%2BIqXBMJISQ2jyoy1cUhkArJq26yYOiwBiAAirlTDrgFkAIpqA","","","","","","","","","","VJ0805A120FXJCW1BC","",""
+"","","C9","12pF","Device:C","Capacitor_SMD:C_0805_2012Metric","https://www.digikey.com.au/en/products/detail/vishay-vitramon/VJ0805A120FXJCW1BC/8307136?s=N4IgjCBcpgLFoDGUBmBDANgZwKYBoQB7KAbXAAYAOAdlgCYQBdAgBwBcoQBlNgJwEsAdgHMQAXwIBaAJwIQySHwCu%2BIqXBMJISQ2jyoy1cUhkArJq26yYOiwBiAAirlTDrgFkAIpqA","","","","","","","","","","VJ0805A120FXJCW1BC","",""
+"","","C10","22uF","Device:C","Capacitor_SMD:C_0805_2012Metric","https://www.digikey.com.au/en/products/detail/kemet/C0805C226M8PAC7800/5327667","","","","","","","","","","C0805C226M8PAC7800","",""
+"","","C11","10uF","Device:C","Capacitor_SMD:C_0805_2012Metric","https://www.digikey.com.au/en/products/detail/tdk-corporation/C2012X5R1V106K125AC/3951654","","","","","","","","","","C2012X5R1V106K125AC","",""
+"","","C12","1uF","Device:C","Capacitor_SMD:C_0805_2012Metric","https://www.digikey.com.au/en/products/detail/kemet/C0805C105K3RAC7800/2211765","","","","","","","","","","C0805C105K3RAC7800","",""
+"","","C13","1uF","Device:C","Capacitor_SMD:C_0805_2012Metric","https://www.digikey.com.au/en/products/detail/kemet/C0805C105K3RAC7800/2211765","","","","","","","","","","C0805C105K3RAC7800","",""
+"","","C14","4.7uF","Device:C","Capacitor_SMD:C_0805_2012Metric","https://www.digikey.com.au/en/products/detail/samsung-electro-mechanics/CL21B475KOFNFNE/3888628","","","","","","","","","","CL21B475KOFNFNE","",""
+"","","C15","10uF","Device:C","Capacitor_SMD:C_0805_2012Metric","https://www.digikey.com.au/en/products/detail/tdk-corporation/C2012X5R1V106K125AC/3951654","","","","","","","","","","C2012X5R1V106K125AC","",""
+"","","C16","4.7uF","Device:C","Capacitor_SMD:C_0805_2012Metric","https://www.digikey.com.au/en/products/detail/samsung-electro-mechanics/CL21B475KOFNFNE/3888628","","","","","","","","","","CL21B475KOFNFNE","",""
+"","","C17","0.1uF","T520B107M006ATE015:T520B107M006ATE015","Capacitor_Tantalum_SMD:CP_EIA-2012-12_Kemet-R","https://datasheets.kyocera-avx.com/TAJ.pdf","","","KYOCERA-AVX","","","","","","","TAJR104K020RNJ","","IPC-7351B"
+"","","C18","2.2uF","Device:C","Capacitor_SMD:C_0805_2012Metric","https://www.digikey.com.au/en/products/detail/kemet/C0805C225M3RAC7800/5267532","","","","","","","","","","C0805C225M3RAC7800","",""
+"","","C19","1uF","Device:C","Capacitor_SMD:C_0805_2012Metric","https://www.digikey.com.au/en/products/detail/kemet/C0805C105K3RAC7800/2211765","","","","","","","","","","C0805C105K3RAC7800","",""
+"","","C20","10uF","Device:C","Capacitor_SMD:C_0805_2012Metric","https://www.digikey.com.au/en/products/detail/tdk-corporation/C2012X5R1V106K125AC/3951654","","","","","","","","","","C2012X5R1V106K125AC","",""
+"","","C21","0.1uF","Device:C","Capacitor_SMD:C_0805_2012Metric","https://www.digikey.com.au/en/products/detail/yageo/AC0805KRX7R7BB104/6643148","","","","","","","","","","AC0805KRX7R7BB104","",""
+"","","C22","1uF","Device:C","Capacitor_SMD:C_0805_2012Metric","https://www.digikey.com.au/en/products/detail/kemet/C0805C105K3RAC7800/2211765","","","","","","","","","","C0805C105K3RAC7800","",""
+"","","C23","0.1uF","T520B107M006ATE015:T520B107M006ATE015","Capacitor_Tantalum_SMD:CP_EIA-2012-12_Kemet-R","https://datasheets.kyocera-avx.com/TAJ.pdf","","","KYOCERA-AVX","","","","","","","TAJR104K020RNJ","","IPC-7351B"
+"","","C24","0.1uF","Device:C","Capacitor_SMD:C_0805_2012Metric","https://www.digikey.com.au/en/products/detail/yageo/AC0805KRX7R7BB104/6643148","","","","","","","","","","AC0805KRX7R7BB104","",""
+"","","C25","10nF","Device:C","Capacitor_SMD:C_0805_2012Metric","https://www.digikey.com.au/en/products/detail/kemet/C0805C103J5GEC7210/8645966","","","","","","","","","","C0805C103J5GEC7210","",""
+"","","C26","68pF","Device:C","Capacitor_SMD:C_0805_2012Metric","https://www.digikey.com.au/en/products/detail/kemet/C0805C680K5RACAUTO/11677006","","","","","","","","","","C0805C680K5RACAUTO","",""
+"","","C27","47pF","Device:C","Capacitor_SMD:C_0805_2012Metric","https://www.digikey.com.au/en/products/detail/kemet/C0805C470K5RAC7800/12701183","","","","","","","","","","C0805C470K5RAC7800","",""
+"","","C28","0.1uF","Device:C","Capacitor_SMD:C_0805_2012Metric","https://www.digikey.com.au/en/products/detail/yageo/AC0805KRX7R7BB104/6643148","","","","","","","","","","AC0805KRX7R7BB104","",""
+"","","C29","15pF","Device:C","Capacitor_SMD:C_0805_2012Metric","https://www.digikey.com.au/en/products/detail/kemet/C0805C150J3GAC7800/2211923","","","","","","","","","","C0805C150J3GAC7800","",""
+"","","C30","47pF","Device:C","Capacitor_SMD:C_0805_2012Metric","https://www.digikey.com.au/en/products/detail/kemet/C0805C470K5RAC7800/12701183","","","","","","","","","","C0805C470K5RAC7800","",""
+"","","C31","47pF","Device:C","Capacitor_SMD:C_0805_2012Metric","https://www.digikey.com.au/en/products/detail/kemet/C0805C470K5RAC7800/12701183","","","","","","","","","","C0805C470K5RAC7800","",""
+"","","C32","47pF","Device:C","Capacitor_SMD:C_0805_2012Metric","https://www.digikey.com.au/en/products/detail/kemet/C0805C470K5RAC7800/12701183","","","","","","","","","","C0805C470K5RAC7800","",""
+"","","C33","0.1uF","Device:C","Capacitor_SMD:C_0805_2012Metric","https://www.digikey.com.au/en/products/detail/yageo/AC0805KRX7R7BB104/6643148","","","","","","","","","","AC0805KRX7R7BB104","",""
+"","","C34","0.1uF","Device:C","Capacitor_SMD:C_0805_2012Metric","https://www.digikey.com.au/en/products/detail/yageo/AC0805KRX7R7BB104/6643148","","","","","","","","","","AC0805KRX7R7BB104","",""
+"","","CR1","PESD0402-140","PESD0402-140:PESD0402-140","PESD0402-140:PESD0402-140","https://www.digikey.com.au/en/products/detail/littelfuse-inc/PESD0402-140/1968525?s=N4IgTCBcDaIAoFEDKARADAFjWAtARixAF0BfIA","","","","","","","","","","PESD0402-140","",""
+"","","CR2","PESD0402-140","PESD0402-140:PESD0402-140","PESD0402-140:PESD0402-140","https://www.digikey.com.au/en/products/detail/littelfuse-inc/PESD0402-140/1968525?s=N4IgTCBcDaIAoFEDKARADAFjWAtARixAF0BfIA","","","","","","","","","","PESD0402-140","",""
+"","","CR3","PESD0402-140","PESD0402-140:PESD0402-140","PESD0402-140:PESD0402-140","https://www.digikey.com.au/en/products/detail/littelfuse-inc/PESD0402-140/1968525?s=N4IgTCBcDaIAoFEDKARADAFjWAtARixAF0BfIA","","","","","","","","","","PESD0402-140","",""
+"","","CR4","PESD0402-140","PESD0402-140:PESD0402-140","PESD0402-140:PESD0402-140","https://www.digikey.com.au/en/products/detail/littelfuse-inc/PESD0402-140/1968525?s=N4IgTCBcDaIAoFEDKARADAFjWAtARixAF0BfIA","","","","","","","","","","PESD0402-140","",""
+"","","D1","SP0503BAHT","Power_Protection:SP0503BAHT","Package_TO_SOT_SMD:SOT-143","http://www.littelfuse.com/~/media/files/littelfuse/technical%20resources/documents/data%20sheets/sp05xxba.pdf","","","","","","","","","","","",""
+"","","D2","LED(Orange)","Device:LED","LED_SMD:LED_0805_2012Metric","https://www.digikey.com.au/en/products/detail/osram-opto-ams-osram/LO-R976-PS-1/1227955","","","","","","","","","","LO R976-PS-1","",""
+"","","D3","LED(Red)","Device:LED","LED_SMD:LED_0805_2012Metric","https://www.digikey.com.au/en/products/detail/osram-opto-ams-osram/LS-R976-NR-1/1227987","","","","","","","","","","LS R976-NR-1","",""
+"","","D4","LED(Green)","Device:LED","LED_SMD:LED_0805_2012Metric","https://www.digikey.com.au/en/products/detail/osram-opto-ams-osram/LG-R971-KN-1/1227925","","","","","","","","","","LG R971-KN-1","",""
+"","","D5","LED(Red)","Device:LED","LED_SMD:LED_0805_2012Metric","https://www.digikey.com.au/en/products/detail/osram-opto-ams-osram/LS-R976-NR-1/1227987","","","","","","","","","","LS R976-NR-1","",""
+"","","D6","SS34LW_RVG","SS34LW_RVG:SS34LW_RVG","SS34LW_RVG:SODFL3718X102N","https://www.digikey.com.au/en/products/detail/taiwan-semiconductor-corporation/SS34LW/7359612","","","Taiwan Semiconductor","1.02 mm","","","","C2103","","SS34LW_RVG","","IPC-7351B"
+"","","D7","SS34LW_RVG","SS34LW_RVG:SS34LW_RVG","SS34LW_RVG:SODFL3718X102N","https://www.digikey.com.au/en/products/detail/taiwan-semiconductor-corporation/SS34LW/7359612","","","Taiwan Semiconductor","1.02 mm","","","","C2103","","SS34LW_RVG","","IPC-7351B"
+"","","D8","LED(Green)","Device:LED","LED_SMD:LED_0805_2012Metric","https://www.digikey.com.au/en/products/detail/osram-opto-ams-osram/LG-R971-KN-1/1227925","","","","","","","","","","LG R971-KN-1","",""
+"","","D9","SS34LW_RVG","SS34LW_RVG:SS34LW_RVG","SS34LW_RVG:SODFL3718X102N","https://www.digikey.com.au/en/products/detail/taiwan-semiconductor-corporation/SS34LW/7359612","","","Taiwan Semiconductor","1.02 mm","","","","C2103","","SS34LW_RVG","","IPC-7351B"
+"","","D10","LED(Red)","Device:LED","LED_SMD:LED_0805_2012Metric","https://www.digikey.com.au/en/products/detail/osram-opto-ams-osram/LS-R976-NR-1/1227987","","","","","","","","","","LS R976-NR-1","",""
+"","","D11","LED(Orange)","Device:LED","LED_SMD:LED_0805_2012Metric","https://www.digikey.com.au/en/products/detail/osram-opto-ams-osram/LO-R976-PS-1/1227955","","","","","","","","","","LO R976-PS-1","",""
+"","","F1","0685P2000-01","0685P2000-01:0685P2000-01","0685P2000-01:0685P2000-01","https://www.digikey.com.au/en/products/detail/bel-fuse-inc/0685P2000-01/12140901?s=N4IgTCBcDaIAwDYAcBWACmOWC0cCMIAugL5A","","","BELFUSE","0.83mm","","","","Jan2019","","0685P2000-01","","IPC-7351B"
+"","","F2","0685P2000-01","0685P2000-01:0685P2000-01","0685P2000-01:0685P2000-01","https://www.digikey.com.au/en/products/detail/bel-fuse-inc/0685P2000-01/12140901?s=N4IgTCBcDaIAwDYAcBWACmOWC0cCMIAugL5A","","","BELFUSE","0.83mm","","","","Jan2019","","0685P2000-01","","IPC-7351B"
+"","","FB1","FBMH2012HM221-TV","FBMH2012HM221-TV:FBMH2012HM221-TV","FBMH2012HM221-TV:BEADC2012X105N","https://www.digikey.com.au/en/products/detail/taiyo-yuden/FBMH2012HM221-TV/4875427?s=N4IgTCBcDaIGICECyAJMAGAjGFSxkwFoAVANRAF0BfIA","","","","","","","","","","FBMH2012HM221-TV","",""
+"","","H1","MountingHole","Mechanical:MountingHole","MountingHole:MountingHole_4.3x6.2mm_M4_Pad_Via","~","","","","","","","","","","","",""
+"","","H2","MountingHole","Mechanical:MountingHole","MountingHole:MountingHole_4.3x6.2mm_M4_Pad_Via","~","","","","","","","","","","","",""
+"","","J1","USB4145-03-0230-C","USB4070-30-C:USB4070-30-C_REVC5","USB4145-03-0230-C_REVA:GCT_USB4145-03-0230-C_REVA","https://gct.co/files/drawings/usb4145.pdf","","","GCT","10.8mm","","","","C5","","","","Manufacturer Recommendations"
+"","","J2","JTAG","Connector_Generic:Conn_01x04","Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical","~","","","","","","","","","","","",""
+"","","J3","JTAG","Connector:Conn_ARM_JTAG_SWD_10","3221-10-0100-00:CNC_3221-10-0100-00","http://infocenter.arm.com/help/topic/com.arm.doc.ddi0314h/DDI0314H_coresight_components_trm.pdf","","","","","","","","","","3221-10-0100-00","",""
+"","","J4","2604-3102","2604-3102:2604-3102","2604-3102:2604-3102","https://www.digikey.com.au/en/products/detail/wago-corporation/2604-3102/15528152?s=N4IgTCBcDa4GwAYAsBaAzARgRAugXyA","","","","","","","","","","2604-3102","",""
+"","","J5","ST1W008S4AR1500","ST1W008S4AR1500:ST1W008S4AR1500","ST1W008S4AR1500:JAE_ST1W008S4AR1500","https://www.digikey.com.au/en/products/detail/jae-electronics/ST1W008S4AR1500/3720055?s=N4IgTCBcDaIMoBUCMB1ADGgHHALAQQCUkBWDEAXQF8g","","","JAE Electronics","2.0 mm","","","","2","","ST1W008S4AR1500","","Manufacturer Recommendations"
+"","","J6","2604-3105","2604-3105:2604-3105","2604-3105:2604-3105","https://www.digikey.com.au/en/products/detail/wago-corporation/2604-3105/15551087?s=N4IgTCBcDa4GwAYAsBaAzARgQVhAXQF8g","","","","","","","","","","2604-3105","",""
+"","","J7","2604-3102","2604-3102:2604-3102","2604-3102:2604-3102","https://www.digikey.com.au/en/products/detail/wago-corporation/2604-3102/15528152?s=N4IgTCBcDa4GwAYAsBaAzARgRAugXyA","","","","","","","","","","2604-3102","",""
+"","","J8","SOLAR_CRNT_JMPR","Connector:Conn_01x02_Male","Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical","~","","","","","","","","","","","",""
+"","","J9","BAT_CRNT_JMPR","Connector:Conn_01x02_Male","Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical","~","","","","","","","","","","","",""
+"","","J10","2604-3102","2604-3102:2604-3102","2604-3102:2604-3102","https://www.digikey.com.au/en/products/detail/wago-corporation/2604-3102/15528152?s=N4IgTCBcDa4GwAYAsBaAzARgRAugXyA","","","","","","","","","","2604-3102","",""
+"","","J11","CONUFL001-SMD-T","CONUFL001-SMD-T:CONUFL001-SMD-T","CONUFL001-SMD-T:LINX_CONUFL001-SMD-T","https://www.digikey.com.au/en/products/detail/linx-technologies-inc/CONUFL001-SMD-T/7427732?s=N4IgTCBcDaIMIHkByBVAYgGQAxYIwFoBlAWQBF8AVEAXQF8g","","","Linx Technologies","","","","","B","","CONUFL001-SMD-T","","Manufacturer Recommendations"
+"","","J12","SIM8060-6-0-14-00-A","SIM8060-6-0-14-00-A:SIM8060-6-0-14-00-A","SIM8060-6-0-14-00-A:GCT_SIM8060-6-0-14-00-A","SIM8060-6-0-14-00-A","","SIM8060 is a hinged Sim Card Connector. With 6 contacts, with switch for card detection. Profile above PCB is 1.43mm.","","","Global Connector Technology","SIM8060-6-0-14-00-A","Package Analog Devices","","","SIM8060-6-0-14-00-A","",""
+"","","JP1","UART TX","Jumper:SolderJumper_2_Bridged","Jumper:SolderJumper-2_P1.3mm_Bridged_RoundedPad1.0x1.5mm","~","","","","","","","","","","","",""
+"","","L1","SRP4020T-5R6M","pspice:INDUCTOR","SRP4020TA-5R6M:IND_SRP4020TA-5R6M","https://www.bourns.com/docs/Product-Datasheets/SRP4020TA.pdf","","","","","","","","","","SRP4020TA-5R6M","",""
+"","","L2","LQH43CN100K03L","LQH43CN100K03L:LQH43CN100K03L","LQH43CN100K03L:IND_LQH43CN100K03L","https://www.digikey.com.au/en/products/detail/murata-electronics/LQH43CN100K03L/599911?s=N4IgTCBcDaIDIEUASAWAzAYQHIEYAMeA0nmnCALoC%2BQA","","","Murata","2.8mm","","","","N/A","","LQH43CN100K03L","","Manufacturer Recommendations"
+"","","LS1","PS1240P02BT","PS1240P02BT:PS1240P02BT","PS1240P02BT:XDCR_PS1240P02BT","https://www.digikey.com.au/en/products/detail/tdk-corporation/PS1240P02BT/935924?s=N4IgTCBcDaIAoGUCMYAsAGO6wCEAqIAugL5A","Unavailable","Buzzers Transducer, Externally Driven Piezo 3V 4kHz 60dB @ 3V, 10cm Through Hole PC Pins","","7.0mm","TDK","PS1240P02CT3","SIP-5 TDK","","None","PS1240P02BT","",""
+"","","MOSFET1","SSM3J340R_LF","SSM3J340R-LF:SSM3J340R_LF","SSM3J340R_LF:SSM3J340R_LF","https://www.digikey.com.au/en/products/detail/toshiba-semiconductor-and-storage/SSM3J340R-LF/10259884?s=N4IgTCBcDaIMpwLIGYBSyAsAGASgfQBkAxEAXQF8g","","","","","","","","","","SSM3J340R,LF","",""
+"","","MOSFET2","SSM3J340R_LF","SSM3J340R-LF:SSM3J340R_LF","SSM3J340R_LF:SSM3J340R_LF","https://www.digikey.com.au/en/products/detail/toshiba-semiconductor-and-storage/SSM3J340R-LF/10259884?s=N4IgTCBcDaIMpwLIGYBSyAsAGASgfQBkAxEAXQF8g","","","","","","","","","","SSM3J340R,LF","",""
+"","","Q1","MMDT3904","Transistor_BJT:MMDT3904","Package_TO_SOT_SMD:SOT-363_SC-70-6","http://www.diodes.com/_files/datasheets/ds30088.pdf","","","","","","","","","","","",""
+"","","Q2","BC847","Transistor_BJT:BC847","Package_TO_SOT_SMD:SOT-23","http://www.infineon.com/dgdl/Infineon-BC847SERIES_BC848SERIES_BC849SERIES_BC850SERIES-DS-v01_01-en.pdf?fileId=db3a304314dca389011541d4630a1657","","","","","","","","","","","",""
+"","","Q3","BSS214NW","Transistor_FET:BSS214NW","Package_TO_SOT_SMD:SOT-323_SC-70","https://www.infineon.com/dgdl/Infineon-BSS214NW-DS-v02_02-en.pdf?fileId=db3a30431b3e89eb011b695aebc01bde","","","","","","","","","","","",""
+"","","Q4","BC847","Transistor_BJT:BC847","Package_TO_SOT_SMD:SOT-23","http://www.infineon.com/dgdl/Infineon-BC847SERIES_BC848SERIES_BC849SERIES_BC850SERIES-DS-v01_01-en.pdf?fileId=db3a304314dca389011541d4630a1657","","","","","","","","","","","",""
+"","","Q5","BC847","Transistor_BJT:BC847","Package_TO_SOT_SMD:SOT-23","http://www.infineon.com/dgdl/Infineon-BC847SERIES_BC848SERIES_BC849SERIES_BC850SERIES-DS-v01_01-en.pdf?fileId=db3a304314dca389011541d4630a1657","","","","","","","","","","","",""
+"","","R1","22.1K","Device:R","Resistor_SMD:R_0805_2012Metric","https://www.digikey.com.au/en/products/detail/bourns-inc/CR0805-FX-1001ELF/3593162","","","","","","","","","","CR0805-FX-1001ELF","",""
+"","","R2","47.5K","Device:R","Resistor_SMD:R_0805_2012Metric","https://www.digikey.com.au/en/products/detail/bourns-inc/CR0805-FX-1001ELF/3593162","","","","","","","","","","CR0805-FX-1001ELF","",""
+"","","R3","5.1K","Device:R","Resistor_SMD:R_0805_2012Metric","https://www.vishay.com/docs/20035/dcrcwe3.pdf","","","","","","","","","","CRCW08055K10FKEA","",""
+"","","R4","1K","Device:R","Resistor_SMD:R_0805_2012Metric","https://www.digikey.com.au/en/products/detail/bourns-inc/CR0805-FX-1001ELF/3593162","","","","","","","","","","CR0805-FX-1001ELF","",""
+"","","R5","10K","Device:R","Resistor_SMD:R_0805_2012Metric","https://www.digikey.com.au/en/products/detail/yageo/RC0805FR-0710KP/4935334","","","","","","","","","","RC0805FR-0710KP","",""
+"","","R6","10K","Device:R","Resistor_SMD:R_0805_2012Metric","https://www.digikey.com.au/en/products/detail/yageo/RC0805FR-0710KP/4935334","","","","","","","","","","RC0805FR-0710KP","",""
+"","","R7","5.1K","Device:R","Resistor_SMD:R_0805_2012Metric","https://www.vishay.com/docs/20035/dcrcwe3.pdf","","","","","","","","","","CRCW08055K10FKEA","",""
+"","","R8","10K","Device:R","Resistor_SMD:R_0805_2012Metric","https://www.digikey.com.au/en/products/detail/yageo/RC0805FR-0710KP/4935334","","","","","","","","","","RC0805FR-0710KP","",""
+"","","R9","0","Device:R","Resistor_SMD:R_0805_2012Metric","https://www.digikey.com.au/en/products/detail/bourns-inc/CR0805-J-000ELF/3593157","","","","","","","","","","CR0805-J/-000ELF","",""
+"","","R10","0","Device:R","Resistor_SMD:R_0805_2012Metric","https://www.digikey.com.au/en/products/detail/bourns-inc/CR0805-J-000ELF/3593157","","","","","","","","","","CR0805-J/-000ELF","",""
+"","","R11","10K","Device:R","Resistor_SMD:R_0805_2012Metric","https://www.digikey.com.au/en/products/detail/yageo/RC0805FR-0710KP/4935334","","","","","","","","","","RC0805FR-0710KP","",""
+"","","R12","10M","Device:R","Resistor_SMD:R_0805_2012Metric","https://www.digikey.com.au/en/products/detail/bourns-inc/CR0805-FW-1005ELF/6153044","","","","","","","","","","CR0805-FW-1005ELF","",""
+"","","R13","10K","Device:R","Resistor_SMD:R_0805_2012Metric","https://www.digikey.com.au/en/products/detail/yageo/RC0805FR-0710KP/4935334","","","","","","","","","","https://www.digikey.com.au/en/products/detail/yageo/RC0805FR-0710KP/4935334","",""
+"","","R14","1K","Device:R","Resistor_SMD:R_0805_2012Metric","https://www.digikey.com.au/en/products/detail/bourns-inc/CR0805-FX-1001ELF/3593162","","","","","","","","","","CR0805-FX-1001ELF","",""
+"","","R15","10K","Device:R","Resistor_SMD:R_0805_2012Metric","https://www.digikey.com.au/en/products/detail/yageo/RC0805FR-0710KP/4935334","","","","","","","","","","RC0805FR-0710KP","",""
+"","","R16","4.7K","Device:R","Resistor_SMD:R_0805_2012Metric","https://www.digikey.com.au/en/products/detail/te-connectivity-passive-product/CRG0805F4K7/2135488","","","","","","","","","","CRG0805F4K7","",""
+"","","R17","4.7K","Device:R","Resistor_SMD:R_0805_2012Metric","https://www.digikey.com.au/en/products/detail/te-connectivity-passive-product/CRG0805F4K7/2135488","","","","","","","","","","CRG0805F4K7","",""
+"","","R18","10K","Device:R","Resistor_SMD:R_0805_2012Metric","https://www.digikey.com.au/en/products/detail/yageo/RC0805FR-0710KP/4935334","","","","","","","","","","RC0805FR-0710KP","",""
+"","","R19","1K","Device:R","Resistor_SMD:R_0805_2012Metric","~","","","","","","","","","","","",""
+"","","R20","2K","Device:R","Resistor_SMD:R_0805_2012Metric","https://www.digikey.com.au/en/products/detail/te-connectivity-passive-product/CRG0805F4K7/2135488","","","","","","","","","","CRG0805F4K7","",""
+"","","R21","0.1","Device:R","Resistor_SMD:R_2512_6332Metric","https://www.digikey.com.au/en/products/detail/bourns-inc/CRL2512-FW-R100ELF/3786041","","","","","","","","","","CRL2512-FW-R100ELF","",""
+"","","R22","21K","Device:R","Resistor_SMD:R_0805_2012Metric","https://www.digikey.com.au/en/products/detail/vishay-dale/CRCW080521K0FKEA/1175785","","","","","","","","","","CRCW080521K0FKEA","",""
+"","","R23","10K","Device:R","Resistor_SMD:R_0805_2012Metric","https://www.digikey.com.au/en/products/detail/yageo/RC0805FR-0710KP/4935334","","","","","","","","","","RC0805FR-0710KP","",""
+"","","R24","2K","Device:R","Resistor_SMD:R_0805_2012Metric","https://www.digikey.com.au/en/products/detail/te-connectivity-passive-product/CRG0805F4K7/2135488","","","","","","","","","","CRG0805F4K7","",""
+"","","R25","2K","Device:R","Resistor_SMD:R_0805_2012Metric","https://www.digikey.com.au/en/products/detail/te-connectivity-passive-product/CRG0805F4K7/2135488","","","","","","","","","","CRG0805F4K7","",""
+"","","R26","180K","Device:R","Resistor_SMD:R_0805_2012Metric","https://www.digikey.com.au/en/products/detail/yageo/RT0805FRE07180KL/1035150","","","","","","","","","","RT0805FRE07180KL","",""
+"","","R27","91K","Device:R","Resistor_SMD:R_0805_2012Metric","https://www.digikey.com.au/en/products/detail/vishay-dale/CRCW080591K0FKEA/1175861","","","","","","","","","","CRCW080591K0FKEA","",""
+"","","R28","330K","Device:R","Resistor_SMD:R_0805_2012Metric","https://www.digikey.com.au/en/products/detail/panasonic-electronic-components/ERJ-6ENF3303V/1746491","","","","","","","","","","ERJ-6ENF3303V","",""
+"","","R29","3.2K","Device:R","Resistor_SMD:R_0805_2012Metric","https://www.digikey.com.au/en/products/detail/vishay-dale/TNPW08053K20BEEA/4972596","","","","","","","","","","TNPW08053K20BEEA","",""
+"","","R30","0.1","Device:R","Resistor_SMD:R_2512_6332Metric","https://www.digikey.com.au/en/products/detail/bourns-inc/CRL2512-FW-R100ELF/3786041","","","","","","","","","","CRL2512-FW-R100ELF","",""
+"","","R31","1K","Device:R","Resistor_SMD:R_0805_2012Metric","https://www.digikey.com.au/en/products/detail/bourns-inc/CR0805-FX-1001ELF/3593162","","","","","","","","","","CR0805-FX-1001ELF","",""
+"","","R32","100K","Device:R","Resistor_SMD:R_0805_2012Metric","https://www.digikey.com.au/en/products/detail/vishay-dale/CRCW0805100KJNTA/1226893","","","","","","","","","","CRCW0805100KJNTA","",""
+"","","R33","47K","Device:R","Resistor_SMD:R_0805_2012Metric","https://www.digikey.com.au/en/products/detail/vishay-dale/CRCW080547K0FKTA/1223026","","","","","","","","","","CRCW080547K0FKTA","",""
+"","","R34","4.7K","Device:R","Resistor_SMD:R_0805_2012Metric","https://www.digikey.com.au/en/products/detail/te-connectivity-passive-product/CRG0805F4K7/2135488","","","","","","","","","","CRG0805F4K7","",""
+"","","R35","1K","Device:R","Resistor_SMD:R_0805_2012Metric","~","","","","","","","","","","","",""
+"","","R36","10K","Device:R","Resistor_SMD:R_0805_2012Metric","https://www.digikey.com.au/en/products/detail/yageo/RC0805FR-0710KP/4935334","","","","","","","","","","https://www.digikey.com.au/en/products/detail/yageo/RC0805FR-0710KP/4935334","",""
+"","","R37","100K","Device:R","Resistor_SMD:R_0805_2012Metric","https://www.digikey.com.au/en/products/detail/vishay-dale/CRCW0805100KJNTA/1226893","","","","","","","","","","CRCW0805100KJNTA","",""
+"","","R38","47K","Device:R","Resistor_SMD:R_0805_2012Metric","~","","","","","","","","","","","",""
+"","","R39","10K","Device:R","Resistor_SMD:R_0805_2012Metric","https://www.digikey.com.au/en/products/detail/yageo/RC0805FR-0710KP/4935334","","","","","","","","","","RC0805FR-0710KP","",""
+"","","R40","1K","Device:R","Resistor_SMD:R_0805_2012Metric","~","","","","","","","","","","","",""
+"","","R41","0","Device:R","Resistor_SMD:R_0805_2012Metric","https://www.digikey.com.au/en/products/detail/yageo/RC0805FR-0710KP/4935334","","","","","","","","","","https://www.digikey.com.au/en/products/detail/yageo/RC0805FR-0710KP/4935334","",""
+"","","RV1","ESD_RST_IN","Device:Varistor","Resistor_SMD:R_0805_2012Metric","https://www.digikey.com.au/en/products/detail/kyocera-avx/VC080518A400DP/684857?s=N4IgTCBcDaIGoGEAMAOJBWAjCgggFiSQBEAFEAXQF8g","","","","","","","","","","VC080518A400DP","",""
+"","","SW1","BOOT","2022-10-04_00-56-22:1977223-6","1977223-6:1977223-6","https://www.digikey.com.au/en/products/detail/te-connectivity-alcoswitch-switches/1977223-6/2400488","","","","","","","","","","1977223-6","",""
+"","","SW2","RESET","2022-10-04_00-56-22:1977223-6","1977223-6:1977223-6","https://www.digikey.com.au/en/products/detail/te-connectivity-alcoswitch-switches/1977223-6/2400488","","","","","","","","","","1977223-6","",""
+"","","SW3","CAT_M1_RST","2022-10-04_00-56-22:1977223-6","1977223-6:1977223-6","https://www.digikey.com.au/en/products/detail/te-connectivity-alcoswitch-switches/1977223-6/2400488","","","","","","","","","","1977223-6","",""
+"","","TP1","12V_EN","Connector:TestPoint","TestPoint:TestPoint_Pad_D1.0mm","~","","","","","","","","","","","",""
+"","","TP2","RX_1V8","Connector:TestPoint","TestPoint:TestPoint_Pad_D1.0mm","~","","","","","","","","","","","",""
+"","","TP3","TX_1V8","Connector:TestPoint","TestPoint:TestPoint_Pad_D1.0mm","~","","","","","","","","","","","",""
+"","","TP4","PWR_ON","Connector:TestPoint","TestPoint:TestPoint_Pad_D1.0mm","~","","","","","","","","","","","",""
+"","","TP5","VOUT","Connector:TestPoint","TestPoint:TestPoint_Pad_D1.0mm","~","","","","","","","","","","","",""
+"","","TP6","1V8","Connector:TestPoint","TestPoint:TestPoint_Pad_D1.0mm","~","","","","","","","","","","","",""
+"","","U1","CP2102N-Axx-xQFN28","Interface_USB:CP2102N-Axx-xQFN28","Package_DFN_QFN:QFN-28-1EP_5x5mm_P0.5mm_EP3.35x3.35mm","https://www.silabs.com/documents/public/data-sheets/cp2102n-datasheet.pdf","","","","","","","","","","CP2102N-A02-GQFN28","",""
+"","","U2","ESP32-WROOM-32E_(16MB)","ESP32-WROOM-32E__16MB_:ESP32-WROOM-32E_(16MB)","ESP32-WROOM-32E__16MB_:XCVR_ESP32-WROOM-32E_(16MB)","https://www.digikey.com.au/en/products/detail/espressif-systems/ESP32-WROOM-32E-N16/11613144","","","","","","","","","","ESP32-WROOM-32E-N16","",""
+"","","U3","TCA9534","Interface_Expansion:TCA9534","Package_SO:TSSOP-16_4.4x5mm_P0.65mm","https://www.digikey.com.au/en/products/detail/texas-instruments/TCA9534PWR/5004966","","","","","","","","","","TCA9534PWR","",""
+"","","U4","INA219BxD","Analog_ADC:INA219BxD","Package_SO:SOIC-8_3.9x4.9mm_P1.27mm","http://www.ti.com/lit/ds/symlink/ina219.pdf","","","","","","","","","","INA219BIDR","",""
+"","","U5","LT3652IMSE","Battery_Management:LT3652IMSE","Package_SO:MSOP-12-1EP_3x4mm_P0.65mm_EP1.65x2.85mm","https://www.analog.com/media/en/technical-documentation/data-sheets/3652fe.pdf","","","","","","","","","","LT3652IMSE","",""
+"","","U6","TPS22967DSGR","TPS22967DSGR:TPS22967DSGR","TPS22967DSGR:SON50P200X200X80-9N","https://www.digikey.com.au/en/products/detail/texas-instruments/TPS22967DSGR/4331550?s=N4IgTCBcDaICoAUDKYwE4BsB2AIkg4gEogC6AvkA","","","","","","","","","","TPS22967DSGR","",""
+"","","U7","MCP73832-2-OT","Battery_Management:MCP73832-2-OT","Package_TO_SOT_SMD:SOT-23-5","http://ww1.microchip.com/downloads/en/DeviceDoc/20001984g.pdf","","","","","","","","","","MCP73832T-2ACI/OT","",""
+"","","U8","INA219BxD","Analog_ADC:INA219BxD","Package_SO:SOIC-8_3.9x4.9mm_P1.27mm","http://www.ti.com/lit/ds/symlink/ina219.pdf","","","","","","","","","","INA219BIDR","",""
+"","","U9","MIC2288YD5-TR","MIC2288YD5-TR:MIC2288YD5-TR","MIC2288YD5-TR:SOT95P280X100-5N","https://www.digikey.com.au/en/products/detail/microchip-technology/MIC2288YD5-TR/1028498?s=N4IgTCBcDaILIEkDCYwA40E0AiBWAtACoBKIAugL5A","","","Microchip","1.0mm","","","","B","","MIC2288YD5-TR","8798","IPC-7351B"
+"","","U10","XC6215B332MR-G","XC6215B332MR-G:XC6215B332MR-G","XC6215B332:XC6215B332MR-G","https://www.digikey.com.au/en/products/detail/torex-semiconductor-ltd/XC6215B332MR-G/2138122","","","","","","","","","","XC6215B332MR-G","",""
+"","","U11","TPS22967DSGR","TPS22967DSGR:TPS22967DSGR","TPS22967DSGR:SON50P200X200X80-9N","https://www.digikey.com.au/en/products/detail/texas-instruments/TPS22967DSGR/4331550?s=N4IgTCBcDaICoAUDKYwE4BsB2AIkg4gEogC6AvkA","","","","","","","","","","TPS22967DSGR","",""
+"","","U12","SARA-R500S-01B","SARA-R410M-02B:SARA-R410M-02B","SARA-R410M-02B:XCVR_SARA-R410M-02B","https://www.digikey.com.au/en/products/detail/u-blox/SARA-R410M-02B/9565822","","","","","","","","","","SARA-R500S-01B","",""
+"","","U13","TXB0104PW","Logic_LevelTranslator:TXB0104PW","Package_SO:TSSOP-14_4.4x5mm_P0.65mm","https://www.digikey.com.au/en/products/detail/texas-instruments/TXB0104PWR/1629102","","","","","","","","","","TXB0104PW","",""
+"","","Y1","32.768KHz","ABS07AIG-32.768KHZ-T:ABS07AIG-32.768KHZ-T","ABS07AIG-32:XTAL320X150X90","https://www.digikey.com.au/en/products/detail/abracon-llc/ABS07AIG-32-768KHZ-T/5817548?s=N4IgTCBcDaIIICEDKAGA7HAkgcQLQGYwA6NANgA4BpACQC1cAVEAXQF8g","","","","","","","","","","ABS07AIG-32.768KHZ-T","",""
+
+
+
+"Collated Components:"
+
+"Item","Qty","Reference(s)","Value","LibPart","Footprint","Datasheet","AVAILABILITY","DESCRIPTION","MANUFACTURER","MAXIMUM_PACKAGE_HEIGHT","MF","MP","PACKAGE","PARTREV","PRICE","Part","SNAPEDA_PACKAGE_ID","STANDARD"
+"1","1","B1","1049P","1049P:1049P","1049P:1049P","","","","","","","","","","","","",""
+"2","8","C3, C6, C7, C21, C24, C28, C33, C34","0.1uF","Device:C","Capacitor_SMD:C_0805_2012Metric","https://www.digikey.com.au/en/products/detail/yageo/AC0805KRX7R7BB104/6643148","","","","","","","","","","AC0805KRX7R7BB104","",""
+"3","3","C4, C14, C16","4.7uF","Device:C","Capacitor_SMD:C_0805_2012Metric","https://www.digikey.com.au/en/products/detail/samsung-electro-mechanics/CL21B475KOFNFNE/3888628","","","","","","","","","","CL21B475KOFNFNE","",""
+"4","5","C5, C12, C13, C19, C22","1uF","Device:C","Capacitor_SMD:C_0805_2012Metric","https://www.digikey.com.au/en/products/detail/kemet/C0805C105K3RAC7800/2211765","","","","","","","","","","C0805C105K3RAC7800","",""
+"5","2","C8, C9","12pF","Device:C","Capacitor_SMD:C_0805_2012Metric","https://www.digikey.com.au/en/products/detail/vishay-vitramon/VJ0805A120FXJCW1BC/8307136?s=N4IgjCBcpgLFoDGUBmBDANgZwKYBoQB7KAbXAAYAOAdlgCYQBdAgBwBcoQBlNgJwEsAdgHMQAXwIBaAJwIQySHwCu%2BIqXBMJISQ2jyoy1cUhkArJq26yYOiwBiAAirlTDrgFkAIpqA","","","","","","","","","","VJ0805A120FXJCW1BC","",""
+"6","1","C10","22uF","Device:C","Capacitor_SMD:C_0805_2012Metric","https://www.digikey.com.au/en/products/detail/kemet/C0805C226M8PAC7800/5327667","","","","","","","","","","C0805C226M8PAC7800","",""
+"7","3","C11, C15, C20","10uF","Device:C","Capacitor_SMD:C_0805_2012Metric","https://www.digikey.com.au/en/products/detail/tdk-corporation/C2012X5R1V106K125AC/3951654","","","","","","","","","","C2012X5R1V106K125AC","",""
+"8","2","C17, C23","0.1uF","T520B107M006ATE015:T520B107M006ATE015","Capacitor_Tantalum_SMD:CP_EIA-2012-12_Kemet-R","https://datasheets.kyocera-avx.com/TAJ.pdf","","","KYOCERA-AVX","","","","","","","TAJR104K020RNJ","","IPC-7351B"
+"9","1","C18","2.2uF","Device:C","Capacitor_SMD:C_0805_2012Metric","https://www.digikey.com.au/en/products/detail/kemet/C0805C225M3RAC7800/5267532","","","","","","","","","","C0805C225M3RAC7800","",""
+"10","1","C25","10nF","Device:C","Capacitor_SMD:C_0805_2012Metric","https://www.digikey.com.au/en/products/detail/kemet/C0805C103J5GEC7210/8645966","","","","","","","","","","C0805C103J5GEC7210","",""
+"11","1","C26","68pF","Device:C","Capacitor_SMD:C_0805_2012Metric","https://www.digikey.com.au/en/products/detail/kemet/C0805C680K5RACAUTO/11677006","","","","","","","","","","C0805C680K5RACAUTO","",""
+"12","4","C27, C30, C31, C32","47pF","Device:C","Capacitor_SMD:C_0805_2012Metric","https://www.digikey.com.au/en/products/detail/kemet/C0805C470K5RAC7800/12701183","","","","","","","","","","C0805C470K5RAC7800","",""
+"13","1","C29","15pF","Device:C","Capacitor_SMD:C_0805_2012Metric","https://www.digikey.com.au/en/products/detail/kemet/C0805C150J3GAC7800/2211923","","","","","","","","","","C0805C150J3GAC7800","",""
+"14","4","CR1, CR2, CR3, CR4","PESD0402-140","PESD0402-140:PESD0402-140","PESD0402-140:PESD0402-140","https://www.digikey.com.au/en/products/detail/littelfuse-inc/PESD0402-140/1968525?s=N4IgTCBcDaIAoFEDKARADAFjWAtARixAF0BfIA","","","","","","","","","","PESD0402-140","",""
+"15","1","D1","SP0503BAHT","Power_Protection:SP0503BAHT","Package_TO_SOT_SMD:SOT-143","http://www.littelfuse.com/~/media/files/littelfuse/technical%20resources/documents/data%20sheets/sp05xxba.pdf","","","","","","","","","","","",""
+"16","2","D2, D11","LED(Orange)","Device:LED","LED_SMD:LED_0805_2012Metric","https://www.digikey.com.au/en/products/detail/osram-opto-ams-osram/LO-R976-PS-1/1227955","","","","","","","","","","LO R976-PS-1","",""
+"17","3","D3, D5, D10","LED(Red)","Device:LED","LED_SMD:LED_0805_2012Metric","https://www.digikey.com.au/en/products/detail/osram-opto-ams-osram/LS-R976-NR-1/1227987","","","","","","","","","","LS R976-NR-1","",""
+"18","2","D4, D8","LED(Green)","Device:LED","LED_SMD:LED_0805_2012Metric","https://www.digikey.com.au/en/products/detail/osram-opto-ams-osram/LG-R971-KN-1/1227925","","","","","","","","","","LG R971-KN-1","",""
+"19","3","D6, D7, D9","SS34LW_RVG","SS34LW_RVG:SS34LW_RVG","SS34LW_RVG:SODFL3718X102N","https://www.digikey.com.au/en/products/detail/taiwan-semiconductor-corporation/SS34LW/7359612","","","Taiwan Semiconductor","1.02 mm","","","","C2103","","SS34LW_RVG","","IPC-7351B"
+"20","2","F1, F2","0685P2000-01","0685P2000-01:0685P2000-01","0685P2000-01:0685P2000-01","https://www.digikey.com.au/en/products/detail/bel-fuse-inc/0685P2000-01/12140901?s=N4IgTCBcDaIAwDYAcBWACmOWC0cCMIAugL5A","","","BELFUSE","0.83mm","","","","Jan2019","","0685P2000-01","","IPC-7351B"
+"21","1","FB1","FBMH2012HM221-TV","FBMH2012HM221-TV:FBMH2012HM221-TV","FBMH2012HM221-TV:BEADC2012X105N","https://www.digikey.com.au/en/products/detail/taiyo-yuden/FBMH2012HM221-TV/4875427?s=N4IgTCBcDaIGICECyAJMAGAjGFSxkwFoAVANRAF0BfIA","","","","","","","","","","FBMH2012HM221-TV","",""
+"22","2","H1, H2","MountingHole","Mechanical:MountingHole","MountingHole:MountingHole_4.3x6.2mm_M4_Pad_Via","~","","","","","","","","","","","",""
+"23","1","J1","USB4145-03-0230-C","USB4070-30-C:USB4070-30-C_REVC5","USB4145-03-0230-C_REVA:GCT_USB4145-03-0230-C_REVA","https://gct.co/files/drawings/usb4145.pdf","","","GCT","10.8mm","","","","C5","","","","Manufacturer Recommendations"
+"24","1","J2","JTAG","Connector_Generic:Conn_01x04","Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical","~","","","","","","","","","","","",""
+"25","1","J3","JTAG","Connector:Conn_ARM_JTAG_SWD_10","3221-10-0100-00:CNC_3221-10-0100-00","http://infocenter.arm.com/help/topic/com.arm.doc.ddi0314h/DDI0314H_coresight_components_trm.pdf","","","","","","","","","","3221-10-0100-00","",""
+"26","3","J4, J7, J10","2604-3102","2604-3102:2604-3102","2604-3102:2604-3102","https://www.digikey.com.au/en/products/detail/wago-corporation/2604-3102/15528152?s=N4IgTCBcDa4GwAYAsBaAzARgRAugXyA","","","","","","","","","","2604-3102","",""
+"27","1","J5","ST1W008S4AR1500","ST1W008S4AR1500:ST1W008S4AR1500","ST1W008S4AR1500:JAE_ST1W008S4AR1500","https://www.digikey.com.au/en/products/detail/jae-electronics/ST1W008S4AR1500/3720055?s=N4IgTCBcDaIMoBUCMB1ADGgHHALAQQCUkBWDEAXQF8g","","","JAE Electronics","2.0 mm","","","","2","","ST1W008S4AR1500","","Manufacturer Recommendations"
+"28","1","J6","2604-3105","2604-3105:2604-3105","2604-3105:2604-3105","https://www.digikey.com.au/en/products/detail/wago-corporation/2604-3105/15551087?s=N4IgTCBcDa4GwAYAsBaAzARgQVhAXQF8g","","","","","","","","","","2604-3105","",""
+"29","1","J8","SOLAR_CRNT_JMPR","Connector:Conn_01x02_Male","Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical","~","","","","","","","","","","","",""
+"30","1","J9","BAT_CRNT_JMPR","Connector:Conn_01x02_Male","Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical","~","","","","","","","","","","","",""
+"31","1","J11","CONUFL001-SMD-T","CONUFL001-SMD-T:CONUFL001-SMD-T","CONUFL001-SMD-T:LINX_CONUFL001-SMD-T","https://www.digikey.com.au/en/products/detail/linx-technologies-inc/CONUFL001-SMD-T/7427732?s=N4IgTCBcDaIMIHkByBVAYgGQAxYIwFoBlAWQBF8AVEAXQF8g","","","Linx Technologies","","","","","B","","CONUFL001-SMD-T","","Manufacturer Recommendations"
+"32","1","J12","SIM8060-6-0-14-00-A","SIM8060-6-0-14-00-A:SIM8060-6-0-14-00-A","SIM8060-6-0-14-00-A:GCT_SIM8060-6-0-14-00-A","SIM8060-6-0-14-00-A","","SIM8060 is a hinged Sim Card Connector. With 6 contacts, with switch for card detection. Profile above PCB is 1.43mm.","","","Global Connector Technology","SIM8060-6-0-14-00-A","Package Analog Devices","","","SIM8060-6-0-14-00-A","",""
+"33","1","JP1","UART TX","Jumper:SolderJumper_2_Bridged","Jumper:SolderJumper-2_P1.3mm_Bridged_RoundedPad1.0x1.5mm","~","","","","","","","","","","","",""
+"34","1","L1","SRP4020T-5R6M","pspice:INDUCTOR","SRP4020TA-5R6M:IND_SRP4020TA-5R6M","https://www.bourns.com/docs/Product-Datasheets/SRP4020TA.pdf","","","","","","","","","","SRP4020TA-5R6M","",""
+"35","1","L2","LQH43CN100K03L","LQH43CN100K03L:LQH43CN100K03L","LQH43CN100K03L:IND_LQH43CN100K03L","https://www.digikey.com.au/en/products/detail/murata-electronics/LQH43CN100K03L/599911?s=N4IgTCBcDaIDIEUASAWAzAYQHIEYAMeA0nmnCALoC%2BQA","","","Murata","2.8mm","","","","N/A","","LQH43CN100K03L","","Manufacturer Recommendations"
+"36","1","LS1","PS1240P02BT","PS1240P02BT:PS1240P02BT","PS1240P02BT:XDCR_PS1240P02BT","https://www.digikey.com.au/en/products/detail/tdk-corporation/PS1240P02BT/935924?s=N4IgTCBcDaIAoGUCMYAsAGO6wCEAqIAugL5A","Unavailable","Buzzers Transducer, Externally Driven Piezo 3V 4kHz 60dB @ 3V, 10cm Through Hole PC Pins","","7.0mm","TDK","PS1240P02CT3","SIP-5 TDK","","None","PS1240P02BT","",""
+"37","2","MOSFET1, MOSFET2","SSM3J340R_LF","SSM3J340R-LF:SSM3J340R_LF","SSM3J340R_LF:SSM3J340R_LF","https://www.digikey.com.au/en/products/detail/toshiba-semiconductor-and-storage/SSM3J340R-LF/10259884?s=N4IgTCBcDaIMpwLIGYBSyAsAGASgfQBkAxEAXQF8g","","","","","","","","","","SSM3J340R,LF","",""
+"38","1","Q1","MMDT3904","Transistor_BJT:MMDT3904","Package_TO_SOT_SMD:SOT-363_SC-70-6","http://www.diodes.com/_files/datasheets/ds30088.pdf","","","","","","","","","","","",""
+"39","3","Q2, Q4, Q5","BC847","Transistor_BJT:BC847","Package_TO_SOT_SMD:SOT-23","http://www.infineon.com/dgdl/Infineon-BC847SERIES_BC848SERIES_BC849SERIES_BC850SERIES-DS-v01_01-en.pdf?fileId=db3a304314dca389011541d4630a1657","","","","","","","","","","","",""
+"40","1","Q3","BSS214NW","Transistor_FET:BSS214NW","Package_TO_SOT_SMD:SOT-323_SC-70","https://www.infineon.com/dgdl/Infineon-BSS214NW-DS-v02_02-en.pdf?fileId=db3a30431b3e89eb011b695aebc01bde","","","","","","","","","","","",""
+"41","1","R1","22.1K","Device:R","Resistor_SMD:R_0805_2012Metric","https://www.digikey.com.au/en/products/detail/bourns-inc/CR0805-FX-1001ELF/3593162","","","","","","","","","","CR0805-FX-1001ELF","",""
+"42","1","R2","47.5K","Device:R","Resistor_SMD:R_0805_2012Metric","https://www.digikey.com.au/en/products/detail/bourns-inc/CR0805-FX-1001ELF/3593162","","","","","","","","","","CR0805-FX-1001ELF","",""
+"43","2","R3, R7","5.1K","Device:R","Resistor_SMD:R_0805_2012Metric","https://www.vishay.com/docs/20035/dcrcwe3.pdf","","","","","","","","","","CRCW08055K10FKEA","",""
+"44","6","R4, R14, R19, R31, R35, R40","1K","Device:R","Resistor_SMD:R_0805_2012Metric","https://www.digikey.com.au/en/products/detail/bourns-inc/CR0805-FX-1001ELF/3593162","","","","","","","","","","CR0805-FX-1001ELF","",""
+"45","10","R5, R6, R8, R11, R13, R15, R18, R23, R36, R39","10K","Device:R","Resistor_SMD:R_0805_2012Metric","https://www.digikey.com.au/en/products/detail/yageo/RC0805FR-0710KP/4935334","","","","","","","","","","RC0805FR-0710KP","",""
+"46","3","R9, R10, R41","0","Device:R","Resistor_SMD:R_0805_2012Metric","https://www.digikey.com.au/en/products/detail/bourns-inc/CR0805-J-000ELF/3593157","","","","","","","","","","CR0805-J/-000ELF","",""
+"47","1","R12","10M","Device:R","Resistor_SMD:R_0805_2012Metric","https://www.digikey.com.au/en/products/detail/bourns-inc/CR0805-FW-1005ELF/6153044","","","","","","","","","","CR0805-FW-1005ELF","",""
+"48","3","R16, R17, R34","4.7K","Device:R","Resistor_SMD:R_0805_2012Metric","https://www.digikey.com.au/en/products/detail/te-connectivity-passive-product/CRG0805F4K7/2135488","","","","","","","","","","CRG0805F4K7","",""
+"49","3","R20, R24, R25","2K","Device:R","Resistor_SMD:R_0805_2012Metric","https://www.digikey.com.au/en/products/detail/te-connectivity-passive-product/CRG0805F4K7/2135488","","","","","","","","","","CRG0805F4K7","",""
+"50","2","R21, R30","0.1","Device:R","Resistor_SMD:R_2512_6332Metric","https://www.digikey.com.au/en/products/detail/bourns-inc/CRL2512-FW-R100ELF/3786041","","","","","","","","","","CRL2512-FW-R100ELF","",""
+"51","1","R22","21K","Device:R","Resistor_SMD:R_0805_2012Metric","https://www.digikey.com.au/en/products/detail/vishay-dale/CRCW080521K0FKEA/1175785","","","","","","","","","","CRCW080521K0FKEA","",""
+"52","1","R26","180K","Device:R","Resistor_SMD:R_0805_2012Metric","https://www.digikey.com.au/en/products/detail/yageo/RT0805FRE07180KL/1035150","","","","","","","","","","RT0805FRE07180KL","",""
+"53","1","R27","91K","Device:R","Resistor_SMD:R_0805_2012Metric","https://www.digikey.com.au/en/products/detail/vishay-dale/CRCW080591K0FKEA/1175861","","","","","","","","","","CRCW080591K0FKEA","",""
+"54","1","R28","330K","Device:R","Resistor_SMD:R_0805_2012Metric","https://www.digikey.com.au/en/products/detail/panasonic-electronic-components/ERJ-6ENF3303V/1746491","","","","","","","","","","ERJ-6ENF3303V","",""
+"55","1","R29","3.2K","Device:R","Resistor_SMD:R_0805_2012Metric","https://www.digikey.com.au/en/products/detail/vishay-dale/TNPW08053K20BEEA/4972596","","","","","","","","","","TNPW08053K20BEEA","",""
+"56","2","R32, R37","100K","Device:R","Resistor_SMD:R_0805_2012Metric","https://www.digikey.com.au/en/products/detail/vishay-dale/CRCW0805100KJNTA/1226893","","","","","","","","","","CRCW0805100KJNTA","",""
+"57","2","R33, R38","47K","Device:R","Resistor_SMD:R_0805_2012Metric","https://www.digikey.com.au/en/products/detail/vishay-dale/CRCW080547K0FKTA/1223026","","","","","","","","","","CRCW080547K0FKTA","",""
+"58","1","RV1","ESD_RST_IN","Device:Varistor","Resistor_SMD:R_0805_2012Metric","https://www.digikey.com.au/en/products/detail/kyocera-avx/VC080518A400DP/684857?s=N4IgTCBcDaIGoGEAMAOJBWAjCgggFiSQBEAFEAXQF8g","","","","","","","","","","VC080518A400DP","",""
+"59","1","SW1","BOOT","2022-10-04_00-56-22:1977223-6","1977223-6:1977223-6","https://www.digikey.com.au/en/products/detail/te-connectivity-alcoswitch-switches/1977223-6/2400488","","","","","","","","","","1977223-6","",""
+"60","1","SW2","RESET","2022-10-04_00-56-22:1977223-6","1977223-6:1977223-6","https://www.digikey.com.au/en/products/detail/te-connectivity-alcoswitch-switches/1977223-6/2400488","","","","","","","","","","1977223-6","",""
+"61","1","SW3","CAT_M1_RST","2022-10-04_00-56-22:1977223-6","1977223-6:1977223-6","https://www.digikey.com.au/en/products/detail/te-connectivity-alcoswitch-switches/1977223-6/2400488","","","","","","","","","","1977223-6","",""
+"62","1","TP1","12V_EN","Connector:TestPoint","TestPoint:TestPoint_Pad_D1.0mm","~","","","","","","","","","","","",""
+"63","1","TP2","RX_1V8","Connector:TestPoint","TestPoint:TestPoint_Pad_D1.0mm","~","","","","","","","","","","","",""
+"64","1","TP3","TX_1V8","Connector:TestPoint","TestPoint:TestPoint_Pad_D1.0mm","~","","","","","","","","","","","",""
+"65","1","TP4","PWR_ON","Connector:TestPoint","TestPoint:TestPoint_Pad_D1.0mm","~","","","","","","","","","","","",""
+"66","1","TP5","VOUT","Connector:TestPoint","TestPoint:TestPoint_Pad_D1.0mm","~","","","","","","","","","","","",""
+"67","1","TP6","1V8","Connector:TestPoint","TestPoint:TestPoint_Pad_D1.0mm","~","","","","","","","","","","","",""
+"68","1","U1","CP2102N-Axx-xQFN28","Interface_USB:CP2102N-Axx-xQFN28","Package_DFN_QFN:QFN-28-1EP_5x5mm_P0.5mm_EP3.35x3.35mm","https://www.silabs.com/documents/public/data-sheets/cp2102n-datasheet.pdf","","","","","","","","","","CP2102N-A02-GQFN28","",""
+"69","1","U2","ESP32-WROOM-32E_(16MB)","ESP32-WROOM-32E__16MB_:ESP32-WROOM-32E_(16MB)","ESP32-WROOM-32E__16MB_:XCVR_ESP32-WROOM-32E_(16MB)","https://www.digikey.com.au/en/products/detail/espressif-systems/ESP32-WROOM-32E-N16/11613144","","","","","","","","","","ESP32-WROOM-32E-N16","",""
+"70","1","U3","TCA9534","Interface_Expansion:TCA9534","Package_SO:TSSOP-16_4.4x5mm_P0.65mm","https://www.digikey.com.au/en/products/detail/texas-instruments/TCA9534PWR/5004966","","","","","","","","","","TCA9534PWR","",""
+"71","2","U4, U8","INA219BxD","Analog_ADC:INA219BxD","Package_SO:SOIC-8_3.9x4.9mm_P1.27mm","http://www.ti.com/lit/ds/symlink/ina219.pdf","","","","","","","","","","INA219BIDR","",""
+"72","1","U5","LT3652IMSE","Battery_Management:LT3652IMSE","Package_SO:MSOP-12-1EP_3x4mm_P0.65mm_EP1.65x2.85mm","https://www.analog.com/media/en/technical-documentation/data-sheets/3652fe.pdf","","","","","","","","","","LT3652IMSE","",""
+"73","2","U6, U11","TPS22967DSGR","TPS22967DSGR:TPS22967DSGR","TPS22967DSGR:SON50P200X200X80-9N","https://www.digikey.com.au/en/products/detail/texas-instruments/TPS22967DSGR/4331550?s=N4IgTCBcDaICoAUDKYwE4BsB2AIkg4gEogC6AvkA","","","","","","","","","","TPS22967DSGR","",""
+"74","1","U7","MCP73832-2-OT","Battery_Management:MCP73832-2-OT","Package_TO_SOT_SMD:SOT-23-5","http://ww1.microchip.com/downloads/en/DeviceDoc/20001984g.pdf","","","","","","","","","","MCP73832T-2ACI/OT","",""
+"75","1","U9","MIC2288YD5-TR","MIC2288YD5-TR:MIC2288YD5-TR","MIC2288YD5-TR:SOT95P280X100-5N","https://www.digikey.com.au/en/products/detail/microchip-technology/MIC2288YD5-TR/1028498?s=N4IgTCBcDaILIEkDCYwA40E0AiBWAtACoBKIAugL5A","","","Microchip","1.0mm","","","","B","","MIC2288YD5-TR","8798","IPC-7351B"
+"76","1","U10","XC6215B332MR-G","XC6215B332MR-G:XC6215B332MR-G","XC6215B332:XC6215B332MR-G","https://www.digikey.com.au/en/products/detail/torex-semiconductor-ltd/XC6215B332MR-G/2138122","","","","","","","","","","XC6215B332MR-G","",""
+"77","1","U12","SARA-R500S-01B","SARA-R410M-02B:SARA-R410M-02B","SARA-R410M-02B:XCVR_SARA-R410M-02B","https://www.digikey.com.au/en/products/detail/u-blox/SARA-R410M-02B/9565822","","","","","","","","","","SARA-R500S-01B","",""
+"78","1","U13","TXB0104PW","Logic_LevelTranslator:TXB0104PW","Package_SO:TSSOP-14_4.4x5mm_P0.65mm","https://www.digikey.com.au/en/products/detail/texas-instruments/TXB0104PWR/1629102","","","","","","","","","","TXB0104PW","",""
+"79","1","Y1","32.768KHz","ABS07AIG-32.768KHZ-T:ABS07AIG-32.768KHZ-T","ABS07AIG-32:XTAL320X150X90","https://www.digikey.com.au/en/products/detail/abracon-llc/ABS07AIG-32-768KHZ-T/5817548?s=N4IgTCBcDaIIICEDKAGA7HAkgcQLQGYwA6NANgA4BpACQC1cAVEAXQF8g","","","","","","","","","","ABS07AIG-32.768KHZ-T","",""
