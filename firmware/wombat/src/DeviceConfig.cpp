@@ -14,6 +14,7 @@
 #include "cli/FreeRTOS_CLI.h"
 #include "cli/device_config/acquisition_intervals.h"
 #include "cli/device_config/mqtt_cli.h"
+#include "cli/device_config/ftp_cli.h"
 
 //! ESP32 debug output tag
 #define TAG "config"
@@ -172,6 +173,7 @@ void DeviceConfig::save() {
 void DeviceConfig::dumpConfig(Stream& stream) {
     CLIConfigIntervals::dump(stream);
     CLIMQTT::dump(stream);
+    CLIFTP::dump(stream);
 }
 
 /**

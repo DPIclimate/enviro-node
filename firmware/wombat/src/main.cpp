@@ -10,6 +10,7 @@
 #include <soc/rtc.h>
 #include <esp_private/esp_clk.h>
 #include <SD.h>
+#include <esp_ota_ops.h>
 
 #define ALLOCATE_GLOBALS
 #include "globals.h"
@@ -29,6 +30,9 @@
 #include "soc/rtc_cntl_reg.h"
 #include "sd-card/interface.h"
 #include "freertos/semphr.h"
+
+#include "esp_partition.h"
+#include "ftp_stack.h"
 
 #define TAG "wombat"
 
@@ -186,7 +190,7 @@ void setup() {
     digitalWrite(SD_CARD_ENABLE, HIGH);
     if ( ! SD.begin()) {
         ESP_LOGI(TAG, "Failed to initialise SD card");
-        digitalWrite(SD_CARD_ENABLE, HIGH);
+        digitalWrite(SD_CARD_ENABLE, LOW);
     } else {
         ESP_LOGI(TAG, "SD card initialised");
     }

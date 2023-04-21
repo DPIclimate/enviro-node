@@ -9,7 +9,7 @@
 #define WOMBAT_DEVICE_CONFIG_H
 
 #include <Arduino.h>
-#include <ArduinoJSON.h>
+#include <ArduinoJson.h>
 
 /**
  * @brief Node configuration options for both getting and setting values.
@@ -79,6 +79,20 @@ public:
     //! Get the MQTT broker password
     std::string& getMqttPassword() { return mqttPassword; }
 
+    //! Set the FTP hostname
+    void setFtpHost(const std::string& host) { ftpHost = host; }
+    //! Set the FTP username
+    void setFtpUser(const std::string& user) { ftpUser = user; }
+    //! Set the FTP password
+    void setFtpPassword(const std::string& password) { ftpPassword = password; }
+
+    //! Get the FTP hostname
+    std::string& getFtpHost() { return ftpHost; }
+    //! Get the FTP username
+    std::string& getFtpUser() { return ftpUser; }
+    //! Get the FTP password
+    std::string& getFtpPassword() { return ftpPassword; }
+
     float getSleepAdjustment() { return sleep_adjustment; }
     void setSleepAdjustment(float _sleep_adjustment) {
         sleep_adjustment = _sleep_adjustment;
@@ -114,7 +128,12 @@ private:
     //! MQTT broker password
     std::string mqttPassword;
 
-    //DynamicJsonDocument sdi12Defns;
+    //! FTP hostname
+    std::string ftpHost;
+    //! FTP username
+    std::string ftpUser;
+    //! FTP password
+    std::string ftpPassword;
 };
 
 

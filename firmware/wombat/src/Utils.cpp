@@ -216,13 +216,13 @@ void streamPassthrough(Stream* s1, Stream* s2) {
 int waitForChar(Stream& stream, uint32_t timeout) {
     const uint32_t start = millis();
     int a = stream.available();
-    while ((millis() - start) < timeout && a < 1) {
+    while (a < 1 && (millis() - start) < timeout) {
         delay(1); // Let the MCU do something else.
         a = stream.available();
     }
 
-    const uint32_t end = millis();
-    ESP_LOGD(TAG, "Delta from start of read: %lu ms, UART available = %d", (end - start), a);
+    //const uint32_t end = millis();
+    //ESP_LOGD(TAG, "Delta from start of read: %lu ms, UART available = %d", (end - start), a);
 
     return a > 0 ? a : -1;
 }
@@ -385,8 +385,6 @@ bool connect_to_internet(void) {
 
     // Network registration takes 4 seconds at best.
     ESP_LOGI(TAG, "Waiting for network registration");
-    delay(4000);
-
     for (int i = 0; i < 3; i++) {
         int attempts = 0;
         while (reg_status != SARA_R5_REGISTRATION_HOME && attempts < 4) {
@@ -398,7 +396,7 @@ bool connect_to_internet(void) {
 
             ESP_LOGI(TAG, "ESP registration status = %d", reg_status);
             r5.bufferedPoll();
-            delay(4000);
+            delay(2000);
             attempts++;
         }
     }

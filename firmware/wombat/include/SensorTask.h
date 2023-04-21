@@ -1,7 +1,7 @@
 #ifndef WOMBAT_SENSORTASK_H
 #define WOMBAT_SENSORTASK_H
 
-#include <ArduinoJSON.h>
+#include <ArduinoJson.h>
 
 constexpr size_t MAX_SENSORS = 10;
 static constexpr uint8_t MAX_VALUES = 32;

@@ -44,11 +44,10 @@ void CLIMQTT::dump(Stream& stream) {
  * parameters such as the host, port, user, and password. Commands include:
  *
  * - `list`: List MQTT configuration.
+ * - `host`: MQTT broker host.
  * - `port`: MQTT broker port.
  * - `user`: MQTT broker username.
  * - `password`: MQTT broker password.
- *
- * @note Intervals are specified in seconds.
  *
  * @param pcWriteBuffer The buffer to write the command's output to.
  * @param xWriteBufferLen The length of the write buffer.

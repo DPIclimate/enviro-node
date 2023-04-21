@@ -55,6 +55,14 @@ static const CLI_Command_Definition_t mqttCmd = {
         -1
 };
 
+//! FTP setup and connection commands
+static const CLI_Command_Definition_t ftpCmd = {
+        CLIFTP::cmd.c_str(),
+        "ftp:\r\n Configure FTP connection parameters\r\n",
+        CLIFTP::enter_cli,
+        -1
+};
+
 //! Power commands
 static const CLI_Command_Definition_t powerCmd = {
         CLIPower::cmd.c_str(),
@@ -81,6 +89,7 @@ void CLI::init() {
     FreeRTOS_CLIRegisterCommand(&sdi12Cmd);
     FreeRTOS_CLIRegisterCommand(&catM1Cmd);
     FreeRTOS_CLIRegisterCommand(&mqttCmd);
+    FreeRTOS_CLIRegisterCommand(&ftpCmd);
     FreeRTOS_CLIRegisterCommand(&powerCmd);
     FreeRTOS_CLIRegisterCommand(&sdCmd);
 }

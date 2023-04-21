@@ -9,10 +9,10 @@
 #define TAG "mqtt_stack"
 
 #define MAX_RSP 64
-char rsp[MAX_RSP + 1];
+static char rsp[MAX_RSP + 1];
 
 #define MAX_BUF 2048
-char buf[MAX_BUF + 1];
+static char buf[MAX_BUF + 1];
 
 //void registrationCallback(SARA_R5_registration_status_t status, unsigned int lac, unsigned int ci, int Act) {
 //    ESP_LOGI(TAG, "%d, %u, %u, %d", status, lac, ci, Act);
