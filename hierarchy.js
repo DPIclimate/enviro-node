@@ -23,6 +23,7 @@ var hierarchy =
     [ "CLICatM1", "class_c_l_i_cat_m1.html", null ],
     [ "CLIConfig", "class_c_l_i_config.html", null ],
     [ "CLIConfigIntervals", "class_c_l_i_config_intervals.html", null ],
+    [ "CLIFTP", "class_c_l_i_f_t_p.html", null ],
     [ "CLIMQTT", "class_c_l_i_m_q_t_t.html", null ],
     [ "CLIPower", "class_c_l_i_power.html", null ],
     [ "CLISDCard", "class_c_l_i_s_d_card.html", null ],

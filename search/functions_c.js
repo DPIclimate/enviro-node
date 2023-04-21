@@ -1,12 +1,7 @@
 var searchData=
 [
-  ['read_5ffile_0',['read_file',['../class_s_d_card_interface.html#a41fa15ea8eac22dd04c7e4b33a6a8194',1,'SDCardInterface']]],
-  ['read_5fsensor_1',['read_sensor',['../_sensor_task_8h.html#a1473b62411faa497a9b2de3663a2f154',1,'read_sensor(const char addr, JsonArray &amp;timeseries_array):&#160;SensorTask.cpp'],['../_sensor_task_8cpp.html#a1473b62411faa497a9b2de3663a2f154',1,'read_sensor(const char addr, JsonArray &amp;timeseries_array):&#160;SensorTask.cpp']]],
-  ['readbit_2',['readBit',['../class_t_c_a9534.html#aab8f8e05b530cabbce58602edb531f3a',1,'TCA9534']]],
-  ['readbyte_3',['readByte',['../class_t_c_a9534.html#ada79410395a15183b3d8133d3ab6666e',1,'TCA9534']]],
-  ['readbytes_4',['readBytes',['../class_t_c_a9534.html#a607b69a71ae9ec62e1175c634945aa54',1,'TCA9534']]],
-  ['readfromstreamuntil_5',['readFromStreamUntil',['../_utils_8h.html#a4c7cec5e11007187b7af2425eb8038f7',1,'readFromStreamUntil(Stream &amp;stream, const char delim, char *const buffer, const size_t max):&#160;Utils.cpp'],['../_utils_8cpp.html#a4c7cec5e11007187b7af2425eb8038f7',1,'readFromStreamUntil(Stream &amp;stream, const char delim, char *const buffer, const size_t max):&#160;Utils.cpp']]],
-  ['repl_6',['repl',['../class_c_l_i.html#ad97dfdd8399f8673fbc64e5975f82543',1,'CLI']]],
-  ['reset_7',['reset',['../class_device_config.html#af40beaf1b7a0d8a6f26cb032492909e5',1,'DeviceConfig']]],
-  ['restart_8',['restart',['../class_c_a_t___m1.html#ac3cbf15c8e4cac83777b01d71771676d',1,'CAT_M1']]]
+  ['polarity_0',['polarity',['../class_t_c_a9534.html#ae769761af75189f024049c196751af80',1,'TCA9534::polarity(const uint8_t port, const Polarity pol)'],['../class_t_c_a9534.html#ad3cfc894ef84a54f28022b72c2b6181d',1,'TCA9534::polarity(const Polarity pol)'],['../class_t_c_a9534.html#a1f151ad574d32d27b7362373b03d1f46',1,'TCA9534::polarity()']]],
+  ['power_5fsupply_1',['power_supply',['../class_c_a_t___m1.html#a7003b03e6081e685aa719c977f90f9d7',1,'CAT_M1']]],
+  ['process_5ffile_2',['process_file',['../uplinks_8cpp.html#afefd79d8017c716399e160b77da5e86b',1,'uplinks.cpp']]],
+  ['progbtnisr_3',['progBtnISR',['../peripherals_8h.html#ac13889440b8cda4790841a83ca461f0d',1,'peripherals.h']]]
 ];

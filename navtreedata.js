@@ -83,8 +83,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "_c_a_t___m1_8cpp.html",
-"class_t_c_a9534.html#a538ca6954b2b1a6ac62dccc23ed02280",
-"server_8cpp.html#a4c702b816cf82ea6518921edab262bd9"
+"class_solar_monitor.html#a5e654a8e7d47855f2ca49243b31fc02a",
+"namespacegen__version__h.html#aa4c82b92eda8b6b0946f356366068234"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

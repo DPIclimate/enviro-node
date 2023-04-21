@@ -102,7 +102,7 @@ $(document).ready(function(){initNavTree('_c_l_i_8cpp.html',''); initResizable()
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for CLI.cpp:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="_c_l_i_8cpp__incl.svg" width="2188" height="432"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="_c_l_i_8cpp__incl.svg" width="2698" height="432"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 </div><table class="memberdecls">
@@ -129,6 +129,9 @@ Variables</h2></td></tr>
 <tr class="memitem:a1ca2650024c4a322af068be6178fe01a"><td class="memItemLeft" align="right" valign="top">static const CLI_Command_Definition_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_c_l_i_8cpp.html#a1ca2650024c4a322af068be6178fe01a">mqttCmd</a></td></tr>
 <tr class="memdesc:a1ca2650024c4a322af068be6178fe01a"><td class="mdescLeft">&#160;</td><td class="mdescRight">MQTT setup and connection commands.  <a href="_c_l_i_8cpp.html#a1ca2650024c4a322af068be6178fe01a">More...</a><br /></td></tr>
 <tr class="separator:a1ca2650024c4a322af068be6178fe01a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2aebf829ec64e563446e55f94c6e4b72"><td class="memItemLeft" align="right" valign="top">static const CLI_Command_Definition_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_c_l_i_8cpp.html#a2aebf829ec64e563446e55f94c6e4b72">ftpCmd</a></td></tr>
+<tr class="memdesc:a2aebf829ec64e563446e55f94c6e4b72"><td class="mdescLeft">&#160;</td><td class="mdescRight">FTP setup and connection commands.  <a href="_c_l_i_8cpp.html#a2aebf829ec64e563446e55f94c6e4b72">More...</a><br /></td></tr>
+<tr class="separator:a2aebf829ec64e563446e55f94c6e4b72"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a44f22557b40c51afd30cdb330930bb8d"><td class="memItemLeft" align="right" valign="top">static const CLI_Command_Definition_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_c_l_i_8cpp.html#a44f22557b40c51afd30cdb330930bb8d">powerCmd</a></td></tr>
 <tr class="memdesc:a44f22557b40c51afd30cdb330930bb8d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Power commands.  <a href="_c_l_i_8cpp.html#a44f22557b40c51afd30cdb330930bb8d">More...</a><br /></td></tr>
 <tr class="separator:a44f22557b40c51afd30cdb330930bb8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -228,6 +231,38 @@ Variables</h2></td></tr>
 
 </div>
 </div>
+<a id="a2aebf829ec64e563446e55f94c6e4b72" name="a2aebf829ec64e563446e55f94c6e4b72"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2aebf829ec64e563446e55f94c6e4b72">&#9670;&#160;</a></span>ftpCmd</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const CLI_Command_Definition_t ftpCmd</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
+<div class="line">        <a class="code hl_variable" href="class_c_l_i_f_t_p.html#aa58d7760942fb4ed664370017d07c272">CLIFTP::cmd</a>.c_str(),</div>
+<div class="line">        <span class="stringliteral">&quot;ftp:\r\n Configure FTP connection parameters\r\n&quot;</span>,</div>
+<div class="line">        <a class="code hl_function" href="class_c_l_i_f_t_p.html#ac69f3ee251d477ef6461d6fd575caf6a">CLIFTP::enter_cli</a>,</div>
+<div class="line">        -1</div>
+<div class="line">}</div>
+<div class="ttc" id="aclass_c_l_i_f_t_p_html_aa58d7760942fb4ed664370017d07c272"><div class="ttname"><a href="class_c_l_i_f_t_p.html#aa58d7760942fb4ed664370017d07c272">CLIFTP::cmd</a></div><div class="ttdeci">static const std::string cmd</div><div class="ttdoc">Prefix for all FTP related configuration commands.</div><div class="ttdef"><b>Definition:</b> ftp_cli.h:23</div></div>
+<div class="ttc" id="aclass_c_l_i_f_t_p_html_ac69f3ee251d477ef6461d6fd575caf6a"><div class="ttname"><a href="class_c_l_i_f_t_p.html#ac69f3ee251d477ef6461d6fd575caf6a">CLIFTP::enter_cli</a></div><div class="ttdeci">static BaseType_t enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen, const char *pcCommandString)</div><div class="ttdoc">Command-line interface command for setting FTP parameters.</div><div class="ttdef"><b>Definition:</b> ftp_cli.cpp:52</div></div>
+</div><!-- fragment -->
+<p>FTP setup and connection commands. </p>
+
+</div>
+</div>
 <a id="a4ad89cc4dc576d92d207a6d2c33bd65b" name="a4ad89cc4dc576d92d207a6d2c33bd65b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4ad89cc4dc576d92d207a6d2c33bd65b">&#9670;&#160;</a></span>intervalCmd</h2>
 
@@ -286,7 +321,7 @@ Variables</h2></td></tr>
 <div class="line">        -1</div>
 <div class="line">}</div>
 <div class="ttc" id="aclass_c_l_i_m_q_t_t_html_a83896a35be70795033b060b16ff0a4f8"><div class="ttname"><a href="class_c_l_i_m_q_t_t.html#a83896a35be70795033b060b16ff0a4f8">CLIMQTT::cmd</a></div><div class="ttdeci">static const std::string cmd</div><div class="ttdoc">Prefix for all MQTT related configuration commands.</div><div class="ttdef"><b>Definition:</b> mqtt_cli.h:25</div></div>
-<div class="ttc" id="aclass_c_l_i_m_q_t_t_html_aeea24c8f4d5634447a460a5562f8c9d1"><div class="ttname"><a href="class_c_l_i_m_q_t_t.html#aeea24c8f4d5634447a460a5562f8c9d1">CLIMQTT::enter_cli</a></div><div class="ttdeci">static BaseType_t enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen, const char *pcCommandString)</div><div class="ttdoc">Command-line interface command for setting MQTT parameters.</div><div class="ttdef"><b>Definition:</b> mqtt_cli.cpp:58</div></div>
+<div class="ttc" id="aclass_c_l_i_m_q_t_t_html_aeea24c8f4d5634447a460a5562f8c9d1"><div class="ttname"><a href="class_c_l_i_m_q_t_t.html#aeea24c8f4d5634447a460a5562f8c9d1">CLIMQTT::enter_cli</a></div><div class="ttdeci">static BaseType_t enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen, const char *pcCommandString)</div><div class="ttdoc">Command-line interface command for setting MQTT parameters.</div><div class="ttdef"><b>Definition:</b> mqtt_cli.cpp:57</div></div>
 </div><!-- fragment -->
 <p>MQTT setup and connection commands. </p>
 

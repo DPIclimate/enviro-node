@@ -1,4 +1,4 @@
 <map id="CLIConfigIntervals" name="CLIConfigIntervals">
-<area shape="rect" id="node1" title="Setup acquisition intervals based on device configuration stored in SPIFFS memory or via the CLI." alt="" coords="72,504,220,588"/>
-<area shape="rect" id="node2" href="$class_device_config.html" title="Node configuration options for both getting and setting values." alt="" coords="5,5,287,441"/>
+<area shape="rect" id="node1" title="Setup acquisition intervals based on device configuration stored in SPIFFS memory or via the CLI." alt="" coords="72,548,220,632"/>
+<area shape="rect" id="node2" href="$class_device_config.html" title="Node configuration options for both getting and setting values." alt="" coords="5,5,287,485"/>
 </map>
