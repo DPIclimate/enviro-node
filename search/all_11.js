@@ -9,5 +9,7 @@ var searchData=
   ['todo_20list_6',['Todo List',['../todo.html',1,'']]],
   ['tones_2eh_7',['tones.h',['../tones_8h.html',1,'']]],
   ['topic_8',['topic',['../uplinks_8cpp.html#a18dabc7ec0a9117904f3c64a1ce5ee5c',1,'uplinks.cpp']]],
-  ['true_9',['True',['../namespacegen__version__h.html#a7b69cf4913d0323a94dad9b29b605ca3',1,'gen_version_h']]]
+  ['true_9',['True',['../namespacegen__version__h.html#a7b69cf4913d0323a94dad9b29b605ca3',1,'gen_version_h']]],
+  ['tx_10',['TX',['../pins__arduino_8h.html#a6301ad0c499ce5ba766dc89b8f988368',1,'pins_arduino.h']]],
+  ['tx1_11',['TX1',['../pins__arduino_8h.html#a0dd5147a6151443d7640e532b5c91f49',1,'pins_arduino.h']]]
 ];

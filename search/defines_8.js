@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['piezo_5fbuzzer_5fpin_0',['PIEZO_BUZZER_PIN',['../tones_8h.html#a399e51d6b82b2110f782455882c42e62',1,'tones.h']]],
-  ['prog_5fbtn_1',['PROG_BTN',['../peripherals_8h.html#a699ee81d6d32a3223c605cfa889b1819',1,'peripherals.h']]]
+  ['num_5fanalog_5finputs_0',['NUM_ANALOG_INPUTS',['../pins__arduino_8h.html#ae5fbabd52e1f2240307dfc9bfaefb5d6',1,'pins_arduino.h']]],
+  ['num_5fdigital_5fpins_1',['NUM_DIGITAL_PINS',['../pins__arduino_8h.html#a0ef783fbc452748b33c5a307d0565f7a',1,'pins_arduino.h']]]
 ];

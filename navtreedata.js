@@ -84,7 +84,7 @@ var NAVTREEINDEX =
 [
 "_c_a_t___m1_8cpp.html",
 "class_solar_monitor.html#a5e654a8e7d47855f2ca49243b31fc02a",
-"namespacegen__version__h.html#aa4c82b92eda8b6b0946f356366068234"
+"namespacegen__version__h.html#a4d6ea46704709d40960429591fb792e2"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

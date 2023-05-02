@@ -1,0 +1,26 @@
+var pins__arduino_8h =
+[
+    [ "analogInputToDigitalPin", "pins__arduino_8h.html#a45b09aac6ae2c47b64e182a626efc4fc", null ],
+    [ "BUILTIN_LED", "pins__arduino_8h.html#a4a71aecac635579082c10addb16df4a0", null ],
+    [ "digitalPinHasPWM", "pins__arduino_8h.html#afaede01afebc78aa04e0c28dc85bcbd5", null ],
+    [ "digitalPinToInterrupt", "pins__arduino_8h.html#a4eeada3d193a6c489a1a146fb4ff87d5", null ],
+    [ "EXTERNAL_NUM_INTERRUPTS", "pins__arduino_8h.html#a3dab12da9f749340b6fc78148a7e3bd7", null ],
+    [ "NUM_ANALOG_INPUTS", "pins__arduino_8h.html#ae5fbabd52e1f2240307dfc9bfaefb5d6", null ],
+    [ "NUM_DIGITAL_PINS", "pins__arduino_8h.html#a0ef783fbc452748b33c5a307d0565f7a", null ],
+    [ "RX1", "pins__arduino_8h.html#afd6ea3a018adead693930404719e8eeb", null ],
+    [ "TX1", "pins__arduino_8h.html#a0dd5147a6151443d7640e532b5c91f49", null ],
+    [ "USB_MANUFACTURER", "pins__arduino_8h.html#a64bf0dbc8ae404f2e769fd2b273241a3", null ],
+    [ "USB_PRODUCT", "pins__arduino_8h.html#a19033797fcc6c598fa330bdf5c43e215", null ],
+    [ "USB_SERIAL", "pins__arduino_8h.html#af08f96923bb7289011957ec45944a469", null ],
+    [ "LED_BUILTIN", "pins__arduino_8h.html#a6072c97888c5e943b2d6e196b8d9e85e", null ],
+    [ "MISO", "pins__arduino_8h.html#a1fcd80d042bfc259b798abf2882c7f96", null ],
+    [ "MOSI", "pins__arduino_8h.html#a2559b2e00179d34c57de6aa25c4b4dd5", null ],
+    [ "PIEZO", "pins__arduino_8h.html#a406c30ed209e2275d60393eb8af0daf9", null ],
+    [ "RX", "pins__arduino_8h.html#a58d754bc1e9db1b928a4aa7bb958abf1", null ],
+    [ "SCK", "pins__arduino_8h.html#a4a97a1e1f893cc16d0c9ef17c7a9a8ac", null ],
+    [ "SCL", "pins__arduino_8h.html#ac2b20f63465c34f17de0d95466ea2b87", null ],
+    [ "SDA", "pins__arduino_8h.html#a8441463c7aeef3b18ec7ff00b3fb294f", null ],
+    [ "SDI_12", "pins__arduino_8h.html#ac8c3c3777ac81b1e0939c81d90c2901d", null ],
+    [ "SS", "pins__arduino_8h.html#acbe8412158c492ec8a596b58ad73b5d7", null ],
+    [ "TX", "pins__arduino_8h.html#a6301ad0c499ce5ba766dc89b8f988368", null ]
+];

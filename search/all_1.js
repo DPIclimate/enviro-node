@@ -5,8 +5,9 @@ var searchData=
   ['add_5ffile_2',['add_file',['../class_s_d_card_interface.html#a63b2967fbc5218335e3be15a46cf239f',1,'SDCardInterface']]],
   ['addreadonlycharacteristic_3',['addReadOnlyCharacteristic',['../device_8cpp.html#acb1bafa1cf0225b6fbb3d6d2317b8cf9',1,'device.cpp']]],
   ['allocate_5fglobals_4',['ALLOCATE_GLOBALS',['../main_8cpp.html#a50622d2058413be33afcc9e4bfceb68b',1,'main.cpp']]],
-  ['append_5fto_5ffile_5',['append_to_file',['../class_s_d_card_interface.html#ac6c01c21e39fefc2deb786488158deda',1,'SDCardInterface']]],
-  ['arduino_5fto_5fio_6',['ARDUINO_TO_IO',['../globals_8h.html#ae59c4a3be2e87c2918941034d59e3ada',1,'globals.h']]],
-  ['asm_7',['asm',['../ulp_8cpp.html#a32af238a093d439d4266deb377143461',1,'asm(&quot;_binary_ulp_main_bin_start&quot;):&#160;ulp.cpp'],['../ulp_8cpp.html#ad99961b2909752c132bb4203d821cd33',1,'asm(&quot;_binary_ulp_main_bin_end&quot;):&#160;ulp.cpp']]],
-  ['attach_8',['attach',['../class_t_c_a9534.html#af5ceb10ffefc77e057871ccf9557612b',1,'TCA9534']]]
+  ['analoginputtodigitalpin_5',['analogInputToDigitalPin',['../pins__arduino_8h.html#a45b09aac6ae2c47b64e182a626efc4fc',1,'pins_arduino.h']]],
+  ['append_5fto_5ffile_6',['append_to_file',['../class_s_d_card_interface.html#ac6c01c21e39fefc2deb786488158deda',1,'SDCardInterface']]],
+  ['arduino_5fto_5fio_7',['ARDUINO_TO_IO',['../globals_8h.html#ae59c4a3be2e87c2918941034d59e3ada',1,'globals.h']]],
+  ['asm_8',['asm',['../ulp_8cpp.html#a32af238a093d439d4266deb377143461',1,'asm(&quot;_binary_ulp_main_bin_start&quot;):&#160;ulp.cpp'],['../ulp_8cpp.html#ad99961b2909752c132bb4203d821cd33',1,'asm(&quot;_binary_ulp_main_bin_end&quot;):&#160;ulp.cpp']]],
+  ['attach_9',['attach',['../class_t_c_a9534.html#af5ceb10ffefc77e057871ccf9557612b',1,'TCA9534']]]
 ];
