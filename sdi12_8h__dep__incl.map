@@ -1,6 +1,6 @@
 <map id="firmware/wombat/include/cli/peripherals/sdi12.h" name="firmware/wombat/include/cli/peripherals/sdi12.h">
-<area shape="rect" id="node1" title="SDI&#45;12 command line interface handler." alt="" coords="729,5,917,45"/>
-<area shape="rect" id="node2" href="$_c_l_i_8h.html" title="FreeRTOS CLI handler." alt="" coords="664,93,852,133"/>
+<area shape="rect" id="node1" title="SDI&#45;12 command line interface handler." alt="" coords="821,5,1009,45"/>
+<area shape="rect" id="node2" href="$_c_l_i_8h.html" title="FreeRTOS CLI handler." alt="" coords="756,93,944,133"/>
 <area shape="rect" id="node10" href="$sdi12_8cpp.html" title="SDI&#45;12 command line interface handler." alt="" coords="1322,189,1506,229"/>
 <area shape="rect" id="node3" href="$server_8h.html" title="Handle the setup and maintenance of the BLE server and connected clients." alt="" coords="5,189,193,229"/>
 <area shape="rect" id="node7" href="$_c_l_i_8cpp.html" title="FreeRTOS CLI handler." alt="" coords="218,189,378,229"/>

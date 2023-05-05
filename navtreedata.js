@@ -47,7 +47,10 @@ var NAVTREE =
         ] ],
         [ "CAT-M1", "index.html#autotoc_md16", null ]
       ] ],
-      [ "License", "index.html#autotoc_md17", null ],
+      [ "Firmware", "index.html#autotoc_md17", [
+        [ "Installing platformio and the Wombat board files", "index.html#autotoc_md18", null ]
+      ] ],
+      [ "License", "index.html#autotoc_md19", null ],
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
       [ "Namespace Members", "namespacemembers.html", [
         [ "All", "namespacemembers.html", null ],
@@ -83,8 +86,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "_c_a_t___m1_8cpp.html",
-"class_solar_monitor.html#a5e654a8e7d47855f2ca49243b31fc02a",
-"namespacegen__version__h.html#a4d6ea46704709d40960429591fb792e2"
+"class_s_d_card_interface.html#acf26df8af11996806b5e033d817b4ebd",
+"mqtt__stack_8cpp.html#acd81c3cf6977a299ec35a5b3e28564a4"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

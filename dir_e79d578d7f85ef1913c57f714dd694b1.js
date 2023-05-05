@@ -11,6 +11,7 @@ var dir_e79d578d7f85ef1913c57f714dd694b1 =
     [ "main.cpp", "main_8cpp.html", "main_8cpp" ],
     [ "mqtt_stack.cpp", "mqtt__stack_8cpp.html", "mqtt__stack_8cpp" ],
     [ "ntp.cpp", "ntp_8cpp.html", "ntp_8cpp" ],
+    [ "ota_update.cpp", "ota__update_8cpp.html", "ota__update_8cpp" ],
     [ "SensorTask.cpp", "_sensor_task_8cpp.html", "_sensor_task_8cpp" ],
     [ "ulp.cpp", "ulp_8cpp.html", "ulp_8cpp" ],
     [ "uplinks.cpp", "uplinks_8cpp.html", "uplinks_8cpp" ],

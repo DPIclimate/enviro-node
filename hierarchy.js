@@ -29,6 +29,7 @@ var hierarchy =
     [ "CLISDCard", "class_c_l_i_s_d_card.html", null ],
     [ "CLISdi12", "class_c_l_i_sdi12.html", null ],
     [ "DeviceConfig", "class_device_config.html", null ],
+    [ "ota_firmware_info_t", "structota__firmware__info__t.html", null ],
     [ "SDCardInterface", "class_s_d_card_interface.html", null ],
     [ "SolarMonitor", "class_solar_monitor.html", null ],
     [ "TCA9534", "class_t_c_a9534.html", null ]

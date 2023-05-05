@@ -114,6 +114,8 @@ Variables</h2></td></tr>
 <tr class="separator:a500e34ba57f2b1e5a894cd07aaee3585"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a226fe8e73df79c4a13e9c363dce8d123"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegen__version__h.html#a226fe8e73df79c4a13e9c363dce8d123">result</a> = subprocess.run(['cp', <a class="el" href="test___utils_8cpp.html#af0335cdc7b359992294bb8b8a0d276b7">str</a>(<a class="el" href="namespacegen__version__h.html#a683da30dad8c5fb705bfe6f98c75da3f">from_path</a>), <a class="el" href="test___utils_8cpp.html#af0335cdc7b359992294bb8b8a0d276b7">str</a>(<a class="el" href="namespacegen__version__h.html#af46565bdd3071e66bb6a81b6ee5a91c9">to_path</a>)], capture_output=<a class="el" href="namespacegen__version__h.html#a7b69cf4913d0323a94dad9b29b605ca3">True</a>, check=<a class="el" href="namespacegen__version__h.html#a7b69cf4913d0323a94dad9b29b605ca3">True</a>)</td></tr>
 <tr class="separator:a226fe8e73df79c4a13e9c363dce8d123"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0d69ab22d0d11617b9a9158936895f19"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegen__version__h.html#a0d69ab22d0d11617b9a9158936895f19">_VERSION_NUM</a> = '1.0.2'</td></tr>
+<tr class="separator:a0d69ab22d0d11617b9a9158936895f19"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac8dc2c30849f7edf8688e8c367fcbac6"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegen__version__h.html#ac8dc2c30849f7edf8688e8c367fcbac6">_VERSION_H</a> = 'include/version.h'</td></tr>
 <tr class="separator:ac8dc2c30849f7edf8688e8c367fcbac6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a06645a0530f4c996d952c9f375920b8c"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegen__version__h.html#a06645a0530f4c996d952c9f375920b8c">commit_const</a> = 'const char* <a class="el" href="namespacegen__version__h.html#a4d6ea46704709d40960429591fb792e2">commit_id</a> = &quot;unknown&quot;;'</td></tr>
@@ -122,6 +124,8 @@ Variables</h2></td></tr>
 <tr class="separator:a4d6ea46704709d40960429591fb792e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa4c82b92eda8b6b0946f356366068234"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegen__version__h.html#aa4c82b92eda8b6b0946f356366068234">repo_status</a> = result.stdout.decode('ascii').strip()</td></tr>
 <tr class="separator:aa4c82b92eda8b6b0946f356366068234"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0d274a131c874fce37c419c42f7911fe"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegen__version__h.html#a0d274a131c874fce37c419c42f7911fe">version_comps</a> = _VERSION_NUM.split('.')</td></tr>
+<tr class="separator:a0d274a131c874fce37c419c42f7911fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Variable Documentation</h2>
 <a id="ac8dc2c30849f7edf8688e8c367fcbac6" name="ac8dc2c30849f7edf8688e8c367fcbac6"></a>
@@ -135,6 +139,28 @@ Variables</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">string gen_version_h._VERSION_H = 'include/version.h'</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0d69ab22d0d11617b9a9158936895f19" name="a0d69ab22d0d11617b9a9158936895f19"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0d69ab22d0d11617b9a9158936895f19">&#9670;&#160;</a></span>_VERSION_NUM</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">string gen_version_h._VERSION_NUM = '1.0.2'</td>
         </tr>
       </table>
   </td>
@@ -294,6 +320,20 @@ Variables</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">gen_version_h.True</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0d274a131c874fce37c419c42f7911fe" name="a0d274a131c874fce37c419c42f7911fe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0d274a131c874fce37c419c42f7911fe">&#9670;&#160;</a></span>version_comps</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">string gen_version_h.version_comps = _VERSION_NUM.split('.')</td>
         </tr>
       </table>
 </div><div class="memdoc">

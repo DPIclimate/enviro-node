@@ -10,6 +10,7 @@ var dir_d0384342543f67451a573d7221124c26 =
     [ "ftp_stack.h", "ftp__stack_8h.html", "ftp__stack_8h" ],
     [ "globals.h", "globals_8h.html", "globals_8h" ],
     [ "mqtt_stack.h", "mqtt__stack_8h.html", "mqtt__stack_8h" ],
+    [ "ota_update.h", "ota__update_8h.html", "ota__update_8h" ],
     [ "peripherals.h", "peripherals_8h.html", "peripherals_8h" ],
     [ "SensorTask.h", "_sensor_task_8h.html", "_sensor_task_8h" ],
     [ "ulp.h", "ulp_8h.html", "ulp_8h" ],

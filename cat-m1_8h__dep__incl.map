@@ -1,6 +1,6 @@
 <map id="firmware/wombat/include/cli/peripherals/cat&#45;m1.h" name="firmware/wombat/include/cli/peripherals/cat&#45;m1.h">
 <area shape="rect" id="node1" title="CAT&#45;M1 CLI command request and response handler." alt="" coords="282,5,470,45"/>
-<area shape="rect" id="node2" href="$_c_l_i_8h.html" title="FreeRTOS CLI handler." alt="" coords="481,93,669,133"/>
+<area shape="rect" id="node2" href="$_c_l_i_8h.html" title="FreeRTOS CLI handler." alt="" coords="573,93,761,133"/>
 <area shape="rect" id="node8" href="$cat-m1_8cpp.html" title="CAT&#45;M1 CLI command request and response handler." alt="" coords="5,181,165,236"/>
 <area shape="rect" id="node3" href="$server_8h.html" title="Handle the setup and maintenance of the BLE server and connected clients." alt="" coords="190,189,378,229"/>
 <area shape="rect" id="node7" href="$_c_l_i_8cpp.html" title="FreeRTOS CLI handler." alt="" coords="403,189,563,229"/>

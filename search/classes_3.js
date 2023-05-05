@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['sdcardinterface_0',['SDCardInterface',['../class_s_d_card_interface.html',1,'']]],
-  ['solarmonitor_1',['SolarMonitor',['../class_solar_monitor.html',1,'']]]
+  ['ota_5ffirmware_5finfo_5ft_0',['ota_firmware_info_t',['../structota__firmware__info__t.html',1,'']]]
 ];

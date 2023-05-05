@@ -1,6 +1,7 @@
 var gen__version__h_8py =
 [
     [ "_VERSION_H", "gen__version__h_8py.html#ac8dc2c30849f7edf8688e8c367fcbac6", null ],
+    [ "_VERSION_NUM", "gen__version__h_8py.html#a0d69ab22d0d11617b9a9158936895f19", null ],
     [ "commit_const", "gen__version__h_8py.html#a06645a0530f4c996d952c9f375920b8c", null ],
     [ "commit_id", "gen__version__h_8py.html#a4d6ea46704709d40960429591fb792e2", null ],
     [ "exist_ok", "gen__version__h_8py.html#a500e34ba57f2b1e5a894cd07aaee3585", null ],
@@ -11,5 +12,6 @@ var gen__version__h_8py =
     [ "repo_status", "gen__version__h_8py.html#aa4c82b92eda8b6b0946f356366068234", null ],
     [ "result", "gen__version__h_8py.html#a226fe8e73df79c4a13e9c363dce8d123", null ],
     [ "to_path", "gen__version__h_8py.html#af46565bdd3071e66bb6a81b6ee5a91c9", null ],
-    [ "True", "gen__version__h_8py.html#a7b69cf4913d0323a94dad9b29b605ca3", null ]
+    [ "True", "gen__version__h_8py.html#a7b69cf4913d0323a94dad9b29b605ca3", null ],
+    [ "version_comps", "gen__version__h_8py.html#a0d274a131c874fce37c419c42f7911fe", null ]
 ];

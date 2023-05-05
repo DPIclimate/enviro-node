@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['tca9534_0',['TCA9534',['../class_t_c_a9534.html',1,'']]]
+  ['sdcardinterface_0',['SDCardInterface',['../class_s_d_card_interface.html',1,'']]],
+  ['solarmonitor_1',['SolarMonitor',['../class_solar_monitor.html',1,'']]]
 ];

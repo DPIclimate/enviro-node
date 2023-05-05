@@ -1,7 +1,7 @@
 <map id="firmware/wombat/include/cli/peripherals/cli_power.h" name="firmware/wombat/include/cli/peripherals/cli_power.h">
-<area shape="rect" id="node1" title=" " alt="" coords="667,5,862,45"/>
-<area shape="rect" id="node2" href="$_c_l_i_8h.html" title="FreeRTOS CLI handler." alt="" coords="572,101,760,141"/>
-<area shape="rect" id="node14" href="$cli__power_8cpp.html" title="Power related commands." alt="" coords="785,93,945,148"/>
+<area shape="rect" id="node1" title=" " alt="" coords="765,5,959,45"/>
+<area shape="rect" id="node2" href="$_c_l_i_8h.html" title="FreeRTOS CLI handler." alt="" coords="669,101,857,141"/>
+<area shape="rect" id="node14" href="$cli__power_8cpp.html" title="Power related commands." alt="" coords="882,93,1042,148"/>
 <area shape="rect" id="node3" href="$server_8h.html" title="Handle the setup and maintenance of the BLE server and connected clients." alt="" coords="5,203,193,243"/>
 <area shape="rect" id="node7" href="$_c_l_i_8cpp.html" title="FreeRTOS CLI handler." alt="" coords="218,203,378,243"/>
 <area shape="rect" id="node8" href="$cat-m1_8cpp.html" title="CAT&#45;M1 CLI command request and response handler." alt="" coords="402,196,562,251"/>

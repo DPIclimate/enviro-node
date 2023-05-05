@@ -1,5 +1,5 @@
 <map id="firmware/wombat/include/cli/CLI.h" name="firmware/wombat/include/cli/CLI.h">
-<area shape="rect" id="node1" title="FreeRTOS CLI handler." alt="" coords="572,5,760,45"/>
+<area shape="rect" id="node1" title="FreeRTOS CLI handler." alt="" coords="669,5,857,45"/>
 <area shape="rect" id="node2" href="$server_8h.html" title="Handle the setup and maintenance of the BLE server and connected clients." alt="" coords="5,101,193,141"/>
 <area shape="rect" id="node6" href="$_c_l_i_8cpp.html" title="FreeRTOS CLI handler." alt="" coords="218,101,378,141"/>
 <area shape="rect" id="node7" href="$cat-m1_8cpp.html" title="CAT&#45;M1 CLI command request and response handler." alt="" coords="402,93,562,148"/>

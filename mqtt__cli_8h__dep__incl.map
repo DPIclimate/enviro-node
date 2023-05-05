@@ -1,8 +1,8 @@
 <map id="firmware/wombat/include/cli/device_config/mqtt_cli.h" name="firmware/wombat/include/cli/device_config/mqtt_cli.h">
-<area shape="rect" id="node1" title="MQTT setup and configuration through the CLI." alt="" coords="763,5,966,45"/>
-<area shape="rect" id="node2" href="$_c_l_i_8h.html" title="FreeRTOS CLI handler." alt="" coords="572,101,760,141"/>
-<area shape="rect" id="node14" href="$_device_config_8cpp.html" title=" " alt="" coords="785,101,945,141"/>
-<area shape="rect" id="node15" href="$mqtt__cli_8cpp.html" title="MQTT setup and configuration through the CLI." alt="" coords="969,93,1139,148"/>
+<area shape="rect" id="node1" title="MQTT setup and configuration through the CLI." alt="" coords="861,5,1063,45"/>
+<area shape="rect" id="node2" href="$_c_l_i_8h.html" title="FreeRTOS CLI handler." alt="" coords="669,101,857,141"/>
+<area shape="rect" id="node14" href="$_device_config_8cpp.html" title=" " alt="" coords="882,101,1042,141"/>
+<area shape="rect" id="node15" href="$mqtt__cli_8cpp.html" title="MQTT setup and configuration through the CLI." alt="" coords="1067,93,1236,148"/>
 <area shape="rect" id="node3" href="$server_8h.html" title="Handle the setup and maintenance of the BLE server and connected clients." alt="" coords="5,203,193,243"/>
 <area shape="rect" id="node7" href="$_c_l_i_8cpp.html" title="FreeRTOS CLI handler." alt="" coords="218,203,378,243"/>
 <area shape="rect" id="node8" href="$cat-m1_8cpp.html" title="CAT&#45;M1 CLI command request and response handler." alt="" coords="402,196,562,251"/>

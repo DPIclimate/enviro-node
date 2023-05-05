@@ -24,6 +24,8 @@ var searchData=
   ['getsensordefn_21',['getSensorDefn',['../_utils_8h.html#acf7c6b4525f91a60361aa418b06053d4',1,'getSensorDefn(const char *const vendor, const char *const model):&#160;Utils.cpp'],['../_utils_8h.html#a9f98e9ed8dbbd0200c7d7732b105764c',1,'getSensorDefn(const size_t sensor_idx, const sensor_list &amp;sensors):&#160;Utils.cpp'],['../_utils_8cpp.html#acf7c6b4525f91a60361aa418b06053d4',1,'getSensorDefn(const char *const vendor, const char *const model):&#160;Utils.cpp'],['../_utils_8cpp.html#a9f98e9ed8dbbd0200c7d7732b105764c',1,'getSensorDefn(const size_t sensor_idx, const sensor_list &amp;sensors):&#160;Utils.cpp']]],
   ['getsleepadjustment_22',['getSleepAdjustment',['../class_device_config.html#aaaf532cb768f3a804a570ff22d339673',1,'DeviceConfig']]],
   ['getuplinkinterval_23',['getUplinkInterval',['../class_device_config.html#a0c3357ca19cdc7469bbf5fd0164d3e53',1,'DeviceConfig']]],
-  ['globals_2ecpp_24',['globals.cpp',['../globals_8cpp.html',1,'']]],
-  ['globals_2eh_25',['globals.h',['../globals_8h.html',1,'']]]
+  ['git_5fcommit_5fid_24',['git_commit_id',['../structota__firmware__info__t.html#a6e880e8cf128cfcccbee0311069e1b4d',1,'ota_firmware_info_t']]],
+  ['globals_2ecpp_25',['globals.cpp',['../globals_8cpp.html',1,'']]],
+  ['globals_2eh_26',['globals.h',['../globals_8h.html',1,'']]],
+  ['got_5furc_27',['got_urc',['../ftp__stack_8cpp.html#a24c478da6e32a8914bb80af9e0c9cccc',1,'ftp_stack.cpp']]]
 ];

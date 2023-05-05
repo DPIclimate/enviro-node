@@ -1,16 +1,16 @@
 <map id="firmware/wombat/include/bluetooth/uart.h" name="firmware/wombat/include/bluetooth/uart.h">
-<area shape="rect" id="node1" title="BluetoothLE UART service setup and handling." alt="" coords="526,5,714,45"/>
+<area shape="rect" id="node1" title="BluetoothLE UART service setup and handling." alt="" coords="430,5,618,45"/>
 <area shape="rect" id="node2" title=" " alt="" coords="797,475,881,500"/>
 <area shape="rect" id="node3" title=" " alt="" coords="217,247,365,273"/>
 <area shape="rect" id="node4" title=" " alt="" coords="43,247,141,273"/>
 <area shape="rect" id="node5" title=" " alt="" coords="876,247,967,273"/>
-<area shape="rect" id="node6" href="$tones_8h.html" title="Audio control for the onboard piezo buzzer." alt="" coords="1786,93,1961,119"/>
-<area shape="rect" id="node7" href="$server_8h.html" title="Handle the setup and maintenance of the BLE server and connected clients." alt="" coords="550,93,690,119"/>
-<area shape="rect" id="node8" title=" " alt="" coords="805,167,907,192"/>
-<area shape="rect" id="node9" title=" " alt="" coords="399,167,487,192"/>
-<area shape="rect" id="node10" href="$device_8h.html" title="Bluetooth device services and device information." alt="" coords="231,167,374,192"/>
-<area shape="rect" id="node11" href="$power__monitoring_8h.html" title="Setup BluetoothLE power monitoring information." alt="" coords="511,167,729,192"/>
-<area shape="rect" id="node15" href="$_c_l_i_8h.html" title="FreeRTOS CLI handler." alt="" coords="1581,167,1654,192"/>
+<area shape="rect" id="node6" href="$tones_8h.html" title="Audio control for the onboard piezo buzzer." alt="" coords="1785,93,1959,119"/>
+<area shape="rect" id="node7" href="$server_8h.html" title="Handle the setup and maintenance of the BLE server and connected clients." alt="" coords="454,93,594,119"/>
+<area shape="rect" id="node8" title=" " alt="" coords="798,167,901,192"/>
+<area shape="rect" id="node9" title=" " alt="" coords="392,167,480,192"/>
+<area shape="rect" id="node10" href="$device_8h.html" title="Bluetooth device services and device information." alt="" coords="225,167,367,192"/>
+<area shape="rect" id="node11" href="$power__monitoring_8h.html" title="Setup BluetoothLE power monitoring information." alt="" coords="504,167,723,192"/>
+<area shape="rect" id="node15" href="$_c_l_i_8h.html" title="FreeRTOS CLI handler." alt="" coords="1641,167,1714,192"/>
 <area shape="rect" id="node12" href="$solar_8h.html" title="Solar voltage and current monitoring using INA219 IC." alt="" coords="615,247,801,273"/>
 <area shape="rect" id="node14" href="$battery_8h.html" title="Battery voltage and current monitoring using INA219 IC." alt="" coords="389,247,590,273"/>
 <area shape="rect" id="node13" title=" " alt="" coords="549,328,689,353"/>
