@@ -10,8 +10,14 @@
 #define EXTERN /**/
 #else
 #define EXTERN extern
-#endif
 
+extern const char* commit_id;
+extern const char* repo_status;
+extern  uint16_t ver_major;
+extern  uint16_t ver_minor;
+extern  uint16_t ver_update;
+
+#endif
 
 /// Convert an IO expander pin number (1, 2, ...) to an pin number usable with digitalWrite (0x81, 0x82, ...)
 /// Note that digitalWrite has been redefined to understand that pin numbers >= 0x80 should be toggled on the IO
@@ -29,7 +35,7 @@
 #define MAX_NUMERIC_STR_SZ 32
 
 /// The maximum safe size for g_buffer.
-#define MAX_G_BUFFER 4096
+#define MAX_G_BUFFER 65536
 
 /// A buffer for use anywhere in the main task, it is MAX_G_BUFFER+1 bytes long.
 /// Use MAX_G_BUFFER as the length when writing strings to g_buffer, but use

@@ -1,5 +1,6 @@
 #include "CAT_M1.h"
 #include "SparkFun_u-blox_SARA-R5_Arduino_Library.h"
+#include "Utils.h"
 #include "globals.h"
 
 #define TAG "CAT_M1"
@@ -76,4 +77,45 @@ void CAT_M1::interface(){
     while(LTE_Serial.available()) {
         Serial.write(LTE_Serial.read());
     }
+}
+
+bool CAT_M1::make_ready() {
+    static bool already_called = false;
+
+    if (already_called) {
+        ESP_LOGI(TAG, "already_called = true, early return");
+        return true;
+    }
+
+    if ( ! is_powered()) {
+        ESP_LOGI(TAG, "Enabling R5 VCC");
+        power_supply(true);
+    }
+
+    ESP_LOGI(TAG, "Looking for response to AT command");
+    if ( ! wait_for_at()) {
+        already_called = false;
+        restart();
+        if ( ! wait_for_at()) {
+            ESP_LOGE(TAG, "Cannot talk to SARA R5");
+            return false;
+        }
+    }
+
+    r5.invertPowerPin(true);
+    r5.autoTimeZoneForBegin(true);
+
+    r5.enableAtDebugging();
+    //r5.enableDebugging();
+
+    // This is relatively benign - it enables the network indicator GPIO pin, set error message format, etc.
+    // It does close all open sockets, but there should not be any open sockets at this point so that is ok.
+    r5_ok = r5.begin(LTE_Serial, 115200);
+    if ( ! r5_ok) {
+        ESP_LOGE(TAG, "SARA-R5 begin failed");
+        return false;
+    }
+
+    already_called = true;
+    return true;
 }

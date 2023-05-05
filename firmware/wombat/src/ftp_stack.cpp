@@ -15,16 +15,16 @@ static char rsp[MAX_RSP + 1];
 #define MAX_BUF 2048
 static char buf[MAX_BUF + 1];
 
-static volatile int lastCmd = -1;
-static volatile int lastResult = -1;
-static volatile bool ftpGotURC = false;
-static volatile bool ftpLoginOk = false;
-static volatile bool ftpLogoutOk = false;
+static int last_cmd = -1;
+static int last_result = -1;
+static volatile bool got_urc = false;
+static bool login_ok = false;
+static bool logout_ok = false;
 
 static void ftp_cmd_callback(int cmd, int result) {
     ESP_LOGI(TAG, "cmd: %d, result: %d", cmd, result);
-    lastCmd = cmd;
-    lastResult = result;
+    last_cmd = cmd;
+    last_result = result;
     if (result == 0) {
         int e1, e2;
         r5.getFTPprotocolError(&e1, &e2);
@@ -33,14 +33,14 @@ static void ftp_cmd_callback(int cmd, int result) {
 
     switch (cmd) {
         case SARA_R5_FTP_COMMAND_LOGOUT:
-            ftpLogoutOk = (result == 1);
+            logout_ok = (result == 1);
             break;
         case SARA_R5_FTP_COMMAND_LOGIN:
-            ftpLoginOk = (result == 1);
+            login_ok = (result == 1);
             break;
     }
 
-    ftpGotURC = true;
+    got_urc = true;
 }
 
 bool ftp_login(void) {
@@ -74,13 +74,13 @@ bool ftp_login(void) {
     delay(20);
 
     // Wait for UFTPC URC to show connection success/failure.
-    ftpGotURC = false;
-    while ( ! ftpGotURC) {
+    got_urc = false;
+    while ( ! got_urc) {
         r5.bufferedPoll();
         delay(20);
     }
 
-    if ( ! ftpLoginOk) {
+    if ( ! login_ok) {
         ESP_LOGE(TAG, "Connection or ftp_login to FTP server failed");
         return false;
     }
@@ -94,11 +94,11 @@ bool ftp_logout(void) {
     r5.disconnectFTP();
     delay(20);
 
-    ftpGotURC = false;
-    while (!ftpGotURC) {
+    got_urc = false;
+    while ( ! got_urc) {
         r5.bufferedPoll();
     }
-    return ftpLogoutOk;
+    return logout_ok;
 }
 
 bool ftp_get(const char * filename) {
@@ -108,50 +108,13 @@ bool ftp_get(const char * filename) {
         return false;
     }
 
-    if ( ! SPIFFS.begin()) {
-        ESP_LOGE(TAG, "Failed to initialise SPIFFS");
-        return false;
+    ESP_LOGI(TAG, "Waiting for FTP download URC");
+    got_urc = false;
+    while ( ! got_urc) {
+        r5.bufferedPoll();
+        delay(100);
     }
 
-    constexpr size_t MAX_FNAME = 32;
-    static char spi_filename[MAX_FNAME + 1];
-    snprintf(spi_filename, MAX_FNAME, "/%s", filename);
-    File f = SPIFFS.open(spi_filename, FILE_WRITE);
-
-    constexpr size_t max_buf = 256;
-    uint8_t buf[max_buf];
-
-    while (true) {
-        if (waitForChar(LTE_Serial, 6000) < 1) {
-            break;
-        }
-
-        int i = 0;
-        while (i < max_buf) {
-            int ch = LTE_Serial.read();
-            if (ch < 0) {
-                break;
-            }
-
-            buf[i++] = ch & 0xFF;
-        }
-
-        f.write(buf, i);
-        if (i < max_buf) {
-            break;
-        }
-    }
-
-    f.close();
-
-    ESP_LOGI(TAG, "File as written to SPIFFS");
-    f = SPIFFS.open(spi_filename, FILE_READ);
-    while (f.available()) {
-        Serial.write(f.read());
-    }
-    f.close();
-    SPIFFS.end();
-
-    ESP_LOGI(TAG, "End of file as written to SPIFFS");
-    return true;
+    ESP_LOGI(TAG, "FTP download URC result: %d", last_result);
+    return last_result == 1;
 }

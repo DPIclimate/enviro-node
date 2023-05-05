@@ -289,7 +289,7 @@ const char* iso8601(void) {
 
  * @return true if the modem responds, otherwise false.
  */
-static bool wait_for_at(void) {
+bool wait_for_at(void) {
     int attempts = 5;
 
     while (attempts > 0) {
@@ -335,32 +335,8 @@ static bool wait_for_at(void) {
 bool connect_to_internet(void) {
     static bool already_called = false;
 
-    if (!cat_m1.is_powered()) {
-        ESP_LOGI(TAG, "Enabling R5 VCC");
-        cat_m1.power_supply(true);
-    }
-
-    ESP_LOGI(TAG, "Looking for response to AT command");
-    if ( ! wait_for_at()) {
-        already_called = false;
-        cat_m1.restart();
-        if ( ! wait_for_at()) {
-            ESP_LOGE(TAG, "Cannot talk to SARA R5");
-            return false;
-        }
-    }
-
-    r5.invertPowerPin(true);
-    r5.autoTimeZoneForBegin(true);
-
-    r5.enableAtDebugging();
-    //r5.enableDebugging();
-
-    // This is relatively benign - it enables the network indicator GPIO pin, set error message format, etc.
-    // It does close all open sockets, but there should not be any open sockets at this point so that is ok.
-    r5_ok = r5.begin(LTE_Serial, 115200);
-    if ( ! r5_ok) {
-        ESP_LOGE(TAG, "SARA-R5 begin failed");
+    if ( ! cat_m1.make_ready()) {
+        ESP_LOGE(TAG, "Could not initialise modem");
         return false;
     }
 

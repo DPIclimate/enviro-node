@@ -16,7 +16,7 @@
 #include "cli/peripherals/sdi12.h"
 #include "cli/peripherals/cli_power.h"
 #include "cli/peripherals/sd_card.h"
-#include "bluetooth/server.h"
+//#include "bluetooth/server.h"
 #include "cli/device_config/acquisition_intervals.h"
 #include "cli/device_config/mqtt_cli.h"
 #include "cli/device_config/ftp_cli.h"

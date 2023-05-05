@@ -32,7 +32,6 @@
 #include "freertos/semphr.h"
 
 #include "esp_partition.h"
-#include "ftp_stack.h"
 
 #define TAG "wombat"
 
@@ -211,6 +210,27 @@ void setup() {
 
     battery_monitor.begin();
     solar_monitor.begin();
+
+    const esp_app_desc_t* app_desc = esp_ota_get_app_description();
+    ESP_LOGI(TAG, "FW hdr: %s, %s,%s, %s, %s", app_desc->version, app_desc->project_name, app_desc->idf_ver, app_desc->date, app_desc->time);
+    for (size_t z = 0; z < 32; z++) {
+        Serial.print(app_desc->app_elf_sha256[z], HEX);
+        Serial.print(' ');
+    }
+    Serial.println();
+    ESP_LOGI(TAG, "App ver: %u.%u.%u, commit: %s, repo status: %s", ver_major, ver_minor, ver_update, commit_id, repo_status);
+
+    ESP_LOGI(TAG, "Boot partition");
+    const esp_partition_t *p_type = esp_ota_get_boot_partition();
+    ESP_LOGI(TAG, "%d/%d %lx %lx %s", p_type->type, p_type->subtype, p_type->address, p_type->size, p_type->label);
+
+    ESP_LOGI(TAG, "OTA running partition");
+    p_type = esp_ota_get_running_partition();
+    ESP_LOGI(TAG, "%d/%d %lx %lx %s", p_type->type, p_type->subtype, p_type->address, p_type->size, p_type->label);
+
+    ESP_LOGI(TAG, "Next OTA update partition");
+    p_type = esp_ota_get_next_update_partition(nullptr);
+    ESP_LOGI(TAG, "%d/%d %lx %lx %s", p_type->type, p_type->subtype, p_type->address, p_type->size, p_type->label);
 
     if (progBtnPressed) {
         // Turn on bluetooth if entering CLI

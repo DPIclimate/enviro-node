@@ -1,4 +1,3 @@
-set -x
 cd $(dirname $0)
 # Install platformio core.
 python3.10 -c "$(curl -fsSL https://raw.githubusercontent.com/platformio/platformio/master/scripts/get-platformio.py)"

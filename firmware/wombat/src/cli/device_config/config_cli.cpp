@@ -11,6 +11,10 @@
 
 #include "cli/FreeRTOS_CLI.h"
 #include "cli/device_config/config_cli.h"
+#include "CAT_M1.h"
+#include "Utils.h"
+#include "ota_update.h"
+#include "ftp_stack.h"
 
 //! ESP32 debugging output tag
 #define TAG "config_cli"
@@ -85,6 +89,24 @@ BaseType_t CLIConfig::enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen,
         if (!strncmp("save", param, paramLen)) {
             config.save();
             strncpy(pcWriteBuffer, "Configuration saved\r\nOK\r\n", xWriteBufferLen - 1);
+            return pdFALSE;
+        }
+
+        if (!strncmp("ota", param, paramLen)) {
+            if (cat_m1.make_ready()) {
+                if (connect_to_internet()) {
+                    if (ftp_login()) {
+                        ota_firmware_info_t ota_ctx;
+                        if (ota_check_for_update(ota_ctx)) {
+                            ota_download_update(ota_ctx);
+                        }
+
+                        ftp_logout();
+                    }
+                }
+            }
+
+            strncpy(pcWriteBuffer, "\r\nOK\r\n", xWriteBufferLen - 1);
             return pdFALSE;
         }
 
