@@ -1,7 +1,6 @@
-set -euo pipefail
+set -uo pipefail
 
-cd $(dirname $0)
-cd .pio/build/wombat
+cd "$(cd -P -- "$(dirname -- "$0")" && pwd -P)"/.pio/build/wombat
 
 #split -b 64K -d firmware.bin wombat.
 
