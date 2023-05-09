@@ -471,3 +471,12 @@ bool connect_to_internet(void) {
     already_called = true;
     return true;
 }
+
+int get_version_string(char *buffer, size_t length) {
+    if (buffer == nullptr) {
+        return -1;
+    }
+
+    int i = snprintf(buffer, length, "%u.%u.%u", ver_major, ver_minor, ver_update);
+    return i;
+}

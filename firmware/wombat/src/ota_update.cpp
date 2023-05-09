@@ -1,10 +1,10 @@
-#include <SPIFFS.h>
 #include "ota_update.h"
 #include "ftp_stack.h"
 #include "globals.h"
 
 #include <mbedtls/sha1.h>
 #include <esp_ota_ops.h>
+#include <SPIFFS.h>
 
 #define TAG "ota_update"
 
@@ -39,6 +39,7 @@ bool ota_check_for_update(ota_firmware_info_t& ota_ctx) {
     if (ota_ctx.new_major < ver_major) {
         return false;
     }
+
     if (ota_ctx.new_major > ver_major) {
         return true;
     }
@@ -47,6 +48,7 @@ bool ota_check_for_update(ota_firmware_info_t& ota_ctx) {
     if (ota_ctx.new_minor < ver_minor) {
         return false;
     }
+
     if (ota_ctx.new_minor > ver_minor) {
         return true;
     }
@@ -151,6 +153,13 @@ bool ota_download_update(const ota_firmware_info_t& ota_ctx) {
     if (esp_err != ESP_OK) {
         ESP_LOGE(TAG, "esp_ota_set_boot_partition failed: %d", esp_err);
         return false;
+    }
+
+    if (SPIFFS.begin()) {
+        File f = SPIFFS.open(send_fw_version_name, FILE_WRITE);
+        f.write('T');
+        f.close();
+        SPIFFS.end();
     }
 
     return true;

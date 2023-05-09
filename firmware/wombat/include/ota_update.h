@@ -1,6 +1,9 @@
 #ifndef WOMBAT_OTA_UPDATE_H
 #define WOMBAT_OTA_UPDATE_H
 
+#include <stdint.h>
+#include <stddef.h>
+
 typedef struct {
     uint16_t new_major;
     uint16_t new_minor;

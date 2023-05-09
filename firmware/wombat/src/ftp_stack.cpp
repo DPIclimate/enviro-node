@@ -1,16 +1,8 @@
-
-#include <SPIFFS.h>
-#include "CAT_M1.h"
-#include "Utils.h"
 #include "DeviceConfig.h"
 #include "SparkFun_u-blox_SARA-R5_Arduino_Library.h"
 #include "globals.h"
-#include "cli/CLI.h"
 
 #define TAG "ftp_stack"
-
-#define MAX_RSP 64
-static char rsp[MAX_RSP + 1];
 
 #define MAX_BUF 2048
 static char buf[MAX_BUF + 1];
@@ -109,8 +101,9 @@ bool ftp_get(const char * filename) {
     }
 
     ESP_LOGI(TAG, "Waiting for FTP download URC");
+    last_cmd = -1;
     got_urc = false;
-    while ( ! got_urc) {
+    while (last_cmd != SARA_R5_FTP_COMMAND_GET_FILE && ( ! got_urc)) {
         r5.bufferedPoll();
         delay(100);
     }

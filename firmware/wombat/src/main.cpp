@@ -32,6 +32,8 @@
 #include "freertos/semphr.h"
 
 #include "esp_partition.h"
+#include "ota_update.h"
+#include "ftp_stack.h"
 
 #define TAG "wombat"
 
@@ -284,7 +286,7 @@ void setup() {
     sleep_drift_adjustment = 0;
     if (is_uplink_cycle) {
         if ( ! connect_to_internet()) {
-            ESP_LOGW(TAG, "Could not connect to the internet on an uplink cycle. This is now a measurement-only cycle with no RTC update.");
+            ESP_LOGW(TAG, "Could not connect to the internet on an uplink cycle. This is now a measurement-only cycle");
             is_uplink_cycle = false;
         }
     }

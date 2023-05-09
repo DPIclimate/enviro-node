@@ -67,8 +67,6 @@ BaseType_t CLIConfig::enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen,
         return response_buffer_.available() > 0 ? pdTRUE : pdFALSE;
     }
 
-    DeviceConfig& config = DeviceConfig::get();
-
     memset(pcWriteBuffer, 0, xWriteBufferLen);
     param = FreeRTOS_CLIGetParameter(pcCommandString, paramNum, &paramLen);
     if (param != nullptr && paramLen > 0) {

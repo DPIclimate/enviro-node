@@ -50,6 +50,7 @@ EXTERN bool r5_ok;
 
 constexpr char sd_card_datafile_name[] = "/data.json";
 constexpr char sd_card_logfile_name[] = "/log.txt";
+constexpr char send_fw_version_name[] = "/send_fw_version";
 
 #ifdef ALLOCATE_GLOBALS
 /// A global SARA R5 modem object.
