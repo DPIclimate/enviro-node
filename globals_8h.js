@@ -15,6 +15,7 @@ var globals_8h =
     [ "repo_status", "globals_8h.html#ad3cd56bc6b4208245d0910f091c6ce5f", null ],
     [ "sd_card_datafile_name", "globals_8h.html#a0c3f83f54f93a120307b4bdbc4c0de44", null ],
     [ "sd_card_logfile_name", "globals_8h.html#a92a159724e7d87c537b6f8e7f101187a", null ],
+    [ "send_fw_version_name", "globals_8h.html#a5989daa5ee30076036abbb20967c64a3", null ],
     [ "sleep_drift_adjustment", "globals_8h.html#a7ab6e6eedf09bb55c027608f5966f359", null ],
     [ "solar_monitor", "globals_8h.html#ac568439cec3bbbba4b7787ea1ae04b9c", null ],
     [ "ver_major", "globals_8h.html#ada31d202380adacbb62da679999fd499", null ],

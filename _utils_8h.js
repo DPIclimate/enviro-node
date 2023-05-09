@@ -3,6 +3,7 @@ var _utils_8h =
     [ "connect_to_internet", "_utils_8h.html#ad39f7d3de7097e88e02a04f89182249c", null ],
     [ "disable12V", "_utils_8h.html#a187a7effbfa0a6a695fe6e0b2ffe70c8", null ],
     [ "enable12V", "_utils_8h.html#a2970463adda551edf66d287f85e028bb", null ],
+    [ "get_version_string", "_utils_8h.html#ae8b1bc5305b58919f16af1238ce48e29", null ],
     [ "getSensorDefn", "_utils_8h.html#acf7c6b4525f91a60361aa418b06053d4", null ],
     [ "getSensorDefn", "_utils_8h.html#a9f98e9ed8dbbd0200c7d7732b105764c", null ],
     [ "iso8601", "_utils_8h.html#aae5df86a67424cb7ae3f42b7deee32b9", null ],

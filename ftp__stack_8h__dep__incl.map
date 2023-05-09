@@ -1,6 +1,7 @@
 <map id="firmware/wombat/include/ftp_stack.h" name="firmware/wombat/include/ftp_stack.h">
-<area shape="rect" id="node1" title=" " alt="" coords="193,5,381,45"/>
+<area shape="rect" id="node1" title=" " alt="" coords="285,5,473,45"/>
 <area shape="rect" id="node2" href="$config__cli_8cpp.html" title="Command line interface node configuration commands." alt="" coords="5,93,183,148"/>
 <area shape="rect" id="node3" href="$ftp__cli_8cpp.html" title="FTP setup and configuration through the CLI." alt="" coords="207,93,367,148"/>
-<area shape="rect" id="node4" href="$ota__update_8cpp.html" title=" " alt="" coords="391,101,551,141"/>
+<area shape="rect" id="node4" href="$main_8cpp.html" title=" " alt="" coords="391,101,551,141"/>
+<area shape="rect" id="node5" href="$ota__update_8cpp.html" title=" " alt="" coords="575,101,735,141"/>
 </map>
