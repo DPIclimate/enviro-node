@@ -212,11 +212,11 @@ void sensor_task(void) {
         send_version = send_version | (esp_reset_reason() != ESP_RST_DEEPSLEEP);
         if (send_version) {
             SPIFFS.remove(send_fw_version_name);
-            if (get_version_string(g_buffer, MAX_G_BUFFER) > 0) {
-                msg["fw_ver"] = g_buffer;
-                msg["commit_id"] = commit_id;
-                msg["repo_status"] = repo_status;
-            }
+            msg["fw_major"] = ver_major;
+            msg["fw_minor"] = ver_minor;
+            msg["fw_update"] = ver_update;
+            msg["commit_id"] = commit_id;
+            msg["repo_status"] = repo_status;
         }
     }
 
