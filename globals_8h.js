@@ -18,6 +18,7 @@ var globals_8h =
     [ "send_fw_version_name", "globals_8h.html#a5989daa5ee30076036abbb20967c64a3", null ],
     [ "sleep_drift_adjustment", "globals_8h.html#a7ab6e6eedf09bb55c027608f5966f359", null ],
     [ "solar_monitor", "globals_8h.html#ac568439cec3bbbba4b7787ea1ae04b9c", null ],
+    [ "spiffs_ok", "globals_8h.html#a09c6d6ca19f98864eea5af213d2ed684", null ],
     [ "ver_major", "globals_8h.html#ada31d202380adacbb62da679999fd499", null ],
     [ "ver_minor", "globals_8h.html#a140d2465d47863dbdbfd00c2be7f4edc", null ],
     [ "ver_update", "globals_8h.html#ac978ad67d10b0ffe20ed227dad431878", null ]

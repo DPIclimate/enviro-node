@@ -20,7 +20,8 @@ var searchData=
   ['solar_17',['solar',['../solar_8cpp.html#a6ae1f2d0fe5f9f35e3eec3616641c476',1,'solar.cpp']]],
   ['solar_5fmonitor_18',['solar_monitor',['../globals_8h.html#ac568439cec3bbbba4b7787ea1ae04b9c',1,'globals.h']]],
   ['solaraddr_19',['solarAddr',['../class_solar_monitor.html#acc1b72b216eb69d45fe4b5edcdd866f6',1,'SolarMonitor']]],
-  ['ss_20',['SS',['../pins__arduino_8h.html#acbe8412158c492ec8a596b58ad73b5d7',1,'pins_arduino.h']]],
-  ['str_21',['str',['../test___utils_8cpp.html#af0335cdc7b359992294bb8b8a0d276b7',1,'test_Utils.cpp']]],
-  ['sts_22',['sts',['../class_t_c_a9534.html#a0a5075813b9328dc5275fbc393757151',1,'TCA9534']]]
+  ['spiffs_5fok_20',['spiffs_ok',['../globals_8h.html#a09c6d6ca19f98864eea5af213d2ed684',1,'spiffs_ok():&#160;main.cpp'],['../main_8cpp.html#a09c6d6ca19f98864eea5af213d2ed684',1,'spiffs_ok():&#160;main.cpp']]],
+  ['ss_21',['SS',['../pins__arduino_8h.html#acbe8412158c492ec8a596b58ad73b5d7',1,'pins_arduino.h']]],
+  ['str_22',['str',['../test___utils_8cpp.html#af0335cdc7b359992294bb8b8a0d276b7',1,'test_Utils.cpp']]],
+  ['sts_23',['sts',['../class_t_c_a9534.html#a0a5075813b9328dc5275fbc393757151',1,'TCA9534']]]
 ];
