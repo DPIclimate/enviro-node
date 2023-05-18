@@ -17,6 +17,7 @@ extern  uint16_t ver_major;
 extern  uint16_t ver_minor;
 extern  uint16_t ver_update;
 
+extern bool spiffs_ok;
 #endif
 
 /// Convert an IO expander pin number (1, 2, ...) to an pin number usable with digitalWrite (0x81, 0x82, ...)

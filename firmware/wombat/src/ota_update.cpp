@@ -155,11 +155,10 @@ bool ota_download_update(const ota_firmware_info_t& ota_ctx) {
         return false;
     }
 
-    if (SPIFFS.begin()) {
+    if (spiffs_ok) {
         File f = SPIFFS.open(send_fw_version_name, FILE_WRITE);
         f.write('T');
         f.close();
-        SPIFFS.end();
     }
 
     return true;

@@ -118,7 +118,14 @@ bool mqtt_login(void) {
     }
 
     ESP_LOGI(TAG, "Checking if read URC arrived after subscribe");
-    r5.bufferedPoll();
+    for (int i = 0; i < 50; i++) {
+        delay(20);
+        r5.bufferedPoll();
+        if (lastCmd == SARA_R5_MQTT_COMMAND_READ) {
+            break;
+        }
+    }
+
     if (lastCmd == SARA_R5_MQTT_COMMAND_READ && lastResult > 0) {
         ESP_LOGI(TAG, "Config download waiting.");
         int qos;

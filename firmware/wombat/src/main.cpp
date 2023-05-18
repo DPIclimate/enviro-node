@@ -11,6 +11,7 @@
 #include <esp_private/esp_clk.h>
 #include <SD.h>
 #include <esp_ota_ops.h>
+#include <SPIFFS.h>
 
 #define ALLOCATE_GLOBALS
 #include "globals.h"
@@ -38,6 +39,8 @@
 #define TAG "wombat"
 
 TCA9534 io_expander;
+
+bool spiffs_ok = false;
 
 // Used by OpenOCD.
 static volatile int uxTopUsedPriority;
@@ -134,6 +137,8 @@ void setup() {
 
     setenv("TZ", "UTC", 1);
     tzset();
+
+    spiffs_ok = SPIFFS.begin();
 
     // The device configuration singleton is created on entry to setup() due to C++ object creation rules.
     // The node id is available without loading the configuration because it is retrieved from the ESP32
@@ -299,6 +304,8 @@ void setup() {
     }
 
     ESP_LOGI(TAG, "Shutting down");
+
+    SPIFFS.end();
 
     if (r5_ok) {
         r5.modulePowerOff();

@@ -206,20 +206,6 @@ void sensor_task(void) {
 
     String str;
 
-    bool spiffs_ok = SPIFFS.begin();
-    if (spiffs_ok) {
-        bool send_version = SPIFFS.exists(send_fw_version_name);
-        send_version = send_version | (esp_reset_reason() != ESP_RST_DEEPSLEEP);
-        if (send_version) {
-            SPIFFS.remove(send_fw_version_name);
-            if (get_version_string(g_buffer, MAX_G_BUFFER) > 0) {
-                msg["fw_ver"] = g_buffer;
-                msg["commit_id"] = commit_id;
-                msg["repo_status"] = repo_status;
-            }
-        }
-    }
-
     serializeJson(msg, str);
     ESP_LOGI(TAG, "Msg:\r\n%s\r\n", str.c_str());
 
@@ -233,7 +219,6 @@ void sensor_task(void) {
         File f = SPIFFS.open(filename, FILE_WRITE);
         serializeJson(msg, f);
         f.close();
-        SPIFFS.end();
     }
 
     // Append the message to a file on the SD card.
