@@ -15,6 +15,7 @@
 #include "cli/device_config/acquisition_intervals.h"
 #include "cli/device_config/mqtt_cli.h"
 #include "cli/device_config/ftp_cli.h"
+#include "globals.h"
 
 //! ESP32 debug output tag
 #define TAG "config"
@@ -86,9 +87,6 @@ void DeviceConfig::reset() {
  * and sets any missing values to their default states. It also loads the SDI-12
  * sensor definitions from a file on the file system.
  *
- * @todo An error may occur if the SPIFFS filesystem does not get initialized
- * @todo (`SPIFFS.begin()`) resulting in an uncaught result.
- *
  * @see reset
  * @see config_filename
  * @see sdi12defn_filename
@@ -98,7 +96,7 @@ void DeviceConfig::load() {
     // Ensure any settings not present in the config file have the default value.
     reset();
 
-    if (SPIFFS.begin()) {
+    if (spiffs_ok) {
         if (SPIFFS.exists(config_filename)) {
             File f = SPIFFS.open(config_filename, FILE_READ);
             size_t len;
@@ -146,23 +144,19 @@ void DeviceConfig::load() {
     } else {
         ESP_LOGE(TAG, "Failed to initialise SPIFFS");
     }
-
-    SPIFFS.end();
 }
 
 /**
  * @brief Save device configuration to SPIFFS storage.
  */
 void DeviceConfig::save() {
-    if (SPIFFS.begin()) {
+    if (spiffs_ok) {
         File f = SPIFFS.open(config_filename, FILE_WRITE);
         dumpConfig(f);
         f.close();
     } else {
         ESP_LOGE(TAG, "Failed to initialise SPIFFS");
     }
-
-    SPIFFS.end();
 }
 
 /**
