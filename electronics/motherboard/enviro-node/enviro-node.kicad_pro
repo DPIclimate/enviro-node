@@ -55,7 +55,15 @@
           "width": 0.0
         }
       ],
-      "drc_exclusions": [],
+      "drc_exclusions": [
+        "annular_width|100336756|115369310|578d3fc1-57b9-44f7-bdca-75ad9aef7272|00000000-0000-0000-0000-000000000000",
+        "annular_width|100336756|97843310|511ff24a-4020-4913-816e-4e9838870dc1|00000000-0000-0000-0000-000000000000",
+        "annular_width|45091756|115369310|f2b4cf33-ac66-4a4c-94f8-4e2c04861514|00000000-0000-0000-0000-000000000000",
+        "courtyards_overlap|110498599|138301601|24002151-9d23-4d1e-b400-658d6de201b2|147be3ed-7efd-47c8-ae0e-b96fe10d8df7",
+        "silk_over_copper|130678000|47564610|2ef75bfd-7d8b-40f3-9655-2795ea74c352|aac8a0e8-d755-4ff8-b185-855b9f380ad0",
+        "silk_over_copper|130678000|65564610|2ef75bfd-7d8b-40f3-9655-2795ea74c352|a85f662a-f129-4c94-ac4a-0706fb534f5b",
+        "silk_overlap|48598402|153105288|36042f66-d623-4577-884d-a85ef50a9b4c|46654431-2d3e-4d39-8a99-281f90675e1d"
+      ],
       "meta": {
         "version": 2
       },
@@ -341,7 +349,7 @@
       "no_connect_dangling": "warning",
       "pin_not_connected": "error",
       "pin_not_driven": "error",
-      "pin_to_pin": "warning",
+      "pin_to_pin": "error",
       "power_pin_not_driven": "error",
       "similar_labels": "warning",
       "unannotated": "error",
@@ -450,5 +458,7 @@
       "cat_m1"
     ]
   ],
-  "text_variables": {}
+  "text_variables": {
+    "HARDWARE_REVISION": "1.0.2"
+  }
 }
