@@ -8,7 +8,7 @@
 
 #define TAG "ulp"
 
-#define ULPSLEEP_uS          2000         // amount in microseconds the ULP co-processor sleeps
+#define ULPSLEEP_uS         2000        // amount in microseconds the ULP co-processor sleeps
 #define RTC_ULP_PIN         GPIO_NUM_27 // Has a pull-up on the board
 
 // To get this the ULP code compiled when using platformio see:

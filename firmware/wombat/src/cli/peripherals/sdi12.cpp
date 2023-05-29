@@ -7,12 +7,11 @@
  */
 #include "cli/peripherals/sdi12.h"
 #include "SensorTask.h"
+#include "cli/CLI.h"
 
 //! Holds responses from a SDI-12 device
 static StreamString response_buffer_;
 static char response[CLISdi12::MAX_SDI12_RES_LEN];
-//! Command line interface stream initialised in the `repl()` function
-extern Stream *cliStream;
 
 //! Enviro-DIY SDI-12 instance.
 extern SDI12 sdi12;
@@ -171,26 +170,26 @@ BaseType_t CLISdi12::enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen,
         }
 
         if (!strncmp("pt", param, paramLen)) {
-            if (cliStream == nullptr) {
+            if (CLI::cliStream == nullptr) {
                 strncpy(pcWriteBuffer, "ERROR: input stream not set for SDI-12 passthrough mode\r\n", xWriteBufferLen - 1);
                 return pdFALSE;
             }
 
-            cliStream->println("Entering SDI-12 passthrough mode, press ctrl-D to exit");
+            CLI::cliStream->println("Entering SDI-12 passthrough mode, press ctrl-D to exit");
             sdi12.begin();
 
             char cmd[8];
 
             int ch;
             while (true) {
-                if (cliStream->available()) {
-                    ch = cliStream->peek();
+                if (CLI::cliStream->available()) {
+                    ch = CLI::cliStream->peek();
                     if (ch == 0x04) {
                         break;
                     }
 
                     memset(cmd, 0, sizeof(cmd));
-                    readFromStreamUntil(*cliStream, '\n', cmd, sizeof(cmd));
+                    readFromStreamUntil(*CLI::cliStream, '\n', cmd, sizeof(cmd));
                     stripWS(cmd);
                     if (strlen(cmd) > 0) {
                         sdi12.sendCommand(cmd);
@@ -201,9 +200,9 @@ BaseType_t CLISdi12::enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen,
                     ch = sdi12.read();
                     char cch = ch & 0xFF;
                     if (cch >= ' ') {
-                        cliStream->write(ch);
+                        CLI::cliStream->write(ch);
                     } else {
-                        cliStream->printf(" 0x%X ", cch);
+                        CLI::cliStream->printf(" 0x%X ", cch);
                     }
                 }
 

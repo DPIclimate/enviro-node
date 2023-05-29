@@ -10,13 +10,12 @@
 #include "Utils.h"
 #include "SparkFun_u-blox_SARA-R5_Arduino_Library.h"
 #include "globals.h"
+#include "cli/CLI.h"
 
 //! Sparkfun SARA-R5 library instance
 extern SARA_R5 r5;
 //! Holds responses from the modem
 static StreamString response_buffer_;
-//! Stream originating from the CLI
-extern Stream *cliStream;
 
 /**
  * @brief Get response from modem with a timeout.
@@ -97,19 +96,19 @@ static int get_response(uint32_t timeout = 500) {
     param = FreeRTOS_CLIGetParameter(pcCommandString, paramNum, &paramLen);
     if (param != nullptr && paramLen > 0) {
         if (!strncmp("pt", param, paramLen)) {
-            if (cliStream == nullptr) {
+            if (CLI::cliStream == nullptr) {
                 strncpy(pcWriteBuffer, "ERROR: input stream_ not set for Cat M1 passthrough\r\n", xWriteBufferLen - 1);
                 return pdFALSE;
             }
 
-            cliStream->println("Entering Cat M1 passthrough mode, press ctrl-D to exit");
+            CLI::cliStream->println("Entering Cat M1 passthrough mode, press ctrl-D to exit");
 
             int ch;
             bool finish = false;
             while ( ! finish) {
-                if (cliStream->available()) {
-                    while (cliStream->available()) {
-                        ch = cliStream->read();
+                if (CLI::cliStream->available()) {
+                    while (CLI::cliStream->available()) {
+                        ch = CLI::cliStream->read();
                         if (ch == 0x04) {
                             finish = true;
                             break;
@@ -121,7 +120,7 @@ static int get_response(uint32_t timeout = 500) {
 
                 if (LTE_Serial.available()) {
                     while (LTE_Serial.available()) {
-                        cliStream->write(LTE_Serial.read());
+                        CLI::cliStream->write(LTE_Serial.read());
                     }
                 }
 

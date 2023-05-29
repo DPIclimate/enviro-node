@@ -43,6 +43,9 @@
         <li><a href="#cat-m1">CAT-M1</a></li>
       </ul>
     </li>
+    <li>
+      <a href="#firmware">Firmware</a>
+    </li>
     <li><a href="#license">License</a></li>
   </ol>
 </details>
@@ -52,16 +55,6 @@
 <img src="imgs/enviro-node_0_5x.png" align="right" style="width: 400px;">
 
 Enviro-node is a environmental monitoring node. Users can connect a number of sensors to a node. Data captured from these sensors is then sent to a database over [MQTT](https://mqtt.org/).
-
-There are three parts to the enviro-node:
-
-1. The physical hardware (electronics).
-
-2. The firmware operating on the device.
-
-3. A [mobile application](https://github.com/DPIclimate/blue-tongue) (known as blue-tongue) for setting up the device in the field.
-
-The first two parts are housed in this repository. The [blue-tongue](https://github.com/DPIclimate/blue-tongue) mobile application is housed in its own repository.
 
 ## Hardware
 
@@ -77,7 +70,7 @@ The device incorporates a ESP32 microcontroller to handle bluetooth functions an
 
 Enviro-node features full debug capability when connected to an [ESP-Prog](https://espressif-docs.readthedocs-hosted.com/projects/espressif-esp-iot-solution/en/latest/hw-reference/ESP-Prog_guide.html) (ESP32 debugger/programmer). It is recommended that you use a USB-to-TTL cable during development. This allows you to have the ESP-Prog connected to the Enviro-node while monitoring the ESP32's serial output via the USB-to-TTL connector. 
 
-A USB-C interface is also incorporated to allow new firmware to be flashed to the microcontroller.
+The USB-C interface is only powered up when battery power is available. Do not attempt to power the board with the USB-C interface.
 
 ### Power Distribution 
 => [Schematic](https://github.com/DPIclimate/enviro-node/blob/master/imgs/schematics/power_distribution.pdf)
@@ -102,7 +95,7 @@ Most components on Enviro-node operate using 3.3 V for this a linear regulator i
 
 #### 12V Interface for SDI-12 Devices
 
-Although many SDI-12 devices will work with 3.3 V, the Enviro-node incorporates a 12 V step-up regulator (MIC2288YD5) to provide a stable 12 V (100 mA) supply. This IC's can be toggled in the firmware via a GPIO pin and will be completely shutoff when not in use.
+Although many SDI-12 devices will work with 3.3 V, the Enviro-node incorporates a 12 V step-up regulator (MIC2288YD5) to provide a stable 12 V (100 mA) supply. This IC can be toggled in the firmware via a GPIO pin and will be completely shutoff when not in use.
 
 If a SDI-12 sensor requires a constant 12 V supply the current consumption of this step-up regulator is ~2 mA with no load.
 
@@ -143,7 +136,18 @@ The Enviro-node uses CAT-M1 to send messages (containing JSON encoded data) over
 
 > **Note** A compatible nano-sim card is required for this functionality of the device. For Australian users [Telstra](https://telstra.m2m.com/) has a M2M service or there are other global services such as [Hologram](https://www.hologram.io/products/global-iot-sim-card/).
 
-The modem is directly powered by the 18650 batteries (as the modem can draw ~500 mA) and can be turned off and on via a GPIO pin (see IO-Expander above). A network indicator LED will indicate network connection status.
+The modem is directly powered by the 18650 batteries (as the modem can draw ~500 mA) and can be turned off and on via a GPIO pin (see IO-Expander above). A network indicator LED will indicate network registration status.
+
+## Firmware
+
+The firmware source code is located in the <a href="firmware/wombat">firmware/wombat</a> directory. It is structured as a platformio project.
+
+### Installing platformio and the Wombat board files
+
+The <a href="firmware/wombat/install_pio.sh">install_pio.sh</a> script will install platformio and copy the Wombat board files into the installation.
+
+After running the script and adding `~/.platformio/penv/bin` to the PATH, the firmware can be compiled with the command `pio run`.
+
 
 ## License
 

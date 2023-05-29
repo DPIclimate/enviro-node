@@ -25,11 +25,10 @@ static bool process_file(File& file) {
     if (mqtt_status == MQTT_UNINITIALISED) {
         connect_to_internet();
         mqtt_status = mqtt_login() ? MQTT_LOGIN_OK : MQTT_LOGIN_FAILED;
-    }
-
-    if (mqtt_status == MQTT_LOGIN_FAILED) {
-        ESP_LOGI(TAG, "Not processing file, no MQTT connection");
-        return false;
+        if (mqtt_status == MQTT_LOGIN_FAILED) {
+            ESP_LOGI(TAG, "Not processing file, no MQTT connection");
+            return false;
+        }
     }
 
     size_t len = file.available();
@@ -49,7 +48,7 @@ static bool process_file(File& file) {
 }
 
 void send_messages(void) {
-    if (SPIFFS.begin()) {
+    if (spiffs_ok) {
         File root = SPIFFS.open("/");
         if ( ! root) {
             ESP_LOGE(TAG, "Failed to open root directory of SPIFFS");
@@ -90,7 +89,6 @@ void send_messages(void) {
         }
 
         root.close();
-        SPIFFS.end();
 
         ESP_LOGI(TAG, "Processed %u files with %u upload errors", file_count, upload_errors);
     }

@@ -1,19 +1,39 @@
 #include "sd-card/interface.h"
+#include "globals.h"
 #include <esp_log.h>
 
 #define TAG "sd"
 
-SDCardInterface::SDCardInterface() {
-    ESP_LOGI(TAG, "%d is valid: %d", SD_CS, GPIO_IS_VALID_GPIO(SD_CS));
+SDCardInterface::SDCardInterface() = default;
+SDCardInterface::~SDCardInterface() = default;
 
-    if(!SD.begin(SD_CS)){
+bool SDCardInterface::sd_ok = false;
+
+bool SDCardInterface::is_ready(void) {
+    return sd_ok;
+}
+
+bool SDCardInterface::begin(void) {
+    // Connect the SD card GND so it powers up.
+    digitalWrite(SD_CARD_ENABLE, HIGH);
+
+    sd_ok = SD.begin(SD_CS);
+    if ( ! sd_ok) {
         ESP_LOGE(TAG, "SD card not found.");
     } else {
         ESP_LOGD(TAG, "SD card found and initialised.");
+        uint8_t cardType = SD.cardType();
+        if (cardType == CARD_NONE) {
+            ESP_LOGW(TAG, "Could not determine SD card type");
+            sd_ok = false;
+        } else {
+            uint64_t cardSize = SD.cardSize() / (1024 * 1024);
+            ESP_LOGI(TAG, "SD Card Size: %lluMB", cardSize);
+        }
     }
-}
 
-SDCardInterface::~SDCardInterface() = default;
+    return sd_ok;
+}
 
 #ifdef DEBUG
 // Recursive function to get SD-Cards directory structure
@@ -51,35 +71,91 @@ void SDCardInterface::list_directory(File dir, uint8_t num_spaces) { /* NOLINT *
 }
 #endif
 
-void SDCardInterface::add_file(const char* filepath, const char* contents){
+void SDCardInterface::add_file(const char* filepath, const char* contents) {
+    if ( ! sd_ok) {
+        ESP_LOGE(TAG, "SD card not initialised");
+        return;
+    }
+
+    if (filepath == nullptr || strnlen(filepath, 1) == 0) {
+        ESP_LOGE(TAG, "Empty filepath");
+        return;
+    }
+
+    if (contents == nullptr || strnlen(contents, 1) == 0) {
+        ESP_LOGE(TAG, "Empty filepath");
+        return;
+    }
+
     ESP_LOGD(TAG, "Adding file '%s' to SD-Card.", filepath);
 
     // Open will add a new file if it doesn't exist
-    File root = SD.open(filepath, FILE_WRITE);
-
-    // Check if file is open
-    if(root) {
-       root.println(contents);
+    File fp = SD.open(filepath, FILE_WRITE);
+    if (fp) {
+        fp.println(contents);
+        fp.close();
     } else {
-        ESP_LOGE(TAG, "Unable to create file on SD-Card.");
+        ESP_LOGE(TAG, "Unable to create file on SD-Card");
     }
-
-    root.close();
 }
 
-void SDCardInterface::read_file(const char* filepath){
+void SDCardInterface::append_to_file(const char* filepath, const char* contents) {
+    if ( ! sd_ok) {
+        ESP_LOGE(TAG, "SD card not initialised");
+        return;
+    }
+
+    if (filepath == nullptr || strnlen(filepath, 1) == 0) {
+        ESP_LOGE(TAG, "Empty filepath");
+        return;
+    }
+
+    File fp = SD.open(filepath, FILE_APPEND, true);
+    if (fp) {
+        fp.print(contents);
+        fp.close();
+    }
+}
+
+void SDCardInterface::read_file(const char* filepath, Stream &stream) {
+    if ( ! sd_ok) {
+        ESP_LOGE(TAG, "SD card not initialised");
+        return;
+    }
+
+    if (filepath == nullptr || strnlen(filepath, 1) == 0) {
+        ESP_LOGE(TAG, "Empty filepath");
+        return;
+    }
+
     ESP_LOGD(TAG, "Reading file '%s' on SD-Card.", filepath);
 
-    File root = SD.open(filepath);
-
-    if(root) {
+    File fp = SD.open(filepath);
+    if (fp) {
         ESP_LOGD(TAG, "'%s': ", filepath);
-        while(root.available()){
-            Serial.write(root.read());
+        while (fp.available()) {
+            stream.write(fp.read());
         }
 
-        root.close();
+        fp.close();
     } else {
-        ESP_LOGE(TAG, "[ERROR]: Unable to read file: '%s'");
+        ESP_LOGE(TAG, "Unable to read file: '%s'", filepath);
+    }
+}
+
+void SDCardInterface::delete_file(const char* filepath) {
+    if ( ! sd_ok) {
+        ESP_LOGE(TAG, "SD card not initialised");
+        return;
+    }
+
+    if (filepath == nullptr || strnlen(filepath, 1) == 0) {
+        ESP_LOGE(TAG, "Empty filepath");
+        return;
+    }
+
+    ESP_LOGD(TAG, "Deleting file '%s' on SD-Card.", filepath);
+    if ( ! SD.remove(filepath)) {
+        ESP_LOGW(TAG, "Delete failed on file: %s", filepath);
     }
 }

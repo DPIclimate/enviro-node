@@ -23,6 +23,8 @@ public:
     bool restart();
     void interface();
 
+    bool make_ready(void);
+
     bool is_powered(void) { return power_on; }
 
 private:

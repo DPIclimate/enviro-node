@@ -216,13 +216,13 @@ void streamPassthrough(Stream* s1, Stream* s2) {
 int waitForChar(Stream& stream, uint32_t timeout) {
     const uint32_t start = millis();
     int a = stream.available();
-    while ((millis() - start) < timeout && a < 1) {
+    while (a < 1 && (millis() - start) < timeout) {
         delay(1); // Let the MCU do something else.
         a = stream.available();
     }
 
-    const uint32_t end = millis();
-    ESP_LOGD(TAG, "Delta from start of read: %lu ms, UART available = %d", (end - start), a);
+    //const uint32_t end = millis();
+    //ESP_LOGD(TAG, "Delta from start of read: %lu ms, UART available = %d", (end - start), a);
 
     return a > 0 ? a : -1;
 }
@@ -289,7 +289,7 @@ const char* iso8601(void) {
 
  * @return true if the modem responds, otherwise false.
  */
-static bool wait_for_at(void) {
+bool wait_for_at(void) {
     int attempts = 5;
 
     while (attempts > 0) {
@@ -335,32 +335,8 @@ static bool wait_for_at(void) {
 bool connect_to_internet(void) {
     static bool already_called = false;
 
-    if (!cat_m1.is_powered()) {
-        ESP_LOGI(TAG, "Enabling R5 VCC");
-        cat_m1.power_supply(true);
-    }
-
-    ESP_LOGI(TAG, "Looking for response to AT command");
-    if ( ! wait_for_at()) {
-        already_called = false;
-        cat_m1.restart();
-        if ( ! wait_for_at()) {
-            ESP_LOGE(TAG, "Cannot talk to SARA R5");
-            return false;
-        }
-    }
-
-    r5.invertPowerPin(true);
-    r5.autoTimeZoneForBegin(true);
-
-    r5.enableAtDebugging();
-    //r5.enableDebugging();
-
-    // This is relatively benign - it enables the network indicator GPIO pin, set error message format, etc.
-    // It does close all open sockets, but there should not be any open sockets at this point so that is ok.
-    r5_ok = r5.begin(LTE_Serial, 115200);
-    if ( ! r5_ok) {
-        ESP_LOGE(TAG, "SARA-R5 begin failed");
+    if ( ! cat_m1.make_ready()) {
+        ESP_LOGE(TAG, "Could not initialise modem");
         return false;
     }
 
@@ -385,8 +361,6 @@ bool connect_to_internet(void) {
 
     // Network registration takes 4 seconds at best.
     ESP_LOGI(TAG, "Waiting for network registration");
-    delay(4000);
-
     for (int i = 0; i < 3; i++) {
         int attempts = 0;
         while (reg_status != SARA_R5_REGISTRATION_HOME && attempts < 4) {
@@ -398,7 +372,7 @@ bool connect_to_internet(void) {
 
             ESP_LOGI(TAG, "ESP registration status = %d", reg_status);
             r5.bufferedPoll();
-            delay(4000);
+            delay(2000);
             attempts++;
         }
     }
@@ -496,4 +470,13 @@ bool connect_to_internet(void) {
 
     already_called = true;
     return true;
+}
+
+int get_version_string(char *buffer, size_t length) {
+    if (buffer == nullptr) {
+        return -1;
+    }
+
+    int i = snprintf(buffer, length, "%u.%u.%u", ver_major, ver_minor, ver_update);
+    return i;
 }

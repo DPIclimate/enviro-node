@@ -31,6 +31,9 @@ if from_path.exists():
 
 # End of ulptool-pio hack
 
+# NOTE: This is the canonical definition of the firmware version. This is baked into the firmware
+# and placed into the wombat.sha1 file.
+_VERSION_NUM = '1.0.2'
 _VERSION_H = 'include/version.h'
 
 commit_const = 'const char* commit_id = "unknown";'
@@ -51,7 +54,13 @@ if len(repo_status) > 0:
 else:
     repo_status = 'clean'
 
-commit_const = f'#pragma once\nconst char* commit_id = "{commit_id} {repo_status}";'
+version_comps = _VERSION_NUM.split('.')
+
+commit_const = f'''const char* commit_id = "{commit_id}";
+uint16_t ver_major = {version_comps[0]};
+uint16_t ver_minor = {version_comps[1]};
+uint16_t ver_update = {version_comps[2]};
+const char* repo_status = "{repo_status}";'''
 
 with open(_VERSION_H, 'w') as version_h:
     version_h.write(commit_const)

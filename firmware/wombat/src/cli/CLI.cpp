@@ -8,7 +8,8 @@
 #include "cli/CLI.h"
 
 //! Command line stream
-Stream* cliStream = nullptr;
+Stream *CLI::cliStream = nullptr;
+
 //! Command buffer
 static char cmd[CLI::MAX_CLI_CMD_LEN+1];
 //! Message buffer
@@ -54,11 +55,27 @@ static const CLI_Command_Definition_t mqttCmd = {
         -1
 };
 
+//! FTP setup and connection commands
+static const CLI_Command_Definition_t ftpCmd = {
+        CLIFTP::cmd.c_str(),
+        "ftp:\r\n Configure FTP connection parameters\r\n",
+        CLIFTP::enter_cli,
+        -1
+};
+
 //! Power commands
 static const CLI_Command_Definition_t powerCmd = {
         CLIPower::cmd.c_str(),
-        "mqtt:\r\n Show battery and solar information\r\n",
+        "pwr:\r\n Show battery and solar information\r\n",
         CLIPower::enter_cli,
+        -1
+};
+
+//! SD card commands
+static const CLI_Command_Definition_t sdCmd = {
+        CLISDCard::cmd.c_str(),
+        "sd:\r\n Access the SD card\r\n",
+        CLISDCard::enter_cli,
         -1
 };
 
@@ -72,7 +89,9 @@ void CLI::init() {
     FreeRTOS_CLIRegisterCommand(&sdi12Cmd);
     FreeRTOS_CLIRegisterCommand(&catM1Cmd);
     FreeRTOS_CLIRegisterCommand(&mqttCmd);
+    FreeRTOS_CLIRegisterCommand(&ftpCmd);
     FreeRTOS_CLIRegisterCommand(&powerCmd);
+    FreeRTOS_CLIRegisterCommand(&sdCmd);
 }
 
 /**
@@ -111,9 +130,9 @@ void CLI::repl(Stream& io) {
                 rc = FreeRTOS_CLIProcessCommand(cmd, msg, MAX_CLI_MSG_LEN);
                 if (msg[0] != 0) {
                     io.print(msg);
-                    if (BluetoothServer::is_device_connected()) {
-                        BluetoothServer::notify_device(msg);
-                    }
+//                    if (BluetoothServer::is_device_connected()) {
+//                        BluetoothServer::notify_device(msg);
+//                    }
                 }
             }
         }

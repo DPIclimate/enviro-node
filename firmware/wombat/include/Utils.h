@@ -23,6 +23,9 @@ void disable12V(void);
 
 const char* iso8601(void);
 
+bool wait_for_at(void);
 bool connect_to_internet(void);
+
+int get_version_string(char *buffer, size_t length);
 
 #endif //WOMBAT_UTILS_H

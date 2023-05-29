@@ -4,6 +4,7 @@
 #include "Utils.h"
 #include "globals.h"
 #include "ulp.h"
+#include "sd-card/interface.h"
 #include <esp_log.h>
 
 #include <freertos/FreeRTOS.h>
@@ -201,21 +202,50 @@ void sensor_task(void) {
         read_sensor(sensors.sensors[sensor_idx].address, timeseries_array);
     }
 
+    sdi12.end();
+
     String str;
+
+    if (spiffs_ok) {
+        bool send_version = SPIFFS.exists(send_fw_version_name);
+        send_version = send_version | (esp_reset_reason() != ESP_RST_DEEPSLEEP);
+        if (send_version) {
+            SPIFFS.remove(send_fw_version_name);
+            ts_entry = timeseries_array.createNestedObject();
+            ts_entry["name"] = "fw_major";
+            ts_entry["value"] = ver_major;
+
+            ts_entry = timeseries_array.createNestedObject();
+            ts_entry["name"] = "fw_minor";
+            ts_entry["value"] = ver_minor;
+
+            ts_entry = timeseries_array.createNestedObject();
+            ts_entry["name"] = "fw_update";
+            ts_entry["value"] = ver_update;
+
+            msg["commit_id"] = commit_id;
+            msg["repo_status"] = repo_status;
+        }
+    }
+
     serializeJson(msg, str);
     ESP_LOGI(TAG, "Msg:\r\n%s\r\n", str.c_str());
 
-    // Write the message to a file so it can be sent on the next uplink cycle.
-    static const size_t MAX_FNAME = 32;
-    static char filename[MAX_FNAME + 1];
-    if (SPIFFS.begin()) {
+    if (spiffs_ok) {
+        // Write the message to a file so it can be sent on the next uplink cycle.
+        static const size_t MAX_FNAME = 32;
+        static char filename[MAX_FNAME + 1];
+
         snprintf(filename, MAX_FNAME, "/%s%s.json", DeviceConfig::getMsgFilePrefix(), timestamp);
         ESP_LOGI(TAG, "Creating unsent msg file [%s]", filename);
         File f = SPIFFS.open(filename, FILE_WRITE);
         serializeJson(msg, f);
         f.close();
-        SPIFFS.end();
     }
 
-    sdi12.end();
+    // Append the message to a file on the SD card.
+    if (SDCardInterface::is_ready()) {
+        snprintf(g_buffer, MAX_G_BUFFER, "%s,\n", str.c_str());
+        SDCardInterface::append_to_file(sd_card_datafile_name, g_buffer);
+    }
 }

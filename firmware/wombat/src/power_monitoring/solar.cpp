@@ -21,9 +21,9 @@ static bool ina219_ok = false;
  * set to a lower resolution.
  */
 void SolarMonitor::begin() {
-    if(!solar){
+    if (!solar) {
         solar = new Adafruit_INA219(solarAddr);
-        if(solar->begin()){
+        if (solar->begin()) {
             ina219_ok = true;
 
             // Lower resolution due to larger voltage range
@@ -43,12 +43,23 @@ void SolarMonitor::begin() {
  * @return Solar voltage.
  */
 float SolarMonitor::get_voltage(){
-    if (! ina219_ok || ! solar ){
+    if ( ! ina219_ok) {
+        ESP_LOGI(TAG, "ina219_ok: %d", ina219_ok);
+    }
+
+    if ( ! solar) {
+        ESP_LOGI(TAG, "solar is null");
+    }
+
+    if (! ina219_ok || ! solar) {
         return -1.0f;
     }
 
-    float solar_voltage = solar->getBusVoltage_V() +
-                    (solar->getShuntVoltage_mV() / 1000.0f);
+    float bus_volts = solar->getBusVoltage_V();
+    float shunt_mv = solar->getShuntVoltage_mV();
+    float solar_voltage = bus_volts + (shunt_mv / 1000.0f);
+
+    ESP_LOGI(TAG, "solar bus_volts = %.2f, shunt_mv = %.2f, final value: %.2f", bus_volts, shunt_mv, solar_voltage);
 
     return solar_voltage;
 }
@@ -60,18 +71,14 @@ float SolarMonitor::get_voltage(){
  *
  * @return Solar current.
  */
-float SolarMonitor::get_current(){
-    if (! ina219_ok){
-        return -1.0f;
+float SolarMonitor::get_current() {
+    if (ina219_ok && solar) {
+        float mA = solar->getCurrent_mA();
+        ESP_LOGI(TAG, "solar bus_mA = %.2f", mA);
+        return mA;
     }
 
-    float solar_current = -1.0f;
-
-    if(solar) {
-        solar_current = solar->getCurrent_mA();
-    }
-
-    return solar_current;
+    return -1.0f;
 }
 
 /**
@@ -80,7 +87,7 @@ float SolarMonitor::get_current(){
  * The IC will consume around 6 uA when in sleep mode.
  */
 void SolarMonitor::sleep() {
-    if(solar){
+    if (ina219_ok && solar) {
         solar->powerSave(true);
     }
 }
@@ -89,7 +96,7 @@ void SolarMonitor::sleep() {
  * @brief Wakes up the INA219 IC.
  */
 void SolarMonitor::wakeup() {
-    if(solar){
+    if (ina219_ok && solar) {
         solar->powerSave(false);
     }
 }

@@ -42,6 +42,14 @@ void BatteryMonitor::begin() {
  * @return Battery voltage.
  */
 float BatteryMonitor::get_voltage() {
+    if ( ! ina219_ok) {
+        ESP_LOGI(TAG, "ina219_ok: %d", ina219_ok);
+    }
+
+    if ( ! battery) {
+        ESP_LOGI(TAG, "battery is null");
+    }
+
     if ( ! ina219_ok || ! battery) {
         return -1.0f;
     }
@@ -50,7 +58,7 @@ float BatteryMonitor::get_voltage() {
     float shunt_mv = battery->getShuntVoltage_mV();
     float battery_voltage = bus_volts + (shunt_mv / 1000.0f);
 
-    ESP_LOGI(TAG, "bus_volts = %.2f, shunt_mv = %.2f", bus_volts, shunt_mv);
+    ESP_LOGI(TAG, "battery bus_volts = %.2f, shunt_mv = %.2f, final value: %.2f", bus_volts, shunt_mv, battery_voltage);
 
     return battery_voltage;
 }
@@ -67,14 +75,13 @@ float BatteryMonitor::get_voltage() {
  * @return Battery current.
  */
 float BatteryMonitor::get_current() {
-    if ( ! ina219_ok || ! battery ) {
-        return -1.0f;
+    if (ina219_ok && battery) {
+        float mA = battery->getCurrent_mA();
+        ESP_LOGI(TAG, "battery bus_mA = %.2f", mA);
+        return mA;
     }
 
-    float battery_current = battery->getCurrent_mA();
-    ESP_LOGI(TAG, "battery_current = %.2f", battery_current);
-
-    return battery_current;
+    return -1.0f;
 }
 
 /**

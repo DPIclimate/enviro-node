@@ -9,10 +9,10 @@
 #define TAG "mqtt_stack"
 
 #define MAX_RSP 64
-char rsp[MAX_RSP + 1];
+static char rsp[MAX_RSP + 1];
 
 #define MAX_BUF 2048
-char buf[MAX_BUF + 1];
+static char buf[MAX_BUF + 1];
 
 //void registrationCallback(SARA_R5_registration_status_t status, unsigned int lac, unsigned int ci, int Act) {
 //    ESP_LOGI(TAG, "%d, %u, %u, %d", status, lac, ci, Act);
@@ -72,7 +72,7 @@ bool mqtt_login(void) {
     uint16_t port = config.getMqttPort();
     std::string &user = config.getMqttUser();
     std::string &password = config.getMqttPassword();
-    
+
     r5.setMQTTserver(host.c_str(), port);
     delay(20);
 
@@ -118,12 +118,19 @@ bool mqtt_login(void) {
     }
 
     ESP_LOGI(TAG, "Checking if read URC arrived after subscribe");
-    r5.bufferedPoll();
+    for (int i = 0; i < 50; i++) {
+        delay(20);
+        r5.bufferedPoll();
+        if (lastCmd == SARA_R5_MQTT_COMMAND_READ) {
+            break;
+        }
+    }
+
     if (lastCmd == SARA_R5_MQTT_COMMAND_READ && lastResult > 0) {
         ESP_LOGI(TAG, "Config download waiting.");
         int qos;
         String topic;
-        int bytes_read;
+        int bytes_read = 0;
         memset(g_buffer, 0, MAX_G_BUFFER+1);
         SARA_R5_error_t err = r5.readMQTT(&qos, &topic, (uint8_t *)g_buffer, MAX_G_BUFFER, &bytes_read);
         if (bytes_read > 0) {
@@ -137,24 +144,33 @@ bool mqtt_login(void) {
                 counter++;
             }
 
-            // Apply config. This is done after publishing the empty message because
-            // if the config script contains a "config reboot" command and the retained
-            // config message has not been cleared then the node gets stuck in a reboot
-            // loop.
-            char *strtok_ctx;
-            char *cmd = strtok_r(g_buffer, "\n", &strtok_ctx);
-            while (cmd != nullptr) {
-                stripWS(cmd);
-                ESP_LOGI(TAG, "Command: [%s]", cmd);
-                BaseType_t rc = pdTRUE;
-                while (rc != pdFALSE) {
-                    rc = FreeRTOS_CLIProcessCommand(cmd, rsp, MAX_RSP);
-                    ESP_LOGI(TAG, "%s", rsp);
+            char* script = static_cast<char*>(malloc(bytes_read + 1));
+            if (script != nullptr) {
+                memcpy(script, g_buffer, bytes_read);
+                script[bytes_read] = 0;
+
+                // Apply config. This is done after publishing the empty message because
+                // if the config script contains a "config reboot" command and the retained
+                // config message has not been cleared then the node gets stuck in a reboot
+                // loop.
+                char *strtok_ctx;
+                char *cmd = strtok_r(script, "\n", &strtok_ctx);
+                while (cmd != nullptr) {
+                    stripWS(cmd);
+                    ESP_LOGI(TAG, "Command: [%s]", cmd);
+                    BaseType_t rc = pdTRUE;
+                    while (rc != pdFALSE) {
+                        rc = FreeRTOS_CLIProcessCommand(cmd, rsp, MAX_RSP);
+                        ESP_LOGI(TAG, "%s", rsp);
+                    }
+
+                    cmd = strtok_r(nullptr, "\n", &strtok_ctx);
                 }
 
-                cmd = strtok_r(nullptr, "\n", &strtok_ctx);
+                free(script);
+            } else {
+                ESP_LOGE(TAG, "Could not allocate memory for script");
             }
-
         } else {
             ESP_LOGW(TAG, "Did not read any config data.");
         }
