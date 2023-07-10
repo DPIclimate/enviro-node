@@ -211,8 +211,8 @@ void setup() {
 
     delay(100);
 
-    battery_monitor.begin();
-    solar_monitor.begin();
+    BatteryMonitor::begin();
+    SolarMonitor::begin();
 
     const esp_app_desc_t* app_desc = esp_ota_get_app_description();
     ESP_LOGI(TAG, "FW hdr: %s, %s,%s, %s, %s", app_desc->version, app_desc->project_name, app_desc->idf_ver, app_desc->date, app_desc->time);
@@ -302,27 +302,7 @@ void setup() {
         send_messages();
     }
 
-    ESP_LOGI(TAG, "Shutting down");
-
-    if (r5_ok) {
-        r5.modulePowerOff();
-    }
-
-    cat_m1.power_supply(false);
-    delay(20);
-    battery_monitor.sleep();
-    solar_monitor.sleep();
-
-    disable12V();
-    delay(20);
-
-    // Disable the SD card.
-    if (log_file) {
-        log_file->flush();
-        log_file->close();
-    }
-    SD.end();
-    digitalWrite(SD_CARD_ENABLE, LOW);
+    shutdown();
 
     // NOTE: Because the ESP32 effectively reboots after waking from deep sleep the ESP32 internal tick counter
     // always starts at 0. This means simply getting the value of millis() here is sufficient to get an idea of
@@ -332,8 +312,6 @@ void setup() {
     uint64_t delta_ms = 0;
     uint64_t sleep_time_us = 0;
     uint64_t setup_duration_ms = millis();
-
-    ESP_LOGI(TAG, "Code ran for %llu ms", setup_duration_ms);
 
     if (setup_duration_ms > measurement_interval_ms) {
         ESP_LOGW(TAG, "run time > measurement interval");
@@ -388,20 +366,40 @@ void setup() {
     }
 */
 
-/*
-    ESP_LOGI(TAG, "Unadjusted sleep_time_us = %lu", sleep_time_us);
+    ESP_LOGI(TAG, "Unadjusted sleep_time_us = %llu", sleep_time_us);
     sleep_time_us = (uint64_t)((float)sleep_time_us * config.getSleepAdjustment());
-    ESP_LOGI(TAG, "Adjusted sleep_time_us = %lu", sleep_time_us);
+    ESP_LOGI(TAG, "Adjusted sleep_time_us = %llu", sleep_time_us);
 
     float f_s_time = (float)sleep_time_us / 1000000.0f;
-    ESP_LOGI(TAG, "Run took %lu ms, going to sleep at: %s, for %.2f s", setup_duration_ms, iso8601(), f_s_time);
-*/
-
-    ESP_LOGI(TAG, "Sleeping for %llu us", sleep_time_us);
+    ESP_LOGI(TAG, "Run took %llu ms, going to sleep at: %s, for %.2f s", setup_duration_ms, iso8601(), f_s_time);
     Serial.flush();
 
     esp_sleep_enable_timer_wakeup(sleep_time_us);
     esp_deep_sleep_start();
+}
+
+void shutdown(void) {
+    ESP_LOGI(TAG, "Shutting down");
+
+    if (r5_ok) {
+        r5.modulePowerOff();
+    }
+
+    cat_m1.power_supply(false);
+    delay(20);
+    BatteryMonitor::sleep();
+    SolarMonitor::sleep();
+
+    disable12V();
+    delay(20);
+
+    // Disable the SD card.
+    if (log_file) {
+        log_file->flush();
+        log_file->close();
+    }
+    SD.end();
+    digitalWrite(SD_CARD_ENABLE, LOW);
 }
 
 void loop() {
