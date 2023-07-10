@@ -118,7 +118,14 @@ bool mqtt_login(void) {
     }
 
     ESP_LOGI(TAG, "Checking if read URC arrived after subscribe");
-    r5.bufferedPoll();
+    for (int i = 0; i < 50; i++) {
+        delay(20);
+        r5.bufferedPoll();
+        if (lastCmd == SARA_R5_MQTT_COMMAND_READ) {
+            break;
+        }
+    }
+
     if (lastCmd == SARA_R5_MQTT_COMMAND_READ && lastResult > 0) {
         ESP_LOGI(TAG, "Config download waiting.");
         int qos;
@@ -184,9 +191,14 @@ bool mqtt_logout(void) {
     return mqttLogoutOk;
 }
 
-bool mqtt_publish(String& topic, const char * const msg) {
+bool mqtt_publish(String& topic, const char * const msg, size_t msg_len) {
+    if (msg_len > 1024) {
+        ESP_LOGE(TAG, "Message too long, msg_len must be < 1024");
+        return false;
+    }
+
     ESP_LOGI(TAG, "Publish message: %s/%s", topic.c_str(), msg);
-    SARA_R5_error_t err = r5.mqttPublishBinaryMsg(topic, msg);
+    SARA_R5_error_t err = r5.mqttPublishBinaryMsg(topic, msg, msg_len, 1);
     if (err != SARA_R5_error_t::SARA_R5_ERROR_SUCCESS) {
         ESP_LOGE(TAG, "Publish failed");
         return false;

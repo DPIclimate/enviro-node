@@ -407,8 +407,6 @@ bool connect_to_internet(void) {
     snprintf(iso8601_buf, sizeof(iso8601_buf)-1, "%04d-%02d-%02dT%02d:%02d:%02dZ", tm.tm_year+1900, tm.tm_mon+1, tm.tm_mday, tm.tm_hour, tm.tm_min, tm.tm_sec);
     ESP_LOGI(TAG, "RTC time now: %s", iso8601_buf);
 
-    previous_rtc_seconds = tm.tm_sec;
-
     // Parse the response into a tm structure which will be used to convert to an epoch value.
     // Do not take account of the timezone or daylight savings. This means we'll be creating an
     // epoch time using the local time, but pretending it is UTC.
@@ -441,19 +439,6 @@ bool connect_to_internet(void) {
 
     // Now set the system clock.
     settimeofday(&tv, nullptr);
-
-    // With all that done, try to account for drift in the ESP32 RTC. Compare the seconds value
-    // saved from the RTC before setting the time from the R5 with the current seconds value from
-    // the R5. If there is a difference then set a value that can be used to adjust the sleep time
-    // to try and get back to the second we've drifted off from. Do not do this on the initial boot
-    // because the RTC will not have a valid value in it to compare against.
-    uint32_t  boot_count = DeviceConfig::get().getBootCount();
-    if (boot_count != 0) {
-        sleep_drift_adjustment = previous_rtc_seconds - tm.tm_sec;
-        if (sleep_drift_adjustment != 0) {
-            ESP_LOGI(TAG, "Previous seconds value: %d, sleep adjustment: %d", previous_rtc_seconds, sleep_drift_adjustment);
-        }
-    }
 
     // Enable the packet switching layer.
     // These commands come from the SARA R4/R5 Internet applications development guide

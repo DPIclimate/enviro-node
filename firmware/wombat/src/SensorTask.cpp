@@ -198,8 +198,13 @@ void sensor_task(void) {
     //
     // SDI-12 sensors
     //
+
+    // NOTE: This may make the message too long to send directly via MQTT on the
+    // SMP nodes because the 6 SDI-12 ID strings add about 200 bytes to the message.
+    JsonArray sdi12_ids = source_ids.createNestedArray("sdi-12");
     for (size_t sensor_idx = 0; sensor_idx < sensors.count; sensor_idx++) {
         read_sensor(sensors.sensors[sensor_idx].address, timeseries_array);
+        sdi12_ids.add((char*)&sensors.sensors[sensor_idx]);
     }
 
     sdi12.end();

@@ -15,5 +15,5 @@ typedef struct {
 
 bool ota_check_for_update(ota_firmware_info_t& ota_ctx);
 bool ota_download_update(const ota_firmware_info_t& ota_ctx);
-
+void back_to_factory(void);
 #endif //WOMBAT_OTA_UPDATE_H
