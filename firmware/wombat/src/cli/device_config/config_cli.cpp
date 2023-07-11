@@ -15,6 +15,7 @@
 #include "Utils.h"
 #include "ota_update.h"
 #include "ftp_stack.h"
+#include "globals.h"
 
 //! ESP32 debugging output tag
 #define TAG "config_cli"
@@ -91,12 +92,32 @@ BaseType_t CLIConfig::enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen,
         }
 
         if (!strncmp("ota", param, paramLen)) {
+            // If force is true the version number in wombat.sha1 is not checked.
+            // Use "config ota 1" to force the update.
+            bool force = false;
+
+            paramNum++;
+            const char* ch = FreeRTOS_CLIGetParameter(pcCommandString, paramNum, &paramLen);
+            if (ch != nullptr && paramLen > 0) {
+                force = (*ch == '1');
+            }
+
+            bool success = false;
             if (cat_m1.make_ready()) {
                 if (connect_to_internet()) {
                     if (ftp_login()) {
                         ota_firmware_info_t ota_ctx;
-                        if (ota_check_for_update(ota_ctx)) {
-                            ota_download_update(ota_ctx);
+                        int rc = ota_check_for_update(ota_ctx);
+                        // force is only useful if we received the wombat.sha1 file, so check that first.
+                        if (rc >= 0) {
+                            // Do the update if the server has later firmware or force is true.
+                            if (rc > 0 || force) {
+                                if (rc == 0) {
+                                    // If rc == 0 then we must be in here because force is true.
+                                    ESP_LOGI(TAG, "Forcing OTA update");
+                                }
+                                success = ota_download_update(ota_ctx);
+                            }
                         }
 
                         ftp_logout();
@@ -104,12 +125,17 @@ BaseType_t CLIConfig::enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen,
                 }
             }
 
-            strncpy(pcWriteBuffer, "\r\nOK\r\n", xWriteBufferLen - 1);
+            if (success) {
+                strncpy(pcWriteBuffer, "\r\nOK\r\n", xWriteBufferLen - 1);
+            } else {
+                strncpy(pcWriteBuffer, "\r\nERROR\r\n", xWriteBufferLen - 1);
+            }
             return pdFALSE;
         }
 
         if (!strncmp("reboot", param, paramLen)) {
             strncpy(pcWriteBuffer, "Rebooting\r\nOK\r\n", xWriteBufferLen - 1);
+            shutdown();
             esp_restart();
         }
 

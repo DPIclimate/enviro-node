@@ -34,6 +34,8 @@
 #include "esp_partition.h"
 #include "ota_update.h"
 #include "ftp_stack.h"
+#include "power_monitoring/battery.h"
+#include "power_monitoring/solar.h"
 
 #define TAG "wombat"
 
@@ -246,7 +248,7 @@ void setup() {
         //BluetoothServer::begin();
         progBtnPressed = false;
         ESP_LOGI(TAG, "Programmable button pressed while booting, dropping into REPL");
-        CLI::repl(Serial);
+        CLI::repl(Serial, Serial);
         ESP_LOGI(TAG, "Continuing");
     }
 
@@ -300,6 +302,17 @@ void setup() {
 
     if (is_uplink_cycle) {
         send_messages();
+
+        // If a config script turned up, run it now.
+        if (script != nullptr) {
+            ESP_LOGI(TAG, "Running config script\n%s", script);
+            StreamString scriptStream;
+            scriptStream.print(script);
+            // Ensure the script ends with an exit command.
+            scriptStream.print("\nexit\n");
+            free(script);
+            CLI::repl(scriptStream, Serial);
+        }
     }
 
     shutdown();

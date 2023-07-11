@@ -53,7 +53,13 @@ static bool process_file(File& file) {
         }
     }
 
-    return mqtt_publish(topic, msg_buf, len);
+    // This is not always true - if this function is called after a failed login then
+    // we want to skip publishing the message.
+    if (mqtt_status == MQTT_LOGIN_OK) {
+        return mqtt_publish(topic, msg_buf, len);
+    }
+
+    return false;
 }
 
 void send_messages(void) {
@@ -98,6 +104,11 @@ void send_messages(void) {
             if (remove_file) {
                 snprintf(g_buffer, MAX_G_BUFFER, "/%s", msg_filename);
                 SPIFFS.remove(g_buffer);
+            }
+
+            if (mqtt_status == MQTT_LOGIN_FAILED) {
+                ESP_LOGW(TAG, "MQTT login failed, skipping any further messages");
+                break;
             }
 
             file = root.openNextFile();

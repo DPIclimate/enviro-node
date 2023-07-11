@@ -32,14 +32,15 @@
  */
 class CLI {
 public:
-    static Stream *cliStream;
+    static Stream *cliInput;
+    static Stream *cliOutput;
     //! Maximum command (input) length
     static const uint8_t MAX_CLI_CMD_LEN = 48;
     //! Maximum command (output) length
     static const uint8_t MAX_CLI_MSG_LEN = 255;
 
     static void init();
-    static void repl(Stream& io);
+    static void repl(Stream& input, Stream& output);
 };
 
 #endif //WOMBAT_CLI_H

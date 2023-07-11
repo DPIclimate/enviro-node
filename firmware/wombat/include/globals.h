@@ -1,8 +1,6 @@
 #ifndef WOMBAT_GLOBALS_H
 #define WOMBAT_GLOBALS_H
 
-#include "power_monitoring/battery.h"
-#include "power_monitoring/solar.h"
 #include "SparkFun_u-blox_SARA-R5_Arduino_Library.h"
 #include "CAT_M1.h"
 
@@ -44,8 +42,6 @@ extern  uint16_t ver_update;
 /// Do not use in other tasks.
 EXTERN char g_buffer[MAX_G_BUFFER + 1];
 
-EXTERN BatteryMonitor battery_monitor;
-EXTERN SolarMonitor solar_monitor;
 EXTERN bool r5_ok;
 
 constexpr char sd_card_datafile_name[] = "/data.json";
@@ -61,5 +57,6 @@ SARA_R5 r5(LTE_PWR_ON, -1);
 extern SARA_R5 r5;
 #endif
 
+extern char* script;
 
 #endif //WOMBAT_GLOBALS_H

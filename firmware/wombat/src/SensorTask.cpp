@@ -5,6 +5,8 @@
 #include "globals.h"
 #include "ulp.h"
 #include "sd-card/interface.h"
+#include "power_monitoring/battery.h"
+#include "power_monitoring/solar.h"
 #include <esp_log.h>
 
 #include <freertos/FreeRTOS.h>
@@ -175,11 +177,11 @@ void sensor_task(void) {
     //
     JsonObject ts_entry = timeseries_array.createNestedObject();
     ts_entry["name"] = "battery (v)";
-    ts_entry["value"] = battery_monitor.get_voltage();
+    ts_entry["value"] = BatteryMonitor::get_voltage();
 
     ts_entry = timeseries_array.createNestedObject();
     ts_entry["name"] = "solar (v)";
-    ts_entry["value"] = solar_monitor.get_voltage();
+    ts_entry["value"] = SolarMonitor::get_voltage();
 
     //
     // Pulse counter

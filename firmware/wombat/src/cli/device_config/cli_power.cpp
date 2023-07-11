@@ -11,7 +11,8 @@
 
 #include "cli/FreeRTOS_CLI.h"
 
-#include "globals.h"
+#include "power_monitoring/battery.h"
+#include "power_monitoring/solar.h"
 
 //! ESP32 debug output tag
 #define TAG "cli_power"
@@ -60,11 +61,11 @@ BaseType_t CLIPower::enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen,
     if (param != nullptr && paramLen > 0) {
         if (!strncmp("show", param, paramLen)) {
             response_buffer_.clear();
-            float bv = battery_monitor.get_voltage();
-            float bi = battery_monitor.get_current();
+            float bv = BatteryMonitor::get_voltage();
+            float bi = BatteryMonitor::get_current();
 
-            float sv = solar_monitor.get_voltage();
-            float si = solar_monitor.get_current();
+            float sv = SolarMonitor::get_voltage();
+            float si = SolarMonitor::get_current();
 
             snprintf(pcWriteBuffer, xWriteBufferLen - 1, "Battery: %.2fv %.2fA, solar: %.2fv %.2fA\r\n", bv, bi, sv, si);
             return pdFALSE;

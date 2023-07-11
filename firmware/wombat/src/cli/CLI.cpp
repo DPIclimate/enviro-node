@@ -8,7 +8,8 @@
 #include "cli/CLI.h"
 
 //! Command line stream
-Stream *CLI::cliStream = nullptr;
+Stream *CLI::cliInput = nullptr;
+Stream *CLI::cliOutput = nullptr;
 
 //! Command buffer
 static char cmd[CLI::MAX_CLI_CMD_LEN+1];
@@ -104,19 +105,20 @@ void CLI::init() {
  * @param io A stream object used for reading input from the user and writing
  *           output to the user.
  */
-void CLI::repl(Stream& io) {
+void CLI::repl(Stream& input, Stream& output) {
     // cliStream is used by the SDI-12 & Cat M1 passthrough modes, so must be
     // set from here before either mode is used.
-    cliStream = &io;
-    io.println("Entering repl");
+    cliInput = &input;
+    cliOutput = &output;
+    output.println("Entering repl");
 
     while (true) {
-        io.print("$ ");
-        while (!io.available()) {
+        output.print("$ ");
+        while (!input.available()) {
             taskYIELD();
         }
 
-        size_t len = readFromStreamUntil(io, '\n', cmd, MAX_CLI_CMD_LEN);
+        size_t len = readFromStreamUntil(input, '\n', cmd, MAX_CLI_CMD_LEN);
         if (len > 1) {
             cmd[len] = 0;
             stripWS(cmd);
@@ -129,7 +131,7 @@ void CLI::repl(Stream& io) {
                 memset(msg, 0, sizeof(msg));
                 rc = FreeRTOS_CLIProcessCommand(cmd, msg, MAX_CLI_MSG_LEN);
                 if (msg[0] != 0) {
-                    io.print(msg);
+                    output.print(msg);
 //                    if (BluetoothServer::is_device_connected()) {
 //                        BluetoothServer::notify_device(msg);
 //                    }
@@ -138,5 +140,5 @@ void CLI::repl(Stream& io) {
         }
     }
 
-    io.println("Exiting repl");
+    output.println("Exiting repl");
 }

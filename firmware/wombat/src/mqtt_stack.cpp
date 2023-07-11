@@ -1,5 +1,4 @@
 
-#include "CAT_M1.h"
 #include "Utils.h"
 #include "DeviceConfig.h"
 #include "SparkFun_u-blox_SARA-R5_Arduino_Library.h"
@@ -13,6 +12,10 @@ static char rsp[MAX_RSP + 1];
 
 #define MAX_BUF 2048
 static char buf[MAX_BUF + 1];
+
+// This buffer is allocated in the mqtt_login method but the script should be
+// run later, so it must be freed elsewhere after the run.
+char *script = nullptr;
 
 //void registrationCallback(SARA_R5_registration_status_t status, unsigned int lac, unsigned int ci, int Act) {
 //    ESP_LOGI(TAG, "%d, %u, %u, %d", status, lac, ci, Act);
@@ -107,73 +110,83 @@ bool mqtt_login(void) {
 
     ESP_LOGI(TAG, "Connected to MQTT");
 
-    String cmd_topic("wombat/");
-    cmd_topic += config.node_id;
-    r5.subscribeMQTTtopic(1, cmd_topic);
-    mqttGotURC = false;
+    // If script is null, it is ok to check for a config download. If script already has a value it means
+    // a script has been downloaded and may be executing, so don't check for or download another one.
+    if (script == nullptr) {
+        String cmd_topic("wombat/");
+        cmd_topic += config.node_id;
+        r5.subscribeMQTTtopic(1, cmd_topic);
+        mqttGotURC = false;
 
-    ESP_LOGI(TAG, "Waiting for subscribe URC");
-    while ( ! mqttGotURC) {
-        r5.bufferedPoll();
-    }
-
-    ESP_LOGI(TAG, "Checking if read URC arrived after subscribe");
-    for (int i = 0; i < 50; i++) {
-        delay(20);
-        r5.bufferedPoll();
-        if (lastCmd == SARA_R5_MQTT_COMMAND_READ) {
-            break;
+        ESP_LOGI(TAG, "Checking for a config script, waiting for subscribe URC");
+        while (!mqttGotURC) {
+            r5.bufferedPoll();
         }
-    }
 
-    if (lastCmd == SARA_R5_MQTT_COMMAND_READ && lastResult > 0) {
-        ESP_LOGI(TAG, "Config download waiting.");
-        int qos;
-        String topic;
-        int bytes_read = 0;
-        memset(g_buffer, 0, MAX_G_BUFFER+1);
-        SARA_R5_error_t err = r5.readMQTT(&qos, &topic, (uint8_t *)g_buffer, MAX_G_BUFFER, &bytes_read);
-        if (bytes_read > 0) {
-            // Publish a zero length message to clear the retained message.
-            r5.mqttPublishTextMsg(cmd_topic, "", 0, true);
-            uint8_t counter = 0;
-            mqttGotURC = false;
-            while (mqttGotURC != true && counter < 50) {
-                r5.bufferedPoll();
-                delay(20);
-                counter++;
+        // FIXME: What if the URC above is an error?
+
+        for (int i = 0; i < 50; i++) {
+            delay(20);
+            r5.bufferedPoll();
+            if (lastCmd == SARA_R5_MQTT_COMMAND_READ) {
+                break;
             }
+        }
 
-            char* script = static_cast<char*>(malloc(bytes_read + 1));
-            if (script != nullptr) {
-                memcpy(script, g_buffer, bytes_read);
-                script[bytes_read] = 0;
-
-                // Apply config. This is done after publishing the empty message because
-                // if the config script contains a "config reboot" command and the retained
-                // config message has not been cleared then the node gets stuck in a reboot
-                // loop.
-                char *strtok_ctx;
-                char *cmd = strtok_r(script, "\n", &strtok_ctx);
-                while (cmd != nullptr) {
-                    stripWS(cmd);
-                    ESP_LOGI(TAG, "Command: [%s]", cmd);
-                    BaseType_t rc = pdTRUE;
-                    while (rc != pdFALSE) {
-                        rc = FreeRTOS_CLIProcessCommand(cmd, rsp, MAX_RSP);
-                        ESP_LOGI(TAG, "%s", rsp);
-                    }
-
-                    cmd = strtok_r(nullptr, "\n", &strtok_ctx);
+        if (lastCmd == SARA_R5_MQTT_COMMAND_READ && lastResult > 0) {
+            ESP_LOGI(TAG, "Config download waiting.");
+            int qos;
+            String topic;
+            int bytes_read = 0;
+            memset(g_buffer, 0, MAX_G_BUFFER + 1);
+            SARA_R5_error_t err = r5.readMQTT(&qos, &topic, (uint8_t *) g_buffer, MAX_G_BUFFER, &bytes_read);
+            if (bytes_read > 0) {
+                // Publish a zero length message to clear the retained message.
+                r5.mqttPublishTextMsg(cmd_topic, "", 0, true);
+                uint8_t counter = 0;
+                mqttGotURC = false;
+                while (mqttGotURC != true && counter < 50) {
+                    r5.bufferedPoll();
+                    delay(20);
+                    counter++;
                 }
 
-                free(script);
+                script = static_cast<char *>(malloc(bytes_read + 1));
+                if (script != nullptr) {
+                    memcpy(script, g_buffer, bytes_read);
+                    script[bytes_read] = 0;
+/*
+                    // Apply config. This is done after publishing the empty message because
+                    // if the config script contains a "config reboot" command and the retained
+                    // config message has not been cleared then the node gets stuck in a reboot
+                    // loop.
+                    char *strtok_ctx;
+                    char *cmd = strtok_r(script, "\n", &strtok_ctx);
+                    while (cmd != nullptr) {
+                        stripWS(cmd);
+                        ESP_LOGI(TAG, "Command: [%s]", cmd);
+                        BaseType_t rc = pdTRUE;
+                        while (rc != pdFALSE) {
+                            rc = FreeRTOS_CLIProcessCommand(cmd, rsp, MAX_RSP);
+                            ESP_LOGI(TAG, "%s", rsp);
+                        }
+
+                        cmd = strtok_r(nullptr, "\n", &strtok_ctx);
+                    }
+
+                    free(script);
+*/
+                } else {
+                    ESP_LOGE(TAG, "Could not allocate memory for script");
+                }
             } else {
-                ESP_LOGE(TAG, "Could not allocate memory for script");
+                ESP_LOGW(TAG, "Did not read any config data.");
             }
         } else {
-            ESP_LOGW(TAG, "Did not read any config data.");
+            ESP_LOGI(TAG, "No config script");
         }
+    } else {
+        ESP_LOGI(TAG, "Already have a config script, not checking for a new one");
     }
 
     return true;

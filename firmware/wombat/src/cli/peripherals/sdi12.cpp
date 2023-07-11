@@ -170,26 +170,26 @@ BaseType_t CLISdi12::enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen,
         }
 
         if (!strncmp("pt", param, paramLen)) {
-            if (CLI::cliStream == nullptr) {
+            if (CLI::cliInput == nullptr || CLI::cliOutput == nullptr) {
                 strncpy(pcWriteBuffer, "ERROR: input stream not set for SDI-12 passthrough mode\r\n", xWriteBufferLen - 1);
                 return pdFALSE;
             }
 
-            CLI::cliStream->println("Entering SDI-12 passthrough mode, press ctrl-D to exit");
+            CLI::cliOutput->println("Entering SDI-12 passthrough mode, press ctrl-D to exit");
             sdi12.begin();
 
             char cmd[8];
 
             int ch;
             while (true) {
-                if (CLI::cliStream->available()) {
-                    ch = CLI::cliStream->peek();
+                if (CLI::cliInput->available()) {
+                    ch = CLI::cliInput->peek();
                     if (ch == 0x04) {
                         break;
                     }
 
                     memset(cmd, 0, sizeof(cmd));
-                    readFromStreamUntil(*CLI::cliStream, '\n', cmd, sizeof(cmd));
+                    readFromStreamUntil(*CLI::cliInput, '\n', cmd, sizeof(cmd));
                     stripWS(cmd);
                     if (strlen(cmd) > 0) {
                         sdi12.sendCommand(cmd);
@@ -200,9 +200,9 @@ BaseType_t CLISdi12::enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen,
                     ch = sdi12.read();
                     char cch = ch & 0xFF;
                     if (cch >= ' ') {
-                        CLI::cliStream->write(ch);
+                        CLI::cliOutput->write(ch);
                     } else {
-                        CLI::cliStream->printf(" 0x%X ", cch);
+                        CLI::cliOutput->printf(" 0x%X ", cch);
                     }
                 }
 
