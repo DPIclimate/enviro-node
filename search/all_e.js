@@ -14,9 +14,8 @@ var searchData=
   ['power_5fon_11',['power_on',['../class_c_a_t___m1.html#a6a77f778f2ec4eea70a202a5e24dcec9',1,'CAT_M1']]],
   ['power_5fsupply_12',['power_supply',['../class_c_a_t___m1.html#a7003b03e6081e685aa719c977f90f9d7',1,'CAT_M1']]],
   ['powercmd_13',['powerCmd',['../_c_l_i_8cpp.html#a44f22557b40c51afd30cdb330930bb8d',1,'CLI.cpp']]],
-  ['previous_5frtc_5fseconds_14',['previous_rtc_seconds',['../globals_8h.html#a4e9c5eb188f1ee917ed61422ab536e6e',1,'globals.h']]],
-  ['process_5ffile_15',['process_file',['../uplinks_8cpp.html#afefd79d8017c716399e160b77da5e86b',1,'uplinks.cpp']]],
-  ['prog_5fbtn_16',['PROG_BTN',['../peripherals_8h.html#a699ee81d6d32a3223c605cfa889b1819',1,'peripherals.h']]],
-  ['progbtnisr_17',['progBtnISR',['../peripherals_8h.html#ac13889440b8cda4790841a83ca461f0d',1,'peripherals.h']]],
-  ['progbtnpressed_18',['progBtnPressed',['../peripherals_8h.html#a03be9ef4953686eb4c64ea3b139c0150',1,'peripherals.h']]]
+  ['process_5ffile_14',['process_file',['../uplinks_8cpp.html#afefd79d8017c716399e160b77da5e86b',1,'uplinks.cpp']]],
+  ['prog_5fbtn_15',['PROG_BTN',['../peripherals_8h.html#a699ee81d6d32a3223c605cfa889b1819',1,'peripherals.h']]],
+  ['progbtnisr_16',['progBtnISR',['../peripherals_8h.html#ac13889440b8cda4790841a83ca461f0d',1,'peripherals.h']]],
+  ['progbtnpressed_17',['progBtnPressed',['../peripherals_8h.html#a03be9ef4953686eb4c64ea3b139c0150',1,'peripherals.h']]]
 ];

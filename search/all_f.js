@@ -10,7 +10,7 @@ var searchData=
   ['readfromstreamuntil_7',['readFromStreamUntil',['../_utils_8h.html#a4c7cec5e11007187b7af2425eb8038f7',1,'readFromStreamUntil(Stream &amp;stream, const char delim, char *const buffer, const size_t max):&#160;Utils.cpp'],['../_utils_8cpp.html#a4c7cec5e11007187b7af2425eb8038f7',1,'readFromStreamUntil(Stream &amp;stream, const char delim, char *const buffer, const size_t max):&#160;Utils.cpp']]],
   ['readme_2emd_8',['README.md',['../_r_e_a_d_m_e_8md.html',1,'']]],
   ['reg_9',['Reg',['../class_t_c_a9534.html#a9c648884816563b5d5ef68d61a37a586',1,'TCA9534']]],
-  ['repl_10',['repl',['../class_c_l_i.html#ad97dfdd8399f8673fbc64e5975f82543',1,'CLI']]],
+  ['repl_10',['repl',['../class_c_l_i.html#a6f4ca35ba3125d94b214824c11634ea8',1,'CLI']]],
   ['repo_5fstatus_11',['repo_status',['../namespacegen__version__h.html#aa4c82b92eda8b6b0946f356366068234',1,'gen_version_h.repo_status()'],['../globals_8h.html#ad3cd56bc6b4208245d0910f091c6ce5f',1,'repo_status():&#160;globals.h']]],
   ['reset_12',['reset',['../class_device_config.html#af40beaf1b7a0d8a6f26cb032492909e5',1,'DeviceConfig']]],
   ['response_13',['response',['../sdi12_8cpp.html#a9feff4e42e3e246310687f5462ee3bd2',1,'sdi12.cpp']]],

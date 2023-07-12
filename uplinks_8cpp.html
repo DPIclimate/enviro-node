@@ -107,7 +107,7 @@ $(document).ready(function(){initNavTree('uplinks_8cpp.html',''); initResizable(
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for uplinks.cpp:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="uplinks_8cpp__incl.svg" width="1166" height="359"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="uplinks_8cpp__incl.svg" width="834" height="359"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 </div><table class="memberdecls">
@@ -137,6 +137,14 @@ Functions</h2></td></tr>
 Variables</h2></td></tr>
 <tr class="memitem:a78f66b6151151d06e9ccc204b4b672a5"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="uplinks_8cpp.html#a1560a77e9d8f68e1eaf4f68c40327ed4">mqtt_status_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="uplinks_8cpp.html#a78f66b6151151d06e9ccc204b4b672a5">mqtt_status</a> = <a class="el" href="uplinks_8cpp.html#a1560a77e9d8f68e1eaf4f68c40327ed4aaddb74fce198c227584e6687652f3097">MQTT_UNINITIALISED</a></td></tr>
 <tr class="separator:a78f66b6151151d06e9ccc204b4b672a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abfa2bdbf53ee578e72cdd22c99cdbd84"><td class="memItemLeft" align="right" valign="top">static constexpr size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="uplinks_8cpp.html#abfa2bdbf53ee578e72cdd22c99cdbd84">MAX_MSG_LEN</a> = 1024</td></tr>
+<tr class="separator:abfa2bdbf53ee578e72cdd22c99cdbd84"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aecb6f214ab3092a364988f2f6f1eb601"><td class="memItemLeft" align="right" valign="top">static char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="uplinks_8cpp.html#aecb6f214ab3092a364988f2f6f1eb601">msg_buf</a> [<a class="el" href="uplinks_8cpp.html#abfa2bdbf53ee578e72cdd22c99cdbd84">MAX_MSG_LEN</a>+1]</td></tr>
+<tr class="separator:aecb6f214ab3092a364988f2f6f1eb601"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8c8f77270c53e9649fe043f3b54f927b"><td class="memItemLeft" align="right" valign="top">static constexpr size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="uplinks_8cpp.html#a8c8f77270c53e9649fe043f3b54f927b">MAX_FILENAME_LEN</a> = 64</td></tr>
+<tr class="separator:a8c8f77270c53e9649fe043f3b54f927b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1fa023560c04900d0864e90e671f838c"><td class="memItemLeft" align="right" valign="top">static char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="uplinks_8cpp.html#a1fa023560c04900d0864e90e671f838c">msg_filename</a> [<a class="el" href="uplinks_8cpp.html#a8c8f77270c53e9649fe043f3b54f927b">MAX_FILENAME_LEN</a>+1]</td></tr>
+<tr class="separator:a1fa023560c04900d0864e90e671f838c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="afc3d101f633a076cc1ca84b85b6224b2" name="afc3d101f633a076cc1ca84b85b6224b2"></a>
@@ -245,6 +253,50 @@ Variables</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Variable Documentation</h2>
+<a id="a8c8f77270c53e9649fe043f3b54f927b" name="a8c8f77270c53e9649fe043f3b54f927b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8c8f77270c53e9649fe043f3b54f927b">&#9670;&#160;</a></span>MAX_FILENAME_LEN</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr size_t MAX_FILENAME_LEN = 64</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="abfa2bdbf53ee578e72cdd22c99cdbd84" name="abfa2bdbf53ee578e72cdd22c99cdbd84"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abfa2bdbf53ee578e72cdd22c99cdbd84">&#9670;&#160;</a></span>MAX_MSG_LEN</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr size_t MAX_MSG_LEN = 1024</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a78f66b6151151d06e9ccc204b4b672a5" name="a78f66b6151151d06e9ccc204b4b672a5"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a78f66b6151151d06e9ccc204b4b672a5">&#9670;&#160;</a></span>mqtt_status</h2>
 
@@ -256,6 +308,50 @@ Variables</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="uplinks_8cpp.html#a1560a77e9d8f68e1eaf4f68c40327ed4">mqtt_status_t</a> mqtt_status = <a class="el" href="uplinks_8cpp.html#a1560a77e9d8f68e1eaf4f68c40327ed4aaddb74fce198c227584e6687652f3097">MQTT_UNINITIALISED</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aecb6f214ab3092a364988f2f6f1eb601" name="aecb6f214ab3092a364988f2f6f1eb601"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aecb6f214ab3092a364988f2f6f1eb601">&#9670;&#160;</a></span>msg_buf</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">char msg_buf[<a class="el" href="uplinks_8cpp.html#abfa2bdbf53ee578e72cdd22c99cdbd84">MAX_MSG_LEN</a>+1]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1fa023560c04900d0864e90e671f838c" name="a1fa023560c04900d0864e90e671f838c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1fa023560c04900d0864e90e671f838c">&#9670;&#160;</a></span>msg_filename</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">char msg_filename[<a class="el" href="uplinks_8cpp.html#a8c8f77270c53e9649fe043f3b54f927b">MAX_FILENAME_LEN</a>+1]</td>
         </tr>
       </table>
   </td>

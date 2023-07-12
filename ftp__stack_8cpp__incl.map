@@ -1,14 +1,11 @@
 <map id="firmware/wombat/src/ftp_stack.cpp" name="firmware/wombat/src/ftp_stack.cpp">
-<area shape="rect" id="node1" title=" " alt="" coords="167,5,327,45"/>
-<area shape="rect" id="node2" href="$_device_config_8h.html" title="Node configuration options." alt="" coords="20,93,140,119"/>
-<area shape="rect" id="node5" title=" " alt="" coords="160,167,334,207"/>
-<area shape="rect" id="node6" href="$globals_8h.html" title=" " alt="" coords="418,93,500,119"/>
-<area shape="rect" id="node3" title=" " alt="" coords="558,328,642,353"/>
-<area shape="rect" id="node4" title=" " alt="" coords="25,174,136,199"/>
-<area shape="rect" id="node7" href="$battery_8h.html" title="Battery voltage and current monitoring using INA219 IC." alt="" coords="358,174,560,199"/>
-<area shape="rect" id="node9" href="$solar_8h.html" title="Solar voltage and current monitoring using INA219 IC." alt="" coords="584,174,771,199"/>
-<area shape="rect" id="node10" href="$_c_a_t___m1_8h.html" title=" " alt="" coords="796,174,882,199"/>
-<area shape="rect" id="node8" title=" " alt="" coords="497,255,637,280"/>
-<area shape="rect" id="node11" title=" " alt="" coords="767,328,831,353"/>
-<area shape="rect" id="node12" href="$_t_c_a9534_8h.html" title=" " alt="" coords="712,255,803,280"/>
+<area shape="rect" id="node1" title=" " alt="" coords="131,5,291,45"/>
+<area shape="rect" id="node2" href="$_device_config_8h.html" title="Node configuration options." alt="" coords="19,93,139,119"/>
+<area shape="rect" id="node5" title=" " alt="" coords="159,167,332,207"/>
+<area shape="rect" id="node6" href="$globals_8h.html" title=" " alt="" coords="249,93,330,119"/>
+<area shape="rect" id="node3" title=" " alt="" coords="81,328,165,353"/>
+<area shape="rect" id="node4" title=" " alt="" coords="23,174,134,199"/>
+<area shape="rect" id="node7" href="$_c_a_t___m1_8h.html" title=" " alt="" coords="357,174,443,199"/>
+<area shape="rect" id="node8" title=" " alt="" coords="327,328,391,353"/>
+<area shape="rect" id="node9" href="$_t_c_a9534_8h.html" title=" " alt="" coords="272,255,363,280"/>
 </map>

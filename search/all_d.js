@@ -6,7 +6,7 @@ var searchData=
   ['onwrite_3',['onWrite',['../class_bluetooth_uart_service_callbacks.html#ab73163e54cd7377e5fc83af2c3747b75',1,'BluetoothUartServiceCallbacks']]],
   ['operator_3d_4',['operator=',['../class_device_config.html#a438c4a3d753923f0a42bf271c72b65b9',1,'DeviceConfig']]],
   ['original_5',['ORIGINAL',['../class_t_c_a9534.html#adf1c2b9cfef68f8181a8b588757ae10aaa87d5006e1de1bfc07d5c56086ad20f1',1,'TCA9534']]],
-  ['ota_5fcheck_5ffor_5fupdate_6',['ota_check_for_update',['../ota__update_8cpp.html#a0c6126555236867576c763826aa134b2',1,'ota_check_for_update(ota_firmware_info_t &amp;ota_ctx):&#160;ota_update.cpp'],['../ota__update_8h.html#a0c6126555236867576c763826aa134b2',1,'ota_check_for_update(ota_firmware_info_t &amp;ota_ctx):&#160;ota_update.cpp']]],
+  ['ota_5fcheck_5ffor_5fupdate_6',['ota_check_for_update',['../ota__update_8cpp.html#a50bee239ec4dcc981f33611e033cfde4',1,'ota_check_for_update(ota_firmware_info_t &amp;ota_ctx):&#160;ota_update.cpp'],['../ota__update_8h.html#a50bee239ec4dcc981f33611e033cfde4',1,'ota_check_for_update(ota_firmware_info_t &amp;ota_ctx):&#160;ota_update.cpp']]],
   ['ota_5fdownload_5fupdate_7',['ota_download_update',['../ota__update_8cpp.html#a230a906c7cdb4fcf6da187aaf25b755e',1,'ota_download_update(const ota_firmware_info_t &amp;ota_ctx):&#160;ota_update.cpp'],['../ota__update_8h.html#a230a906c7cdb4fcf6da187aaf25b755e',1,'ota_download_update(const ota_firmware_info_t &amp;ota_ctx):&#160;ota_update.cpp']]],
   ['ota_5ffirmware_5finfo_5ft_8',['ota_firmware_info_t',['../structota__firmware__info__t.html',1,'']]],
   ['ota_5fupdate_2ecpp_9',['ota_update.cpp',['../ota__update_8cpp.html',1,'']]],

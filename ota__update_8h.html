@@ -120,20 +120,40 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a0c6126555236867576c763826aa134b2"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ota__update_8h.html#a0c6126555236867576c763826aa134b2">ota_check_for_update</a> (<a class="el" href="structota__firmware__info__t.html">ota_firmware_info_t</a> &amp;ota_ctx)</td></tr>
-<tr class="separator:a0c6126555236867576c763826aa134b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a50bee239ec4dcc981f33611e033cfde4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ota__update_8h.html#a50bee239ec4dcc981f33611e033cfde4">ota_check_for_update</a> (<a class="el" href="structota__firmware__info__t.html">ota_firmware_info_t</a> &amp;ota_ctx)</td></tr>
+<tr class="separator:a50bee239ec4dcc981f33611e033cfde4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a230a906c7cdb4fcf6da187aaf25b755e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ota__update_8h.html#a230a906c7cdb4fcf6da187aaf25b755e">ota_download_update</a> (const <a class="el" href="structota__firmware__info__t.html">ota_firmware_info_t</a> &amp;ota_ctx)</td></tr>
 <tr class="separator:a230a906c7cdb4fcf6da187aaf25b755e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af1069b59800b0f3a7b2cb77eb83a6af9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ota__update_8h.html#af1069b59800b0f3a7b2cb77eb83a6af9">back_to_factory</a> (void)</td></tr>
+<tr class="separator:af1069b59800b0f3a7b2cb77eb83a6af9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a0c6126555236867576c763826aa134b2" name="a0c6126555236867576c763826aa134b2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0c6126555236867576c763826aa134b2">&#9670;&#160;</a></span>ota_check_for_update()</h2>
+<a id="af1069b59800b0f3a7b2cb77eb83a6af9" name="af1069b59800b0f3a7b2cb77eb83a6af9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af1069b59800b0f3a7b2cb77eb83a6af9">&#9670;&#160;</a></span>back_to_factory()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool ota_check_for_update </td>
+          <td class="memname">void back_to_factory </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a50bee239ec4dcc981f33611e033cfde4" name="a50bee239ec4dcc981f33611e033cfde4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a50bee239ec4dcc981f33611e033cfde4">&#9670;&#160;</a></span>ota_check_for_update()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ota_check_for_update </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structota__firmware__info__t.html">ota_firmware_info_t</a> &amp;&#160;</td>
           <td class="paramname"><em>ota_ctx</em></td><td>)</td>
@@ -141,6 +161,14 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p >Check if the server has a newer version of the firmware than is running on the Wombat.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ota_ctx</td><td>a reference to an OTA firmware info structure that carries info about the firmware on the server. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>-1 if retrieving wombat.sha1 fails, 0 if the running version is at least as new as the version on the server, 1 if the server as a new version. </dd></dl>
 
 </div>
 </div>

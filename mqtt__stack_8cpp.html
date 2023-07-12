@@ -97,8 +97,7 @@ $(document).ready(function(){initNavTree('mqtt__stack_8cpp.html',''); initResiza
   <div class="headertitle"><div class="title">mqtt_stack.cpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;<a class="el" href="_c_a_t___m1_8h_source.html">CAT_M1.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="_utils_8h_source.html">Utils.h</a>&quot;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="_utils_8h_source.html">Utils.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_device_config_8h_source.html">DeviceConfig.h</a>&quot;</code><br />
 <code>#include &quot;SparkFun_u-blox_SARA-R5_Arduino_Library.h&quot;</code><br />
 <code>#include &quot;<a class="el" href="globals_8h_source.html">globals.h</a>&quot;</code><br />
@@ -106,7 +105,7 @@ $(document).ready(function(){initNavTree('mqtt__stack_8cpp.html',''); initResiza
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for mqtt_stack.cpp:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="mqtt__stack_8cpp__incl.svg" width="2351" height="447"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="mqtt__stack_8cpp__incl.svg" width="2000" height="432"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 </div><table class="memberdecls">
@@ -127,8 +126,8 @@ Functions</h2></td></tr>
 <tr class="separator:a8d983f4ec1bf845a3652d1fa3c4f936d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9ca99bf880724e94d75c7e94660e3fce"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mqtt__stack_8cpp.html#a9ca99bf880724e94d75c7e94660e3fce">mqtt_logout</a> (void)</td></tr>
 <tr class="separator:a9ca99bf880724e94d75c7e94660e3fce"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0aaa10ff8c4b1735952fe521524b113d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mqtt__stack_8cpp.html#a0aaa10ff8c4b1735952fe521524b113d">mqtt_publish</a> (String &amp;<a class="el" href="uplinks_8cpp.html#a18dabc7ec0a9117904f3c64a1ce5ee5c">topic</a>, const char *const <a class="el" href="_c_l_i_8cpp.html#adb7754cd934d9e1011c9c08e079782ba">msg</a>)</td></tr>
-<tr class="separator:a0aaa10ff8c4b1735952fe521524b113d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a87f60f382e21f841def5fc4e1410cdda"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mqtt__stack_8cpp.html#a87f60f382e21f841def5fc4e1410cdda">mqtt_publish</a> (String &amp;<a class="el" href="uplinks_8cpp.html#a18dabc7ec0a9117904f3c64a1ce5ee5c">topic</a>, const char *const <a class="el" href="_c_l_i_8cpp.html#adb7754cd934d9e1011c9c08e079782ba">msg</a>, size_t msg_len)</td></tr>
+<tr class="separator:a87f60f382e21f841def5fc4e1410cdda"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
@@ -136,6 +135,8 @@ Variables</h2></td></tr>
 <tr class="separator:acd81c3cf6977a299ec35a5b3e28564a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a29781074a609870a12b3b1378f34d13b"><td class="memItemLeft" align="right" valign="top">static char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mqtt__stack_8cpp.html#a29781074a609870a12b3b1378f34d13b">buf</a> [<a class="el" href="ftp__stack_8cpp.html#a2491303d0fe260aaba8f46717cda66cc">MAX_BUF</a>+1]</td></tr>
 <tr class="separator:a29781074a609870a12b3b1378f34d13b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a215b2b0b4c505ae5c7d6e6b1b3b9b0dc"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mqtt__stack_8cpp.html#a215b2b0b4c505ae5c7d6e6b1b3b9b0dc">script</a> = nullptr</td></tr>
+<tr class="separator:a215b2b0b4c505ae5c7d6e6b1b3b9b0dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad13e61890919c916759b599fe901044d"><td class="memItemLeft" align="right" valign="top">static volatile int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mqtt__stack_8cpp.html#ad13e61890919c916759b599fe901044d">lastCmd</a> = -1</td></tr>
 <tr class="separator:ad13e61890919c916759b599fe901044d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a49e2a4c8aae59aa7fc801a37cfcf780f"><td class="memItemLeft" align="right" valign="top">static volatile int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mqtt__stack_8cpp.html#a49e2a4c8aae59aa7fc801a37cfcf780f">lastResult</a> = -1</td></tr>
@@ -233,8 +234,8 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a0aaa10ff8c4b1735952fe521524b113d" name="a0aaa10ff8c4b1735952fe521524b113d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0aaa10ff8c4b1735952fe521524b113d">&#9670;&#160;</a></span>mqtt_publish()</h2>
+<a id="a87f60f382e21f841def5fc4e1410cdda" name="a87f60f382e21f841def5fc4e1410cdda"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a87f60f382e21f841def5fc4e1410cdda">&#9670;&#160;</a></span>mqtt_publish()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -249,7 +250,13 @@ Variables</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const char *const&#160;</td>
-          <td class="paramname"><em>msg</em>&#160;</td>
+          <td class="paramname"><em>msg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>msg_len</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -258,6 +265,16 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p >Publish a message to the MQTT broker.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">topic</td><td>the topic to publish to. </td></tr>
+    <tr><td class="paramname">msg</td><td>the message to send - this is expected to be a UTF-8 text message. </td></tr>
+    <tr><td class="paramname">msg_len</td><td>the length of the message in units of uint8_t. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if the message was published, otherwise false. </dd></dl>
 
 </div>
 </div>
@@ -506,6 +523,20 @@ Variables</h2></td></tr>
 <span class="mlabels"><span class="mlabel">static</span></span>  </td>
   </tr>
 </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a215b2b0b4c505ae5c7d6e6b1b3b9b0dc" name="a215b2b0b4c505ae5c7d6e6b1b3b9b0dc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a215b2b0b4c505ae5c7d6e6b1b3b9b0dc">&#9670;&#160;</a></span>script</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char* script = nullptr</td>
+        </tr>
+      </table>
 </div><div class="memdoc">
 
 </div>
