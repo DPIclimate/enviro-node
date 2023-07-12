@@ -193,7 +193,7 @@ bool mqtt_logout(void) {
 
 bool mqtt_publish(String& topic, const char * const msg) {
     ESP_LOGI(TAG, "Publish message: %s/%s", topic.c_str(), msg);
-    SARA_R5_error_t err = r5.mqttPublishBinaryMsg(topic, msg);
+    SARA_R5_error_t err = r5.mqttPublishBinaryMsg(topic, msg, strlen(msg), 1);
     if (err != SARA_R5_error_t::SARA_R5_ERROR_SUCCESS) {
         ESP_LOGE(TAG, "Publish failed");
         return false;
