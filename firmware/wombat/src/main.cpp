@@ -35,6 +35,8 @@
 #include "esp_partition.h"
 #include "ota_update.h"
 #include "ftp_stack.h"
+#include "power_monitoring/battery.h"
+#include "power_monitoring/solar.h"
 
 #define TAG "wombat"
 
@@ -127,6 +129,7 @@ void setup() {
     pinMode(PROG_BTN, INPUT);
     progBtnPressed = digitalRead(PROG_BTN);
 
+    // SARA R5 library logging does not work without this.
     Serial.begin(115200);
     while ( ! Serial) {
         delay(1);
@@ -215,8 +218,8 @@ void setup() {
 
     delay(100);
 
-    battery_monitor.begin();
-    solar_monitor.begin();
+    BatteryMonitor::begin();
+    SolarMonitor::begin();
 
     const esp_app_desc_t* app_desc = esp_ota_get_app_description();
     ESP_LOGI(TAG, "FW hdr: %s, %s,%s, %s, %s", app_desc->version, app_desc->project_name, app_desc->idf_ver, app_desc->date, app_desc->time);
@@ -239,13 +242,18 @@ void setup() {
     p_type = esp_ota_get_next_update_partition(nullptr);
     ESP_LOGI(TAG, "%d/%d %lx %lx %s", p_type->type, p_type->subtype, p_type->address, p_type->size, p_type->label);
 
+//    back_to_factory();
+//    ESP_LOGI(TAG, "Boot partition");
+//    p_type = esp_ota_get_boot_partition();
+//    ESP_LOGI(TAG, "%d/%d %lx %lx %s", p_type->type, p_type->subtype, p_type->address, p_type->size, p_type->label);
+
     if (progBtnPressed) {
         // Turn on bluetooth if entering CLI
         init_sensors();
         //BluetoothServer::begin();
         progBtnPressed = false;
         ESP_LOGI(TAG, "Programmable button pressed while booting, dropping into REPL");
-        CLI::repl(Serial);
+        CLI::repl(Serial, Serial);
         ESP_LOGI(TAG, "Continuing");
     }
 
@@ -287,8 +295,6 @@ void setup() {
     // It is useful while developing because the node isn't going to sleep.
 //    attachInterrupt(PROG_BTN, progBtnISR, RISING);
 
-    // Ensure this is 0 for when we are not in an uplink cycle, or the connection to the mobile network fails.
-    sleep_drift_adjustment = 0;
     if (is_uplink_cycle) {
         if ( ! connect_to_internet()) {
             ESP_LOGW(TAG, "Could not connect to the internet on an uplink cycle. This is now a measurement-only cycle");
@@ -301,8 +307,96 @@ void setup() {
 
     if (is_uplink_cycle) {
         send_messages();
+
+        // If a config script turned up, run it now.
+        if (script != nullptr) {
+            ESP_LOGI(TAG, "Running config script\n%s", script);
+            StreamString scriptStream;
+            scriptStream.print(script);
+            // Ensure the script ends with an exit command.
+            scriptStream.print("\nexit\n");
+            free(script);
+            CLI::repl(scriptStream, Serial);
+        }
     }
 
+    shutdown();
+
+    // NOTE: Because the ESP32 effectively reboots after waking from deep sleep the ESP32 internal tick counter
+    // always starts at 0. This means simply getting the value of millis() here is sufficient to get an idea of
+    // how long it took to get here. There is no need to save the millis() at the top of the function and do a
+    // subtraction here.
+    uint64_t measurement_interval_ms = measurement_interval_secs * 1000;
+    uint64_t delta_ms = 0;
+    uint64_t sleep_time_us = 0;
+    uint64_t setup_duration_ms = millis();
+
+    if (setup_duration_ms > measurement_interval_ms) {
+        ESP_LOGW(TAG, "run time > measurement interval");
+        delta_ms = setup_duration_ms - measurement_interval_ms;
+        while (delta_ms > measurement_interval_ms) {
+            delta_ms = setup_duration_ms - measurement_interval_ms;
+            setup_duration_ms = setup_duration_ms - measurement_interval_ms;
+            ESP_LOGW(TAG, "skipping an interval, setup_duration_ms now = %llu, delta_ms = %llu", setup_duration_ms, delta_ms);
+        }
+
+        sleep_time_us = (measurement_interval_ms - delta_ms) * 1000;
+    } else {
+        delta_ms = measurement_interval_ms - setup_duration_ms;
+        // Catch the case of the run time being exactly the measurement interval. With the current
+        // code structure there is no simple way of just running the whole thing again, so sleep for 1ms
+        // and reboot.
+        if (delta_ms < 1) {
+            delta_ms = 1;
+        }
+
+        sleep_time_us = delta_ms * 1000;
+    }
+
+    // A final sanity check.
+    if (sleep_time_us > (measurement_interval_ms * 1000)) {
+        ESP_LOGE(TAG, "sleep time us %llu > measurement interval us %llu", sleep_time_us, (measurement_interval_ms * 1000));
+        sleep_time_us = measurement_interval_ms * 1000;
+    }
+
+/*
+    unsigned long setup_in_secs = setup_duration_ms / 1000;
+    uint64_t mi_in_secs = (uint64_t)measurement_interval_secs;
+    if (setup_in_secs > measurement_interval_secs) {
+        ESP_LOGW(TAG, "Processing took longer than the measurement interval, skip some intervals");
+        uint64_t remainder = setup_in_secs - mi_in_secs;
+        while (remainder > mi_in_secs) {
+            remainder = setup_in_secs - mi_in_secs;
+            setup_in_secs = setup_in_secs - mi_in_secs;
+        }
+
+        ESP_LOGW(TAG, "mi_in_secs = %lu, setup_in_secs = %lu, remainder = %lu", mi_in_secs, setup_in_secs, remainder);
+        sleep_time_us = (mi_in_secs - remainder) * 1000000;
+    } else {
+        if (setup_in_secs == measurement_interval_secs) {
+            // This is a special case that happens when the processing time took less than 1 second
+            // longer than the measurement interval. In that case the test to catch over-long processing
+            // does not catch it, because that test is performed in seconds.
+            sleep_time_us = measurement_interval_secs * 1000000;
+        } else {
+            sleep_time_us = (measurement_interval_secs * 1000000) - (setup_duration_ms * 1000);
+        }
+    }
+*/
+
+    ESP_LOGI(TAG, "Unadjusted sleep_time_us = %llu", sleep_time_us);
+    sleep_time_us = (uint64_t)((float)sleep_time_us * config.getSleepAdjustment());
+    ESP_LOGI(TAG, "Adjusted sleep_time_us = %llu", sleep_time_us);
+
+    float f_s_time = (float)sleep_time_us / 1000000.0f;
+    ESP_LOGI(TAG, "Run took %llu ms, going to sleep at: %s, for %.2f s", setup_duration_ms, iso8601(), f_s_time);
+    Serial.flush();
+
+    esp_sleep_enable_timer_wakeup(sleep_time_us);
+    esp_deep_sleep_start();
+}
+
+void shutdown(void) {
     ESP_LOGI(TAG, "Shutting down");
 
     SPIFFS.end();
@@ -313,8 +407,8 @@ void setup() {
 
     cat_m1.power_supply(false);
     delay(20);
-    battery_monitor.sleep();
-    solar_monitor.sleep();
+    BatteryMonitor::sleep();
+    SolarMonitor::sleep();
 
     disable12V();
     delay(20);
@@ -326,36 +420,6 @@ void setup() {
     }
     SD.end();
     digitalWrite(SD_CARD_ENABLE, LOW);
-
-    unsigned long setup_end_ms = millis();
-    unsigned long setup_in_secs = setup_end_ms / 1000;
-    uint64_t mi_in_secs = (uint64_t)measurement_interval_secs;
-    uint64_t sleep_time = 0;
-    if (setup_in_secs > measurement_interval_secs) {
-        ESP_LOGW(TAG, "Processing took longer than the measurement interval, skip some intervals");
-        uint64_t remainder = setup_in_secs - mi_in_secs;
-        while (remainder > mi_in_secs) {
-            remainder = setup_in_secs - mi_in_secs;
-            setup_in_secs = setup_in_secs - mi_in_secs;
-        }
-
-        ESP_LOGW(TAG, "mi_in_secs = %lu, setup_in_secs = %lu, remainder = %lu", mi_in_secs, setup_in_secs, remainder);
-        sleep_time = (mi_in_secs - remainder) * 1000000;
-    } else {
-        // sleep_drift_adjustment is measured in seconds and calculated from the difference between the ESP32 RTC
-        // and the time from the mobile network.
-        sleep_time = ((measurement_interval_secs + sleep_drift_adjustment) * 1000000) - (setup_end_ms * 1000);
-        ESP_LOGI(TAG, "Unadjusted sleep_time = %lu", sleep_time);
-        sleep_time = (uint64_t)((float)sleep_time * config.getSleepAdjustment());
-        ESP_LOGI(TAG, "Adjusted sleep_time = %lu", sleep_time);
-    }
-
-    float f_s_time = (float)sleep_time / 1000000.0f;
-    ESP_LOGI(TAG, "Run took %lu ms, going to sleep at: %s, for %.2f s", setup_end_ms, iso8601(), f_s_time);
-    Serial.flush();
-
-    esp_sleep_enable_timer_wakeup(sleep_time);
-    esp_deep_sleep_start();
 }
 
 void loop() {

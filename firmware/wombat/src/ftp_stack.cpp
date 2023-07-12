@@ -57,6 +57,11 @@ bool ftp_login(void) {
     }
     delay(20);
 
+    if (r5.setFTPtimeouts(180, 120, 120)) {
+        ESP_LOGW(TAG, "Setting FTP timeouts failed.");
+    }
+    delay(20);
+
     r5.setFTPCommandCallback(ftp_cmd_callback);
 
     if (r5.connectFTP() != SARA_R5_ERROR_SUCCESS) {

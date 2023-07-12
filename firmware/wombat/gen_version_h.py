@@ -33,7 +33,7 @@ if from_path.exists():
 
 # NOTE: This is the canonical definition of the firmware version. This is baked into the firmware
 # and placed into the wombat.sha1 file.
-_VERSION_NUM = '1.0.2'
+_VERSION_NUM = '1.0.5'
 _VERSION_H = 'include/version.h'
 
 commit_const = 'const char* commit_id = "unknown";'

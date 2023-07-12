@@ -51,7 +51,7 @@ BaseType_t CLISDCard::enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen,
                 return pdTRUE;
             } else if (step < 2) {
                 step++;
-                SDCardInterface::read_file(sd_card_datafile_name, *CLI::cliStream);
+                SDCardInterface::read_file(sd_card_datafile_name, *CLI::cliOutput);
                 return pdTRUE;
             } else {
                 step = 0;

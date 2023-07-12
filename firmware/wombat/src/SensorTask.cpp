@@ -5,6 +5,8 @@
 #include "globals.h"
 #include "ulp.h"
 #include "sd-card/interface.h"
+#include "power_monitoring/battery.h"
+#include "power_monitoring/solar.h"
 #include <esp_log.h>
 
 #include <freertos/FreeRTOS.h>
@@ -175,11 +177,11 @@ void sensor_task(void) {
     //
     JsonObject ts_entry = timeseries_array.createNestedObject();
     ts_entry["name"] = "battery (v)";
-    ts_entry["value"] = battery_monitor.get_voltage();
+    ts_entry["value"] = BatteryMonitor::get_voltage();
 
     ts_entry = timeseries_array.createNestedObject();
     ts_entry["name"] = "solar (v)";
-    ts_entry["value"] = solar_monitor.get_voltage();
+    ts_entry["value"] = SolarMonitor::get_voltage();
 
     //
     // Pulse counter
@@ -198,8 +200,13 @@ void sensor_task(void) {
     //
     // SDI-12 sensors
     //
+
+    // NOTE: This may make the message too long to send directly via MQTT on the
+    // SMP nodes because the 6 SDI-12 ID strings add about 200 bytes to the message.
+    JsonArray sdi12_ids = source_ids.createNestedArray("sdi-12");
     for (size_t sensor_idx = 0; sensor_idx < sensors.count; sensor_idx++) {
         read_sensor(sensors.sensors[sensor_idx].address, timeseries_array);
+        sdi12_ids.add((char*)&sensors.sensors[sensor_idx]);
     }
 
     sdi12.end();

@@ -196,7 +196,7 @@ BaseType_t CLIMQTT::enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen,
 
     if (!strncmp("publish", param, paramLen)) {
         String topic(config.mqtt_topic_template);
-        bool rc = mqtt_publish(topic, "ABCDEF");
+        bool rc = mqtt_publish(topic, "ABCDEF", 6);
         snprintf(pcWriteBuffer, xWriteBufferLen-1, "\r\n%s\r\n", rc ? "OK" : "ERROR");
         return pdFALSE;
     }

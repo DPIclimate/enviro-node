@@ -11,16 +11,23 @@
 static const char* wombat_sha1 = "wombat.sha1";
 static const char* wombat_bin = "wombat.bin";
 
-bool ota_check_for_update(ota_firmware_info_t& ota_ctx) {
+/**
+ * Check if the server has a newer version of the firmware than is running on the Wombat.
+ *
+ * @param ota_ctx a reference to an OTA firmware info structure that carries info about the firmware on the server.
+ * @return -1 if retrieving wombat.sha1 fails, 0 if the running version is at least as new as the version on the
+ * server, 1 if the server as a new version.
+ */
+int ota_check_for_update(ota_firmware_info_t& ota_ctx) {
     if (!ftp_get(wombat_sha1)) {
         ESP_LOGW(TAG, "FTP get wombat.sha1 failed");
-        return false;
+        return -1;
     }
 
     int i_file_len = 0;
     if (r5.getFileSize(wombat_sha1, &i_file_len) || r5.getFileContents(wombat_sha1, g_buffer)) {
         ESP_LOGW(TAG, "Could not read wombat.sha1");
-        return false;
+        return -1;
     }
 
     g_buffer[i_file_len] = 0;
@@ -31,30 +38,34 @@ bool ota_check_for_update(ota_firmware_info_t& ota_ctx) {
     int s_rc = sscanf(g_buffer, "%u.%u.%u %lu %40s %40s", &ota_ctx.new_major, &ota_ctx.new_minor, &ota_ctx.new_update, &ota_ctx.file_len, &ota_ctx.file_hash, &ota_ctx.git_commit_id);
     if (s_rc != 6) {
         ESP_LOGE(TAG, "Failed to parse version information");
-        return false;
+        return -1;
     }
 
     ESP_LOGI(TAG, "Version on server: %u.%u.%u, size = %lu, commit: %s (s_rc = %d)", ota_ctx.new_major, ota_ctx.new_minor, ota_ctx.new_update, ota_ctx.file_len, ota_ctx.git_commit_id, s_rc);
 
     if (ota_ctx.new_major < ver_major) {
-        return false;
+        return 0;
     }
 
     if (ota_ctx.new_major > ver_major) {
-        return true;
+        return 1;
     }
 
     // Major version is the same.
     if (ota_ctx.new_minor < ver_minor) {
-        return false;
+        return 0;
     }
 
     if (ota_ctx.new_minor > ver_minor) {
-        return true;
+        return 1;
     }
 
     // Minor version is the same.
-    return ota_ctx.new_update > ver_update;
+    if (ota_ctx.new_update > ver_update) {
+        return 1;
+    }
+
+    return 0;
 }
 
 bool ota_download_update(const ota_firmware_info_t& ota_ctx) {
@@ -162,4 +173,32 @@ bool ota_download_update(const ota_firmware_info_t& ota_ctx) {
     }
 
     return true;
+}
+
+//***********************************************************************************************
+//                                B A C K T O F A C T O R Y                                     *
+//***********************************************************************************************
+// Return to factory version.                                                                   *
+// This will set the otadata to boot from the factory image, ignoring previous OTA updates.     *
+//                                                                                              *
+// From:https://www.esp32.com/viewtopic.php?t=4210                                              *
+//***********************************************************************************************
+void back_to_factory(void) {
+    esp_partition_iterator_t  pi ;                                  // Iterator for find
+    const esp_partition_t*    factory ;                             // Factory partition
+    esp_err_t                 err ;
+
+    pi = esp_partition_find ( ESP_PARTITION_TYPE_APP,               // Get partition iterator for
+                              ESP_PARTITION_SUBTYPE_APP_FACTORY,    // factory partition
+                              "factory" ) ;
+    if (pi == nullptr) {                                            // Check result
+        ESP_LOGE (TAG, "Failed to find factory partition") ;
+    } else {
+        factory = esp_partition_get (pi) ;                          // Get partition struct
+        esp_partition_iterator_release (pi) ;                       // Release the iterator
+        err = esp_ota_set_boot_partition (factory) ;                // Set partition for boot
+        if (err != ESP_OK ) {                                       // Check error
+            ESP_LOGE (TAG, "Failed to set boot partition") ;
+        }
+    }
 }

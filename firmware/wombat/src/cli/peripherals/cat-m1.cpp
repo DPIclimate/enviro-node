@@ -96,19 +96,19 @@ static int get_response(uint32_t timeout = 500) {
     param = FreeRTOS_CLIGetParameter(pcCommandString, paramNum, &paramLen);
     if (param != nullptr && paramLen > 0) {
         if (!strncmp("pt", param, paramLen)) {
-            if (CLI::cliStream == nullptr) {
-                strncpy(pcWriteBuffer, "ERROR: input stream_ not set for Cat M1 passthrough\r\n", xWriteBufferLen - 1);
+            if (CLI::cliInput == nullptr || CLI::cliOutput == nullptr) {
+                strncpy(pcWriteBuffer, "ERROR: I/O stream not set for Cat M1 passthrough\r\n", xWriteBufferLen - 1);
                 return pdFALSE;
             }
 
-            CLI::cliStream->println("Entering Cat M1 passthrough mode, press ctrl-D to exit");
+            CLI::cliOutput->println("Entering Cat M1 passthrough mode, press ctrl-D to exit");
 
             int ch;
             bool finish = false;
             while ( ! finish) {
-                if (CLI::cliStream->available()) {
-                    while (CLI::cliStream->available()) {
-                        ch = CLI::cliStream->read();
+                if (CLI::cliInput->available()) {
+                    while (CLI::cliInput->available()) {
+                        ch = CLI::cliInput->read();
                         if (ch == 0x04) {
                             finish = true;
                             break;
@@ -120,7 +120,7 @@ static int get_response(uint32_t timeout = 500) {
 
                 if (LTE_Serial.available()) {
                     while (LTE_Serial.available()) {
-                        CLI::cliStream->write(LTE_Serial.read());
+                        CLI::cliOutput->write(LTE_Serial.read());
                     }
                 }
 
