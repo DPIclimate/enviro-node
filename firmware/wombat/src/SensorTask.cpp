@@ -52,7 +52,7 @@ bool read_sensor(const char addr, JsonArray& timeseries_array) {
     // will be set to true to indicate an 'additional' measure or concurrent command is used.
     bool is_additional = false;
 
-    std::vector<float> plain_values;
+    std::vector<double> plain_values;
     size_t sensor_idx = 0;
     for (; sensor_idx < sensors.count; sensor_idx++) {
         if (addr == sensors.sensors[sensor_idx].address) {
@@ -100,7 +100,7 @@ bool read_sensor(const char addr, JsonArray& timeseries_array) {
             }
 
             for (int value_idx = 0; value_idx < num_values; value_idx++) {
-                float value = dpi12.get_value(value_idx).value;
+                double value = dpi12.get_value(value_idx).value;
                 char mask = '1'; // Default to including the value.
                 if (value_mask != nullptr && strnlen(value_mask, num_values) >= value_idx + 1) {
                     mask = value_mask[value_idx];

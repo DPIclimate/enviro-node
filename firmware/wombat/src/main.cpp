@@ -151,9 +151,14 @@ void setup() {
 
     //ESP_LOGI(TAG, "Old func: %p", old_log_fn);
 
-    ESP_LOGI(TAG, "Wombat firmware: %s", commit_id);
     ESP_LOGI(TAG, "Wake up time: %s", iso8601());
     ESP_LOGI(TAG, "CPU MHz: %lu", getCpuFrequencyMhz());
+
+    ESP_LOGI(TAG, "Boot partition");
+    const esp_partition_t *p_type = esp_ota_get_boot_partition();
+    ESP_LOGI(TAG, "%d/%d %lx %lx %s", p_type->type, p_type->subtype, p_type->address, p_type->size, p_type->label);
+
+    ESP_LOGI(TAG, "App ver: %u.%u.%u, commit: %s, repo status: %s", ver_major, ver_minor, ver_update, commit_id, repo_status);
 
     // Switch the RTC clock to the external crystal.
     rtc_slow_freq_t rtc_freq = rtc_clk_slow_freq_get();
@@ -207,9 +212,7 @@ void setup() {
     // This must be done before the config is loaded because the config file is
     // a list of commands.
     CLI::init();
-
     config.load();
-
     config.dumpConfig(Serial);
 
     // Enable the brown out detection now the node has stabilised its
@@ -221,26 +224,6 @@ void setup() {
     BatteryMonitor::begin();
     SolarMonitor::begin();
 
-    const esp_app_desc_t* app_desc = esp_ota_get_app_description();
-    ESP_LOGI(TAG, "FW hdr: %s, %s,%s, %s, %s", app_desc->version, app_desc->project_name, app_desc->idf_ver, app_desc->date, app_desc->time);
-    for (size_t z = 0; z < 32; z++) {
-        Serial.print(app_desc->app_elf_sha256[z], HEX);
-        Serial.print(' ');
-    }
-    Serial.println();
-    ESP_LOGI(TAG, "App ver: %u.%u.%u, commit: %s, repo status: %s", ver_major, ver_minor, ver_update, commit_id, repo_status);
-
-    ESP_LOGI(TAG, "Boot partition");
-    const esp_partition_t *p_type = esp_ota_get_boot_partition();
-    ESP_LOGI(TAG, "%d/%d %lx %lx %s", p_type->type, p_type->subtype, p_type->address, p_type->size, p_type->label);
-
-    ESP_LOGI(TAG, "OTA running partition");
-    p_type = esp_ota_get_running_partition();
-    ESP_LOGI(TAG, "%d/%d %lx %lx %s", p_type->type, p_type->subtype, p_type->address, p_type->size, p_type->label);
-
-    ESP_LOGI(TAG, "Next OTA update partition");
-    p_type = esp_ota_get_next_update_partition(nullptr);
-    ESP_LOGI(TAG, "%d/%d %lx %lx %s", p_type->type, p_type->subtype, p_type->address, p_type->size, p_type->label);
 
 //    back_to_factory();
 //    ESP_LOGI(TAG, "Boot partition");
@@ -289,12 +272,6 @@ void setup() {
                   "uplink interval: %u, uplink_interval_secs/measurement_interval_secs: %u, uplink this cycle: %d",
              config.getBootCount(), measurement_interval_secs, uplink_interval_secs, boots_between_uplinks, is_uplink_cycle);
 
-    // Not sure how useful this is, or how it will work. We don't want to
-    // interrupt sensor reading or uplink processing and loop() will likely
-    // never run if we do the usual ESP32 setup going to deep sleep mode.
-    // It is useful while developing because the node isn't going to sleep.
-//    attachInterrupt(PROG_BTN, progBtnISR, RISING);
-
     if (is_uplink_cycle) {
         if ( ! connect_to_internet()) {
             ESP_LOGW(TAG, "Could not connect to the internet on an uplink cycle. This is now a measurement-only cycle");
@@ -307,7 +284,6 @@ void setup() {
 
     if (is_uplink_cycle) {
         send_messages();
-
         // If a config script turned up, run it now.
         if (script != nullptr) {
             ESP_LOGI(TAG, "Running config script\n%s", script);
@@ -358,31 +334,6 @@ void setup() {
         ESP_LOGE(TAG, "sleep time us %llu > measurement interval us %llu", sleep_time_us, (measurement_interval_ms * 1000));
         sleep_time_us = measurement_interval_ms * 1000;
     }
-
-/*
-    unsigned long setup_in_secs = setup_duration_ms / 1000;
-    uint64_t mi_in_secs = (uint64_t)measurement_interval_secs;
-    if (setup_in_secs > measurement_interval_secs) {
-        ESP_LOGW(TAG, "Processing took longer than the measurement interval, skip some intervals");
-        uint64_t remainder = setup_in_secs - mi_in_secs;
-        while (remainder > mi_in_secs) {
-            remainder = setup_in_secs - mi_in_secs;
-            setup_in_secs = setup_in_secs - mi_in_secs;
-        }
-
-        ESP_LOGW(TAG, "mi_in_secs = %lu, setup_in_secs = %lu, remainder = %lu", mi_in_secs, setup_in_secs, remainder);
-        sleep_time_us = (mi_in_secs - remainder) * 1000000;
-    } else {
-        if (setup_in_secs == measurement_interval_secs) {
-            // This is a special case that happens when the processing time took less than 1 second
-            // longer than the measurement interval. In that case the test to catch over-long processing
-            // does not catch it, because that test is performed in seconds.
-            sleep_time_us = measurement_interval_secs * 1000000;
-        } else {
-            sleep_time_us = (measurement_interval_secs * 1000000) - (setup_duration_ms * 1000);
-        }
-    }
-*/
 
     ESP_LOGI(TAG, "Unadjusted sleep_time_us = %llu", sleep_time_us);
     sleep_time_us = (uint64_t)((float)sleep_time_us * config.getSleepAdjustment());
