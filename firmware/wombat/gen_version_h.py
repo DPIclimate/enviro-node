@@ -42,6 +42,11 @@ result = subprocess.run(['git', 'show', '-s', '--format=%h'], capture_output=Tru
 commit_id = result.stdout.decode('ascii')
 commit_id = commit_id.strip()
 
+result = subprocess.run(['git', 'branch', '--show-current'], capture_output=True, check=True)
+repo_branch = result.stdout.decode('ascii')
+repo_branch = repo_branch.strip()
+
+
 try:
     os.remove(_VERSION_H)
 except:
@@ -60,7 +65,8 @@ commit_const = f'''const char* commit_id = "{commit_id}";
 uint16_t ver_major = {version_comps[0]};
 uint16_t ver_minor = {version_comps[1]};
 uint16_t ver_update = {version_comps[2]};
-const char* repo_status = "{repo_status}";'''
+const char* repo_status = "{repo_status}";
+const char* repo_branch = "{repo_branch}";'''
 
 with open(_VERSION_H, 'w') as version_h:
     version_h.write(commit_const)

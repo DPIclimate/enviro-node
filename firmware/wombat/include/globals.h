@@ -11,6 +11,7 @@
 
 extern const char* commit_id;
 extern const char* repo_status;
+extern const char* repo_branch;
 extern  uint16_t ver_major;
 extern  uint16_t ver_minor;
 extern  uint16_t ver_update;

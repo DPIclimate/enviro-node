@@ -170,6 +170,14 @@ void sensor_task(void) {
     msg["timestamp"] = timestamp;
     JsonObject source_ids = msg.createNestedObject("source_ids");
     source_ids["serial_no"] = DeviceConfig::get().node_id;
+
+    char buffer[10];
+    snprintf(buffer, 10, "%d.%d.%d", ver_major, ver_minor, ver_update);
+    source_ids["firmware_version"] = buffer;
+    source_ids["repo_branch"] = repo_branch;
+    source_ids["commit_id"] = commit_id;
+    source_ids["repo_status"] = repo_status;
+
     JsonArray timeseries_array = msg.createNestedArray("timeseries");
 
     //
@@ -182,6 +190,21 @@ void sensor_task(void) {
     ts_entry = timeseries_array.createNestedObject();
     ts_entry["name"] = "solar (v)";
     ts_entry["value"] = SolarMonitor::get_voltage();
+
+    if (r5_ok) {
+        signal_quality sq;
+        SARA_R5_error_t r5_err = r5.getExtSignalQuality(sq);
+
+        if (!r5_err) {
+            ts_entry = timeseries_array.createNestedObject();
+            ts_entry["name"] = "rsrq";
+            ts_entry["value"] = sq.rsrq;
+
+            ts_entry = timeseries_array.createNestedObject();
+            ts_entry["name"] = "rsrp";
+            ts_entry["value"] = sq.rsrp;
+        }
+    }
 
     //
     // Pulse counter
