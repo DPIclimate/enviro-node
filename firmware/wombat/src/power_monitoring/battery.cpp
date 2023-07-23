@@ -41,7 +41,7 @@ void BatteryMonitor::begin() {
  *
  * @return Battery voltage.
  */
-float BatteryMonitor::get_voltage() {
+double BatteryMonitor::get_voltage() {
     if ( ! ina219_ok) {
         ESP_LOGI(TAG, "ina219_ok: %d", ina219_ok);
     }
@@ -60,7 +60,8 @@ float BatteryMonitor::get_voltage() {
 
     ESP_LOGI(TAG, "battery bus_volts = %.2f, shunt_mv = %.2f, final value: %.2f", bus_volts, shunt_mv, battery_voltage);
 
-    return battery_voltage;
+    double val = (round(battery_voltage * 100.0)) / 100.0;
+    return val;
 }
 
 /**

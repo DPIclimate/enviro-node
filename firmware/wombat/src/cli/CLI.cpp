@@ -132,9 +132,6 @@ void CLI::repl(Stream& input, Stream& output) {
                 rc = FreeRTOS_CLIProcessCommand(cmd, msg, MAX_CLI_MSG_LEN);
                 if (msg[0] != 0) {
                     output.print(msg);
-//                    if (BluetoothServer::is_device_connected()) {
-//                        BluetoothServer::notify_device(msg);
-//                    }
                 }
             }
         }

@@ -171,13 +171,12 @@ void sensor_task(void) {
     JsonObject source_ids = msg.createNestedObject("source_ids");
     source_ids["serial_no"] = DeviceConfig::get().node_id;
 
-    char buffer[10];
-    snprintf(buffer, 10, "%d.%d.%d", ver_major, ver_minor, ver_update);
-    source_ids["firmware_version"] = buffer;
-    source_ids["repo_branch"] = repo_branch;
-    source_ids["commit_id"] = commit_id;
-    source_ids["repo_status"] = repo_status;
-
+    constexpr size_t buffer_sz = 48;
+    char buffer[buffer_sz + 1];
+    memset(buffer, 0, sizeof(buffer));
+    // This format helps keep the message under 1024 bytes when there are a lot of SDI-12 sensors attached.
+    snprintf(buffer, buffer_sz, "%d.%d.%d %s %s %s", ver_major, ver_minor, ver_update, repo_branch, commit_id, repo_status);
+    source_ids["firmware"] = buffer;
     JsonArray timeseries_array = msg.createNestedArray("timeseries");
 
     //
@@ -203,6 +202,11 @@ void sensor_task(void) {
             ts_entry = timeseries_array.createNestedObject();
             ts_entry["name"] = "rsrp";
             ts_entry["value"] = sq.rsrp;
+        }
+
+        String ccid;
+        if (r5.getCCID(ccid) == SARA_R5_ERROR_SUCCESS) {
+            source_ids["ccid"] = ccid;
         }
     }
 

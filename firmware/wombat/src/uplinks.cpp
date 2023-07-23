@@ -48,7 +48,7 @@ static bool process_file(File& file) {
         connect_to_internet();
         mqtt_status = mqtt_login() ? MQTT_LOGIN_OK : MQTT_LOGIN_FAILED;
         if (mqtt_status == MQTT_LOGIN_FAILED) {
-            ESP_LOGI(TAG, "Not processing file, no MQTT connection");
+            ESP_LOGE(TAG, "Not processing file, no MQTT connection");
             return false;
         }
     }
@@ -117,6 +117,15 @@ void send_messages(void) {
         root.close();
 
         ESP_LOGI(TAG, "Processed %u files with %u upload errors", file_count, upload_errors);
+    }
+
+    if (mqtt_status == MQTT_UNINITIALISED) {
+        ESP_LOGI(TAG, "No files caused an MQTT connection, trying now to look for waiting config scripts");
+        connect_to_internet();
+        mqtt_status = mqtt_login() ? MQTT_LOGIN_OK : MQTT_LOGIN_FAILED;
+        if (mqtt_status == MQTT_LOGIN_FAILED) {
+            ESP_LOGE(TAG, "MQTT connection failed");
+        }
     }
 
     if (mqtt_status == MQTT_LOGIN_OK) {

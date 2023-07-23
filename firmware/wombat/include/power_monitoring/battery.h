@@ -29,7 +29,7 @@ private:
 public:
     static void begin();
 
-    static float get_voltage();
+    static double get_voltage();
     static float get_current();
 
     static void sleep();

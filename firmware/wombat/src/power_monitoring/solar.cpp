@@ -42,13 +42,13 @@ void SolarMonitor::begin() {
  *
  * @return Solar voltage.
  */
-float SolarMonitor::get_voltage(){
+double SolarMonitor::get_voltage(){
     if ( ! ina219_ok) {
-        ESP_LOGI(TAG, "ina219_ok: %d", ina219_ok);
+        ESP_LOGE(TAG, "ina219_ok: %d", ina219_ok);
     }
 
     if ( ! solar) {
-        ESP_LOGI(TAG, "solar is null");
+        ESP_LOGE(TAG, "solar is null");
     }
 
     if (! ina219_ok || ! solar) {
@@ -61,7 +61,8 @@ float SolarMonitor::get_voltage(){
 
     ESP_LOGI(TAG, "solar bus_volts = %.2f, shunt_mv = %.2f, final value: %.2f", bus_volts, shunt_mv, solar_voltage);
 
-    return solar_voltage;
+    double val = (round(solar_voltage * 100.0)) / 100.0;
+    return val;
 }
 
 /**
