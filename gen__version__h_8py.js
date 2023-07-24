@@ -9,6 +9,7 @@ var gen__version__h_8py =
     [ "from_path", "gen__version__h_8py.html#a683da30dad8c5fb705bfe6f98c75da3f", null ],
     [ "parents", "gen__version__h_8py.html#a82ddc1f9a79c02c68282f8bc21da0284", null ],
     [ "platform", "gen__version__h_8py.html#aba5899234813eb31a47fd00a1fa93c88", null ],
+    [ "repo_branch", "gen__version__h_8py.html#a9c06aee6b88aeccfd9b44451b530938e", null ],
     [ "repo_status", "gen__version__h_8py.html#aa4c82b92eda8b6b0946f356366068234", null ],
     [ "result", "gen__version__h_8py.html#a226fe8e73df79c4a13e9c363dce8d123", null ],
     [ "to_path", "gen__version__h_8py.html#af46565bdd3071e66bb6a81b6ee5a91c9", null ],

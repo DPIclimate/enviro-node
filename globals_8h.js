@@ -11,6 +11,7 @@ var globals_8h =
     [ "g_buffer", "globals_8h.html#a4aee86204bb44807e602917ca7af1b91", null ],
     [ "r5", "globals_8h.html#a7f9b6ad99b4ad4d8ca1d579575944f2b", null ],
     [ "r5_ok", "globals_8h.html#af58609fbdef95492b175cbc37c4160e0", null ],
+    [ "repo_branch", "globals_8h.html#a01c71bf3ff549d956642c9f71c14b3c3", null ],
     [ "repo_status", "globals_8h.html#ad3cd56bc6b4208245d0910f091c6ce5f", null ],
     [ "script", "globals_8h.html#a215b2b0b4c505ae5c7d6e6b1b3b9b0dc", null ],
     [ "sd_card_datafile_name", "globals_8h.html#a0c3f83f54f93a120307b4bdbc4c0de44", null ],

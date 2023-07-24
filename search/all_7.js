@@ -9,7 +9,7 @@ var searchData=
   ['get_5fresponse_6',['get_response',['../cat-m1_8cpp.html#aa19c2621e480abc2cda9cb0d4a23817d',1,'cat-m1.cpp']]],
   ['get_5fshortest_5fpulse_7',['get_shortest_pulse',['../ulp_8cpp.html#aef67eb79cc13e8bc164b2e2913389a5d',1,'get_shortest_pulse(void):&#160;ulp.cpp'],['../ulp_8h.html#aef67eb79cc13e8bc164b2e2913389a5d',1,'get_shortest_pulse(void):&#160;ulp.cpp']]],
   ['get_5fversion_5fstring_8',['get_version_string',['../_utils_8cpp.html#ae8b1bc5305b58919f16af1238ce48e29',1,'get_version_string(char *buffer, size_t length):&#160;Utils.cpp'],['../_utils_8h.html#ae8b1bc5305b58919f16af1238ce48e29',1,'get_version_string(char *buffer, size_t length):&#160;Utils.cpp']]],
-  ['get_5fvoltage_9',['get_voltage',['../class_solar_monitor.html#a5e654a8e7d47855f2ca49243b31fc02a',1,'SolarMonitor::get_voltage()'],['../class_battery_monitor.html#aa677f18a69aca39be8a42b37435e5c1c',1,'BatteryMonitor::get_voltage()']]],
+  ['get_5fvoltage_9',['get_voltage',['../class_solar_monitor.html#a395d092534018ce7dd480ba70afcb5e1',1,'SolarMonitor::get_voltage()'],['../class_battery_monitor.html#a1be1a8faf9492a6e44ec4442d8c6ce83',1,'BatteryMonitor::get_voltage()']]],
   ['getbootcount_10',['getBootCount',['../class_device_config.html#a4c4e59ae0de91ed44a09dee6ed2261ad',1,'DeviceConfig']]],
   ['getftphost_11',['getFtpHost',['../class_device_config.html#a619527eb0097559818380f6c4b4838b9',1,'DeviceConfig']]],
   ['getftppassword_12',['getFtpPassword',['../class_device_config.html#a84f79aa381a8c9f7ce1710dec5b25962',1,'DeviceConfig']]],
