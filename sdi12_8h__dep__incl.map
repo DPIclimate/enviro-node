@@ -1,14 +1,10 @@
 <map id="firmware/wombat/include/cli/peripherals/sdi12.h" name="firmware/wombat/include/cli/peripherals/sdi12.h">
-<area shape="rect" id="node1" title="SDI&#45;12 command line interface handler." alt="" coords="729,5,917,45"/>
-<area shape="rect" id="node2" href="$_c_l_i_8h.html" title="FreeRTOS CLI handler." alt="" coords="664,93,852,133"/>
-<area shape="rect" id="node10" href="$sdi12_8cpp.html" title="SDI&#45;12 command line interface handler." alt="" coords="1138,189,1322,229"/>
-<area shape="rect" id="node3" href="$server_8h.html" title="Handle the setup and maintenance of the BLE server and connected clients." alt="" coords="5,189,193,229"/>
-<area shape="rect" id="node7" href="$_c_l_i_8cpp.html" title="FreeRTOS CLI handler." alt="" coords="218,189,378,229"/>
-<area shape="rect" id="node8" href="$cat-m1_8cpp.html" title="CAT&#45;M1 CLI command request and response handler." alt="" coords="402,181,562,236"/>
-<area shape="rect" id="node9" href="$sd__card_8cpp.html" title=" " alt="" coords="586,181,746,236"/>
-<area shape="rect" id="node11" href="$main_8cpp.html" title=" " alt="" coords="770,189,930,229"/>
-<area shape="rect" id="node12" href="$mqtt__stack_8cpp.html" title=" " alt="" coords="954,189,1114,229"/>
-<area shape="rect" id="node4" href="$uart_8h.html" title="BluetoothLE UART service setup and handling." alt="" coords="5,284,193,324"/>
-<area shape="rect" id="node6" href="$server_8cpp.html" title="Setup and start BluetoothLE server." alt="" coords="218,284,378,324"/>
-<area shape="rect" id="node5" href="$uart_8cpp.html" title="BluetoothLE UART service setup and handling." alt="" coords="19,372,179,412"/>
+<area shape="rect" id="node1" title="SDI&#45;12 command line interface handler." alt="" coords="609,5,797,45"/>
+<area shape="rect" id="node2" href="$_c_l_i_8h.html" title="FreeRTOS CLI handler." alt="" coords="543,93,731,133"/>
+<area shape="rect" id="node6" href="$sdi12_8cpp.html" title="SDI&#45;12 command line interface handler." alt="" coords="925,189,1109,229"/>
+<area shape="rect" id="node3" href="$_c_l_i_8cpp.html" title="FreeRTOS CLI handler." alt="" coords="5,189,165,229"/>
+<area shape="rect" id="node4" href="$cat-m1_8cpp.html" title="CAT&#45;M1 CLI command request and response handler." alt="" coords="189,181,349,236"/>
+<area shape="rect" id="node5" href="$sd__card_8cpp.html" title=" " alt="" coords="373,181,533,236"/>
+<area shape="rect" id="node7" href="$main_8cpp.html" title=" " alt="" coords="557,189,717,229"/>
+<area shape="rect" id="node8" href="$mqtt__stack_8cpp.html" title=" " alt="" coords="741,189,901,229"/>
 </map>

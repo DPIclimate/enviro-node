@@ -1,6 +1,0 @@
-<map id="firmware/wombat/include/bluetooth/uart.h" name="firmware/wombat/include/bluetooth/uart.h">
-<area shape="rect" id="node1" title="BluetoothLE UART service setup and handling." alt="" coords="5,5,193,45"/>
-<area shape="rect" id="node2" href="$server_8h.html" title="Handle the setup and maintenance of the BLE server and connected clients." alt="" coords="5,93,193,133"/>
-<area shape="rect" id="node4" href="$uart_8cpp.html" title="BluetoothLE UART service setup and handling." alt="" coords="218,93,378,133"/>
-<area shape="rect" id="node3" href="$server_8cpp.html" title="Setup and start BluetoothLE server." alt="" coords="19,181,179,221"/>
-</map>

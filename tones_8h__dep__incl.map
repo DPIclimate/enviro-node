@@ -1,8 +1,4 @@
 <map id="firmware/wombat/include/audio&#45;feedback/tones.h" name="firmware/wombat/include/audio&#45;feedback/tones.h">
-<area shape="rect" id="node1" title="Audio control for the onboard piezo buzzer." alt="" coords="104,5,292,45"/>
-<area shape="rect" id="node2" href="$uart_8h.html" title="BluetoothLE UART service setup and handling." alt="" coords="5,93,193,133"/>
-<area shape="rect" id="node6" href="$main_8cpp.html" title=" " alt="" coords="218,93,378,133"/>
-<area shape="rect" id="node3" href="$server_8h.html" title="Handle the setup and maintenance of the BLE server and connected clients." alt="" coords="5,181,193,221"/>
-<area shape="rect" id="node5" href="$uart_8cpp.html" title="BluetoothLE UART service setup and handling." alt="" coords="218,181,378,221"/>
-<area shape="rect" id="node4" href="$server_8cpp.html" title="Setup and start BluetoothLE server." alt="" coords="19,269,179,309"/>
+<area shape="rect" id="node1" title="Audio control for the onboard piezo buzzer." alt="" coords="5,5,193,45"/>
+<area shape="rect" id="node2" href="$main_8cpp.html" title=" " alt="" coords="19,93,179,133"/>
 </map>

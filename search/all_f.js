@@ -22,6 +22,5 @@ var searchData=
   ['rsp_19',['rsp',['../_device_config_8cpp.html#aa7c2bb2ee7fdaf1099754d3ab2795888',1,'rsp():&#160;DeviceConfig.cpp'],['../mqtt__stack_8cpp.html#acd81c3cf6977a299ec35a5b3e28564a4',1,'rsp():&#160;mqtt_stack.cpp']]],
   ['rtc_5fulp_5fpin_20',['RTC_ULP_PIN',['../ulp_8cpp.html#a0a7fe65d3bf6036d9be71c1888204ec7',1,'ulp.cpp']]],
   ['rx_21',['RX',['../pins__arduino_8h.html#a58d754bc1e9db1b928a4aa7bb958abf1',1,'pins_arduino.h']]],
-  ['rx1_22',['RX1',['../pins__arduino_8h.html#afd6ea3a018adead693930404719e8eeb',1,'pins_arduino.h']]],
-  ['rx_5fbuf_23',['rx_buf',['../uart_8cpp.html#a5ba853f5d3103ebee6cd61695deb82ce',1,'uart.cpp']]]
+  ['rx1_22',['RX1',['../pins__arduino_8h.html#afd6ea3a018adead693930404719e8eeb',1,'pins_arduino.h']]]
 ];

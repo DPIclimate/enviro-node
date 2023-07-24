@@ -28,13 +28,14 @@ var searchData=
   ['commit_5fconst_25',['commit_const',['../namespacegen__version__h.html#a06645a0530f4c996d952c9f375920b8c',1,'gen_version_h']]],
   ['commit_5fid_26',['commit_id',['../namespacegen__version__h.html#a4d6ea46704709d40960429591fb792e2',1,'gen_version_h.commit_id()'],['../globals_8h.html#af399bc0e3576d3b8ac578965011a819d',1,'commit_id():&#160;globals.h']]],
   ['completed_5ftone_27',['completed_tone',['../tones_8h.html#ab209b4ea4dd3f6379350c21009ed2589',1,'tones.h']]],
-  ['config_28',['config',['../class_c_l_i_config.html#a2dff947de40991e9733c0a1f3a29c991',1,'CLIConfig::config()'],['../class_c_l_i_f_t_p.html#af7a3e1f6be9827c06904accc167e5f91',1,'CLIFTP::config()'],['../class_c_l_i_m_q_t_t.html#a2cb2e95ca5c3168216c19b9688df7aa4',1,'CLIMQTT::config()'],['../class_t_c_a9534.html#a6eb9cd7dfd216ca8c9ec0e07451bca8c',1,'TCA9534::config(const uint8_t port, const Config cfg)'],['../class_t_c_a9534.html#a0d5511538f7188225c1652ef89258a5a',1,'TCA9534::config(const Config cfg)'],['../class_t_c_a9534.html#a074cad46feafe7579880cb0125d5a39b',1,'TCA9534::config()']]],
+  ['config_28',['config',['../class_c_l_i_f_t_p.html#af7a3e1f6be9827c06904accc167e5f91',1,'CLIFTP::config()'],['../class_c_l_i_m_q_t_t.html#a2cb2e95ca5c3168216c19b9688df7aa4',1,'CLIMQTT::config()'],['../class_t_c_a9534.html#a6eb9cd7dfd216ca8c9ec0e07451bca8c',1,'TCA9534::config(const uint8_t port, const Config cfg)'],['../class_t_c_a9534.html#a0d5511538f7188225c1652ef89258a5a',1,'TCA9534::config(const Config cfg)'],['../class_t_c_a9534.html#a074cad46feafe7579880cb0125d5a39b',1,'TCA9534::config()']]],
   ['config_29',['CONFIG',['../class_t_c_a9534.html#a9c648884816563b5d5ef68d61a37a586a73e99d350a4aa6f1a5af04ec29173f73',1,'TCA9534']]],
-  ['config_30',['Config',['../class_t_c_a9534.html#a3200e83b186f1bee938fcfab0868c480',1,'TCA9534']]],
-  ['config_31',['config',['../class_c_l_i_config_intervals.html#ab7ca85d38c6a84bf0c0e50e3951ef224',1,'CLIConfigIntervals']]],
-  ['config_5fcli_2ecpp_32',['config_cli.cpp',['../config__cli_8cpp.html',1,'']]],
-  ['config_5fcli_2eh_33',['config_cli.h',['../config__cli_8h.html',1,'']]],
-  ['config_5ffilename_34',['config_filename',['../_device_config_8cpp.html#a3c72ad05995eb227f4508620f6467565',1,'DeviceConfig.cpp']]],
-  ['configcmd_35',['configCmd',['../_c_l_i_8cpp.html#a74ebeb6d5c8b0d404537a38d262f184b',1,'CLI.cpp']]],
-  ['connect_5fto_5finternet_36',['connect_to_internet',['../_utils_8h.html#ad39f7d3de7097e88e02a04f89182249c',1,'connect_to_internet(void):&#160;Utils.cpp'],['../_utils_8cpp.html#ad39f7d3de7097e88e02a04f89182249c',1,'connect_to_internet(void):&#160;Utils.cpp']]]
+  ['config_30',['config',['../class_c_l_i_config_intervals.html#ab7ca85d38c6a84bf0c0e50e3951ef224',1,'CLIConfigIntervals']]],
+  ['config_31',['Config',['../class_t_c_a9534.html#a3200e83b186f1bee938fcfab0868c480',1,'TCA9534']]],
+  ['config_32',['config',['../class_c_l_i_config.html#a2dff947de40991e9733c0a1f3a29c991',1,'CLIConfig']]],
+  ['config_5fcli_2ecpp_33',['config_cli.cpp',['../config__cli_8cpp.html',1,'']]],
+  ['config_5fcli_2eh_34',['config_cli.h',['../config__cli_8h.html',1,'']]],
+  ['config_5ffilename_35',['config_filename',['../_device_config_8cpp.html#a3c72ad05995eb227f4508620f6467565',1,'DeviceConfig.cpp']]],
+  ['configcmd_36',['configCmd',['../_c_l_i_8cpp.html#a74ebeb6d5c8b0d404537a38d262f184b',1,'CLI.cpp']]],
+  ['connect_5fto_5finternet_37',['connect_to_internet',['../_utils_8h.html#ad39f7d3de7097e88e02a04f89182249c',1,'connect_to_internet(void):&#160;Utils.cpp'],['../_utils_8cpp.html#ad39f7d3de7097e88e02a04f89182249c',1,'connect_to_internet(void):&#160;Utils.cpp']]]
 ];
