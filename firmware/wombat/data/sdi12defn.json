@@ -11,8 +11,8 @@
     },
     "ATM41": {
       "read_cmds": [ "aC!" ],
-      "value_mask": "111011111111000000",
-      "labels": [ "Solar", "Precipitation", "Strikes", "WindSpeed", "WindDirection", "WindGustSpeed", "AirTemperature", "VaporPressure","AirPressure", "RH", "HumiditySensorTemperature" ]
+      "value_mask": "111011111111110000",
+      "labels": [ "Solar", "Precipitation", "Strikes", "WindSpeed", "WindDirection", "WindGustSpeed", "AirTemperature", "VaporPressure","AirPressure", "RH", "HumiditySensorTemperature", "X_Tilt", "Y_Tilt" ]
     }
   },
   "EP100GL-": {
@@ -24,6 +24,11 @@
       "read_cmds": [ "aC3!", "aC2!" ],
       "labels": [ "VWC_1", "VWC_2", "VWC_3", "VWC_4", "VWC_5", "VWC_6", "VWC_7", "VWC_8", "VWC_9", "VWC_10", "VWC_11", "VWC_12", "Temperature_1", "Temperature_2", "Temperature_3", "Temperature_4", "Temperature_5", "Temperature_6", "Temperature_7", "Temperature_8", "Temperature_9", "Temperature_10", "Temperature_11", "Temperature_12" ]
     }
-
+  },
+  "DECAGON": {
+    "5TM": {
+      "read_cmds": [ "aC!"],
+      "labels": [ "DialectricPermittivity", "Temperature"]
+    }
   }
 }
