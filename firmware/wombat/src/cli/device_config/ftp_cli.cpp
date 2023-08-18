@@ -160,6 +160,23 @@ BaseType_t CLIFTP::enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen,
             return pdFALSE;
         }
 
+        if (!strncmp("upload", param, paramLen)){
+            paramNum++;
+            param = FreeRTOS_CLIGetParameter(pcCommandString, paramNum, &paramLen);
+            if (param != nullptr && paramLen > 0) {
+                strncpy(pcWriteBuffer, param, paramLen);
+                pcWriteBuffer[paramLen] = 0;
+
+                bool rc = ftp_upload_file();
+                snprintf(pcWriteBuffer, xWriteBufferLen - 1, "\r\n%s\r\n", rc ? "OK" : "ERROR");
+                return pdFALSE;
+            }
+
+            memset(pcWriteBuffer, 0, xWriteBufferLen);
+            strncpy(pcWriteBuffer, "ERROR: Missing filename\r\n", xWriteBufferLen - 1);
+            return pdFALSE;
+        }
+
     }
     strncpy(pcWriteBuffer, "ERROR: Invalid command\r\n", xWriteBufferLen - 1);
     return pdFALSE;

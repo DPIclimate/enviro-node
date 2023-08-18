@@ -143,6 +143,53 @@ void SDCardInterface::read_file(const char* filepath, Stream &stream) {
     }
 }
 
+size_t SDCardInterface::read_file(const char *filepath, char * buffer, const size_t buffer_size, const size_t file_location) {
+    if ( ! sd_ok) {
+        ESP_LOGE(TAG, "SD card not initialised");
+        return -1;
+    }
+
+    if (filepath == nullptr || strnlen(filepath, 1) == 0) {
+        ESP_LOGE(TAG, "Empty filepath");
+        return -1;
+    }
+
+    ESP_LOGI(TAG, "Reading file '%s' on SD-Card.", filepath);
+
+    File fp = SD.open(filepath);
+    
+    if (fp) {
+        ESP_LOGD(TAG, "'%s': ", filepath);
+        fp.seek(file_location);
+
+        size_t bytes_read = fp.readBytes(buffer, buffer_size);
+        fp.close();
+        ESP_LOGI(TAG,"Finished read, read num of bytes %d", bytes_read);
+        return bytes_read;
+
+    } else {
+        ESP_LOGE(TAG, "Unable to read file: '%s'", filepath);
+        return -1;
+    }
+}
+
+size_t SDCardInterface::get_file_size(const char *filepath) {
+
+    if ( ! sd_ok) {
+        ESP_LOGE(TAG, "SD card not initialised");
+        return 0;
+    }
+
+    if (filepath == nullptr || strnlen(filepath, 1) == 0) {
+        ESP_LOGE(TAG, "Empty filepath");
+        return 0;
+    }
+
+    File fp=SD.open(filepath);
+    ESP_LOGI(TAG, "File size is %d", fp.size());
+    return fp.size();
+}
+
 void SDCardInterface::delete_file(const char* filepath) {
     if ( ! sd_ok) {
         ESP_LOGE(TAG, "SD card not initialised");

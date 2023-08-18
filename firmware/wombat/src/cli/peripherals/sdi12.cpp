@@ -202,7 +202,7 @@ BaseType_t CLISdi12::enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen,
                     if (cch >= ' ') {
                         CLI::cliOutput->write(ch);
                     } else {
-                        CLI::cliOutput->printf(" 0x%X ", cch);
+//                        CLI::cliOutput->printf(" 0x%X ", cch);
                     }
                 }
 

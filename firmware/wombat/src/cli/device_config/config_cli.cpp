@@ -140,7 +140,7 @@ BaseType_t CLIConfig::enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen,
         }
 
         response_buffer_.clear();
-        response_buffer_.printf("ERROR: Invalid argument: [%s]", param);
+//        response_buffer_.printf("ERROR: Invalid argument: [%s]", param);
         return pdTRUE;
     }
 

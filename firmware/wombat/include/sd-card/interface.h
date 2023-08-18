@@ -28,6 +28,8 @@ public:
     /// Read and print the content file filepath.
     /// TODO: Fix this to write the content to a provided buffer.
     static void read_file(const char* filepath, Stream& stream);
+    static size_t read_file(const char* filepath, char * buffer, const size_t buffer_size, const size_t file_location);
+    static size_t get_file_size(const char* filepath);
 
     /// Delete the file at filepath.
     static void delete_file(const char* filepath);
