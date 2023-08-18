@@ -1,19 +1,20 @@
 #include "DeviceConfig.h"
 #include "SparkFun_u-blox_SARA-R5_Arduino_Library.h"
 #include "globals.h"
+#include "Utils.h"
 
 #define TAG "ftp_stack"
 
 #define MAX_BUF 2048
 static char buf[MAX_BUF + 1];
 
-static int last_cmd = -1;
+static SARA_R5_ftp_command_opcode_t last_cmd = SARA_R5_FTP_COMMAND_INVALID;
 static int last_result = -1;
 static volatile bool got_urc = false;
 static bool login_ok = false;
 static bool logout_ok = false;
 
-static void ftp_cmd_callback(int cmd, int result) {
+static void ftp_cmd_callback(SARA_R5_ftp_command_opcode_t cmd, int result) {
     ESP_LOGI(TAG, "cmd: %d, result: %d", cmd, result);
     last_cmd = cmd;
     last_result = result;
@@ -38,6 +39,11 @@ static void ftp_cmd_callback(int cmd, int result) {
 bool ftp_login(void) {
     ESP_LOGI(TAG, "Starting modem and login");
 
+    if ( ! connect_to_internet()) {
+      ESP_LOGE(TAG, "Could not connect to internet");
+      return false;
+    }
+
     DeviceConfig &config = DeviceConfig::get();
     std::string &host = config.getFtpHost();
     std::string &user = config.getFtpUser();
@@ -45,14 +51,14 @@ bool ftp_login(void) {
 
     SARA_R5_error_t err = r5.setFTPserver(host.c_str());
     if (err) {
-        ESP_LOGW(TAG, "Failed to set FTP server hostname");
+        ESP_LOGE(TAG, "Failed to set FTP server hostname");
         return false;
     }
     delay(20);
 
     err = r5.setFTPcredentials(user.c_str(), password.c_str());
     if (err) {
-        ESP_LOGW(TAG, "Failed to set FTP credentials");
+        ESP_LOGE(TAG, "Failed to set FTP credentials");
         return false;
     }
     delay(20);
@@ -72,7 +78,9 @@ bool ftp_login(void) {
 
     // Wait for UFTPC URC to show connection success/failure.
     got_urc = false;
-    while ( ! got_urc) {
+    last_cmd = SARA_R5_FTP_COMMAND_INVALID;
+    login_ok = false;
+    while ( ! got_urc && last_cmd != SARA_R5_FTP_COMMAND_LOGIN) {
         r5.bufferedPoll();
         delay(20);
     }
@@ -83,7 +91,6 @@ bool ftp_login(void) {
     }
 
     ESP_LOGI(TAG, "Connected to FTP server");
-
     return true;
 }
 
@@ -106,7 +113,7 @@ bool ftp_get(const char * filename) {
     }
 
     ESP_LOGI(TAG, "Waiting for FTP download URC");
-    last_cmd = -1;
+    last_cmd = SARA_R5_FTP_COMMAND_INVALID;
     got_urc = false;
     while (last_cmd != SARA_R5_FTP_COMMAND_GET_FILE && ( ! got_urc)) {
         r5.bufferedPoll();

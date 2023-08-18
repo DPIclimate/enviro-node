@@ -204,8 +204,9 @@ void sensor_task(void) {
             ts_entry["value"] = sq.rsrp;
         }
 
-        String ccid;
-        if (r5.getCCID(ccid) == SARA_R5_ERROR_SUCCESS) {
+        String ccid = r5.getCCID();
+        //if (r5.getCCID(ccid) == SARA_R5_ERROR_SUCCESS) {
+        if ( ! ccid.isEmpty()) {
             source_ids["ccid"] = ccid;
         }
     }
