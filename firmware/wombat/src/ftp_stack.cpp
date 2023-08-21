@@ -8,13 +8,13 @@
 #define MAX_BUF 2048
 static char buf[MAX_BUF + 1];
 
-static SARA_R5_ftp_command_opcode_t last_cmd = SARA_R5_FTP_COMMAND_INVALID;
+static int last_cmd = SARA_R5_FTP_COMMAND_INVALID;
 static int last_result = -1;
 static volatile bool got_urc = false;
 static bool login_ok = false;
 static bool logout_ok = false;
 
-static void ftp_cmd_callback(SARA_R5_ftp_command_opcode_t cmd, int result) {
+static void ftp_cmd_callback(int cmd, int result) {
     ESP_LOGI(TAG, "cmd: %d, result: %d", cmd, result);
     last_cmd = cmd;
     last_result = result;

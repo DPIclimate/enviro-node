@@ -91,6 +91,18 @@ BaseType_t CLIConfig::enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen,
             return pdFALSE;
         }
 
+        if (!strncmp("dto", param, 3)) {
+            timeout_active = false;
+            strncpy(pcWriteBuffer, "Timeout disabled\r\nOK\r\n", xWriteBufferLen - 1);
+            return pdFALSE;
+        }
+
+        if (!strncmp("eto", param, 3)) {
+            timeout_active = true;
+            strncpy(pcWriteBuffer, "Timeout enabled\r\nOK\r\n", xWriteBufferLen - 1);
+            return pdFALSE;
+        }
+
         if (!strncmp("ota", param, paramLen)) {
             // If force is true the version number in wombat.sha1 is not checked.
             // Use "config ota 1" to force the update.
@@ -120,6 +132,25 @@ BaseType_t CLIConfig::enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen,
                             }
                         }
 
+                        ftp_logout();
+                    }
+                }
+            }
+
+            if (success) {
+                strncpy(pcWriteBuffer, "\r\nOK\r\n", xWriteBufferLen - 1);
+            } else {
+                strncpy(pcWriteBuffer, "\r\nERROR\r\n", xWriteBufferLen - 1);
+            }
+            return pdFALSE;
+        }
+
+        if (!strncmp("sdi12defn", param, paramLen)) {
+            bool success = false;
+            if (cat_m1.make_ready()) {
+                if (connect_to_internet()) {
+                    if (ftp_login()) {
+                        success = ota_download_sdi12defn();
                         ftp_logout();
                     }
                 }

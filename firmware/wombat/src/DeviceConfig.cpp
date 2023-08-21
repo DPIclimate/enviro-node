@@ -6,7 +6,6 @@
  * @date December 2022
  */
 #include "DeviceConfig.h"
-#include <esp_log.h>
 
 #include <SPIFFS.h>
 
@@ -22,8 +21,6 @@
 
 //! Default configuration path
 constexpr const char* config_filename = "/config";
-//! Default configuration filename (stored as JSON)
-constexpr const char* sdi12defn_filename = "/sdi12defn.json";
 
 //! Size of buffer for reading and writing
 #define BUF_SIZE 64
@@ -89,7 +86,7 @@ void DeviceConfig::reset() {
  *
  * @see reset
  * @see config_filename
- * @see sdi12defn_filename
+ * @see sdi12defn_spiffs
  * @see sdi12Defns
  */
 void DeviceConfig::load() {
@@ -125,8 +122,8 @@ void DeviceConfig::load() {
             ESP_LOGE(TAG, "File not found: %s", config_filename);
         }
 
-        if (SPIFFS.exists(sdi12defn_filename)) {
-            File f = SPIFFS.open(sdi12defn_filename, FILE_READ);
+        if (SPIFFS.exists(sdi12defn_spiffs)) {
+            File f = SPIFFS.open(sdi12defn_spiffs, FILE_READ);
             while (f.available() > 0) {
                 DeserializationError err = deserializeJson(sdi12Defns, f);
                 f.close();
@@ -139,7 +136,7 @@ void DeviceConfig::load() {
                 }
             }
         } else {
-            ESP_LOGE(TAG, "File not found: %s", sdi12defn_filename);
+            ESP_LOGE(TAG, "File not found: %s", sdi12defn_spiffs);
         }
     } else {
         ESP_LOGE(TAG, "Failed to initialise SPIFFS");

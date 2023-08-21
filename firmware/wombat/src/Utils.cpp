@@ -421,10 +421,10 @@ bool connect_to_internet(void) {
     // by the modem. For example, in summer in NSW the modem will say the time it has provided is
     // +44 from UTC. This means it is 44 15-minute intervals ahead.
     int dst_offset_secs = tz * 15 * -1 * 60;
-    ESP_LOGI(TAG, "Network time: %02d/%02d/%04d %02d:%02d:%02d %02d", tm.tm_mday, tm.tm_mon, tm.tm_year, tm.tm_hour, tm.tm_min, tm.tm_sec, tz);
+    ESP_LOGI(TAG, "Network time: %02d/%02d/%04d %02d:%02d:%02d %02d", tm.tm_mday, tm.tm_mon, tm.tm_year + 1900, tm.tm_hour, tm.tm_min, tm.tm_sec, tz);
     tm.tm_mon -= 1;    // tm.tm_month is months since January, so from 0 - 11.
 
-    struct timeval tv;
+    struct timeval tv{};
     tv.tv_usec = 0;
 
     // Get the epoch value by converting the values in the tm structure. This will make tv.tv_sec equal to

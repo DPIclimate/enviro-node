@@ -6,6 +6,8 @@
 #include <esp_ota_ops.h>
 #include <SPIFFS.h>
 
+#include <ArduinoJson.h>
+
 #define TAG "ota_update"
 
 static const char* wombat_sha1 = "wombat.sha1";
@@ -171,6 +173,55 @@ bool ota_download_update(const ota_firmware_info_t& ota_ctx) {
         f.write('T');
         f.close();
     }
+
+    return true;
+}
+
+static constexpr size_t MAX_SDI12DEFN_SZ = 2024;
+
+bool ota_download_sdi12defn(void) {
+    if ( ! spiffs_ok) {
+        ESP_LOGE(TAG, "SPIFFS not initialised");
+        return false;
+    }
+
+    r5.deleteFile(sdi12defn_no_slash);
+    if (!ftp_get(sdi12defn_no_slash)) {
+        ESP_LOGW(TAG, "FTP get sdi12defn.json failed");
+        return false;
+    }
+
+    size_t bytes_read = 0;
+    //static char sdi12defn_buf[MAX_SDI12DEFN_SZ - 1];
+    memset(g_buffer, 0, sizeof(g_buffer));
+    SARA_R5_error_t err = r5.getFileBlock(sdi12defn_no_slash, g_buffer, 0, 64000, bytes_read);
+
+    ESP_LOGI(TAG, "Read %lu bytes:\r\n%s", bytes_read, g_buffer);
+    if (err != SARA_R5_ERROR_SUCCESS || bytes_read < 2) {
+        ESP_LOGE(TAG, "Failed to read %s from modem filesystem", sdi12defn_no_slash);
+        return false;
+    }
+
+    StaticJsonDocument<MAX_SDI12DEFN_SZ> sdi12Defns;
+    DeserializationError json_err = deserializeJson(sdi12Defns, g_buffer);
+    if (json_err != DeserializationError::Ok) {
+        ESP_LOGE(TAG, "Invalid JSON");
+        return false;
+    }
+
+    static const size_t MAX_FNAME = 32;
+    static char filename[MAX_FNAME + 1];
+
+    snprintf(filename, MAX_FNAME, "/new_%s", sdi12defn_no_slash);
+    ESP_LOGI(TAG, "Writing new %s to %s", sdi12defn_no_slash, filename);
+    File f = SPIFFS.open(filename, FILE_WRITE);
+    serializeJson(sdi12Defns, f);
+    f.close();
+
+    ESP_LOGI(TAG, "rename 1");
+    SPIFFS.rename("/sdi12defn.json", "/sdi12defn.old");
+    ESP_LOGI(TAG, "rename 2");
+    SPIFFS.rename(filename, "/sdi12defn.json");
 
     return true;
 }

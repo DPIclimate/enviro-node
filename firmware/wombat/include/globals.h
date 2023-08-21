@@ -50,7 +50,28 @@ constexpr char sd_card_datafile_name[] = "/data.json";
 constexpr char sd_card_logfile_name[] = "/log.txt";
 constexpr char send_fw_version_name[] = "/send_fw_version";
 
+/// Default configuration filename on SPIFFS. SPIFFS requires the leading /
+/// but nothing else does.
+constexpr const char sdi12defn_spiffs[] = "/sdi12defn.json";
+constexpr const char* sdi12defn_no_slash = &sdi12defn_spiffs[1];
+
 void shutdown(void);
+
+
+/// A flag to specify whether the timeout task should ignore timeout_restart.
+/// Can be set by  the app code, but probably shouldn't be. The config eto and config dto commands
+/// change this.
+EXTERN volatile bool timeout_active;
+
+/// Used to decide whether to reboot. If this is true after the timeout task wakes
+/// up it means the app code did not set it to false so is stuck somewhere.
+///
+/// Note the app never sets this to false because there is nothing the app does
+/// that should take longer than about 10 minutes. The app should usually take
+/// less than 1 minute, but an OTA firmware update can take a long time to download
+/// the image.
+EXTERN volatile bool timeout_restart;
+
 
 #ifdef ALLOCATE_GLOBALS
 /// A global SARA R5 modem object.

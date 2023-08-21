@@ -26,7 +26,7 @@ char *script = nullptr;
 //}
 
 
-static volatile SARA_R5_mqtt_command_opcode_t lastCmd = SARA_R5_MQTT_COMMAND_INVALID;
+static volatile int lastCmd = SARA_R5_MQTT_COMMAND_INVALID;
 static volatile int lastResult = -1;
 static volatile bool mqttGotURC = false;
 static volatile bool mqttLoginOk = false;
@@ -35,7 +35,7 @@ static volatile bool mqttPublishOk = false;
 static volatile bool mqttGotSubscribeURC = false;
 static volatile bool mqttGotReadURC = false;
 
-void mqttCmdCallback(SARA_R5_mqtt_command_opcode_t cmd, int result) {
+void mqttCmdCallback(int cmd, int result) {
     ESP_LOGI(TAG, "cmd: %d, result: %d", cmd, result);
     lastCmd = cmd;
     lastResult = result;
@@ -76,7 +76,7 @@ bool mqtt_login(void) {
     std::string &user = config.getMqttUser();
     std::string &password = config.getMqttPassword();
 
-    if ( ! connect_to_internet()) {
+    if (!connect_to_internet()) {
         ESP_LOGE(TAG, "Could not connect to internet");
         return false;
     }
@@ -106,11 +106,11 @@ bool mqtt_login(void) {
     mqttGotURC = false;
     lastCmd = SARA_R5_MQTT_COMMAND_INVALID;
     mqttLoginOk = false;
-    while ( ! mqttGotURC && lastCmd != SARA_R5_MQTT_COMMAND_LOGIN) {
+    while (!mqttGotURC && lastCmd != SARA_R5_MQTT_COMMAND_LOGIN) {
         r5.bufferedPoll();
     }
 
-    if ( ! mqttLoginOk) {
+    if (!mqttLoginOk) {
         ESP_LOGE(TAG, "Connection or mqtt_login to MQTT broker failed");
         return false;
     }
@@ -192,33 +192,27 @@ bool mqtt_logout(void) {
     return mqttLogoutOk;
 }
 
-bool mqtt_publish(String& topic, const char * const msg, size_t msg_len) {
-    if (msg_len > MAX_MQTT_DIRECT_MSG_LEN) {
-        ESP_LOGE(TAG, "Message too long, msg_len must be < 1024");
-        return false;
-    }
+bool mqtt_publish(String &topic, const char *const msg, size_t msg_len) {
+    SARA_R5_error_t err = SARA_R5_ERROR_INVALID;
+    if (msg_len < MAX_MQTT_DIRECT_MSG_LEN) {
+        ESP_LOGI(TAG, "Direct publish message: %s/%s", topic.c_str(), msg);
+        err = r5.mqttPublishBinaryMsg(topic, msg, msg_len, 1);
+    } else {
+        ESP_LOGI(TAG, "Publish from file: %s/%s", topic.c_str(), msg);
+        static const String mqtt_msg_filename("mqtt.json");
+        r5.deleteFile(mqtt_msg_filename);
+        r5.appendFileContents(mqtt_msg_filename, msg, static_cast<int>(msg_len));
+        memset(g_buffer, 0, sizeof(g_buffer));
+        err = r5.getFileContents(mqtt_msg_filename, g_buffer);
+        ESP_LOGD(TAG, "Msg content from modem:\n%s", g_buffer);
 
-    /*
-     * This is the code to write the message to a file on the modem and send it from there.
-     * Avoids the message limit of 1024 bytes we currently have.
-     *
-   SARA_R5_error_t err = r5.deleteFile(mqtt_msg_filename);
-    err = r5.appendFileContents(mqtt_msg_filename, msg, strnlen(msg, 2048));
-    memset(g_buffer, 0, sizeof(g_buffer));
-    err = r5.getFileContents(mqtt_msg_filename, g_buffer);
-    ESP_LOGI(TAG, "Msg content from modem:\n%s", g_buffer);
-
-    if (err == SARA_R5_error_t::SARA_R5_ERROR_SUCCESS) {
-        err = r5.mqttPublishFromFile(topic, mqtt_msg_filename);
-        if (err != SARA_R5_error_t::SARA_R5_ERROR_SUCCESS) {
-            ESP_LOGE(TAG, "Publish failed");
-            return false;
+        if (err == SARA_R5_error_t::SARA_R5_ERROR_SUCCESS) {
+            err = r5.mqttPublishFromFile(topic, mqtt_msg_filename);
+        } else {
+            ESP_LOGE(TAG, "Failed to read file content from R5");
         }
     }
-     */
 
-    ESP_LOGI(TAG, "Publish message: %s/%s", topic.c_str(), msg);
-    SARA_R5_error_t err = r5.mqttPublishBinaryMsg(topic, msg, msg_len, 1);
     if (err != SARA_R5_error_t::SARA_R5_ERROR_SUCCESS) {
         ESP_LOGE(TAG, "Publish failed");
         return false;
@@ -226,9 +220,10 @@ bool mqtt_publish(String& topic, const char * const msg, size_t msg_len) {
 
     delay(20);
     mqttGotURC = false;
+    mqttPublishOk = false;
     while (!mqttGotURC) {
         r5.bufferedPoll();
+        delay(20);
     }
-    mqttGotURC = false;
     return mqttPublishOk;
 }
