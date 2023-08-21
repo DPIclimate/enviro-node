@@ -120,8 +120,8 @@ Macros</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a0a1679ef83059938667e2268e13e3066"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mqtt__stack_8cpp.html#a0a1679ef83059938667e2268e13e3066">mqttCmdCallback</a> (SARA_R5_mqtt_command_opcode_t <a class="el" href="_c_l_i_8cpp.html#a2229bd6337a76b1788849d5541f9f07a">cmd</a>, int result)</td></tr>
-<tr class="separator:a0a1679ef83059938667e2268e13e3066"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1125078b533d0d133b7a49025778a701"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mqtt__stack_8cpp.html#a1125078b533d0d133b7a49025778a701">mqttCmdCallback</a> (int <a class="el" href="_c_l_i_8cpp.html#a2229bd6337a76b1788849d5541f9f07a">cmd</a>, int result)</td></tr>
+<tr class="separator:a1125078b533d0d133b7a49025778a701"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8d983f4ec1bf845a3652d1fa3c4f936d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mqtt__stack_8cpp.html#a8d983f4ec1bf845a3652d1fa3c4f936d">mqtt_login</a> (void)</td></tr>
 <tr class="separator:a8d983f4ec1bf845a3652d1fa3c4f936d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9ca99bf880724e94d75c7e94660e3fce"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mqtt__stack_8cpp.html#a9ca99bf880724e94d75c7e94660e3fce">mqtt_logout</a> (void)</td></tr>
@@ -137,8 +137,8 @@ Variables</h2></td></tr>
 <tr class="separator:a29781074a609870a12b3b1378f34d13b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a215b2b0b4c505ae5c7d6e6b1b3b9b0dc"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mqtt__stack_8cpp.html#a215b2b0b4c505ae5c7d6e6b1b3b9b0dc">script</a> = nullptr</td></tr>
 <tr class="separator:a215b2b0b4c505ae5c7d6e6b1b3b9b0dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a233cdaa9f5529b8c12bc9a69da5c2447"><td class="memItemLeft" align="right" valign="top">static volatile SARA_R5_mqtt_command_opcode_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mqtt__stack_8cpp.html#a233cdaa9f5529b8c12bc9a69da5c2447">lastCmd</a> = SARA_R5_MQTT_COMMAND_INVALID</td></tr>
-<tr class="separator:a233cdaa9f5529b8c12bc9a69da5c2447"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad13e61890919c916759b599fe901044d"><td class="memItemLeft" align="right" valign="top">static volatile int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mqtt__stack_8cpp.html#ad13e61890919c916759b599fe901044d">lastCmd</a> = SARA_R5_MQTT_COMMAND_INVALID</td></tr>
+<tr class="separator:ad13e61890919c916759b599fe901044d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a49e2a4c8aae59aa7fc801a37cfcf780f"><td class="memItemLeft" align="right" valign="top">static volatile int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mqtt__stack_8cpp.html#a49e2a4c8aae59aa7fc801a37cfcf780f">lastResult</a> = -1</td></tr>
 <tr class="separator:a49e2a4c8aae59aa7fc801a37cfcf780f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1e7a056505d8c377653c4020c6b5c926"><td class="memItemLeft" align="right" valign="top">static volatile bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mqtt__stack_8cpp.html#a1e7a056505d8c377653c4020c6b5c926">mqttGotURC</a> = false</td></tr>
@@ -278,8 +278,8 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a0a1679ef83059938667e2268e13e3066" name="a0a1679ef83059938667e2268e13e3066"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0a1679ef83059938667e2268e13e3066">&#9670;&#160;</a></span>mqttCmdCallback()</h2>
+<a id="a1125078b533d0d133b7a49025778a701" name="a1125078b533d0d133b7a49025778a701"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1125078b533d0d133b7a49025778a701">&#9670;&#160;</a></span>mqttCmdCallback()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -287,7 +287,7 @@ Variables</h2></td></tr>
         <tr>
           <td class="memname">void mqttCmdCallback </td>
           <td>(</td>
-          <td class="paramtype">SARA_R5_mqtt_command_opcode_t&#160;</td>
+          <td class="paramtype">int&#160;</td>
           <td class="paramname"><em>cmd</em>, </td>
         </tr>
         <tr>
@@ -329,8 +329,8 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a233cdaa9f5529b8c12bc9a69da5c2447" name="a233cdaa9f5529b8c12bc9a69da5c2447"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a233cdaa9f5529b8c12bc9a69da5c2447">&#9670;&#160;</a></span>lastCmd</h2>
+<a id="ad13e61890919c916759b599fe901044d" name="ad13e61890919c916759b599fe901044d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad13e61890919c916759b599fe901044d">&#9670;&#160;</a></span>lastCmd</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -339,7 +339,7 @@ Variables</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">volatile SARA_R5_mqtt_command_opcode_t lastCmd = SARA_R5_MQTT_COMMAND_INVALID</td>
+          <td class="memname">volatile int lastCmd = SARA_R5_MQTT_COMMAND_INVALID</td>
         </tr>
       </table>
   </td>

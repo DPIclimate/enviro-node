@@ -146,8 +146,10 @@ Functions</h2></td></tr>
 <tr class="memitem:a43937a1f3e090a4ef926cbe30a3fce6b"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a43937a1f3e090a4ef926cbe30a3fce6b">select_rtc_slow_clk</a> (void)</td></tr>
 <tr class="memdesc:a43937a1f3e090a4ef926cbe30a3fce6b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Switch the RTC clock source to the external crystal.  <a href="main_8cpp.html#a43937a1f3e090a4ef926cbe30a3fce6b">More...</a><br /></td></tr>
 <tr class="separator:a43937a1f3e090a4ef926cbe30a3fce6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4fc01d736fe50cf5b977f755b675f11d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a4fc01d736fe50cf5b977f755b675f11d">setup</a> ()</td></tr>
-<tr class="separator:a4fc01d736fe50cf5b977f755b675f11d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aea6e819eb50a1cf35d14d37994d32782"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#aea6e819eb50a1cf35d14d37994d32782">timeout_task</a> (void *pvParameters)</td></tr>
+<tr class="separator:aea6e819eb50a1cf35d14d37994d32782"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7dfd9b79bc5a37d7df40207afbc5431f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a7dfd9b79bc5a37d7df40207afbc5431f">setup</a> (void)</td></tr>
+<tr class="separator:a7dfd9b79bc5a37d7df40207afbc5431f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1c9d5e29ad8899afe0c34571ddee18f9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a1c9d5e29ad8899afe0c34571ddee18f9">shutdown</a> (void)</td></tr>
 <tr class="separator:a1c9d5e29ad8899afe0c34571ddee18f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afe461d27b9c48d5921c00d521181f12f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#afe461d27b9c48d5921c00d521181f12f">loop</a> ()</td></tr>
@@ -166,6 +168,8 @@ Variables</h2></td></tr>
 <tr class="separator:a5f4927c8ddf017550d72987d1be19591"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a108f21ae763ab22ae2ed2f0135e1c18d"><td class="memItemLeft" align="right" valign="top">static File *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a108f21ae763ab22ae2ed2f0135e1c18d">log_file</a> = nullptr</td></tr>
 <tr class="separator:a108f21ae763ab22ae2ed2f0135e1c18d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a01ba122aba7d048809e2330ee6cbe218"><td class="memItemLeft" align="right" valign="top">static TaskHandle_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a01ba122aba7d048809e2330ee6cbe218">xHandle</a> = nullptr</td></tr>
+<tr class="separator:a01ba122aba7d048809e2330ee6cbe218"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="a50622d2058413be33afcc9e4bfceb68b" name="a50622d2058413be33afcc9e4bfceb68b"></a>
@@ -295,8 +299,8 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a4fc01d736fe50cf5b977f755b675f11d" name="a4fc01d736fe50cf5b977f755b675f11d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4fc01d736fe50cf5b977f755b675f11d">&#9670;&#160;</a></span>setup()</h2>
+<a id="a7dfd9b79bc5a37d7df40207afbc5431f" name="a7dfd9b79bc5a37d7df40207afbc5431f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7dfd9b79bc5a37d7df40207afbc5431f">&#9670;&#160;</a></span>setup()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -304,6 +308,7 @@ Variables</h2></td></tr>
         <tr>
           <td class="memname">void setup </td>
           <td>(</td>
+          <td class="paramtype">void&#160;</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
@@ -327,6 +332,32 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+</div>
+</div>
+<a id="aea6e819eb50a1cf35d14d37994d32782" name="aea6e819eb50a1cf35d14d37994d32782"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aea6e819eb50a1cf35d14d37994d32782">&#9670;&#160;</a></span>timeout_task()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void timeout_task </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>pvParameters</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >A simple timeout task. Runs on core 0 so the app code does not interfere with it.</p>
+<p >If 14 minutes passes and timeout_restart has not been set to false, power to the modem is shut off and the ESP32 is rebooted.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pvParameters</td><td>not used. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -392,6 +423,28 @@ Variables</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">volatile int uxTopUsedPriority</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a01ba122aba7d048809e2330ee6cbe218" name="a01ba122aba7d048809e2330ee6cbe218"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a01ba122aba7d048809e2330ee6cbe218">&#9670;&#160;</a></span>xHandle</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">TaskHandle_t xHandle = nullptr</td>
         </tr>
       </table>
   </td>

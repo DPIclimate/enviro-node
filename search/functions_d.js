@@ -18,7 +18,7 @@ var searchData=
   ['setmqttport_15',['setMqttPort',['../class_device_config.html#afbf08f41d58f05f664d175c676155d98',1,'DeviceConfig']]],
   ['setmqttuser_16',['setMqttUser',['../class_device_config.html#a50601b3676b4af272f24808a93ce71b0',1,'DeviceConfig']]],
   ['setsleepadjustment_17',['setSleepAdjustment',['../class_device_config.html#a821833a93d6c43dba7c1d23a89b33d28',1,'DeviceConfig']]],
-  ['setup_18',['setup',['../main_8cpp.html#a4fc01d736fe50cf5b977f755b675f11d',1,'main.cpp']]],
+  ['setup_18',['setup',['../main_8cpp.html#a7dfd9b79bc5a37d7df40207afbc5431f',1,'main.cpp']]],
   ['setuplinkinterval_19',['setUplinkInterval',['../class_device_config.html#aaeb55c81ff6d1e76db935f826a88e9c8',1,'DeviceConfig']]],
   ['shutdown_20',['shutdown',['../main_8cpp.html#a1c9d5e29ad8899afe0c34571ddee18f9',1,'shutdown(void):&#160;main.cpp'],['../globals_8h.html#a1c9d5e29ad8899afe0c34571ddee18f9',1,'shutdown(void):&#160;main.cpp']]],
   ['shutdown_5ftone_21',['shutdown_tone',['../tones_8h.html#a23ffc5eef7b83daf086a0293509af147',1,'tones.h']]],

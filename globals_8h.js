@@ -16,8 +16,12 @@ var globals_8h =
     [ "script", "globals_8h.html#a215b2b0b4c505ae5c7d6e6b1b3b9b0dc", null ],
     [ "sd_card_datafile_name", "globals_8h.html#a0c3f83f54f93a120307b4bdbc4c0de44", null ],
     [ "sd_card_logfile_name", "globals_8h.html#a92a159724e7d87c537b6f8e7f101187a", null ],
+    [ "sdi12defn_no_slash", "globals_8h.html#a433509af9af2709f5e4493c156e85433", null ],
+    [ "sdi12defn_spiffs", "globals_8h.html#ac95b4b8aa5a027076942b8c3c325e09f", null ],
     [ "send_fw_version_name", "globals_8h.html#a5989daa5ee30076036abbb20967c64a3", null ],
     [ "spiffs_ok", "globals_8h.html#a09c6d6ca19f98864eea5af213d2ed684", null ],
+    [ "timeout_active", "globals_8h.html#abb78c9dda3d190881e3728008c99adb9", null ],
+    [ "timeout_restart", "globals_8h.html#a735fff2803ffa6cdf10564cd2a568b8b", null ],
     [ "ver_major", "globals_8h.html#ada31d202380adacbb62da679999fd499", null ],
     [ "ver_minor", "globals_8h.html#a140d2465d47863dbdbfd00c2be7f4edc", null ],
     [ "ver_update", "globals_8h.html#ac978ad67d10b0ffe20ed227dad431878", null ]

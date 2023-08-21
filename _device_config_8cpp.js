@@ -6,6 +6,5 @@ var _device_config_8cpp =
     [ "bootCount", "_device_config_8cpp.html#a38580aa78b5cdbf492b7c66c8b0a8bf8", null ],
     [ "buf", "_device_config_8cpp.html#a35d678a94eb0780e1aa3306f4fe13d24", null ],
     [ "config_filename", "_device_config_8cpp.html#a3c72ad05995eb227f4508620f6467565", null ],
-    [ "rsp", "_device_config_8cpp.html#aa7c2bb2ee7fdaf1099754d3ab2795888", null ],
-    [ "sdi12defn_filename", "_device_config_8cpp.html#a2fd91fc2d6c3082f5ff868123f5cb515", null ]
+    [ "rsp", "_device_config_8cpp.html#aa7c2bb2ee7fdaf1099754d3ab2795888", null ]
 ];

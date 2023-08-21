@@ -163,6 +163,14 @@ Variables</h2></td></tr>
 <tr class="separator:a92a159724e7d87c537b6f8e7f101187a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5989daa5ee30076036abbb20967c64a3"><td class="memItemLeft" align="right" valign="top">constexpr char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="globals_8h.html#a5989daa5ee30076036abbb20967c64a3">send_fw_version_name</a> [] = &quot;/send_fw_version&quot;</td></tr>
 <tr class="separator:a5989daa5ee30076036abbb20967c64a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac95b4b8aa5a027076942b8c3c325e09f"><td class="memItemLeft" align="right" valign="top">constexpr const char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="globals_8h.html#ac95b4b8aa5a027076942b8c3c325e09f">sdi12defn_spiffs</a> [] = &quot;/sdi12defn.json&quot;</td></tr>
+<tr class="separator:ac95b4b8aa5a027076942b8c3c325e09f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a433509af9af2709f5e4493c156e85433"><td class="memItemLeft" align="right" valign="top">constexpr const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="globals_8h.html#a433509af9af2709f5e4493c156e85433">sdi12defn_no_slash</a> = &amp;<a class="el" href="globals_8h.html#ac95b4b8aa5a027076942b8c3c325e09f">sdi12defn_spiffs</a>[1]</td></tr>
+<tr class="separator:a433509af9af2709f5e4493c156e85433"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abb78c9dda3d190881e3728008c99adb9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="globals_8h.html#a77366c1bd428629dc898e188bfd182a3">EXTERN</a> volatile bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="globals_8h.html#abb78c9dda3d190881e3728008c99adb9">timeout_active</a></td></tr>
+<tr class="separator:abb78c9dda3d190881e3728008c99adb9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a735fff2803ffa6cdf10564cd2a568b8b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="globals_8h.html#a77366c1bd428629dc898e188bfd182a3">EXTERN</a> volatile bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="globals_8h.html#a735fff2803ffa6cdf10564cd2a568b8b">timeout_restart</a></td></tr>
+<tr class="separator:a735fff2803ffa6cdf10564cd2a568b8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7f9b6ad99b4ad4d8ca1d579575944f2b"><td class="memItemLeft" align="right" valign="top">SARA_R5&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="globals_8h.html#a7f9b6ad99b4ad4d8ca1d579575944f2b">r5</a></td></tr>
 <tr class="separator:a7f9b6ad99b4ad4d8ca1d579575944f2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a215b2b0b4c505ae5c7d6e6b1b3b9b0dc"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="globals_8h.html#a215b2b0b4c505ae5c7d6e6b1b3b9b0dc">script</a></td></tr>
@@ -473,6 +481,51 @@ Variables</h2></td></tr>
 
 </div>
 </div>
+<a id="a433509af9af2709f5e4493c156e85433" name="a433509af9af2709f5e4493c156e85433"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a433509af9af2709f5e4493c156e85433">&#9670;&#160;</a></span>sdi12defn_no_slash</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr const char* sdi12defn_no_slash = &amp;<a class="el" href="globals_8h.html#ac95b4b8aa5a027076942b8c3c325e09f">sdi12defn_spiffs</a>[1]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac95b4b8aa5a027076942b8c3c325e09f" name="ac95b4b8aa5a027076942b8c3c325e09f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac95b4b8aa5a027076942b8c3c325e09f">&#9670;&#160;</a></span>sdi12defn_spiffs</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr const char sdi12defn_spiffs[] = &quot;/sdi12defn.json&quot;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >Default configuration filename on SPIFFS. SPIFFS requires the leading / but nothing else does. </p>
+
+</div>
+</div>
 <a id="a5989daa5ee30076036abbb20967c64a3" name="a5989daa5ee30076036abbb20967c64a3"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5989daa5ee30076036abbb20967c64a3">&#9670;&#160;</a></span>send_fw_version_name</h2>
 
@@ -514,6 +567,37 @@ Variables</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+</div>
+</div>
+<a id="abb78c9dda3d190881e3728008c99adb9" name="abb78c9dda3d190881e3728008c99adb9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abb78c9dda3d190881e3728008c99adb9">&#9670;&#160;</a></span>timeout_active</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="globals_8h.html#a77366c1bd428629dc898e188bfd182a3">EXTERN</a> volatile bool timeout_active</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >A flag to specify whether the timeout task should ignore timeout_restart. Can be set by the app code, but probably shouldn't be. The config eto and config dto commands change this. </p>
+
+</div>
+</div>
+<a id="a735fff2803ffa6cdf10564cd2a568b8b" name="a735fff2803ffa6cdf10564cd2a568b8b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a735fff2803ffa6cdf10564cd2a568b8b">&#9670;&#160;</a></span>timeout_restart</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="globals_8h.html#a77366c1bd428629dc898e188bfd182a3">EXTERN</a> volatile bool timeout_restart</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >Used to decide whether to reboot. If this is true after the timeout task wakes up it means the app code did not set it to false so is stuck somewhere.</p>
+<p >Note the app never sets this to false because there is nothing the app does that should take longer than about 10 minutes. The app should usually take less than 1 minute, but an OTA firmware update can take a long time to download the image. </p>
 
 </div>
 </div>

@@ -5,11 +5,14 @@ var searchData=
   ['tca9534_2eh_2',['TCA9534.h',['../_t_c_a9534_8h.html',1,'']]],
   ['test_3',['TEST',['../test___utils_8cpp.html#af40d2af036fae7a67e08947371162ef9',1,'TEST(Utils, stripLeadingWS):&#160;test_Utils.cpp'],['../test___utils_8cpp.html#a3bdf580af25db79dc686b09cee7891d0',1,'TEST(Utils, stripTrailingWS):&#160;test_Utils.cpp'],['../test___utils_8cpp.html#a1c0cb390322d5d90073a19ab816b92c8',1,'TEST(Utils, stripWS):&#160;test_Utils.cpp']]],
   ['test_5futils_2ecpp_4',['test_Utils.cpp',['../test___utils_8cpp.html',1,'']]],
-  ['to_5fpath_5',['to_path',['../namespacegen__version__h.html#af46565bdd3071e66bb6a81b6ee5a91c9',1,'gen_version_h']]],
-  ['todo_20list_6',['Todo List',['../todo.html',1,'']]],
-  ['tones_2eh_7',['tones.h',['../tones_8h.html',1,'']]],
-  ['topic_8',['topic',['../uplinks_8cpp.html#a18dabc7ec0a9117904f3c64a1ce5ee5c',1,'uplinks.cpp']]],
-  ['true_9',['True',['../namespacegen__version__h.html#a7b69cf4913d0323a94dad9b29b605ca3',1,'gen_version_h']]],
-  ['tx_10',['TX',['../pins__arduino_8h.html#a6301ad0c499ce5ba766dc89b8f988368',1,'pins_arduino.h']]],
-  ['tx1_11',['TX1',['../pins__arduino_8h.html#a0dd5147a6151443d7640e532b5c91f49',1,'pins_arduino.h']]]
+  ['timeout_5factive_5',['timeout_active',['../globals_8h.html#abb78c9dda3d190881e3728008c99adb9',1,'globals.h']]],
+  ['timeout_5frestart_6',['timeout_restart',['../globals_8h.html#a735fff2803ffa6cdf10564cd2a568b8b',1,'globals.h']]],
+  ['timeout_5ftask_7',['timeout_task',['../main_8cpp.html#aea6e819eb50a1cf35d14d37994d32782',1,'main.cpp']]],
+  ['to_5fpath_8',['to_path',['../namespacegen__version__h.html#af46565bdd3071e66bb6a81b6ee5a91c9',1,'gen_version_h']]],
+  ['todo_20list_9',['Todo List',['../todo.html',1,'']]],
+  ['tones_2eh_10',['tones.h',['../tones_8h.html',1,'']]],
+  ['topic_11',['topic',['../uplinks_8cpp.html#a18dabc7ec0a9117904f3c64a1ce5ee5c',1,'uplinks.cpp']]],
+  ['true_12',['True',['../namespacegen__version__h.html#a7b69cf4913d0323a94dad9b29b605ca3',1,'gen_version_h']]],
+  ['tx_13',['TX',['../pins__arduino_8h.html#a6301ad0c499ce5ba766dc89b8f988368',1,'pins_arduino.h']]],
+  ['tx1_14',['TX1',['../pins__arduino_8h.html#a0dd5147a6151443d7640e532b5c91f49',1,'pins_arduino.h']]]
 ];

@@ -103,10 +103,11 @@ $(document).ready(function(){initNavTree('ota__update_8cpp.html',''); initResiza
 <code>#include &lt;mbedtls/sha1.h&gt;</code><br />
 <code>#include &lt;esp_ota_ops.h&gt;</code><br />
 <code>#include &lt;SPIFFS.h&gt;</code><br />
+<code>#include &lt;ArduinoJson.h&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for ota_update.cpp:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="ota__update_8cpp__incl.svg" width="786" height="359"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="ota__update_8cpp__incl.svg" width="920" height="359"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 </div><table class="memberdecls">
@@ -121,6 +122,8 @@ Functions</h2></td></tr>
 <tr class="separator:a50bee239ec4dcc981f33611e033cfde4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a230a906c7cdb4fcf6da187aaf25b755e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ota__update_8cpp.html#a230a906c7cdb4fcf6da187aaf25b755e">ota_download_update</a> (const <a class="el" href="structota__firmware__info__t.html">ota_firmware_info_t</a> &amp;ota_ctx)</td></tr>
 <tr class="separator:a230a906c7cdb4fcf6da187aaf25b755e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaa4bd6f60dbdf197f641e33c7acaeebe"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ota__update_8cpp.html#aaa4bd6f60dbdf197f641e33c7acaeebe">ota_download_sdi12defn</a> (void)</td></tr>
+<tr class="separator:aaa4bd6f60dbdf197f641e33c7acaeebe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af1069b59800b0f3a7b2cb77eb83a6af9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ota__update_8cpp.html#af1069b59800b0f3a7b2cb77eb83a6af9">back_to_factory</a> (void)</td></tr>
 <tr class="separator:af1069b59800b0f3a7b2cb77eb83a6af9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -130,6 +133,8 @@ Variables</h2></td></tr>
 <tr class="separator:a4e6d8719831c99c184bbb0eb50e82159"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a391d026a4ce555796a74f3992edd749e"><td class="memItemLeft" align="right" valign="top">static const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ota__update_8cpp.html#a391d026a4ce555796a74f3992edd749e">wombat_bin</a> = &quot;wombat.bin&quot;</td></tr>
 <tr class="separator:a391d026a4ce555796a74f3992edd749e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa578b5271e60e4469e5a2b279b30ef71"><td class="memItemLeft" align="right" valign="top">static constexpr size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ota__update_8cpp.html#aa578b5271e60e4469e5a2b279b30ef71">MAX_SDI12DEFN_SZ</a> = 2024</td></tr>
+<tr class="separator:aa578b5271e60e4469e5a2b279b30ef71"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="afc3d101f633a076cc1ca84b85b6224b2" name="afc3d101f633a076cc1ca84b85b6224b2"></a>
@@ -191,6 +196,24 @@ Variables</h2></td></tr>
 
 </div>
 </div>
+<a id="aaa4bd6f60dbdf197f641e33c7acaeebe" name="aaa4bd6f60dbdf197f641e33c7acaeebe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaa4bd6f60dbdf197f641e33c7acaeebe">&#9670;&#160;</a></span>ota_download_sdi12defn()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ota_download_sdi12defn </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a230a906c7cdb4fcf6da187aaf25b755e" name="a230a906c7cdb4fcf6da187aaf25b755e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a230a906c7cdb4fcf6da187aaf25b755e">&#9670;&#160;</a></span>ota_download_update()</h2>
 
@@ -210,6 +233,28 @@ Variables</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Variable Documentation</h2>
+<a id="aa578b5271e60e4469e5a2b279b30ef71" name="aa578b5271e60e4469e5a2b279b30ef71"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa578b5271e60e4469e5a2b279b30ef71">&#9670;&#160;</a></span>MAX_SDI12DEFN_SZ</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr size_t MAX_SDI12DEFN_SZ = 2024</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a391d026a4ce555796a74f3992edd749e" name="a391d026a4ce555796a74f3992edd749e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a391d026a4ce555796a74f3992edd749e">&#9670;&#160;</a></span>wombat_bin</h2>
 

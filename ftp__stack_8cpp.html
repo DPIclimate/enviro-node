@@ -117,8 +117,8 @@ Macros</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a92b91342ae8af51f274fa8b1276a93f7"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ftp__stack_8cpp.html#a92b91342ae8af51f274fa8b1276a93f7">ftp_cmd_callback</a> (SARA_R5_ftp_command_opcode_t <a class="el" href="_c_l_i_8cpp.html#a2229bd6337a76b1788849d5541f9f07a">cmd</a>, int result)</td></tr>
-<tr class="separator:a92b91342ae8af51f274fa8b1276a93f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a301b491af6de9b3c8e863b6b7cf4107a"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ftp__stack_8cpp.html#a301b491af6de9b3c8e863b6b7cf4107a">ftp_cmd_callback</a> (int <a class="el" href="_c_l_i_8cpp.html#a2229bd6337a76b1788849d5541f9f07a">cmd</a>, int result)</td></tr>
+<tr class="separator:a301b491af6de9b3c8e863b6b7cf4107a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a36a1435097eb64d0554907c6fee21c4d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ftp__stack_8cpp.html#a36a1435097eb64d0554907c6fee21c4d">ftp_login</a> (void)</td></tr>
 <tr class="separator:a36a1435097eb64d0554907c6fee21c4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9fab263d3bb02569dc7602a4e8533682"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ftp__stack_8cpp.html#a9fab263d3bb02569dc7602a4e8533682">ftp_logout</a> (void)</td></tr>
@@ -130,8 +130,8 @@ Functions</h2></td></tr>
 Variables</h2></td></tr>
 <tr class="memitem:a29781074a609870a12b3b1378f34d13b"><td class="memItemLeft" align="right" valign="top">static char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ftp__stack_8cpp.html#a29781074a609870a12b3b1378f34d13b">buf</a> [<a class="el" href="ftp__stack_8cpp.html#a2491303d0fe260aaba8f46717cda66cc">MAX_BUF</a>+1]</td></tr>
 <tr class="separator:a29781074a609870a12b3b1378f34d13b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aec14a8ef3a463fd2e3f76a4095072ffd"><td class="memItemLeft" align="right" valign="top">static SARA_R5_ftp_command_opcode_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ftp__stack_8cpp.html#aec14a8ef3a463fd2e3f76a4095072ffd">last_cmd</a> = SARA_R5_FTP_COMMAND_INVALID</td></tr>
-<tr class="separator:aec14a8ef3a463fd2e3f76a4095072ffd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a47c60753d9684c24199e38c7fc21b94a"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ftp__stack_8cpp.html#a47c60753d9684c24199e38c7fc21b94a">last_cmd</a> = SARA_R5_FTP_COMMAND_INVALID</td></tr>
+<tr class="separator:a47c60753d9684c24199e38c7fc21b94a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a593c5784963ec0008891fb211cc4d174"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ftp__stack_8cpp.html#a593c5784963ec0008891fb211cc4d174">last_result</a> = -1</td></tr>
 <tr class="separator:a593c5784963ec0008891fb211cc4d174"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a24c478da6e32a8914bb80af9e0c9cccc"><td class="memItemLeft" align="right" valign="top">static volatile bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ftp__stack_8cpp.html#a24c478da6e32a8914bb80af9e0c9cccc">got_urc</a> = false</td></tr>
@@ -171,8 +171,8 @@ Variables</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a92b91342ae8af51f274fa8b1276a93f7" name="a92b91342ae8af51f274fa8b1276a93f7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a92b91342ae8af51f274fa8b1276a93f7">&#9670;&#160;</a></span>ftp_cmd_callback()</h2>
+<a id="a301b491af6de9b3c8e863b6b7cf4107a" name="a301b491af6de9b3c8e863b6b7cf4107a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a301b491af6de9b3c8e863b6b7cf4107a">&#9670;&#160;</a></span>ftp_cmd_callback()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -183,7 +183,7 @@ Variables</h2></td></tr>
         <tr>
           <td class="memname">static void ftp_cmd_callback </td>
           <td>(</td>
-          <td class="paramtype">SARA_R5_ftp_command_opcode_t&#160;</td>
+          <td class="paramtype">int&#160;</td>
           <td class="paramname"><em>cmd</em>, </td>
         </tr>
         <tr>
@@ -306,8 +306,8 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="aec14a8ef3a463fd2e3f76a4095072ffd" name="aec14a8ef3a463fd2e3f76a4095072ffd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aec14a8ef3a463fd2e3f76a4095072ffd">&#9670;&#160;</a></span>last_cmd</h2>
+<a id="a47c60753d9684c24199e38c7fc21b94a" name="a47c60753d9684c24199e38c7fc21b94a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a47c60753d9684c24199e38c7fc21b94a">&#9670;&#160;</a></span>last_cmd</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -316,7 +316,7 @@ Variables</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">SARA_R5_ftp_command_opcode_t last_cmd = SARA_R5_FTP_COMMAND_INVALID</td>
+          <td class="memname">int last_cmd = SARA_R5_FTP_COMMAND_INVALID</td>
         </tr>
       </table>
   </td>
