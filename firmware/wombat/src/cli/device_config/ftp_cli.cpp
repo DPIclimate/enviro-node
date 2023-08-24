@@ -160,7 +160,7 @@ BaseType_t CLIFTP::enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen,
             return pdFALSE;
         }
 
-        if (!strncmp("upload", param, paramLen)){
+        if (!strncmp("upload", param, strlen("upload"))){
             paramNum++;
             param = FreeRTOS_CLIGetParameter(pcCommandString, paramNum, &paramLen);
             if (param != nullptr && paramLen > 0) {
