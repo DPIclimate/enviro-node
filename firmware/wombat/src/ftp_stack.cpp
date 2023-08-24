@@ -141,14 +141,14 @@ bool ftp_get(const char * filename) {
     ESP_LOGI(TAG, "FTP download URC result: %d", last_result);
     return last_result == 1;
 }
-bool ftp_create_remote_dir(){
+bool ftp_create_remote_dir() {
     DeviceConfig &config = DeviceConfig::get();
 
     snprintf(g_buffer, MAX_G_BUFFER, "%s/node_%s",ftp_file_upload_dir, config.node_id);
     ESP_LOGI(TAG, "path to create %s", g_buffer);
 
     SARA_R5_error_t err = r5.ftpCreateDirectory(g_buffer);
-    if (err != SARA_R5_ERROR_SUCCESS){
+    if (err != SARA_R5_ERROR_SUCCESS) {
         ESP_LOGE(TAG, "Error returned from R5 stack: %d", err);
         return false;
     }
@@ -159,7 +159,7 @@ bool ftp_create_remote_dir(){
         delay(20);
     }
 
-    if(!mkdir_ok){
+    if (!mkdir_ok) {
         ESP_LOGE(TAG, "Failed to create directory for file upload");
         return false;
     }
@@ -167,15 +167,14 @@ bool ftp_create_remote_dir(){
     return true;
 }
 
-bool ftp_change_dir(){
-
+bool ftp_change_dir() {
     DeviceConfig &config = DeviceConfig::get();
     snprintf(g_buffer, MAX_G_BUFFER, "%s/node_%s",ftp_file_upload_dir, config.node_id);
 
     //Change into directory for upload
     SARA_R5_error_t err = r5.ftpChangeWorkingDirectory(g_buffer);
 
-    if (err != SARA_R5_ERROR_SUCCESS){
+    if (err != SARA_R5_ERROR_SUCCESS) {
         ESP_LOGE(TAG, "Error returned from R5 stack in change_dir: %d", err);
         return false;
     }
@@ -187,7 +186,7 @@ bool ftp_change_dir(){
         delay(20);
     }
 
-    if(!change_dir_ok){
+    if (!change_dir_ok) {
         ESP_LOGE(TAG, "Change directory failed");
         return false;
     }
@@ -196,13 +195,11 @@ bool ftp_change_dir(){
 }
 
 bool ftp_upload_file(const String& filename) {
-
-
     DeviceConfig &config = DeviceConfig::get();
 
     const String path_name = "/" + filename;
     int file_size = SDCardInterface::get_file_size(path_name.c_str());
-    if (file_size == 0){
+    if (file_size == 0) {
         ESP_LOGE(TAG, "Could not find file on SD card, or file does not contain any contents");
         return false;
     }
@@ -248,13 +245,13 @@ bool ftp_upload_file(const String& filename) {
             }
 
             int bytes_read = SDCardInterface::read_file(path_name.c_str(), g_buffer, bytes_to_read, file_position);
-            if (bytes_read == 0){
+            if (bytes_read == 0) {
                 ESP_LOGE(TAG, "File bytes_read failed");
                 return false;
             }
 
             SARA_R5_error_t err = r5.appendFileContents(chnk_filename, g_buffer, bytes_read);
-            if (err != SARA_R5_ERROR_SUCCESS){
+            if (err != SARA_R5_ERROR_SUCCESS) {
                 ESP_LOGE(TAG, "Error: %d", err);
             }
 
@@ -270,14 +267,14 @@ bool ftp_upload_file(const String& filename) {
         uint8_t retry = 0;
         while (true) {
 
-            if (retry > 3){
+            if (retry > 3) {
                 ESP_LOGE(TAG, "Upload failed, giving up");
                 r5.deleteFile(chnk_filename);
                 return false;
             }
 
             SARA_R5_error_t err = r5.ftpPutFile(chnk_filename, chnk_filename);
-            if (err == SARA_R5_ERROR_SUCCESS){
+            if (err == SARA_R5_ERROR_SUCCESS) {
                 break;
             }
 
@@ -291,7 +288,7 @@ bool ftp_upload_file(const String& filename) {
             delay(20);
         }
 
-        if(! ftp_file_upload_ok){
+        if (! ftp_file_upload_ok) {
             ESP_LOGE(TAG, "Upload failed");
             r5.deleteFile(chnk_filename);
         }
@@ -299,7 +296,7 @@ bool ftp_upload_file(const String& filename) {
         ESP_LOGI(TAG, "Uploaded chunk to ftp, deleting chunk from fs");
         //Delete chunk from modem file system
         SARA_R5_error_t err = r5.deleteFile(chnk_filename);
-        if (err != SARA_R5_ERROR_SUCCESS){
+        if (err != SARA_R5_ERROR_SUCCESS) {
             ESP_LOGE(TAG, "Error returned from R5 stack: %d", err);
             return false;
         }
@@ -308,6 +305,3 @@ bool ftp_upload_file(const String& filename) {
 
     return true;
 }
-
-
-

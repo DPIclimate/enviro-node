@@ -205,7 +205,7 @@ void sensor_task(void) {
         }
 
         String ccid = r5.getCCID();
-        if ( ! ccid.isEmpty()) {
+        if (ccid.length() > 0) {
             source_ids["ccid"] = ccid;
         }
     }

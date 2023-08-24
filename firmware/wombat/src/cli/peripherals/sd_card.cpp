@@ -72,14 +72,14 @@ BaseType_t CLISDCard::enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen,
             } else if (step < 2) {
                 step++;
 
-                size_t file_size=SDCardInterface::get_file_size(sd_card_datafile_name);
+                size_t file_size = SDCardInterface::get_file_size(sd_card_datafile_name);
 
-                int num_of_reads=file_size/MAX_G_BUFFER;
+                int num_of_reads = file_size/MAX_G_BUFFER;
 
-                size_t bytes_read=0;
-                for (int i=0; i<=num_of_reads; i++){
+                size_t bytes_read = 0;
+                for (int i = 0; i <= num_of_reads; i++) {
                     size_t read = SDCardInterface::read_file(sd_card_datafile_name, g_buffer, MAX_G_BUFFER, bytes_read);
-                    if (read == 0){
+                    if (read == 0) {
                         ESP_LOGE(TAG, "File read failed");
                         return pdFALSE;
                     }
