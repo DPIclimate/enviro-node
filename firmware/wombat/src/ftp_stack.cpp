@@ -198,7 +198,7 @@ bool ftp_upload_file(const String& filename) {
     DeviceConfig &config = DeviceConfig::get();
 
     const String path_name = "/" + filename;
-    int file_size = SDCardInterface::get_file_size(path_name.c_str());
+    size_t file_size = SDCardInterface::get_file_size(path_name.c_str());
     if (file_size == 0) {
         ESP_LOGE(TAG, "Could not find file on SD card, or file does not contain any contents");
         return false;
@@ -206,13 +206,13 @@ bool ftp_upload_file(const String& filename) {
 
     //Size of each file to be uploaded to ftp server
     //Calculate the largest possible chunk based of the remaining space on the modem
-    int size;
+    size_t size;
     r5.getAvailableSize(&size);
-    int CHUNK_SIZE=size-1000; //Allow for space remaining on the modem
-    ESP_LOGI(TAG, "Each block with be of size %d", CHUNK_SIZE);
+    size_t CHUNK_SIZE = size - 1000; // Allow for space remaining on the modem
+    ESP_LOGI(TAG, "Each block with be of size %uz", CHUNK_SIZE);
 
-    int num_chunks = std::ceil(file_size / CHUNK_SIZE);
-    ESP_LOGI(TAG, "Size of file to upload is %d, will be split into %d chunks", file_size, num_chunks+1);
+    size_t num_chunks = std::ceil(file_size / CHUNK_SIZE);
+    ESP_LOGI(TAG, "Size of file to upload is %zu, will be split into %zu chunks", file_size, num_chunks + 1);
 
     //Create unique directory on ftp server for sd card files
     bool dir_created = ftp_create_remote_dir();
@@ -227,53 +227,51 @@ bool ftp_upload_file(const String& filename) {
         return false;
     }
 
-    uint8_t filename_size = 50;
-    char chnk_filename[filename_size]; //Filename for chunk
+    static const size_t filename_size = 50;
+    char chunk_filename[filename_size + 1]; // Filename for chunk
 
-    int file_position = 0;
-    for (int i=0; i <= num_chunks; i++) {
+    size_t file_position = 0;
+    for (int i = 0; i <= num_chunks; i++) {
+        size_t bytes_read_chnk = 0; // Number of bytes read into the current chunk
 
-        int bytes_read_chnk = 0;//Number of bytes read into the current chunk
-
-        snprintf(chnk_filename, filename_size, "%s_chunk_%d_%s", config.node_id, i, filename.c_str());
+        snprintf(chunk_filename, filename_size, "%s_chunk_%d_%s", config.node_id, i, filename.c_str());
 
         while ((bytes_read_chnk < CHUNK_SIZE) && (file_position < file_size)) {
 
-            uint32_t bytes_to_read = MAX_G_BUFFER;
-            if (CHUNK_SIZE-bytes_read_chnk < MAX_G_BUFFER){
+            size_t bytes_to_read = MAX_G_BUFFER;
+            if (CHUNK_SIZE-bytes_read_chnk < MAX_G_BUFFER) {
                 bytes_to_read = CHUNK_SIZE - bytes_read_chnk;
             }
 
-            int bytes_read = SDCardInterface::read_file(path_name.c_str(), g_buffer, bytes_to_read, file_position);
+            size_t bytes_read = SDCardInterface::read_file(path_name.c_str(), g_buffer, bytes_to_read, file_position);
             if (bytes_read == 0) {
                 ESP_LOGE(TAG, "File bytes_read failed");
                 return false;
             }
 
-            SARA_R5_error_t err = r5.appendFileContents(chnk_filename, g_buffer, bytes_read);
+            SARA_R5_error_t err = r5.appendFileContents(chunk_filename, g_buffer, bytes_read);
             if (err != SARA_R5_ERROR_SUCCESS) {
                 ESP_LOGE(TAG, "Error: %d", err);
             }
 
-            file_position+=bytes_read;
-            bytes_read_chnk+=bytes_read;
+            file_position += bytes_read;
+            bytes_read_chnk += bytes_read;
 
             ESP_LOGI(TAG, "Bytes written %d, bytes written in chunk %d", file_position, bytes_read_chnk);
         }
 
-        ESP_LOGI(TAG, "Written chunk %s, now uploading", chnk_filename);
+        ESP_LOGI(TAG, "Written chunk %s, now uploading", chunk_filename);
 
         //Upload chunk to ftp server
         uint8_t retry = 0;
         while (true) {
-
             if (retry > 3) {
                 ESP_LOGE(TAG, "Upload failed, giving up");
-                r5.deleteFile(chnk_filename);
+                r5.deleteFile(chunk_filename);
                 return false;
             }
 
-            SARA_R5_error_t err = r5.ftpPutFile(chnk_filename, chnk_filename);
+            SARA_R5_error_t err = r5.ftpPutFile(chunk_filename, chunk_filename);
             if (err == SARA_R5_ERROR_SUCCESS) {
                 break;
             }
@@ -290,12 +288,12 @@ bool ftp_upload_file(const String& filename) {
 
         if (! ftp_file_upload_ok) {
             ESP_LOGE(TAG, "Upload failed");
-            r5.deleteFile(chnk_filename);
+            r5.deleteFile(chunk_filename);
         }
 
         ESP_LOGI(TAG, "Uploaded chunk to ftp, deleting chunk from fs");
         //Delete chunk from modem file system
-        SARA_R5_error_t err = r5.deleteFile(chnk_filename);
+        SARA_R5_error_t err = r5.deleteFile(chunk_filename);
         if (err != SARA_R5_ERROR_SUCCESS) {
             ESP_LOGE(TAG, "Error returned from R5 stack: %d", err);
             return false;
