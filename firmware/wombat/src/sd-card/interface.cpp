@@ -151,7 +151,7 @@ size_t SDCardInterface::read_file(const char *filepath, char * buffer, const siz
 
     if (filepath == nullptr || strnlen(filepath, 1) == 0) {
         ESP_LOGE(TAG, "Empty filepath");
-        return -1;
+        return 0;
     }
 
     ESP_LOGI(TAG, "Reading file '%s' on SD-Card.", filepath);
@@ -169,7 +169,7 @@ size_t SDCardInterface::read_file(const char *filepath, char * buffer, const siz
 
     } else {
         ESP_LOGE(TAG, "Unable to read file: '%s'", filepath);
-        return -1;
+        return 0;
     }
 }
 

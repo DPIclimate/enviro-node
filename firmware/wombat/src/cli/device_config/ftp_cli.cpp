@@ -167,7 +167,7 @@ BaseType_t CLIFTP::enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen,
                 strncpy(pcWriteBuffer, param, paramLen);
                 pcWriteBuffer[paramLen] = 0;
 
-                bool rc = ftp_upload_file();
+                bool rc = ftp_upload_file(pcWriteBuffer);
                 snprintf(pcWriteBuffer, xWriteBufferLen - 1, "\r\n%s\r\n", rc ? "OK" : "ERROR");
                 return pdFALSE;
             }

@@ -2,13 +2,14 @@
 #include "SparkFun_u-blox_SARA-R5_Arduino_Library.h"
 #include "globals.h"
 #include "sd-card/interface.h"
+#include "Utils.h"
 
 #define TAG "ftp_stack"
 
 #define MAX_BUF 2048
 static char buf[MAX_BUF + 1];
 
-static int last_cmd = -1;
+static SARA_R5_ftp_command_opcode_t last_cmd = SARA_R5_FTP_COMMAND_INVALID;
 static int last_result = -1;
 static volatile bool got_urc = false;
 static bool login_ok = false;
@@ -17,8 +18,9 @@ static bool change_dir_ok = false;
 static bool mkdir_ok = false;
 static bool ftp_file_upload_ok = false;
 static bool file_dwnd_ok = false;
+static bool ftp_list_ok = false;
 
-static void ftp_cmd_callback(int cmd, int result) {
+static void ftp_cmd_callback(SARA_R5_ftp_command_opcode_t cmd, int result) {
     ESP_LOGI(TAG, "cmd: %d, result: %d", cmd, result);
     last_cmd = cmd;
     last_result = result;
@@ -44,7 +46,9 @@ static void ftp_cmd_callback(int cmd, int result) {
         case SARA_R5_FTP_COMMAND_PUT_FILE:
             ftp_file_upload_ok = (result==1);
             break;
-
+        case SARA_R5_FTP_COMMAND_LS:
+            ftp_list_ok = (result==1);
+            break;
     }
 
     got_urc = true;
@@ -53,6 +57,11 @@ static void ftp_cmd_callback(int cmd, int result) {
 bool ftp_login(void) {
     ESP_LOGI(TAG, "Starting modem and login");
 
+    if ( ! connect_to_internet()) {
+      ESP_LOGE(TAG, "Could not connect to internet");
+      return false;
+    }
+
     DeviceConfig &config = DeviceConfig::get();
     std::string &host = config.getFtpHost();
     std::string &user = config.getFtpUser();
@@ -60,14 +69,14 @@ bool ftp_login(void) {
 
     SARA_R5_error_t err = r5.setFTPserver(host.c_str());
     if (err) {
-        ESP_LOGW(TAG, "Failed to set FTP server hostname");
+        ESP_LOGE(TAG, "Failed to set FTP server hostname");
         return false;
     }
     delay(20);
 
     err = r5.setFTPcredentials(user.c_str(), password.c_str());
     if (err) {
-        ESP_LOGW(TAG, "Failed to set FTP credentials");
+        ESP_LOGE(TAG, "Failed to set FTP credentials");
         return false;
     }
     delay(20);
@@ -87,7 +96,9 @@ bool ftp_login(void) {
 
     // Wait for UFTPC URC to show connection success/failure.
     got_urc = false;
-    while ( ! got_urc) {
+    last_cmd = SARA_R5_FTP_COMMAND_INVALID;
+    login_ok = false;
+    while ( ! got_urc && last_cmd != SARA_R5_FTP_COMMAND_LOGIN) {
         r5.bufferedPoll();
         delay(20);
     }
@@ -98,7 +109,6 @@ bool ftp_login(void) {
     }
 
     ESP_LOGI(TAG, "Connected to FTP server");
-
     return true;
 }
 
@@ -121,7 +131,7 @@ bool ftp_get(const char * filename) {
     }
 
     ESP_LOGI(TAG, "Waiting for FTP download URC");
-    last_cmd = -1;
+    last_cmd = SARA_R5_FTP_COMMAND_INVALID;
     got_urc = false;
     while (last_cmd != SARA_R5_FTP_COMMAND_GET_FILE && ( ! got_urc)) {
         r5.bufferedPoll();
@@ -166,7 +176,7 @@ bool ftp_change_dir(){
     SARA_R5_error_t err = r5.ftpChangeWorkingDirectory(g_buffer);
 
     if (err != SARA_R5_ERROR_SUCCESS){
-        ESP_LOGE(TAG, "Error returned from R5 stack: %d", err);
+        ESP_LOGE(TAG, "Error returned from R5 stack in change_dir: %d", err);
         return false;
     }
 
@@ -185,36 +195,42 @@ bool ftp_change_dir(){
     return true;
 }
 
-bool ftp_upload_file() {
+bool ftp_upload_file(const String& filename) {
 
-    //Create unique directory on ftp server for sd card files
+
     DeviceConfig &config = DeviceConfig::get();
 
-    //TODO check if file already exists on ftp server
-//    bool dir_created=ftp_create_remote_dir();
-//    if (!dir_created){
-//        ESP_LOGE(TAG, "Could not create remote dir");
-//        return false;
-//    }
-    const String& filename = "data2.json";
+    const String path_name = "/" + filename;
+    int file_size = SDCardInterface::get_file_size(path_name.c_str());
+    if (file_size == 0){
+        ESP_LOGE(TAG, "Could not find file on SD card, or file does not contain any contents");
+        return false;
+    }
+
+    //Size of each file to be uploaded to ftp server
+    //Calculate the largest possible chunk based of the remaining space on the modem
+    int size;
+    r5.getAvailableSize(&size);
+    int CHUNK_SIZE=size-1000; //Allow for space remaining on the modem
+    ESP_LOGI(TAG, "Each block with be of size %d", CHUNK_SIZE);
+
+    int num_chunks = std::ceil(file_size / CHUNK_SIZE);
+    ESP_LOGI(TAG, "Size of file to upload is %d, will be split into %d chunks", file_size, num_chunks+1);
+
+    //Create unique directory on ftp server for sd card files
+    bool dir_created = ftp_create_remote_dir();
+    if (!dir_created) {
+        //Don't return as dir may not have been created because it already exists
+        ESP_LOGE(TAG, "Could not create remote dir");
+    }
+
     bool dir_change = ftp_change_dir();
     if (!dir_change) {
         ESP_LOGE(TAG, "Could not change dir");
         return false;
     }
 
-    //Copy chunk to sara filesytem
-    const String& path_name = "/" + filename;
-    int file_size = SDCardInterface::get_file_size(path_name.c_str());
-
-    //Size of each file to be uploaded to ftp server, modem file size is 900 0000 bytes
-    const int CHUNK_SIZE = 100000;
-
-    //Number of chunks SD card file needs to be split into
-    int num_chunks = std::ceil(file_size / CHUNK_SIZE);
-    ESP_LOGI(TAG, "Size of file to upload is %d, will be split into %d chunks", file_size, num_chunks+1);
-
-    uint8_t filename_size = 30;
+    uint8_t filename_size = 50;
     char chnk_filename[filename_size]; //Filename for chunk
 
     int file_position = 0;
@@ -231,10 +247,8 @@ bool ftp_upload_file() {
                 bytes_to_read = CHUNK_SIZE - bytes_read_chnk;
             }
 
-            ESP_LOGI(TAG, "Writing file %s, size to put into buffer %d", chnk_filename, bytes_to_read);
-
             int bytes_read = SDCardInterface::read_file(path_name.c_str(), g_buffer, bytes_to_read, file_position);
-            if (bytes_read == -1){
+            if (bytes_read == 0){
                 ESP_LOGE(TAG, "File bytes_read failed");
                 return false;
             }
@@ -251,10 +265,10 @@ bool ftp_upload_file() {
         }
 
         ESP_LOGI(TAG, "Written chunk %s, now uploading", chnk_filename);
-        //Upload chunk to ftp server
 
+        //Upload chunk to ftp server
         uint8_t retry = 0;
-        while (true){
+        while (true) {
 
             if (retry > 3){
                 ESP_LOGE(TAG, "Upload failed, giving up");
