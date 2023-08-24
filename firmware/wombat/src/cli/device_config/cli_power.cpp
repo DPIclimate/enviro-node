@@ -59,7 +59,7 @@ BaseType_t CLIPower::enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen,
     memset(pcWriteBuffer, 0, xWriteBufferLen);
     param = FreeRTOS_CLIGetParameter(pcCommandString, paramNum, &paramLen);
     if (param != nullptr && paramLen > 0) {
-        if (!strncmp("show", param, paramLen)) {
+        if (!strncmp("show", param, strlen("show"))) {
             response_buffer_.clear();
             float bv = BatteryMonitor::get_voltage();
             float bi = BatteryMonitor::get_current();

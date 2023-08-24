@@ -71,39 +71,39 @@ BaseType_t CLIConfig::enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen,
     memset(pcWriteBuffer, 0, xWriteBufferLen);
     param = FreeRTOS_CLIGetParameter(pcCommandString, paramNum, &paramLen);
     if (param != nullptr && paramLen > 0) {
-        if (!strncmp("list", param, paramLen)) {
+        if (!strncmp("list", param, strlen("list"))) {
             response_buffer_.clear();
             config.dumpConfig(response_buffer_);
             response_buffer_.println("\r\nOK");
             return pdTRUE;
         }
 
-        if (!strncmp("load", param, paramLen)) {
+        if (!strncmp("load", param, strlen("load"))) {
             config.load();
             config.dumpConfig(response_buffer_);
             response_buffer_.println("\r\nOK");
             return pdTRUE;
         }
 
-        if (!strncmp("save", param, paramLen)) {
+        if (!strncmp("save", param, strlen("save"))) {
             config.save();
             strncpy(pcWriteBuffer, "Configuration saved\r\nOK\r\n", xWriteBufferLen - 1);
             return pdFALSE;
         }
 
-        if (!strncmp("dto", param, 3)) {
+        if (!strncmp("dto", param, strlen("dto"))) {
             timeout_active = false;
             strncpy(pcWriteBuffer, "Timeout disabled\r\nOK\r\n", xWriteBufferLen - 1);
             return pdFALSE;
         }
 
-        if (!strncmp("eto", param, 3)) {
+        if (!strncmp("eto", param, strlen("eto"))) {
             timeout_active = true;
             strncpy(pcWriteBuffer, "Timeout enabled\r\nOK\r\n", xWriteBufferLen - 1);
             return pdFALSE;
         }
 
-        if (!strncmp("ota", param, paramLen)) {
+        if (!strncmp("ota", param, strlen("ota"))) {
             // If force is true the version number in wombat.sha1 is not checked.
             // Use "config ota 1" to force the update.
             bool force = false;
@@ -145,7 +145,7 @@ BaseType_t CLIConfig::enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen,
             return pdFALSE;
         }
 
-        if (!strncmp("sdi12defn", param, paramLen)) {
+        if (!strncmp("sdi12defn", param, strlen("sdi12defn"))) {
             bool success = false;
             if (cat_m1.make_ready()) {
                 if (connect_to_internet()) {
@@ -164,7 +164,7 @@ BaseType_t CLIConfig::enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen,
             return pdFALSE;
         }
 
-        if (!strncmp("reboot", param, paramLen)) {
+        if (!strncmp("reboot", param, strlen("reboot"))) {
             strncpy(pcWriteBuffer, "Rebooting\r\nOK\r\n", xWriteBufferLen - 1);
             shutdown();
             esp_restart();

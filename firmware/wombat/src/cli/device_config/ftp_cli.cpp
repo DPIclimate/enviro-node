@@ -77,13 +77,13 @@ BaseType_t CLIFTP::enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen,
     memset(pcWriteBuffer, 0, xWriteBufferLen);
     param = FreeRTOS_CLIGetParameter(pcCommandString, paramNum, &paramLen);
     if (param != nullptr && paramLen > 0) {
-        if (!strncmp("list", param, paramLen)) {
+        if (!strncmp("list", param, strlen("list"))) {
             response_buffer_.clear();
             dump(response_buffer_);
             return pdTRUE;
         }
 
-        if (!strncmp("host", param, paramLen)) {
+        if (!strncmp("host", param, strlen("host"))) {
             paramNum++;
             param = FreeRTOS_CLIGetParameter(pcCommandString, paramNum, &paramLen);
             if (param != nullptr && paramLen > 0) {
@@ -99,7 +99,7 @@ BaseType_t CLIFTP::enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen,
             return pdFALSE;
         }
 
-        if (!strncmp("user", param, paramLen)) {
+        if (!strncmp("user", param, strlen("user"))) {
             paramNum++;
             param = FreeRTOS_CLIGetParameter(pcCommandString, paramNum, &paramLen);
             if (param != nullptr && paramLen > 0) {
@@ -115,7 +115,7 @@ BaseType_t CLIFTP::enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen,
             return pdFALSE;
         }
 
-        if (!strncmp("password", param, paramLen)) {
+        if (!strncmp("password", param, strlen("password"))) {
             paramNum++;
             param = FreeRTOS_CLIGetParameter(pcCommandString, paramNum, &paramLen);
             if (param != nullptr && paramLen > 0) {
@@ -131,19 +131,19 @@ BaseType_t CLIFTP::enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen,
             return pdFALSE;
         }
 
-        if (!strncmp("login", param, paramLen)) {
+        if (!strncmp("login", param, strlen("login"))) {
             bool rc = ftp_login();
             snprintf(pcWriteBuffer, xWriteBufferLen - 1, "\r\n%s\r\n", rc ? "OK" : "ERROR");
             return pdFALSE;
         }
 
-        if (!strncmp("logout", param, paramLen)) {
+        if (!strncmp("logout", param, strlen("logout"))) {
             bool rc = ftp_logout();
             snprintf(pcWriteBuffer, xWriteBufferLen - 1, "\r\n%s\r\n", rc ? "OK" : "ERROR");
             return pdFALSE;
         }
 
-        if (!strncmp("get", param, paramLen)) {
+        if (!strncmp("get", param, strlen("get"))) {
             paramNum++;
             param = FreeRTOS_CLIGetParameter(pcCommandString, paramNum, &paramLen);
             if (param != nullptr && paramLen > 0) {

@@ -102,13 +102,13 @@ BaseType_t CLIConfigIntervals::enter_cli(char *pcWriteBuffer,
     memset(pcWriteBuffer, 0, xWriteBufferLen);
     param = FreeRTOS_CLIGetParameter(pcCommandString, paramNum, &paramLen);
     if (param != nullptr && paramLen > 0) {
-        if (!strncmp("list", param, paramLen)) {
+        if (!strncmp("list", param, strlen("list"))) {
             response_buffer.clear();
             dump(response_buffer);
             return pdTRUE;
         }
 
-        if (!strncmp("measure", param, paramLen)) {
+        if (!strncmp("measure", param, strlen("measure"))) {
             uint16_t i = 0;
             paramNum++;
             param = FreeRTOS_CLIGetParameter(pcCommandString, paramNum, &paramLen);
@@ -134,7 +134,7 @@ BaseType_t CLIConfigIntervals::enter_cli(char *pcWriteBuffer,
             return pdFALSE;
         }
 
-        if (!strncmp("uplink", param, paramLen)) {
+        if (!strncmp("uplink", param, strlen("uplink"))) {
             uint16_t i = 0;
             paramNum++;
             param = FreeRTOS_CLIGetParameter(pcCommandString, paramNum, &paramLen);
@@ -160,7 +160,7 @@ BaseType_t CLIConfigIntervals::enter_cli(char *pcWriteBuffer,
             return pdFALSE;
         }
 
-        if (!strncmp("clockmult", param, paramLen)) {
+        if (!strncmp("clockmult", param, strlen("clockmult"))) {
             memset(pcWriteBuffer, 0, xWriteBufferLen);
 
             float sleepMultiplier = 0.0f;
