@@ -1,6 +1,7 @@
 cd $(dirname $0)
 # Install platformio core.
-python3 -c "$(curl -fsSL https://raw.githubusercontent.com/platformio/platformio/master/scripts/get-platformio.py)"
+curl -fsSL https://raw.githubusercontent.com/platformio/platformio-core-installer/master/get-platformio.py -o get-platformio.py
+python3 get-platformio.py
 
 # This needs to be in a login script too.
 PATH="~/.platformio/penv/bin:$PATH"

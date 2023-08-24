@@ -164,7 +164,7 @@ bool read_sensor(const char addr, JsonArray& timeseries_array) {
 void sensor_task(void) {
     sdi12.begin();
 
-    DynamicJsonDocument msg(2048);
+    DynamicJsonDocument msg(8192);
 
     const char *timestamp = iso8601();
     msg["timestamp"] = timestamp;

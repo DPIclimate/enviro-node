@@ -120,7 +120,37 @@ int my_log_printf(const char *fmt, ...) {
 #endif
 */
 
-void setup() {
+/**
+ * A simple timeout task. Runs on core 0 so the app code does not interfere with it.
+ *
+ * If 14 minutes passes and timeout_restart has not been set to false, power to the
+ * modem is shut off and the ESP32 is rebooted.
+ *
+ * @param pvParameters not used.
+ */
+[[noreturn]] void timeout_task(void * pvParameters) {
+    const TickType_t delay = 14 * 60 * 1000 / portTICK_PERIOD_MS;
+    ESP_LOGI(TAG, "Starting");
+    while(true) {
+        // Set to true here, the app code on core 1 must set it to false before the
+        // timeout task wakes up to avoid a reboot.
+        timeout_restart = true;
+        vTaskDelay(delay);
+
+        if (timeout_active && timeout_restart) {
+            ESP_LOGE(TAG, "Removing power from R5");
+            cat_m1.power_supply(false);
+            vTaskDelay(5000 / portTICK_PERIOD_MS); // 5s
+
+            ESP_LOGE(TAG, "Rebooting due to app code timeout");
+            esp_restart();
+        }
+    }
+}
+
+static TaskHandle_t xHandle = nullptr;
+
+void setup(void) {
     // Disable brown-out detection until the BT LE radio is running.
     // The radio startup triggers a brown out detection, but the
     // voltage seems ok and the node keeps running.
@@ -128,6 +158,13 @@ void setup() {
 
     pinMode(PROG_BTN, INPUT);
     progBtnPressed = digitalRead(PROG_BTN);
+
+    // The timeout task is pinned to core 0, which usually runs the wireless stacks. We're not using
+    // them so the core is free and this should mean the task is not blocked by anything the app does.
+    timeout_active = true;
+    static uint8_t ucParameterToPass = 0;
+    xTaskCreatePinnedToCore(timeout_task, "Timeout", 4096, &ucParameterToPass, tskIDLE_PRIORITY, &xHandle, 0);
+    configASSERT(xHandle);
 
     // SARA R5 library logging does not work without this.
     Serial.begin(115200);
@@ -224,16 +261,13 @@ void setup() {
     BatteryMonitor::begin();
     SolarMonitor::begin();
 
-
 //    back_to_factory();
 //    ESP_LOGI(TAG, "Boot partition");
 //    p_type = esp_ota_get_boot_partition();
 //    ESP_LOGI(TAG, "%d/%d %lx %lx %s", p_type->type, p_type->subtype, p_type->address, p_type->size, p_type->label);
 
     if (progBtnPressed) {
-        // Turn on bluetooth if entering CLI
         init_sensors();
-        //BluetoothServer::begin();
         progBtnPressed = false;
         ESP_LOGI(TAG, "Programmable button pressed while booting, dropping into REPL");
         CLI::repl(Serial, Serial);
@@ -241,6 +275,7 @@ void setup() {
     }
 
     if (config.getBootCount() == 0) {
+        ESP_LOGI(TAG, "Starting ULP processing");
         initULP();
     }
 
@@ -371,6 +406,11 @@ void shutdown(void) {
     }
     SD.end();
     digitalWrite(SD_CARD_ENABLE, LOW);
+
+    // Use the handle to delete the task.
+    if (xHandle != nullptr) {
+        vTaskDelete(xHandle);
+    }
 }
 
 void loop() {
