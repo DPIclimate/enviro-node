@@ -208,8 +208,19 @@ bool ftp_upload_file(const String& filename) {
     //Calculate the largest possible chunk based of the remaining space on the modem
     size_t size;
     r5.getAvailableSize(&size);
-    size_t CHUNK_SIZE = size - 1000; // Allow for space remaining on the modem
-    ESP_LOGI(TAG, "Each block with be of size %uz", CHUNK_SIZE);
+    if (size < MAX_G_BUFFER) {
+        ESP_LOGE(TAG, "Not enough space on modem filesystem");
+        return false;
+    }
+
+    size = size / 4;
+    size_t CHUNK_SIZE = size; // Allow for space remaining on the modem
+    if (CHUNK_SIZE < MAX_G_BUFFER) {
+        ESP_LOGE(TAG, "Not enough space on modem filesystem");
+        return false;
+    }
+
+    ESP_LOGI(TAG, "Each block with be of size %zu", CHUNK_SIZE);
 
     size_t num_chunks = std::ceil(file_size / CHUNK_SIZE);
     ESP_LOGI(TAG, "Size of file to upload is %zu, will be split into %zu chunks", file_size, num_chunks + 1);
@@ -217,13 +228,13 @@ bool ftp_upload_file(const String& filename) {
     //Create unique directory on ftp server for sd card files
     bool dir_created = ftp_create_remote_dir();
     if (!dir_created) {
-        //Don't return as dir may not have been created because it already exists
-        ESP_LOGE(TAG, "Could not create remote dir");
+        // Don't return as dir may not have been created because it already exists
+        ESP_LOGW(TAG, "Could not create remote dir, it may already exist");
     }
 
     bool dir_change = ftp_change_dir();
     if (!dir_change) {
-        ESP_LOGE(TAG, "Could not change dir");
+        ESP_LOGE(TAG, "Could not change to dir");
         return false;
     }
 
@@ -234,24 +245,27 @@ bool ftp_upload_file(const String& filename) {
     for (int i = 0; i <= num_chunks; i++) {
         size_t bytes_read_chnk = 0; // Number of bytes read into the current chunk
 
-        snprintf(chunk_filename, filename_size, "%s_chunk_%d_%s", config.node_id, i, filename.c_str());
+        snprintf(chunk_filename, filename_size, "%s_%05d", filename.c_str(), i);
 
         while ((bytes_read_chnk < CHUNK_SIZE) && (file_position < file_size)) {
-
             size_t bytes_to_read = MAX_G_BUFFER;
-            if (CHUNK_SIZE-bytes_read_chnk < MAX_G_BUFFER) {
+            if (CHUNK_SIZE - bytes_read_chnk < MAX_G_BUFFER) {
                 bytes_to_read = CHUNK_SIZE - bytes_read_chnk;
             }
 
             size_t bytes_read = SDCardInterface::read_file(path_name.c_str(), g_buffer, bytes_to_read, file_position);
             if (bytes_read == 0) {
                 ESP_LOGE(TAG, "File bytes_read failed");
+                r5.deleteFile(chunk_filename);
                 return false;
             }
 
-            SARA_R5_error_t err = r5.appendFileContents(chunk_filename, g_buffer, bytes_read);
+            int bytes_to_write = static_cast<int>(bytes_read);
+            SARA_R5_error_t err = r5.appendFileContents(chunk_filename, g_buffer, bytes_to_write);
             if (err != SARA_R5_ERROR_SUCCESS) {
-                ESP_LOGE(TAG, "Error: %d", err);
+                ESP_LOGE(TAG, "Append to chunk file failed, error: %d", err);
+                r5.deleteFile(chunk_filename);
+                return false;
             }
 
             file_position += bytes_read;
@@ -286,19 +300,17 @@ bool ftp_upload_file(const String& filename) {
             delay(20);
         }
 
-        if (! ftp_file_upload_ok) {
+        if (ftp_file_upload_ok) {
+            ESP_LOGI(TAG, "Uploaded chunk to ftp");
+        } else {
             ESP_LOGE(TAG, "Upload failed");
-            r5.deleteFile(chunk_filename);
         }
 
-        ESP_LOGI(TAG, "Uploaded chunk to ftp, deleting chunk from fs");
-        //Delete chunk from modem file system
         SARA_R5_error_t err = r5.deleteFile(chunk_filename);
         if (err != SARA_R5_ERROR_SUCCESS) {
             ESP_LOGE(TAG, "Error returned from R5 stack: %d", err);
             return false;
         }
-
     }
 
     return true;
