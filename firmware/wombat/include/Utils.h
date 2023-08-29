@@ -22,6 +22,8 @@ void enable12V(void);
 void disable12V(void);
 
 const char* iso8601(void);
+void log_to_sdcard(const char * msg);
+void log_to_sdcardf(const char *fmt, ...);
 
 bool wait_for_at(void);
 bool connect_to_internet(void);

@@ -10,6 +10,7 @@
 #include "TCA9534.h"
 #include "CAT_M1.h"
 #include "globals.h"
+#include "sd-card/interface.h"
 
 #define TAG "utils"
 
@@ -269,7 +270,7 @@ static char iso8601_buf[24];
 const char* iso8601(void) {
     memset(iso8601_buf, 0, sizeof(iso8601_buf));
 
-    struct tm t;
+    struct tm t{};
     memset(&t, 0, sizeof(t));
     time_t now;
     time(&now);
@@ -278,6 +279,31 @@ const char* iso8601(void) {
     snprintf(iso8601_buf, sizeof(iso8601_buf)-1, "%04d-%02d-%02dT%02d:%02d:%02dZ", t.tm_year+1900, t.tm_mon+1, t.tm_mday, t.tm_hour, t.tm_min, t.tm_sec);
 
     return iso8601_buf;
+}
+
+constexpr size_t MAX_SD_CARD_MSG = 255;
+static char sd_card_msg[MAX_SD_CARD_MSG + 1];
+
+void log_to_sdcard(const char *msg) {
+    if ( ! SDCardInterface::is_ready() || msg == nullptr) {
+        return;
+    }
+
+    snprintf(sd_card_msg, MAX_SD_CARD_MSG, "%s: %s\r\n", iso8601(), msg);
+    SDCardInterface::append_to_file(sd_card_logfile_name, sd_card_msg);
+}
+
+void log_to_sdcardf(const char *fmt, ...) {
+    snprintf(sd_card_msg, MAX_SD_CARD_MSG, "%s: ", iso8601());
+    size_t ts_len = strnlen(sd_card_msg, MAX_SD_CARD_MSG - 1);
+
+    va_list args;
+    va_start(args, fmt);
+    vsnprintf(&sd_card_msg[ts_len], MAX_SD_CARD_MSG - ts_len - 2, fmt, args);
+    va_end(args);
+
+    strcat(sd_card_msg, "\r\n");
+    SDCardInterface::append_to_file(sd_card_logfile_name, sd_card_msg);
 }
 
 /**
@@ -335,29 +361,38 @@ bool wait_for_at(void) {
 bool connect_to_internet(void) {
     static bool already_called = false;
 
+    log_to_sdcard("connect_to_internet");
+
     if ( ! cat_m1.make_ready()) {
         ESP_LOGE(TAG, "Could not initialise modem");
+        log_to_sdcard(" Could not initialise modem");
         return false;
     }
 
     // If we've been through this function all the way (so the time is set) and we are connected
     // to the internet, return quickly.
     int reg_status = r5.registration();
+    delay(20);
     if (reg_status == SARA_R5_REGISTRATION_HOME && already_called) {
         ESP_LOGI(TAG, "Already connected to internet");
+        log_to_sdcard(" Already connected to internet");
         return true;
     }
 
     // Hardware flow control pins not connected on the Wombat and R5 does not support software flow control.
     r5.setFlowControl(SARA_R5_DISABLE_FLOW_CONTROL);
+    delay(20);
 
     // Only needs to be done one, but the Sparkfun library reads this value before setting so
     // it is quick enough to call this every time.
     if ( ! r5.setNetworkProfile(MNO_TELSTRA)) {
+        delay(20);
         ESP_LOGE(TAG, "Error setting network operator profile");
         r5_ok = false;
+        log_to_sdcard(" Error setting network operator profile, r5_ok now false");
         return false;
     }
+    delay(20);
 
     // Network registration takes 4 seconds at best.
     ESP_LOGI(TAG, "Waiting for network registration");
@@ -365,8 +400,10 @@ bool connect_to_internet(void) {
         int attempts = 0;
         while (reg_status != SARA_R5_REGISTRATION_HOME && attempts < 4) {
             reg_status = r5.registration();
+            delay(20);
             if (reg_status == SARA_R5_REGISTRATION_INVALID) {
                 ESP_LOGI(TAG, "ESP registration query failed");
+                log_to_sdcard(" ESP registration query failed");
                 return false;
             }
 
@@ -379,8 +416,11 @@ bool connect_to_internet(void) {
 
     if (reg_status != SARA_R5_REGISTRATION_HOME) {
         ESP_LOGE(TAG, "Failed to register with network");
+        log_to_sdcard(" Failed to register with network");
         return false;
     }
+
+    log_to_sdcard("Getting network time");
 
     // Work in UTC.
     setenv("TZ", "UTC", 1);
@@ -394,11 +434,12 @@ bool connect_to_internet(void) {
     char time_buffer[time_buffer_sz + 1];
     memset(time_buffer, 0, sizeof(time_buffer_sz));
     String time_str = r5.clock();
+    delay(20);
     strncpy(time_buffer, time_str.c_str(), time_buffer_sz);
     time_buffer[time_buffer_sz] = 0;
     ESP_LOGI(TAG, "Modem response: %s", time_buffer);
 
-    struct tm tm;
+    struct tm tm{};
     memset(&tm, 0, sizeof(tm));
     time_t now;
     time(&now);
@@ -440,6 +481,8 @@ bool connect_to_internet(void) {
     // Now set the system clock.
     settimeofday(&tv, nullptr);
 
+    log_to_sdcard("Starting PDP");
+
     // Enable the packet switching layer.
     // These commands come from the SARA R4/R5 Internet applications development guide
     // ss 2.3, table Profile Activation: SARA R5.
@@ -452,6 +495,8 @@ bool connect_to_internet(void) {
     r5.performPDPaction(0, SARA_R5_PSD_ACTION_ACTIVATE);
     delay(20);
     r5.bufferedPoll();
+
+    log_to_sdcard("cti returning");
 
     already_called = true;
     return true;

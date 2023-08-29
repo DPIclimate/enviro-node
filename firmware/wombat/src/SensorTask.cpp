@@ -32,6 +32,9 @@ void init_sensors(void) {
     dpi12.scan_bus(sensors);
     sdi12.end();
 
+    snprintf(g_buffer, MAX_G_BUFFER, "Found %u sensors", sensors.count);
+    log_to_sdcard(g_buffer);
+
     ESP_LOGI(TAG, "Found %u sensors", sensors.count);
     for (uint8_t i = 0; i < sensors.count; i++) {
         ESP_LOGI(TAG, "%s", &sensors.sensors[i]);
@@ -253,6 +256,8 @@ void sensor_task(void) {
         File f = SPIFFS.open(filename, FILE_WRITE);
         serializeJson(msg, f);
         f.close();
+    } else {
+        log_to_sdcard("spiffs_ok is false, no message stored");
     }
 
     // Append the message to a file on the SD card.

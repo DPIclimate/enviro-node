@@ -60,6 +60,16 @@ BaseType_t CLISDCard::enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen,
             }
         }
 
+        if (!strncmp("log", param, paramLen)) {
+            if (!SDCardInterface::is_ready()) {
+                snprintf(pcWriteBuffer, xWriteBufferLen - 1, "ERROR: SD card not found\r\n");
+                return pdFALSE;
+            }
+
+            SDCardInterface::read_file(sd_card_logfile_name, *CLI::cliOutput);
+            return pdFALSE;
+        }
+
         if (!strncmp("read", param, paramLen)) {
             if (!SDCardInterface::is_ready()) {
                 snprintf(pcWriteBuffer, xWriteBufferLen - 1, "ERROR: SD card not found\r\n");

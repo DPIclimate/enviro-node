@@ -38,6 +38,8 @@
 #include "power_monitoring/battery.h"
 #include "power_monitoring/solar.h"
 
+#include "Utils.h"
+
 #define TAG "wombat"
 
 TCA9534 io_expander;
@@ -49,7 +51,7 @@ static volatile int uxTopUsedPriority;
 
 static void select_rtc_slow_clk(void);
 
-static File *log_file = nullptr;
+//static File *log_file = nullptr;
 
 /*
 static vprintf_like_t old_log_fn;
@@ -138,6 +140,7 @@ int my_log_printf(const char *fmt, ...) {
         vTaskDelay(delay);
 
         if (timeout_active && timeout_restart) {
+            log_to_sdcard("timeout_task forced reboot");
             ESP_LOGE(TAG, "Removing power from R5");
             cat_m1.power_supply(false);
             vTaskDelay(5000 / portTICK_PERIOD_MS); // 5s
@@ -246,6 +249,8 @@ void setup(void) {
         ESP_LOGI(TAG, "SD card initialised");
     }
 
+    log_to_sdcard("Woke up");
+
     // This must be done before the config is loaded because the config file is
     // a list of commands.
     CLI::init();
@@ -310,17 +315,26 @@ void setup(void) {
     if (is_uplink_cycle) {
         if ( ! connect_to_internet()) {
             ESP_LOGW(TAG, "Could not connect to the internet on an uplink cycle. This is now a measurement-only cycle");
+            log_to_sdcard("cti failed, only measuring");
             is_uplink_cycle = false;
         }
     }
 
+    log_to_sdcard("init_sensors");
     init_sensors();
+    log_to_sdcard("sensor_task");
     sensor_task();
+    log_to_sdcard("back from sensor_task");
 
     if (is_uplink_cycle) {
+        log_to_sdcard("send_messages");
         send_messages();
+        log_to_sdcard("back from send_messages");
         // If a config script turned up, run it now.
         if (script != nullptr) {
+            log_to_sdcard("Running config script");
+            log_to_sdcard(script);
+
             ESP_LOGI(TAG, "Running config script\n%s", script);
             StreamString scriptStream;
             scriptStream.print(script);
@@ -328,6 +342,8 @@ void setup(void) {
             scriptStream.print("\nexit\n");
             free(script);
             CLI::repl(scriptStream, Serial);
+
+            log_to_sdcard("Finished script");
         }
     }
 
@@ -388,7 +404,10 @@ void shutdown(void) {
     SPIFFS.end();
 
     if (r5_ok) {
+        log_to_sdcard("r5.modulePowerOff");
         r5.modulePowerOff();
+    } else {
+        log_to_sdcard("r5_ok was false");
     }
 
     cat_m1.power_supply(false);
@@ -399,11 +418,7 @@ void shutdown(void) {
     disable12V();
     delay(20);
 
-    // Disable the SD card.
-    if (log_file) {
-        log_file->flush();
-        log_file->close();
-    }
+    log_to_sdcard("power down SD card");
     SD.end();
     digitalWrite(SD_CARD_ENABLE, LOW);
 
