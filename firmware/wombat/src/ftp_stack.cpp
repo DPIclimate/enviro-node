@@ -6,56 +6,25 @@
 
 #define TAG "ftp_stack"
 
-#define MAX_BUF 2048
-static char buf[MAX_BUF + 1];
-
-static int last_cmd = SARA_R5_FTP_COMMAND_INVALID;
-static int last_result = -1;
-static volatile bool got_urc = false;
-static bool login_ok = false;
-static bool logout_ok = false;
-static bool change_dir_ok = false;
-static bool mkdir_ok = false;
-static bool ftp_file_upload_ok = false;
-static bool file_dwnd_ok = false;
-static bool ftp_list_ok = false;
+static CommandURCVector<SARA_R5_ftp_command_opcode_t> urcs;
 
 static void ftp_cmd_callback(int cmd, int result) {
     ESP_LOGI(TAG, "cmd: %d, result: %d", cmd, result);
     log_to_sdcardf("ftp cb cmd: %d, result: %d", cmd, result);
 
-    last_cmd = cmd;
-    last_result = result;
+    urcs.addPair(static_cast<SARA_R5_ftp_command_opcode_t>(cmd), result);
+
     if (result == 0) {
         int e1, e2;
         r5.getFTPprotocolError(&e1, &e2);
+        urcs.back().err1 = e1;
+        urcs.back().err2 = e2;
+
         ESP_LOGE(TAG, "FTP op failed: %d, %d", e1, e2);
     }
-
-    switch (cmd) {
-        case SARA_R5_FTP_COMMAND_LOGOUT:
-            logout_ok = (result == 1);
-            break;
-        case SARA_R5_FTP_COMMAND_LOGIN:
-            login_ok = (result == 1);
-            break;
-        case SARA_R5_FTP_COMMAND_CHANGE_DIR:
-            change_dir_ok = (result == 1);
-            break;
-        case SARA_R5_FTP_COMMAND_MKDIR:
-            mkdir_ok = (result==1);
-            break;
-        case SARA_R5_FTP_COMMAND_PUT_FILE:
-            ftp_file_upload_ok = (result==1);
-            break;
-        case SARA_R5_FTP_COMMAND_LS:
-            ftp_list_ok = (result==1);
-            break;
-    }
-
-    got_urc = true;
 }
 
+[[nodiscard]]
 bool ftp_login(void) {
     log_to_sdcard("ftp login");
     ESP_LOGI(TAG, "Starting modem and login");
@@ -101,19 +70,10 @@ bool ftp_login(void) {
     }
     delay(20);
 
-    // Wait for UFTPC URC to show connection success/failure.
-    got_urc = false;
-    last_cmd = SARA_R5_FTP_COMMAND_INVALID;
-    login_ok = false;
-    int retries = 30;
-    while (retries > 0 && (! got_urc) && last_cmd != SARA_R5_FTP_COMMAND_LOGIN) {
-        delay(500);
-        r5.bufferedPoll();
-        retries--;
-    }
-
-    log_to_sdcardf("ftp login result got URC = %d, lastCmd = %d, lastResult = %d", got_urc, last_cmd, last_result);
-    if ( ! login_ok) {
+    log_to_sdcard("Waiting for mqtt login URC");
+    int result = -1;
+    bool found_urc = urcs.waitForURC(SARA_R5_FTP_COMMAND_LOGIN, &result, 30, 500);
+    if (!found_urc || result != 1) {
         ESP_LOGE(TAG, "Connection or ftp_login to FTP server failed");
         log_to_sdcard("Connection or ftp_login to FTP server failed");
         return false;
@@ -130,18 +90,13 @@ bool ftp_logout(void) {
     r5.disconnectFTP();
     delay(20);
 
-    got_urc = false;
-    int retries = 30;
-    while (retries >  0 && (! got_urc)) {
-        delay(500);
-        r5.bufferedPoll();
-        retries--;
-    }
+    int result = -1;
+    urcs.waitForURC(SARA_R5_FTP_COMMAND_LOGOUT, &result, 30, 200);
 
-    log_to_sdcardf("ftp logout result got URC = %d, lastCmd = %d, lastResult = %d", got_urc, last_cmd, last_result);
-    return logout_ok;
+    return result == 1;
 }
 
+[[nodiscard]]
 bool ftp_get(const char * filename) {
     log_to_sdcard("ftp get");
 
@@ -154,22 +109,15 @@ bool ftp_get(const char * filename) {
 
     ESP_LOGI(TAG, "Waiting for FTP download URC");
     log_to_sdcard("Waiting for FTP download URC");
-    last_cmd = SARA_R5_FTP_COMMAND_INVALID;
-    got_urc = false;
 
     // Wait for up to 10 minutes - 300 intervals of 2 seconds.
-    int retries = 300;
-    while (retries > 0 && last_cmd != SARA_R5_FTP_COMMAND_GET_FILE && ( ! got_urc)) {
-        delay(2000);
-        r5.bufferedPoll();
-        retries--;
-    }
+    int result = -1;
+    urcs.waitForURC(SARA_R5_FTP_COMMAND_GET_FILE, &result, 300, 2000);
 
-    ESP_LOGI(TAG, "FTP download URC last cmd: %d, result: %d", last_cmd, last_result);
-    log_to_sdcardf("FTP download URC last cmd: %d, result: %d", last_cmd, last_result);
-    return last_result == 1;
+    return result == 1;
 }
 
+[[nodiscard]]
 bool ftp_create_remote_dir() {
     log_to_sdcard("ftp mkdir");
 
@@ -185,22 +133,14 @@ bool ftp_create_remote_dir() {
         return false;
     }
 
-    got_urc = false;
-    int retries = 30;
-    while (retries > 0 && (! got_urc)) {
-        delay(1000);
-        r5.bufferedPoll();
-        retries--;
-    }
+    int result = -1;
+    urcs.waitForURC(SARA_R5_FTP_COMMAND_MKDIR, &result, 30, 1000);
 
-    log_to_sdcardf("FTP mkdir URC last cmd: %d, result: %d", last_cmd, last_result);
-
-    if (!mkdir_ok) {
+    if (result != 1) {
         ESP_LOGE(TAG, "Failed to create directory for file upload");
-        return false;
     }
 
-    return true;
+    return result == 1;
 }
 
 bool ftp_change_dir() {
@@ -218,24 +158,17 @@ bool ftp_change_dir() {
         return false;
     }
 
-    // Wait for UFTPC URC to show connection success/failure.
-    got_urc = false;
-    int retries = 30;
-    while (retries > 0 && (! got_urc)) {
-        delay(1000);
-        r5.bufferedPoll();
-        retries--;
-    }
+    int result = -1;
+    urcs.waitForURC(SARA_R5_FTP_COMMAND_CHANGE_DIR, &result, 30, 1000);
 
-    log_to_sdcardf("FTP cd URC last cmd: %d, result: %d", last_cmd, last_result);
-    if (!change_dir_ok) {
+    if (result != 1) {
         ESP_LOGE(TAG, "Change directory failed");
-        return false;
     }
 
-    return true;
+    return result == 1;
 }
 
+[[nodiscard]]
 bool ftp_upload_file(const String& filename) {
     DeviceConfig &config = DeviceConfig::get();
 
@@ -252,7 +185,7 @@ bool ftp_upload_file(const String& filename) {
     //Calculate the largest possible chunk based of the remaining space on the modem
     size_t size;
     r5.getAvailableSize(&size);
-    log_to_sdcardf("ftp upload space on r5 fs: %zu", size);
+    //log_to_sdcardf("ftp upload space on r5 fs: %lu", size);
     delay(20);
 
     if (size < MAX_G_BUFFER) {
@@ -261,7 +194,7 @@ bool ftp_upload_file(const String& filename) {
         return false;
     }
 
-    size = size / 4;
+    size = size / 3;
     size_t CHUNK_SIZE = size; // Allow for space remaining on the modem
     if (CHUNK_SIZE < MAX_G_BUFFER) {
         ESP_LOGE(TAG, "Not enough space on modem filesystem");
@@ -347,21 +280,15 @@ bool ftp_upload_file(const String& filename) {
             }
 
             retry++;
-            ESP_LOGE(TAG, "Upload failed, retrying");
-            log_to_sdcard("Upload failed, retrying");
+            ESP_LOGE(TAG, "Upload command failed, retrying");
+            log_to_sdcard("Upload command failed, retrying");
         }
 
-        got_urc = false;
-        int retries = 300;
-        while (retries > 0 && (! got_urc)) {
-            delay(2000);
-            r5.bufferedPoll();
-            retries--;
-        }
-
-        log_to_sdcardf("after ftp put urc got_urc: %d, ftp_file_upload_ok: %d, last cmd: %d, last result: %d", got_urc, ftp_file_upload_ok, last_cmd, last_result);
-        if (ftp_file_upload_ok) {
+        int result = -1;
+        urcs.waitForURC(SARA_R5_FTP_COMMAND_PUT_FILE, &result, 300, 2000);
+        if (result == 1) {
             ESP_LOGI(TAG, "Uploaded chunk to ftp");
+            log_to_sdcard("Uploaded chunk to ftp");
         } else {
             ESP_LOGE(TAG, "Upload failed");
             log_to_sdcard("ftp upload failing d");
