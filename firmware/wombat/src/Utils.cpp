@@ -365,7 +365,7 @@ bool connect_to_internet(void) {
 
     if ( ! cat_m1.make_ready()) {
         ESP_LOGE(TAG, "Could not initialise modem");
-        log_to_sdcard(" Could not initialise modem");
+        log_to_sdcard("[E] Could not initialise modem");
         return false;
     }
 
@@ -389,7 +389,7 @@ bool connect_to_internet(void) {
         delay(20);
         ESP_LOGE(TAG, "Error setting network operator profile");
         r5_ok = false;
-        log_to_sdcard(" Error setting network operator profile, r5_ok now false");
+        log_to_sdcard("[E] Error setting network operator profile, r5_ok now false");
         return false;
     }
     delay(20);
@@ -403,7 +403,7 @@ bool connect_to_internet(void) {
             delay(20);
             if (reg_status == SARA_R5_REGISTRATION_INVALID) {
                 ESP_LOGI(TAG, "ESP registration query failed");
-                log_to_sdcard(" ESP registration query failed");
+                log_to_sdcard("[E] ESP registration query failed");
                 return false;
             }
 
@@ -416,7 +416,7 @@ bool connect_to_internet(void) {
 
     if (reg_status != SARA_R5_REGISTRATION_HOME) {
         ESP_LOGE(TAG, "Failed to register with network");
-        log_to_sdcard(" Failed to register with network");
+        log_to_sdcard("[E] Failed to register with network");
         return false;
     }
 

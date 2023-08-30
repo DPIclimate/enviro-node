@@ -31,8 +31,7 @@ static char msg_buf[MAX_MSG_LEN + 1];
  */
 static bool process_file(const String& filename) {
     ESP_LOGI(TAG, "Processing message file [%s]", filename.c_str());
-    snprintf(g_buffer, MAX_G_BUFFER, "Processing message file [%s]", filename.c_str());
-    log_to_sdcard(g_buffer);
+    log_to_sdcardf("Processing message file [%s]", filename.c_str());
 
     File file = SPIFFS.open(filename);
     // Just in case a directory shows up with a match on the filename pattern. May as well say it
@@ -55,7 +54,7 @@ static bool process_file(const String& filename) {
             mqtt_status = mqtt_login() ? MQTT_LOGIN_OK : MQTT_LOGIN_FAILED;
             if (mqtt_status == MQTT_LOGIN_FAILED) {
                 ESP_LOGE(TAG, "Not processing file, no MQTT connection");
-                log_to_sdcard("Not processing file, no MQTT connection");
+                log_to_sdcard("[E] Not processing file, no MQTT connection");
                 return false;
             }
         }
@@ -70,7 +69,7 @@ static bool process_file(const String& filename) {
         }
     } else {
         ESP_LOGE(TAG, "Message too long");
-        log_to_sdcard("Message too long");
+        log_to_sdcard("[E] Message too long");
         file.close();
         SPIFFS.remove(filename);
     }

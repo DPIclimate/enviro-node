@@ -44,7 +44,7 @@ bool mqtt_login(void) {
 
     if (!connect_to_internet()) {
         ESP_LOGE(TAG, "Could not connect to internet");
-        log_to_sdcard("cti failed");
+        log_to_sdcard("[E] cti failed");
         return false;
     }
 
@@ -66,7 +66,7 @@ bool mqtt_login(void) {
     SARA_R5_error_t err = r5.connectMQTT();
     if (err != SARA_R5_ERROR_SUCCESS) {
         ESP_LOGE(TAG, "Connection or mqtt_login to MQTT broker failed: %d", err);
-        log_to_sdcardf("r5.connectMQTT AT cmd failed: %d", err);
+        log_to_sdcardf("[E] r5.connectMQTT AT cmd failed: %d", err);
         return false;
     }
     delay(20);
@@ -78,7 +78,7 @@ bool mqtt_login(void) {
 
     if (result != 1) {
         ESP_LOGE(TAG, "Connection or mqtt_login to MQTT broker failed");
-        log_to_sdcard("mqtt login URC not received or failed");
+        log_to_sdcard("[E] mqtt login URC not received or failed");
         return false;
     }
 
@@ -92,7 +92,7 @@ bool mqtt_login(void) {
         cmd_topic += config.node_id;
         if (r5.subscribeMQTTtopic(1, cmd_topic) != SARA_R5_ERROR_SUCCESS) {
             ESP_LOGW(TAG, "Sub at cmd failed");
-            log_to_sdcard("mqtt sub at cmd subscribe failed");
+            log_to_sdcard("[E] mqtt sub at cmd subscribe failed");
             // Returning true because the login succeeded.
             return true;
         }
@@ -135,7 +135,7 @@ bool mqtt_login(void) {
 
                         if (result != 1) {
                             ESP_LOGW(TAG, "URC not received after clearing config msg");
-                            log_to_sdcard("URC not received after clearing config msg");
+                            log_to_sdcard("[W] URC not received after clearing config msg");
                         }
                     } else {
                         ESP_LOGW(TAG, "publish empty msg failed");
@@ -156,14 +156,13 @@ bool mqtt_login(void) {
             }
         } else {
             ESP_LOGE(TAG, "MQTT subscribe failed");
-            log_to_sdcard("no mqtt sub urc");
+            log_to_sdcard("[E] no mqtt sub urc");
         }
     } else {
         ESP_LOGI(TAG, "Already have a config script, not checking for a new one");
     }
 
-    log_to_sdcard("mqtt login returning true");
-
+    log_to_sdcard("mqtt login ok");
     return true;
 }
 
@@ -180,6 +179,10 @@ bool mqtt_logout(void) {
     // URCs. Eg if a config script is published between when the Wombat checks
     // for it after login and when it logs out, there will be a read URC.
     urcs.clear();
+
+    if (result != 1) {
+        log_to_sdcard("[E] mqtt logout failed");
+    }
 
     return result == 1;
 }
@@ -215,7 +218,7 @@ bool mqtt_publish(String &topic, const char *const msg, size_t msg_len) {
 
     if (err != SARA_R5_error_t::SARA_R5_ERROR_SUCCESS) {
         ESP_LOGE(TAG, "Publish failed");
-        log_to_sdcardf("pub failed, err: %d", err);
+        log_to_sdcardf("[E] pub failed, err: %d", err);
         return false;
     }
 

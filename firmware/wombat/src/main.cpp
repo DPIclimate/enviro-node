@@ -140,7 +140,7 @@ int my_log_printf(const char *fmt, ...) {
         vTaskDelay(delay);
 
         if (timeout_active && timeout_restart) {
-            log_to_sdcard("timeout_task forced reboot");
+            log_to_sdcard("[E] timeout_task forced reboot");
             ESP_LOGE(TAG, "Removing power from R5");
             cat_m1.power_supply(false);
             vTaskDelay(5000 / portTICK_PERIOD_MS); // 5s
@@ -249,6 +249,7 @@ void setup(void) {
         ESP_LOGI(TAG, "SD card initialised");
     }
 
+    log_to_sdcard("--------------------");
     log_to_sdcard("Woke up");
 
     // This must be done before the config is loaded because the config file is
@@ -315,7 +316,7 @@ void setup(void) {
     if (is_uplink_cycle) {
         if ( ! connect_to_internet()) {
             ESP_LOGW(TAG, "Could not connect to the internet on an uplink cycle. This is now a measurement-only cycle");
-            log_to_sdcard("cti failed, only measuring");
+            log_to_sdcard("[E] cti failed, only measuring");
             is_uplink_cycle = false;
         }
     }
@@ -407,7 +408,7 @@ void shutdown(void) {
         log_to_sdcard("r5.modulePowerOff");
         r5.modulePowerOff();
     } else {
-        log_to_sdcard("r5_ok was false");
+        log_to_sdcard("[E] r5_ok was false");
     }
 
     cat_m1.power_supply(false);

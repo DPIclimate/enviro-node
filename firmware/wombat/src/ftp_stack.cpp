@@ -30,7 +30,7 @@ bool ftp_login(void) {
     ESP_LOGI(TAG, "Starting modem and login");
 
     if ( ! connect_to_internet()) {
-      ESP_LOGE(TAG, "Could not connect to internet");
+      ESP_LOGE(TAG, "[E] Could not connect to internet");
       return false;
     }
 
@@ -42,7 +42,7 @@ bool ftp_login(void) {
     SARA_R5_error_t err = r5.setFTPserver(host.c_str());
     if (err) {
         ESP_LOGE(TAG, "Failed to set FTP server hostname");
-        log_to_sdcard("Failed to set FTP server hostname");
+        log_to_sdcard("[E] Failed to set FTP server hostname");
         return false;
     }
     delay(20);
@@ -190,7 +190,7 @@ bool ftp_upload_file(const String& filename) {
 
     if (size < MAX_G_BUFFER) {
         ESP_LOGE(TAG, "Not enough space on modem filesystem");
-        log_to_sdcard("ftp upload not enough space on modem filesystem");
+        log_to_sdcard("[E] ftp upload not enough space on modem filesystem");
         return false;
     }
 
@@ -198,7 +198,7 @@ bool ftp_upload_file(const String& filename) {
     size_t CHUNK_SIZE = size; // Allow for space remaining on the modem
     if (CHUNK_SIZE < MAX_G_BUFFER) {
         ESP_LOGE(TAG, "Not enough space on modem filesystem");
-        log_to_sdcard("ftp upload not enough space on modem filesystem");
+        log_to_sdcard("[E] ftp upload not enough space on modem filesystem");
         return false;
     }
 
@@ -217,7 +217,7 @@ bool ftp_upload_file(const String& filename) {
     bool dir_change = ftp_change_dir();
     if (!dir_change) {
         ESP_LOGE(TAG, "Could not change to dir");
-        log_to_sdcard("ftp upload could not change to dir");
+        log_to_sdcard("[E] ftp upload could not change to dir");
         return false;
     }
 
@@ -239,7 +239,7 @@ bool ftp_upload_file(const String& filename) {
             size_t bytes_read = SDCardInterface::read_file(path_name.c_str(), g_buffer, bytes_to_read, file_position);
             if (bytes_read == 0) {
                 ESP_LOGE(TAG, "File bytes_read failed");
-                log_to_sdcard("ftp upload failing a");
+                log_to_sdcard("[E] ftp upload failing a");
                 r5.deleteFile(chunk_filename);
                 return false;
             }
@@ -249,7 +249,7 @@ bool ftp_upload_file(const String& filename) {
             delay(20);
             if (err != SARA_R5_ERROR_SUCCESS) {
                 ESP_LOGE(TAG, "Append to chunk file failed, error: %d", err);
-                log_to_sdcard("ftp upload failing b");
+                log_to_sdcard("[E] ftp upload failing b");
                 r5.deleteFile(chunk_filename);
                 return false;
             }
@@ -267,7 +267,7 @@ bool ftp_upload_file(const String& filename) {
         while (true) {
             if (retry > 3) {
                 ESP_LOGE(TAG, "Upload failed, giving up");
-                log_to_sdcard("ftp upload failing c");
+                log_to_sdcard("[E] ftp upload failing c");
                 r5.deleteFile(chunk_filename);
                 delay(20);
                 return false;
@@ -281,7 +281,7 @@ bool ftp_upload_file(const String& filename) {
 
             retry++;
             ESP_LOGE(TAG, "Upload command failed, retrying");
-            log_to_sdcard("Upload command failed, retrying");
+            log_to_sdcard("[W] Upload command failed, retrying");
         }
 
         int result = -1;
@@ -291,14 +291,14 @@ bool ftp_upload_file(const String& filename) {
             log_to_sdcard("Uploaded chunk to ftp");
         } else {
             ESP_LOGE(TAG, "Upload failed");
-            log_to_sdcard("ftp upload failing d");
+            log_to_sdcard("[E] ftp upload failing d");
         }
 
         SARA_R5_error_t err = r5.deleteFile(chunk_filename);
         delay(20);
         if (err != SARA_R5_ERROR_SUCCESS) {
             ESP_LOGE(TAG, "Error returned from R5 stack: %d", err);
-            log_to_sdcardf("Error returned from R5 stack: %d", err);
+            log_to_sdcardf("[E] Error returned from R5 stack: %d", err);
             return false;
         }
     }
