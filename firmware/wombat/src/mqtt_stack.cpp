@@ -14,61 +14,22 @@ static char rsp[MAX_RSP + 1];
 // run later, so it must be freed elsewhere after the run.
 char *script = nullptr;
 
-//void registrationCallback(SARA_R5_registration_status_t status, unsigned int lac, unsigned int ci, int Act) {
-//    ESP_LOGI(TAG, "%d, %u, %u, %d", status, lac, ci, Act);
-//}
-
-//void epsRegistrationCallback(SARA_R5_registration_status_t status, unsigned int lac, unsigned int ci, int Act) {
-//    ESP_LOGI(TAG, "%d, %u, %u, %d", status, lac, ci, Act);
-//}
-
-std::vector<std::pair<SARA_R5_mqtt_command_opcode_t, int>> urcs;
-
-static volatile int lastCmd = SARA_R5_MQTT_COMMAND_INVALID;
-static volatile int lastResult = -1;
-static volatile bool mqttGotURC = false;
-static volatile bool mqttLoginOk = false;
-static volatile bool mqttLogoutOk = false;
-static volatile bool mqttPublishOk = false;
-//static volatile bool mqtt_subscribe_ok = false;
-//static volatile bool mqtt_read_ok = false;
+static CommandURCVector<SARA_R5_mqtt_command_opcode_t> urcs;
 
 void mqttCmdCallback(int cmd, int result) {
     ESP_LOGI(TAG, "cmd: %d, result: %d", cmd, result);
     log_to_sdcardf("mqtt cb cmd: %d, result: %d", cmd, result);
 
-    std::pair<SARA_R5_mqtt_command_opcode_t, int> cmd_result(static_cast<SARA_R5_mqtt_command_opcode_t>(cmd), result);
-    urcs.push_back(cmd_result);
+    urcs.addPair(static_cast<SARA_R5_mqtt_command_opcode_t>(cmd), result);
 
-    lastCmd = cmd;
-    lastResult = result;
     if (result == 0) {
         int e1, e2;
         r5.getMQTTprotocolError(&e1, &e2);
+        urcs.back().err1 = e1;
+        urcs.back().err2 = e2;
+
         ESP_LOGE(TAG, "MQTT op failed: %d, %d", e1, e2);
     }
-
-    switch (cmd) {
-        case SARA_R5_MQTT_COMMAND_LOGOUT:
-            mqttLogoutOk = (result == 1);
-            break;
-        case SARA_R5_MQTT_COMMAND_LOGIN:
-            mqttLoginOk = (result == 1);
-            break;
-//        case SARA_R5_MQTT_COMMAND_SUBSCRIBE:
-//            mqttGotSubscribeURC = true;
-//            break;
-//        case SARA_R5_MQTT_COMMAND_READ:
-//            mqttGotSubscribeURC = true;
-//            break;
-        case SARA_R5_MQTT_COMMAND_PUBLISH:
-        case SARA_R5_MQTT_COMMAND_PUBLISHBINARY:
-        case SARA_R5_MQTT_COMMAND_PUBLISHFILE:
-            mqttPublishOk = (result == 1);
-            break;
-    }
-
-    mqttGotURC = true;
 }
 
 bool mqtt_login(void) {
@@ -102,28 +63,22 @@ bool mqtt_login(void) {
     r5.setMQTTCommandCallback(mqttCmdCallback);
     delay(20);
 
-    if (r5.connectMQTT() != SARA_R5_ERROR_SUCCESS) {
-        ESP_LOGE(TAG, "Connection or mqtt_login to MQTT broker failed");
-        log_to_sdcard("r5.connectMQTT AT cmd failed");
+    SARA_R5_error_t err = r5.connectMQTT();
+    if (err != SARA_R5_ERROR_SUCCESS) {
+        ESP_LOGE(TAG, "Connection or mqtt_login to MQTT broker failed: %d", err);
+        log_to_sdcardf("r5.connectMQTT AT cmd failed: %d", err);
         return false;
     }
     delay(20);
 
     // Wait for UMQTTC URC to show connection success/failure.
     log_to_sdcard("Waiting for mqtt login URC");
-    mqttGotURC = false;
-    lastCmd = SARA_R5_MQTT_COMMAND_INVALID;
-    mqttLoginOk = false;
-    int retries = 30;
-    while (!mqttGotURC && lastCmd != SARA_R5_MQTT_COMMAND_LOGIN && retries > 0) {
-        delay(1000);
-        r5.bufferedPoll();
-        retries--;
-    }
+    int result = -1;
+    bool found_urc = urcs.waitForURC(SARA_R5_MQTT_COMMAND_LOGIN, &result, 60, 500);
 
-    if (!mqttLoginOk) {
+    if (result != 1) {
         ESP_LOGE(TAG, "Connection or mqtt_login to MQTT broker failed");
-        log_to_sdcard("mqtt login URC not received");
+        log_to_sdcard("mqtt login URC not received or failed");
         return false;
     }
 
@@ -148,90 +103,42 @@ bool mqtt_login(void) {
         // 6 and not 4!
 
         ESP_LOGI(TAG, "Checking for a config script, waiting for subscribe URC");
-        lastCmd = SARA_R5_MQTT_COMMAND_INVALID;
-        lastResult = 0;
-        mqttGotURC = false;
-        int attempts = 30; // Wait 3s
-        while (!mqttGotURC && attempts > 0) {
-            delay(100);
-            r5.bufferedPoll();
-            attempts--;
-        }
 
-        bool sub_ok = false;
-        bool read_ok = false;
+        result = -1;
+        urcs.waitForURC(SARA_R5_MQTT_COMMAND_SUBSCRIBE, &result, 30, 100);
+        ESP_LOGI(TAG, "out of sub urc loop, checking values: result = %d", result);
+        log_to_sdcardf("out of sub urc loop, checking values: result = %d", result);
 
-        auto urc_iter = urcs.begin();
-        while (urc_iter != urcs.end()) {
-            if (urc_iter->first == SARA_R5_MQTT_COMMAND_SUBSCRIBE) {
-                sub_ok = urc_iter->second == 1;
-                ESP_LOGI(TAG, "found mqtt sub urc, result = %d", urc_iter->second);
-                log_to_sdcardf("found mqtt sub urc, result = %d", urc_iter->second);
-                urc_iter = urcs.erase(urc_iter);
-                continue;
-            }
+        if (result == 1) {
+            // After a subscribe, a read URC will be sent by the modem if there is a message
+            // waiting in the topic.
+            result = -1;
+            urcs.waitForURC(SARA_R5_MQTT_COMMAND_READ, &result, 20, 100);
 
-            if (urc_iter->first == SARA_R5_MQTT_COMMAND_READ) {
-                read_ok = urc_iter->second == 1;
-                ESP_LOGI(TAG, "found mqtt read urc, result = %d", urc_iter->second);
-                log_to_sdcardf("found mqtt read urc, result = %d", urc_iter->second);
-                urc_iter = urcs.erase(urc_iter);
-                continue;
-            }
+            ESP_LOGI(TAG, "out of read urc loop, result = %d", result);
+            log_to_sdcardf("out of read urc loop, result = %d", result);
 
-            urc_iter++;
-        }
-
-        ESP_LOGI(TAG, "out of sub urc loop, checking values: lastCmd = %d, lastResult = %d, sub_ok = %d", lastCmd, lastResult, sub_ok);
-        log_to_sdcardf("out of sub urc loop, checking values: lastCmd = %d, lastResult = %d, sub_ok = %d", lastCmd, lastResult, sub_ok);
-
-        if (sub_ok) {
-            if ( ! read_ok) {
-                ESP_LOGI(TAG, "waiting for read urc");
-                lastCmd = SARA_R5_MQTT_COMMAND_INVALID;
-                lastResult = 0;
-                // Wait 1s
-                for (int i = 0; i < 50; i++) {
-                    delay(20);
-                    mqttGotURC = false;
-                    r5.bufferedPoll();
-                    if (mqttGotURC && lastCmd == SARA_R5_MQTT_COMMAND_READ) {
-                        break;
-                    }
-                }
-
-                while (urc_iter != urcs.end()) {
-                    if (urc_iter->first == SARA_R5_MQTT_COMMAND_READ) {
-                        read_ok = urc_iter->second == 1;
-                        ESP_LOGI(TAG, "found mqtt read urc, result = %d", urc_iter->second);
-                        log_to_sdcardf("found mqtt read urc, result = %d", urc_iter->second);
-                        urc_iter = urcs.erase(urc_iter);
-                        continue;
-                    }
-
-                    urc_iter++;
-                }
-            }
-
-            ESP_LOGI(TAG, "out of read urc loop, checking values: lastCmd = %d, lastResult = %d, read_ok = %d", lastCmd, lastResult, read_ok);
-            log_to_sdcardf("out of read urc loop, checking values: lastCmd = %d, lastResult = %d, read_ok = %d", lastCmd, lastResult, read_ok);
-
-            if (lastCmd == SARA_R5_MQTT_COMMAND_READ && lastResult > 0) {
+            if (result > 0) {
                 ESP_LOGI(TAG, "Config download waiting.");
                 int qos;
                 String topic;
                 int bytes_read = 0;
                 memset(g_buffer, 0, MAX_G_BUFFER + 1);
-                SARA_R5_error_t err = r5.readMQTT(&qos, &topic, (uint8_t *) g_buffer, MAX_G_BUFFER, &bytes_read);
-                if (bytes_read > 0) {
+                err = r5.readMQTT(&qos, &topic, (uint8_t *) g_buffer, 2048, &bytes_read);
+                if (err == SARA_R5_ERROR_SUCCESS && bytes_read > 0) {
                     // Publish a zero length message to clear the retained message.
-                    r5.mqttPublishTextMsg(cmd_topic, "", 0, true);
-                    uint8_t counter = 0;
-                    mqttGotURC = false;
-                    while (mqttGotURC != true && counter < 50) {
-                        r5.bufferedPoll();
-                        delay(20);
-                        counter++;
+                    // This will result in another read URC, because there is a new message
+                    // in the topic, but we're not interested in that and don't look for it.
+                    if (r5.mqttPublishTextMsg(cmd_topic, "", 0, true) == SARA_R5_ERROR_SUCCESS) {
+                        result = -1;
+                        urcs.waitForURC(SARA_R5_MQTT_COMMAND_PUBLISH, &result, 30, 100);
+
+                        if (result != 1) {
+                            ESP_LOGW(TAG, "URC not received after clearing config msg");
+                            log_to_sdcard("URC not received after clearing config msg");
+                        }
+                    } else {
+                        ESP_LOGW(TAG, "publish empty msg failed");
                     }
 
                     script = static_cast<char *>(malloc(bytes_read + 1));
@@ -266,25 +173,26 @@ bool mqtt_logout(void) {
     r5.disconnectMQTT();
     delay(20);
 
-    mqttGotURC = false;
-    int retries = 30;
-    while (!mqttGotURC && retries > 0) {
-        delay(1000);
-        r5.bufferedPoll();
-        retries--;
-    }
+    int result = -1;
+    urcs.waitForURC(SARA_R5_MQTT_COMMAND_LOGOUT, &result, 45, 500);
 
-    log_to_sdcardf("mqtt log out result got URC = %d, lastCmd = %d, lastResult = %d, mqttLogoutOk = %d", mqttGotURC, lastCmd, lastResult, mqttLogoutOk);
-    return mqttLogoutOk;
+    // Remove any leftover URCs. There might be some subscribe, read, or write
+    // URCs. Eg if a config script is published between when the Wombat checks
+    // for it after login and when it logs out, there will be a read URC.
+    urcs.clear();
+
+    return result == 1;
 }
 
 bool mqtt_publish(String &topic, const char *const msg, size_t msg_len) {
     log_to_sdcard("mqtt_publish");
+    SARA_R5_mqtt_command_opcode_t expected_cmd = SARA_R5_MQTT_COMMAND_INVALID;
     SARA_R5_error_t err = SARA_R5_ERROR_INVALID;
     if (msg_len < MAX_MQTT_DIRECT_MSG_LEN) {
         ESP_LOGD(TAG, "Direct publish message: %s/%s", topic.c_str(), msg);
         log_to_sdcard("using direct publish");
         err = r5.mqttPublishBinaryMsg(topic, msg, msg_len, 1);
+        expected_cmd = SARA_R5_MQTT_COMMAND_PUBLISHBINARY;
     } else {
         ESP_LOGD(TAG, "Publish from file: %s/%s", topic.c_str(), msg);
         log_to_sdcard("using publish from file");
@@ -293,6 +201,7 @@ bool mqtt_publish(String &topic, const char *const msg, size_t msg_len) {
         r5.appendFileContents(mqtt_msg_filename, msg, static_cast<int>(msg_len));
         memset(g_buffer, 0, sizeof(g_buffer));
         err = r5.mqttPublishFromFile(topic, mqtt_msg_filename);
+        expected_cmd = SARA_R5_MQTT_COMMAND_PUBLISHFILE;
 
 //        err = r5.getFileContents(mqtt_msg_filename, g_buffer);
 //        if (err == SARA_R5_error_t::SARA_R5_ERROR_SUCCESS) {
@@ -312,15 +221,8 @@ bool mqtt_publish(String &topic, const char *const msg, size_t msg_len) {
 
     log_to_sdcard("waiting for pub urc");
     delay(20);
-    mqttGotURC = false;
-    mqttPublishOk = false;
-    int retries = 30;
-    while (!mqttGotURC && retries > 0) {
-        delay(1000);
-        r5.bufferedPoll();
-        retries--;
-    }
 
-    log_to_sdcardf("mqtt pub result got URC = %d, lastCmd = %d, lastResult = %d, mqttLogoutOk = %d", mqttGotURC, lastCmd, lastResult, mqttLogoutOk);
-    return mqttPublishOk;
+    int result = -1;
+    urcs.waitForURC(expected_cmd, &result, 60, 500);
+    return result == 1;
 }

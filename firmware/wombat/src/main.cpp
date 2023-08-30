@@ -131,7 +131,7 @@ int my_log_printf(const char *fmt, ...) {
  * @param pvParameters not used.
  */
 [[noreturn]] void timeout_task(void * pvParameters) {
-    const TickType_t delay = 14 * 60 * 1000 / portTICK_PERIOD_MS;
+    const TickType_t delay = 60 * 60 * 1000 / portTICK_PERIOD_MS;
     ESP_LOGI(TAG, "Starting");
     while(true) {
         // Set to true here, the app code on core 1 must set it to false before the
