@@ -289,7 +289,7 @@ void log_to_sdcard(const char *msg) {
         return;
     }
 
-    snprintf(sd_card_msg, MAX_SD_CARD_MSG, "%s: %s\r\n", iso8601(), msg);
+    snprintf(sd_card_msg, MAX_SD_CARD_MSG, "%s: %s\n", iso8601(), msg);
     SDCardInterface::append_to_file(sd_card_logfile_name, sd_card_msg);
 }
 
@@ -302,7 +302,7 @@ void log_to_sdcardf(const char *fmt, ...) {
     vsnprintf(&sd_card_msg[ts_len], MAX_SD_CARD_MSG - ts_len - 2, fmt, args);
     va_end(args);
 
-    strcat(sd_card_msg, "\r\n");
+    strcat(sd_card_msg, "\n");
     SDCardInterface::append_to_file(sd_card_logfile_name, sd_card_msg);
 }
 
