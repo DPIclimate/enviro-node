@@ -70,10 +70,10 @@ public:
     bool hasURC(const T command, int *result) {
         auto iter = this->begin();
         while (iter != this->end()) {
-            ESP_LOGI("CommandURCVector", "valid = %d, command = %d, result = %d", iter->valid, iter->command, iter->result);
+            ESP_LOGI("CommandURCVector", "valid = %d, command = %d, result = %d, err1 = %d, err2 = %d", iter->valid, iter->command, iter->result, iter->err1, iter->err2);
             if (iter->command == command) {
                 *result = iter->result;
-                log_to_sdcardf("valid = %d, command = %d, result = %d", iter->valid, iter->command, iter->result);
+                log_to_sdcardf("valid = %d, command = %d, result = %d, err1 = %d, err2 = %d", iter->valid, iter->command, iter->result, iter->err1, iter->err2);
                 iter->valid = false;
                 this->erase(iter);
                 return true;

@@ -223,13 +223,14 @@ bool ftp_upload_file(const String& filename) {
 
     static const size_t filename_size = 50;
     char chunk_filename[filename_size + 1]; // Filename for chunk
-
+    bool success = true;
     size_t file_position = 0;
-    for (int i = 0; i <= num_chunks; i++) {
+    for (int i = 0; i <= num_chunks && success; i++) {
         size_t bytes_read_chnk = 0; // Number of bytes read into the current chunk
 
         snprintf(chunk_filename, filename_size, "%s_%05d", filename.c_str(), i);
 
+        // Write the file chunk to the modem fs.
         while ((bytes_read_chnk < CHUNK_SIZE) && (file_position < file_size)) {
             size_t bytes_to_read = MAX_G_BUFFER;
             if (CHUNK_SIZE - bytes_read_chnk < MAX_G_BUFFER) {
@@ -240,8 +241,8 @@ bool ftp_upload_file(const String& filename) {
             if (bytes_read == 0) {
                 ESP_LOGE(TAG, "File bytes_read failed");
                 log_to_sdcard("[E] ftp upload failing a");
-                r5.deleteFile(chunk_filename);
-                return false;
+                success = false;
+                break;
             }
 
             int bytes_to_write = static_cast<int>(bytes_read);
@@ -250,8 +251,8 @@ bool ftp_upload_file(const String& filename) {
             if (err != SARA_R5_ERROR_SUCCESS) {
                 ESP_LOGE(TAG, "Append to chunk file failed, error: %d", err);
                 log_to_sdcard("[E] ftp upload failing b");
-                r5.deleteFile(chunk_filename);
-                return false;
+                success = false;
+                break;
             }
 
             file_position += bytes_read;
@@ -262,47 +263,54 @@ bool ftp_upload_file(const String& filename) {
 
         ESP_LOGI(TAG, "Written chunk %s, now uploading", chunk_filename);
 
-        //Upload chunk to ftp server
+        // Upload chunk to ftp server.
         uint8_t retry = 0;
-        while (true) {
+
+        // Loop condition is success so the loop is not entered if reading the chunk from the SD card
+        // or writing it to the modem fs failed above.
+        while (success) {
+            retry++;
             if (retry > 3) {
                 ESP_LOGE(TAG, "Upload failed, giving up");
                 log_to_sdcard("[E] ftp upload failing c");
-                r5.deleteFile(chunk_filename);
-                delay(20);
-                return false;
+                success = false;
+                break;
             }
 
             SARA_R5_error_t err = r5.ftpPutFile(chunk_filename, chunk_filename);
             delay(20);
-            if (err == SARA_R5_ERROR_SUCCESS) {
-                break;
+            if (err != SARA_R5_ERROR_SUCCESS) {
+                ESP_LOGE(TAG, "FTP put != OK");
+                log_to_sdcard("[E] FTP put != OK");
+                continue;
             }
 
-            retry++;
-            ESP_LOGE(TAG, "Upload command failed, retrying");
-            log_to_sdcard("[W] Upload command failed, retrying");
-        }
-
-        int result = -1;
-        urcs.waitForURC(SARA_R5_FTP_COMMAND_PUT_FILE, &result, 300, 2000);
-        if (result == 1) {
-            ESP_LOGI(TAG, "Uploaded chunk to ftp");
-            log_to_sdcard("Uploaded chunk to ftp");
-        } else {
-            ESP_LOGE(TAG, "Upload failed");
-            log_to_sdcard("[E] ftp upload failing d");
+            int result = -1;
+            urcs.waitForURC(SARA_R5_FTP_COMMAND_PUT_FILE, &result, 300, 2000);
+            if (result == 1) {
+                ESP_LOGI(TAG, "Uploaded chunk to ftp");
+                log_to_sdcard("Uploaded chunk to ftp");
+                break;
+            } else {
+                ESP_LOGE(TAG, "Upload chunk failed");
+                log_to_sdcard("[E] ftp upload failing d");
+            }
         }
 
         SARA_R5_error_t err = r5.deleteFile(chunk_filename);
         delay(20);
         if (err != SARA_R5_ERROR_SUCCESS) {
-            ESP_LOGE(TAG, "Error returned from R5 stack: %d", err);
-            log_to_sdcardf("[E] Error returned from R5 stack: %d", err);
-            return false;
+            ESP_LOGE(TAG, "Delete chunk failed: %d", err);
+            log_to_sdcardf("[E] Delete chunk failed: %d", err);
+            success = false;
         }
     }
 
-    log_to_sdcard("ftp upload ok");
-    return true;
+    if (success) {
+        log_to_sdcard("ftp upload ok");
+    } else {
+        log_to_sdcard("ftp upload failed");
+    }
+
+    return success;
 }
