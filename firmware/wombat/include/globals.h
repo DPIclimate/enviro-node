@@ -49,6 +49,7 @@ EXTERN bool r5_ok;
 constexpr char sd_card_datafile_name[] = "/data.json";
 constexpr char sd_card_logfile_name[] = "/log.txt";
 constexpr char send_fw_version_name[] = "/send_fw_version";
+constexpr char ftp_file_upload_dir[] = "/uploads";
 
 /// Default configuration filename on SPIFFS. SPIFFS requires the leading /
 /// but nothing else does.

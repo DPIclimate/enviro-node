@@ -31,6 +31,7 @@ static char msg_buf[MAX_MSG_LEN + 1];
  */
 static bool process_file(const String& filename) {
     ESP_LOGI(TAG, "Processing message file [%s]", filename.c_str());
+    log_to_sdcardf("Processing message file [%s]", filename.c_str());
 
     File file = SPIFFS.open(filename);
     // Just in case a directory shows up with a match on the filename pattern. May as well say it
@@ -53,6 +54,7 @@ static bool process_file(const String& filename) {
             mqtt_status = mqtt_login() ? MQTT_LOGIN_OK : MQTT_LOGIN_FAILED;
             if (mqtt_status == MQTT_LOGIN_FAILED) {
                 ESP_LOGE(TAG, "Not processing file, no MQTT connection");
+                log_to_sdcard("[E] Not processing file, no MQTT connection");
                 return false;
             }
         }
@@ -67,6 +69,7 @@ static bool process_file(const String& filename) {
         }
     } else {
         ESP_LOGE(TAG, "Message too long");
+        log_to_sdcard("[E] Message too long");
         file.close();
         SPIFFS.remove(filename);
     }
@@ -103,6 +106,7 @@ void send_messages(void) {
 
             if (mqtt_status == MQTT_LOGIN_FAILED) {
                 ESP_LOGW(TAG, "MQTT login failed, skipping any further messages");
+                log_to_sdcard("MQTT login failed, skipping any further messages");
                 break;
             }
 
@@ -116,10 +120,12 @@ void send_messages(void) {
 
     if (mqtt_status == MQTT_UNINITIALISED) {
         ESP_LOGI(TAG, "No files caused an MQTT connection, trying now to look for waiting config scripts");
+        log_to_sdcard("No files caused an MQTT connection, trying now to look for waiting config scripts");
         connect_to_internet();
         mqtt_status = mqtt_login() ? MQTT_LOGIN_OK : MQTT_LOGIN_FAILED;
         if (mqtt_status == MQTT_LOGIN_FAILED) {
             ESP_LOGE(TAG, "MQTT connection failed");
+            log_to_sdcard("MQTT connection failed");
         }
     }
 
