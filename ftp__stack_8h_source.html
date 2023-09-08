@@ -93,17 +93,22 @@ $(document).ready(function(){initNavTree('ftp__stack_8h_source.html',''); initRe
   <div class="headertitle"><div class="title">ftp_stack.h</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="ftp__stack_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef WOMBAT_FTP_STACK_H</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define WOMBAT_FTP_STACK_H</span></div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="keywordtype">bool</span> <a class="code hl_function" href="ftp__stack_8h.html#a36a1435097eb64d0554907c6fee21c4d">ftp_login</a>(<span class="keywordtype">void</span>);</div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="keywordtype">bool</span> <a class="code hl_function" href="ftp__stack_8h.html#a9fab263d3bb02569dc7602a4e8533682">ftp_logout</a>(<span class="keywordtype">void</span>);</div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="keywordtype">bool</span> <a class="code hl_function" href="ftp__stack_8h.html#aeab72e989d8fe0f463b63232078f9527">ftp_get</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> * filename);</div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#endif </span><span class="comment">//WOMBAT_FTP_STACK_H</span></div>
-<div class="ttc" id="aftp__stack_8h_html_a36a1435097eb64d0554907c6fee21c4d"><div class="ttname"><a href="ftp__stack_8h.html#a36a1435097eb64d0554907c6fee21c4d">ftp_login</a></div><div class="ttdeci">bool ftp_login(void)</div><div class="ttdef"><b>Definition:</b> ftp_stack.cpp:39</div></div>
-<div class="ttc" id="aftp__stack_8h_html_a9fab263d3bb02569dc7602a4e8533682"><div class="ttname"><a href="ftp__stack_8h.html#a9fab263d3bb02569dc7602a4e8533682">ftp_logout</a></div><div class="ttdeci">bool ftp_logout(void)</div><div class="ttdef"><b>Definition:</b> ftp_stack.cpp:97</div></div>
-<div class="ttc" id="aftp__stack_8h_html_aeab72e989d8fe0f463b63232078f9527"><div class="ttname"><a href="ftp__stack_8h.html#aeab72e989d8fe0f463b63232078f9527">ftp_get</a></div><div class="ttdeci">bool ftp_get(const char *filename)</div><div class="ttdef"><b>Definition:</b> ftp_stack.cpp:108</div></div>
+<a href="ftp__stack_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#include &quot;<a class="code" href="_utils_8h.html">Utils.h</a>&quot;</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#ifndef WOMBAT_FTP_STACK_H</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno"><a class="line" href="ftp__stack_8h.html#af7f2425bf952c63a850924d9e2055fd4">    4</a></span><span class="preprocessor">#define WOMBAT_FTP_STACK_H</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="keywordtype">bool</span> <a class="code hl_function" href="ftp__stack_8h.html#a36a1435097eb64d0554907c6fee21c4d">ftp_login</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="keywordtype">bool</span> <a class="code hl_function" href="ftp__stack_8h.html#a9fab263d3bb02569dc7602a4e8533682">ftp_logout</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="keywordtype">bool</span> <a class="code hl_function" href="ftp__stack_8h.html#aeab72e989d8fe0f463b63232078f9527">ftp_get</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> * filename);</div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="keywordtype">bool</span> <a class="code hl_function" href="ftp__stack_8h.html#a79c78257cd2b9ed445e519ecd945cfc1">ftp_upload_file</a>(<span class="keyword">const</span> String&amp; filename);</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#endif </span><span class="comment">//WOMBAT_FTP_STACK_H</span></div>
+<div class="ttc" id="a_utils_8h_html"><div class="ttname"><a href="_utils_8h.html">Utils.h</a></div></div>
+<div class="ttc" id="aftp__stack_8h_html_a36a1435097eb64d0554907c6fee21c4d"><div class="ttname"><a href="ftp__stack_8h.html#a36a1435097eb64d0554907c6fee21c4d">ftp_login</a></div><div class="ttdeci">bool ftp_login(void)</div><div class="ttdef"><b>Definition:</b> ftp_stack.cpp:28</div></div>
+<div class="ttc" id="aftp__stack_8h_html_a79c78257cd2b9ed445e519ecd945cfc1"><div class="ttname"><a href="ftp__stack_8h.html#a79c78257cd2b9ed445e519ecd945cfc1">ftp_upload_file</a></div><div class="ttdeci">bool ftp_upload_file(const String &amp;filename)</div><div class="ttdef"><b>Definition:</b> ftp_stack.cpp:172</div></div>
+<div class="ttc" id="aftp__stack_8h_html_a9fab263d3bb02569dc7602a4e8533682"><div class="ttname"><a href="ftp__stack_8h.html#a9fab263d3bb02569dc7602a4e8533682">ftp_logout</a></div><div class="ttdeci">bool ftp_logout(void)</div><div class="ttdef"><b>Definition:</b> ftp_stack.cpp:87</div></div>
+<div class="ttc" id="aftp__stack_8h_html_aeab72e989d8fe0f463b63232078f9527"><div class="ttname"><a href="ftp__stack_8h.html#aeab72e989d8fe0f463b63232078f9527">ftp_get</a></div><div class="ttdeci">bool ftp_get(const char *filename)</div><div class="ttdef"><b>Definition:</b> ftp_stack.cpp:100</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

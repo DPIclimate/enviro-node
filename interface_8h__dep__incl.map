@@ -1,7 +1,9 @@
 <map id="firmware/wombat/include/sd&#45;card/interface.h" name="firmware/wombat/include/sd&#45;card/interface.h">
-<area shape="rect" id="node1" title=" " alt="" coords="267,5,455,45"/>
+<area shape="rect" id="node1" title=" " alt="" coords="451,5,639,45"/>
 <area shape="rect" id="node2" href="$_sensor_task_8cpp.html" title=" " alt="" coords="5,101,165,141"/>
-<area shape="rect" id="node3" href="$sd__card_8cpp.html" title=" " alt="" coords="189,93,349,148"/>
-<area shape="rect" id="node4" href="$main_8cpp.html" title=" " alt="" coords="373,101,533,141"/>
-<area shape="rect" id="node5" href="$interface_8cpp.html" title=" " alt="" coords="557,101,720,141"/>
+<area shape="rect" id="node3" href="$_utils_8cpp.html" title="Global utility functions." alt="" coords="189,101,349,141"/>
+<area shape="rect" id="node4" href="$sd__card_8cpp.html" title=" " alt="" coords="373,93,533,148"/>
+<area shape="rect" id="node5" href="$ftp__stack_8cpp.html" title=" " alt="" coords="557,101,717,141"/>
+<area shape="rect" id="node6" href="$main_8cpp.html" title=" " alt="" coords="741,101,901,141"/>
+<area shape="rect" id="node7" href="$interface_8cpp.html" title=" " alt="" coords="925,101,1088,141"/>
 </map>

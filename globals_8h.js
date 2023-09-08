@@ -8,6 +8,7 @@ var globals_8h =
     [ "SD_CARD_ENABLE", "globals_8h.html#ab878f41ce20464d2dd90fbf383742752", null ],
     [ "shutdown", "globals_8h.html#a1c9d5e29ad8899afe0c34571ddee18f9", null ],
     [ "commit_id", "globals_8h.html#af399bc0e3576d3b8ac578965011a819d", null ],
+    [ "ftp_file_upload_dir", "globals_8h.html#a222cc5e27df002439f78cce47f748f09", null ],
     [ "g_buffer", "globals_8h.html#a4aee86204bb44807e602917ca7af1b91", null ],
     [ "r5", "globals_8h.html#a7f9b6ad99b4ad4d8ca1d579575944f2b", null ],
     [ "r5_ok", "globals_8h.html#af58609fbdef95492b175cbc37c4160e0", null ],

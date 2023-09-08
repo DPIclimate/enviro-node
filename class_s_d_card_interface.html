@@ -103,7 +103,7 @@ $(document).ready(function(){initNavTree('class_s_d_card_interface.html',''); in
 <div class="dynheader">
 Collaboration diagram for SDCardInterface:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="class_s_d_card_interface__coll__graph.svg" width="175" height="212"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="class_s_d_card_interface__coll__graph.svg" width="175" height="242"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 <table class="memberdecls">
@@ -129,6 +129,10 @@ Static Public Member Functions</h2></td></tr>
 <tr class="separator:ac6c01c21e39fefc2deb786488158deda"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a41fa15ea8eac22dd04c7e4b33a6a8194"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_s_d_card_interface.html#a41fa15ea8eac22dd04c7e4b33a6a8194">read_file</a> (const char *filepath, Stream &amp;stream)</td></tr>
 <tr class="separator:a41fa15ea8eac22dd04c7e4b33a6a8194"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a49e7ceda8348590b24e00e3fb4db266e"><td class="memItemLeft" align="right" valign="top">static size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_s_d_card_interface.html#a49e7ceda8348590b24e00e3fb4db266e">read_file</a> (const char *filepath, char *buffer, const size_t buffer_size, const size_t file_location)</td></tr>
+<tr class="separator:a49e7ceda8348590b24e00e3fb4db266e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae7ae2770c12c1fd54c3b440f04a52d72"><td class="memItemLeft" align="right" valign="top">static size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_s_d_card_interface.html#ae7ae2770c12c1fd54c3b440f04a52d72">get_file_size</a> (const char *filepath)</td></tr>
+<tr class="separator:ae7ae2770c12c1fd54c3b440f04a52d72"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acf26df8af11996806b5e033d817b4ebd"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_s_d_card_interface.html#acf26df8af11996806b5e033d817b4ebd">delete_file</a> (const char *filepath)</td></tr>
 <tr class="memdesc:acf26df8af11996806b5e033d817b4ebd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Delete the file at filepath.  <a href="class_s_d_card_interface.html#acf26df8af11996806b5e033d817b4ebd">More...</a><br /></td></tr>
 <tr class="separator:acf26df8af11996806b5e033d817b4ebd"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -327,6 +331,32 @@ Static Private Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="ae7ae2770c12c1fd54c3b440f04a52d72" name="ae7ae2770c12c1fd54c3b440f04a52d72"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae7ae2770c12c1fd54c3b440f04a52d72">&#9670;&#160;</a></span>get_file_size()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t SDCardInterface::get_file_size </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>filepath</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a940f3b9b0c7c6b21bb03531e65b51f68" name="a940f3b9b0c7c6b21bb03531e65b51f68"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a940f3b9b0c7c6b21bb03531e65b51f68">&#9670;&#160;</a></span>is_ready()</h2>
 
@@ -383,8 +413,56 @@ Static Private Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a49e7ceda8348590b24e00e3fb4db266e" name="a49e7ceda8348590b24e00e3fb4db266e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a49e7ceda8348590b24e00e3fb4db266e">&#9670;&#160;</a></span>read_file() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t SDCardInterface::read_file </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>filepath</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>buffer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const size_t&#160;</td>
+          <td class="paramname"><em>buffer_size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const size_t&#160;</td>
+          <td class="paramname"><em>file_location</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a41fa15ea8eac22dd04c7e4b33a6a8194" name="a41fa15ea8eac22dd04c7e4b33a6a8194"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a41fa15ea8eac22dd04c7e4b33a6a8194">&#9670;&#160;</a></span>read_file()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a41fa15ea8eac22dd04c7e4b33a6a8194">&#9670;&#160;</a></span>read_file() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">

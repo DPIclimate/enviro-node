@@ -1,7 +1,8 @@
 var searchData=
 [
-  ['polarity_0',['polarity',['../class_t_c_a9534.html#ae769761af75189f024049c196751af80',1,'TCA9534::polarity(const uint8_t port, const Polarity pol)'],['../class_t_c_a9534.html#ad3cfc894ef84a54f28022b72c2b6181d',1,'TCA9534::polarity(const Polarity pol)'],['../class_t_c_a9534.html#a1f151ad574d32d27b7362373b03d1f46',1,'TCA9534::polarity()']]],
-  ['power_5fsupply_1',['power_supply',['../class_c_a_t___m1.html#a7003b03e6081e685aa719c977f90f9d7',1,'CAT_M1']]],
-  ['process_5ffile_2',['process_file',['../uplinks_8cpp.html#a77abbcc4ad93c798ea21d105eb100afb',1,'uplinks.cpp']]],
-  ['progbtnisr_3',['progBtnISR',['../peripherals_8h.html#ac13889440b8cda4790841a83ca461f0d',1,'peripherals.h']]]
+  ['operator_3d_0',['operator=',['../class_device_config.html#a438c4a3d753923f0a42bf271c72b65b9',1,'DeviceConfig']]],
+  ['ota_5fcheck_5ffor_5fupdate_1',['ota_check_for_update',['../ota__update_8h.html#a50bee239ec4dcc981f33611e033cfde4',1,'ota_check_for_update(ota_firmware_info_t &amp;ota_ctx):&#160;ota_update.cpp'],['../ota__update_8cpp.html#a50bee239ec4dcc981f33611e033cfde4',1,'ota_check_for_update(ota_firmware_info_t &amp;ota_ctx):&#160;ota_update.cpp']]],
+  ['ota_5fdownload_5fsdi12defn_2',['ota_download_sdi12defn',['../ota__update_8h.html#aaa4bd6f60dbdf197f641e33c7acaeebe',1,'ota_download_sdi12defn(void):&#160;ota_update.cpp'],['../ota__update_8cpp.html#aaa4bd6f60dbdf197f641e33c7acaeebe',1,'ota_download_sdi12defn(void):&#160;ota_update.cpp']]],
+  ['ota_5fdownload_5fupdate_3',['ota_download_update',['../ota__update_8h.html#a230a906c7cdb4fcf6da187aaf25b755e',1,'ota_download_update(const ota_firmware_info_t &amp;ota_ctx):&#160;ota_update.cpp'],['../ota__update_8cpp.html#a230a906c7cdb4fcf6da187aaf25b755e',1,'ota_download_update(const ota_firmware_info_t &amp;ota_ctx):&#160;ota_update.cpp']]],
+  ['output_4',['output',['../class_t_c_a9534.html#a8321e69546ca45f3b9cd45f5ed7e2111',1,'TCA9534::output(const uint8_t port, const uint8_t v)'],['../class_t_c_a9534.html#a9b7611b429745138a2892a57acfacc7e',1,'TCA9534::output(const uint8_t v)'],['../class_t_c_a9534.html#af37223195b500d7d05e2f36cede0b034',1,'TCA9534::output()']]]
 ];

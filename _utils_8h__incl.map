@@ -1,6 +1,12 @@
 <map id="firmware/wombat/include/Utils.h" name="firmware/wombat/include/Utils.h">
-<area shape="rect" id="node1" title=" " alt="" coords="66,5,254,45"/>
+<area shape="rect" id="node1" title=" " alt="" coords="137,5,325,45"/>
 <area shape="rect" id="node2" title=" " alt="" coords="5,93,80,119"/>
 <area shape="rect" id="node3" title=" " alt="" coords="105,93,215,119"/>
 <area shape="rect" id="node4" title=" " alt="" coords="239,93,363,119"/>
+<area shape="rect" id="node5" href="$globals_8h.html" title=" " alt="" coords="387,93,469,119"/>
+<area shape="rect" id="node6" title=" " alt="" coords="264,167,437,207"/>
+<area shape="rect" id="node7" href="$_c_a_t___m1_8h.html" title=" " alt="" coords="462,174,549,199"/>
+<area shape="rect" id="node8" title=" " alt="" coords="432,328,496,353"/>
+<area shape="rect" id="node9" href="$_t_c_a9534_8h.html" title=" " alt="" coords="501,255,592,280"/>
+<area shape="rect" id="node10" title=" " alt="" coords="521,328,605,353"/>
 </map>

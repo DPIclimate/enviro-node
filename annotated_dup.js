@@ -11,9 +11,11 @@ var annotated_dup =
     [ "CLIPower", "class_c_l_i_power.html", "class_c_l_i_power" ],
     [ "CLISDCard", "class_c_l_i_s_d_card.html", "class_c_l_i_s_d_card" ],
     [ "CLISdi12", "class_c_l_i_sdi12.html", "class_c_l_i_sdi12" ],
+    [ "CommandURCVector", "class_command_u_r_c_vector.html", "class_command_u_r_c_vector" ],
     [ "DeviceConfig", "class_device_config.html", "class_device_config" ],
     [ "ota_firmware_info_t", "structota__firmware__info__t.html", "structota__firmware__info__t" ],
     [ "SDCardInterface", "class_s_d_card_interface.html", "class_s_d_card_interface" ],
     [ "SolarMonitor", "class_solar_monitor.html", "class_solar_monitor" ],
-    [ "TCA9534", "class_t_c_a9534.html", "class_t_c_a9534" ]
+    [ "TCA9534", "class_t_c_a9534.html", "class_t_c_a9534" ],
+    [ "URC", "struct_u_r_c.html", "struct_u_r_c" ]
 ];
