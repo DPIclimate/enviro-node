@@ -50,7 +50,14 @@ static bool process_file(const String& filename) {
         file.close();
 
         if (mqtt_status == MQTT_UNINITIALISED) {
-            connect_to_internet();
+            if ( ! connect_to_internet()) {
+                ESP_LOGE(TAG, "cti failed, not processing file");
+                log_to_sdcard("[E] cti failed, not processing file");
+                // Set mqtt_status to login failed so no more files will be attempted this run.
+                mqtt_status = MQTT_LOGIN_FAILED;
+                return false;
+            }
+
             mqtt_status = mqtt_login() ? MQTT_LOGIN_OK : MQTT_LOGIN_FAILED;
             if (mqtt_status == MQTT_LOGIN_FAILED) {
                 ESP_LOGE(TAG, "Not processing file, no MQTT connection");
