@@ -369,14 +369,20 @@ bool connect_to_internet(void) {
         return false;
     }
 
+    IPAddress ip_addr(0, 0, 0, 0);
+
     // If we've been through this function all the way (so the time is set) and we are connected
     // to the internet, return quickly.
     int reg_status = r5.registration();
     delay(20);
-    if (reg_status == SARA_R5_REGISTRATION_HOME && already_called) {
-        ESP_LOGI(TAG, "Already connected to internet");
-        log_to_sdcard(" Already connected to internet");
-        return true;
+    if (reg_status == SARA_R5_REGISTRATION_HOME) {
+        if (r5.getNetworkAssignedIPAddress(0, &ip_addr) == SARA_R5_ERROR_SUCCESS) {
+            if (already_called && ip_addr[0] != 0) {
+                ESP_LOGI(TAG, "Already connected to internet");
+                log_to_sdcard(" Already connected to internet");
+                return true;
+            }
+        }
     }
 
     // Hardware flow control pins not connected on the Wombat and R5 does not support software flow control.

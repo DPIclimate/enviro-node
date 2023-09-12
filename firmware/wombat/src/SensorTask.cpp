@@ -240,8 +240,20 @@ void sensor_task(void) {
 
     sdi12.end();
 
-    String str;
+    if (SDCardInterface::is_ready()) {
+        auto total_mb = SD.cardSize() / 1024 / 1024;
+        auto used_mb = SD.usedBytes() / 1024 / 1024;
+        if (used_mb > total_mb) {
+            used_mb = total_mb;
+        }
 
+        ESP_LOGI(TAG, "SD card %llu mb used, total size %llu mb", used_mb, total_mb);
+        ts_entry = timeseries_array.createNestedObject();
+        ts_entry["name"] = "sd_free_mb";
+        ts_entry["value"] = total_mb - used_mb;
+    }
+
+    String str;
     serializeJson(msg, str);
     ESP_LOGI(TAG, "Msg:\r\n%s\r\n", str.c_str());
 
