@@ -30,6 +30,12 @@
  */
 BaseType_t CLISDCard::enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen,
                                const char *pcCommandString) {
+
+    if (!SDCardInterface::is_ready()) {
+        snprintf(pcWriteBuffer, xWriteBufferLen - 1, "ERROR: SD card not found\r\n");
+        return pdFALSE;
+    }
+
     BaseType_t paramLen = 0;
     UBaseType_t paramNum = 1;
     const char *param;
@@ -39,12 +45,25 @@ BaseType_t CLISDCard::enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen,
     memset(pcWriteBuffer, 0, xWriteBufferLen);
     param = FreeRTOS_CLIGetParameter(pcCommandString, paramNum, &paramLen);
     if (param != nullptr && paramLen > 0) {
-        if (!strncmp("data", param, paramLen)) {
-            if (!SDCardInterface::is_ready()) {
-                snprintf(pcWriteBuffer, xWriteBufferLen - 1, "ERROR: SD card not found\r\n");
+        if (!strncmp("rm", param, paramLen)) {
+            const char *filename = FreeRTOS_CLIGetParameter(pcCommandString, 2, &paramLen);
+            if (filename != nullptr && paramLen > 0) {
+                if (paramLen < (xWriteBufferLen - 1)) {
+                    snprintf(pcWriteBuffer, xWriteBufferLen, "/%s", filename);
+                    SDCardInterface::delete_file(pcWriteBuffer);
+                    snprintf(pcWriteBuffer, xWriteBufferLen-1, OK_RESPONSE);
+                    return pdFALSE;
+                }
+
+                snprintf(pcWriteBuffer, xWriteBufferLen-1, "\r\nERROR: filename too long\r\n");
                 return pdFALSE;
             }
 
+            snprintf(pcWriteBuffer, xWriteBufferLen-1, "\r\nERROR: missing filename\r\n");
+            return pdFALSE;
+        }
+
+        if (!strncmp("data", param, paramLen)) {
             if (step < 1) {
                 step++;
                 snprintf(pcWriteBuffer, xWriteBufferLen - 1, "[\r\n");
@@ -61,20 +80,11 @@ BaseType_t CLISDCard::enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen,
         }
 
         if (!strncmp("log", param, paramLen)) {
-            if (!SDCardInterface::is_ready()) {
-                snprintf(pcWriteBuffer, xWriteBufferLen - 1, "ERROR: SD card not found\r\n");
-                return pdFALSE;
-            }
-
             SDCardInterface::read_file(sd_card_logfile_name, *CLI::cliOutput);
             return pdFALSE;
         }
 
         if (!strncmp("read", param, paramLen)) {
-            if (!SDCardInterface::is_ready()) {
-                snprintf(pcWriteBuffer, xWriteBufferLen - 1, "ERROR: SD card not found\r\n");
-                return pdFALSE;
-            }
             if (step < 1) {
                 step++;
                 snprintf(pcWriteBuffer, xWriteBufferLen - 1, "[\r\n");
@@ -104,6 +114,6 @@ BaseType_t CLISDCard::enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen,
         }
     }
 
-    strncpy(pcWriteBuffer, "ERROR: Invalid command\r\n", xWriteBufferLen - 1);
+    strncpy(pcWriteBuffer, INVALID_CMD_RESPONSE, xWriteBufferLen - 1);
     return pdFALSE;
 }

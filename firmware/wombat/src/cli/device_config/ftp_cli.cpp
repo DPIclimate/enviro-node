@@ -10,6 +10,7 @@
 #include <StreamString.h>
 
 #include "cli/FreeRTOS_CLI.h"
+#include "cli/CLI.h"
 #include "cli/device_config/ftp_cli.h"
 #include "ftp_stack.h"
 
@@ -90,7 +91,7 @@ BaseType_t CLIFTP::enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen,
                 strncpy(pcWriteBuffer, param, paramLen);
                 pcWriteBuffer[paramLen] = 0;
                 config.setFtpHost(pcWriteBuffer);
-                strncpy(pcWriteBuffer, "OK\r\n", xWriteBufferLen - 1);
+                strncpy(pcWriteBuffer, OK_RESPONSE, xWriteBufferLen - 1);
                 return pdFALSE;
             }
 
@@ -106,7 +107,7 @@ BaseType_t CLIFTP::enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen,
                 strncpy(pcWriteBuffer, param, paramLen);
                 pcWriteBuffer[paramLen] = 0;
                 config.setFtpUser(pcWriteBuffer);
-                strncpy(pcWriteBuffer, "OK\r\n", xWriteBufferLen - 1);
+                strncpy(pcWriteBuffer, OK_RESPONSE, xWriteBufferLen - 1);
                 return pdFALSE;
             }
 
@@ -122,7 +123,7 @@ BaseType_t CLIFTP::enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen,
                 strncpy(pcWriteBuffer, param, paramLen);
                 pcWriteBuffer[paramLen] = 0;
                 config.setFtpPassword(pcWriteBuffer);
-                strncpy(pcWriteBuffer, "OK\r\n", xWriteBufferLen - 1);
+                strncpy(pcWriteBuffer, OK_RESPONSE, xWriteBufferLen - 1);
                 return pdFALSE;
             }
 
@@ -133,13 +134,13 @@ BaseType_t CLIFTP::enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen,
 
         if (!strncmp("login", param, paramLen)) {
             bool rc = ftp_login();
-            snprintf(pcWriteBuffer, xWriteBufferLen - 1, "\r\n%s\r\n", rc ? "OK" : "ERROR");
+            snprintf(pcWriteBuffer, xWriteBufferLen - 1, "%s", rc ? OK_RESPONSE : ERROR_RESPONSE);
             return pdFALSE;
         }
 
         if (!strncmp("logout", param, paramLen)) {
             bool rc = ftp_logout();
-            snprintf(pcWriteBuffer, xWriteBufferLen - 1, "\r\n%s\r\n", rc ? "OK" : "ERROR");
+            snprintf(pcWriteBuffer, xWriteBufferLen - 1, "%s", rc ? OK_RESPONSE : ERROR_RESPONSE);
             return pdFALSE;
         }
 
@@ -151,7 +152,7 @@ BaseType_t CLIFTP::enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen,
                 pcWriteBuffer[paramLen] = 0;
 
                 bool rc = ftp_get(pcWriteBuffer);
-                snprintf(pcWriteBuffer, xWriteBufferLen - 1, "\r\n%s\r\n", rc ? "OK" : "XERROR");
+                snprintf(pcWriteBuffer, xWriteBufferLen - 1, "%s", rc ? OK_RESPONSE : ERROR_RESPONSE);
                 return pdFALSE;
             }
 
@@ -168,7 +169,7 @@ BaseType_t CLIFTP::enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen,
                 pcWriteBuffer[paramLen] = 0;
 
                 bool rc = ftp_upload_file(pcWriteBuffer);
-                snprintf(pcWriteBuffer, xWriteBufferLen - 1, "\r\n%s\r\n", rc ? "OK" : "ERROR");
+                snprintf(pcWriteBuffer, xWriteBufferLen - 1, "%s", rc ? OK_RESPONSE : ERROR_RESPONSE);
                 return pdFALSE;
             }
 
@@ -178,6 +179,6 @@ BaseType_t CLIFTP::enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen,
         }
 
     }
-    strncpy(pcWriteBuffer, "ERROR: Invalid command\r\n", xWriteBufferLen - 1);
+    strncpy(pcWriteBuffer, INVALID_CMD_RESPONSE, xWriteBufferLen - 1);
     return pdFALSE;
 }

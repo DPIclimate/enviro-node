@@ -23,6 +23,10 @@
 
 #define CLI_TAG "cli"
 
+const char OK_RESPONSE[] = "\r\nOK\r\n";
+const char ERROR_RESPONSE[] = "\r\nERROR\r\n";
+const char INVALID_CMD_RESPONSE[] = "\r\nERROR: Invalid command\r\n";
+
 /**
  * @brief FreeRTOS command line interface.
  *

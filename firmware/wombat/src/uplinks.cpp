@@ -19,7 +19,7 @@ static volatile mqtt_status_t mqtt_status = MQTT_UNINITIALISED;
 
 static String topic("wombat");
 
-static constexpr size_t MAX_MSG_LEN = 4096;
+static constexpr size_t MAX_MSG_LEN = MAX_MQTT_DIRECT_MSG_LEN;
 static char msg_buf[MAX_MSG_LEN + 1];
 
 /**

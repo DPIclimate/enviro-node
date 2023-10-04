@@ -10,6 +10,7 @@
 #include <StreamString.h>
 
 #include "cli/FreeRTOS_CLI.h"
+#include "cli/CLI.h"
 #include "cli/device_config/config_cli.h"
 #include "CAT_M1.h"
 #include "Utils.h"
@@ -74,14 +75,14 @@ BaseType_t CLIConfig::enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen,
         if (!strncmp("list", param, paramLen)) {
             response_buffer_.clear();
             config.dumpConfig(response_buffer_);
-            response_buffer_.println("\r\nOK");
+            response_buffer_.print(OK_RESPONSE);
             return pdTRUE;
         }
 
         if (!strncmp("load", param, paramLen)) {
             config.load();
             config.dumpConfig(response_buffer_);
-            response_buffer_.println("\r\nOK");
+            response_buffer_.print(OK_RESPONSE);
             return pdTRUE;
         }
 
@@ -138,9 +139,9 @@ BaseType_t CLIConfig::enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen,
             }
 
             if (success) {
-                strncpy(pcWriteBuffer, "\r\nOK\r\n", xWriteBufferLen - 1);
+                strncpy(pcWriteBuffer, OK_RESPONSE, xWriteBufferLen - 1);
             } else {
-                strncpy(pcWriteBuffer, "\r\nERROR\r\n", xWriteBufferLen - 1);
+                strncpy(pcWriteBuffer, ERROR_RESPONSE, xWriteBufferLen - 1);
             }
             return pdFALSE;
         }
@@ -157,9 +158,9 @@ BaseType_t CLIConfig::enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen,
             }
 
             if (success) {
-                strncpy(pcWriteBuffer, "\r\nOK\r\n", xWriteBufferLen - 1);
+                strncpy(pcWriteBuffer, OK_RESPONSE, xWriteBufferLen - 1);
             } else {
-                strncpy(pcWriteBuffer, "\r\nERROR\r\n", xWriteBufferLen - 1);
+                strncpy(pcWriteBuffer, ERROR_RESPONSE, xWriteBufferLen - 1);
             }
             return pdFALSE;
         }
@@ -175,6 +176,6 @@ BaseType_t CLIConfig::enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen,
         return pdTRUE;
     }
 
-    strncpy(pcWriteBuffer, "ERROR: Invalid command\r\n", xWriteBufferLen - 1);
+    strncpy(pcWriteBuffer, INVALID_CMD_RESPONSE, xWriteBufferLen - 1);
     return pdFALSE;
 }

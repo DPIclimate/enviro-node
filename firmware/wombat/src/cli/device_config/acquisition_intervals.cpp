@@ -10,6 +10,7 @@
 #include "cli/device_config/acquisition_intervals.h"
 #include "globals.h"
 #include "Utils.h"
+#include "cli/CLI.h"
 
 #define TAG "acquisition_intervals"
 
@@ -126,7 +127,7 @@ BaseType_t CLIConfigIntervals::enter_cli(char *pcWriteBuffer,
 
             config.setMeasureInterval(i);
             if (i == config.getMeasureInterval()) {
-                strncpy(pcWriteBuffer, "OK\r\n", xWriteBufferLen - 1);
+                strncpy(pcWriteBuffer, OK_RESPONSE, xWriteBufferLen - 1);
             } else {
                 strncpy(pcWriteBuffer, "ERROR: set measure interval "
                                        "failed\r\n", xWriteBufferLen - 1);
@@ -152,7 +153,7 @@ BaseType_t CLIConfigIntervals::enter_cli(char *pcWriteBuffer,
 
             config.setUplinkInterval(i);
             if (i == config.getUplinkInterval()) {
-                strncpy(pcWriteBuffer, "OK\r\n", xWriteBufferLen - 1);
+                strncpy(pcWriteBuffer, OK_RESPONSE, xWriteBufferLen - 1);
             } else {
                 strncpy(pcWriteBuffer, "ERROR: set uplink interval "
                                        "failed\r\n", xWriteBufferLen - 1);
@@ -175,7 +176,7 @@ BaseType_t CLIConfigIntervals::enter_cli(char *pcWriteBuffer,
 
                 config.setSleepAdjustment(sleepMultiplier);
                 if (sleepMultiplier == config.getSleepAdjustment()) {
-                    strncpy(pcWriteBuffer, "OK\r\n", xWriteBufferLen - 1);
+                    strncpy(pcWriteBuffer, OK_RESPONSE, xWriteBufferLen - 1);
                 } else {
                     ESP_LOGE(TAG, "%f != %f", sleepMultiplier, config.getSleepAdjustment());
                     strncpy(pcWriteBuffer, "ERROR: set clock multiplier failed\r\n", xWriteBufferLen - 1);
@@ -188,6 +189,6 @@ BaseType_t CLIConfigIntervals::enter_cli(char *pcWriteBuffer,
         }
     }
 
-    strncpy(pcWriteBuffer, "Syntax error\r\n", xWriteBufferLen - 1);
+    strncpy(pcWriteBuffer, INVALID_CMD_RESPONSE, xWriteBufferLen - 1);
     return pdFALSE;
 }

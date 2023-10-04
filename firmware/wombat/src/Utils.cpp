@@ -402,22 +402,24 @@ bool connect_to_internet(void) {
 
     // Network registration takes 4 seconds at best.
     ESP_LOGI(TAG, "Waiting for network registration");
-    for (int i = 0; i < 3; i++) {
-        int attempts = 0;
-        while (reg_status != SARA_R5_REGISTRATION_HOME && attempts < 4) {
-            reg_status = r5.registration();
-            delay(20);
-            if (reg_status == SARA_R5_REGISTRATION_INVALID) {
-                ESP_LOGI(TAG, "ESP registration query failed");
-                log_to_sdcard("[E] ESP registration query failed");
-                return false;
-            }
-
-            ESP_LOGI(TAG, "ESP registration status = %d", reg_status);
-            r5.bufferedPoll();
-            delay(2000);
-            attempts++;
+    int attempts = 0;
+    while (reg_status != SARA_R5_REGISTRATION_HOME && attempts < 45) {
+        reg_status = r5.registration();
+        delay(20);
+        if (reg_status == SARA_R5_REGISTRATION_INVALID) {
+            ESP_LOGI(TAG, "ESP registration query failed");
+            log_to_sdcard("[E] ESP registration query failed");
+            return false;
         }
+
+        ESP_LOGI(TAG, "ESP registration status = %d", reg_status);
+        r5.bufferedPoll();
+        if (reg_status == SARA_R5_REGISTRATION_HOME) {
+            break;
+        }
+
+        delay(2000);
+        attempts++;
     }
 
     if (reg_status != SARA_R5_REGISTRATION_HOME) {

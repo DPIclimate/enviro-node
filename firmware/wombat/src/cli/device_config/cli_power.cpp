@@ -10,6 +10,7 @@
 #include <StreamString.h>
 
 #include "cli/FreeRTOS_CLI.h"
+#include "cli/CLI.h"
 
 #include "power_monitoring/battery.h"
 #include "power_monitoring/solar.h"
@@ -72,6 +73,6 @@ BaseType_t CLIPower::enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen,
         }
     }
 
-    strncpy(pcWriteBuffer, "ERROR: Invalid command\r\n", xWriteBufferLen - 1);
+    strncpy(pcWriteBuffer, INVALID_CMD_RESPONSE, xWriteBufferLen - 1);
     return pdFALSE;
 }

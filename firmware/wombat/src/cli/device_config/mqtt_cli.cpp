@@ -10,6 +10,7 @@
 #include <StreamString.h>
 
 #include "cli/FreeRTOS_CLI.h"
+#include "cli/CLI.h"
 #include "cli/device_config/mqtt_cli.h"
 #include "mqtt_stack.h"
 
@@ -95,7 +96,7 @@ BaseType_t CLIMQTT::enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen,
                 strncpy(pcWriteBuffer, param, paramLen);
                 pcWriteBuffer[paramLen] = 0;
                 config.setMqttHost(pcWriteBuffer);
-                strncpy(pcWriteBuffer, "OK\r\n", xWriteBufferLen - 1);
+                strncpy(pcWriteBuffer, OK_RESPONSE, xWriteBufferLen - 1);
                 return pdFALSE;
             }
 
@@ -121,7 +122,7 @@ BaseType_t CLIMQTT::enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen,
             } else {
                 config.setMqttPort(i);
                 if (i == config.getMqttPort()) {
-                    strncpy(pcWriteBuffer, "OK\r\n", xWriteBufferLen - 1);
+                    strncpy(pcWriteBuffer, OK_RESPONSE, xWriteBufferLen - 1);
                 } else {
                     strncpy(pcWriteBuffer, "ERROR: set MQTT port failed\r\n", xWriteBufferLen - 1);
                 }
@@ -137,7 +138,7 @@ BaseType_t CLIMQTT::enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen,
             strncpy(pcWriteBuffer, param, paramLen);
             pcWriteBuffer[paramLen] = 0;
             config.setMqttUser(pcWriteBuffer);
-            strncpy(pcWriteBuffer, "OK\r\n", xWriteBufferLen - 1);
+            strncpy(pcWriteBuffer, OK_RESPONSE, xWriteBufferLen - 1);
             return pdFALSE;
         }
 
@@ -153,7 +154,7 @@ BaseType_t CLIMQTT::enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen,
             strncpy(pcWriteBuffer, param, paramLen);
             pcWriteBuffer[paramLen] = 0;
             config.setMqttPassword(pcWriteBuffer);
-            strncpy(pcWriteBuffer, "OK\r\n", xWriteBufferLen - 1);
+            strncpy(pcWriteBuffer, OK_RESPONSE, xWriteBufferLen - 1);
             return pdFALSE;
         }
 
@@ -173,7 +174,7 @@ BaseType_t CLIMQTT::enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen,
 
             strncpy(config.mqtt_topic_template, param, paramLen);
             config.mqtt_topic_template[paramLen] = 0;
-            strncpy(pcWriteBuffer, "OK\r\n", xWriteBufferLen - 1);
+            strncpy(pcWriteBuffer, OK_RESPONSE, xWriteBufferLen - 1);
             return pdFALSE;
         }
 
@@ -184,23 +185,23 @@ BaseType_t CLIMQTT::enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen,
 
     if (!strncmp("login", param, paramLen)) {
         bool rc = mqtt_login();
-        snprintf(pcWriteBuffer, xWriteBufferLen-1, "\r\n%s\r\n", rc ? "OK" : "ERROR");
+        snprintf(pcWriteBuffer, xWriteBufferLen-1, "%s", rc ? OK_RESPONSE : ERROR_RESPONSE);
         return pdFALSE;
     }
 
     if (!strncmp("logout", param, paramLen)) {
         bool rc = mqtt_logout();
-        snprintf(pcWriteBuffer, xWriteBufferLen-1, "\r\n%s\r\n", rc ? "OK" : "ERROR");
+        snprintf(pcWriteBuffer, xWriteBufferLen-1, "%s", rc ? OK_RESPONSE : ERROR_RESPONSE);
         return pdFALSE;
     }
 
     if (!strncmp("publish", param, paramLen)) {
         String topic(config.mqtt_topic_template);
         bool rc = mqtt_publish(topic, "ABCDEF", 6);
-        snprintf(pcWriteBuffer, xWriteBufferLen-1, "\r\n%s\r\n", rc ? "OK" : "ERROR");
+        snprintf(pcWriteBuffer, xWriteBufferLen-1, "%s", rc ? OK_RESPONSE : ERROR_RESPONSE);
         return pdFALSE;
     }
 
-    strncpy(pcWriteBuffer, "ERROR: Invalid command\r\n", xWriteBufferLen - 1);
+    strncpy(pcWriteBuffer, INVALID_CMD_RESPONSE, xWriteBufferLen - 1);
     return pdFALSE;
 }

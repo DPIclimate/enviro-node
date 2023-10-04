@@ -134,36 +134,70 @@ static int get_response(uint32_t timeout = 500) {
         if (!strncmp("pwr", param, paramLen)) {
             const char* pwrState = FreeRTOS_CLIGetParameter(pcCommandString, 2, &paramLen);
             if(pwrState != nullptr && paramLen > 0) {
-                cat_m1.power_supply(*pwrState == '1');
-            }
-
-            if (*pwrState == '0') {
-                if (r5_ok) {
-                    r5.modulePowerOff();
+                if (*pwrState == '0') {
+                    if (r5_ok) {
+                        r5.modulePowerOff();
+                    }
                 }
+
+                cat_m1.power_supply(*pwrState == '1');
+
+                snprintf(pcWriteBuffer, xWriteBufferLen-1, OK_RESPONSE);
+                return pdFALSE;
+            }
+        }
+
+        if (!strncmp("ls", param, paramLen)) {
+            if ( ! r5_ok) {
+                snprintf(pcWriteBuffer, xWriteBufferLen-1, "\r\nERROR: modem not ready\r\n");
+                return pdFALSE;
             }
 
-            snprintf(pcWriteBuffer, xWriteBufferLen-1, "\r\nOK\r\n");
+            LTE_Serial.println("AT+ULSTFILE=0");
+            memset(g_buffer, 0, MAX_G_BUFFER);
+            auto rc = get_response(2000);
+            if (rc < 0) {
+                snprintf(pcWriteBuffer, xWriteBufferLen-1, "\r\nERROR: timeout\r\n");
+                return pdFALSE;
+            }
+
+            response_buffer_.println(g_buffer);
+            return pdTRUE;
+        }
+
+        if (!strncmp("rm", param, paramLen)) {
+            if ( ! r5_ok) {
+                snprintf(pcWriteBuffer, xWriteBufferLen-1, "\r\nERROR: modem not ready\r\n");
+                return pdFALSE;
+            }
+
+            const char *filename = FreeRTOS_CLIGetParameter(pcCommandString, 2, &paramLen);
+            if (filename != nullptr && paramLen > 0) {
+                r5.deleteFile(filename);
+
+                snprintf(pcWriteBuffer, xWriteBufferLen-1, OK_RESPONSE);
+                return pdFALSE;
+            }
+
+            snprintf(pcWriteBuffer, xWriteBufferLen-1, "\r\nERROR: missing filename\r\n");
             return pdFALSE;
         }
 
         if (!strncmp("on", param, paramLen)) {
-            //cat_m1.device_on();
             r5.modulePowerOn();
-            snprintf(pcWriteBuffer, xWriteBufferLen-1, "\r\nOK\r\n");
+            snprintf(pcWriteBuffer, xWriteBufferLen-1, OK_RESPONSE);
             return pdFALSE;
         }
 
         if (!strncmp("off", param, paramLen)) {
-            //cat_m1.device_off();
             r5.modulePowerOff();
-            snprintf(pcWriteBuffer, xWriteBufferLen-1, "\r\nOK\r\n");
+            snprintf(pcWriteBuffer, xWriteBufferLen-1, OK_RESPONSE);
             return pdFALSE;
         }
 
         if (!strncmp("restart", param, paramLen)) {
             cat_m1.restart();
-            snprintf(pcWriteBuffer, xWriteBufferLen-1, "\r\nOK\r\n");
+            snprintf(pcWriteBuffer, xWriteBufferLen-1, OK_RESPONSE);
             return pdFALSE;
         }
 
@@ -190,7 +224,7 @@ static int get_response(uint32_t timeout = 500) {
                 response_buffer_.print("+CPRWOFF bad response");
             }
 
-            snprintf(pcWriteBuffer, xWriteBufferLen-1, "\r\nOK\r\n");
+            snprintf(pcWriteBuffer, xWriteBufferLen-1, OK_RESPONSE);
             return pdFALSE;
         }
 
@@ -203,7 +237,7 @@ static int get_response(uint32_t timeout = 500) {
                 while (LTE_Serial.available()) {
                     response_buffer_.write(LTE_Serial.read());
                 }
-                response_buffer_.print("\r\nOK\r\n");
+                response_buffer_.print(OK_RESPONSE);
             }
             return pdTRUE;
         }
@@ -215,6 +249,6 @@ static int get_response(uint32_t timeout = 500) {
         }
     }
 
-    snprintf(pcWriteBuffer, xWriteBufferLen-1, "\r\nERROR: Invalid command\r\n");
+    strncpy(pcWriteBuffer, INVALID_CMD_RESPONSE, xWriteBufferLen - 1);
     return pdFALSE;
 }

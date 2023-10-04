@@ -91,7 +91,7 @@ BaseType_t CLISdi12::enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen,
                 response_buffer_.print("\r\n");
             }
 
-            response_buffer_.print("OK\r\n");
+            response_buffer_.print(OK_RESPONSE);
 
             sdi12.end();
             return pdTRUE;
@@ -119,7 +119,7 @@ BaseType_t CLISdi12::enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen,
 
             String str;
             serializeJson(msg, response_buffer_);
-            response_buffer_.print("\r\nOK\r\n");
+            response_buffer_.print(OK_RESPONSE);
 
             sdi12.end();
 
@@ -160,7 +160,7 @@ BaseType_t CLISdi12::enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen,
                 }
 
                 if (ok) {
-                    response_buffer_.print("OK\r\n");
+                    response_buffer_.print(OK_RESPONSE);
                 } else {
                     response_buffer_.print("ERROR: No response\r\n");
                 }
@@ -216,6 +216,6 @@ BaseType_t CLISdi12::enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen,
         }
     }
 
-    strncpy(pcWriteBuffer, "ERROR\r\n", xWriteBufferLen - 1);
+    strncpy(pcWriteBuffer, INVALID_CMD_RESPONSE, xWriteBufferLen - 1);
     return pdFALSE;
 }

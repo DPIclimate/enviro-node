@@ -189,43 +189,28 @@ bool mqtt_logout(void) {
 
 bool mqtt_publish(String &topic, const char *const msg, size_t msg_len) {
     log_to_sdcard("mqtt_publish");
-    SARA_R5_mqtt_command_opcode_t expected_cmd = SARA_R5_MQTT_COMMAND_INVALID;
-    SARA_R5_error_t err = SARA_R5_ERROR_INVALID;
+    int result = -1;
     if (msg_len < MAX_MQTT_DIRECT_MSG_LEN) {
         ESP_LOGD(TAG, "Direct publish message: %s/%s", topic.c_str(), msg);
         log_to_sdcard("using direct publish");
-        err = r5.mqttPublishBinaryMsg(topic, msg, msg_len, 1);
-        expected_cmd = SARA_R5_MQTT_COMMAND_PUBLISHBINARY;
+        SARA_R5_error_t err = r5.mqttPublishBinaryMsg(topic, msg, msg_len, 1);
+        delay(20);
+
+        if (err != SARA_R5_error_t::SARA_R5_ERROR_SUCCESS) {
+            ESP_LOGE(TAG, "Publish failed");
+            log_to_sdcardf("[E] pub failed, err: %d", err);
+            return false;
+        }
+
+        log_to_sdcard("waiting for pub urc");
+        delay(20);
+
+        urcs.waitForURC(SARA_R5_MQTT_COMMAND_PUBLISHBINARY, &result, 60, 500);
     } else {
-        ESP_LOGD(TAG, "Publish from file: %s/%s", topic.c_str(), msg);
-        log_to_sdcard("using publish from file");
-        static const String mqtt_msg_filename("mqtt.json");
-        r5.deleteFile(mqtt_msg_filename);
-        r5.appendFileContents(mqtt_msg_filename, msg, static_cast<int>(msg_len));
-        memset(g_buffer, 0, sizeof(g_buffer));
-        err = r5.mqttPublishFromFile(topic, mqtt_msg_filename);
-        expected_cmd = SARA_R5_MQTT_COMMAND_PUBLISHFILE;
-
-//        err = r5.getFileContents(mqtt_msg_filename, g_buffer);
-//        if (err == SARA_R5_error_t::SARA_R5_ERROR_SUCCESS) {
-//            ESP_LOGD(TAG, "Msg content from modem:\n%s", g_buffer);
-//        } else {
-//            ESP_LOGE(TAG, "Failed to read file content from R5");
-//        }
-    }
-
-    delay(20);
-
-    if (err != SARA_R5_error_t::SARA_R5_ERROR_SUCCESS) {
-        ESP_LOGE(TAG, "Publish failed");
-        log_to_sdcardf("[E] pub failed, err: %d", err);
+        ESP_LOGE(TAG, "Message too long");
+        log_to_sdcardf("[E] message too long");
         return false;
     }
 
-    log_to_sdcard("waiting for pub urc");
-    delay(20);
-
-    int result = -1;
-    urcs.waitForURC(expected_cmd, &result, 60, 500);
     return result == 1;
 }
