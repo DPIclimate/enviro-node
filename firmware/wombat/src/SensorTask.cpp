@@ -171,9 +171,6 @@ void sensor_task(void) {
     const char *timestamp = iso8601();
     msg["timestamp"] = timestamp;
 
-    //---------------------
-    // source_ids section
-    //---------------------
     JsonObject source_ids = msg.createNestedObject("source_ids");
     source_ids["serial_no"] = DeviceConfig::get().node_id;
 
@@ -182,26 +179,44 @@ void sensor_task(void) {
     memset(buffer, 0, sizeof(buffer));
     snprintf(buffer, buffer_sz, "%d.%d.%d %s %s %s", ver_major, ver_minor, ver_update, repo_branch, commit_id, repo_status);
     source_ids["firmware"] = buffer;
+    JsonArray timeseries_array = msg.createNestedArray("timeseries");
+
+    //
+    // Node sensors
+    //
+    JsonObject ts_entry = timeseries_array.createNestedObject();
+    ts_entry["name"] = "battery (v)";
+    ts_entry["value"] = BatteryMonitor::get_voltage();
+
+    ts_entry = timeseries_array.createNestedObject();
+    ts_entry["name"] = "solar (v)";
+    ts_entry["value"] = SolarMonitor::get_voltage();
 
     if (r5_ok) {
+        signal_quality sq;
+        SARA_R5_error_t r5_err = r5.getExtSignalQuality(sq);
+
+        if (!r5_err) {
+            ts_entry = timeseries_array.createNestedObject();
+            ts_entry["name"] = "rsrq";
+            ts_entry["value"] = sq.rsrq;
+
+            ts_entry = timeseries_array.createNestedObject();
+            ts_entry["name"] = "rsrp";
+            ts_entry["value"] = sq.rsrp;
+        }
+
         String ccid = r5.getCCID();
         if (ccid.length() > 0) {
             source_ids["ccid"] = ccid;
         }
     }
-
-    //---------------------
-    // timeseries section
-    //---------------------
-    JsonArray timeseries_array = msg.createNestedArray("timeseries");
-
     //
     // Pulse counter
     //
     uint32_t pc = get_pulse_count();
     uint32_t sp = get_shortest_pulse();
 
-    JsonObject ts_entry = timeseries_array.createNestedObject();
     ts_entry["name"] = "pulse_count";
     ts_entry["value"] = pc;
 
@@ -245,73 +260,5 @@ void sensor_task(void) {
     if (SDCardInterface::is_ready()) {
         snprintf(g_buffer, MAX_G_BUFFER, "%s,\n", str.c_str());
         SDCardInterface::append_to_file(sd_card_datafile_name, g_buffer);
-    }
-
-    //---------------------
-    // Wombat status/info message
-    //---------------------
-
-    timeseries_array.clear();
-    //
-    // Node sensors
-    //
-    ts_entry = timeseries_array.createNestedObject();
-    ts_entry["name"] = "battery (v)";
-    ts_entry["value"] = BatteryMonitor::get_voltage();
-
-    ts_entry = timeseries_array.createNestedObject();
-    ts_entry["name"] = "solar (v)";
-    ts_entry["value"] = SolarMonitor::get_voltage();
-
-    if (r5_ok) {
-        signal_quality sq;
-        SARA_R5_error_t r5_err = r5.getExtSignalQuality(sq);
-
-        if (!r5_err) {
-            ts_entry = timeseries_array.createNestedObject();
-            ts_entry["name"] = "rsrq";
-            ts_entry["value"] = sq.rsrq;
-
-            ts_entry = timeseries_array.createNestedObject();
-            ts_entry["name"] = "rsrp";
-            ts_entry["value"] = sq.rsrp;
-        }
-    }
-
-    if (SDCardInterface::is_ready()) {
-        auto total_mb = SD.cardSize() / 1024 / 1024;
-        auto used_mb = SD.usedBytes() / 1024 / 1024;
-        if (used_mb > total_mb) {
-            used_mb = total_mb;
-        }
-
-        ESP_LOGI(TAG, "SD card %llu mb used, total size %llu mb", used_mb, total_mb);
-        ts_entry = timeseries_array.createNestedObject();
-        ts_entry["name"] = "sd_free_mb";
-        ts_entry["value"] = total_mb - used_mb;
-    }
-
-    str.clear();
-    serializeJson(msg, str);
-    ESP_LOGI(TAG, "Msg:\r\n%s\r\n", str.c_str());
-
-    if (spiffs_ok) {
-        // Write the message to a file so it can be sent on the next uplink cycle.
-        static const size_t MAX_FNAME = 32;
-        static char filename[MAX_FNAME + 1];
-
-        snprintf(filename, MAX_FNAME, "/%sinfo_%s.json", DeviceConfig::getMsgFilePrefix(), timestamp);
-        ESP_LOGI(TAG, "Creating unsent msg file [%s]", filename);
-        File f = SPIFFS.open(filename, FILE_WRITE);
-        serializeJson(msg, f);
-        f.close();
-    } else {
-        log_to_sdcard("[E] spiffs_ok is false, no message stored");
-    }
-
-    // Append the message to a file on the SD card.
-    if (SDCardInterface::is_ready()) {
-        str += ",\n";
-        SDCardInterface::append_to_file(sd_card_datafile_name, str.c_str());
     }
 }
