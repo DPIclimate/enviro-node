@@ -22,6 +22,9 @@ var NAVTREEINDEX0 =
 "_c_l_i_8cpp.html#af8e3058682d1a26dd803606d67790bc9":[3,0,0,0,3,0,2,8],
 "_c_l_i_8h.html":[3,0,0,0,0,1,2],
 "_c_l_i_8h.html#a41a20dec82931b86215f2344bace9a27":[3,0,0,0,0,1,2,1],
+"_c_l_i_8h.html#a73dae1bdddf0280f212615cff504a7bd":[3,0,0,0,0,1,2,4],
+"_c_l_i_8h.html#abd31348df4e30120259015d772b274ad":[3,0,0,0,0,1,2,2],
+"_c_l_i_8h.html#acd62a2989d9f0b92e9d3ec77b1163c31":[3,0,0,0,0,1,2,3],
 "_c_l_i_8h_source.html":[3,0,0,0,0,1,2],
 "_device_config_8cpp.html":[3,0,0,0,3,4],
 "_device_config_8cpp.html#a0b140ee2afa69c1f8c6e2a44bd144ced":[3,0,0,0,3,4,2],
@@ -246,8 +249,5 @@ var NAVTREEINDEX0 =
 "class_solar_monitor.html#af6a191879ff84ffb5d4912ed0487e041":[2,0,15,4],
 "class_t_c_a9534.html":[2,0,16],
 "class_t_c_a9534.html#a074cad46feafe7579880cb0125d5a39b":[2,0,16,5],
-"class_t_c_a9534.html#a090994f5dc606d3676d2004c0b8be270":[2,0,16,24],
-"class_t_c_a9534.html#a0a5075813b9328dc5275fbc393757151":[2,0,16,25],
-"class_t_c_a9534.html#a0d5511538f7188225c1652ef89258a5a":[2,0,16,6],
-"class_t_c_a9534.html#a1f151ad574d32d27b7362373b03d1f46":[2,0,16,13]
+"class_t_c_a9534.html#a090994f5dc606d3676d2004c0b8be270":[2,0,16,24]
 };

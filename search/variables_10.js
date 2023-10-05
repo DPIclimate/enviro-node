@@ -1,9 +1,6 @@
 var searchData=
 [
-  ['v12_5fenabled_0',['v12_enabled',['../_utils_8cpp.html#ae302ff688aa004a9ffd486824cd51734',1,'Utils.cpp']]],
-  ['valid_1',['valid',['../struct_u_r_c.html#a56543207ba256b45819915ab4215bed9',1,'URC']]],
-  ['ver_5fmajor_2',['ver_major',['../globals_8h.html#ada31d202380adacbb62da679999fd499',1,'globals.h']]],
-  ['ver_5fminor_3',['ver_minor',['../globals_8h.html#a140d2465d47863dbdbfd00c2be7f4edc',1,'globals.h']]],
-  ['ver_5fupdate_4',['ver_update',['../globals_8h.html#ac978ad67d10b0ffe20ed227dad431878',1,'globals.h']]],
-  ['version_5fcomps_5',['version_comps',['../namespacegen__version__h.html#a0d274a131c874fce37c419c42f7911fe',1,'gen_version_h']]]
+  ['uplink_5finterval_0',['uplink_interval',['../class_device_config.html#aa5385d0eb9832fc114ef0d4d9757038f',1,'DeviceConfig']]],
+  ['urcs_1',['urcs',['../ftp__stack_8cpp.html#a5cb9639fff5f585ea7ed48f3f8c4f830',1,'urcs():&#160;ftp_stack.cpp'],['../mqtt__stack_8cpp.html#a76bb44c68132baf5e76ed4881d5fbf95',1,'urcs():&#160;mqtt_stack.cpp']]],
+  ['uxtopusedpriority_2',['uxTopUsedPriority',['../main_8cpp.html#a5f4927c8ddf017550d72987d1be19591',1,'main.cpp']]]
 ];
