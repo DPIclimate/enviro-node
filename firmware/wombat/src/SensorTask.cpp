@@ -184,26 +184,26 @@ void sensor_task(void) {
     //
     // Node sensors
     //
-    JsonObject ts_entry = timeseries_array.createNestedObject();
-    ts_entry["name"] = "battery (v)";
-    ts_entry["value"] = BatteryMonitor::get_voltage();
+    JsonObject battery_v = timeseries_array.createNestedObject();
+    battery_v["name"] = "battery (v)";
+    battery_v["value"] = BatteryMonitor::get_voltage();
 
-    ts_entry = timeseries_array.createNestedObject();
-    ts_entry["name"] = "solar (v)";
-    ts_entry["value"] = SolarMonitor::get_voltage();
+    JsonObject solar_v = timeseries_array.createNestedObject();
+    solar_v["name"] = "solar (v)";
+    solar_v["value"] = SolarMonitor::get_voltage();
 
     if (r5_ok) {
         signal_quality sq;
         SARA_R5_error_t r5_err = r5.getExtSignalQuality(sq);
 
         if (!r5_err) {
-            ts_entry = timeseries_array.createNestedObject();
-            ts_entry["name"] = "rsrq";
-            ts_entry["value"] = sq.rsrq;
+            JsonObject rsrq = timeseries_array.createNestedObject();
+            rsrq["name"] = "rsrq";
+            rsrq["value"] = sq.rsrq;
 
-            ts_entry = timeseries_array.createNestedObject();
-            ts_entry["name"] = "rsrp";
-            ts_entry["value"] = sq.rsrp;
+            JsonObject rsrp = timeseries_array.createNestedObject();
+            rsrp["name"] = "rsrp";
+            rsrp["value"] = sq.rsrp;
         }
 
         String ccid = r5.getCCID();
@@ -217,12 +217,13 @@ void sensor_task(void) {
     uint32_t pc = get_pulse_count();
     uint32_t sp = get_shortest_pulse();
 
-    ts_entry["name"] = "pulse_count";
-    ts_entry["value"] = pc;
+    JsonObject pulse_count = timeseries_array.createNestedObject();
+    pulse_count["name"] = "pulse_count";
+    pulse_count["value"] = pc;
 
-    ts_entry = timeseries_array.createNestedObject();
-    ts_entry["name"] = "shortest_pulse";
-    ts_entry["value"] = sp;
+    JsonObject shortest_pulse = timeseries_array.createNestedObject();
+    shortest_pulse["name"] = "shortest_pulse";
+    shortest_pulse["value"] = sp;
 
     //
     // SDI-12 sensors

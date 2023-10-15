@@ -349,6 +349,83 @@ bool wait_for_at(void) {
 }
 
 /**
+ * Attempt to get the current time from the modem. Times reported before 2023 from the modem are assumed to be in
+ * error because this firmware went into production in 2023.
+ *
+ * @param tv on return, tv.tv_sec contains a UNIX style epoch value calculated from the local time provided by the modem.
+ * @return true if the time from the modem is valid, otherwise false.
+ */
+bool get_network_time(struct timeval & tv) {
+    int retries = 3;
+    constexpr size_t time_buffer_sz = 20;
+    char time_buffer[time_buffer_sz + 1];
+    // Try a few times with a pause. The modem doesn't always get the network time quickly enough for an immediate
+    // query.
+    while (retries > 0) {
+        // Get the time from the R5 modem. This is given in local time with the
+        // timezone given as the number of 15 minute offsets from UTC, eg +40 for AEST
+        // and +44 for AEDT.
+        // Example return from r5.clock(): 23/02/13,08:07:57+44
+        memset(time_buffer, 0, sizeof(time_buffer_sz));
+        String time_str = r5.clock();
+        delay(20);
+        strncpy(time_buffer, time_str.c_str(), time_buffer_sz);
+        time_buffer[time_buffer_sz] = 0;
+
+        ESP_LOGI(TAG, "Time from modem: %s", time_buffer);
+        log_to_sdcardf("Time from modem: %s", time_buffer);
+
+        int tz;
+        int year;
+        struct tm tm{};
+
+        int field_count = sscanf(time_buffer, "%2d/%2d/%2d,%d:%d:%d%d", &year, &tm.tm_mon, &tm.tm_mday, &tm.tm_hour, &tm.tm_min, &tm.tm_sec, &tz);
+        // The firmware was put into production in 2023, so earlier times must be invalid. This is to capture the modem
+        // default value of '15/01/01,00:00:09+00'.
+        if (field_count == 7 && year > 22) {
+            // Parse the response into a tm structure which will be used to convert to an epoch value.
+            // Do not take account of the timezone or daylight savings. This means we'll be creating an
+            // epoch time using the local time, but pretending it is UTC. The timezone offset is calculated
+            // and applied later to make it true UTC.
+            tm.tm_year = year + 100; // tm.tm_year is years since 1900, and modem gives 2-digit year since 2000.
+            tm.tm_isdst = 0;   // No daylight savings.
+
+            ESP_LOGI(TAG, "Network time: %02d/%02d/%04d %02d:%02d:%02d %02d", tm.tm_mday, tm.tm_mon, tm.tm_year + 1900,
+                     tm.tm_hour, tm.tm_min, tm.tm_sec, tz);
+
+            tm.tm_mon -= 1;    // tm.tm_month is months since January, so from 0 - 11.
+
+
+            // No microseconds in the calculated time.
+            tv.tv_usec = 0;
+
+            // Get the epoch value by converting the values in the tm structure. This will make tv.tv_sec equal to
+            // the current local time, but assume it is UTC. So giving it the tm generated from the response 23/02/13,08:07:57+44
+            // means tv.tv_sec epoch will represent 23/02/13,08:07:57 UTC.
+            tv.tv_sec = mktime(&tm);
+
+            // Calculate an adjustment for the epoch value based upon the timezone information supplied
+            // by the modem. The modem reports timezone offsets in units of 15 minutes.
+            int dst_offset_secs = tz * 15 * -1 * 60;
+            tv.tv_sec += dst_offset_secs;
+            ESP_LOGI(TAG, "1970 epoch calculated from modem time: %ld", tv.tv_sec);
+
+            return true;
+        }
+
+        ESP_LOGE(TAG, "Time too early or could not parse, wait and retry");
+        log_to_sdcard("[E] Time too early or could not parse, wait and retry");
+
+        delay(1000);
+        retries--;
+    }
+
+    ESP_LOGE(TAG, "Failed to parse time from modem");
+    log_to_sdcard("[E] Failed to parse time from modem");
+    return false;
+}
+
+/**
  * @brief Get the R5 modem connected to the internet.
  *
  * This function sets the ESP32 RTC from the network time.
@@ -434,60 +511,32 @@ bool connect_to_internet(void) {
     setenv("TZ", "UTC", 1);
     tzset();
 
-    // Get the time from the R5 modem. This is given in local time with the
-    // timezone given as the number of 15 minute offsets from UTC, eg +40 for AEST
-    // and +44 for AEDT.
-    // Example return from r5.clock(): 23/02/13,08:07:57+44
-    constexpr size_t time_buffer_sz = 20;
-    char time_buffer[time_buffer_sz + 1];
-    memset(time_buffer, 0, sizeof(time_buffer_sz));
-    String time_str = r5.clock();
-    delay(20);
-    strncpy(time_buffer, time_str.c_str(), time_buffer_sz);
-    time_buffer[time_buffer_sz] = 0;
-    ESP_LOGI(TAG, "Modem response: %s", time_buffer);
+    ESP_LOGI(TAG, "RTC time now: %s", iso8601());
+    log_to_sdcardf("RTC time now: %s", iso8601_buf); // Look out, this is a side-effect of calling iso8601.
 
-    struct tm tm{};
-    memset(&tm, 0, sizeof(tm));
-    time_t now;
-    time(&now);
-    gmtime_r(&now, &tm);
-
-    snprintf(iso8601_buf, sizeof(iso8601_buf)-1, "%04d-%02d-%02dT%02d:%02d:%02dZ", tm.tm_year+1900, tm.tm_mon+1, tm.tm_mday, tm.tm_hour, tm.tm_min, tm.tm_sec);
-    ESP_LOGI(TAG, "RTC time now: %s", iso8601_buf);
-
-    // Parse the response into a tm structure which will be used to convert to an epoch value.
-    // Do not take account of the timezone or daylight savings. This means we'll be creating an
-    // epoch time using the local time, but pretending it is UTC.
-    int tz;
-    memset(&tm, 0, sizeof(tm));
-
-    sscanf(time_buffer, "%2d/%2d/%2d,%d:%d:%d%d", &tm.tm_year, &tm.tm_mon, &tm.tm_mday, &tm.tm_hour, &tm.tm_min, &tm.tm_sec, &tz);
-    tm.tm_year += 100; // tm.tm_year is years since 1900.
-    tm.tm_isdst = 0;   // No daylight savings.
-
-    // Calculate an adjustment for the epoch value based upon the timezone information supplied
-    // by the modem. For example, in summer in NSW the modem will say the time it has provided is
-    // +44 from UTC. This means it is 44 15-minute intervals ahead.
-    int dst_offset_secs = tz * 15 * -1 * 60;
-    ESP_LOGI(TAG, "Network time: %02d/%02d/%04d %02d:%02d:%02d %02d", tm.tm_mday, tm.tm_mon, tm.tm_year + 1900, tm.tm_hour, tm.tm_min, tm.tm_sec, tz);
-    tm.tm_mon -= 1;    // tm.tm_month is months since January, so from 0 - 11.
-
+    bool time_set = false;
     struct timeval tv{};
-    tv.tv_usec = 0;
 
-    // Get the epoch value by converting the values in the tm structure. This will make tv.tv_sec equal to
-    // the current local time, but assume it is UTC. So giving it the tm generated from the response 23/02/13,08:07:57+44
-    // means tv.tv_sec epoch will represent 23/02/13,08:07:57 UTC.
-    tv.tv_sec = mktime(&tm);
+    if (get_network_time(tv)) {
+        // tv.tv_sec is a time_t so difftime can be used to compare it with 'now' and get the difference in seconds.
+        // If the time from the ESP32 RTC is later than the time from the modem (tv.tv_sec) then timedelta will be
+        // negative, so assume the modem is giving the wrong time and don't set the RTC from the modem time.
+        time_t now = time(nullptr);
+        double timedelta = difftime(tv.tv_sec, now);
+        ESP_LOGI(TAG, "timedelta = %f", timedelta);
+        if (timedelta > 0.0) {
+            // Now set the system clock.
+            settimeofday(&tv, nullptr);
+            time_set = true;
+        } else {
+            ESP_LOGW(TAG, "timedelta < 0");
+        }
+    }
 
-    // To fix that, apply the timezone offset calculated above. After this is applied tv_tv.sec will represent
-    // 23/02/12,21:07:57 UTC.
-    tv.tv_sec += dst_offset_secs;
-    ESP_LOGI(TAG, "Epoch: %ld", tv.tv_sec);
-
-    // Now set the system clock.
-    settimeofday(&tv, nullptr);
+    if ( ! time_set) {
+        ESP_LOGI(TAG, "Assuming bad time from modem, not setting RTC");
+        log_to_sdcard("Assuming bad time from modem, not setting RTC");
+    }
 
     log_to_sdcard("Starting PDP");
 
