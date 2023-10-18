@@ -395,7 +395,6 @@ bool get_network_time(struct timeval & tv) {
 
             tm.tm_mon -= 1;    // tm.tm_month is months since January, so from 0 - 11.
 
-
             // No microseconds in the calculated time.
             tv.tv_usec = 0;
 
@@ -519,17 +518,21 @@ bool connect_to_internet(void) {
 
     if (get_network_time(tv)) {
         // tv.tv_sec is a time_t so difftime can be used to compare it with 'now' and get the difference in seconds.
-        // If the time from the ESP32 RTC is later than the time from the modem (tv.tv_sec) then timedelta will be
-        // negative, so assume the modem is giving the wrong time and don't set the RTC from the modem time.
+        // If the time from the ESP32 RTC is later than the time from the modem then timedelta will be
+        // negative.
+        //
+        // If the modem appears to be up to 10 seconds behind the RTC, assume clock drift is making the RTC run fast
+        // and use the modem time. If the modem appears to be in the future, also use the modem time assuming either
+        // the RTC is still in 1970 after booting or it is running slow.
         time_t now = time(nullptr);
         double timedelta = difftime(tv.tv_sec, now);
         ESP_LOGI(TAG, "timedelta = %f", timedelta);
-        if (timedelta > 0.0) {
+        if (timedelta > -10.0) {
             // Now set the system clock.
             settimeofday(&tv, nullptr);
             time_set = true;
         } else {
-            ESP_LOGW(TAG, "timedelta < 0");
+            ESP_LOGW(TAG, "modem time greater than 10 seconds in the past");
         }
     }
 
