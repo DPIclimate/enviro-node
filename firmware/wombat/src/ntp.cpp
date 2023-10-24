@@ -30,20 +30,12 @@ bool getNTPTime(SARA_R5 &r5) {
     // set all bytes in the buffer to 0
     memset(packetBuffer, 0, NTP_PACKET_SIZE);
 
-    // Initialize values needed to form NTP request
+    // Initialize values needed to form NTP request. The client request only needs to set version numbers & mode.
     packetBuffer[0] = 0b11100011;   // LI, Version, Mode
-    packetBuffer[1] = 0;     // Stratum, or type of clock
-    packetBuffer[2] = 6;     // Polling Interval
-    packetBuffer[3] = 0xEC;  // Peer Clock Precision
-    // 8 bytes of zero for Root Delay & Root Dispersion
-    packetBuffer[12]  = 49;
-    packetBuffer[13]  = 0x4E;
-    packetBuffer[14]  = 49;
-    packetBuffer[15]  = 52;
 
     //=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
-    //Allocate a UDP socket to talk to the NTP server
+    // Allocate a UDP socket to talk to the NTP server
 
     int socketNum = r5.socketOpen(SARA_R5_UDP);
     if (socketNum == -1) {

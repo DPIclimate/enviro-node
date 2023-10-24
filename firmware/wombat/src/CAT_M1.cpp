@@ -106,7 +106,7 @@ bool CAT_M1::make_ready() {
     r5.autoTimeZoneForBegin(true);
 
     r5.enableAtDebugging();
-    r5.enableDebugging();
+    //r5.enableDebugging();
 
     // This is relatively benign - it enables the network indicator GPIO pin, set error message format, etc.
     // It does close all open sockets, but there should not be any open sockets at this point so that is ok.

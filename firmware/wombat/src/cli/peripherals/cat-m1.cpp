@@ -12,6 +12,8 @@
 #include "globals.h"
 #include "cli/CLI.h"
 
+bool getNTPTime(SARA_R5 &r5);
+
 //! Sparkfun SARA-R5 library instance
 extern SARA_R5 r5;
 //! Holds responses from the modem
@@ -225,6 +227,16 @@ static int get_response(uint32_t timeout = 500) {
             }
 
             snprintf(pcWriteBuffer, xWriteBufferLen-1, OK_RESPONSE);
+            return pdFALSE;
+        }
+
+        if (!strncmp("ntp", param, paramLen)) {
+            bool rc = false;
+            if (connect_to_internet()) {
+                rc = getNTPTime(r5);
+            }
+
+            snprintf(pcWriteBuffer, xWriteBufferLen-1, "\r\n%s\r\n", rc ? "OK" : "ERROR");
             return pdFALSE;
         }
 
