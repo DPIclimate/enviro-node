@@ -129,77 +129,77 @@ BaseType_t CLIMQTT::enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen,
             }
             return pdFALSE;
         }
-    }
 
-    if (!strncmp("user", param, paramLen)) {
-        paramNum++;
-        param = FreeRTOS_CLIGetParameter(pcCommandString, paramNum, &paramLen);
-        if (param != nullptr && paramLen > 0) {
-            strncpy(pcWriteBuffer, param, paramLen);
-            pcWriteBuffer[paramLen] = 0;
-            config.setMqttUser(pcWriteBuffer);
-            strncpy(pcWriteBuffer, OK_RESPONSE, xWriteBufferLen - 1);
-            return pdFALSE;
-        }
-
-        memset(pcWriteBuffer, 0, xWriteBufferLen);
-        strncpy(pcWriteBuffer, "ERROR: Missing MQTT user name\r\n", xWriteBufferLen - 1);
-        return pdFALSE;
-    }
-
-    if (!strncmp("password", param, paramLen)) {
-        paramNum++;
-        param = FreeRTOS_CLIGetParameter(pcCommandString, paramNum, &paramLen);
-        if (param != nullptr && paramLen > 0) {
-            strncpy(pcWriteBuffer, param, paramLen);
-            pcWriteBuffer[paramLen] = 0;
-            config.setMqttPassword(pcWriteBuffer);
-            strncpy(pcWriteBuffer, OK_RESPONSE, xWriteBufferLen - 1);
-            return pdFALSE;
-        }
-
-        memset(pcWriteBuffer, 0, xWriteBufferLen);
-        strncpy(pcWriteBuffer, "ERROR: Missing MQTT password\r\n", xWriteBufferLen - 1);
-        return pdFALSE;
-    }
-
-    if (!strncmp("topic", param, paramLen)) {
-        paramNum++;
-        param = FreeRTOS_CLIGetParameter(pcCommandString, paramNum, &paramLen);
-        if (param != nullptr && paramLen > 0) {
-            if (paramLen > DeviceConfig::MAX_CONFIG_STR) {
-                strncpy(pcWriteBuffer, "ERROR: Topic name too long\r\n", xWriteBufferLen - 1);
+        if (!strncmp("user", param, paramLen)) {
+            paramNum++;
+            param = FreeRTOS_CLIGetParameter(pcCommandString, paramNum, &paramLen);
+            if (param != nullptr && paramLen > 0) {
+                strncpy(pcWriteBuffer, param, paramLen);
+                pcWriteBuffer[paramLen] = 0;
+                config.setMqttUser(pcWriteBuffer);
+                strncpy(pcWriteBuffer, OK_RESPONSE, xWriteBufferLen - 1);
                 return pdFALSE;
             }
 
-            strncpy(config.mqtt_topic_template, param, paramLen);
-            config.mqtt_topic_template[paramLen] = 0;
-            strncpy(pcWriteBuffer, OK_RESPONSE, xWriteBufferLen - 1);
+            memset(pcWriteBuffer, 0, xWriteBufferLen);
+            strncpy(pcWriteBuffer, "ERROR: Missing MQTT user name\r\n", xWriteBufferLen - 1);
             return pdFALSE;
         }
 
-        memset(pcWriteBuffer, 0, xWriteBufferLen);
-        strncpy(pcWriteBuffer, "ERROR: Missing MQTT user name\r\n", xWriteBufferLen - 1);
-        return pdFALSE;
-    }
+        if (!strncmp("password", param, paramLen)) {
+            paramNum++;
+            param = FreeRTOS_CLIGetParameter(pcCommandString, paramNum, &paramLen);
+            if (param != nullptr && paramLen > 0) {
+                strncpy(pcWriteBuffer, param, paramLen);
+                pcWriteBuffer[paramLen] = 0;
+                config.setMqttPassword(pcWriteBuffer);
+                strncpy(pcWriteBuffer, OK_RESPONSE, xWriteBufferLen - 1);
+                return pdFALSE;
+            }
 
-    if (!strncmp("login", param, paramLen)) {
-        bool rc = mqtt_login();
-        snprintf(pcWriteBuffer, xWriteBufferLen-1, "%s", rc ? OK_RESPONSE : ERROR_RESPONSE);
-        return pdFALSE;
-    }
+            memset(pcWriteBuffer, 0, xWriteBufferLen);
+            strncpy(pcWriteBuffer, "ERROR: Missing MQTT password\r\n", xWriteBufferLen - 1);
+            return pdFALSE;
+        }
 
-    if (!strncmp("logout", param, paramLen)) {
-        bool rc = mqtt_logout();
-        snprintf(pcWriteBuffer, xWriteBufferLen-1, "%s", rc ? OK_RESPONSE : ERROR_RESPONSE);
-        return pdFALSE;
-    }
+        if (!strncmp("topic", param, paramLen)) {
+            paramNum++;
+            param = FreeRTOS_CLIGetParameter(pcCommandString, paramNum, &paramLen);
+            if (param != nullptr && paramLen > 0) {
+                if (paramLen > DeviceConfig::MAX_CONFIG_STR) {
+                    strncpy(pcWriteBuffer, "ERROR: Topic name too long\r\n", xWriteBufferLen - 1);
+                    return pdFALSE;
+                }
 
-    if (!strncmp("publish", param, paramLen)) {
-        String topic(config.mqtt_topic_template);
-        bool rc = mqtt_publish(topic, "ABCDEF", 6);
-        snprintf(pcWriteBuffer, xWriteBufferLen-1, "%s", rc ? OK_RESPONSE : ERROR_RESPONSE);
-        return pdFALSE;
+                strncpy(config.mqtt_topic_template, param, paramLen);
+                config.mqtt_topic_template[paramLen] = 0;
+                strncpy(pcWriteBuffer, OK_RESPONSE, xWriteBufferLen - 1);
+                return pdFALSE;
+            }
+
+            memset(pcWriteBuffer, 0, xWriteBufferLen);
+            strncpy(pcWriteBuffer, "ERROR: Missing MQTT user name\r\n", xWriteBufferLen - 1);
+            return pdFALSE;
+        }
+
+        if (!strncmp("login", param, paramLen)) {
+            bool rc = mqtt_login();
+            snprintf(pcWriteBuffer, xWriteBufferLen-1, "%s", rc ? OK_RESPONSE : ERROR_RESPONSE);
+            return pdFALSE;
+        }
+
+        if (!strncmp("logout", param, paramLen)) {
+            bool rc = mqtt_logout();
+            snprintf(pcWriteBuffer, xWriteBufferLen-1, "%s", rc ? OK_RESPONSE : ERROR_RESPONSE);
+            return pdFALSE;
+        }
+
+        if (!strncmp("publish", param, paramLen)) {
+            String topic(config.mqtt_topic_template);
+            bool rc = mqtt_publish(topic, "ABCDEF", 6);
+            snprintf(pcWriteBuffer, xWriteBufferLen-1, "%s", rc ? OK_RESPONSE : ERROR_RESPONSE);
+            return pdFALSE;
+        }
     }
 
     strncpy(pcWriteBuffer, INVALID_CMD_RESPONSE, xWriteBufferLen - 1);

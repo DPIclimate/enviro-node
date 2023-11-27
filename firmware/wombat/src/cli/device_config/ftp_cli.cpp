@@ -177,8 +177,8 @@ BaseType_t CLIFTP::enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen,
             strncpy(pcWriteBuffer, "ERROR: Missing filename\r\n", xWriteBufferLen - 1);
             return pdFALSE;
         }
-
     }
+
     strncpy(pcWriteBuffer, INVALID_CMD_RESPONSE, xWriteBufferLen - 1);
     return pdFALSE;
 }

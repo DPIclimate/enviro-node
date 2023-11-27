@@ -185,24 +185,6 @@ static int get_response(uint32_t timeout = 500) {
             return pdFALSE;
         }
 
-        if (!strncmp("on", param, paramLen)) {
-            r5.modulePowerOn();
-            snprintf(pcWriteBuffer, xWriteBufferLen-1, OK_RESPONSE);
-            return pdFALSE;
-        }
-
-        if (!strncmp("off", param, paramLen)) {
-            r5.modulePowerOff();
-            snprintf(pcWriteBuffer, xWriteBufferLen-1, OK_RESPONSE);
-            return pdFALSE;
-        }
-
-        if (!strncmp("restart", param, paramLen)) {
-            cat_m1.restart();
-            snprintf(pcWriteBuffer, xWriteBufferLen-1, OK_RESPONSE);
-            return pdFALSE;
-        }
-
         if (!strncmp("factory", param, paramLen)) {
             LTE_Serial.print("AT+CFUN=0\r");
             int len = get_response();
