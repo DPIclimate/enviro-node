@@ -218,6 +218,12 @@ void setup(void) {
     io_expander.config(TCA9534::Config::OUT);
     digitalWrite(LED_BUILTIN, LOW); // Turn off LED
 
+    adt7410_ok = true;
+    if (!temp_sensor.begin()) {
+        ESP_LOGE(TAG, "Couldn't find ADT7410!");
+        adt7410_ok = false;
+    }
+
     // WARNING: The IO expander must be initialised before the SD card is enabled, because the SD card
     // enable line is one of the IO expander pins.
     if (SDCardInterface::begin()) {

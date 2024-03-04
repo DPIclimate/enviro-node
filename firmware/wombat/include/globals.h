@@ -2,6 +2,7 @@
 #define WOMBAT_GLOBALS_H
 
 #include "SparkFun_u-blox_SARA-R5_Arduino_Library.h"
+#include "Adafruit_ADT7410.h"
 #include "CAT_M1.h"
 
 #ifdef ALLOCATE_GLOBALS
@@ -45,6 +46,7 @@ extern bool spiffs_ok;
 EXTERN char g_buffer[MAX_G_BUFFER + 1];
 
 EXTERN bool r5_ok;
+EXTERN bool adt7410_ok;
 
 constexpr char sd_card_datafile_name[] = "/data.json";
 constexpr char sd_card_logfile_name[] = "/log.txt";
@@ -77,8 +79,13 @@ EXTERN volatile bool timeout_restart;
 #ifdef ALLOCATE_GLOBALS
 /// A global SARA R5 modem object.
 SARA_R5 r5(LTE_PWR_ON, -1);
+
+/// A global temerature sensor object.
+Adafruit_ADT7410 temp_sensor = Adafruit_ADT7410();
+
 #else
 extern SARA_R5 r5;
+extern Adafruit_ADT7410 temp_sensor;
 #endif
 
 extern char* script;

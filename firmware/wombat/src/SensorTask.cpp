@@ -211,6 +211,14 @@ void sensor_task(void) {
             source_ids["ccid"] = ccid;
         }
     }
+
+    if (adt7410_ok) {
+        float c = temp_sensor.readTempC();
+        JsonObject obj = timeseries_array.createNestedObject();
+        obj["name"] = "temp (c)";
+        obj["value"] = c;
+    }
+
     //
     // Pulse counter
     //

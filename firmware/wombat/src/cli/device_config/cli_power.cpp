@@ -71,6 +71,16 @@ BaseType_t CLIPower::enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen,
             snprintf(pcWriteBuffer, xWriteBufferLen - 1, "Battery: %.2fv %.2fA, solar: %.2fv %.2fA\r\n", bv, bi, sv, si);
             return pdFALSE;
         }
+        if (!strncmp("temp", param, paramLen)) {
+            response_buffer_.clear();
+            if (adt7410_ok) {
+                float temp = temp_sensor.readTempC();
+                snprintf(pcWriteBuffer, xWriteBufferLen - 1, "%.2f", temp);
+            } else {
+                snprintf(pcWriteBuffer, xWriteBufferLen - 1, "ADT7410 not initialised");
+            }
+            return pdFALSE;
+        }
     }
 
     strncpy(pcWriteBuffer, INVALID_CMD_RESPONSE, xWriteBufferLen - 1);
