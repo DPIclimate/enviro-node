@@ -3,6 +3,7 @@
 
 #include "SparkFun_u-blox_SARA-R5_Arduino_Library.h"
 #include "CAT_M1.h"
+#include <str_utils.h>
 
 #ifdef ALLOCATE_GLOBALS
 #define EXTERN /**/
@@ -22,10 +23,10 @@ extern bool spiffs_ok;
 /// Convert an IO expander pin number (1, 2, ...) to an pin number usable with digitalWrite (0x81, 0x82, ...)
 /// Note that digitalWrite has been redefined to understand that pin numbers >= 0x80 should be toggled on the IO
 /// expander IC, not the ESP32.
-#define IO_TO_ARDUINO(p) (0x80 + p)
+#define IO_TO_ARDUINO(p) (0x80 + (p))
 
 /// Convert an Arduino pin number usable with digitalWrite (0x81, 0x82, ...) to an IO expander pin number (1, 2, ...)
-#define ARDUINO_TO_IO(p) (p & 0x7F)
+#define ARDUINO_TO_IO(p) ((p) & 0x7F)
 
 /// Set HIGH to enable the SD card, LOW to disable the card. This pin drives a transistor that connects or disconnects
 /// the SD card GND pin.

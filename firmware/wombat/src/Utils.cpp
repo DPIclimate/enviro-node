@@ -5,7 +5,9 @@
 
 #include <Arduino.h>
 #include "Utils.h"
-#include <string.h>
+
+#include <SPIFFS.h>
+
 #include "DeviceConfig.h"
 #include "TCA9534.h"
 #include "CAT_M1.h"
@@ -15,116 +17,6 @@
 #define TAG "utils"
 
 bool getNTPTime(SARA_R5 &r5);
-
-/**
- * @brief Returns a pointer to a string representation of value, with trailing zeros removed.
- *
- * The default %f formatter is used to get the initial string representation, so 6 digits after the
- * decimal point. From that, trailing zeros are removed.
- *
- * The pointer returned from this function must not be passed to free.
- * This function is not re-entrant.
- *
- * @param value the value to convert to a string.
- * @return a pointer to a string representation of value, with trailing zeros removed.
- */
-const char *stripTrailingZeros(const float value) {
-    static char float_buf[20];
-
-    int len = snprintf(float_buf, sizeof(float_buf)-1, "%f", value);
-    len--;
-    while (len > 0) {
-        if (float_buf[len] != '0') {
-            break;
-        }
-
-        // Don't strip zeros immediately after the decimal point, ie don't
-        // convert '1.0' to '1.'
-        if (len > 1 && float_buf[len - 1] == '.') {
-            break;
-        }
-
-        float_buf[len] = 0;
-        len--;
-    }
-
-    return float_buf;
-}
-
-/**
- * @brief Removes leading whitespace characters from str.
- *
- * Any character with a value of less than space is considered to be whitespace.
- *
- * @param str the string whose leading whitespace is stripped.
- * @return the new length of str, or 0 if str is null or a zero-length string.
- */
-size_t stripLeadingWS(char *str) {
-    if (str == nullptr || *str == 0) {
-        return 0;
-    }
-
-    char *p = str;
-    while (*p <= ' ') {
-        p++;
-    }
-
-    char *s = str;
-    if (p != str) {
-        while (*p != 0) {
-            *s++ = *p++;
-        }
-
-        *s = 0;
-    }
-
-    return strlen(str);
-}
-
-/**
- * @brief Removes trailing whitespace characters from str.
- *
- * Any character with a value of less than space is considered to be whitespace.
- *
- * @param str the string whose trailing whitespace is stripped.
- * @return the new length of str, or 0 if str is null or a zero-length string.
- */
-size_t stripTrailingWS(char *str) {
-    if (str == nullptr || *str == 0) {
-        return 0;
-    }
-
-    // Strip trailing whitespace. response_buffer + len would point to the trailing null
-    // so subtract one from that to get to the last character.
-    size_t len = strlen(str);
-    if (len == 0) {
-        return len;
-    }
-
-    char *p = str + len - 1;
-    while (p >= str && *p != 0 && *p <= ' ') {
-        *p = 0;
-        p--;
-    }
-
-    // Why 1 is added here: imagine the string is "X"; this means p == msg_buf but the string
-    // length is 1, not 0.
-    len = p - str + 1;
-    return len;
-}
-
-/**
- * @brief Removes leading and trailing whitespace characters from str.
- *
- * Any character with a value of less than space is considered to be whitespace.
- *
- * @param str the string whose leading and trailing whitespace is stripped.
- * @return the new length of str, or 0 if str is null or a zero-length string.
- */
-size_t stripWS(char *str) {
-    stripTrailingWS(str);
-    return stripLeadingWS(str);
-}
 
 /**
  * @brief Read characters from stream into buffer until the delim char is encountered.
@@ -191,7 +83,7 @@ void streamPassthrough(Stream* s1, Stream* s2) {
             }
             memset(cmd, 0, sizeof(cmd));
             readFromStreamUntil(*s1, '\n', cmd, sizeof(cmd));
-            stripWS(cmd);
+            wombat::stripWS(cmd);
             if (strlen(cmd) > 0) {
                 s2->write(ch);
             }
@@ -307,6 +199,78 @@ void log_to_sdcardf(const char *fmt, ...) {
     SDCardInterface::append_to_file(sd_card_logfile_name, sd_card_msg);
 }
 
+int read_spiffs_file(const char* const filename, char* buffer, const size_t max_length, size_t &bytes_read) {
+    String fn_str(filename);
+    if (*filename != '/') {
+        fn_str = "/" + fn_str;
+    }
+
+    File file = SPIFFS.open(fn_str);
+    if (file.isDirectory()) {
+        ESP_LOGE(TAG, "%s is a directory", filename);
+        file.close();
+        return -1;
+    }
+
+    const size_t len = file.available();
+    if (len > max_length) {
+        ESP_LOGE(TAG, "File too long (%lu > %lu)", len, max_length);
+        file.close();
+        return -2;
+    }
+
+    ESP_LOGI(TAG, "Reading %lu bytes in total", len);
+    bytes_read = 0;
+    size_t chunk_sz = 128;
+    while (bytes_read < len) {
+        const size_t left = len - bytes_read;
+        if (left < chunk_sz) {
+            chunk_sz = left;
+        }
+
+        const size_t r_b = file.readBytes(&buffer[bytes_read], chunk_sz);
+        if (r_b != chunk_sz) {
+            ESP_LOGE(TAG, "Short read on SPIFFS file chunk");
+            file.close();
+            return -3;
+        }
+
+        bytes_read += r_b;
+        delay(250);
+    }
+
+    file.close();
+    return 0;
+}
+
+int read_r5_file(const String& filename, char* const buffer, const size_t length, size_t &bytes_read, SARA_R5_error_t& r5_err) {
+    bytes_read = 0;
+    size_t chunk_sz = 128;
+    r5_err = SARA_R5_ERROR_SUCCESS;
+    while (bytes_read < length) {
+        const size_t left = length - bytes_read;
+        if (left < chunk_sz) {
+            chunk_sz = left;
+        }
+
+        size_t r_b;
+        r5_err = r5.getFileBlock(filename, &buffer[bytes_read], bytes_read, chunk_sz, r_b);
+        if (r5_err) {
+            return -1;
+        }
+
+        if (r_b != chunk_sz) {
+            return -3;
+        }
+
+        bytes_read += r_b;
+        delay(100);
+        r5.bufferedPoll();
+    }
+
+    return 0;
+}
+
 /**
  * @brief Waits until an AT command to the R5 modem returns OK, or a timeout is reached.
  *
@@ -327,11 +291,13 @@ bool wait_for_at(void) {
         if (LTE_Serial.available()) {
             int i = 0;
             while (LTE_Serial.available() && i < (MAX_G_BUFFER-1)) {
-                int ch = (char)(LTE_Serial.read() & 0xFF);
-                if (ch > 0) {
-                    g_buffer[i++] = ch;
-                    g_buffer[i] = 0;
+                int ch = LTE_Serial.read();
+                if (ch < 10) {
+                    // Should only be reading CR, LF, and A-Z.
+                    return false;
                 }
+                g_buffer[i++] = (char)(ch & 0xFF);
+                g_buffer[i] = 0;
             }
 
             ESP_LOGI(TAG, "[%s]", rsp);

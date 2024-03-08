@@ -1,13 +1,11 @@
 /**
- * @file cli_power.cpp
+ * @file sd_card.cpp
  *
- * @brief Power related commands.
+ * @brief SD card filesystem related commands.
  */
 #include "cli/peripherals/sd_card.h"
 
 #include <freertos/FreeRTOS.h>
-#include <Stream.h>
-
 #include "cli/FreeRTOS_CLI.h"
 
 #include "globals.h"

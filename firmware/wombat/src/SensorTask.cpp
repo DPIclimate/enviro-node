@@ -121,7 +121,7 @@ bool read_sensor(const char addr, JsonArray& timeseries_array) {
         // This loop runs through the kept values, finds or generates a label for them, and
         // appends them to the timeSeries array of the JSON document.
         for (int value_idx = 0; value_idx < plain_values.size(); value_idx++) {
-            JsonObject ts_entry = timeseries_array.createNestedObject();
+            auto ts_entry = timeseries_array.add<JsonObject>();
             JsonVariantConst label = labels[value_idx];
             if (label) {
                 String generated_label(sensors.sensors[sensor_idx].address - '0');
@@ -147,7 +147,7 @@ bool read_sensor(const char addr, JsonArray& timeseries_array) {
         int res = dpi12.do_measure(sensors.sensors[sensor_idx].address, true);
         if (res > 0) {
             for (uint8_t value_idx = 0; value_idx < res; value_idx++) {
-                JsonObject ts_entry = timeseries_array.createNestedObject();
+                auto ts_entry = timeseries_array.add<JsonObject>();
                 snprintf(g_buffer, MAX_G_BUFFER, "%c_V%u", sensors.sensors[sensor_idx].address, value_idx+1);
                 ts_entry["name"] = g_buffer;
                 ts_entry["value"] = dpi12.get_value(value_idx).value;
@@ -166,12 +166,12 @@ bool read_sensor(const char addr, JsonArray& timeseries_array) {
 void sensor_task(void) {
     sdi12.begin();
 
-    DynamicJsonDocument msg(8192);
+    JsonDocument msg;
 
     const char *timestamp = iso8601();
     msg["timestamp"] = timestamp;
 
-    JsonObject source_ids = msg.createNestedObject("source_ids");
+    auto source_ids = msg["source_ids"].to<JsonObject>();
     source_ids["serial_no"] = DeviceConfig::get().node_id;
 
     constexpr size_t buffer_sz = 48;
@@ -179,16 +179,16 @@ void sensor_task(void) {
     memset(buffer, 0, sizeof(buffer));
     snprintf(buffer, buffer_sz, "%d.%d.%d %s %s %s", ver_major, ver_minor, ver_update, repo_branch, commit_id, repo_status);
     source_ids["firmware"] = buffer;
-    JsonArray timeseries_array = msg.createNestedArray("timeseries");
+    JsonArray timeseries_array = msg["timeseries"].to<JsonArray>();
 
     //
     // Node sensors
     //
-    JsonObject battery_v = timeseries_array.createNestedObject();
+    auto battery_v = timeseries_array.add<JsonObject>();
     battery_v["name"] = "battery (v)";
     battery_v["value"] = BatteryMonitor::get_voltage();
 
-    JsonObject solar_v = timeseries_array.createNestedObject();
+    auto solar_v = timeseries_array.add<JsonObject>();
     solar_v["name"] = "solar (v)";
     solar_v["value"] = SolarMonitor::get_voltage();
 
@@ -197,11 +197,11 @@ void sensor_task(void) {
         SARA_R5_error_t r5_err = r5.getExtSignalQuality(sq);
 
         if (!r5_err) {
-            JsonObject rsrq = timeseries_array.createNestedObject();
+            JsonObject rsrq = timeseries_array.add<JsonObject>();
             rsrq["name"] = "rsrq";
             rsrq["value"] = sq.rsrq;
 
-            JsonObject rsrp = timeseries_array.createNestedObject();
+            JsonObject rsrp = timeseries_array.add<JsonObject>();
             rsrp["name"] = "rsrp";
             rsrp["value"] = sq.rsrp;
         }
@@ -217,11 +217,11 @@ void sensor_task(void) {
     uint32_t pc = get_pulse_count();
     uint32_t sp = get_shortest_pulse();
 
-    JsonObject pulse_count = timeseries_array.createNestedObject();
+    auto pulse_count = timeseries_array.add<JsonObject>();
     pulse_count["name"] = "pulse_count";
     pulse_count["value"] = pc;
 
-    JsonObject shortest_pulse = timeseries_array.createNestedObject();
+    auto shortest_pulse = timeseries_array.add<JsonObject>();
     shortest_pulse["name"] = "shortest_pulse";
     shortest_pulse["value"] = sp;
 
@@ -231,7 +231,7 @@ void sensor_task(void) {
 
     // NOTE: This may make the message too long to send directly via MQTT on the
     // SMP nodes because the 6 SDI-12 ID strings add about 200 bytes to the message.
-    JsonArray sdi12_ids = source_ids.createNestedArray("sdi-12");
+    auto sdi12_ids = source_ids["sdi-12"].to<JsonArray>();
     for (size_t sensor_idx = 0; sensor_idx < sensors.count; sensor_idx++) {
         read_sensor(sensors.sensors[sensor_idx].address, timeseries_array);
         sdi12_ids.add((char*)&sensors.sensors[sensor_idx]);

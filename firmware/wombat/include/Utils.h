@@ -1,16 +1,10 @@
 #ifndef WOMBAT_UTILS_H
 #define WOMBAT_UTILS_H
 
-#include <stddef.h>
 #include <ArduinoJson.h>
 #include <dpiclimate-12.h>
 
 #include "globals.h"
-
-const char *stripTrailingZeros(const float value);
-size_t stripLeadingWS(char *str);
-size_t stripTrailingWS(char *str);
-size_t stripWS(char *str);
 
 size_t readFromStreamUntil(Stream& stream, const char delim, char * const buffer, const size_t max);
 void streamPassthrough(Stream* s1, Stream* s2);
@@ -26,6 +20,31 @@ void disable12V(void);
 const char* iso8601(void);
 void log_to_sdcard(const char * msg);
 void log_to_sdcardf(const char *fmt, ...);
+
+/**
+ * Reads a file from the SPIFFS filesystem into buffer.
+ *
+ * @param filename The name of the file to read.
+ * @param buffer The buffer to read the file into.
+ * @param max_length The size of buffer in bytes.
+ * @param bytes_read [OUT] How many bytes were read into buffer.
+ * @return 0 on success, otherwise a failure.
+ */
+int read_spiffs_file(const char* filename, char* buffer, size_t max_length, size_t &bytes_read);
+
+/**
+ * Reads a file from the R5 filesystem into buffer.
+ *
+ * This function assumes sizeof(buffer) >= length.
+ *
+ * @param filename The name of the file to read.
+ * @param buffer The buffer to read the file into.
+ * @param length The size of the file in bytes.
+ * @param bytes_read [OUT] How many bytes were read into buffer.
+ * @param r5_err [OUT] The error code returned from the R5 library, if an error ocurred.
+ * @return 0 on success, otherwise a failure.
+ */
+int read_r5_file(const String& filename, char* buffer, size_t length, size_t &bytes_read, SARA_R5_error_t& r5_err);
 
 bool wait_for_at(void);
 bool connect_to_internet(void);

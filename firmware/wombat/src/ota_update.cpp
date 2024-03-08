@@ -202,7 +202,7 @@ bool ota_download_sdi12defn(void) {
         return false;
     }
 
-    StaticJsonDocument<MAX_SDI12DEFN_SZ> sdi12Defns;
+    JsonDocument sdi12Defns;
     DeserializationError json_err = deserializeJson(sdi12Defns, g_buffer);
     if (json_err != DeserializationError::Ok) {
         ESP_LOGE(TAG, "Invalid JSON");

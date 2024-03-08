@@ -33,7 +33,7 @@ static char rsp[BUF_SIZE+1];
 static RTC_DATA_ATTR uint32_t bootCount = 0;
 
 //! JSON document instance to handle SDI-12 device definitions
-DynamicJsonDocument sdi12Defns(2024);
+JsonDocument sdi12Defns;
 
 /**
  * @brief Device configuration constructor with default values.
@@ -100,7 +100,7 @@ void DeviceConfig::load() {
             while (f.available() > 0) {
                 memset(buf, 0, sizeof(buf));
                 f.readBytesUntil('\n', buf, BUF_SIZE);
-                len = stripWS(buf);
+                len = wombat::stripWS(buf);
                 if (len < 1) {
                     continue;
                 }

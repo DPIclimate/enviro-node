@@ -187,12 +187,11 @@ bool mqtt_logout(void) {
     return result == 1;
 }
 
-bool mqtt_publish(String &topic, const char *const msg, size_t msg_len) {
+bool mqtt_publish(String &topic, const char * const msg, size_t msg_len) {
     log_to_sdcard("mqtt_publish");
     int result = -1;
     if (msg_len < MAX_MQTT_DIRECT_MSG_LEN) {
         ESP_LOGD(TAG, "Direct publish message: %s/%s", topic.c_str(), msg);
-        log_to_sdcard("using direct publish");
         SARA_R5_error_t err = r5.mqttPublishBinaryMsg(topic, msg, msg_len, 1);
         delay(20);
 
@@ -212,5 +211,25 @@ bool mqtt_publish(String &topic, const char *const msg, size_t msg_len) {
         return false;
     }
 
+    return result == 1;
+}
+
+bool mqtt_publish_file(const String& topic, const String& filename) {
+    log_to_sdcardf("mqtt_publish_file: %s", filename.c_str());
+    int result = -1;
+
+    SARA_R5_error_t err = r5.mqttPublishFromFile(topic, filename, 1);
+    delay(20);
+
+    if (err != SARA_R5_error_t::SARA_R5_ERROR_SUCCESS) {
+        ESP_LOGE(TAG, "Publish failed");
+        log_to_sdcardf("[E] pub failed, err: %d", err);
+        return false;
+    }
+
+    log_to_sdcard("waiting for pub urc");
+    delay(20);
+
+    urcs.waitForURC(SARA_R5_MQTT_COMMAND_PUBLISHFILE, &result, 60, 500);
     return result == 1;
 }

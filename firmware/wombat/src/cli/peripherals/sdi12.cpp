@@ -58,7 +58,6 @@ BaseType_t CLISdi12::enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen,
                                const char *pcCommandString) {
     BaseType_t paramLen = 0;
     UBaseType_t paramNum = 1;
-    const char *param;
 
     // More in the buffer?
     if (response_buffer_.available()) {
@@ -80,7 +79,7 @@ BaseType_t CLISdi12::enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen,
     }
 
     memset(pcWriteBuffer, 0, xWriteBufferLen);
-    param = FreeRTOS_CLIGetParameter(pcCommandString, paramNum, &paramLen);
+    const char *param = FreeRTOS_CLIGetParameter(pcCommandString, paramNum, &paramLen);
     if (param != nullptr && paramLen > 0) {
         if (!strncmp("scan", param, paramLen)) {
             sdi12.begin();
@@ -110,8 +109,8 @@ BaseType_t CLISdi12::enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen,
 
             addr = *param;
 
-            DynamicJsonDocument msg(2048);
-            JsonArray timeseries_array = msg.createNestedArray("timeseries");
+            JsonDocument msg;
+            auto timeseries_array = msg["timeseries"].to<JsonArray>();
             if ( ! read_sensor(addr, timeseries_array)) {
                 strncpy(pcWriteBuffer, "ERROR: failed to read SDI-12 sensor\r\n", xWriteBufferLen - 1);
                 return pdFALSE;
@@ -124,6 +123,12 @@ BaseType_t CLISdi12::enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen,
             sdi12.end();
 
             return pdTRUE;
+        }
+
+        if (!strncmp("st", param, paramLen)) {
+            sensor_task();
+            snprintf(pcWriteBuffer, xWriteBufferLen-1, "%s", OK_RESPONSE);
+            return pdFALSE;
         }
 
         if (!strncmp(">>", param, paramLen)) {
@@ -190,7 +195,7 @@ BaseType_t CLISdi12::enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen,
 
                     memset(cmd, 0, sizeof(cmd));
                     readFromStreamUntil(*CLI::cliInput, '\n', cmd, sizeof(cmd));
-                    stripWS(cmd);
+                    wombat::stripWS(cmd);
                     if (strlen(cmd) > 0) {
                         sdi12.sendCommand(cmd);
                     }

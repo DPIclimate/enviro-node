@@ -9,17 +9,7 @@
 #define WOMBAT_CLI_H
 
 #include <Arduino.h>
-#include <freertos/FreeRTOS.h>
-
-#include "cli/FreeRTOS_CLI.h"
 #include "cli/peripherals/cat-m1.h"
-#include "cli/peripherals/sdi12.h"
-#include "cli/peripherals/cli_power.h"
-#include "cli/peripherals/sd_card.h"
-#include "cli/device_config/acquisition_intervals.h"
-#include "cli/device_config/mqtt_cli.h"
-#include "cli/device_config/ftp_cli.h"
-#include "cli/device_config/config_cli.h"
 
 #define CLI_TAG "cli"
 
@@ -38,9 +28,9 @@ public:
     static Stream *cliInput;
     static Stream *cliOutput;
     //! Maximum command (input) length
-    static const uint8_t MAX_CLI_CMD_LEN = 48;
+    static const size_t MAX_CLI_CMD_LEN = 256;
     //! Maximum command (output) length
-    static const uint8_t MAX_CLI_MSG_LEN = 255;
+    static const size_t MAX_CLI_MSG_LEN = 256;
 
     static void init();
     static void repl(Stream& input, Stream& output);
