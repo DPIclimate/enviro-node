@@ -6,7 +6,7 @@
  *
  * @date December 2022
  */
-#include <stdlib.h>
+#include <cstdlib>
 #include "cli/device_config/acquisition_intervals.h"
 #include "globals.h"
 #include "Utils.h"
@@ -31,7 +31,7 @@ void CLIConfigIntervals::dump(Stream& stream) {
     stream.print("interval uplink ");
     stream.println(config.getUplinkInterval());
 
-    const char *float_str = stripTrailingZeros(config.getSleepAdjustment());
+    const char *float_str = wombat::stripTrailingZeros(config.getSleepAdjustment());
     stream.print("interval clockmult ");
     stream.println(float_str);
 }

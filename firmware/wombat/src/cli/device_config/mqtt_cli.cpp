@@ -12,7 +12,12 @@
 #include "cli/FreeRTOS_CLI.h"
 #include "cli/CLI.h"
 #include "cli/device_config/mqtt_cli.h"
+
+#include <FS.h>
+#include <Utils.h>
+
 #include "mqtt_stack.h"
+#include "globals.h"
 
 //! ESP32 debug output tag
 #define TAG "mqtt_cli"
@@ -190,6 +195,95 @@ BaseType_t CLIMQTT::enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen,
 
         if (!strncmp("logout", param, paramLen)) {
             bool rc = mqtt_logout();
+            snprintf(pcWriteBuffer, xWriteBufferLen-1, "%s", rc ? OK_RESPONSE : ERROR_RESPONSE);
+            return pdFALSE;
+        }
+
+        if (!strncmp("pubfile", param, paramLen)) {
+            const String topic(config.mqtt_topic_template);
+            paramNum++;
+            param = FreeRTOS_CLIGetParameter(pcCommandString, paramNum, &paramLen);
+            bool rc = false;
+            if (param != nullptr && paramLen > 0) {
+                ESP_LOGI(TAG, "publishing file [%s] to topic [%s]", param, topic.c_str());
+
+                size_t file_size;
+                int x = read_spiffs_file(param, g_buffer, MAX_G_BUFFER, file_size);
+                if (x == -1) {
+                    snprintf(pcWriteBuffer, xWriteBufferLen-1, "\r\nERROR: %s is a directory", param);
+                    ESP_LOGE(TAG, "%s", pcWriteBuffer);
+                    return pdFALSE;
+                }
+                if (x == -2) {
+                    snprintf(pcWriteBuffer, xWriteBufferLen-1, "\r\nERROR: %s: file too long", param);
+                    ESP_LOGE(TAG, "%s", pcWriteBuffer);
+                    return pdFALSE;
+                }
+                if (x == -3) {
+                    snprintf(pcWriteBuffer, xWriteBufferLen-1, "\r\nERROR: %s: short read", param);
+                    ESP_LOGE(TAG, "%s", pcWriteBuffer);
+                    return pdFALSE;
+                }
+
+                g_buffer[file_size] = 0;
+                ESP_LOGI(TAG, "read: %lu bytes\r\n%s", file_size, g_buffer);
+
+                const String r5_fn("a.txt");
+
+                r5.deleteFile(r5_fn);
+                delay(500);
+                r5.appendFileContents(r5_fn, g_buffer, file_size);
+
+                const auto a = std::string(g_buffer);
+
+                memset(g_buffer, 0, sizeof(g_buffer));
+                delay(1000);
+
+                size_t bytes_read;
+                SARA_R5_error_t r5_err;
+                x = read_r5_file(r5_fn, g_buffer, file_size, bytes_read, r5_err);
+                if (x == -1) {
+                    snprintf(pcWriteBuffer, xWriteBufferLen-1, "ERROR: r5.getFileBlock returned %d", r5_err);
+                    ESP_LOGE(TAG, "%s", pcWriteBuffer);
+                    return pdFALSE;
+                }
+
+                if (x == -3 || bytes_read != file_size) {
+                    snprintf(pcWriteBuffer, xWriteBufferLen-1, "ERROR: expected %lu bytes, received %lu", file_size, bytes_read);
+                    ESP_LOGE(TAG, "%s", pcWriteBuffer);
+                    return pdFALSE;
+                }
+
+                g_buffer[file_size] = 0;
+                ESP_LOGI(TAG, "File from R5:\n\r%s", g_buffer);
+
+                const char* const a_ptr = a.c_str();
+                bool file_corrupt = false;
+                for (size_t i = 0; i < file_size; i++) {
+                    const char c1 = a_ptr[i];
+                    const char c2 = g_buffer[i];
+                    if (c1 != c2) {
+                        ESP_LOGE(TAG, "Mismatch at posn %lu, %c != %c", i, a_ptr[i], g_buffer[i]);
+                        file_corrupt = true;
+                        break;
+                    }
+                }
+
+                if (file_corrupt) {
+                    snprintf(pcWriteBuffer, xWriteBufferLen-1, "%s", ERROR_RESPONSE);
+                    return pdFALSE;
+                }
+
+                r5_err = r5.mqttPublishFromFile(topic, r5_fn, 1);
+                if (r5_err) {
+                    snprintf(pcWriteBuffer, xWriteBufferLen-1, "ERROR: publish failed, error code = %d", r5_err);
+                    ESP_LOGE(TAG, "%s", pcWriteBuffer);
+                    return pdFALSE;
+                }
+
+                rc = true;
+            }
+
             snprintf(pcWriteBuffer, xWriteBufferLen-1, "%s", rc ? OK_RESPONSE : ERROR_RESPONSE);
             return pdFALSE;
         }

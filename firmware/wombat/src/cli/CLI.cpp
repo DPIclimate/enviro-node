@@ -6,6 +6,15 @@
  * @date January 2023
  */
 #include "cli/CLI.h"
+#include "cli/peripherals/sdi12.h"
+
+#include "cli/peripherals/cli_power.h"
+#include "cli/peripherals/sd_card.h"
+#include "cli/peripherals/cli_spiffs.h"
+#include "cli/device_config/acquisition_intervals.h"
+#include "cli/device_config/mqtt_cli.h"
+#include "cli/device_config/ftp_cli.h"
+#include "cli/device_config/config_cli.h"
 
 //! Command line stream
 Stream *CLI::cliInput = nullptr;
@@ -80,6 +89,14 @@ static const CLI_Command_Definition_t sdCmd = {
         -1
 };
 
+//! SPIFFS commands
+static const CLI_Command_Definition_t spiffsCmd = {
+    CLISPIFFS::cmd.c_str(),
+    "sd:\r\n Access the SPIFFS filesystem\r\n",
+    CLISPIFFS::enter_cli,
+    -1
+};
+
 /**
  * @brief Initialise the FreeRTOS command line interface.
  */
@@ -93,6 +110,7 @@ void CLI::init() {
     FreeRTOS_CLIRegisterCommand(&ftpCmd);
     FreeRTOS_CLIRegisterCommand(&powerCmd);
     FreeRTOS_CLIRegisterCommand(&sdCmd);
+    FreeRTOS_CLIRegisterCommand(&spiffsCmd);
 }
 
 /**
@@ -120,8 +138,13 @@ void CLI::repl(Stream& input, Stream& output) {
 
         size_t len = readFromStreamUntil(input, '\n', cmd, MAX_CLI_CMD_LEN);
         if (len > 1) {
+            if (len >= (MAX_CLI_CMD_LEN - 1)) {
+                ESP_LOGE("CLI", "\r\nCommand too long");
+                continue;
+            }
+
             cmd[len] = 0;
-            stripWS(cmd);
+            wombat::stripWS(cmd);
             if (!strcmp("exit", cmd)) {
                 break;
             }

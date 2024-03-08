@@ -19,8 +19,7 @@ static volatile mqtt_status_t mqtt_status = MQTT_UNINITIALISED;
 
 static String topic("wombat");
 
-static constexpr size_t MAX_MSG_LEN = MAX_MQTT_DIRECT_MSG_LEN;
-static char msg_buf[MAX_MSG_LEN + 1];
+static char msg_buf[4096 + 1];
 
 /**
  * Sends the given file via MQTT.
@@ -33,52 +32,80 @@ static bool process_file(const String& filename) {
     ESP_LOGI(TAG, "Processing message file [%s]", filename.c_str());
     log_to_sdcardf("Processing message file [%s]", filename.c_str());
 
-    File file = SPIFFS.open(filename);
-    // Just in case a directory shows up with a match on the filename pattern. May as well say it
-    // was processed ok.
-    if (file.isDirectory()) {
-        file.close();
+    size_t msg_len;
+    if (read_spiffs_file(filename.c_str(), msg_buf, sizeof(msg_buf), msg_len)) {
         return false;
     }
 
-    size_t len = file.available();
-    if (len < MAX_MSG_LEN) {
-        // Read and close the message file now in case there is a config script coming
-        // that wants to use SPIFFS.
-        file.readBytes(msg_buf, len);
-        msg_buf[len] = 0;
-        file.close();
-
-        if (mqtt_status == MQTT_UNINITIALISED) {
-            if ( ! connect_to_internet()) {
-                ESP_LOGE(TAG, "cti failed, not processing file");
-                log_to_sdcard("[E] cti failed, not processing file");
-                // Set mqtt_status to login failed so no more files will be attempted this run.
-                mqtt_status = MQTT_LOGIN_FAILED;
-                return false;
-            }
-
-            mqtt_status = mqtt_login() ? MQTT_LOGIN_OK : MQTT_LOGIN_FAILED;
-            if (mqtt_status == MQTT_LOGIN_FAILED) {
-                ESP_LOGE(TAG, "Not processing file, no MQTT connection");
-                log_to_sdcard("[E] Not processing file, no MQTT connection");
-                return false;
-            }
+    if (mqtt_status == MQTT_UNINITIALISED) {
+        if ( ! connect_to_internet()) {
+            ESP_LOGE(TAG, "cti failed, not processing file");
+            log_to_sdcard("[E] cti failed, not processing file");
+            // Set mqtt_status to login failed so no more files will be attempted this run.
+            mqtt_status = MQTT_LOGIN_FAILED;
+            return false;
         }
 
-        // This is not always true - if this function is called after a failed login then
-        // we want to skip publishing the message.
-        if (mqtt_status == MQTT_LOGIN_OK) {
-            if (mqtt_publish(topic, msg_buf, len)) {
+        mqtt_status = mqtt_login() ? MQTT_LOGIN_OK : MQTT_LOGIN_FAILED;
+        if (mqtt_status == MQTT_LOGIN_FAILED) {
+            ESP_LOGE(TAG, "Not processing file, no MQTT connection");
+            log_to_sdcard("[E] Not processing file, no MQTT connection");
+            return false;
+        }
+    }
+
+    // This is not always true - if this function is called after a failed login then
+    // we want to skip publishing the message.
+    if (mqtt_status == MQTT_LOGIN_OK) {
+        if (msg_len < MAX_MQTT_DIRECT_MSG_LEN) {
+            if (mqtt_publish(topic, msg_buf, msg_len)) {
                 SPIFFS.remove(filename);
                 return true;
             }
+        } else {
+            const String r5_fn("a.txt");
+
+            r5.deleteFile(r5_fn);
+            delay(500);
+            r5.appendFileContents(r5_fn, msg_buf, msg_len);
+
+            const auto a = std::string(msg_buf, msg_len);
+
+            memset(msg_buf, 0, sizeof(msg_buf));
+            delay(500);
+
+            size_t bytes_read;
+            SARA_R5_error_t r5_err;
+            int x = read_r5_file(r5_fn, msg_buf, msg_len, bytes_read, r5_err);
+            if (x == -1) {
+                return false;
+            }
+
+            if (x == -3 || bytes_read != msg_len) {
+                return false;
+            }
+
+            const char* const a_ptr = a.c_str();
+            bool file_corrupt = false;
+            for (size_t i = 0; i < msg_len; i++) {
+                if (a_ptr[i] != msg_buf[i]) {
+                    ESP_LOGE(TAG, "Mismatch at posn %lu, %c != %c", i, a_ptr[i], msg_buf[i]);
+                    file_corrupt = true;
+                    break;
+                }
+            }
+
+            if (file_corrupt) {
+                return false;
+            }
+
+            if ( ! mqtt_publish_file(topic, r5_fn)) {
+                return false;
+            }
+
+            SPIFFS.remove(filename);
+            return true;
         }
-    } else {
-        ESP_LOGE(TAG, "Message too long");
-        log_to_sdcard("[E] Message too long");
-        file.close();
-        SPIFFS.remove(filename);
     }
 
     return false;
