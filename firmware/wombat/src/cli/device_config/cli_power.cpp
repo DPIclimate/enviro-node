@@ -73,11 +73,11 @@ BaseType_t CLIPower::enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen,
         }
         if (!strncmp("temp", param, paramLen)) {
             response_buffer_.clear();
-            if (adt7410_ok) {
-                float temp = temp_sensor.readTempC();
-                snprintf(pcWriteBuffer, xWriteBufferLen - 1, "%.2f", temp);
+            if (temp_sensor_ok) {
+                float temp = temp_sensor.getTemperatureCelsius();
+                snprintf(pcWriteBuffer, xWriteBufferLen - 1, "%.2f\r\n", temp);
             } else {
-                snprintf(pcWriteBuffer, xWriteBufferLen - 1, "ADT7410 not initialised");
+                snprintf(pcWriteBuffer, xWriteBufferLen - 1, "Temperature sensor not initialised");
             }
             return pdFALSE;
         }

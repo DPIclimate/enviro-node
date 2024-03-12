@@ -212,8 +212,8 @@ void sensor_task(void) {
         }
     }
 
-    if (adt7410_ok) {
-        float c = temp_sensor.readTempC();
+    if (temp_sensor_ok) {
+        float c = temp_sensor.getTemperatureCelsius();
         JsonObject obj = timeseries_array.createNestedObject();
         obj["name"] = "temp (c)";
         obj["value"] = c;

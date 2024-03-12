@@ -22,23 +22,24 @@
 #include "cli/CLI.h"
 #include "peripherals.h"
 
-#include "audio-feedback/tones.h"
 #include "uplinks.h"
 #include "ulp.h"
 
-#include "soc/rtc.h"
 #include "soc/soc.h"
 #include "soc/rtc_cntl_reg.h"
 #include "sd-card/interface.h"
 #include "freertos/semphr.h"
 
 #include "esp_partition.h"
-#include "ota_update.h"
-#include "ftp_stack.h"
 #include "power_monitoring/battery.h"
 #include "power_monitoring/solar.h"
 
 #include "Utils.h"
+
+#include <Wire.h>
+#include "TMP1075.h"
+
+TMP1075::TMP1075 temp_sensor = TMP1075::TMP1075(Wire);    // The library uses the namespace TMP1075
 
 #define TAG "wombat"
 
@@ -218,10 +219,12 @@ void setup(void) {
     io_expander.config(TCA9534::Config::OUT);
     digitalWrite(LED_BUILTIN, LOW); // Turn off LED
 
-    adt7410_ok = true;
-    if (!temp_sensor.begin()) {
+    temp_sensor_ok = true;
+    temp_sensor.begin();
+    uint16_t temp_sensor_id = temp_sensor.getDeviceId();
+    if (temp_sensor_id != 0x7500) {
         ESP_LOGE(TAG, "Couldn't find ADT7410!");
-        adt7410_ok = false;
+        temp_sensor_ok = false;
     }
 
     // WARNING: The IO expander must be initialised before the SD card is enabled, because the SD card
