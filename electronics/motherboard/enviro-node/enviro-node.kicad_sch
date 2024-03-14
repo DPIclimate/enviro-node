@@ -3466,12 +3466,13 @@
 					(hide yes)
 				)
 			)
-			(property "Description" ""
+			(property "Description" "Buzzers Transducer, Externally Driven Piezo 3V 4kHz 60dB @ 3V, 10cm Through Hole PC Pins"
 				(at 0 0 0)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
+					(justify left bottom)
 					(hide yes)
 				)
 			)
@@ -3526,16 +3527,6 @@
 				)
 			)
 			(property "MF" "TDK"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left bottom)
-					(hide yes)
-				)
-			)
-			(property "DESCRIPTION" "Buzzers Transducer, Externally Driven Piezo 3V 4kHz 60dB @ 3V, 10cm Through Hole PC Pins"
 				(at 0 0 0)
 				(effects
 					(font
@@ -5873,10 +5864,6 @@
 		(uuid "f1835ec6-1e17-4e4f-8fbf-87bf683363e3")
 	)
 	(no_connect
-		(at 85.979 54.991)
-		(uuid "f3700cec-8355-4fdb-96e1-d417517f3d1d")
-	)
-	(no_connect
 		(at 50.419 54.991)
 		(uuid "f6112bac-7899-412e-a545-ebb1a2c1f9bc")
 	)
@@ -5891,10 +5878,6 @@
 	(no_connect
 		(at 85.979 47.371)
 		(uuid "f6112bac-7899-412e-a545-ebb1a2c1f9bf")
-	)
-	(no_connect
-		(at 85.979 52.451)
-		(uuid "f6112bac-7899-412e-a545-ebb1a2c1f9c0")
 	)
 	(no_connect
 		(at 85.979 39.751)
@@ -6007,6 +5990,16 @@
 			(type default)
 		)
 		(uuid "109360b8-7c70-4032-aa7f-cd536210cf70")
+	)
+	(wire
+		(pts
+			(xy 100.165 57.531) (xy 85.979 57.531)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "124e2a6d-e8db-4e16-b4ad-c7cc75f6c4d1")
 	)
 	(wire
 		(pts
@@ -6407,6 +6400,26 @@
 			(type default)
 		)
 		(uuid "83255cc9-798b-4b9b-b731-6a13c8dd0991")
+	)
+	(wire
+		(pts
+			(xy 100.165 57.5284) (xy 100.165 57.531)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "83c918ec-77a9-46d2-a961-9ade7e9ff96f")
+	)
+	(wire
+		(pts
+			(xy 102.8935 57.5284) (xy 100.165 57.5284)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "83fa4071-3cef-4514-b576-af0c3253b655")
 	)
 	(wire
 		(pts
@@ -7695,6 +7708,28 @@
 			)
 		)
 	)
+	(global_label "USB_D+"
+		(shape input)
+		(at 85.979 54.991 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "a0b29b9a-33be-43a1-8b07-00b2068cb899")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 96.5842 54.991 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
 	(global_label "GPIO13"
 		(shape input)
 		(at 199.263 245.745 0)
@@ -7752,6 +7787,28 @@
 		(uuid "b11400ad-f157-44c3-8c17-e6261fee4dd3")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 166.7209 40.8146 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "USB_D-"
+		(shape input)
+		(at 85.979 52.451 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "b5252b12-4bc2-4f59-8459-8069b7769c92")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 96.5842 52.451 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12075,7 +12132,7 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 89.789 57.531 270)
+		(at 106.7035 57.5284 270)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -12084,7 +12141,7 @@
 		(fields_autoplaced yes)
 		(uuid "b73c1f5a-64b9-4a37-8e74-0be94bf1a597")
 		(property "Reference" "R7"
-			(at 89.789 52.8152 90)
+			(at 106.7035 52.8126 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12092,7 +12149,7 @@
 			)
 		)
 		(property "Value" "5.1K"
-			(at 89.789 55.3521 90)
+			(at 106.7035 55.3495 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12100,7 +12157,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
-			(at 89.789 55.753 90)
+			(at 106.7035 55.7504 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12109,7 +12166,7 @@
 			)
 		)
 		(property "Datasheet" "https://www.vishay.com/docs/20035/dcrcwe3.pdf"
-			(at 89.789 57.531 0)
+			(at 106.7035 57.5284 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12118,7 +12175,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 89.789 57.531 0)
+			(at 106.7035 57.5284 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12127,7 +12184,7 @@
 			)
 		)
 		(property "Part" "CRCW08055K10FKEA"
-			(at 89.789 57.531 90)
+			(at 106.7035 57.5284 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13549,7 +13606,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 93.599 57.531 90)
+		(at 110.5135 57.5284 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -13557,7 +13614,7 @@
 		(dnp no)
 		(uuid "f0045e89-aafc-45bd-ba02-bda8d30714f5")
 		(property "Reference" "#PWR014"
-			(at 99.949 57.531 0)
+			(at 116.8635 57.5284 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13566,7 +13623,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 100.965 57.531 90)
+			(at 117.8795 57.5284 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13575,7 +13632,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 93.599 57.531 0)
+			(at 110.5135 57.5284 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13584,7 +13641,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 93.599 57.531 0)
+			(at 110.5135 57.5284 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13593,7 +13650,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 93.599 57.531 0)
+			(at 110.5135 57.5284 0)
 			(effects
 				(font
 					(size 1.27 1.27)
