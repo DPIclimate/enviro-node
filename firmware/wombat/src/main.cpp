@@ -272,17 +272,17 @@ void setup(void) {
 //    p_type = esp_ota_get_boot_partition();
 //    ESP_LOGI(TAG, "%d/%d %lx %lx %s", p_type->type, p_type->subtype, p_type->address, p_type->size, p_type->label);
 
+    if (config.getBootCount() == 0) {
+      ESP_LOGI(TAG, "Starting ULP processing");
+      initULP();
+    }
+
     if (progBtnPressed) {
         init_sensors();
         progBtnPressed = false;
         ESP_LOGI(TAG, "Programmable button pressed while booting, dropping into REPL");
         CLI::repl(Serial, Serial);
         ESP_LOGI(TAG, "Continuing");
-    }
-
-    if (config.getBootCount() == 0) {
-        ESP_LOGI(TAG, "Starting ULP processing");
-        initULP();
     }
 
     uint16_t measurement_interval_secs = config.getMeasureInterval();
