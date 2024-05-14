@@ -125,12 +125,12 @@ Static Public Attributes</h2></td></tr>
 <tr class="separator:ac1daa1409451135ee7a75761baf9f819"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5863ae0d7d8d88bd0c5af12698648e0b"><td class="memItemLeft" align="right" valign="top">static Stream *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_l_i.html#a5863ae0d7d8d88bd0c5af12698648e0b">cliOutput</a> = nullptr</td></tr>
 <tr class="separator:a5863ae0d7d8d88bd0c5af12698648e0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a08716882278135d4aa8e795e12b3a03c"><td class="memItemLeft" align="right" valign="top">static const uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_l_i.html#a08716882278135d4aa8e795e12b3a03c">MAX_CLI_CMD_LEN</a> = 48</td></tr>
-<tr class="memdesc:a08716882278135d4aa8e795e12b3a03c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Maximum command (input) length.  <a href="class_c_l_i.html#a08716882278135d4aa8e795e12b3a03c">More...</a><br /></td></tr>
-<tr class="separator:a08716882278135d4aa8e795e12b3a03c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a08f1a712847c224164c889b713a4b598"><td class="memItemLeft" align="right" valign="top">static const uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_l_i.html#a08f1a712847c224164c889b713a4b598">MAX_CLI_MSG_LEN</a> = 255</td></tr>
-<tr class="memdesc:a08f1a712847c224164c889b713a4b598"><td class="mdescLeft">&#160;</td><td class="mdescRight">Maximum command (output) length.  <a href="class_c_l_i.html#a08f1a712847c224164c889b713a4b598">More...</a><br /></td></tr>
-<tr class="separator:a08f1a712847c224164c889b713a4b598"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adfff7d98b98f337fff32213f1233b080"><td class="memItemLeft" align="right" valign="top">static const size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_l_i.html#adfff7d98b98f337fff32213f1233b080">MAX_CLI_CMD_LEN</a> = 256</td></tr>
+<tr class="memdesc:adfff7d98b98f337fff32213f1233b080"><td class="mdescLeft">&#160;</td><td class="mdescRight">Maximum command (input) length.  <a href="class_c_l_i.html#adfff7d98b98f337fff32213f1233b080">More...</a><br /></td></tr>
+<tr class="separator:adfff7d98b98f337fff32213f1233b080"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a959817e14d9260680d47cfa7009be8c3"><td class="memItemLeft" align="right" valign="top">static const size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_l_i.html#a959817e14d9260680d47cfa7009be8c3">MAX_CLI_MSG_LEN</a> = 256</td></tr>
+<tr class="memdesc:a959817e14d9260680d47cfa7009be8c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Maximum command (output) length.  <a href="class_c_l_i.html#a959817e14d9260680d47cfa7009be8c3">More...</a><br /></td></tr>
+<tr class="separator:a959817e14d9260680d47cfa7009be8c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >FreeRTOS command line interface. </p>
@@ -255,8 +255,8 @@ Static Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a08716882278135d4aa8e795e12b3a03c" name="a08716882278135d4aa8e795e12b3a03c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a08716882278135d4aa8e795e12b3a03c">&#9670;&#160;</a></span>MAX_CLI_CMD_LEN</h2>
+<a id="adfff7d98b98f337fff32213f1233b080" name="adfff7d98b98f337fff32213f1233b080"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adfff7d98b98f337fff32213f1233b080">&#9670;&#160;</a></span>MAX_CLI_CMD_LEN</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -265,7 +265,7 @@ Static Public Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const uint8_t CLI::MAX_CLI_CMD_LEN = 48</td>
+          <td class="memname">const size_t CLI::MAX_CLI_CMD_LEN = 256</td>
         </tr>
       </table>
   </td>
@@ -279,8 +279,8 @@ Static Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a08f1a712847c224164c889b713a4b598" name="a08f1a712847c224164c889b713a4b598"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a08f1a712847c224164c889b713a4b598">&#9670;&#160;</a></span>MAX_CLI_MSG_LEN</h2>
+<a id="a959817e14d9260680d47cfa7009be8c3" name="a959817e14d9260680d47cfa7009be8c3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a959817e14d9260680d47cfa7009be8c3">&#9670;&#160;</a></span>MAX_CLI_MSG_LEN</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -289,7 +289,7 @@ Static Public Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const uint8_t CLI::MAX_CLI_MSG_LEN = 255</td>
+          <td class="memname">const size_t CLI::MAX_CLI_MSG_LEN = 256</td>
         </tr>
       </table>
   </td>

@@ -9,5 +9,6 @@ var _c_l_i_8cpp =
     [ "msg", "_c_l_i_8cpp.html#adb7754cd934d9e1011c9c08e079782ba", null ],
     [ "powerCmd", "_c_l_i_8cpp.html#a44f22557b40c51afd30cdb330930bb8d", null ],
     [ "sdCmd", "_c_l_i_8cpp.html#af8e3058682d1a26dd803606d67790bc9", null ],
-    [ "sdi12Cmd", "_c_l_i_8cpp.html#a0dad8acff206f684bb3c91ba95c1fecd", null ]
+    [ "sdi12Cmd", "_c_l_i_8cpp.html#a0dad8acff206f684bb3c91ba95c1fecd", null ],
+    [ "spiffsCmd", "_c_l_i_8cpp.html#a9ae138cf2849e3d0a6f20b332263d742", null ]
 ];

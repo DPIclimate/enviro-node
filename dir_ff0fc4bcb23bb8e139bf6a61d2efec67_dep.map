@@ -1,5 +1,6 @@
 <map id="firmware/wombat/lib" name="firmware/wombat/lib">
-<area shape="rect" id="node2" href="dir_02be88c6d8a667978a252c28bda6bf0c.html" title="TCA9534" alt="" coords="38,63,117,88"/>
-<area shape="rect" id="clust2" href="dir_ff0fc4bcb23bb8e139bf6a61d2efec67.html" alt="" coords="27,52,191,99"/>
-<area shape="rect" id="clust1" href="dir_a2666ece60dde946aac962d01f4de38f.html" title="wombat" alt="" coords="16,16,201,109"/>
+<area shape="rect" id="node2" href="dir_fc78949371cdf1fe45ba6509b80ce684.html" title="str_utils" alt="" coords="141,63,216,88"/>
+<area shape="rect" id="node3" href="dir_02be88c6d8a667978a252c28bda6bf0c.html" title="TCA9534" alt="" coords="38,63,117,88"/>
+<area shape="rect" id="clust2" href="dir_ff0fc4bcb23bb8e139bf6a61d2efec67.html" alt="" coords="27,52,291,99"/>
+<area shape="rect" id="clust1" href="dir_a2666ece60dde946aac962d01f4de38f.html" title="wombat" alt="" coords="16,16,301,109"/>
 </map>

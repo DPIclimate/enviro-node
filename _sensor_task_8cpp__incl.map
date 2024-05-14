@@ -1,25 +1,26 @@
 <map id="firmware/wombat/src/SensorTask.cpp" name="firmware/wombat/src/SensorTask.cpp">
-<area shape="rect" id="node1" title=" " alt="" coords="611,5,771,45"/>
-<area shape="rect" id="node2" title=" " alt="" coords="564,401,648,427"/>
-<area shape="rect" id="node3" href="$_sensor_task_8h.html" title=" " alt="" coords="273,93,379,119"/>
-<area shape="rect" id="node5" href="$_device_config_8h.html" title="Node configuration options." alt="" coords="403,93,523,119"/>
-<area shape="rect" id="node6" href="$_utils_8h.html" title=" " alt="" coords="134,93,198,119"/>
-<area shape="rect" id="node8" title=" " alt="" coords="213,167,337,192"/>
-<area shape="rect" id="node9" href="$globals_8h.html" title=" " alt="" coords="8,167,89,192"/>
-<area shape="rect" id="node14" href="$ulp_8h.html" title=" " alt="" coords="1204,93,1259,119"/>
-<area shape="rect" id="node15" href="$interface_8h.html" title=" " alt="" coords="1035,93,1179,119"/>
-<area shape="rect" id="node18" href="$battery_8h.html" title="Battery voltage and current monitoring using INA219 IC." alt="" coords="809,93,1011,119"/>
-<area shape="rect" id="node20" href="$solar_8h.html" title="Solar voltage and current monitoring using INA219 IC." alt="" coords="598,93,785,119"/>
-<area shape="rect" id="node21" title=" " alt="" coords="1283,93,1367,119"/>
-<area shape="rect" id="node22" title=" " alt="" coords="1391,93,1541,119"/>
-<area shape="rect" id="node23" title=" " alt="" coords="1566,93,1643,119"/>
-<area shape="rect" id="node4" title=" " alt="" coords="361,167,472,192"/>
-<area shape="rect" id="node7" title=" " alt="" coords="114,167,189,192"/>
-<area shape="rect" id="node10" title=" " alt="" coords="117,240,290,280"/>
-<area shape="rect" id="node11" href="$_c_a_t___m1_8h.html" title=" " alt="" coords="5,247,92,273"/>
-<area shape="rect" id="node12" title=" " alt="" coords="58,401,122,427"/>
-<area shape="rect" id="node13" href="$_t_c_a9534_8h.html" title=" " alt="" coords="86,328,177,353"/>
-<area shape="rect" id="node16" title=" " alt="" coords="1043,167,1095,192"/>
-<area shape="rect" id="node17" title=" " alt="" coords="1119,167,1173,192"/>
-<area shape="rect" id="node19" title=" " alt="" coords="711,167,851,192"/>
+<area shape="rect" id="node1" title=" " alt="" coords="739,5,899,45"/>
+<area shape="rect" id="node2" title=" " alt="" coords="780,401,864,427"/>
+<area shape="rect" id="node3" href="$_sensor_task_8h.html" title=" " alt="" coords="306,93,413,119"/>
+<area shape="rect" id="node5" href="$_device_config_8h.html" title="Node configuration options." alt="" coords="437,93,557,119"/>
+<area shape="rect" id="node6" href="$_utils_8h.html" title=" " alt="" coords="218,93,282,119"/>
+<area shape="rect" id="node7" title=" " alt="" coords="191,167,315,192"/>
+<area shape="rect" id="node8" href="$globals_8h.html" title=" " alt="" coords="85,167,167,192"/>
+<area shape="rect" id="node15" href="$ulp_8h.html" title=" " alt="" coords="792,93,847,119"/>
+<area shape="rect" id="node16" href="$interface_8h.html" title=" " alt="" coords="1147,93,1291,119"/>
+<area shape="rect" id="node19" href="$battery_8h.html" title="Battery voltage and current monitoring using INA219 IC." alt="" coords="871,93,1072,119"/>
+<area shape="rect" id="node21" href="$solar_8h.html" title="Solar voltage and current monitoring using INA219 IC." alt="" coords="581,93,767,119"/>
+<area shape="rect" id="node22" title=" " alt="" coords="1316,93,1400,119"/>
+<area shape="rect" id="node23" title=" " alt="" coords="1424,93,1575,119"/>
+<area shape="rect" id="node24" title=" " alt="" coords="1599,93,1677,119"/>
+<area shape="rect" id="node4" title=" " alt="" coords="339,167,449,192"/>
+<area shape="rect" id="node9" title=" " alt="" coords="117,240,290,280"/>
+<area shape="rect" id="node10" href="$_c_a_t___m1_8h.html" title=" " alt="" coords="351,247,437,273"/>
+<area shape="rect" id="node13" href="$str__utils_8h.html" title=" " alt="" coords="5,247,92,273"/>
+<area shape="rect" id="node11" title=" " alt="" coords="403,401,467,427"/>
+<area shape="rect" id="node12" href="$_t_c_a9534_8h.html" title=" " alt="" coords="431,328,522,353"/>
+<area shape="rect" id="node14" title=" " alt="" coords="11,328,86,353"/>
+<area shape="rect" id="node17" title=" " alt="" coords="1199,167,1251,192"/>
+<area shape="rect" id="node18" title=" " alt="" coords="1275,167,1329,192"/>
+<area shape="rect" id="node20" title=" " alt="" coords="763,167,903,192"/>
 </map>

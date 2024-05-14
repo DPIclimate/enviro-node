@@ -8,6 +8,8 @@ var searchData=
   ['cli_2eh_5',['CLI.h',['../_c_l_i_8h.html',1,'']]],
   ['cli_5fpower_2ecpp_6',['cli_power.cpp',['../cli__power_8cpp.html',1,'']]],
   ['cli_5fpower_2eh_7',['cli_power.h',['../cli__power_8h.html',1,'']]],
-  ['config_5fcli_2ecpp_8',['config_cli.cpp',['../config__cli_8cpp.html',1,'']]],
-  ['config_5fcli_2eh_9',['config_cli.h',['../config__cli_8h.html',1,'']]]
+  ['cli_5fspiffs_2ecpp_8',['cli_spiffs.cpp',['../cli__spiffs_8cpp.html',1,'']]],
+  ['cli_5fspiffs_2eh_9',['cli_spiffs.h',['../cli__spiffs_8h.html',1,'']]],
+  ['config_5fcli_2ecpp_10',['config_cli.cpp',['../config__cli_8cpp.html',1,'']]],
+  ['config_5fcli_2eh_11',['config_cli.h',['../config__cli_8h.html',1,'']]]
 ];

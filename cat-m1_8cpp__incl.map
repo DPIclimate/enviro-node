@@ -1,28 +1,20 @@
 <map id="firmware/wombat/src/cli/peripherals/cat&#45;m1.cpp" name="firmware/wombat/src/cli/peripherals/cat&#45;m1.cpp">
-<area shape="rect" id="node1" title="CAT&#45;M1 CLI command request and response handler." alt="" coords="1625,5,1785,60"/>
-<area shape="rect" id="node2" href="$cat-m1_8h.html" title="CAT&#45;M1 CLI command request and response handler." alt="" coords="1202,189,1378,214"/>
-<area shape="rect" id="node7" href="$_c_a_t___m1_8h.html" title=" " alt="" coords="1388,423,1475,449"/>
-<area shape="rect" id="node11" href="$_utils_8h.html" title=" " alt="" coords="1585,269,1649,295"/>
-<area shape="rect" id="node15" href="$globals_8h.html" title=" " alt="" coords="1768,343,1850,368"/>
-<area shape="rect" id="node16" title=" " alt="" coords="1761,416,1934,456"/>
-<area shape="rect" id="node17" href="$_c_l_i_8h.html" title="FreeRTOS CLI handler." alt="" coords="812,108,886,133"/>
-<area shape="rect" id="node3" title=" " alt="" coords="803,269,954,295"/>
-<area shape="rect" id="node4" title=" " alt="" coords="1172,269,1254,295"/>
-<area shape="rect" id="node5" title=" " alt="" coords="1030,269,1148,295"/>
-<area shape="rect" id="node6" title=" " alt="" coords="1278,269,1420,295"/>
-<area shape="rect" id="node8" title=" " alt="" coords="1358,577,1422,603"/>
-<area shape="rect" id="node9" href="$_t_c_a9534_8h.html" title=" " alt="" coords="1304,504,1394,529"/>
-<area shape="rect" id="node10" title=" " alt="" coords="455,577,539,603"/>
-<area shape="rect" id="node12" title=" " alt="" coords="1618,343,1693,368"/>
-<area shape="rect" id="node13" title=" " alt="" coords="1168,343,1279,368"/>
-<area shape="rect" id="node14" title=" " alt="" coords="1470,343,1594,368"/>
-<area shape="rect" id="node18" href="$sdi12_8h.html" title="SDI&#45;12 command line interface handler." alt="" coords="1402,189,1568,214"/>
-<area shape="rect" id="node19" href="$cli__power_8h.html" title=" " alt="" coords="1045,181,1178,221"/>
-<area shape="rect" id="node20" href="$sd__card_8h.html" title=" " alt="" coords="608,181,741,221"/>
-<area shape="rect" id="node22" href="$acquisition__intervals_8h.html" title="Handles the time between measurements and uplinks by the device over LTE." alt="" coords="816,181,1021,221"/>
-<area shape="rect" id="node24" href="$mqtt__cli_8h.html" title="MQTT setup and configuration through the CLI." alt="" coords="45,181,210,221"/>
-<area shape="rect" id="node25" href="$ftp__cli_8h.html" title="FTP setup and configuration through the CLI." alt="" coords="235,181,386,221"/>
-<area shape="rect" id="node26" href="$config__cli_8h.html" title=" " alt="" coords="410,181,584,221"/>
-<area shape="rect" id="node21" title=" " alt="" coords="645,269,704,295"/>
-<area shape="rect" id="node23" href="$_device_config_8h.html" title="Node configuration options." alt="" coords="437,269,557,295"/>
+<area shape="rect" id="node1" title="CAT&#45;M1 CLI command request and response handler." alt="" coords="650,5,810,60"/>
+<area shape="rect" id="node2" href="$cat-m1_8h.html" title="CAT&#45;M1 CLI command request and response handler." alt="" coords="395,181,571,207"/>
+<area shape="rect" id="node7" href="$_c_a_t___m1_8h.html" title=" " alt="" coords="648,262,735,287"/>
+<area shape="rect" id="node11" href="$_utils_8h.html" title=" " alt="" coords="901,108,965,133"/>
+<area shape="rect" id="node14" href="$globals_8h.html" title=" " alt="" coords="729,181,811,207"/>
+<area shape="rect" id="node15" title=" " alt="" coords="870,255,1043,295"/>
+<area shape="rect" id="node18" href="$_c_l_i_8h.html" title="FreeRTOS CLI handler." alt="" coords="572,108,645,133"/>
+<area shape="rect" id="node3" title=" " alt="" coords="5,262,156,287"/>
+<area shape="rect" id="node4" title=" " alt="" coords="180,262,261,287"/>
+<area shape="rect" id="node5" title=" " alt="" coords="285,262,404,287"/>
+<area shape="rect" id="node6" title=" " alt="" coords="428,262,571,287"/>
+<area shape="rect" id="node8" title=" " alt="" coords="725,416,789,441"/>
+<area shape="rect" id="node9" href="$_t_c_a9534_8h.html" title=" " alt="" coords="646,343,737,368"/>
+<area shape="rect" id="node10" title=" " alt="" coords="600,416,684,441"/>
+<area shape="rect" id="node12" title=" " alt="" coords="1035,181,1145,207"/>
+<area shape="rect" id="node13" title=" " alt="" coords="887,181,1011,207"/>
+<area shape="rect" id="node16" href="$str__utils_8h.html" title=" " alt="" coords="759,262,845,287"/>
+<area shape="rect" id="node17" title=" " alt="" coords="811,343,886,368"/>
 </map>

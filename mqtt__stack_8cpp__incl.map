@@ -1,28 +1,21 @@
 <map id="firmware/wombat/src/mqtt_stack.cpp" name="firmware/wombat/src/mqtt_stack.cpp">
-<area shape="rect" id="node1" title=" " alt="" coords="105,5,265,45"/>
-<area shape="rect" id="node2" href="$_utils_8h.html" title=" " alt="" coords="227,255,291,280"/>
-<area shape="rect" id="node6" href="$globals_8h.html" title=" " alt="" coords="90,328,171,353"/>
-<area shape="rect" id="node7" title=" " alt="" coords="5,401,179,441"/>
-<area shape="rect" id="node12" href="$_device_config_8h.html" title="Node configuration options." alt="" coords="1395,255,1515,280"/>
-<area shape="rect" id="node13" href="$_c_l_i_8h.html" title="FreeRTOS CLI handler." alt="" coords="979,93,1053,119"/>
-<area shape="rect" id="node3" title=" " alt="" coords="196,328,271,353"/>
-<area shape="rect" id="node4" title=" " alt="" coords="443,328,554,353"/>
-<area shape="rect" id="node5" title=" " alt="" coords="295,328,419,353"/>
-<area shape="rect" id="node8" href="$_c_a_t___m1_8h.html" title=" " alt="" coords="682,409,769,434"/>
-<area shape="rect" id="node9" title=" " alt="" coords="735,563,799,588"/>
-<area shape="rect" id="node10" href="$_t_c_a9534_8h.html" title=" " alt="" coords="763,489,853,515"/>
-<area shape="rect" id="node11" title=" " alt="" coords="1413,563,1497,588"/>
-<area shape="rect" id="node14" title=" " alt="" coords="902,255,1053,280"/>
-<area shape="rect" id="node15" title=" " alt="" coords="383,255,526,280"/>
-<area shape="rect" id="node16" href="$cat-m1_8h.html" title="CAT&#45;M1 CLI command request and response handler." alt="" coords="644,174,820,199"/>
-<area shape="rect" id="node19" href="$sdi12_8h.html" title="SDI&#45;12 command line interface handler." alt="" coords="273,174,439,199"/>
-<area shape="rect" id="node20" href="$cli__power_8h.html" title=" " alt="" coords="487,167,620,207"/>
-<area shape="rect" id="node21" href="$sd__card_8h.html" title=" " alt="" coords="1124,167,1257,207"/>
-<area shape="rect" id="node23" href="$acquisition__intervals_8h.html" title="Handles the time between measurements and uplinks by the device over LTE." alt="" coords="844,167,1049,207"/>
-<area shape="rect" id="node24" href="$mqtt__cli_8h.html" title="MQTT setup and configuration through the CLI." alt="" coords="1281,167,1447,207"/>
-<area shape="rect" id="node25" href="$ftp__cli_8h.html" title="FTP setup and configuration through the CLI." alt="" coords="1471,167,1622,207"/>
-<area shape="rect" id="node26" href="$config__cli_8h.html" title=" " alt="" coords="1647,167,1820,207"/>
-<area shape="rect" id="node17" title=" " alt="" coords="602,255,683,280"/>
-<area shape="rect" id="node18" title=" " alt="" coords="707,255,826,280"/>
-<area shape="rect" id="node22" title=" " alt="" coords="1161,255,1220,280"/>
+<area shape="rect" id="node1" title=" " alt="" coords="794,5,954,45"/>
+<area shape="rect" id="node2" href="$_utils_8h.html" title=" " alt="" coords="842,93,906,119"/>
+<area shape="rect" id="node5" href="$globals_8h.html" title=" " alt="" coords="960,167,1042,192"/>
+<area shape="rect" id="node6" title=" " alt="" coords="993,240,1166,280"/>
+<area shape="rect" id="node13" href="$_device_config_8h.html" title="Node configuration options." alt="" coords="673,93,793,119"/>
+<area shape="rect" id="node14" href="$_c_l_i_8h.html" title="FreeRTOS CLI handler." alt="" coords="384,93,458,119"/>
+<area shape="rect" id="node3" title=" " alt="" coords="678,167,788,192"/>
+<area shape="rect" id="node4" title=" " alt="" coords="812,167,936,192"/>
+<area shape="rect" id="node7" href="$_c_a_t___m1_8h.html" title=" " alt="" coords="720,247,807,273"/>
+<area shape="rect" id="node11" href="$str__utils_8h.html" title=" " alt="" coords="882,247,968,273"/>
+<area shape="rect" id="node8" title=" " alt="" coords="740,401,804,427"/>
+<area shape="rect" id="node9" href="$_t_c_a9534_8h.html" title=" " alt="" coords="677,328,768,353"/>
+<area shape="rect" id="node10" title=" " alt="" coords="598,401,682,427"/>
+<area shape="rect" id="node12" title=" " alt="" coords="888,328,962,353"/>
+<area shape="rect" id="node15" href="$cat-m1_8h.html" title="CAT&#45;M1 CLI command request and response handler." alt="" coords="333,167,509,192"/>
+<area shape="rect" id="node16" title=" " alt="" coords="346,247,496,273"/>
+<area shape="rect" id="node17" title=" " alt="" coords="520,247,602,273"/>
+<area shape="rect" id="node18" title=" " alt="" coords="36,247,155,273"/>
+<area shape="rect" id="node19" title=" " alt="" coords="179,247,322,273"/>
 </map>

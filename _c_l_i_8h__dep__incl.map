@@ -1,5 +1,5 @@
 <map id="firmware/wombat/include/cli/CLI.h" name="firmware/wombat/include/cli/CLI.h">
-<area shape="rect" id="node1" title="FreeRTOS CLI handler." alt="" coords="986,5,1174,45"/>
+<area shape="rect" id="node1" title="FreeRTOS CLI handler." alt="" coords="1081,5,1269,45"/>
 <area shape="rect" id="node2" href="$_c_l_i_8cpp.html" title="FreeRTOS CLI handler." alt="" coords="5,101,165,141"/>
 <area shape="rect" id="node3" href="$acquisition__intervals_8cpp.html" title="Handles the time between measurements and uplinks by the device over LTE." alt="" coords="190,93,399,148"/>
 <area shape="rect" id="node4" href="$cli__power_8cpp.html" title="Power related commands." alt="" coords="424,93,584,148"/>
@@ -7,8 +7,9 @@
 <area shape="rect" id="node6" href="$ftp__cli_8cpp.html" title="FTP setup and configuration through the CLI." alt="" coords="811,93,971,148"/>
 <area shape="rect" id="node7" href="$mqtt__cli_8cpp.html" title="MQTT setup and configuration through the CLI." alt="" coords="995,93,1165,148"/>
 <area shape="rect" id="node8" href="$cat-m1_8cpp.html" title="CAT&#45;M1 CLI command request and response handler." alt="" coords="1189,93,1349,148"/>
-<area shape="rect" id="node9" href="$sd__card_8cpp.html" title=" " alt="" coords="1373,93,1533,148"/>
-<area shape="rect" id="node10" href="$sdi12_8cpp.html" title="SDI&#45;12 command line interface handler." alt="" coords="1557,101,1741,141"/>
-<area shape="rect" id="node11" href="$main_8cpp.html" title=" " alt="" coords="1765,101,1925,141"/>
-<area shape="rect" id="node12" href="$mqtt__stack_8cpp.html" title=" " alt="" coords="1949,101,2109,141"/>
+<area shape="rect" id="node9" href="$cli__spiffs_8cpp.html" title="SPIFFS related commands." alt="" coords="1373,93,1533,148"/>
+<area shape="rect" id="node10" href="$sd__card_8cpp.html" title="SD card filesystem related commands." alt="" coords="1557,93,1717,148"/>
+<area shape="rect" id="node11" href="$sdi12_8cpp.html" title="SDI&#45;12 command line interface handler." alt="" coords="1741,101,1925,141"/>
+<area shape="rect" id="node12" href="$main_8cpp.html" title=" " alt="" coords="1949,101,2109,141"/>
+<area shape="rect" id="node13" href="$mqtt__stack_8cpp.html" title=" " alt="" coords="2133,101,2293,141"/>
 </map>

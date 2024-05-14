@@ -16,5 +16,12 @@ var namespaces_dup =
       [ "to_path", "namespacegen__version__h.html#af46565bdd3071e66bb6a81b6ee5a91c9", null ],
       [ "True", "namespacegen__version__h.html#a7b69cf4913d0323a94dad9b29b605ca3", null ],
       [ "version_comps", "namespacegen__version__h.html#a0d274a131c874fce37c419c42f7911fe", null ]
+    ] ],
+    [ "wombat", "namespacewombat.html", [
+      [ "get_cp_destination", "namespacewombat.html#a62cf74885d96fbee1818dd21a494c071", null ],
+      [ "stripLeadingWS", "namespacewombat.html#a4be72a7e96a7fa0fd4928724a5c88e4d", null ],
+      [ "stripTrailingWS", "namespacewombat.html#ac2acae95b254b93dcfd04a109de04b69", null ],
+      [ "stripTrailingZeros", "namespacewombat.html#a0c04393dc372e98fe258b9f729e3a33a", null ],
+      [ "stripWS", "namespacewombat.html#a443285dac77caad60ec0899455d15b44", null ]
     ] ]
 ];

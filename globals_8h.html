@@ -99,16 +99,17 @@ $(document).ready(function(){initNavTree('globals_8h.html',''); initResizable();
 <div class="contents">
 <div class="textblock"><code>#include &quot;SparkFun_u-blox_SARA-R5_Arduino_Library.h&quot;</code><br />
 <code>#include &quot;<a class="el" href="_c_a_t___m1_8h_source.html">CAT_M1.h</a>&quot;</code><br />
+<code>#include &lt;<a class="el" href="str__utils_8h_source.html">str_utils.h</a>&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for globals.h:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="globals_8h__incl.svg" width="352" height="286"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="globals_8h__incl.svg" width="407" height="286"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="globals_8h__dep__incl.svg" width="2543" height="418"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="globals_8h__dep__incl.svg" width="3119" height="359"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 </div>
@@ -118,9 +119,9 @@ This graph shows which files directly or indirectly include this file:</div>
 Macros</h2></td></tr>
 <tr class="memitem:a77366c1bd428629dc898e188bfd182a3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="globals_8h.html#a77366c1bd428629dc898e188bfd182a3">EXTERN</a>&#160;&#160;&#160;extern</td></tr>
 <tr class="separator:a77366c1bd428629dc898e188bfd182a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a96a71d1aa27c262af8e02a6bcda41f87"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="globals_8h.html#a96a71d1aa27c262af8e02a6bcda41f87">IO_TO_ARDUINO</a>(p)&#160;&#160;&#160;(0x80 + p)</td></tr>
+<tr class="memitem:a96a71d1aa27c262af8e02a6bcda41f87"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="globals_8h.html#a96a71d1aa27c262af8e02a6bcda41f87">IO_TO_ARDUINO</a>(p)&#160;&#160;&#160;(0x80 + (p))</td></tr>
 <tr class="separator:a96a71d1aa27c262af8e02a6bcda41f87"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae59c4a3be2e87c2918941034d59e3ada"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="globals_8h.html#ae59c4a3be2e87c2918941034d59e3ada">ARDUINO_TO_IO</a>(p)&#160;&#160;&#160;(p &amp; 0x7F)</td></tr>
+<tr class="memitem:ae59c4a3be2e87c2918941034d59e3ada"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="globals_8h.html#ae59c4a3be2e87c2918941034d59e3ada">ARDUINO_TO_IO</a>(p)&#160;&#160;&#160;((p) &amp; 0x7F)</td></tr>
 <tr class="memdesc:ae59c4a3be2e87c2918941034d59e3ada"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert an Arduino pin number usable with digitalWrite (0x81, 0x82, ...) to an IO expander pin number (1, 2, ...)  <a href="globals_8h.html#ae59c4a3be2e87c2918941034d59e3ada">More...</a><br /></td></tr>
 <tr class="separator:ae59c4a3be2e87c2918941034d59e3ada"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab878f41ce20464d2dd90fbf383742752"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="globals_8h.html#ab878f41ce20464d2dd90fbf383742752">SD_CARD_ENABLE</a>&#160;&#160;&#160;0x85</td></tr>
@@ -190,7 +191,7 @@ Variables</h2></td></tr>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname">p</td><td>)</td>
-          <td>&#160;&#160;&#160;(p &amp; 0x7F)</td>
+          <td>&#160;&#160;&#160;((p) &amp; 0x7F)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -224,7 +225,7 @@ Variables</h2></td></tr>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname">p</td><td>)</td>
-          <td>&#160;&#160;&#160;(0x80 + p)</td>
+          <td>&#160;&#160;&#160;(0x80 + (p))</td>
         </tr>
       </table>
 </div><div class="memdoc">

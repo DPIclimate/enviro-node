@@ -110,8 +110,10 @@ Functions</h2></td></tr>
 <tr class="separator:a8d983f4ec1bf845a3652d1fa3c4f936d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9ca99bf880724e94d75c7e94660e3fce"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mqtt__stack_8h.html#a9ca99bf880724e94d75c7e94660e3fce">mqtt_logout</a> (void)</td></tr>
 <tr class="separator:a9ca99bf880724e94d75c7e94660e3fce"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a87f60f382e21f841def5fc4e1410cdda"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mqtt__stack_8h.html#a87f60f382e21f841def5fc4e1410cdda">mqtt_publish</a> (String &amp;<a class="el" href="uplinks_8cpp.html#a18dabc7ec0a9117904f3c64a1ce5ee5c">topic</a>, const char *const <a class="el" href="_c_l_i_8cpp.html#adb7754cd934d9e1011c9c08e079782ba">msg</a>, size_t msg_len)</td></tr>
-<tr class="separator:a87f60f382e21f841def5fc4e1410cdda"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0bdf74cdee8d4f4b3968db92a51e0cc6"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mqtt__stack_8h.html#a0bdf74cdee8d4f4b3968db92a51e0cc6">mqtt_publish</a> (String &amp;<a class="el" href="uplinks_8cpp.html#a18dabc7ec0a9117904f3c64a1ce5ee5c">topic</a>, const char *<a class="el" href="_c_l_i_8cpp.html#adb7754cd934d9e1011c9c08e079782ba">msg</a>, size_t msg_len)</td></tr>
+<tr class="separator:a0bdf74cdee8d4f4b3968db92a51e0cc6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af6e238485803a2c3aff7a9560bae826c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mqtt__stack_8h.html#af6e238485803a2c3aff7a9560bae826c">mqtt_publish_file</a> (const String &amp;<a class="el" href="uplinks_8cpp.html#a18dabc7ec0a9117904f3c64a1ce5ee5c">topic</a>, const String &amp;filename)</td></tr>
+<tr class="separator:af6e238485803a2c3aff7a9560bae826c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="a8d983f4ec1bf845a3652d1fa3c4f936d" name="a8d983f4ec1bf845a3652d1fa3c4f936d"></a>
@@ -150,8 +152,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a87f60f382e21f841def5fc4e1410cdda" name="a87f60f382e21f841def5fc4e1410cdda"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a87f60f382e21f841def5fc4e1410cdda">&#9670;&#160;</a></span>mqtt_publish()</h2>
+<a id="a0bdf74cdee8d4f4b3968db92a51e0cc6" name="a0bdf74cdee8d4f4b3968db92a51e0cc6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0bdf74cdee8d4f4b3968db92a51e0cc6">&#9670;&#160;</a></span>mqtt_publish()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -165,7 +167,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const char *const&#160;</td>
+          <td class="paramtype">const char *&#160;</td>
           <td class="paramname"><em>msg</em>, </td>
         </tr>
         <tr>
@@ -187,6 +189,43 @@ Functions</h2></td></tr>
     <tr><td class="paramname">topic</td><td>the topic to publish to. </td></tr>
     <tr><td class="paramname">msg</td><td>the message to send - this is expected to be a UTF-8 text message. </td></tr>
     <tr><td class="paramname">msg_len</td><td>the length of the message in units of uint8_t. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if the message was published, otherwise false. </dd></dl>
+
+</div>
+</div>
+<a id="af6e238485803a2c3aff7a9560bae826c" name="af6e238485803a2c3aff7a9560bae826c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af6e238485803a2c3aff7a9560bae826c">&#9670;&#160;</a></span>mqtt_publish_file()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool mqtt_publish_file </td>
+          <td>(</td>
+          <td class="paramtype">const String &amp;&#160;</td>
+          <td class="paramname"><em>topic</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const String &amp;&#160;</td>
+          <td class="paramname"><em>filename</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >Publish a message from a file on the modem filesystem.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">topic</td><td>the topic to publish to. </td></tr>
+    <tr><td class="paramname">filename</td><td>the filename on the modem filesystem containing the message to publish. </td></tr>
   </table>
   </dd>
 </dl>

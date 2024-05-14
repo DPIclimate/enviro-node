@@ -134,6 +134,7 @@ var NAVTREE =
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
       [ "Namespace Members", "namespacemembers.html", [
         [ "All", "namespacemembers.html", null ],
+        [ "Functions", "namespacemembers_func.html", null ],
         [ "Variables", "namespacemembers_vars.html", null ]
       ] ]
     ] ],
@@ -167,7 +168,7 @@ var NAVTREEINDEX =
 [
 "_c_a_t___m1_8cpp.html",
 "class_t_c_a9534.html#a090994f5dc606d3676d2004c0b8be270",
-"md_firmware_wombat_readme.html#autotoc_md58"
+"md_firmware_wombat_readme.html#autotoc_md52"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
