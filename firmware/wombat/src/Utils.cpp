@@ -292,10 +292,18 @@ bool wait_for_at(void) {
             int i = 0;
             while (LTE_Serial.available() && i < (MAX_G_BUFFER-1)) {
                 int ch = LTE_Serial.read();
+                // After power up there is often a 0x00 on the serial line from the modem.
+                if (ch < 1) {
+                    continue;
+                }
+
+                // Between 1 and 9 inclusive means noise.
                 if (ch < 10) {
                     // Should only be reading CR, LF, and A-Z.
-                    return false;
+                    ESP_LOGI(TAG, "wait_for_at: %02x", ch);
+                    continue;
                 }
+
                 g_buffer[i++] = (char)(ch & 0xFF);
                 g_buffer[i] = 0;
             }
