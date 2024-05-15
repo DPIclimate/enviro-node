@@ -1,0 +1,31 @@
+1.0.8
+
+Messages longer than 1024 bytes will be copied to the modem filesystem
+and sent from there.
+
+String utility functions have been moved to a project-specific library
+and unit tests created for them.
+
+The ULP initialisation has been moved to before the check for dropping
+into the CLI. This allows pulses to be recorded while in the CLI to
+make checking for them easier.
+
+Removed the c1 on, off, and restart commands; they have not been useful.
+
+Removed the sd read command; sd data works better.
+
+New commands:
+
+  mqtt pubfile <filename>: publishes a file from the SPIFFS filesystem.
+
+  sdi12 st: Runs sensor_task to allow a quick check all the sensors are
+            working. This command creates the standard JSON file on the
+            SPIFFS filesystem which can then be published via
+            mqtt pubfile or will be sent during the next normal run.
+
+  spiffs ls: lists the files in the SPIFFS filesystem.
+
+  spiffs cat <filename>: shows contents of a file on the SPIFFS
+                         filesystem.
+
+  spiffs rm <filename>: deletes a file from the SPIFFS filesystem.
