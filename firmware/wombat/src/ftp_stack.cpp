@@ -168,8 +168,18 @@ bool ftp_change_dir() {
     return result == 1;
 }
 
+/**
+ * Upload a file on the SD card via FTP to the configured FTP server. Partial content may be uploaded by specifying
+ * the offset and from_end parameters.
+ *
+ * @param filename the name of the file on the SD card
+ * @param offset the offset to start reading from. If from_end is true, offset specifies to start reading from offset
+ * bytes before the end of the file, so for example the last (1024 * 512) bytes can be sent. Defaults to 0.
+ * @param from_end if true, interpret offset as (file size - offset). Defaults to false.
+ * @return true if the upload succeeds, otherwise false.
+ */
 [[nodiscard]]
-bool ftp_upload_file(const String& filename) {
+bool ftp_upload_file(const String& filename, size_t offset, bool from_end) {
     DeviceConfig &config = DeviceConfig::get();
 
     log_to_sdcard("ftp upload");
@@ -181,8 +191,38 @@ bool ftp_upload_file(const String& filename) {
         return false;
     }
 
-    //Size of each file to be uploaded to ftp server
-    //Calculate the largest possible chunk based of the remaining space on the modem
+    if (file_size < offset && ! from_end) {
+        ESP_LOGW(TAG, "offset and/or from_end parameters cause bytes_to_send == 0");
+        return true;
+    }
+
+    size_t bytes_to_send = file_size;
+    size_t seek_pos = 0;
+    if (from_end) {
+        // When from end == true it means send the last offset bytes of the file, so file_size
+        // is equal to offset.
+        if (file_size < offset) {
+            // If the offset given is greater than the file size, send the entire file.
+            bytes_to_send = file_size;
+            seek_pos = 0;
+        } else {
+            // Otherwise send the last offset bytes of the file.
+            bytes_to_send = offset;
+            seek_pos = file_size - offset;
+        }
+    } else {
+        // Otherwise adjust file_size to reflect the size of the data to be sent from offset onwards.
+        bytes_to_send = file_size - offset;
+        seek_pos = offset;
+    }
+
+    if (bytes_to_send == 0) {
+        ESP_LOGW(TAG, "offset and/or from_end parameters cause bytes_to_send == 0");
+        return true;
+    }
+
+    // Size of each file to be uploaded to ftp server.
+    // Calculate the largest possible chunk based of the remaining space on the modem.
     size_t size;
     r5.getAvailableSize(&size);
     //log_to_sdcardf("ftp upload space on r5 fs: %lu", size);
@@ -204,8 +244,8 @@ bool ftp_upload_file(const String& filename) {
 
     ESP_LOGI(TAG, "Each block with be of size %zu", CHUNK_SIZE);
 
-    size_t num_chunks = std::ceil(file_size / CHUNK_SIZE);
-    ESP_LOGI(TAG, "Size of file to upload is %zu, will be split into %zu chunks", file_size, num_chunks + 1);
+    size_t num_chunks = std::ceil(bytes_to_send / CHUNK_SIZE);
+    ESP_LOGI(TAG, "Size of file to upload is %zu, will be split into %zu chunks", bytes_to_send, num_chunks + 1);
 
     //Create unique directory on ftp server for sd card files
     bool dir_created = ftp_create_remote_dir();
@@ -224,20 +264,23 @@ bool ftp_upload_file(const String& filename) {
     static const size_t filename_size = 50;
     char chunk_filename[filename_size + 1]; // Filename for chunk
     bool success = true;
-    size_t file_position = 0;
     for (int i = 0; i <= num_chunks && success; i++) {
         size_t bytes_read_chnk = 0; // Number of bytes read into the current chunk
 
         snprintf(chunk_filename, filename_size, "%s_%05d", filename.c_str(), i);
 
         // Write the file chunk to the modem fs.
-        while ((bytes_read_chnk < CHUNK_SIZE) && (file_position < file_size)) {
+        while ((bytes_read_chnk < CHUNK_SIZE) && (seek_pos < file_size)) {
             size_t bytes_to_read = MAX_G_BUFFER;
             if (CHUNK_SIZE - bytes_read_chnk < MAX_G_BUFFER) {
                 bytes_to_read = CHUNK_SIZE - bytes_read_chnk;
             }
 
-            size_t bytes_read = SDCardInterface::read_file(path_name.c_str(), g_buffer, bytes_to_read, file_position);
+            if (bytes_to_read > bytes_to_send) {
+                bytes_to_read = bytes_to_send;
+            }
+
+            size_t bytes_read = SDCardInterface::read_file(path_name.c_str(), g_buffer, bytes_to_read, seek_pos);
             if (bytes_read == 0) {
                 ESP_LOGE(TAG, "File bytes_read failed");
                 log_to_sdcard("[E] ftp upload failing a");
@@ -255,10 +298,11 @@ bool ftp_upload_file(const String& filename) {
                 break;
             }
 
-            file_position += bytes_read;
+            seek_pos += bytes_read;
             bytes_read_chnk += bytes_read;
+            bytes_to_send -= bytes_read;
 
-            ESP_LOGI(TAG, "Bytes written %d, bytes written in chunk %d", file_position, bytes_read_chnk);
+            ESP_LOGI(TAG, "seek_pos now %d, bytes written in chunk %d", seek_pos, bytes_read_chnk);
         }
 
         ESP_LOGI(TAG, "Written chunk %s, now uploading", chunk_filename);

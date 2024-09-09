@@ -164,11 +164,32 @@ BaseType_t CLIFTP::enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen,
         if (!strncmp("upload", param, strlen("upload"))){
             paramNum++;
             param = FreeRTOS_CLIGetParameter(pcCommandString, paramNum, &paramLen);
+            BaseType_t fnLen = 0;
             if (param != nullptr && paramLen > 0) {
                 strncpy(pcWriteBuffer, param, paramLen);
                 pcWriteBuffer[paramLen] = 0;
+                fnLen = paramLen;
 
-                bool rc = ftp_upload_file(pcWriteBuffer);
+                char buf[MAX_NUMERIC_STR_SZ+1];
+                size_t offset = 0;
+                paramNum++;
+                param = FreeRTOS_CLIGetParameter(pcCommandString, paramNum, &paramLen);
+                if (param != nullptr && paramLen > 0) {
+                    strncpy(buf, param, paramLen);
+                    buf[paramLen] = 0;
+                    offset = strtoul(buf, nullptr, 10);
+                }
+
+                size_t from_end = 0;
+                paramNum++;
+                param = FreeRTOS_CLIGetParameter(pcCommandString, paramNum, &paramLen);
+                if (param != nullptr && paramLen > 0) {
+                    strncpy(buf, param, paramLen);
+                    buf[paramLen] = 0;
+                    from_end = strtoul(buf, nullptr, 10);
+                }
+
+                bool rc = ftp_upload_file(pcWriteBuffer, offset, from_end != 0);
                 snprintf(pcWriteBuffer, xWriteBufferLen - 1, "%s", rc ? OK_RESPONSE : ERROR_RESPONSE);
                 return pdFALSE;
             }
