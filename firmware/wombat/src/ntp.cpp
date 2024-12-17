@@ -31,8 +31,9 @@ bool getNTPTime(SARA_R5 &r5) {
     memset(packetBuffer, 0, NTP_PACKET_SIZE);
 
     // Initialize values needed to form NTP request. The client request only needs to set version numbers & mode.
-    packetBuffer[0] = 0b11100011;   // LI, Version, Mode
-
+    packetBuffer[0]  = 0b00000000;  // LI 0
+    packetBuffer[0] |= 0b00100000;  // Version 4
+    packetBuffer[0] |= 0b00000011;  // Mode 3, client
     //=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
     // Allocate a UDP socket to talk to the NTP server
@@ -64,7 +65,7 @@ bool getNTPTime(SARA_R5 &r5) {
         if (r5.socketReadAvailableUDP(socketNum, &avail) != SARA_R5_SUCCESS) {
             ESP_LOGE(TAG, "socketReadAvailable failed");
             r5.socketClose(socketNum);
-            return (false);
+            return false;
         }
 
         if (avail >= NTP_PACKET_SIZE) {
@@ -75,11 +76,14 @@ bool getNTPTime(SARA_R5 &r5) {
             if (r5.socketReadUDP(socketNum, NTP_PACKET_SIZE, (char *)&packetBuffer) != SARA_R5_SUCCESS) {
                 ESP_LOGE(TAG, "socketRead failed");
                 r5.socketClose(socketNum); // Be nice. Close the socket
-                return (false);
+                return false;
             }
 
+            Serial.println();
+            Serial.println("NTP response");
+
             int x = 0;
-            char hexbuf[4];
+            char hexbuf[5]; // Also used to print reference id field, so 5 long.
             while (x < NTP_PACKET_SIZE) {
                 snprintf(hexbuf, sizeof(hexbuf), "%02X ", packetBuffer[x++]);
                 Serial.print(hexbuf);
@@ -98,6 +102,24 @@ bool getNTPTime(SARA_R5 &r5) {
 40: E7 8B F8 61 6B 17 F3 80
 
  */
+
+            // A stratum value of 0 or 1 means a reference id field will also be present, so print that out for
+            // debugging, and if statum is 0, do not try to set the time because that's an error indicator.
+            if (packetBuffer[1] < 2) {
+                hexbuf[0] = packetBuffer[12];
+                hexbuf[1] = packetBuffer[13];
+                hexbuf[2] = packetBuffer[14];
+                hexbuf[3] = packetBuffer[15];
+                hexbuf[4] = 0;
+
+                ESP_LOGI(TAG, "NTP Ref Id: %s", hexbuf);
+
+                if (packetBuffer[1] == 0) {
+                    ESP_LOGE(TAG, "NTP KoD");
+                    return false;
+                }
+            }
+
             // Extract the time from the reply
 
             // The timestamp starts at byte 40 of the received packet and is a uint32_t value.

@@ -84,7 +84,7 @@ static const CLI_Command_Definition_t powerCmd = {
 //! SD card commands
 static const CLI_Command_Definition_t sdCmd = {
         CLISDCard::cmd.c_str(),
-        "sd:\r\n Access the SD card\r\n",
+        "sd rm|data|log:\r\n Access the SD card\r\n",
         CLISDCard::enter_cli,
         -1
 };
@@ -92,7 +92,7 @@ static const CLI_Command_Definition_t sdCmd = {
 //! SPIFFS commands
 static const CLI_Command_Definition_t spiffsCmd = {
     CLISPIFFS::cmd.c_str(),
-    "sd:\r\n Access the SPIFFS filesystem\r\n",
+    "spiffs ls|cat|cp|rm:\r\n Access the SPIFFS filesystem\r\n",
     CLISPIFFS::enter_cli,
     -1
 };

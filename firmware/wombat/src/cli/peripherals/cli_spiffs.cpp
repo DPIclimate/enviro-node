@@ -5,15 +5,11 @@
  */
 #include <SPIFFS.h>
 
-#include "cli/peripherals/sd_card.h"
-
 #include <freertos/FreeRTOS.h>
 #include <Stream.h>
 
 #include "cli/FreeRTOS_CLI.h"
 
-#include "globals.h"
-#include "sd-card/interface.h"
 #include "cli/CLI.h"
 #include "cli/peripherals/cli_spiffs.h"
 #include "Utils.h"
@@ -53,7 +49,7 @@ BaseType_t CLISPIFFS::enter_cli(char *pcWriteBuffer, size_t xWriteBufferLen, con
 
         // readBytesUntil strips the delimiter, so put the '\n' back in.
         if (len <= xWriteBufferLen) {
-            pcWriteBuffer[len-1] = '\n';
+            pcWriteBuffer[len] = '\n';
         }
 
         return response_buffer_.available() > 0 ? pdTRUE : pdFALSE;

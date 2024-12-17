@@ -37,6 +37,14 @@ static bool process_file(const String& filename) {
         return false;
     }
 
+    // Found that on a Wombat with an extended comms outage the SPIFFS FS can fill
+    // up, but maybe still have room for directory entries leading to empty files.
+    // Just delete the file and move on.
+    if (msg_len < 1) {
+        SPIFFS.remove(filename);
+        return true;
+    }
+
     if (mqtt_status == MQTT_UNINITIALISED) {
         if ( ! connect_to_internet()) {
             ESP_LOGE(TAG, "cti failed, not processing file");
